@@ -14,8 +14,6 @@ structure grows the repertoire without retraining; a 200-cell dopamine populatio
 sense-to-action link during life; gaze tracking emerges from static look-at rules.
 The acquired walk does not yet stay upright.
 
-## Introduction
-
 A deep network is usually drawn as a feed-forward transducer: a token or a pixel enters on the left,
 an answer leaves on the right, and a loss is back-propagated through the stack <sup>1, 2</sup>; the intermediate layers are the computation and the output layer *is* the
 answer. We work from a different picture, stated as six claims (P1)-(P6) that the results below test.
