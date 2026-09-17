@@ -1,0 +1,11 @@
+{"scale_control": {"records": 1286, "identical": {"plain": true, "row05": true}, "hits_before": {"plain": 144, "row05": 180}, "hits_after": {"plain": 144, "row05": 180}, "note": "Predictions are invariant to a global rescaling of the learned matrix."}}
+{"variant": "power3", "training_characters": 209578978, "elapsed": 30.0}
+{"variant": "power3", "trained": true, "seconds": 52.3, "weight_sha256": "0e8fe3a66964561a217ec524617a495c2195c95724a3ce329e29b3eefa9db966"}
+{"variant": "power3", "readout": "plain", "top1": {"lccc_base": 479, "wikipedia": 427, "reply_first": 142}, "total": 1048}
+{"variant": "power3", "readout": "row05", "top1": {"lccc_base": 527, "wikipedia": 512, "reply_first": 137}, "total": 1176}
+{"variant": "power3", "edges": {"edges": 13074732, "share_edges_ge_1": 0.122, "top1pct_mass": 0.1089}}
+{"comparison": "power3 vs diminishing", "readout": "plain", "all": {"only_other": 32, "only_power3": 145, "p": 0.0, "n": 9000}}
+{"comparison": "power3 vs diminishing", "readout": "row05", "all": {"only_other": 41, "only_power3": 91, "p": 1.6e-05, "n": 9000}}
+{"comparison": "power3 vs power2", "readout": "plain", "all": {"only_other": 18, "only_power3": 71, "p": 0.0, "n": 9000}}
+{"comparison": "power3 vs power2", "readout": "row05", "all": {"only_other": 12, "only_power3": 17, "p": 0.458258, "n": 9000}}
+{"COMPLETE": true, "elapsed_seconds": 879.6}

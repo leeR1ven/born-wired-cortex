@@ -1,0 +1,106 @@
+Traceback (most recent call last):
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 594, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 580, in main
+    layout_check()
+    ~~~~~~~~~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 561, in layout_check
+    assert not overflow, 'some controls extend outside the window'
+           ^^^^^^^^^^^^
+AssertionError: some controls extend outside the window
+
+Traceback (most recent call last):
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 597, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 583, in main
+    layout_check()
+    ~~~~~~~~~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 564, in layout_check
+    assert not overflow, 'some controls extend outside the window'
+           ^^^^^^^^^^^^
+AssertionError: some controls extend outside the window
+
+2026-09-06 11:59:16,935 INFO 已加载 demo_brain.npz，继续在线学习
+2026-09-06 11:59:16,938 INFO 每5分钟及退出时保存 living_brain.npz；demo基线保持原样。
+2026-09-06 12:00:01,083 INFO 扬声器展示已开启：按钮声音及实际口部输出播放短音，不采集麦克风。
+2026-09-06 12:00:15,610 INFO 扬声器展示已关闭；脑内PCM感知与口部反馈继续运行。
+2026-09-06 12:04:17,135 INFO 自动保存：living_brain.npz
+2026-09-06 12:09:17,304 INFO 自动保存：living_brain.npz
+2026-09-06 12:14:17,507 INFO 自动保存：living_brain.npz
+2026-09-06 12:19:17,694 INFO 自动保存：living_brain.npz
+2026-09-06 12:24:17,862 INFO 自动保存：living_brain.npz
+2026-09-06 12:29:18,027 INFO 自动保存：living_brain.npz
+2026-09-06 12:34:18,226 INFO 自动保存：living_brain.npz
+2026-09-06 12:39:18,436 INFO 自动保存：living_brain.npz
+2026-09-06 12:44:18,650 INFO 自动保存：living_brain.npz
+2026-09-06 12:49:18,870 INFO 自动保存：living_brain.npz
+2026-09-06 12:54:19,135 INFO 自动保存：living_brain.npz
+2026-09-06 12:59:19,344 INFO 自动保存：living_brain.npz
+2026-09-06 13:04:19,551 INFO 自动保存：living_brain.npz
+2026-09-06 13:05:49,924 INFO 退出保存：living_brain.npz
+Traceback (most recent call last):
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 611, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 594, in main
+    smoke_test()
+    ~~~~~~~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 496, in smoke_test
+    session.tick()
+    ~~~~~~~~~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 97, in tick
+    muscles, emitted, info = self.brain.step(
+                             ~~~~~~~~~~~~~~~^
+        observation, waveform, stimulation=stimulation,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pleasant=1.0 if teaching else 0.0, mouth_stimulation=mouth_stimulation,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\一种AGI架构\闭环仿真\brain.py", line 242, in step
+    muscles = self.motor.decode(action)
+  File "F:\一种AGI架构\闭环仿真\neural.py", line 169, in decode
+    return self.decode_command(self.command(action_index))
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\一种AGI架构\闭环仿真\neural.py", line 165, in decode_command
+    receptor = self.reverse.前向(command)
+               ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\一种AGI架构\运动输出区.py", line 313, in 前向
+    投票 = 投票 + 镜像投票(输出激活, 强度=self.镜像强度)
+           ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ValueError: operands could not be broadcast together with shapes (80,) (4000,) 
+
+Traceback (most recent call last):
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 611, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 594, in main
+    smoke_test()
+    ~~~~~~~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 496, in smoke_test
+    session.tick()
+    ~~~~~~~~~~~~^^
+  File "F:\一种AGI架构\闭环仿真\viewer.py", line 97, in tick
+    muscles, emitted, info = self.brain.step(
+                             ~~~~~~~~~~~~~~~^
+        observation, waveform, stimulation=stimulation,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pleasant=1.0 if teaching else 0.0, mouth_stimulation=mouth_stimulation,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "F:\一种AGI架构\闭环仿真\brain.py", line 242, in step
+    muscles = self.motor.decode(action)
+  File "F:\一种AGI架构\闭环仿真\neural.py", line 169, in decode
+    return self.decode_command(self.command(action_index))
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\一种AGI架构\闭环仿真\neural.py", line 165, in decode_command
+    receptor = self.reverse.前向(command)
+               ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\一种AGI架构\运动输出区.py", line 313, in 前向
+    投票 = 投票 + 镜像投票(输出激活, 强度=self.镜像强度)
+           ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ValueError: operands could not be broadcast together with shapes (80,) (4000,) 
+

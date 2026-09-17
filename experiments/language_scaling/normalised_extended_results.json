@@ -1,0 +1,270 @@
+{
+  "completed": true,
+  "stages": [
+    600000000,
+    1000000000,
+    1435795207
+  ],
+  "probe_counts": {
+    "lccc_base": 3000,
+    "wikipedia": 3000,
+    "reply_first": 3000
+  },
+  "records": {
+    "600000000": {
+      "stage": 600000000,
+      "plain": {
+        "top1": {
+          "lccc_base": 413,
+          "wikipedia": 402,
+          "reply_first": 121
+        },
+        "total": 936,
+        "wilson": {
+          "lccc_base": [
+            0.1258,
+            0.1505
+          ],
+          "wikipedia": [
+            0.1223,
+            0.1467
+          ],
+          "reply_first": [
+            0.0339,
+            0.048
+          ]
+        },
+        "overall_wilson": [
+          0.0979,
+          0.1105
+        ]
+      },
+      "row05": {
+        "top1": {
+          "lccc_base": 491,
+          "wikipedia": 489,
+          "reply_first": 118
+        },
+        "total": 1098,
+        "wilson": {
+          "lccc_base": [
+            0.1509,
+            0.1773
+          ],
+          "wikipedia": [
+            0.1502,
+            0.1766
+          ],
+          "reply_first": [
+            0.0329,
+            0.0469
+          ]
+        },
+        "overall_wilson": [
+          0.1154,
+          0.1289
+        ],
+        "vs_plain": {
+          "lccc_base": {
+            "only_plain": 14,
+            "only_row05": 92,
+            "p": 3.0602379412652396e-15
+          },
+          "wikipedia": {
+            "only_plain": 14,
+            "only_row05": 101,
+            "p": 1.982659948466344e-17
+          },
+          "reply_first": {
+            "only_plain": 9,
+            "only_row05": 6,
+            "p": 0.60723876953125
+          }
+        }
+      }
+    },
+    "1000000000": {
+      "stage": 1000000000,
+      "plain": {
+        "top1": {
+          "lccc_base": 376,
+          "wikipedia": 385,
+          "reply_first": 104
+        },
+        "total": 865,
+        "wilson": {
+          "lccc_base": [
+            0.114,
+            0.1377
+          ],
+          "wikipedia": [
+            0.1168,
+            0.1408
+          ],
+          "reply_first": [
+            0.0287,
+            0.0418
+          ]
+        },
+        "overall_wilson": [
+          0.0902,
+          0.1024
+        ]
+      },
+      "row05": {
+        "top1": {
+          "lccc_base": 452,
+          "wikipedia": 467,
+          "reply_first": 106
+        },
+        "total": 1025,
+        "wilson": {
+          "lccc_base": [
+            0.1383,
+            0.1639
+          ],
+          "wikipedia": [
+            0.1431,
+            0.1691
+          ],
+          "reply_first": [
+            0.0293,
+            0.0426
+          ]
+        },
+        "overall_wilson": [
+          0.1075,
+          0.1206
+        ],
+        "vs_plain": {
+          "lccc_base": {
+            "only_plain": 14,
+            "only_row05": 90,
+            "p": 9.242431266316357e-15
+          },
+          "wikipedia": {
+            "only_plain": 10,
+            "only_row05": 92,
+            "p": 9.39946402002789e-18
+          },
+          "reply_first": {
+            "only_plain": 7,
+            "only_row05": 9,
+            "p": 0.803619384765625
+          }
+        }
+      }
+    },
+    "1435795207": {
+      "stage": 1435795207,
+      "plain": {
+        "top1": {
+          "lccc_base": 340,
+          "wikipedia": 410,
+          "reply_first": 72
+        },
+        "total": 822,
+        "wilson": {
+          "lccc_base": [
+            0.1025,
+            0.1252
+          ],
+          "wikipedia": [
+            0.1248,
+            0.1494
+          ],
+          "reply_first": [
+            0.0191,
+            0.0301
+          ]
+        },
+        "overall_wilson": [
+          0.0856,
+          0.0975
+        ]
+      },
+      "row05": {
+        "top1": {
+          "lccc_base": 421,
+          "wikipedia": 494,
+          "reply_first": 80
+        },
+        "total": 995,
+        "wilson": {
+          "lccc_base": [
+            0.1284,
+            0.1532
+          ],
+          "wikipedia": [
+            0.1518,
+            0.1784
+          ],
+          "reply_first": [
+            0.0215,
+            0.0331
+          ]
+        },
+        "overall_wilson": [
+          0.1042,
+          0.1172
+        ],
+        "vs_plain": {
+          "lccc_base": {
+            "only_plain": 9,
+            "only_row05": 90,
+            "p": 6.053134256946273e-18
+          },
+          "wikipedia": {
+            "only_plain": 13,
+            "only_row05": 97,
+            "p": 4.700941065418037e-17
+          },
+          "reply_first": {
+            "only_plain": 3,
+            "only_row05": 11,
+            "p": 0.057373046875
+          }
+        }
+      }
+    }
+  },
+  "edges": {
+    "600000000": {
+      "edges": 16438272,
+      "total_weight": 20821982.91361244,
+      "mean_weight": 1.2666771126315735,
+      "median_weight": 0.25,
+      "edges_ge_0_5": 5850267,
+      "edges_ge_1": 3876551,
+      "edges_ge_2": 2300165,
+      "edges_ge_4": 1169268,
+      "share_edges_ge_1": 0.23582472658926681,
+      "top1pct_mass_share": 0.24557501421964367
+    },
+    "1000000000": {
+      "edges": 18931061,
+      "total_weight": 29025637.430224992,
+      "mean_weight": 1.5332282448524672,
+      "median_weight": 0.28003042936325073,
+      "edges_ge_0_5": 7326550,
+      "edges_ge_1": 4999665,
+      "edges_ge_2": 3085310,
+      "edges_ge_4": 1658068,
+      "share_edges_ge_1": 0.26409850985108546,
+      "top1pct_mass_share": 0.2470331143530771
+    },
+    "1435795207": {
+      "edges": 21123214,
+      "total_weight": 36555586.520579234,
+      "mean_weight": 1.7305882769818661,
+      "median_weight": 0.30000001192092896,
+      "edges_ge_0_5": 8582894,
+      "edges_ge_1": 5950384,
+      "edges_ge_2": 3755686,
+      "edges_ge_4": 2083354,
+      "share_edges_ge_1": 0.2816987982984029,
+      "top1pct_mass_share": 0.24943970311582536
+    }
+  },
+  "elapsed_seconds": 1404.8
+}

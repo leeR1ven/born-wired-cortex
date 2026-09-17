@@ -1,0 +1,4 @@
+{"stage": 600000000, "plain": {"lccc_base": 413, "wikipedia": 402, "reply_first": 121}, "row05": {"lccc_base": 491, "wikipedia": 489, "reply_first": 118}, "edges": 16438272, "share_edges_ge_1": 0.2358, "top1pct_mass": 0.2456}
+{"stage": 1000000000, "plain": {"lccc_base": 376, "wikipedia": 385, "reply_first": 104}, "row05": {"lccc_base": 452, "wikipedia": 467, "reply_first": 106}, "edges": 18931061, "share_edges_ge_1": 0.2641, "top1pct_mass": 0.247}
+{"stage": 1435795207, "plain": {"lccc_base": 340, "wikipedia": 410, "reply_first": 72}, "row05": {"lccc_base": 421, "wikipedia": 494, "reply_first": 80}, "edges": 21123214, "share_edges_ge_1": 0.2817, "top1pct_mass": 0.2494}
+COMPLETE

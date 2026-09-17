@@ -1,0 +1,5 @@
+{"documents": 2873835, "duplicate_documents": 11051, "cleaned_characters": 670412793, "outside_frozen_vocabulary": 32605, "outside_share": 0.0, "trainable_characters": 670380188, "seconds": 114.6}
+{"documents": 254547, "duplicate_documents": 3044, "cleaned_characters": 162908054, "outside_frozen_vocabulary": 17814, "outside_share": 0.0001, "trainable_characters": 162890240, "seconds": 26.1}
+{"documents": 656602, "duplicate_documents": 13171, "cleaned_characters": 295720417, "outside_frozen_vocabulary": 17470, "outside_share": 0.0001, "trainable_characters": 295702947, "seconds": 50.3}
+{"total_trainable_added": 1128973375, "v1": 344787049, "ratio": 4.274}
+COMPLETE

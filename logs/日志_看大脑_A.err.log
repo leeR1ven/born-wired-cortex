@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "F:\一种AGI架构\看_大脑开车.py", line 220, in <module>
+    写文件(出表)
+    ~~~~~~^^^^^^
+  File "F:\一种AGI架构\看_大脑开车.py", line 190, in 写文件
+    b64 = [base64.b64encode(io.BytesIO(_png(f)).getvalue()).decode() for f in r["帧们"]]
+                            ~~~~~~~~~~^^^^^^^^^
+TypeError: a bytes-like object is required, not '_io.BytesIO'

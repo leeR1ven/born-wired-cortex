@@ -1,0 +1,184 @@
+{
+  "source": "persistent_candidates_v1/diminishing_658462_k4_test.json",
+  "trajectory": "silent_trajectories[0]",
+  "step": 4,
+  "activity": [
+    {
+      "character": "一",
+      "amplitude": 0.3268788576080479
+    },
+    {
+      "character": "個",
+      "amplitude": 0.37930091031766755
+    },
+    {
+      "character": "說",
+      "amplitude": 0.06005121077594586
+    },
+    {
+      "character": "是",
+      "amplitude": 0.05722085564855719
+    },
+    {
+      "character": "不",
+      "amplitude": 0.23564164774076032
+    },
+    {
+      "character": "的",
+      "amplitude": 0.21552971998521503
+    }
+  ],
+  "injected_candidates": [
+    {
+      "character": "人",
+      "amount": 0.28420102566615046
+    },
+    {
+      "character": "個",
+      "amount": 0.26440635017204966
+    },
+    {
+      "character": "是",
+      "amount": 0.24603542100663842
+    },
+    {
+      "character": "一",
+      "amount": 0.20535720315516146
+    }
+  ],
+  "next_activity": [
+    {
+      "character": "一",
+      "amplitude": 0.28707691755717346
+    },
+    {
+      "character": "個",
+      "amplitude": 0.3592315777514665
+    },
+    {
+      "character": "不",
+      "amplitude": 0.05891041193519008
+    },
+    {
+      "character": "的",
+      "amplitude": 0.05388242999630376
+    },
+    {
+      "character": "人",
+      "amplitude": 0.28420102566615046
+    },
+    {
+      "character": "是",
+      "amplitude": 0.24603542100663842
+    }
+  ],
+  "target": "個",
+  "contributions": [
+    {
+      "source": "一",
+      "activity": 0.3268788576080479,
+      "weight": 25.874608993530273,
+      "current": 8.45786190032959
+    },
+    {
+      "source": "個",
+      "activity": 0.37930091031766755,
+      "weight": 3.6415350437164307,
+      "current": 1.3812376260757446
+    },
+    {
+      "source": "說",
+      "activity": 0.06005121077594586,
+      "weight": 2.986682176589966,
+      "current": 0.17935387790203094
+    },
+    {
+      "source": "是",
+      "activity": 0.05722085564855719,
+      "weight": 12.404245376586914,
+      "current": 0.7097815275192261
+    },
+    {
+      "source": "不",
+      "activity": 0.23564164774076032,
+      "weight": 1.8080554008483887,
+      "current": 0.42605313658714294
+    },
+    {
+      "source": "的",
+      "activity": 0.21552971998521503,
+      "weight": 4.02980899810791,
+      "current": 0.8685436248779297
+    }
+  ],
+  "actual_top8": [
+    {
+      "character": "人",
+      "current": 12.922916412353516
+    },
+    {
+      "character": "個",
+      "current": 12.022831916809082
+    },
+    {
+      "character": "是",
+      "current": 11.18748664855957
+    },
+    {
+      "character": "一",
+      "current": 9.33780574798584
+    },
+    {
+      "character": "不",
+      "current": 9.32259464263916
+    },
+    {
+      "character": "好",
+      "current": 9.12976360321045
+    },
+    {
+      "character": "說",
+      "current": 8.39273738861084
+    },
+    {
+      "character": "了",
+      "current": 8.290677070617676
+    }
+  ],
+  "without_self_edges_top8": [
+    {
+      "character": "人",
+      "current": 12.922916412353516
+    },
+    {
+      "character": "是",
+      "current": 11.044492721557617
+    },
+    {
+      "character": "個",
+      "current": 10.641593933105469
+    },
+    {
+      "character": "好",
+      "current": 9.12976360321045
+    },
+    {
+      "character": "了",
+      "current": 8.290677070617676
+    },
+    {
+      "character": "不",
+      "current": 8.287097930908203
+    },
+    {
+      "character": "說",
+      "current": 8.130147933959961
+    },
+    {
+      "character": "大",
+      "current": 8.011364936828613
+    }
+  ],
+  "counterfactual": "Subtract every active self-edge contribution for THIS STEP only; no retraining or rollout claim",
+  "model_weight_sha256": "504ef63417d780d1ccbe884bb0c34928f6be5b36ec3293c9f5c74e1a084c3bb8"
+}

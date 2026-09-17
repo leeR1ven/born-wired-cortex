@@ -1,0 +1,17 @@
+{
+  "purpose": "throughput_only_not_language_evaluation",
+  "characters": 10000,
+  "seconds": 0.07050839999999425,
+  "characters_per_second": 141827.07308633887,
+  "state": {
+    "characters": 16,
+    "learned_characters": 10000,
+    "clock": 10000,
+    "update_events": 159864,
+    "connections": 256,
+    "matrix_bytes": 1024,
+    "weight_max": 16.72671127319336,
+    "weight_mean": 7.788466453552246,
+    "active_characters": 16
+  }
+}

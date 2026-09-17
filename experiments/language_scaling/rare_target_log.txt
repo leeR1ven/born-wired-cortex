@@ -1,0 +1,8 @@
+{"pools": {"1-9": 115, "10-99": 128, "100-999": 128, "1000-9999": 128, "10000+": 128}, "eligible": {"10000+": 507846, "1000-9999": 23025, "100-999": 3391, "10-99": 476, "1-9": 115}, "total": 627}
+{"model": "diminishing", "readout": "plain", "by_band": {"1-9": 0, "10-99": 0, "100-999": 0, "1000-9999": 0, "10000+": 9}, "total": 9}
+{"model": "diminishing", "readout": "row05", "by_band": {"1-9": 0, "10-99": 0, "100-999": 3, "1000-9999": 3, "10000+": 16}, "total": 22}
+{"model": "power3", "readout": "plain", "by_band": {"1-9": 0, "10-99": 0, "100-999": 0, "1000-9999": 0, "10000+": 13}, "total": 13}
+{"model": "power3", "readout": "row05", "by_band": {"1-9": 0, "10-99": 1, "100-999": 3, "1000-9999": 3, "10000+": 19}, "total": 26}
+{"paired": "plain", "1-9": {"only_diminishing": 0, "only_power3": 0, "n": 115}, "10-99": {"only_diminishing": 0, "only_power3": 0, "n": 128}, "100-999": {"only_diminishing": 0, "only_power3": 0, "n": 128}, "1000-9999": {"only_diminishing": 0, "only_power3": 0, "n": 128}, "10000+": {"only_diminishing": 1, "only_power3": 5, "n": 128}}
+{"paired": "row05", "1-9": {"only_diminishing": 0, "only_power3": 0, "n": 115}, "10-99": {"only_diminishing": 0, "only_power3": 1, "n": 128}, "100-999": {"only_diminishing": 0, "only_power3": 0, "n": 128}, "1000-9999": {"only_diminishing": 0, "only_power3": 0, "n": 128}, "10000+": {"only_diminishing": 0, "only_power3": 3, "n": 128}}
+{"COMPLETE": true, "elapsed_seconds": 229.4}

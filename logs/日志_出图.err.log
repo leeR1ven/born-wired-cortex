@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "F:\一种AGI架构\出一张图_论文_20260915.py", line 437, in <module>
+    要跑 = [int(a) for a in (sys.argv[1].split(",") if len(sys.argv) > 1 else "1,2,3,4,5,6,7,8")]
+            ~~~^^^
+ValueError: invalid literal for int() with base 10: ','

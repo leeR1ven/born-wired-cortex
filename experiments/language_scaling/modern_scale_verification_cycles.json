@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "independently_replayed_steps": 640,
+  "complete_activity_frames": 64,
+  "winner_decompositions": 64,
+  "single_step_self_edge_counterfactuals": 64,
+  "source_sha256": "680081682a4ceb90da81bb95e74994b48b7267fa30fefabe4c962a7942020a13",
+  "cycle_audit_sha256": "089a1298f688c9bd6a907f0f59d0bda4089ed8c20654cc6ebaaafc8a18ad5038",
+  "results": [
+    {
+      "prompt": "你好",
+      "first_repeat": {
+        "first_step": 11,
+        "repeated_at": 13,
+        "period": 2
+      },
+      "final_positive_candidates": 11543
+    },
+    {
+      "prompt": "为什么",
+      "first_repeat": {
+        "first_step": 10,
+        "repeated_at": 13,
+        "period": 3
+      },
+      "final_positive_candidates": 11938
+    },
+    {
+      "prompt": "地球",
+      "first_repeat": {
+        "first_step": 11,
+        "repeated_at": 13,
+        "period": 2
+      },
+      "final_positive_candidates": 11543
+    },
+    {
+      "prompt": "请解释一下咕噜帕索是什么意思",
+      "first_repeat": {
+        "first_step": 8,
+        "repeated_at": 11,
+        "period": 3
+      },
+      "final_positive_candidates": 11516
+    }
+  ]
+}

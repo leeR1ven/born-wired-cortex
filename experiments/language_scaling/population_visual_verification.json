@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "frame_checks": 168,
+  "widths": [
+    {
+      "viewport": 768,
+      "client": 736,
+      "scroll": 736
+    },
+    {
+      "viewport": 392,
+      "client": 360,
+      "scroll": 360
+    },
+    {
+      "viewport": 352,
+      "client": 320,
+      "scroll": 320
+    }
+  ],
+  "selected_detail": "好 · 活动 1.000 · 原始输入电流 ≈4401.0 · 不→好 ≈300.8；的→好 ≈292.9；了→好 ≈258.7",
+  "browser_errors": []
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\ADMINI~1\AppData\Local\Temp\agi_job\试_a2_R9.py", line 67, in <module>
+    出生, 天生, 教学, 考试 = 跑一个种子(种子, 削)
+                             ~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\ADMINI~1\AppData\Local\Temp\agi_job\试_a2_R9.py", line 59, in 跑一个种子
+    教学 = 段(200, 红图, True, 多巴胺=True)
+           ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMINI~1\AppData\Local\Temp\agi_job\试_a2_R9.py", line 48, in 段
+    差 = 网._兴奋权.astype(np.float64) - w0
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+ValueError: operands could not be broadcast together with shapes (12227537,) (11925521,) 

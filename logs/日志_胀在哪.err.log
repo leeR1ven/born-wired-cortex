@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "F:\一种AGI架构\诊断_发育_胀在哪.py", line 118, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\诊断_发育_胀在哪.py", line 85, in main
+    本, 学 = 分流(网, 脑.亮)
+             ~~~~^^^^^^^^^^^
+  File "F:\一种AGI架构\诊断_发育_胀在哪.py", line 33, in 分流
+    边, 数 = 网._出边切片(亮)
+             ~~~~~~~~~~~~^^^^
+  File "F:\一种AGI架构\皮层连接_cortex_links.py", line 349, in _出边切片
+    起 = self._兴奋起[亮]
+         ~~~~~~~~~~~~^^^^
+IndexError: boolean index did not match indexed array along axis 0; size of axis is 143797 but size of corresponding boolean axis is 143796

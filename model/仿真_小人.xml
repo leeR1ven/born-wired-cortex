@@ -1,0 +1,71 @@
+<mujoco model="小人">
+  <compiler angle="radian"/>
+  <option timestep="0.005" integrator="RK4"/>
+  <visual><global offwidth="640" offheight="480"/><headlight ambient=".45 .45 .45" diffuse=".6 .6 .6"/></visual>
+  <worldbody>
+    <light pos="0 0 5" dir="0 0 -1" diffuse=".7 .7 .7"/>
+    <geom name="地" type="box" size="12 12 .05" pos="0 0 -.05" rgba=".72 .76 .72 1" condim="1"/>
+    <geom name="红球" type="sphere" size=".25" pos="2.2 0 .25" rgba=".9 .1 .1 1"/>
+    <geom name="绿柱" type="cylinder" size=".16 .8" pos="0 1.6 .8" rgba=".1 .8 .15 1"/>
+    <geom name="蓝箱" type="box" size=".3 .3 .3" pos="0 -1.6 .3" rgba=".15 .2 .9 1"/>
+    <geom name="墙" type="box" size="3 .06 .8" pos="5 0 .8" rgba=".85 .85 .8 1"/>
+
+    <body name="躯干" pos="0 0 1.15">
+      <freejoint/>
+      <geom type="box" size=".13 .10 .22" rgba=".85 .3 .3 1"/>
+      <body name="腰" pos="0 0 .22">
+        <joint name="转腰" type="hinge" axis="0 0 1" range="-1.2 1.2"/>
+        <geom type="box" size=".10 .08 .06" pos="0 0 .06" rgba=".8 .5 .4 1"/>
+        <body name="头" pos="0 0 .12">
+          <joint name="转颈" type="hinge" axis="0 0 1" range="-1.0 1.0"/>
+          <geom type="sphere" size=".09" rgba=".9 .8 .6 1"/>
+          <camera name="眼" pos=".10 0 .02" xyaxes="0 -1 0 0 0 1" fovy="75"/>
+        </body>
+      </body>
+      <body name="左大腿" pos=".07 0 -.22">
+        <joint name="左髋" type="hinge" axis="0 1 0" range="-1.6 1.6"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -.4" size=".05" rgba=".3 .3 .85 1"/>
+        <body name="左小腿" pos="0 0 -.4">
+          <joint name="左膝" type="hinge" axis="0 1 0" range="-2.2 0.1"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -.4" size=".045" rgba=".3 .3 .85 1"/>
+          <body name="左脚" pos="0 0 -.4">
+            <joint name="左踝" type="hinge" axis="0 1 0" range="-0.8 0.8"/>
+            <geom type="box" size=".09 .04 .03" pos="0 -.02 -.02" rgba=".2 .2 .2 1"/>
+          </body>
+        </body>
+      </body>
+      <body name="右大腿" pos="-.07 0 -.22">
+        <joint name="右髋" type="hinge" axis="0 1 0" range="-1.6 1.6"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -.4" size=".05" rgba=".3 .3 .85 1"/>
+        <body name="右小腿" pos="0 0 -.4">
+          <joint name="右膝" type="hinge" axis="0 1 0" range="-2.2 0.1"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -.4" size=".045" rgba=".3 .3 .85 1"/>
+          <body name="右脚" pos="0 0 -.4">
+            <joint name="右踝" type="hinge" axis="0 1 0" range="-0.8 0.8"/>
+            <geom type="box" size=".09 .04 .03" pos="0 -.02 -.02" rgba=".2 .2 .2 1"/>
+          </body>
+        </body>
+      </body>
+      <body name="左臂" pos=".19 0 .16">
+        <joint name="左肩" type="hinge" axis="0 1 0" range="-2.0 2.0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -.35" size=".04" rgba=".85 .6 .2 1"/>
+      </body>
+      <body name="右臂" pos="-.19 0 .16">
+        <joint name="右肩" type="hinge" axis="0 1 0" range="-2.0 2.0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -.35" size=".04" rgba=".85 .6 .2 1"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="左髋" joint="左髋" gear="60" ctrlrange="-1 1"/>
+    <motor name="左膝" joint="左膝" gear="60" ctrlrange="-1 1"/>
+    <motor name="左踝" joint="左踝" gear="30" ctrlrange="-1 1"/>
+    <motor name="右髋" joint="右髋" gear="60" ctrlrange="-1 1"/>
+    <motor name="右膝" joint="右膝" gear="60" ctrlrange="-1 1"/>
+    <motor name="右踝" joint="右踝" gear="30" ctrlrange="-1 1"/>
+    <motor name="左肩" joint="左肩" gear="25" ctrlrange="-1 1"/>
+    <motor name="右肩" joint="右肩" gear="25" ctrlrange="-1 1"/>
+    <motor name="转腰" joint="转腰" gear="25" ctrlrange="-1 1"/>
+    <motor name="转颈" joint="转颈" gear="15" ctrlrange="-1 1"/>
+  </actuator>
+</mujoco>

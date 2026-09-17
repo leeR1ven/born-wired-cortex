@@ -1,0 +1,8 @@
+{"model": "diminishing", "readout": "plain", "top1": {"lccc_base": 450, "wikipedia": 375, "reply_first": 131}, "total": 956}
+{"model": "diminishing", "readout": "row05", "top1": {"lccc_base": 535, "wikipedia": 471, "reply_first": 125}, "total": 1131}
+{"model": "power2", "readout": "plain", "top1": {"lccc_base": 468, "wikipedia": 401, "reply_first": 130}, "total": 999}
+{"model": "power2", "readout": "row05", "top1": {"lccc_base": 539, "wikipedia": 514, "reply_first": 124}, "total": 1177}
+{"model": "power3", "readout": "plain", "top1": {"lccc_base": 475, "wikipedia": 426, "reply_first": 131}, "total": 1032}
+{"model": "power3", "readout": "row05", "top1": {"lccc_base": 536, "wikipedia": 513, "reply_first": 124}, "total": 1173}
+{"only_diminishing": 39, "only_power3": 115}
+{"COMPLETE": true}

@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "F:\一种AGI架构\实验_发育_声音叫走路.py", line 136, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\实验_发育_声音叫走路.py", line 98, in main
+    脑.一拍(图=黑图, 声=声, 身=身)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\一种AGI架构\主循环_完整的一拍.py", line 131, in 一拍
+    网.学习(亮, 出)                                                   # ⑦ 赫布学习
+    ~~~~~~~^^^^^^^^
+  File "F:\一种AGI架构\皮层连接_cortex_links.py", line 425, in 学习
+    self._多巴胺强化(上, 这)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "F:\一种AGI架构\皮层连接_cortex_links.py", line 668, in _多巴胺强化
+    + 每股[命中][可改]).astype(np.float32)
+      ~~~~^^^^^^
+IndexError: boolean index did not match indexed array along axis 0; size of axis is 20000 but size of corresponding boolean axis is 19823

@@ -1,0 +1,1786 @@
+{
+  "status": "PASS",
+  "audit": "read-only coverage and current decomposition of the existing five-character cycle",
+  "source_sha256": {
+    "short_context_v2\\decay_0p25\\model.npz": "e1dcd672aaa560ece4a137a956238b5ebe71e13767669b724d145a7ff40a489d",
+    "short_context_cycle_audit_v1\\activation_trace.json": "322d9286b453152baa53757da0b0075a663e0bff70edd3f0423c6ecdaacc6294",
+    "short_context_v2\\selection.json": "4a0d52a88768447bf39e38b1491cdbfb8863ad7046696d45111624d7030fcc57",
+    "hebb_text.py": "e601082eae3a51c81999c1560ba44dca28becb00cfd8f3a39558a04f80379ca9",
+    "run_experiment.py": "4cd3460677bd4d7c4dde39a4353f615df4514c173474337c90cae77f45212bbb"
+  },
+  "model_weight_sha256": "504ef63417d780d1ccbe884bb0c34928f6be5b36ec3293c9f5c74e1a084c3bb8",
+  "config": {
+    "trace_decay": 0.25,
+    "trace_floor": 0.02,
+    "learning_rate": 0.25,
+    "growth": "diminishing",
+    "ceiling": 4.0
+  },
+  "training_characters": 658462,
+  "vocabulary_characters": 4410,
+  "runtime": {
+    "python": "3.13.7",
+    "numpy": "2.4.6"
+  },
+  "definitions": {
+    "nonzero_connection": "strictly positive saved float32 edge",
+    "positive_candidate": "strictly positive raw current BEFORE uniform readout floor",
+    "persistent_activity": "input/output trace actually retained across generation steps",
+    "weight_mass": "normalized learned weight, not training count or semantic probability",
+    "entropy_effective_count": "exp(-sum(p*ln(p)))",
+    "participation_effective_count": "1/sum(p^2)",
+    "cycle": "five characters: 的 人 道 你 們"
+  },
+  "source_rows": [
+    {
+      "source": "的",
+      "statistics": {
+        "positive_count": 2415,
+        "positive_han_count": 2401,
+        "positive_whitespace_count": 4,
+        "total": 1944.514610119164,
+        "maximum": 17.42205047607422,
+        "median_positive": 0.32064518332481384,
+        "top1_share": 0.00895958836483443,
+        "top3_share": 0.02288571831003944,
+        "top5_share": 0.03586932446829457,
+        "top8_share": 0.05354125839116777,
+        "top1_to_top2_ratio": 1.2836760281388742,
+        "entropy_effective_count": 1076.6768981049404,
+        "participation_effective_count": 610.289510471445,
+        "edges_above_proposed_ceiling4": 71,
+        "weight_share_above_proposed_ceiling4": 0.24949919234805998
+      },
+      "strongest_connections": [
+        {
+          "target": "人",
+          "weight": 17.42205047607422,
+          "row_weight_share": 0.00895958836483443
+        },
+        {
+          "target": "話",
+          "weight": 13.571999549865723,
+          "row_weight_share": 0.006979633621284029
+        },
+        {
+          "target": "事",
+          "weight": 13.507563591003418,
+          "row_weight_share": 0.006946496323920984
+        },
+        {
+          "target": "一",
+          "weight": 13.006998062133789,
+          "row_weight_share": 0.006689071912571895
+        },
+        {
+          "target": " ",
+          "weight": 12.239813804626465,
+          "row_weight_share": 0.006294534245683237
+        },
+        {
+          "target": "是",
+          "weight": 11.689733505249023,
+          "row_weight_share": 0.006011646014082996
+        },
+        {
+          "target": "不",
+          "weight": 11.456146240234375,
+          "row_weight_share": 0.005891519755427457
+        },
+        {
+          "target": "了",
+          "weight": 11.217453956604004,
+          "row_weight_share": 0.005768768153362743
+        },
+        {
+          "target": "也",
+          "weight": 10.520524978637695,
+          "row_weight_share": 0.005410360469337371
+        },
+        {
+          "target": "說",
+          "weight": 10.271397590637207,
+          "row_weight_share": 0.0052822424358168
+        },
+        {
+          "target": "我",
+          "weight": 10.096894264221191,
+          "row_weight_share": 0.005192501106279902
+        },
+        {
+          "target": "那",
+          "weight": 9.42219066619873,
+          "row_weight_share": 0.004845523205208172
+        }
+      ]
+    },
+    {
+      "source": "人",
+      "statistics": {
+        "positive_count": 1777,
+        "positive_han_count": 1769,
+        "positive_whitespace_count": 2,
+        "total": 1178.2324047386646,
+        "maximum": 14.202360153198242,
+        "median_positive": 0.25,
+        "top1_share": 0.012053954802192329,
+        "top3_share": 0.03226715897943153,
+        "top5_share": 0.051466530501706964,
+        "top8_share": 0.0768477108535619,
+        "top1_to_top2_ratio": 1.180232130550531,
+        "entropy_effective_count": 687.9272469413019,
+        "participation_effective_count": 373.7180796998053,
+        "edges_above_proposed_ceiling4": 49,
+        "weight_share_above_proposed_ceiling4": 0.2764684156547991
+      },
+      "strongest_connections": [
+        {
+          "target": "道",
+          "weight": 14.202360153198242,
+          "row_weight_share": 0.012053954802192329
+        },
+        {
+          "target": "都",
+          "weight": 12.033531188964844,
+          "row_weight_share": 0.010213206783795694
+        },
+        {
+          "target": "家",
+          "weight": 11.782320976257324,
+          "row_weight_share": 0.009999997393443509
+        },
+        {
+          "target": "來",
+          "weight": 11.690807342529297,
+          "row_weight_share": 0.009922327119429678
+        },
+        {
+          "target": "不",
+          "weight": 10.930514335632324,
+          "row_weight_share": 0.009277044402845757
+        },
+        {
+          "target": "的",
+          "weight": 10.306469917297363,
+          "row_weight_share": 0.008747399813352926
+        },
+        {
+          "target": "說",
+          "weight": 10.090972900390625,
+          "row_weight_share": 0.008564501247636991
+        },
+        {
+          "target": "也",
+          "weight": 9.507486343383789,
+          "row_weight_share": 0.008069279290865011
+        },
+        {
+          "target": "了",
+          "weight": 9.395336151123047,
+          "row_weight_share": 0.007974094171350652
+        },
+        {
+          "target": "听",
+          "weight": 9.283247947692871,
+          "row_weight_share": 0.007878961663553908
+        },
+        {
+          "target": "笑",
+          "weight": 9.1483154296875,
+          "row_weight_share": 0.007764440523698398
+        },
+        {
+          "target": "去",
+          "weight": 8.859820365905762,
+          "row_weight_share": 0.007519586399315588
+        }
+      ]
+    },
+    {
+      "source": "道",
+      "statistics": {
+        "positive_count": 1535,
+        "positive_han_count": 1522,
+        "positive_whitespace_count": 3,
+        "total": 1018.5236831232905,
+        "maximum": 22.580703735351562,
+        "median_positive": 0.25,
+        "top1_share": 0.022170033067967658,
+        "top3_share": 0.06126750868325151,
+        "top5_share": 0.08447325479304955,
+        "top8_share": 0.11063258845682226,
+        "top1_to_top2_ratio": 1.0904921762558866,
+        "entropy_effective_count": 516.1810528399358,
+        "participation_effective_count": 251.6174233278428,
+        "edges_above_proposed_ceiling4": 52,
+        "weight_share_above_proposed_ceiling4": 0.34232430687063464
+      },
+      "strongest_connections": [
+        {
+          "target": "你",
+          "weight": 22.580703735351562,
+          "row_weight_share": 0.022170033067967658
+        },
+        {
+          "target": "我",
+          "weight": 20.706892013549805,
+          "row_weight_share": 0.020330299978938506
+        },
+        {
+          "target": "這",
+          "weight": 19.11481285095215,
+          "row_weight_share": 0.01876717563634535
+        },
+        {
+          "target": "是",
+          "weight": 11.95330810546875,
+          "row_weight_share": 0.011735915721482366
+        },
+        {
+          "target": "不",
+          "weight": 11.682293891906738,
+          "row_weight_share": 0.01146983038831569
+        },
+        {
+          "target": "他",
+          "weight": 9.453784942626953,
+          "row_weight_share": 0.00928185087816224
+        },
+        {
+          "target": "好",
+          "weight": 8.705358505249023,
+          "row_weight_share": 0.008547035920219496
+        },
+        {
+          "target": "了",
+          "weight": 8.484757423400879,
+          "row_weight_share": 0.008330446865390967
+        },
+        {
+          "target": "老",
+          "weight": 8.366775512695312,
+          "row_weight_share": 0.008214610667705534
+        },
+        {
+          "target": "那",
+          "weight": 8.186846733093262,
+          "row_weight_share": 0.008037954216232258
+        },
+        {
+          "target": "的",
+          "weight": 7.6457414627075195,
+          "row_weight_share": 0.007506689917373297
+        },
+        {
+          "target": "也",
+          "weight": 7.505868434906006,
+          "row_weight_share": 0.007369360731887305
+        }
+      ]
+    },
+    {
+      "source": "你",
+      "statistics": {
+        "positive_count": 1223,
+        "positive_han_count": 1214,
+        "positive_whitespace_count": 4,
+        "total": 766.9350620806217,
+        "maximum": 19.93648338317871,
+        "median_positive": 0.24281877279281616,
+        "top1_share": 0.02599500840278828,
+        "top3_share": 0.052702673284818924,
+        "top5_share": 0.07693913392132208,
+        "top8_share": 0.10756843632413676,
+        "top1_to_top2_ratio": 1.895345510012686,
+        "entropy_effective_count": 431.28378627063773,
+        "participation_effective_count": 231.817434387706,
+        "edges_above_proposed_ceiling4": 29,
+        "weight_share_above_proposed_ceiling4": 0.25710922943726
+      },
+      "strongest_connections": [
+        {
+          "target": "們",
+          "weight": 19.93648338317871,
+          "row_weight_share": 0.02599500840278828
+        },
+        {
+          "target": "的",
+          "weight": 10.518653869628906,
+          "row_weight_share": 0.01371518188396916
+        },
+        {
+          "target": "不",
+          "weight": 9.964390754699707,
+          "row_weight_share": 0.012992482998061486
+        },
+        {
+          "target": "這",
+          "weight": 9.725499153137207,
+          "row_weight_share": 0.012680994303158933
+        },
+        {
+          "target": "說",
+          "weight": 8.862292289733887,
+          "row_weight_share": 0.011555466333344224
+        },
+        {
+          "target": "也",
+          "weight": 8.710990905761719,
+          "row_weight_share": 0.011358185766249402
+        },
+        {
+          "target": "就",
+          "weight": 7.543398380279541,
+          "row_weight_share": 0.009835771961989872
+        },
+        {
+          "target": "是",
+          "weight": 7.236296653747559,
+          "row_weight_share": 0.009435344674575415
+        },
+        {
+          "target": "又",
+          "weight": 6.997313499450684,
+          "row_weight_share": 0.00912373660485366
+        },
+        {
+          "target": "還",
+          "weight": 6.890257835388184,
+          "row_weight_share": 0.00898414764960096
+        },
+        {
+          "target": "只",
+          "weight": 6.808620929718018,
+          "row_weight_share": 0.008877701993760563
+        },
+        {
+          "target": "去",
+          "weight": 6.572397232055664,
+          "row_weight_share": 0.0085696919556988
+        }
+      ]
+    },
+    {
+      "source": "們",
+      "statistics": {
+        "positive_count": 1240,
+        "positive_han_count": 1234,
+        "positive_whitespace_count": 3,
+        "total": 671.6443842053413,
+        "maximum": 10.408098220825195,
+        "median_positive": 0.25,
+        "top1_share": 0.015496441964804897,
+        "top3_share": 0.04074853620260235,
+        "top5_share": 0.06458216345741748,
+        "top8_share": 0.09514034347948415,
+        "top1_to_top2_ratio": 1.195103284614902,
+        "entropy_effective_count": 502.4882637621955,
+        "participation_effective_count": 285.3764953535855,
+        "edges_above_proposed_ceiling4": 21,
+        "weight_share_above_proposed_ceiling4": 0.18834612613957707
+      },
+      "strongest_connections": [
+        {
+          "target": "的",
+          "weight": 10.408098220825195,
+          "row_weight_share": 0.015496441964804897
+        },
+        {
+          "target": "這",
+          "weight": 8.708952903747559,
+          "row_weight_share": 0.012966613149087206
+        },
+        {
+          "target": "也",
+          "weight": 8.251474380493164,
+          "row_weight_share": 0.012285481088710252
+        },
+        {
+          "target": "不",
+          "weight": 8.103693962097168,
+          "row_weight_share": 0.012065453315276484
+        },
+        {
+          "target": "家",
+          "weight": 7.904027938842773,
+          "row_weight_share": 0.011768173939538636
+        },
+        {
+          "target": "都",
+          "weight": 7.741818428039551,
+          "row_weight_share": 0.01152666293368821
+        },
+        {
+          "target": "一",
+          "weight": 6.816053867340088,
+          "row_weight_share": 0.010148307687265976
+        },
+        {
+          "target": "說",
+          "weight": 5.966357707977295,
+          "row_weight_share": 0.008883209401112487
+        },
+        {
+          "target": "去",
+          "weight": 5.786439895629883,
+          "row_weight_share": 0.008615332803647471
+        },
+        {
+          "target": "那",
+          "weight": 5.579034805297852,
+          "row_weight_share": 0.008306530861415164
+        },
+        {
+          "target": "就",
+          "weight": 5.50783109664917,
+          "row_weight_share": 0.008200516860072882
+        },
+        {
+          "target": "來",
+          "weight": 5.463903903961182,
+          "row_weight_share": 0.008135114403473828
+        }
+      ]
+    }
+  ],
+  "cycle_states": [
+    {
+      "history": "道你們",
+      "persistent_activity": [
+        {
+          "character": "道",
+          "amplitude": 0.0625
+        },
+        {
+          "character": "你",
+          "amplitude": 0.25
+        },
+        {
+          "character": "們",
+          "amplitude": 1.0
+        }
+      ],
+      "persistent_active_count": 3,
+      "winner": "的",
+      "last_only_winner": "的",
+      "statistics": {
+        "positive_count": 2009,
+        "positive_han_count": 1992,
+        "positive_whitespace_count": 4,
+        "total": 927.0358784496784,
+        "maximum": 13.515620231628418,
+        "median_positive": 0.0771634578704834,
+        "top1_share": 0.014579392821593016,
+        "top3_share": 0.04010153107815011,
+        "top5_share": 0.06147773945207963,
+        "top8_share": 0.08952200689737641,
+        "top1_to_top2_ratio": 1.0957127730012892,
+        "entropy_effective_count": 545.1391905275486,
+        "participation_effective_count": 294.5921329087856
+      },
+      "winner_current": 13.515620231628418,
+      "runner_up": "這",
+      "runner_up_current": 12.335002899169922,
+      "absolute_winner_margin": 1.180617332458496,
+      "winner_contributions": [
+        {
+          "source": "道",
+          "activation": 0.0625,
+          "weight": 7.6457414627075195,
+          "current": 0.47785884141921997,
+          "share_of_winner_current": 0.03535604235911899
+        },
+        {
+          "source": "你",
+          "activation": 0.25,
+          "weight": 10.518653869628906,
+          "current": 2.6296634674072266,
+          "share_of_winner_current": 0.19456476449770696
+        },
+        {
+          "source": "們",
+          "activation": 1.0,
+          "weight": 10.408098220825195,
+          "current": 10.408098220825195,
+          "share_of_winner_current": 0.770079215193455
+        }
+      ],
+      "winner_last_source_share": 0.770079215193455,
+      "top8_candidates": [
+        {
+          "character": "的",
+          "current": 13.515620231628418,
+          "raw_current_share": 0.014579392821593016,
+          "readout_probability": 0.014565040186141038,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.47785884141921997
+            },
+            {
+              "source": "你",
+              "current": 2.6296634674072266
+            },
+            {
+              "source": "們",
+              "current": 10.408098220825195
+            }
+          ]
+        },
+        {
+          "character": "這",
+          "current": 12.335002899169922,
+          "raw_current_share": 0.01330585275706726,
+          "readout_probability": 0.013292773661679807,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 1.1946758031845093
+            },
+            {
+              "source": "你",
+              "current": 2.4313747882843018
+            },
+            {
+              "source": "們",
+              "current": 8.708952903747559
+            }
+          ]
+        },
+        {
+          "character": "不",
+          "current": 11.324934959411621,
+          "raw_current_share": 0.012216285499489828,
+          "readout_probability": 0.012204295971359953,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.7301433682441711
+            },
+            {
+              "source": "你",
+              "current": 2.4910976886749268
+            },
+            {
+              "source": "們",
+              "current": 8.103693962097168
+            }
+          ]
+        },
+        {
+          "character": "也",
+          "current": 10.898338317871094,
+          "raw_current_share": 0.011756112758113363,
+          "readout_probability": 0.011744583402724865,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.46911677718162537
+            },
+            {
+              "source": "你",
+              "current": 2.1777477264404297
+            },
+            {
+              "source": "們",
+              "current": 8.251474380493164
+            }
+          ]
+        },
+        {
+          "character": "家",
+          "current": 8.918173789978027,
+          "raw_current_share": 0.009620095615816154,
+          "readout_probability": 0.009610702277569952,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.1996784508228302
+            },
+            {
+              "source": "你",
+              "current": 0.8144676089286804
+            },
+            {
+              "source": "們",
+              "current": 7.904027938842773
+            }
+          ]
+        },
+        {
+          "character": "一",
+          "current": 8.762127876281738,
+          "raw_current_share": 0.00945176781176476,
+          "readout_probability": 0.009442542801322609,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.3396035432815552
+            },
+            {
+              "source": "你",
+              "current": 1.6064704656600952
+            },
+            {
+              "source": "們",
+              "current": 6.816053867340088
+            }
+          ]
+        },
+        {
+          "character": "都",
+          "current": 8.693671226501465,
+          "raw_current_share": 0.009377923151194819,
+          "readout_probability": 0.009368771985413239,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.25608429312705994
+            },
+            {
+              "source": "你",
+              "current": 0.6957687735557556
+            },
+            {
+              "source": "們",
+              "current": 7.741818428039551
+            }
+          ]
+        },
+        {
+          "character": "說",
+          "current": 8.542243003845215,
+          "raw_current_share": 0.009214576482337202,
+          "readout_probability": 0.009205588663224478,
+          "source_contributions": [
+            {
+              "source": "道",
+              "current": 0.36031246185302734
+            },
+            {
+              "source": "你",
+              "current": 2.2155730724334717
+            },
+            {
+              "source": "們",
+              "current": 5.966357707977295
+            }
+          ]
+        }
+      ],
+      "trace_matches": 12
+    },
+    {
+      "history": "你們的",
+      "persistent_activity": [
+        {
+          "character": "你",
+          "amplitude": 0.0625
+        },
+        {
+          "character": "們",
+          "amplitude": 0.25
+        },
+        {
+          "character": "的",
+          "amplitude": 1.0
+        }
+      ],
+      "persistent_active_count": 3,
+      "winner": "人",
+      "last_only_winner": "人",
+      "statistics": {
+        "positive_count": 2594,
+        "positive_han_count": 2577,
+        "positive_whitespace_count": 4,
+        "total": 2160.359145572409,
+        "maximum": 18.077348709106445,
+        "median_positive": 0.31214678287506104,
+        "top1_share": 0.00836775160563253,
+        "top3_share": 0.021892110779879397,
+        "top5_share": 0.034716570393769554,
+        "top8_share": 0.05306926284478173,
+        "top1_to_top2_ratio": 1.1961749861485707,
+        "entropy_effective_count": 1053.6135802998044,
+        "participation_effective_count": 589.8149358875181
+      },
+      "winner_current": 18.077348709106445,
+      "runner_up": "一",
+      "runner_up_current": 15.112628936767578,
+      "absolute_winner_margin": 2.964719772338867,
+      "winner_contributions": [
+        {
+          "source": "你",
+          "activation": 0.0625,
+          "weight": 2.469893455505371,
+          "current": 0.1543683409690857,
+          "share_of_winner_current": 0.008539324181500288
+        },
+        {
+          "source": "們",
+          "activation": 0.25,
+          "weight": 2.003718376159668,
+          "current": 0.500929594039917,
+          "share_of_winner_current": 0.027710346362217055
+        },
+        {
+          "source": "的",
+          "activation": 1.0,
+          "weight": 17.42205047607422,
+          "current": 17.42205047607422,
+          "share_of_winner_current": 0.9637503129702797
+        }
+      ],
+      "winner_last_source_share": 0.9637503129702797,
+      "top8_candidates": [
+        {
+          "character": "人",
+          "current": 18.077348709106445,
+          "raw_current_share": 0.00836775160563253,
+          "readout_probability": 0.008359610611396512,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.1543683409690857
+            },
+            {
+              "source": "們",
+              "current": 0.500929594039917
+            },
+            {
+              "source": "的",
+              "current": 17.42205047607422
+            }
+          ]
+        },
+        {
+          "character": "一",
+          "current": 15.112628936767578,
+          "raw_current_share": 0.006995424333838407,
+          "readout_probability": 0.0069886556668741825,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.4016176164150238
+            },
+            {
+              "source": "們",
+              "current": 1.704013466835022
+            },
+            {
+              "source": "的",
+              "current": 13.006998062133789
+            }
+          ]
+        },
+        {
+          "character": "不",
+          "current": 14.104844093322754,
+          "raw_current_share": 0.00652893484040846,
+          "readout_probability": 0.006522632662937666,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.6227744221687317
+            },
+            {
+              "source": "們",
+              "current": 2.025923490524292
+            },
+            {
+              "source": "的",
+              "current": 11.456146240234375
+            }
+          ]
+        },
+        {
+          "character": "話",
+          "current": 13.909850120544434,
+          "raw_current_share": 0.006438674860637063,
+          "readout_probability": 0.00643246294314604,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.10740213841199875
+            },
+            {
+              "source": "們",
+              "current": 0.23044854402542114
+            },
+            {
+              "source": "的",
+              "current": 13.571999549865723
+            }
+          ]
+        },
+        {
+          "character": "事",
+          "current": 13.795588493347168,
+          "raw_current_share": 0.006385784753253093,
+          "readout_probability": 0.006379625725869455,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.04944635555148125
+            },
+            {
+              "source": "們",
+              "current": 0.23857848346233368
+            },
+            {
+              "source": "的",
+              "current": 13.507563591003418
+            }
+          ]
+        },
+        {
+          "character": "是",
+          "current": 13.344276428222656,
+          "raw_current_share": 0.0061768787173981455,
+          "readout_probability": 0.006170928596050363,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.4522685408592224
+            },
+            {
+              "source": "們",
+              "current": 1.2022745609283447
+            },
+            {
+              "source": "的",
+              "current": 11.689733505249023
+            }
+          ]
+        },
+        {
+          "character": " ",
+          "current": 13.176300048828125,
+          "raw_current_share": 0.006099124803314557,
+          "readout_probability": 0.006093252435880858,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.20694883167743683
+            },
+            {
+              "source": "們",
+              "current": 0.7295376658439636
+            },
+            {
+              "source": "的",
+              "current": 12.239813804626465
+            }
+          ]
+        },
+        {
+          "character": "也",
+          "current": 13.127830505371094,
+          "raw_current_share": 0.006076688930299477,
+          "readout_probability": 0.006070838998738792,
+          "source_contributions": [
+            {
+              "source": "你",
+              "current": 0.5444369316101074
+            },
+            {
+              "source": "們",
+              "current": 2.062868595123291
+            },
+            {
+              "source": "的",
+              "current": 10.520524978637695
+            }
+          ]
+        }
+      ],
+      "trace_matches": 12
+    },
+    {
+      "history": "們的人",
+      "persistent_activity": [
+        {
+          "character": "們",
+          "amplitude": 0.0625
+        },
+        {
+          "character": "的",
+          "amplitude": 0.25
+        },
+        {
+          "character": "人",
+          "amplitude": 1.0
+        }
+      ],
+      "persistent_active_count": 3,
+      "winner": "道",
+      "last_only_winner": "道",
+      "statistics": {
+        "positive_count": 2734,
+        "positive_han_count": 2718,
+        "positive_whitespace_count": 4,
+        "total": 1706.3388339262456,
+        "maximum": 16.012645721435547,
+        "median_positive": 0.16211134940385818,
+        "top1_share": 0.009384212211000805,
+        "top3_share": 0.026062472446733497,
+        "top5_share": 0.042127701108372606,
+        "top8_share": 0.06450746204333221,
+        "top1_to_top2_ratio": 1.1196846246585441,
+        "entropy_effective_count": 878.2408361011603,
+        "participation_effective_count": 459.6931493940549
+      },
+      "winner_current": 16.012645721435547,
+      "runner_up": "不",
+      "runner_up_current": 14.301032066345215,
+      "absolute_winner_margin": 1.711613655090332,
+      "winner_contributions": [
+        {
+          "source": "們",
+          "activation": 0.0625,
+          "weight": 1.9167265892028809,
+          "current": 0.11979541182518005,
+          "share_of_winner_current": 0.007481300336571756
+        },
+        {
+          "source": "的",
+          "activation": 0.25,
+          "weight": 6.761956691741943,
+          "current": 1.6904891729354858,
+          "share_of_winner_current": 0.10557213357143656
+        },
+        {
+          "source": "人",
+          "activation": 1.0,
+          "weight": 14.202360153198242,
+          "current": 14.202360153198242,
+          "share_of_winner_current": 0.8869465046732445
+        }
+      ],
+      "winner_last_source_share": 0.8869465046732445,
+      "top8_candidates": [
+        {
+          "character": "道",
+          "current": 16.012645721435547,
+          "raw_current_share": 0.009384212211000805,
+          "readout_probability": 0.009375054756159417,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.11979541182518005
+            },
+            {
+              "source": "的",
+              "current": 1.6904891729354858
+            },
+            {
+              "source": "人",
+              "current": 14.202360153198242
+            }
+          ]
+        },
+        {
+          "character": "不",
+          "current": 14.301032066345215,
+          "raw_current_share": 0.008381120901666919,
+          "readout_probability": 0.008372966538134866,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.506480872631073
+            },
+            {
+              "source": "的",
+              "current": 2.8640365600585938
+            },
+            {
+              "source": "人",
+              "current": 10.930514335632324
+            }
+          ]
+        },
+        {
+          "character": "都",
+          "current": 14.157731056213379,
+          "raw_current_share": 0.008297139334065774,
+          "readout_probability": 0.008289068952101322,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.4838636517524719
+            },
+            {
+              "source": "的",
+              "current": 1.640336275100708
+            },
+            {
+              "source": "人",
+              "current": 12.033531188964844
+            }
+          ]
+        },
+        {
+          "character": "來",
+          "current": 13.960405349731445,
+          "raw_current_share": 0.008181496589167394,
+          "readout_probability": 0.008173541849947839,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.34149399399757385
+            },
+            {
+              "source": "的",
+              "current": 1.928104043006897
+            },
+            {
+              "source": "人",
+              "current": 11.690807342529297
+            }
+          ]
+        },
+        {
+          "character": "家",
+          "current": 13.45231819152832,
+          "raw_current_share": 0.00788373207247171,
+          "readout_probability": 0.007876075097768852,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.49400174617767334
+            },
+            {
+              "source": "的",
+              "current": 1.1759949922561646
+            },
+            {
+              "source": "人",
+              "current": 11.782320976257324
+            }
+          ]
+        },
+        {
+          "character": "說",
+          "current": 13.031719207763672,
+          "raw_current_share": 0.00763724000688538,
+          "readout_probability": 0.0076298295242481105,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.37289735674858093
+            },
+            {
+              "source": "的",
+              "current": 2.5678493976593018
+            },
+            {
+              "source": "人",
+              "current": 10.090972900390625
+            }
+          ]
+        },
+        {
+          "character": "也",
+          "current": 12.653334617614746,
+          "raw_current_share": 0.007415487689804094,
+          "readout_probability": 0.0074082989594839044,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.5157171487808228
+            },
+            {
+              "source": "的",
+              "current": 2.630131244659424
+            },
+            {
+              "source": "人",
+              "current": 9.507486343383789
+            }
+          ]
+        },
+        {
+          "character": "了",
+          "current": 12.502401351928711,
+          "raw_current_share": 0.007327033238270138,
+          "readout_probability": 0.007319932962401483,
+          "source_contributions": [
+            {
+              "source": "們",
+              "current": 0.3027018904685974
+            },
+            {
+              "source": "的",
+              "current": 2.804363489151001
+            },
+            {
+              "source": "人",
+              "current": 9.395336151123047
+            }
+          ]
+        }
+      ],
+      "trace_matches": 11
+    },
+    {
+      "history": "的人道",
+      "persistent_activity": [
+        {
+          "character": "的",
+          "amplitude": 0.0625
+        },
+        {
+          "character": "人",
+          "amplitude": 0.25
+        },
+        {
+          "character": "道",
+          "amplitude": 1.0
+        }
+      ],
+      "persistent_active_count": 3,
+      "winner": "你",
+      "last_only_winner": "你",
+      "statistics": {
+        "positive_count": 2799,
+        "positive_han_count": 2777,
+        "positive_whitespace_count": 4,
+        "total": 1434.6139465384185,
+        "maximum": 24.362953186035156,
+        "median_positive": 0.07818244397640228,
+        "top1_share": 0.016982236402218555,
+        "top3_share": 0.04746928322648763,
+        "top5_share": 0.06783068141444268,
+        "top8_share": 0.0910720104338393,
+        "top1_to_top2_ratio": 1.0670367027029104,
+        "entropy_effective_count": 685.7654812292318,
+        "participation_effective_count": 327.4438213380158
+      },
+      "winner_current": 24.362953186035156,
+      "runner_up": "我",
+      "runner_up_current": 22.832347869873047,
+      "absolute_winner_margin": 1.5306053161621094,
+      "winner_contributions": [
+        {
+          "source": "的",
+          "activation": 0.0625,
+          "weight": 8.657662391662598,
+          "current": 0.5411038994789124,
+          "share_of_winner_current": 0.02221011120232637
+        },
+        {
+          "source": "人",
+          "activation": 0.25,
+          "weight": 4.964578628540039,
+          "current": 1.2411446571350098,
+          "share_of_winner_current": 0.05094393309619106
+        },
+        {
+          "source": "道",
+          "activation": 1.0,
+          "weight": 22.580703735351562,
+          "current": 22.580703735351562,
+          "share_of_winner_current": 0.9268459190035641
+        }
+      ],
+      "winner_last_source_share": 0.9268459190035641,
+      "top8_candidates": [
+        {
+          "character": "你",
+          "current": 24.362953186035156,
+          "raw_current_share": 0.016982236402218555,
+          "readout_probability": 0.016965480923185953,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.5411038994789124
+            },
+            {
+              "source": "人",
+              "current": 1.2411446571350098
+            },
+            {
+              "source": "道",
+              "current": 22.580703735351562
+            }
+          ]
+        },
+        {
+          "character": "我",
+          "current": 22.832347869873047,
+          "raw_current_share": 0.01591532546087764,
+          "readout_probability": 0.015899636892786378,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.6310558915138245
+            },
+            {
+              "source": "人",
+              "current": 1.494400978088379
+            },
+            {
+              "source": "道",
+              "current": 20.706892013549805
+            }
+          ]
+        },
+        {
+          "character": "這",
+          "current": 20.904794692993164,
+          "raw_current_share": 0.014571721363391429,
+          "readout_probability": 0.014557376399397652,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.5826107859611511
+            },
+            {
+              "source": "人",
+              "current": 1.2073707580566406
+            },
+            {
+              "source": "道",
+              "current": 19.11481285095215
+            }
+          ]
+        },
+        {
+          "character": "不",
+          "current": 15.130931854248047,
+          "raw_current_share": 0.010547040819418693,
+          "readout_probability": 0.010536720535968888,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.7160091400146484
+            },
+            {
+              "source": "人",
+              "current": 2.732628583908081
+            },
+            {
+              "source": "道",
+              "current": 11.682293891906738
+            }
+          ]
+        },
+        {
+          "character": "是",
+          "current": 14.079813957214355,
+          "raw_current_share": 0.00981435736853636,
+          "readout_probability": 0.009804769768537436,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.730608344078064
+            },
+            {
+              "source": "人",
+              "current": 1.3958977460861206
+            },
+            {
+              "source": "道",
+              "current": 11.95330810546875
+            }
+          ]
+        },
+        {
+          "character": "了",
+          "current": 11.534682273864746,
+          "raw_current_share": 0.008040269162095345,
+          "readout_probability": 0.008032455650302863,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.7010908722877502
+            },
+            {
+              "source": "人",
+              "current": 2.3488340377807617
+            },
+            {
+              "source": "道",
+              "current": 8.484757423400879
+            }
+          ]
+        },
+        {
+          "character": "他",
+          "current": 11.267379760742188,
+          "raw_current_share": 0.007853945507729979,
+          "readout_probability": 0.007846318319591863,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.4548243582248688
+            },
+            {
+              "source": "人",
+              "current": 1.358770728111267
+            },
+            {
+              "source": "道",
+              "current": 9.453784942626953
+            }
+          ]
+        },
+        {
+          "character": "也",
+          "current": 10.54027271270752,
+          "raw_current_share": 0.007347114349571294,
+          "readout_probability": 0.007339993992591337,
+          "source_contributions": [
+            {
+              "source": "的",
+              "current": 0.657532811164856
+            },
+            {
+              "source": "人",
+              "current": 2.3768715858459473
+            },
+            {
+              "source": "道",
+              "current": 7.505868434906006
+            }
+          ]
+        }
+      ],
+      "trace_matches": 11
+    },
+    {
+      "history": "人道你",
+      "persistent_activity": [
+        {
+          "character": "人",
+          "amplitude": 0.0625
+        },
+        {
+          "character": "道",
+          "amplitude": 0.25
+        },
+        {
+          "character": "你",
+          "amplitude": 1.0
+        }
+      ],
+      "persistent_active_count": 3,
+      "winner": "們",
+      "last_only_winner": "們",
+      "statistics": {
+        "positive_count": 2279,
+        "positive_han_count": 2259,
+        "positive_whitespace_count": 4,
+        "total": 1095.205507402774,
+        "maximum": 21.70654296875,
+        "median_positive": 0.06732271611690521,
+        "top1_share": 0.019819607207989667,
+        "top3_share": 0.04572722572968191,
+        "top5_share": 0.06842940181512845,
+        "top8_share": 0.09880995417737948,
+        "top1_to_top2_ratio": 1.4660594499391444,
+        "entropy_effective_count": 532.4303559704803,
+        "participation_effective_count": 269.4450462950056
+      },
+      "winner_current": 21.70654296875,
+      "runner_up": "這",
+      "runner_up_current": 14.806045532226562,
+      "absolute_winner_margin": 6.9004974365234375,
+      "winner_contributions": [
+        {
+          "source": "人",
+          "activation": 0.0625,
+          "weight": 4.5010881423950195,
+          "current": 0.2813180088996887,
+          "share_of_winner_current": 0.012960055836836407
+        },
+        {
+          "source": "道",
+          "activation": 0.25,
+          "weight": 5.954966068267822,
+          "current": 1.4887415170669556,
+          "share_of_winner_current": 0.06858492018790069
+        },
+        {
+          "source": "你",
+          "activation": 1.0,
+          "weight": 19.93648338317871,
+          "current": 19.93648338317871,
+          "share_of_winner_current": 0.918455021229333
+        }
+      ],
+      "winner_last_source_share": 0.918455021229333,
+      "top8_candidates": [
+        {
+          "character": "們",
+          "current": 21.70654296875,
+          "raw_current_share": 0.019819607207989667,
+          "readout_probability": 0.01980001435815129,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.2813180088996887
+            },
+            {
+              "source": "道",
+              "current": 1.4887415170669556
+            },
+            {
+              "source": "你",
+              "current": 19.93648338317871
+            }
+          ]
+        },
+        {
+          "character": "這",
+          "current": 14.806045532226562,
+          "raw_current_share": 0.013518965556828117,
+          "readout_probability": 0.013505673348640902,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.30184268951416016
+            },
+            {
+              "source": "道",
+              "current": 4.778703212738037
+            },
+            {
+              "source": "你",
+              "current": 9.725499153137207
+            }
+          ]
+        },
+        {
+          "character": "不",
+          "current": 13.568120956420898,
+          "raw_current_share": 0.01238865296486413,
+          "readout_probability": 0.012376491069268879,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.6831571459770203
+            },
+            {
+              "source": "道",
+              "current": 2.9205734729766846
+            },
+            {
+              "source": "你",
+              "current": 9.964390754699707
+            }
+          ]
+        },
+        {
+          "character": "的",
+          "current": 13.074243545532227,
+          "raw_current_share": 0.011937707998325496,
+          "readout_probability": 0.011925997047696783,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.6441543698310852
+            },
+            {
+              "source": "道",
+              "current": 1.9114353656768799
+            },
+            {
+              "source": "你",
+              "current": 10.518653869628906
+            }
+          ]
+        },
+        {
+          "character": "我",
+          "current": 11.789304733276367,
+          "raw_current_share": 0.01076446808712104,
+          "readout_probability": 0.010753930376403533,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.3736002445220947
+            },
+            {
+              "source": "道",
+              "current": 5.176723003387451
+            },
+            {
+              "source": "你",
+              "current": 6.2389817237854
+            }
+          ]
+        },
+        {
+          "character": "也",
+          "current": 11.181675910949707,
+          "raw_current_share": 0.010209660045872579,
+          "readout_probability": 0.010199677143196322,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.5942178964614868
+            },
+            {
+              "source": "道",
+              "current": 1.8764671087265015
+            },
+            {
+              "source": "你",
+              "current": 8.710990905761719
+            }
+          ]
+        },
+        {
+          "character": "你",
+          "current": 11.157044410705566,
+          "raw_current_share": 0.010187169746036019,
+          "readout_probability": 0.010177209333659598,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.31028616428375244
+            },
+            {
+              "source": "道",
+              "current": 5.645175933837891
+            },
+            {
+              "source": "你",
+              "current": 5.201582431793213
+            }
+          ]
+        },
+        {
+          "character": "說",
+          "current": 10.93422794342041,
+          "raw_current_share": 0.009983722570342432,
+          "readout_probability": 0.009973965605141704,
+          "source_contributions": [
+            {
+              "source": "人",
+              "current": 0.6306858062744141
+            },
+            {
+              "source": "道",
+              "current": 1.4412498474121094
+            },
+            {
+              "source": "你",
+              "current": 8.862292289733887
+            }
+          ]
+        }
+      ],
+      "trace_matches": 12
+    }
+  ],
+  "verified": {
+    "complete_saved_weight_hash": true,
+    "finite_nonnegative": true,
+    "all_five_winners_equal_last_source_row_argmax": true,
+    "all_cycle_states_match_saved_no_recurrence_trace": true,
+    "no_training_performed": true,
+    "no_original_files_modified": true
+  },
+  "persistent_dynamics_verification": {
+    "status": "PASS",
+    "experiments": [
+      "persistent_candidates_v1",
+      "candidate_budget_v1"
+    ],
+    "implementation": "Independent dict/ndarray update; lexsort instead of controller argsort; checked actual injections, complete before/after activity, rank/probabilities and trajectory summaries; no model training",
+    "prediction_rows": 9472,
+    "trajectories": 112,
+    "trajectory_steps": 7168,
+    "state_transitions": 616960,
+    "elapsed_seconds": 90.17475720000039,
+    "source_sha256": {
+      "run_persistent_candidates.py": "58d29539446322df8a519814f32bcf1944c33f10bbbc9322d15defa7460081c3",
+      "persistent_candidates.py": "55da3a8ba63812d27af8666bbce79c9823674c92788f83e0e42fc9b5a4ecd589",
+      "hebb_text.py": "e601082eae3a51c81999c1560ba44dca28becb00cfd8f3a39558a04f80379ca9",
+      "run_experiment.py": "4cd3460677bd4d7c4dde39a4353f615df4514c173474337c90cae77f45212bbb",
+      "data_no_punct_v1\\train.txt": "6e715dc47c7a86ff5b0bde0e72816a6937bfb16f1f2e7a93fd6ff7c1f20f71cf",
+      "data_no_punct_v1\\validation.txt": "ef6b43d3514f1534362a934c0f64415a04dae89cc36b2cc4d4cd4b5f25c7bd9e",
+      "data_no_punct_v1\\test.txt": "605873c42e3f4f2033a8b996e3a3f46fe4442fc319bbdc800b4cad1080b7159a",
+      "short_context_v2\\frozen_protocol.json": "df6a1715f92f22fa5d80a35cbe8b0633fdd8c5141a31d37f7dc2c3a5dd9716d9",
+      "results_no_punct_v1\\frozen_protocol.json": "a922a9a5208f7d5b35ad469cb90b88e675bb5f7e90d932ab6ae41212df555477",
+      "data_no_punct_v1\\matched_positions.json": "bf5d663f8a739b9dc259e154addcbbb26a892f09196615d0ddc2633372831fae",
+      "short_context_v2\\decay_0p25\\test_and_context.json": "9d0350800f07785190a3f8c76bfc3ca47c3575024a744374ee85f4394458ff54",
+      "run_candidate_budget.py": "14ced22dadc4463d5baf40147dc2dac7e30139a957a2a8867a3286078b736653",
+      "persistent_candidates_v1\\diminishing_658462.npz": "e1dcd672aaa560ece4a137a956238b5ebe71e13767669b724d145a7ff40a489d",
+      "persistent_candidates_v1\\summary.json": "c398de964ddf74ca5f6b931ea37fa1ff438f7d92b3900ad0e2ec73f5759c6def"
+    },
+    "v1_selected": "diminishing_658462_k4",
+    "budget_selected": "k8_b0p25",
+    "exclusions": {
+      "persistent_candidates_v1": 2887,
+      "candidate_budget_v1": 3399
+    },
+    "newline_feedback_examples": [
+      {
+        "k": 4,
+        "validation_position": 426,
+        "target": "經",
+        "true_prefix_newline_count": 0,
+        "first_candidate_newline": {
+          "prefix_step": 2,
+          "observed_character": "從",
+          "prior_newline_activity": 0.0,
+          "injected_newline_amount": 0.24037377436505653
+        },
+        "final_newline_activity": 0.8064441677845712,
+        "newline_self_weight": 28.949268341064453,
+        "predicted": "\n",
+        "newline_current": 26.244691848754883,
+        "runner_up": "的",
+        "runner_up_current": 5.9639692306518555,
+        "newline_source_share": 0.8895500995401306,
+        "source_contributions": [
+          {
+            "source": "\n",
+            "activity": 0.8064441677845712,
+            "edge_weight": 28.949268341064453,
+            "current": 23.34596824645996
+          },
+          {
+            "source": "的",
+            "activity": 0.16874891737607256,
+            "edge_weight": 6.565205097198486,
+            "current": 1.1078712940216064
+          },
+          {
+            "source": "一",
+            "activity": 0.18163260378757562,
+            "edge_weight": 3.6701767444610596,
+            "current": 0.6666237711906433
+          },
+          {
+            "source": "方",
+            "activity": 1.0,
+            "edge_weight": 0.5939273834228516,
+            "current": 0.5939273834228516
+          },
+          {
+            "source": "我",
+            "activity": 0.13182350652536137,
+            "edge_weight": 2.795344591140747,
+            "current": 0.36849212646484375
+          },
+          {
+            "source": "人",
+            "activity": 0.03439255911680533,
+            "edge_weight": 2.583035945892334,
+            "current": 0.08883721381425858
+          },
+          {
+            "source": "二",
+            "activity": 0.0625,
+            "edge_weight": 1.1675374507904053,
+            "current": 0.07297109067440033
+          },
+          {
+            "source": "丈",
+            "activity": 0.25,
+            "edge_weight": 0.0,
+            "current": 0.0
+          }
+        ]
+      },
+      {
+        "k": 8,
+        "validation_position": 426,
+        "target": "經",
+        "true_prefix_newline_count": 0,
+        "first_candidate_newline": {
+          "prefix_step": 2,
+          "observed_character": "從",
+          "prior_newline_activity": 0.0,
+          "injected_newline_amount": 0.13048407220421843
+        },
+        "final_newline_activity": 0.49546975780963,
+        "newline_self_weight": 28.949268341064453,
+        "predicted": "\n",
+        "newline_current": 17.65034294128418,
+        "runner_up": "的",
+        "runner_up_current": 5.367796421051025,
+        "newline_source_share": 0.8126463510428024,
+        "source_contributions": [
+          {
+            "source": "\n",
+            "activity": 0.49546975780963,
+            "edge_weight": 28.949268341064453,
+            "current": 14.343486785888672
+          },
+          {
+            "source": "的",
+            "activity": 0.13662982153125852,
+            "edge_weight": 6.565205097198486,
+            "current": 0.8970028162002563
+          },
+          {
+            "source": "方",
+            "activity": 1.0,
+            "edge_weight": 0.5939273834228516,
+            "current": 0.5939273834228516
+          },
+          {
+            "source": "一",
+            "activity": 0.14609163642457731,
+            "edge_weight": 3.6701767444610596,
+            "current": 0.536182165145874
+          },
+          {
+            "source": "我",
+            "activity": 0.1129396297194765,
+            "edge_weight": 2.795344591140747,
+            "current": 0.31570518016815186
+          },
+          {
+            "source": "人",
+            "activity": 0.1136014877560216,
+            "edge_weight": 2.583035945892334,
+            "current": 0.293436735868454
+          },
+          {
+            "source": "他",
+            "activity": 0.07977665971375275,
+            "edge_weight": 3.5291621685028076,
+            "current": 0.2815447747707367
+          },
+          {
+            "source": "這",
+            "activity": 0.07857030114827891,
+            "edge_weight": 1.8672184944152832,
+            "current": 0.1467079222202301
+          },
+          {
+            "source": "個",
+            "activity": 0.10933582050171844,
+            "edge_weight": 1.2122060060501099,
+            "current": 0.13253752887248993
+          },
+          {
+            "source": "二",
+            "activity": 0.0625,
+            "edge_weight": 1.1675374507904053,
+            "current": 0.07297109067440033
+          },
+          {
+            "source": "十",
+            "activity": 0.03481663877653729,
+            "edge_weight": 1.0581246614456177,
+            "current": 0.03684034198522568
+          },
+          {
+            "source": "丈",
+            "activity": 0.25,
+            "edge_weight": 0.0,
+            "current": 0.0
+          }
+        ]
+      }
+    ],
+    "no_training_performed": true
+  }
+}

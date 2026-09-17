@@ -1,0 +1,63 @@
+{
+  "completed": true,
+  "checks": [
+    {
+      "growth": "linear",
+      "decay": 0.0,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "linear",
+      "decay": 0.25,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "linear",
+      "decay": 0.8,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "diminishing",
+      "decay": 0.0,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "diminishing",
+      "decay": 0.25,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "diminishing",
+      "decay": 0.8,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "saturating",
+      "decay": 0.0,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "saturating",
+      "decay": 0.25,
+      "characters": 10000,
+      "exact": true
+    },
+    {
+      "growth": "saturating",
+      "decay": 0.8,
+      "characters": 10000,
+      "exact": true
+    }
+  ],
+  "numpy": "2.4.6",
+  "benchmark_characters": 1000000,
+  "benchmark_seconds": 0.10029410000061034,
+  "characters_per_second": 9970676.241114028
+}

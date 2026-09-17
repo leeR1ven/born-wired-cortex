@@ -1,0 +1,32 @@
+# 运行缓存与虚拟环境（克隆后可重建）
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+
+# 手改备份 / 临时文件
+*.bak
+*.bak2
+*.bak_*
+*.orig
+*~
+
+# 注意：日志是入库的。
+# 论文 5.9 / 5.10 两节写明"每个数字都能用仓库里的脚本和当时的日志复现"，
+# 所以 logs/ 里是论文引用的那批日志，必须留着。
+
+# 重新跑脚本时，会在 model/ 旁边生成新的日志、图和轨迹；
+# 那些是运行产物，不是论文证据，统一不进仓库（logs/ 里的历史日志不受影响）。
+model/*.log
+model/*.png
+model/*.gif
+model/*.csv
+model/*.html
+
+# 大件（模型权重、语料、压缩包）不入库
+*.npz
+*.zip

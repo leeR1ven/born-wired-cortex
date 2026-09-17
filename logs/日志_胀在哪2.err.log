@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "F:\一种AGI架构\诊断_发育_胀在哪.py", line 118, in <module>
+    main()
+    ~~~~^^
+  File "F:\一种AGI架构\诊断_发育_胀在哪.py", line 96, in main
+    里面 = np.nonzero(段)[0][亮段]
+           ~~~~~~~~~~^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\_core\fromnumeric.py", line 2077, in nonzero
+    return _wrapfunc(a, 'nonzero')
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\_core\fromnumeric.py", line 51, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\_core\fromnumeric.py", line 43, in _wrapit
+    result = getattr(arr, method)(*args, **kwds)
+ValueError: Calling nonzero on 0d arrays is not allowed. Use np.atleast_1d(scalar).nonzero() instead.

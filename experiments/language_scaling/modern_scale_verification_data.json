@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "verifier_sha256": "31fbbf4532c9cc325a88b6f4d3d9ff17207ea44601dcedeb75493ca837852088",
+  "checks": {
+    "raw_files": 4,
+    "prepared_documents": 7013977,
+    "raw_cleaning_samples": 24
+  },
+  "file_sha256": {
+    "modern_corpus_v1\\prepared\\manifest.json": "f5783ad0386f04b3dc3ab7df79e6dbeac630bf4501716305ba5497d19d83b4e9",
+    "modern_corpus_v1\\prepared\\vocabulary.json": "f98aab0d4114aa1a5ea689742ea4fa566d7d089a91bf68f63ed2e7868ba2ff32",
+    "modern_corpus_v1\\prepared\\dialogue_train.jsonl": "fec761a8a99f3a31f25364f8b744fcef8ce11ab228f36ac832f4f2f049ad165f",
+    "modern_corpus_v1\\prepared\\wiki_train.jsonl": "766835892d22ac7e0d0002a7448a1528f81af751b99b8118248f51a53d675a16",
+    "modern_corpus_v1\\prepared\\validation.jsonl": "6bae68b594b98d1e0cd565f5334ede5f78b5cb92c462a9a2aa55e96d14f74177",
+    "modern_corpus_v1\\prepared\\test.jsonl": "4d73cef6db8fdddd1d90a96e4b3bb667f4d17e6f224e73235d38e119f42d6855",
+    "modern_corpus_v1\\dialogue_sources\\lccc_base\\lccc_base_valid.jsonl.gz": "5cc27e7ac3447c5a31386178f82ff01cab56e27827445ef8d429809301491759",
+    "modern_corpus_v1\\dialogue_sources\\lccc_base\\lccc_base_test.jsonl.gz": "cf8757587bdb8f360cc94fc38baadf9e185bad65a26155527a8430c048676016",
+    "modern_corpus_v1\\dialogue_sources\\lccc_base\\lccc_base_train.jsonl.gz": "2162e0ed923fba62329cabf7e1493fbe59248afc94a62508e4abdea61e624627",
+    "modern_corpus_v1\\wiki_sources\\train-00001-of-00006.parquet": "038b08e5aae38b5a1671794cee3fa0d4952c0d00fa0890a903d2de3f3fe5f703"
+  },
+  "seconds": 124.38704940000025
+}

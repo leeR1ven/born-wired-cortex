@@ -1,0 +1,23 @@
+{
+  "caoaolong__zhwiki__zhwiki_dataset.jsonl": {
+    "file": "caoaolong__zhwiki__zhwiki_dataset.jsonl",
+    "lines": 2873835,
+    "unparsable_lines": 0,
+    "characters": 784810812,
+    "seconds": 12.8
+  },
+  "AI-ModelScope__wikipedia-cn-20230720-filtered__wikipedia-cn-20230720-filtered.jsonl": {
+    "file": "AI-ModelScope__wikipedia-cn-20230720-filtered__wikipedia-cn-20230720-filtered.jsonl",
+    "lines": 254547,
+    "unparsable_lines": 0,
+    "characters": 190913009,
+    "seconds": 2.0
+  },
+  "Illusionna__wiki-zh-521MB__local_train.txt": {
+    "file": "Illusionna__wiki-zh-521MB__local_train.txt",
+    "lines": 656602,
+    "unparsable_lines": 0,
+    "characters": 334420312,
+    "seconds": 4.8
+  }
+}

@@ -1,0 +1,6 @@
+{"v1_training_documents": 6914607, "vocabulary": 19168}
+{"source": "zhwiki", "documents": 2873835, "duplicate_documents": 11046, "dropped_for_unknown_character": 14581, "kept_documents": 2848086, "characters": 651856069}
+{"source": "wikicn", "documents": 254547, "duplicate_documents": 3034, "dropped_for_unknown_character": 6971, "kept_documents": 244542, "characters": 155909134}
+{"source": "wikitxt", "documents": 656602, "duplicate_documents": 13067, "dropped_for_unknown_character": 7857, "kept_documents": 635678, "characters": 283242955}
+{"extra_characters": 1091008158, "combined_ratio": 4.164}
+COMPLETE

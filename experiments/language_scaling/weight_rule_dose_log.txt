@@ -1,0 +1,26 @@
+{"building_probes": true}
+{"probes": {"lccc_base": 3000, "wikipedia": 3000, "reply_first": 3000}}
+{"variant": "linear", "training_characters": 341146335, "elapsed": 30.0}
+{"variant": "linear", "trained": true, "seconds": 30.5, "weight_sha256": "cff6852880a2f4dea8e56dd91ed27dd7f5cfd3d14eb5c191bdb05ff0e74f7446", "reproduces_published": null}
+{"variant": "linear", "readout": "plain", "top1": {"lccc_base": 334, "wikipedia": 236, "reply_first": 147}, "total": 717}
+{"variant": "linear", "readout": "row05", "top1": {"lccc_base": 484, "wikipedia": 398, "reply_first": 133}, "total": 1015}
+{"variant": "linear", "edges": {"edges": 13074732, "share_edges_ge_1": 0.2516, "top1pct_mass": 0.7406, "max_weight": null}}
+{"variant": "diminishing", "trained": true, "seconds": 29.2, "weight_sha256": "5dc3378a26f1d5e05a336821fe909bb617f22a4dd648dbe26d15d8423613f2b1", "reproduces_published": true}
+{"variant": "diminishing", "readout": "plain", "top1": {"lccc_base": 428, "wikipedia": 362, "reply_first": 145}, "total": 935}
+{"variant": "diminishing", "readout": "row05", "top1": {"lccc_base": 524, "wikipedia": 472, "reply_first": 130}, "total": 1126}
+{"variant": "diminishing", "edges": {"edges": 13074732, "share_edges_ge_1": 0.2055, "top1pct_mass": 0.2509, "max_weight": null}}
+{"variant": "power2", "trained": true, "seconds": 29.8, "weight_sha256": "89f11a2918241372d64815bc33c22361abf5b00effeea8c0c52544fe94bf96cc", "reproduces_published": null}
+{"variant": "power2", "readout": "plain", "top1": {"lccc_base": 457, "wikipedia": 396, "reply_first": 142}, "total": 995}
+{"variant": "power2", "readout": "row05", "top1": {"lccc_base": 535, "wikipedia": 501, "reply_first": 135}, "total": 1171}
+{"variant": "power2", "edges": {"edges": 13074732, "share_edges_ge_1": 0.1619, "top1pct_mass": 0.1473, "max_weight": null}}
+{"variant": "ceiling1", "trained": true, "seconds": 29.5, "weight_sha256": "151936b90d3fb3b818b27ccf043d56601d0b6f4000c04ea39dc9b811a4994b00", "reproduces_published": null}
+{"variant": "ceiling1", "readout": "plain", "top1": {"lccc_base": 16, "wikipedia": 40, "reply_first": 9}, "total": 65}
+{"variant": "ceiling1", "readout": "row05", "top1": {"lccc_base": 17, "wikipedia": 42, "reply_first": 7}, "total": 66}
+{"variant": "ceiling1", "edges": {"edges": 13074732, "share_edges_ge_1": 0.0, "top1pct_mass": 0.0272, "max_weight": null}}
+{"comparison": "linear:plain", "all": {"only_diminishing": 278, "only_other": 60, "p": 0.0, "n": 9000}}
+{"comparison": "linear:row05", "all": {"only_diminishing": 159, "only_other": 48, "p": 0.0, "n": 9000}}
+{"comparison": "power2:plain", "all": {"only_diminishing": 21, "only_other": 81, "p": 0.0, "n": 9000}}
+{"comparison": "power2:row05", "all": {"only_diminishing": 30, "only_other": 75, "p": 1.3e-05, "n": 9000}}
+{"comparison": "ceiling1:plain", "all": {"only_diminishing": 913, "only_other": 43, "p": 0.0, "n": 9000}}
+{"comparison": "ceiling1:row05", "all": {"only_diminishing": 1096, "only_other": 36, "p": 0.0, "n": 9000}}
+{"COMPLETE": true, "elapsed_seconds": 1732.2}

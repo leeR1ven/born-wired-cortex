@@ -1,0 +1,10 @@
+{
+  "fragment": "C:\\Users\\Administrator\\.codex\\visualizations\\2026\\09\\06\\01a074bf-f71c-7a81-97c4-7f09ba6e2a4d\\population-activation.html",
+  "bytes": 567452,
+  "characters": 292,
+  "sha256": "dbf110ccd374db7a0d6d4986a772b409e51417a11dea2c60ea3217443dbde425",
+  "conditions": 7,
+  "prompts": 4,
+  "steps": 160,
+  "note": "Groups unordered; semantic categories are manual display-only labels. Display weights rounded to .01 and currents approximate. Full precision evidence controls cycle labels."
+}

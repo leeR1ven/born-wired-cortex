@@ -1,0 +1,25 @@
+{"probes": {"lccc_base": 3000, "wikipedia": 3000, "reply_first": 3000}, "confirmation_probes": {"lccc_base": 3000, "wikipedia": 3000, "reply_first": 3000}}
+{"training_characters": 196077817, "elapsed": 30.9}
+{"training_characters": 381096595, "elapsed": 60.9}
+{"stage": 600000000, "readout": "plain", "top1": {"lccc_base": 437, "wikipedia": 440, "reply_first": 122}, "total": 999}
+{"stage": 600000000, "readout": "row05", "top1": {"lccc_base": 489, "wikipedia": 512, "reply_first": 120}, "total": 1121}
+{"stage": 600000000, "readout": "confirmation_plain", "top1": {"lccc_base": 440, "wikipedia": 431, "reply_first": 104}, "total": 975}
+{"stage": 600000000, "edges": {"edges": 16438272, "share_edges_ge_1": 0.1475, "top1pct_mass": 0.1063}}
+{"training_characters": 600000000, "elapsed": 733.0}
+{"training_characters": 870484051, "elapsed": 763.0}
+{"stage": 1000000000, "readout": "plain", "top1": {"lccc_base": 397, "wikipedia": 441, "reply_first": 105}, "total": 943}
+{"stage": 1000000000, "readout": "row05", "top1": {"lccc_base": 450, "wikipedia": 511, "reply_first": 107}, "total": 1068}
+{"stage": 1000000000, "readout": "confirmation_plain", "top1": {"lccc_base": 415, "wikipedia": 448, "reply_first": 83}, "total": 946}
+{"stage": 1000000000, "edges": {"edges": 18931061, "share_edges_ge_1": 0.171, "top1pct_mass": 0.1054}}
+{"training_characters": 1000000000, "elapsed": 1452.1}
+{"training_characters": 1265706279, "elapsed": 1482.1}
+{"stage": 1435795207, "readout": "plain", "top1": {"lccc_base": 367, "wikipedia": 458, "reply_first": 80}, "total": 905}
+{"stage": 1435795207, "readout": "row05", "top1": {"lccc_base": 417, "wikipedia": 525, "reply_first": 83}, "total": 1025}
+{"stage": 1435795207, "readout": "confirmation_plain", "top1": {"lccc_base": 384, "wikipedia": 459, "reply_first": 72}, "total": 915}
+{"stage": 1435795207, "edges": {"edges": 21123214, "share_edges_ge_1": 0.186, "top1pct_mass": 0.1052}}
+{"training_characters": 1435795207, "elapsed": 2202.1}
+{"stream_identical_to_published_extension": true}
+{"stage": 600000000, "versus_published": {"plain_hits": 999, "plain_published": 936, "plain_gain": 63, "row05_hits": 1121, "row05_published": 1098, "row05_gain": 23, "edges_published": 16438272, "top1pct_mass_published": 0.2456}}
+{"stage": 1000000000, "versus_published": {"plain_hits": 943, "plain_published": 865, "plain_gain": 78, "row05_hits": 1068, "row05_published": 1025, "row05_gain": 43, "edges_published": 18931061, "top1pct_mass_published": 0.247}}
+{"stage": 1435795207, "versus_published": {"plain_hits": 905, "plain_published": 822, "plain_gain": 83, "row05_hits": 1025, "row05_published": 995, "row05_gain": 30, "edges_published": 21123214, "top1pct_mass_published": 0.2494}}
+{"COMPLETE": true, "elapsed_seconds": 2202.1}

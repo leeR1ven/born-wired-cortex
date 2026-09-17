@@ -1,0 +1,33 @@
+{
+  "caoaolong__zhwiki__zhwiki_dataset.jsonl": {
+    "documents": 2873835,
+    "duplicate_documents": 11051,
+    "cleaned_characters": 670412793,
+    "outside_frozen_vocabulary": 32605,
+    "outside_share": 0.0,
+    "trainable_characters": 670380188,
+    "seconds": 114.6
+  },
+  "AI-ModelScope__wikipedia-cn-20230720-filtered__wikipedia-cn-20230720-filtered.jsonl": {
+    "documents": 254547,
+    "duplicate_documents": 3044,
+    "cleaned_characters": 162908054,
+    "outside_frozen_vocabulary": 17814,
+    "outside_share": 0.0001,
+    "trainable_characters": 162890240,
+    "seconds": 26.1
+  },
+  "Illusionna__wiki-zh-521MB__local_train.txt": {
+    "documents": 656602,
+    "duplicate_documents": 13171,
+    "cleaned_characters": 295720417,
+    "outside_frozen_vocabulary": 17470,
+    "outside_share": 0.0001,
+    "trainable_characters": 295702947,
+    "seconds": 50.3
+  },
+  "total_trainable_added": 1128973375,
+  "v1_training_characters": 344787049,
+  "ratio": 4.274,
+  "seconds": 207.4
+}
