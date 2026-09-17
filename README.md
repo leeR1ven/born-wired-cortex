@@ -15,7 +15,10 @@ to stand, walk and look》** 的代码、日志、图和数据。
 | ORCID | 0009-0005-8289-6393 |
 | 邮箱 | rivenlee94@gmail.com |
 | 论文正文 | `paper/Born_wired_manuscript.md` |
-| 论文 PDF | `paper/Born_wired_manuscript.pdf` |
+| 论文 PDF（全长版，10 图和补充说明都在） | `paper/Born_wired_manuscript.pdf` |
+| 论文正文（Nature Machine Intelligence 短版：摘要 146 词 / 正文 3,476 词 / 6 图） | `paper/Born_wired_manuscript_NatureMI.md` |
+| 论文 PDF（Nature Machine Intelligence 短版） | `paper/Born_wired_manuscript_NatureMI.pdf` |
+| 短版用的 10 张图（按 Nature 顺序重新编号） | `paper/figures_NatureMI/` |
 
 ---
 
