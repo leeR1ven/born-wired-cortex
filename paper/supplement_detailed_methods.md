@@ -2,7 +2,7 @@
 
 **Zhiwen Li (李秩文)**  
 Independent researcher  
-Project: [realtime-learning-agi-architecture](https://github.com/leeR1ven/realtime-learning-agi-architecture)
+Project: [born-wired-cortex](https://github.com/leeR1ven/born-wired-cortex)
 
 Local journal manuscript draft | 13 September 2026 | Awaiting author review; not submitted or peer reviewed
 
