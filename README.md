@@ -23,7 +23,7 @@ to stand, walk and look》** 的代码、日志、图和数据。
 
 | 目录 | 里面是什么 |
 |---|---|
-| `paper/` | 论文正文（Markdown 与 PDF）、十张图（`paper/figures/`）、补充材料 |
+| `paper/` | 论文正文（Markdown 与 PDF）、十张图（`paper/figures/`） |
 | `model/` | 皮层模拟器的全部代码（156 个脚本）+ 数据表（`本能表.txt`、`动作库*.json`、`皮层名字*.json`…） |
 | `logs/` | 论文引用的全部运行日志（292 份）。论文里每一个数字都能在这里找到出处 |
 | `snapshots/` | 过程留影（站起来、走路、眼睛跟随的截图与小动画） |

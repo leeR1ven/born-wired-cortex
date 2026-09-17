@@ -1,3 +1,7 @@
+> **这是什么**：2026-09-13 的一份**另一篇**稿件草稿（讲旧架构那批实验），不是本论文的补充材料。这里只作记录；本论文没有补充材料。
+
+---
+
 # Structural Priors and Locally Learned Relations in a Transparent Associative Architecture
 
 **Zhiwen Li (李秩文)**  

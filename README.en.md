@@ -12,7 +12,7 @@ by Li Zhiwen (Independent Researcher, ORCID 0009-0005-8289-6393, rivenlee94@gmai
 
 | Directory | Contents |
 |---|---|
-| `paper/` | manuscript (Markdown and PDF), the ten figures (`paper/figures/`), supplementary methods |
+| `paper/` | manuscript (Markdown and PDF) and the ten figures (`paper/figures/`) |
 | `model/` | the cortex simulator (156 scripts) plus its data tables (`本能表.txt`, `动作库*.json`, ...) |
 | `logs/` | every run log the manuscript cites (292 files); each number in the paper has one |
 | `snapshots/` | process snapshots (standing up, walking, gaze following) |
