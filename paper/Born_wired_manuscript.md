@@ -1,164 +1,26 @@
 # Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look
 
-**Author:** Li Zhiwen.
+**Author:** Zhiwen Li.
 
 **Affiliation:** Independent Researcher, No. 67 Yuanren Street, Huangjing Town, Taicang,
 Suzhou, Jiangsu, China.
 
 **Correspondence:** rivenlee94@gmail.com . ORCID: 0009-0005-8289-6393
 
-*Draft of 2026-09-15. Every number quoted below was produced by the script named next to it;
+*Version of 2026-09-17. Every number quoted below was produced by the script named next to it;
 the scripts and the log of every run are in the repository, and Section 5.9 says where to find
 them. Experiments whose outcome contradicted our prediction are reported as such and are listed
 in Section 4.5.*
 
 ---
 
-## Abstract
+**Abstract**
 
-Large language models and reinforcement-learning agents acquire behaviour by optimising a
-global objective. Brains do not: they are born with a largely pre-specified cortical wiring
-diagram, and the only learning rule that is locally available to a synapse is correlation
-between the neurons it connects. Here we ask how far that combination alone gets you when the
-cortex has to drive a real body in a physics engine.
+Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 143,796 model cortical neurons connected by 308,809 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. No rule in the system lowers a weight, and the acquired walk does not yet stay upright; both are reported rather than hidden.
 
-We describe a system of **143,796 model cortical neurons** connected by **308,809 pre-specified
-"instinct" synapses** plus sparse random background connectivity, which controls a simulated
-Unitree Go2 quadruped. There is **no reward, no error
-signal, no gradient and no training loop at run time**: the one reward-like population in the
-system is a 200-cell dopamine region, it is used in exactly one experiment (R9) and it is silent
-in every other experiment here. Every action is the output of the same recurrent cortical
-population stepping at 50 Hz. We report nine findings.
+## Author Summary
 
-(i) *The innate wiring alone produces an ordered repertoire in closed loop.* Placed prone with
-no instruction, the body stands up on 5/5 network seeds (median final trunk height 0.261 m from
-0.099 m); shown a red region it walks toward it on 5/5 seeds (median 1.73 m). With no sensory
-input at all it collapses (5/5; final height 0.184 m, tilted 41 degrees), showing that the
-movement is commanded by the cortex rather than by the physics or by a script; and clearing the
-instinct table while leaving the body, the sensors, the random background connectivity and the
-seed unchanged leaves the same five brains unable to stand (0/5) or to approach (0/5).
-
-(ii) *Causal intervention isolates the part that computes.* The same visual input drives
-locomotion for 199/200 ticks with the prefrontal population intact and for **0/200 ticks** when
-that population is silenced, on 5/5 seeds, and a black screen gives 0/200 -- so silencing a
-*specific* population, not a change of reward, abolishes a *specific* behaviour. A blue screen is
-the instructive case: it gives 0/200 while the prefrontal code is recomputed from its input on
-every tick, but once that code is allowed to outlast the tick that produced it, the same
-sub-threshold drive is added up over ticks and the walk starts at tick 7 to 18 (183-194/200).
-
-(iii) *The repertoire grows by adding innate structure, not by retraining.* Adding the instinct
-groups one at a time — motor repertoire, then balance/righting, then visually guided approach,
-then auditory reactions, then gaze — produces a nested sequence of capabilities on the same
-random background connectivity, with earlier capabilities retained.
-
-(iv) *The boundary of recognition is where two cell populations sum past threshold, and local
-plasticity moves that boundary to the edge of the sensory island and no further.* Which colours start the walk is predicted by the sum of two
-populations, and by nothing else: across 5 brains, every hue whose two halves sum to 1.39 or more
-starts it and every hue at 0.97 or less does not, whatever the hue is. Cyan at 180 degrees, the
-opposite of red, comes closer to starting the walk (sum 1.03) than green at 120 degrees (sum 0.75),
-which is only half as far around the circle. The three hues within 0.05 of the line -- 96, 168 and
-180 degrees -- are decided by the random background connectivity each brain happens to be born
-with: they light on 4 of 5 brains before any learning and on 5 of 5 after a 3-degree drift from
-red, and in both cases the cell that moves is one brain of five. With the correlation rule switched
-off entirely the boundary is in the same place (96, 168 and 180 on 4 of 5, everything at 0.97 or
-less on 0 of 5), and the sweep protocol agrees on four of the five brains: those four stop at 96
-degrees with the rule on and at 96 degrees with it off. The fifth brain -- the one whose sums at
-those hues sit within 0.05 of the threshold -- stops at 72 degrees with the rule off and at 96 with
-it on, and with the rule on it also starts the walk at 180 degrees, which it does not do with the
-rule off. Learning fills in a boundary the sensory front end has already drawn; it does not draw a
-new one, and it never carries the colour across the gap at 120-144 degrees, which is refused by
-every brain in every condition. A black screen starts the walk on 0 of 5 brains either way.
-
-(v) *Hierarchical compression has a measurable representational cost.* For a ball one third of a
-visual cell across, the first layer of the visual hierarchy puts every newly active cell inside the
-column the ball occupies, while the compressed output layer scatters its cells over as many as 13
-columns and produces **no new cells at all** for a ball at dead centre; direction names in the first
-and second layers are perfectly column-specific (median cross-column sharing 0.00), whereas in the
-compressed layer the median is 0.14 and the worst columns share 0.75, 0.67 and 0.50 of their cells
-with other directions, and one column is lost altogether. We predicted that a reflex re-wired to the
-compressed layer would stop working; it did not, and we report the failure, because it locates the
-cost: what compression removes is detail, not function.
-
-(vi) *The stimulus starts a behaviour; the cortex runs it.* With a red region present, the visual
-code for it is lit on all 1346 of its cells and the prefrontal code on all 1360 of its cells.
-Replace the red region with a black screen and both codes fall to zero -- 0 cells and 3 cells --
-while the walking action stays lit on **495 of 495 ticks** across five seeds; clear the action's
-own fifteen time cells once and it never returns (0/495). The converse manipulation agrees:
-removing the recurrent cortical step altogether leaves the one wired sensor-to-muscle reflex
-unchanged to a decimal place (mean gaze error 5.6 degrees, identical in both conditions) and
-abolishes every behaviour that consists of doing an action (0 of 200 walking ticks, no stand-up).
-
-(vii) *A capability can be acquired during the life of one brain, and not by an objective.* The
-only thing added to the system is a 200-cell dopamine region, silent in every other experiment in
-this paper: when it is active, a connection is written on the spot between cells that were active
-on the previous tick and cells that became active on this tick. One brain, four stages, nothing
-rebuilt in between. Prone, on a black screen, with a broadband sound and no reward, the sound
-lights its own block and nothing else: the walking action is lit on **0 of 30 ticks** (5/5 seeds).
-Standing, with a red region ahead, it walks (30/30). Then 200 teaching ticks in which the sound
-plays while the brain walks toward the red and the dopamine region is lit. Then the cortical sheet
-is cleared, the body is put back on its belly, the screen is black and **only the sound** is
-present: the brain stands up (trunk height 0.099 m to 0.327-0.391 m) and walks on **199-200 of 200
-ticks**, on 5/5 seeds, 1.00-2.43 m. Teaching writes 490,659-552,186 new connections, where the
-teaching happened. Leave the dopamine region dark and it writes **nothing** and the sound still
-does nothing (0/200 ticks, 3/3 seeds).
-
-(viii) *The reward can be delivered by the body instead of by a switch (R10).* A 210-cell touch
-region -- seven skin sites, 30 cells each, wired to the dopamine region by seven fixed rules and to
-nothing else -- leaves the acquisition above intact with the flag of R9 permanently off. With the
-hand resting on the model the dopamine region is lit on **200 of 200** teaching ticks, and the
-sound-triggered walk appears on 2 of 3 brains (200/200 ticks at test); a no-touch control writes
-**0** connections and still does nothing at test (0/600 ticks). The instructive failure is a brain
-rewarded on all 200 teaching ticks, which wrote 480,928 connections and learned nothing (0/200),
-because the walk was not running while the reward was delivered. A reward reinforces what the brain
-did; it cannot teach what the brain did not do. Two of the three brains that acquire the link do not
-stay upright, which is R9's failure again rather than a new one.
-
-(ix) *The cost of a wider cortex is measured, and the ceiling was a software constant (R11).* The
-eye and the visual front end now take their mosaic size from one place, and the world renders at
-that resolution, so a wider mosaic is finer vision rather than an interpolation: 24x16 cells of 6.25
-degrees each up to 24x192 cells of 0.52 degrees. The previous peak memory of the whole system (7,005
-MB) was a single dense random table in the auditory front end, which the ring-wrapped pair offset
-made n x n; filling it in row blocks draws the same random numbers in the same order and is
-bit-identical, which we checked for both front ends. With that removed, 925,236 neurons and
-62.4 million excitatory synapses cost 68 s to build, 8 ms per tick without plasticity and 16 ms with
-it in the step benchmark, and 2,555 MB resident with a 7,200 MB peak, which is the ceiling on the
-16 GB host. The update on every tick used to scan all 27.6 million inhibitory synapses; indexing
-them by source and by target once, at build time, leaves work proportional to the active population
-and is bit-identical to what it replaces (checked tick by tick on all 4,890,945 inhibitory synapses
-at 24x16, maximum difference 0.0). The benchmark flatters that: a live tick at 24x16, with the world
-rendering the mosaic and the body driven, costs **58 ms** with the rule disabled and **158 ms** with
-it enabled, so the brain still runs about eight times slower than the 50 Hz body it drives. At the cheap end -- 24x32, twice the cells in the eye and 1.5 times the cortex -- behaviour
-was then run, and it is instructive in both directions. What does not go through the eye is
-unchanged to the digit: righting stands in 0.261 m on 149 of 150 ticks, exactly as at 24x16.
-What does is better: gaze error falls from 5.5 to 4.3 degrees and from 4.8 to 3.5, with the
-empty-scene control still exactly 0.0. And the colour boundary narrows, because the excitation
-an instinct rule delivers is 1.750 at both widths -- what a rule writes is the total current,
-not a per-synapse weight -- while the inhibition onto the same cells is not fixed, half of the
-random inhibitory wiring being scattered over the whole brain, so a wider cortex active over
-more cells loses margin on every threshold. Widening is not mechanical: the table's strengths
-are calibrated to the activity level of the build they were measured in.
-
-Two supporting measurements complete the picture. **Gaze tracking of a small moving object is
-emergent** — no rule in the table mentions movement, and the behaviour is assembled from static
-"look at this column" rules plus a motion-onset reflex built from a one-tick delay and a
-subtraction. And **the innate map can be blurred**: shifting every direction-bearing name in the
-table by one cell moves the resting position of the eye by one cell, so the behaviour stays
-ordered but acquires a systematic bias, rather than failing outright.
-
-We are explicit about what this does **not** show: the innate wiring is authored by us (the
-locomotion repertoire is distilled from a separately trained policy
-whose own price tag we measured -- 99,483,648 physics steps, for a controller with no exteroceptive
-input); one wider mosaic (24x32) was
-run with behaviour and everything above it is a cost curve, with R7-R10 not re-run there and the
-instinct strengths not yet re-tuned for the wider build; R9 and R10 acquire one new link between one
-sound and one innate action rather than a repertoire that develops, with an experimenter still
-deciding when contact happens; and the acquired behaviour does not yet stay upright. The
-claim is narrower and, we think, more interesting: a cortex-like recurrent population with
-*only* pre-specified wiring and a local correlation rule is already sufficient to close a
-sensorimotor loop and to produce behaviour that can be attributed, intervention by
-intervention, to specific cells.
-
----
+Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. The animal still falls over after a while, and I report that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
 
 ## 1. Introduction
 
