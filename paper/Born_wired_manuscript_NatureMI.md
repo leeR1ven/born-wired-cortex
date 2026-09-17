@@ -1,5 +1,11 @@
 # Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look
 
+**Zhiwen Li**
+
+Independent Researcher, No. 67 Yuanren Street, Huangjing Town, Taicang, Suzhou, Jiangsu, China
+
+rivenlee94@gmail.com · ORCID: 0009-0005-8289-6393
+
 ## Abstract
 
 Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a
