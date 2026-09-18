@@ -30,7 +30,12 @@ from PIL import Image, ImageDraw, ImageFont
 根 = pathlib.Path(__file__).resolve().parent
 if str(根) not in sys.path:
     sys.path.insert(0, str(根))
-os.environ.setdefault("前额叶不保留", "1")      # 论文 R1-R8 那一档
+# ★ 2026-09-18：以前这里强制退回 "R1-R8 那一档"（前额叶不保留=每拍重算）。
+#   现在改成用**当前默认**：前额叶带环（能持续想）+ 动态整体抑制（保证只亮少数细胞）。
+#   原因：不开自压时前额叶会累加到 2800+ 个细胞，经返回线把运动区灌到 96/160，第 66 拍就把身体弄倒。
+#   开着自压：同一条轨迹，走 600 拍、6.62 米、一次没歪过。
+#   想看老行为：设环境变量 前额叶不保留=1。
+os.environ.setdefault("前额叶不保留", "0")
 
 import 本能工具_instincts as 本能
 import 主循环_完整的一拍 as 主循环
@@ -198,25 +203,22 @@ def 写文件(出表):
         P = [f.convert("P", palette=Image.ADAPTIVE, colors=160) for f in r["帧们"]]
         P[0].save(gif路, save_all=True, append_images=P[1:],
                   duration=int(1000 / 帧率), loop=0, optimize=True)
-        b64 = [base64.b64encode(_png(f).getvalue()).decode() for f in r["帧们"]]
-        html = """<!doctype html><meta charset="utf-8"><title>%s</title>
-<style>body{margin:0;background:#111;color:#eee;font:15px/1.6 "Microsoft YaHei",sans-serif;text-align:center}
-img{max-width:97vw}#框{margin:10px auto}button{font-size:16px;padding:6px 18px;margin:0 6px;border:0;border-radius:6px;cursor:pointer}
-input[type=range]{width:70vw;vertical-align:middle}</style>
+        # ★ 2026-09-18：以前这里把**整个 GIF 转成 base64 塞进 HTML**，
+        #   出来的文件 8~35 MB，浏览器打不开（用户反映过两次）。
+        #   现在只写一个几 KB 的小页面，直接引用旁边那个 .gif。
+        html = """<!doctype html>
+<html lang="zh"><meta charset="utf-8"><title>%s</title>
+<style>body{margin:0;background:#141418;color:#e8e8ee;font:15px/1.7 \"Microsoft YaHei\",sans-serif;text-align:center}
+h2{font-size:18px;font-weight:500;margin:16px 0 6px;color:#ffd479}p{color:#a9a9b6;font-size:13px;margin:6px 0 14px}
+img{max-width:97vw;border-radius:8px}a{color:#7ec8ff}</style>
 <h2>%s</h2><p>%s</p>
-<div><button id="播">▶ 播放</button> <span id="计"></span></div>
-<div id="框"><img id="图"></div>
-<div><input type="range" id="滑" min="0" max="%d" value="0"></div>
-<script>const 帧=%s,总=帧.length;let i=0,开=false,计=null;
-const 图=document.getElementById("图"),滑=document.getElementById("滑"),按=document.getElementById("播"),计数=document.getElementById("计");
-function 画(){图.src="data:image/png;base64," + 帧[i];滑.value=i;计数.textContent=(i+1)+" / "+总;}
-滑.oninput=()=>{i=+滑.value;画();};
-按.onclick=()=>{开=!开;按.textContent=开?"⏸ 暂停":"▶ 播放";
- if(开){计=setInterval(()=>{i=(i+1)%%总;画();},%d);}else{clearInterval(计);}};
-画();</script>""" % (r["幕"]["名"], r["幕"]["名"], r["幕"]["注"], len(r["帧们"]) - 1,
-                     "[" + ",".join('"%s"' % b for b in b64) + "]", 1000 // 帧率)
-        (根.parent / "playback" / ("回放_大脑_%s.html" % 名)).write_text(html, encoding="utf-8", newline="\n")
-        print("  写好 %s（%.1f MB）和 回放_大脑_%s.html" % (gif路.name, gif路.stat().st_size / 1e6, 名))
+<img src="%s" alt="%s">
+<p>网页版：<a href="https://leer1ven.github.io/born-wired-cortex/playback/">leer1ven.github.io/born-wired-cortex/playback/</a></p>
+</html>""" % (r["幕"]["名"], r["幕"]["名"], r["幕"]["注"], r["幕"]["名"],
+           gif路.name)
+        html路 = 根.parent / "playback" / ("回放_大脑_%s.html" % 名)
+        html路.write_text(html, encoding="utf-8", newline="\n")
+        print("  写好 %s（%.1f MB）和 回放_大脑_%s.html（小页面）" % (gif路.name, gif路.stat().st_size / 1e6, 名))
 
 
 def _png(im):
