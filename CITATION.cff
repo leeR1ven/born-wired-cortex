@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this code, these results or this architecture, please cite the paper (see the journal version once published)."
+title: "Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look"
+type: software
+authors:
+  - family-names: Li
+    given-names: Zhiwen
+    orcid: "https://orcid.org/0009-0005-8289-6393"
+    affiliation: "Independent Researcher"
+repository-code: "https://github.com/leeR1ven/born-wired-cortex"
+url: "https://github.com/leeR1ven/born-wired-cortex"
+license: MIT
+abstract: >-
+  143,796 model cortical neurons and 308,809 innate excitatory synapses, with a single local
+  Hebbian rule and no reward function, no gradient descent and no global objective, drive a
+  simulated quadruped: the body stands up from prone, walks toward a visual target, and the eyes
+  acquire gaze tracking. The repository contains the cortical simulator, the innate-connectivity
+  generator, the full program tick, the MuJoCo body and world, one script per results section,
+  the logs each script writes, and the plotting scripts.
+keywords:
+  - cortical architecture
+  - innate connectivity
+  - Hebbian plasticity
+  - sensorimotor control
+  - developmental robotics
+  - biologically plausible learning

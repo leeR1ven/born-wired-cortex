@@ -22,6 +22,15 @@ to stand, walk and look》** 的代码、日志、图和数据。
 | **实际投出去的稿子**（2026-09-17 投 Nature Machine Intelligence，原件存档并附 SHA-256） | `paper/submitted_20260917/` |
 | **投稿记录**（稿件号 NATMACHINTELL-A26095390、状态时间线、预印本 rs-11070398） | `docs/投稿记录_NatureMachineIntelligence_20260917.md` |
 
+## 现在能看到什么
+
+- **论文全文**：`paper/Born_wired_manuscript.md`（全长版）／`paper/Born_wired_manuscript_NatureMI.md`（20 页短版）
+- **论文 PDF**：`paper/Born_wired_manuscript.pdf`（全长 37 页）／`paper/Born_wired_manuscript_NatureMI.pdf`（20 页）／`paper/submitted_20260917/`（实际投出去的那一版，带行号）
+- **模型自己走路的回放**：双击 `playback/回放_大脑_四幕.html`，不用装任何东西
+- **预印本**：Research Square `rs-11070398`（平台审核中，上线后此处补 DOI）
+- **引用方式**：见 `CITATION.cff`，GitHub 页面右上会出现 "Cite this repository"
+
+
 ---
 
 ## 目录说明
