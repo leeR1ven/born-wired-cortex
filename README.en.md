@@ -1,5 +1,9 @@
 # Born wired - innate cortical connectivity plus local plasticity is enough
 
+> **Web version:** https://leer1ven.github.io/born-wired-cortex/ - abstract, headline numbers,
+> the honest non-claims, and the four-act playback of the body in one page.
+> Locally, open `index.html` (landing page) or `playback/index.html` (the four acts).
+
 **One sentence.** 143,796 cortical cells, 308,809 excitatory synapses written in at birth, and a
 single local rule (a cell that fired on the previous tick strengthens its synapse onto a cell that
 fires on this tick). No reward function, no backpropagation, no objective, no token in / token out.
@@ -16,7 +20,7 @@ by Li Zhiwen (Independent Researcher, ORCID 0009-0005-8289-6393, rivenlee94@gmai
 | `model/` | the cortex simulator (156 scripts) plus its data tables (`本能表.txt`, `动作库*.json`, ...) |
 | `logs/` | every run log the manuscript cites (292 files); each number in the paper has one |
 | `snapshots/` | process snapshots (standing up, walking, gaze following) |
-| `playback/` | four-panel playback page; open `playback/回放_大脑_四幕.html` in any browser |
+| `playback/` | four-panel playback page; open `playback/index.html` in any browser |
 | `experiments/` | staged sub-experiments (repertoire distillation, colour-beacon navigation, closed loop, cognition, text-network) |
 | `docs/` | architecture notes, rule table, wiring audit, reproduction guide, progress log |
 

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look</title>
+<meta name="description" content="143,796 model cortical neurons, 308,809 inborn synapses, one local Hebbian rule, no reward, no gradient, no training loop: a simulated quadruped stands up, walks toward red, and follows a moving object with its eyes.">
+<style>
+:root{--bg:#0f1014;--card:#181a21;--line:#262a33;--fg:#e9eaf0;--dim:#9aa0ae;--key:#ffd479;--accent:#7ec8ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:38px 20px 80px}
+h1{font-size:31px;line-height:1.3;margin:0 0 10px;letter-spacing:-.3px}
+h2{font-size:20px;margin:44px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:0 0 6px}
+a{color:var(--accent)}
+.sub{color:var(--dim);font-size:15px;margin:0 0 20px}
+.byline{color:var(--dim);font-size:14px}
+.byline b{color:var(--fg);font-weight:600}
+.lead{font-size:17px;margin:18px 0 0}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:22px 0 0}
+.num{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+.num .v{font-size:22px;font-weight:700;color:var(--key);letter-spacing:-.5px}
+.num .k{font-size:13px;color:var(--dim);margin-top:3px}
+blockquote{margin:18px 0 0;padding:16px 20px;background:var(--card);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;font-size:15px;color:#d6d9e2}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.act{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px 15px}
+.act img{width:100%;border-radius:8px;display:block;background:#000}
+.act p{font-size:14px;color:#c2c7d4;margin:9px 0 0}
+.act .tag{display:inline-block;font-size:11px;color:#0f1014;background:var(--key);border-radius:4px;padding:1px 7px;font-weight:700;vertical-align:2px;margin-right:7px}
+table{border-collapse:collapse;width:100%;margin-top:16px;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left;vertical-align:top}
+th{background:var(--card);color:var(--dim);font-weight:600}
+code,pre{font-family:ui-monospace,Consolas,"Courier New",monospace}
+code{background:#20232c;padding:2px 6px;border-radius:5px;font-size:14px}
+pre{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:13.5px;line-height:1.6}
+ul{padding-left:22px}
+.honest{border:1px solid #4a3a20;background:#221c12;border-radius:10px;padding:14px 18px;margin-top:16px}
+.honest b{color:var(--key)}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.links a{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;text-decoration:none;font-size:14px}
+.links a:hover{border-color:var(--accent)}
+.cn{color:#c2c7d4;font-size:15px}
+</style>
+<div class="wrap">
+
+<h1>Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look</h1>
+<p class="sub">A brain-shaped system - not a network trained on examples - placed in a simulated body.</p>
+<p class="byline"><b>Zhiwen Li</b>, Independent Researcher &nbsp;&middot;&nbsp; ORCID 0009-0005-8289-6393 &nbsp;&middot;&nbsp; rivenlee94@gmail.com &nbsp;&middot;&nbsp; 18 Sep 2026</p>
+
+<p class="lead">Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a
+synapse is correlation between the cells it connects. Machine-learning agents instead optimise a global objective.
+<b>How far does the biological combination reach on its own?</b></p>
+
+<div class="nums">
+  <div class="num"><div class="v">143,796</div><div class="k">model cortical neurons</div></div>
+  <div class="num"><div class="v">308,809</div><div class="k">inborn &ldquo;instinct&rdquo; synapses, written at birth</div></div>
+  <div class="num"><div class="v">1</div><div class="k">local rule: a cell that fired, and the cell that fired with it</div></div>
+  <div class="num"><div class="v">0</div><div class="k">reward signals, error signals, gradients, training loops</div></div>
+  <div class="num"><div class="v">5 / 5</div><div class="k">seeds stand up from prone</div></div>
+  <div class="num"><div class="v">5 / 5</div><div class="k">seeds walk toward a red object (median 1.73 m)</div></div>
+  <div class="num"><div class="v">0 / 200</div><div class="k">visually guided walking ticks with the prefrontal population silenced</div></div>
+  <div class="num"><div class="v">0 / 5</div><div class="k">seeds that can stand when the instinct table is cleared</div></div>
+</div>
+
+<h2>Abstract</h2>
+<blockquote>Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse
+is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far
+does the biological combination reach on its own? We built a system of 143,796 model cortical neurons connected by
+308,809 pre-specified &ldquo;instinct&rdquo; synapses, driving a simulated quadruped with no reward, no error signal,
+no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the
+stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same
+brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking
+(0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the
+stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the
+repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a
+single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written
+down. No rule in the system lowers a weight, and the acquired walk does not yet stay upright; both are reported rather
+than hidden.</blockquote>
+
+<h2>The body, doing it</h2>
+<p class="sub" style="margin-top:6px">Recorded from the model, not drawn by hand. <a href="playback/">Open the four-act page &rarr;</a></p>
+<div class="grid">
+<div class="act">
+  <img src="playback/web/act_a_stand_up.gif" alt="prone, no camera" loading="lazy">
+  <h3><span class="tag">A</span>prone, no camera</h3>
+  <p>Only body sense tells it that it is lying down. The inborn connections push it up. It stands and then does not take a step.</p>
+  <p class="cn">趴着，不给画面：只靠本体感就知道自己趴着，出生就有的连线把它撑起来；站定之后一步没走。</p>
+</div>
+<div class="act">
+  <img src="playback/web/act_b_walk_to_red.gif" alt="standing, red in front" loading="lazy">
+  <h3><span class="tag">B</span>standing, red in front</h3>
+  <p>Eyes see red. The visual half and the prefrontal half of the wiring each contribute current; together they cross threshold and it walks forward.</p>
+  <p class="cn">站着，正前方一片红：视觉那半 + 前额叶那半，两股电流加起来过阈值，于是往前走。</p>
+</div>
+<div class="act">
+  <img src="playback/web/act_c_keeps_walking.gif" alt="one glance of red, then black" loading="lazy">
+  <h3><span class="tag">C</span>one glance of red, then black</h3>
+  <p>Red is shown for half a second and then the world goes black - and it keeps walking. What lit up in the prefrontal population does not vanish with the stimulus.</p>
+  <p class="cn">只看一眼红，半秒后撤掉：眼前全黑了它还在走 —— 前额叶里那点“想”没有跟着刺激一起消失。</p>
+</div>
+<div class="act">
+  <img src="playback/web/act_d_collapse.gif" alt="nothing at all" loading="lazy">
+  <h3><span class="tag">D</span>nothing at all</h3>
+  <p>With no sensory input at all the muscles go slack and the body sinks. The movement is a command from the cortex, not physics.</p>
+  <p class="cn">什么都不给：连身体感觉都不给，肌肉松掉、瘫下去 —— 动作是皮层下的令，不是物理自己动。</p>
+</div>
+</div>
+
+<h2>What is and is not claimed</h2>
+<div class="honest">
+<p style="margin:0 0 8px"><b>Reported as a gap, not hidden:</b> the acquired walk does not stay upright for long.
+Five taught seeds all fall eventually; in the test phase, some seeds topple between tick 45 and tick 101. The cause is
+narrowed down in Section 4.6 - the current the prefrontal population sends to the fifteen gait cells lands exactly on
+the gait chain&rsquo;s firing threshold (0.850), so a drift in the ongoing thought can knock the chain out. Damping
+that one inborn link fixes one seed and breaks the other three, so it was not applied.</p>
+<p style="margin:0"><b>Reported as a gap, not hidden:</b> no rule in the system ever lowers a weight. The three
+decay settings that were tried make the model fall earlier, not later.</p>
+</div>
+<p class="sub" style="margin-top:12px">The paper also lists the experiments whose outcome contradicted the
+prediction (Section 4.5), and says for every number which script produced it and where the log is.</p>
+
+<h2>Read it</h2>
+<div class="links">
+<a href="paper/Born_wired_manuscript.pdf">Full manuscript (PDF, 37 pp, 10 figures)</a>
+<a href="paper/Born_wired_manuscript.md">Full manuscript (Markdown source)</a>
+<a href="paper/submitted_20260917/Born_wired_NatureMI_line_numbers.pdf">Version submitted 17 Sep 2026 (PDF, 20 pp, line numbers)</a>
+<a href="paper/figures/">Figure files (PNG, 300 dpi)</a>
+<a href="docs/架构导读_中文.md">中文架构导读</a>
+</div>
+
+<h2>Check any number yourself</h2>
+<p class="sub" style="margin-top:6px">Every figure in the paper is produced by a named script and leaves a log.
+The repository carries all 292 logs and the scripts that wrote them.</p>
+<pre>cd model
+python 核对_论文数字.py        # reads logs/ and compares every number against the paper (~seconds)
+python 核对_论文数字.py 重跑   # actually re-runs R1 and checks the live result (~6 min)
+python 看_大脑开车.py          # drives the robot again and regenerates the playback page</pre>
+<p class="sub">Core dependencies: Python 3 + NumPy. The body uses MuJoCo; the figures use matplotlib + Pillow.
+Everything runs on CPU. See <code>docs/复现说明.md</code> for the per-result table (R1&ndash;R11, forty-odd scripts).</p>
+
+<h2>Cite</h2>
+<pre>@misc{li2026bornwired,
+  title  = {Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look},
+  author = {Li, Zhiwen},
+  year   = {2026},
+  note   = {Preprint, Research Square ID rs-11070398},
+  url    = {https://github.com/leeR1ven/born-wired-cortex}
+}</pre>
+<p class="sub">Machine-readable version: <a href="CITATION.cff">CITATION.cff</a>. Licence: MIT.</p>
+
+<h2>&#20013;&#25991;&#25688;&#35201;</h2>
+<p class="cn">&#22823;&#33041;&#19968;&#20986;&#29983;&#23601;&#24102;&#30528;&#22823;&#37327;&#24050;&#32463;&#25509;&#22909;&#30340;&#30382;&#23618;&#36830;&#25509;&#65292;&#32780;&#19968;&#20010;&#31361;&#35302;&#22312;&#23616;&#37096;&#33021;&#29992;&#30340;&#35268;&#21017;&#65292;&#21482;&#26377;&#8220;&#19968;&#36215;&#20142;&#36807;&#30340;&#32454;&#32990;&#20043;&#38388;&#36830;&#25509;&#21464;&#24378;&#8221;&#12290;&#26426;&#22120;&#23398;&#20064;&#36208;&#30340;&#26159;&#21478;&#19968;&#26465;&#36335;&#65306;&#20248;&#21270;&#19968;&#20010;&#20840;&#23616;&#30446;&#26631;&#12290;
+&#36825;&#20004;&#26679;&#19996;&#35199;&#21482;&#38752;&#29983;&#29289;&#30340;&#37197;&#26041;&#65292;&#33021;&#36208;&#22810;&#36828;&#65311;&#26412;&#25991;&#24314;&#20102;&#19968;&#20010; 143,796 &#20010;&#27169;&#22411;&#30382;&#23618;&#31070;&#32463;&#20803;&#12289;308,809 &#26681;&#20986;&#29983;&#23601;&#20889;&#22909;&#30340;&#8220;&#26412;&#33021;&#8221;&#31361;&#35302;&#30340;&#31995;&#32479;&#65292;&#39537;&#21160;&#19968;&#20855;&#20223;&#30495;&#22235;&#36275;&#36523;&#20307;&#65292;
+&#27809;&#26377;&#22870;&#21169;&#20989;&#25968;&#12289;&#27809;&#26377;&#35823;&#24046;&#20449;&#21495;&#12289;&#27809;&#26377;&#26799;&#24230;&#12289;&#27809;&#26377;&#35757;&#32451;&#24490;&#29615;&#12290;&#32467;&#26524;&#65306;&#25601;&#30528;&#25918;&#19979;&#65292;5/5 &#20010;&#31181;&#23376;&#33258;&#24049;&#31449;&#36215;&#26469;&#65307;&#32473;&#30475;&#32418;&#33394;&#65292;5/5 &#20010;&#31181;&#23376;&#26397;&#32418;&#33394;&#36208;&#36807;&#21435;&#65288;&#20013;&#20301;&#25968; 1.73 &#31859;&#65289;&#65307;
+&#23436;&#20840;&#19981;&#32473;&#24863;&#35273;&#36755;&#20837;&#65292;&#36523;&#20307;&#30267;&#19979;&#65307;&#25226;&#26412;&#33021;&#34920;&#28165;&#31354;&#65292;&#21516;&#26679;&#30340;&#33041;&#23376;&#26082;&#31449;&#19981;&#36215;&#26469;&#20063;&#36208;&#19981;&#20102;&#65288;0/5&#65289;&#65307;&#25226;&#21069;&#39069;&#21494;&#37027;&#32676;&#32454;&#32990;&#38745;&#40664;&#65292;&#35270;&#35273;&#24341;&#23548;&#30340;&#34892;&#36208;&#30452;&#25509;&#28040;&#22833;&#65288;0/200 &#25293;&#65292;5/5&#65289;&#65292;
+&#32780;&#26412;&#33021;&#21453;&#23556;&#19997;&#27627;&#19981;&#21463;&#24433;&#21709;&#12290;
+&#19968;&#20010; 200 &#32454;&#32990;&#30340;&#22810;&#24052;&#32925;&#32676;&#65292;&#22312;&#19968;&#20010;&#33041;&#23376;&#30340;&#19968;&#29983;&#37324;&#20889;&#19979;&#19968;&#26465;&#20840;&#26032;&#30340;&#8220;&#24863;&#35273;&#8594;&#21160;&#20316;&#8221;&#36830;&#25509;&#65307;&#30524;&#31070;&#36319;&#36394;&#26159;&#20174;&#38745;&#24577;&#30340;&#8220;&#30447;&#30528;&#30475;&#8221;&#35268;&#21017;&#21644;&#36816;&#21160;&#36215;&#22987;&#21453;&#23556;&#37324;&#33258;&#24049;&#38271;&#20986;&#26469;&#30340;&#12290;
+&#31995;&#32479;&#37324;&#27809;&#26377;&#20219;&#20309;&#19968;&#26465;&#35268;&#21017;&#20250;&#25226;&#26435;&#37325;&#35843;&#20302;&#65307;&#23398;&#20250;&#30340;&#36208;&#36335;&#36824;&#19981;&#33021;&#38271;&#26102;&#38388;&#20445;&#25345;&#30452;&#31435;&#12290;&#36825;&#20004;&#20214;&#20107;&#37117;&#20889;&#22312;&#35770;&#25991;&#37324;&#65292;&#27809;&#26377;&#34255;&#12290;</p>
+<p class="cn"><b>&#24590;&#20040;&#33258;&#24049;&#39564;&#19968;&#36941;&#65306;</b>&#21508;&#22270;&#21508;&#25968;&#23383;&#37117;&#26377;&#23545;&#24212;&#33050;&#26412;&#21644;&#26085;&#24535;&#65292;&#22312; <code>model/</code> &#21644; <code>logs/</code> &#37324;&#12290;&#35265; <a href="docs/复现说明.md">docs/&#22797;&#29616;&#35828;&#26126;.md</a>&#12290;</p>
+
+<footer>
+<p>History, in the open: submitted to <i>Nature Machine Intelligence</i> on 17 September 2026 (manuscript
+NATMACHINTELL-A26095390); editorially declined without review on 18 September 2026, on the grounds that the result
+was not judged to offer a clear, forceful advance for its AI/ML readership. Preprint submitted to Research Square
+(ID rs-11070398). Archive of the submitted files and the full submission record:
+<a href="paper/submitted_20260917/">paper/submitted_20260917/</a>,
+<a href="docs/投稿记录_NatureMachineIntelligence_20260917.md">docs/</a>.</p>
+<p>AI collaboration: code, experiment protocols and manuscript text were produced under the author&rsquo;s direction
+through interaction with large language models - programming and experiment execution by AI, architecture, judgement
+and direction by the author (Section 5.10).</p>
+<p>MIT licence. &copy; 2026 Zhiwen Li.</p>
+</footer>
+</div>

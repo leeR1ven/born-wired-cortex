@@ -1,5 +1,9 @@
 # Born wired —— 天生的皮层连接 + 局部可塑性，就够了
 
+> **网页版（想快速了解就看这个）**：https://leer1ven.github.io/born-wired-cortex/  
+> 一页读完摘要、关键数字和“什么没声明”；往下是机器人自己站起来、自己走向红块的四幕动画。  
+> 本地看：双击 `index.html`（首页）或 `playback/index.html`（四幕动画）。
+
 **一句话**：143,796 个皮层神经元、308,809 根**出生时就写好的兴奋连接**、只有一条局部规则
 （上一拍亮的细胞 → 这一拍亮的细胞，连接强一点）。没有奖励函数、没有反向传播、没有目标函数、
 没有"输入 token / 输出 token"。结果是：身体自己从趴着站起来、看见红块自己走过去、
@@ -26,7 +30,7 @@ to stand, walk and look》** 的代码、日志、图和数据。
 
 - **论文全文**：`paper/Born_wired_manuscript.md`（全长版）／`paper/Born_wired_manuscript_NatureMI.md`（20 页短版）
 - **论文 PDF**：`paper/Born_wired_manuscript.pdf`（全长 37 页）／`paper/Born_wired_manuscript_NatureMI.pdf`（20 页）／`paper/submitted_20260917/`（实际投出去的那一版，带行号）
-- **模型自己走路的回放**：双击 `playback/回放_大脑_四幕.html`，不用装任何东西
+- **模型自己走路的回放**：双击 `playback/index.html`，不用装任何东西
 - **预印本**：Research Square `rs-11070398`（平台审核中，上线后此处补 DOI）
 - **引用方式**：见 `CITATION.cff`，GitHub 页面右上会出现 "Cite this repository"
 
@@ -41,7 +45,7 @@ to stand, walk and look》** 的代码、日志、图和数据。
 | `model/` | 皮层模拟器的全部代码（156 个脚本）+ 数据表（`本能表.txt`、`动作库*.json`、`皮层名字*.json`…） |
 | `logs/` | 论文引用的全部运行日志（292 份）。论文里每一个数字都能在这里找到出处 |
 | `snapshots/` | 过程留影（站起来、走路、眼睛跟随的截图与小动画） |
-| `playback/` | 四幕回放页。双击 `playback/回放_大脑_四幕.html`，不用装任何东西就能看模型自己的行为 |
+| `playback/` | 四幕回放页。双击 `playback/index.html`，不用装任何东西就能看模型自己的行为 |
 | `experiments/` | 各阶段子实验（运动库蒸馏、色标导航、闭环仿真、认知实验、文字网络实验…） |
 | `docs/` | 架构说明、规则总表、接线审计、复现说明、进展记录 |
 
@@ -53,7 +57,7 @@ to stand, walk and look》** 的代码、日志、图和数据。
 ## 先看什么
 
 1. **想快速看懂**：`paper/Born_wired_manuscript.md`（正文），或 `docs/架构导读_中文.md`
-2. **想亲眼看到行为**：双击 `playback/回放_大脑_四幕.html`
+2. **想亲眼看到行为**：双击 `playback/index.html`
 3. **想验证数字**：见下面"怎么自己验一遍"
 
 ## 怎么自己验一遍
