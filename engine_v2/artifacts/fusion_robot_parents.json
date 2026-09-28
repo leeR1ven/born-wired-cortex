@@ -1,0 +1,2488 @@
+{
+  "python": "3.13.7",
+  "numpy": "2.4.6",
+  "mujoco_version": "3.13.0",
+  "config": {
+    "dt": 0.01,
+    "motor_units": 100,
+    "empty_routes": [
+      "flexion",
+      "locomotion"
+    ],
+    "lesson_pairs": 6,
+    "lesson_seconds": 2.0,
+    "lesson_rest_seconds": 0.5,
+    "teaching_drive": 0.6,
+    "settle_seconds": 1.0,
+    "cue_seconds": 8.0,
+    "rest_seconds": 2.0,
+    "initial_joint_noise": 0.01
+  },
+  "command": "python tools/fuse_robot_parents.py 0 1 2 3 4",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "cases": [
+    {
+      "seed": 0,
+      "arms": {
+        "birth": {
+          "note": "no lesson at all",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2588761191408142,
+              "min_height": 0.2565092025849741,
+              "up_z": 0.9999967471760006,
+              "moved": 0.019954994776035965
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.25422998305010114,
+              "min_height": 0.25415126297349333,
+              "up_z": 0.9999918501341041,
+              "moved": 0.0016188168364328927
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.2545703594817146,
+              "min_height": 0.254127484519864,
+              "up_z": 0.9999938963747591,
+              "moved": 0.00027355305775944594
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.252974649029416,
+              "min_height": 0.2529184538555647,
+              "up_z": 0.9999870860239198,
+              "moved": 0.0006769279432804915
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.2534382367126025,
+              "min_height": 0.2529204877017614,
+              "up_z": 0.9999900688751222,
+              "moved": 0.0003258557441443382
+            }
+          },
+          "walks_on_A": 0.0016188168364328927,
+          "brace_on_B": 0.0036968965958856298
+        },
+        "parent_walk": {
+          "note": "taught cue A -> walk, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2591524927652918,
+              "min_height": 0.2568159783439179,
+              "up_z": 0.999997450320497,
+              "moved": 0.017920248855838358
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884303607311462,
+              "min_height": 0.17712563789341423,
+              "up_z": 0.9921665143708566,
+              "moved": 0.7870039703222897
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.25616401558669594,
+              "min_height": 0.20040945775816743,
+              "up_z": 0.9998213921165808,
+              "moved": 0.04949533591578052
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.2469833456223624,
+              "min_height": 0.24636966207871758,
+              "up_z": 0.9997709275816896,
+              "moved": 0.005608955912959445
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541036062250884,
+              "min_height": 0.2464222467378383,
+              "up_z": 0.9998855032526371,
+              "moved": 0.0064064799291598815
+            }
+          },
+          "walks_on_A": 0.7870039703222897,
+          "brace_on_B": 0.0026968965958856293
+        },
+        "parent_brace": {
+          "note": "taught cue B -> brace, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2591133070529214,
+              "min_height": 0.2567999811902517,
+              "up_z": 0.9999976731176163,
+              "moved": 0.01650358403609551
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.00269689659588563,
+              "flexion": 0.10235177103682325,
+              "height": 0.24378582097955395,
+              "min_height": 0.24369780159162482,
+              "up_z": 0.999758152044194,
+              "moved": 0.0045668085879252964
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.3569434428970118e-20,
+              "flexion": 1.656059726830718e-13,
+              "height": 0.2547092892231106,
+              "min_height": 0.24368743576788449,
+              "up_z": 0.9999962291105433,
+              "moved": 0.003130771697446256
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.439884105582357e-159,
+              "flexion": 1.0,
+              "height": 0.14612611669596517,
+              "min_height": 0.1417368798606126,
+              "up_z": 0.9851534469151065,
+              "moved": 0.016174818403391873
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 2.5987768262968907e-194,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2544967103262057,
+              "min_height": 0.14606895511465048,
+              "up_z": 0.9999991289462212,
+              "moved": 0.00897554164781039
+            }
+          },
+          "walks_on_A": 0.0045668085879252964,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,brace)": {
+          "note": "add the two weight tables and halve",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2591331623417517,
+              "min_height": 0.25680856483900455,
+              "up_z": 0.9999975621851983,
+              "moved": 0.017212294781474083
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.7865119071627866,
+              "flexion": 0.051176558242155855,
+              "height": 0.21767239045132922,
+              "min_height": 0.18857865832642648,
+              "up_z": 0.9917055297839696,
+              "moved": 0.663942568786798
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333523112630585e-14,
+              "flexion": 8.333148887762233e-14,
+              "height": 0.2563981693943424,
+              "min_height": 0.20907988308515438,
+              "up_z": 0.9998727844407937,
+              "moved": 0.049254613656758
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.051176558242155855,
+              "flexion": 0.7865119071627866,
+              "height": 0.16178745290935237,
+              "min_height": 0.16150345866787735,
+              "up_z": 0.9881722485958722,
+              "moved": 0.009458151111688117
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333148887762233e-14,
+              "flexion": 8.333523112630585e-14,
+              "height": 0.2545144192583105,
+              "min_height": 0.16188523182935352,
+              "up_z": 0.9999962119013319,
+              "moved": 0.013172791266140774
+            }
+          },
+          "walks_on_A": 0.663942568786798,
+          "brace_on_B": 0.7865119071627866
+        },
+        "keep(walk,brace)": {
+          "note": "per edge, keep whichever parent moved it further from birth",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2592128146643691,
+              "min_height": 0.2569120199479043,
+              "up_z": 0.9999977526496857,
+              "moved": 0.016371106579844884
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.09965487444093764,
+              "height": 0.2059994211365286,
+              "min_height": 0.16979534352075523,
+              "up_z": 0.993005041805391,
+              "moved": 0.9213833207620755
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 1.6772332406759642e-13,
+              "height": 0.25622980444238275,
+              "min_height": 0.18759729722109522,
+              "up_z": 0.999873340311093,
+              "moved": 0.05017967458121489
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.09965487444093764,
+              "flexion": 1.0,
+              "height": 0.14151591580761358,
+              "min_height": 0.1360100173887566,
+              "up_z": 0.9848030221739829,
+              "moved": 0.011111481332387681
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6772332406759642e-13,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2548000073363983,
+              "min_height": 0.14079191296635116,
+              "up_z": 0.9999999855829329,
+              "moved": 0.009777519573449285
+            }
+          },
+          "walks_on_A": 0.9213833207620755,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,walk)": {
+          "note": "sanity: a parent merged with itself",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2591524927652918,
+              "min_height": 0.2568159783439179,
+              "up_z": 0.999997450320497,
+              "moved": 0.017920248855838358
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884303607311462,
+              "min_height": 0.17712563789341423,
+              "up_z": 0.9921665143708566,
+              "moved": 0.7870039703222897
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.25616401558669594,
+              "min_height": 0.20040945775816743,
+              "up_z": 0.9998213921165808,
+              "moved": 0.04949533591578052
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.2469833456223624,
+              "min_height": 0.24636966207871758,
+              "up_z": 0.9997709275816896,
+              "moved": 0.005608955912959445
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541036062250884,
+              "min_height": 0.2464222467378383,
+              "up_z": 0.9998855032526371,
+              "moved": 0.0064064799291598815
+            }
+          },
+          "walks_on_A": 0.7870039703222897,
+          "brace_on_B": 0.0026968965958856293
+        }
+      },
+      "graph": {
+        "neurons": 1813,
+        "edges": 17745,
+        "empty_routes": [
+          "flexion",
+          "locomotion"
+        ],
+        "action_cells": {
+          "flexion": 1,
+          "locomotion": 3
+        },
+        "edges_moved_by_walk": 5,
+        "edges_moved_by_brace": 5,
+        "edges_moved_by_walk_any_size": 9497,
+        "edges_moved_by_brace_any_size": 8745,
+        "edges_moved_in_opposite_directions_above_0_05": 0,
+        "edges_touched_by_both_above_0_05": 0,
+        "walk_edges_per_action_cell": {
+          "flexion": 0,
+          "locomotion": 5
+        },
+        "brace_edges_per_action_cell": {
+          "flexion": 5,
+          "locomotion": 0
+        },
+        "max_abs_change_walk": 0.549,
+        "max_abs_change_brace": 0.549
+      },
+      "moved_edges": {
+        "walk": [
+          [
+            1804,
+            3,
+            0.549
+          ],
+          [
+            1805,
+            3,
+            0.549
+          ],
+          [
+            1806,
+            3,
+            0.549
+          ],
+          [
+            1807,
+            3,
+            0.44304053350077277
+          ],
+          [
+            1812,
+            3,
+            0.09865487444093764
+          ]
+        ],
+        "brace": [
+          [
+            1808,
+            1,
+            0.44304053350077205
+          ],
+          [
+            1809,
+            1,
+            0.549
+          ],
+          [
+            1810,
+            1,
+            0.549
+          ],
+          [
+            1811,
+            1,
+            0.549
+          ],
+          [
+            1812,
+            1,
+            0.09865487444093764
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "arms": {
+        "birth": {
+          "note": "no lesson at all",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2587614527877662,
+              "min_height": 0.2563629506228442,
+              "up_z": 0.9999923590348503,
+              "moved": 0.020557525544337867
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.2540859810299792,
+              "min_height": 0.25400875175575566,
+              "up_z": 0.9999838566577292,
+              "moved": 0.0013799387518149547
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.2544515824854449,
+              "min_height": 0.25398567851965365,
+              "up_z": 0.9999876952300526,
+              "moved": 0.0003444274401219399
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.2528708968449719,
+              "min_height": 0.2528173785217543,
+              "up_z": 0.9999811950926807,
+              "moved": 0.0005411543761069873
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.25335604549361235,
+              "min_height": 0.2528194917998368,
+              "up_z": 0.9999855692271333,
+              "moved": 0.00037888043975685827
+            }
+          },
+          "walks_on_A": 0.0013799387518149547,
+          "brace_on_B": 0.0036968965958856298
+        },
+        "parent_walk": {
+          "note": "taught cue A -> walk, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2590521942407373,
+              "min_height": 0.25669005182535076,
+              "up_z": 0.9999941762366176,
+              "moved": 0.018524495998542275
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884787155146337,
+              "min_height": 0.1772019294098475,
+              "up_z": 0.992164019732915,
+              "moved": 0.7873436999307909
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.2561719878943796,
+              "min_height": 0.20037904793948239,
+              "up_z": 0.999822085050294,
+              "moved": 0.049586721944613776
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.24698940266902117,
+              "min_height": 0.2463756217251554,
+              "up_z": 0.9997714292230694,
+              "moved": 0.005619146805173834
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541088580720764,
+              "min_height": 0.24642804851496916,
+              "up_z": 0.9998858179000903,
+              "moved": 0.0064054601538359925
+            }
+          },
+          "walks_on_A": 0.7873436999307909,
+          "brace_on_B": 0.0026968965958856293
+        },
+        "parent_brace": {
+          "note": "taught cue B -> brace, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2590068070871344,
+              "min_height": 0.25666528557689317,
+              "up_z": 0.9999940984282231,
+              "moved": 0.017117065102407947
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.00269689659588563,
+              "flexion": 0.10235177103682325,
+              "height": 0.2436661503111427,
+              "min_height": 0.24358134159363312,
+              "up_z": 0.999720190075564,
+              "moved": 0.004268915490018768
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.3569434428970118e-20,
+              "flexion": 1.656059726830718e-13,
+              "height": 0.2545986064155707,
+              "min_height": 0.24357195342310264,
+              "up_z": 0.9999911792193936,
+              "moved": 0.003152107159297831
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.439884105582357e-159,
+              "flexion": 1.0,
+              "height": 0.14617566018102626,
+              "min_height": 0.14179816960653532,
+              "up_z": 0.9850935717016179,
+              "moved": 0.015718848448313907
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 2.5987768262968907e-194,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2545346540634492,
+              "min_height": 0.14611848448789538,
+              "up_z": 0.9999992950830944,
+              "moved": 0.008984098669176575
+            }
+          },
+          "walks_on_A": 0.004268915490018768,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,brace)": {
+          "note": "add the two weight tables and halve",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2590302675622553,
+              "min_height": 0.25667954355715406,
+              "up_z": 0.9999941361557909,
+              "moved": 0.01782103301555183
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.7865119071627866,
+              "flexion": 0.051176558242155855,
+              "height": 0.2176722324752273,
+              "min_height": 0.18843396580441094,
+              "up_z": 0.9917056742009177,
+              "moved": 0.665328573077889
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333523112630585e-14,
+              "flexion": 8.333148887762233e-14,
+              "height": 0.2563981649761167,
+              "min_height": 0.20907981439130371,
+              "up_z": 0.9998727915714332,
+              "moved": 0.049254487903061334
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.051176558242155855,
+              "flexion": 0.7865119071627866,
+              "height": 0.16178806872617876,
+              "min_height": 0.16150408702036556,
+              "up_z": 0.9881723011209023,
+              "moved": 0.00945843956436429
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333148887762233e-14,
+              "flexion": 8.333523112630585e-14,
+              "height": 0.2545144503556885,
+              "min_height": 0.16188586503367902,
+              "up_z": 0.9999962116790816,
+              "moved": 0.013172653671321335
+            }
+          },
+          "walks_on_A": 0.665328573077889,
+          "brace_on_B": 0.7865119071627866
+        },
+        "keep(walk,brace)": {
+          "note": "per edge, keep whichever parent moved it further from birth",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2591132024396769,
+              "min_height": 0.25678793986754916,
+              "up_z": 0.9999943821899013,
+              "moved": 0.016983036829913787
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.09965487444093764,
+              "height": 0.20601981371222955,
+              "min_height": 0.16991423412005952,
+              "up_z": 0.9929996553107254,
+              "moved": 0.9219052267645037
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 1.6772332406759642e-13,
+              "height": 0.25622435859340487,
+              "min_height": 0.18758840586002526,
+              "up_z": 0.9998732491735344,
+              "moved": 0.05015843545710204
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.09965487444093764,
+              "flexion": 1.0,
+              "height": 0.14151495742639952,
+              "min_height": 0.13600818631507508,
+              "up_z": 0.9848023114861661,
+              "moved": 0.01111899493959003
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6772332406759642e-13,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2547998046044744,
+              "min_height": 0.14079096921911377,
+              "up_z": 0.9999999855065834,
+              "moved": 0.009778568908025713
+            }
+          },
+          "walks_on_A": 0.9219052267645037,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,walk)": {
+          "note": "sanity: a parent merged with itself",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2590521942407373,
+              "min_height": 0.25669005182535076,
+              "up_z": 0.9999941762366176,
+              "moved": 0.018524495998542275
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884787155146337,
+              "min_height": 0.1772019294098475,
+              "up_z": 0.992164019732915,
+              "moved": 0.7873436999307909
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.2561719878943796,
+              "min_height": 0.20037904793948239,
+              "up_z": 0.999822085050294,
+              "moved": 0.049586721944613776
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.24698940266902117,
+              "min_height": 0.2463756217251554,
+              "up_z": 0.9997714292230694,
+              "moved": 0.005619146805173834
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541088580720764,
+              "min_height": 0.24642804851496916,
+              "up_z": 0.9998858179000903,
+              "moved": 0.0064054601538359925
+            }
+          },
+          "walks_on_A": 0.7873436999307909,
+          "brace_on_B": 0.0026968965958856293
+        }
+      },
+      "graph": {
+        "neurons": 1813,
+        "edges": 17745,
+        "empty_routes": [
+          "flexion",
+          "locomotion"
+        ],
+        "action_cells": {
+          "flexion": 1,
+          "locomotion": 3
+        },
+        "edges_moved_by_walk": 5,
+        "edges_moved_by_brace": 5,
+        "edges_moved_by_walk_any_size": 9487,
+        "edges_moved_by_brace_any_size": 8772,
+        "edges_moved_in_opposite_directions_above_0_05": 0,
+        "edges_touched_by_both_above_0_05": 0,
+        "walk_edges_per_action_cell": {
+          "flexion": 0,
+          "locomotion": 5
+        },
+        "brace_edges_per_action_cell": {
+          "flexion": 5,
+          "locomotion": 0
+        },
+        "max_abs_change_walk": 0.549,
+        "max_abs_change_brace": 0.549
+      },
+      "moved_edges": {
+        "walk": [
+          [
+            1804,
+            3,
+            0.549
+          ],
+          [
+            1805,
+            3,
+            0.549
+          ],
+          [
+            1806,
+            3,
+            0.549
+          ],
+          [
+            1807,
+            3,
+            0.44304053350077277
+          ],
+          [
+            1812,
+            3,
+            0.09865487444093764
+          ]
+        ],
+        "brace": [
+          [
+            1808,
+            1,
+            0.44304053350077205
+          ],
+          [
+            1809,
+            1,
+            0.549
+          ],
+          [
+            1810,
+            1,
+            0.549
+          ],
+          [
+            1811,
+            1,
+            0.549
+          ],
+          [
+            1812,
+            1,
+            0.09865487444093764
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "arms": {
+        "birth": {
+          "note": "no lesson at all",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.25914432676660065,
+              "min_height": 0.25675217112383264,
+              "up_z": 0.9999954351065111,
+              "moved": 0.01917151716320054
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.2543691574945797,
+              "min_height": 0.2542863226228709,
+              "up_z": 0.9999872950312299,
+              "moved": 0.0015165261682246365
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.254701363650044,
+              "min_height": 0.2542617715344283,
+              "up_z": 0.9999902844519489,
+              "moved": 0.00031352690447112024
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.253056033709122,
+              "min_height": 0.252998802211256,
+              "up_z": 0.9999833678829679,
+              "moved": 0.0005779309300725801
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.2535215540340877,
+              "min_height": 0.2530005998243644,
+              "up_z": 0.999987185044889,
+              "moved": 0.000362689246451533
+            }
+          },
+          "walks_on_A": 0.0015165261682246365,
+          "brace_on_B": 0.0036968965958856298
+        },
+        "parent_walk": {
+          "note": "taught cue A -> walk, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2594218259047664,
+              "min_height": 0.25706295742186436,
+              "up_z": 0.9999968347996452,
+              "moved": 0.017169756633146616
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884238716685134,
+              "min_height": 0.17759953282632918,
+              "up_z": 0.9921668490848506,
+              "moved": 0.786175482227832
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.256163997706305,
+              "min_height": 0.20040910969403786,
+              "up_z": 0.9998214002040788,
+              "moved": 0.04949572421371104
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.2469833001544579,
+              "min_height": 0.2463696100724791,
+              "up_z": 0.9997709349286384,
+              "moved": 0.005609095102431672
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541035868642943,
+              "min_height": 0.24642221190462055,
+              "up_z": 0.9998855076299533,
+              "moved": 0.00640651185779278
+            }
+          },
+          "walks_on_A": 0.786175482227832,
+          "brace_on_B": 0.0026968965958856293
+        },
+        "parent_brace": {
+          "note": "taught cue B -> brace, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2593811800702848,
+              "min_height": 0.2570460518701835,
+              "up_z": 0.9999968129698767,
+              "moved": 0.015760170687158414
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.00269689659588563,
+              "flexion": 0.10235177103682325,
+              "height": 0.24395028839214564,
+              "min_height": 0.2438585279761553,
+              "up_z": 0.9997354715880795,
+              "moved": 0.004397280791592291
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.3569434428970118e-20,
+              "flexion": 1.656059726830718e-13,
+              "height": 0.2548406512832251,
+              "min_height": 0.24384759174799767,
+              "up_z": 0.9999933709930957,
+              "moved": 0.0031179234990066813
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.439884105582357e-159,
+              "flexion": 1.0,
+              "height": 0.14619147734513038,
+              "min_height": 0.14190389892426397,
+              "up_z": 0.9851185346974002,
+              "moved": 0.016018646988055177
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 2.5987768262968907e-194,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2545198538211292,
+              "min_height": 0.1461299259051189,
+              "up_z": 0.9999992256064814,
+              "moved": 0.0089757448320157
+            }
+          },
+          "walks_on_A": 0.004397280791592291,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,brace)": {
+          "note": "add the two weight tables and halve",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2594022674271178,
+              "min_height": 0.2570564307477201,
+              "up_z": 0.9999968216920158,
+              "moved": 0.016465197192071148
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.7865119071627866,
+              "flexion": 0.051176558242155855,
+              "height": 0.21767231370954693,
+              "min_height": 0.18870669827742245,
+              "up_z": 0.9917056016121486,
+              "moved": 0.6646260585713755
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333523112630585e-14,
+              "flexion": 8.333148887762233e-14,
+              "height": 0.2563981426385375,
+              "min_height": 0.20907989474415684,
+              "up_z": 0.999872789215044,
+              "moved": 0.04925455807115856
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.051176558242155855,
+              "flexion": 0.7865119071627866,
+              "height": 0.16178775902968132,
+              "min_height": 0.1615037694378111,
+              "up_z": 0.98817227723815,
+              "moved": 0.009458310997278724
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333148887762233e-14,
+              "flexion": 8.333523112630585e-14,
+              "height": 0.2545144202111279,
+              "min_height": 0.16188554454777274,
+              "up_z": 0.9999962121187432,
+              "moved": 0.013172763762275982
+            }
+          },
+          "walks_on_A": 0.6646260585713755,
+          "brace_on_B": 0.7865119071627866
+        },
+        "keep(walk,brace)": {
+          "note": "per edge, keep whichever parent moved it further from birth",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.25948175163151954,
+              "min_height": 0.2571610479745183,
+              "up_z": 0.9999970318555793,
+              "moved": 0.015628460601474783
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.09965487444093764,
+              "height": 0.20600403022961708,
+              "min_height": 0.17023535084648428,
+              "up_z": 0.9930024622456664,
+              "moved": 0.917523538444901
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 1.6772332406759642e-13,
+              "height": 0.2562281180966331,
+              "min_height": 0.18762203238090397,
+              "up_z": 0.9998732788741207,
+              "moved": 0.05028429570799969
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.09965487444093764,
+              "flexion": 1.0,
+              "height": 0.1415157610575172,
+              "min_height": 0.13600978961801125,
+              "up_z": 0.9848027794648394,
+              "moved": 0.011111451849978622
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6772332406759642e-13,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2547999291043946,
+              "min_height": 0.14079175202227853,
+              "up_z": 0.9999999855845246,
+              "moved": 0.009778105498856875
+            }
+          },
+          "walks_on_A": 0.917523538444901,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,walk)": {
+          "note": "sanity: a parent merged with itself",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2594218259047664,
+              "min_height": 0.25706295742186436,
+              "up_z": 0.9999968347996452,
+              "moved": 0.017169756633146616
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884238716685134,
+              "min_height": 0.17759953282632918,
+              "up_z": 0.9921668490848506,
+              "moved": 0.786175482227832
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.256163997706305,
+              "min_height": 0.20040910969403786,
+              "up_z": 0.9998214002040788,
+              "moved": 0.04949572421371104
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.2469833001544579,
+              "min_height": 0.2463696100724791,
+              "up_z": 0.9997709349286384,
+              "moved": 0.005609095102431672
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541035868642943,
+              "min_height": 0.24642221190462055,
+              "up_z": 0.9998855076299533,
+              "moved": 0.00640651185779278
+            }
+          },
+          "walks_on_A": 0.786175482227832,
+          "brace_on_B": 0.0026968965958856293
+        }
+      },
+      "graph": {
+        "neurons": 1813,
+        "edges": 17745,
+        "empty_routes": [
+          "flexion",
+          "locomotion"
+        ],
+        "action_cells": {
+          "flexion": 1,
+          "locomotion": 3
+        },
+        "edges_moved_by_walk": 5,
+        "edges_moved_by_brace": 5,
+        "edges_moved_by_walk_any_size": 9382,
+        "edges_moved_by_brace_any_size": 8688,
+        "edges_moved_in_opposite_directions_above_0_05": 0,
+        "edges_touched_by_both_above_0_05": 0,
+        "walk_edges_per_action_cell": {
+          "flexion": 0,
+          "locomotion": 5
+        },
+        "brace_edges_per_action_cell": {
+          "flexion": 5,
+          "locomotion": 0
+        },
+        "max_abs_change_walk": 0.549,
+        "max_abs_change_brace": 0.549
+      },
+      "moved_edges": {
+        "walk": [
+          [
+            1804,
+            3,
+            0.549
+          ],
+          [
+            1805,
+            3,
+            0.549
+          ],
+          [
+            1806,
+            3,
+            0.549
+          ],
+          [
+            1807,
+            3,
+            0.44304053350077277
+          ],
+          [
+            1812,
+            3,
+            0.09865487444093764
+          ]
+        ],
+        "brace": [
+          [
+            1808,
+            1,
+            0.44304053350077205
+          ],
+          [
+            1809,
+            1,
+            0.549
+          ],
+          [
+            1810,
+            1,
+            0.549
+          ],
+          [
+            1811,
+            1,
+            0.549
+          ],
+          [
+            1812,
+            1,
+            0.09865487444093764
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "arms": {
+        "birth": {
+          "note": "no lesson at all",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2590693151028599,
+              "min_height": 0.25664815830256443,
+              "up_z": 0.9999938341985558,
+              "moved": 0.018818479091423316
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.25428516502853826,
+              "min_height": 0.25420372240172373,
+              "up_z": 0.9999856495544257,
+              "moved": 0.0014672885874669895
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.2546285576153108,
+              "min_height": 0.25417998808696274,
+              "up_z": 0.9999890718875953,
+              "moved": 0.0003288192451832537
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.2529969099007645,
+              "min_height": 0.2529403219697708,
+              "up_z": 0.9999825021870689,
+              "moved": 0.0005639459196567077
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.2534683525716559,
+              "min_height": 0.25294207824420073,
+              "up_z": 0.9999865696796663,
+              "moved": 0.00036848819468717647
+            }
+          },
+          "walks_on_A": 0.0014672885874669895,
+          "brace_on_B": 0.0036968965958856298
+        },
+        "parent_walk": {
+          "note": "taught cue A -> walk, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.25935524671575877,
+              "min_height": 0.2569704606002062,
+              "up_z": 0.9999956288996811,
+              "moved": 0.01682226225773975
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.2188479105624873,
+              "min_height": 0.1773218363626863,
+              "up_z": 0.9921639994954567,
+              "moved": 0.7876727540618846
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.2561719882054971,
+              "min_height": 0.20037904852830404,
+              "up_z": 0.9998220863643517,
+              "moved": 0.0495867411602215
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.24698939553381202,
+              "min_height": 0.246375609353934,
+              "up_z": 0.999771431636983,
+              "moved": 0.005619114319412
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541088536204055,
+              "min_height": 0.24642805150912017,
+              "up_z": 0.9998858192134612,
+              "moved": 0.00640545246795451
+            }
+          },
+          "walks_on_A": 0.7876727540618846,
+          "brace_on_B": 0.0026968965958856293
+        },
+        "parent_brace": {
+          "note": "taught cue B -> brace, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2593100501870051,
+              "min_height": 0.2569477717858015,
+              "up_z": 0.9999955165805382,
+              "moved": 0.01542497319663216
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.00269689659588563,
+              "flexion": 0.10235177103682325,
+              "height": 0.24385959556483583,
+              "min_height": 0.24376998893150723,
+              "up_z": 0.9997279739239242,
+              "moved": 0.004362524632245738
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.3569434428970118e-20,
+              "flexion": 1.656059726830718e-13,
+              "height": 0.25477052009285756,
+              "min_height": 0.24375969513096155,
+              "up_z": 0.9999923819524512,
+              "moved": 0.003154396577920157
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.439884105582357e-159,
+              "flexion": 1.0,
+              "height": 0.14619825772802642,
+              "min_height": 0.14188043543698192,
+              "up_z": 0.9850971218501688,
+              "moved": 0.015789274018717197
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 2.5987768262968907e-194,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.25454273670714517,
+              "min_height": 0.14613867279328252,
+              "up_z": 0.9999992916025952,
+              "moved": 0.008991204140316629
+            }
+          },
+          "walks_on_A": 0.004362524632245738,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,brace)": {
+          "note": "add the two weight tables and halve",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.25933405245626384,
+              "min_height": 0.25696186816049127,
+              "up_z": 0.9999955713232367,
+              "moved": 0.01612284718866752
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.7865119071627866,
+              "flexion": 0.051176558242155855,
+              "height": 0.21767227086267163,
+              "min_height": 0.18867724371145173,
+              "up_z": 0.9917056434529984,
+              "moved": 0.6633987524305156
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333523112630585e-14,
+              "flexion": 8.333148887762233e-14,
+              "height": 0.2563981532773532,
+              "min_height": 0.20907989209154987,
+              "up_z": 0.9998727904331892,
+              "moved": 0.049254522818629964
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.051176558242155855,
+              "flexion": 0.7865119071627866,
+              "height": 0.16178794730243265,
+              "min_height": 0.1615039610760634,
+              "up_z": 0.9881722826857814,
+              "moved": 0.009458429948697784
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333148887762233e-14,
+              "flexion": 8.333523112630585e-14,
+              "height": 0.2545144339964823,
+              "min_height": 0.16188573912046278,
+              "up_z": 0.9999962118183656,
+              "moved": 0.013172727380580312
+            }
+          },
+          "walks_on_A": 0.6633987524305156,
+          "brace_on_B": 0.7865119071627866
+        },
+        "keep(walk,brace)": {
+          "note": "per edge, keep whichever parent moved it further from birth",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2594129908940942,
+              "min_height": 0.2570658446832091,
+              "up_z": 0.9999957778749876,
+              "moved": 0.01529327660478018
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.09965487444093764,
+              "height": 0.20601897739177832,
+              "min_height": 0.1700352380724976,
+              "up_z": 0.9929998030600111,
+              "moved": 0.9226465318681942
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 1.6772332406759642e-13,
+              "height": 0.25622430102537885,
+              "min_height": 0.1875883734414408,
+              "up_z": 0.9998732488562441,
+              "moved": 0.050158295028918456
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.09965487444093764,
+              "flexion": 1.0,
+              "height": 0.14151502061950988,
+              "min_height": 0.13600817048663866,
+              "up_z": 0.9848024505632105,
+              "moved": 0.011118575395545999
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6772332406759642e-13,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2547997811815885,
+              "min_height": 0.14079095530427901,
+              "up_z": 0.9999999855074777,
+              "moved": 0.00977829592302965
+            }
+          },
+          "walks_on_A": 0.9226465318681942,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,walk)": {
+          "note": "sanity: a parent merged with itself",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.25935524671575877,
+              "min_height": 0.2569704606002062,
+              "up_z": 0.9999956288996811,
+              "moved": 0.01682226225773975
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.2188479105624873,
+              "min_height": 0.1773218363626863,
+              "up_z": 0.9921639994954567,
+              "moved": 0.7876727540618846
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.2561719882054971,
+              "min_height": 0.20037904852830404,
+              "up_z": 0.9998220863643517,
+              "moved": 0.0495867411602215
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.24698939553381202,
+              "min_height": 0.246375609353934,
+              "up_z": 0.999771431636983,
+              "moved": 0.005619114319412
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541088536204055,
+              "min_height": 0.24642805150912017,
+              "up_z": 0.9998858192134612,
+              "moved": 0.00640545246795451
+            }
+          },
+          "walks_on_A": 0.7876727540618846,
+          "brace_on_B": 0.0026968965958856293
+        }
+      },
+      "graph": {
+        "neurons": 1813,
+        "edges": 17745,
+        "empty_routes": [
+          "flexion",
+          "locomotion"
+        ],
+        "action_cells": {
+          "flexion": 1,
+          "locomotion": 3
+        },
+        "edges_moved_by_walk": 5,
+        "edges_moved_by_brace": 5,
+        "edges_moved_by_walk_any_size": 9412,
+        "edges_moved_by_brace_any_size": 8707,
+        "edges_moved_in_opposite_directions_above_0_05": 0,
+        "edges_touched_by_both_above_0_05": 0,
+        "walk_edges_per_action_cell": {
+          "flexion": 0,
+          "locomotion": 5
+        },
+        "brace_edges_per_action_cell": {
+          "flexion": 5,
+          "locomotion": 0
+        },
+        "max_abs_change_walk": 0.549,
+        "max_abs_change_brace": 0.549
+      },
+      "moved_edges": {
+        "walk": [
+          [
+            1804,
+            3,
+            0.549
+          ],
+          [
+            1805,
+            3,
+            0.549
+          ],
+          [
+            1806,
+            3,
+            0.549
+          ],
+          [
+            1807,
+            3,
+            0.44304053350077277
+          ],
+          [
+            1812,
+            3,
+            0.09865487444093764
+          ]
+        ],
+        "brace": [
+          [
+            1808,
+            1,
+            0.44304053350077205
+          ],
+          [
+            1809,
+            1,
+            0.549
+          ],
+          [
+            1810,
+            1,
+            0.549
+          ],
+          [
+            1811,
+            1,
+            0.549
+          ],
+          [
+            1812,
+            1,
+            0.09865487444093764
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 4,
+      "arms": {
+        "birth": {
+          "note": "no lesson at all",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2585107757840717,
+              "min_height": 0.25605371851408365,
+              "up_z": 0.9999956655022273,
+              "moved": 0.020502915980591285
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.2538976888196893,
+              "min_height": 0.2538260355080468,
+              "up_z": 0.9999897573622636,
+              "moved": 0.0015171002474013695
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.25426796373018185,
+              "min_height": 0.25380374407451906,
+              "up_z": 0.9999922091956311,
+              "moved": 0.00028976824474490423
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0036968965958856298,
+              "flexion": 0.0036968965958856298,
+              "height": 0.2527660317104379,
+              "min_height": 0.2527149600252215,
+              "up_z": 0.9999852982190691,
+              "moved": 0.0006239173142502136
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6618084394062622e-15,
+              "flexion": 1.6618084394062622e-15,
+              "height": 0.25325448924625155,
+              "min_height": 0.2527171518013556,
+              "up_z": 0.9999886744909859,
+              "moved": 0.0003431402739230474
+            }
+          },
+          "walks_on_A": 0.0015171002474013695,
+          "brace_on_B": 0.0036968965958856298
+        },
+        "parent_walk": {
+          "note": "taught cue A -> walk, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2587923480770456,
+              "min_height": 0.25636551603019014,
+              "up_z": 0.9999968638873392,
+              "moved": 0.018454721852492348
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884241425652703,
+              "min_height": 0.17685147283210725,
+              "up_z": 0.9921668173471737,
+              "moved": 0.7859339059812362
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.25616405560597266,
+              "min_height": 0.20040905688849522,
+              "up_z": 0.9998213913753411,
+              "moved": 0.04949577854030203
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.24698336784759684,
+              "min_height": 0.24636966663530996,
+              "up_z": 0.9997709252136123,
+              "moved": 0.005609047504607485
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541036290484261,
+              "min_height": 0.24642229437608623,
+              "up_z": 0.9998855005587152,
+              "moved": 0.0064064855613548775
+            }
+          },
+          "walks_on_A": 0.7859339059812362,
+          "brace_on_B": 0.0026968965958856293
+        },
+        "parent_brace": {
+          "note": "taught cue B -> brace, nothing else",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2587541930795022,
+              "min_height": 0.2563507821098833,
+              "up_z": 0.999997034067141,
+              "moved": 0.017034555533127934
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.00269689659588563,
+              "flexion": 0.10235177103682325,
+              "height": 0.24345825973030016,
+              "min_height": 0.2433789329367986,
+              "up_z": 0.9997474151974456,
+              "moved": 0.00444697189906128
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.3569434428970118e-20,
+              "flexion": 1.656059726830718e-13,
+              "height": 0.2544257934890186,
+              "min_height": 0.2433699164922185,
+              "up_z": 0.9999950032016942,
+              "moved": 0.0031302772795530082
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.439884105582357e-159,
+              "flexion": 1.0,
+              "height": 0.14608448617703038,
+              "min_height": 0.14159528467401106,
+              "up_z": 0.9851519121835411,
+              "moved": 0.01604564411682356
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 2.5987768262968907e-194,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.25447823070105585,
+              "min_height": 0.1460312084947029,
+              "up_z": 0.9999991277654771,
+              "moved": 0.008960044960899914
+            }
+          },
+          "walks_on_A": 0.00444697189906128,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,brace)": {
+          "note": "add the two weight tables and halve",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.25877380637965613,
+              "min_height": 0.2563588427206759,
+              "up_z": 0.9999969517808868,
+              "moved": 0.017745216356043144
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.7865119071627866,
+              "flexion": 0.051176558242155855,
+              "height": 0.21767238402467728,
+              "min_height": 0.18812439361949188,
+              "up_z": 0.9917055414205492,
+              "moved": 0.6649283206480162
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333523112630585e-14,
+              "flexion": 8.333148887762233e-14,
+              "height": 0.2563981823781487,
+              "min_height": 0.20907989836747132,
+              "up_z": 0.9998727804070531,
+              "moved": 0.04925444342361188
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.051176558242155855,
+              "flexion": 0.7865119071627866,
+              "height": 0.1617874632085493,
+              "min_height": 0.16150346665753212,
+              "up_z": 0.9881722657275073,
+              "moved": 0.009457896882441003
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 8.333148887762233e-14,
+              "flexion": 8.333523112630585e-14,
+              "height": 0.25451443500947724,
+              "min_height": 0.16188524267274224,
+              "up_z": 0.9999962115156792,
+              "moved": 0.013172705551185224
+            }
+          },
+          "walks_on_A": 0.6649283206480162,
+          "brace_on_B": 0.7865119071627866
+        },
+        "keep(walk,brace)": {
+          "note": "per edge, keep whichever parent moved it further from birth",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2588541466234511,
+              "min_height": 0.256463178911711,
+              "up_z": 0.999997180979767,
+              "moved": 0.0169014577320637
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.09965487444093764,
+              "height": 0.20599942747275685,
+              "min_height": 0.16956620744819123,
+              "up_z": 0.9930050387653373,
+              "moved": 0.921570577324241
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 1.6772332406759642e-13,
+              "height": 0.25622981080916996,
+              "min_height": 0.1875972963215846,
+              "up_z": 0.9998733376437887,
+              "moved": 0.05017963760452524
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.09965487444093764,
+              "flexion": 1.0,
+              "height": 0.14151585817033221,
+              "min_height": 0.1360100140950451,
+              "up_z": 0.9848030588895708,
+              "moved": 0.011111306923150323
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.6772332406759642e-13,
+              "flexion": 1.677308390784287e-13,
+              "height": 0.2547999939595593,
+              "min_height": 0.14079184293488994,
+              "up_z": 0.9999999855860188,
+              "moved": 0.009777423653492217
+            }
+          },
+          "walks_on_A": 0.921570577324241,
+          "brace_on_B": 1.0
+        },
+        "mean(walk,walk)": {
+          "note": "sanity: a parent merged with itself",
+          "stages": {
+            "neutral_0": {
+              "seconds": 1.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.0,
+              "flexion": 0.0,
+              "height": 0.2587923480770456,
+              "min_height": 0.25636551603019014,
+              "up_z": 0.9999968638873392,
+              "moved": 0.018454721852492348
+            },
+            "A": {
+              "seconds": 8.0,
+              "cue": "A",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.0,
+              "flexion": 0.0,
+              "height": 0.21884241425652703,
+              "min_height": 0.17685147283210725,
+              "up_z": 0.9921668173471737,
+              "moved": 0.7859339059812362
+            },
+            "neutral_2": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.677308390784287e-13,
+              "flexion": 0.0,
+              "height": 0.25616405560597266,
+              "min_height": 0.20040905688849522,
+              "up_z": 0.9998213913753411,
+              "moved": 0.04949577854030203
+            },
+            "B": {
+              "seconds": 8.0,
+              "cue": "B",
+              "drive": null,
+              "learning": false,
+              "locomotion": 0.10235177103682325,
+              "flexion": 0.0026968965958856293,
+              "height": 0.24698336784759684,
+              "min_height": 0.24636966663530996,
+              "up_z": 0.9997709252136123,
+              "moved": 0.005609047504607485
+            },
+            "neutral_4": {
+              "seconds": 2.0,
+              "cue": "neutral",
+              "drive": null,
+              "learning": false,
+              "locomotion": 1.656059726830718e-13,
+              "flexion": 1.3569434428970106e-20,
+              "height": 0.2541036290484261,
+              "min_height": 0.24642229437608623,
+              "up_z": 0.9998855005587152,
+              "moved": 0.0064064855613548775
+            }
+          },
+          "walks_on_A": 0.7859339059812362,
+          "brace_on_B": 0.0026968965958856293
+        }
+      },
+      "graph": {
+        "neurons": 1813,
+        "edges": 17745,
+        "empty_routes": [
+          "flexion",
+          "locomotion"
+        ],
+        "action_cells": {
+          "flexion": 1,
+          "locomotion": 3
+        },
+        "edges_moved_by_walk": 5,
+        "edges_moved_by_brace": 5,
+        "edges_moved_by_walk_any_size": 9463,
+        "edges_moved_by_brace_any_size": 8761,
+        "edges_moved_in_opposite_directions_above_0_05": 0,
+        "edges_touched_by_both_above_0_05": 0,
+        "walk_edges_per_action_cell": {
+          "flexion": 0,
+          "locomotion": 5
+        },
+        "brace_edges_per_action_cell": {
+          "flexion": 5,
+          "locomotion": 0
+        },
+        "max_abs_change_walk": 0.549,
+        "max_abs_change_brace": 0.549
+      },
+      "moved_edges": {
+        "walk": [
+          [
+            1804,
+            3,
+            0.549
+          ],
+          [
+            1805,
+            3,
+            0.549
+          ],
+          [
+            1806,
+            3,
+            0.549
+          ],
+          [
+            1807,
+            3,
+            0.44304053350077277
+          ],
+          [
+            1812,
+            3,
+            0.09865487444093764
+          ]
+        ],
+        "brace": [
+          [
+            1808,
+            1,
+            0.44304053350077205
+          ],
+          [
+            1809,
+            1,
+            0.549
+          ],
+          [
+            1810,
+            1,
+            0.549
+          ],
+          [
+            1811,
+            1,
+            0.549
+          ],
+          [
+            1812,
+            1,
+            0.09865487444093764
+          ]
+        ]
+      }
+    }
+  ],
+  "wall_seconds": 165.2074608999974,
+  "scope": "One Go2 body, one graph, one edge list and one birth weight vector for every arm; the only difference between parents is which cue-action pairing was taught. Merging is an arithmetic operation on the weight vector and nothing is retrained afterwards."
+}

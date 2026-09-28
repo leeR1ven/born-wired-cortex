@@ -1,0 +1,36 @@
+seed 0 {'neurons': 1813, 'edges': 17745, 'empty_routes': ['flexion', 'locomotion'], 'action_cells': {'flexion': 1, 'locomotion': 3}, 'edges_moved_by_walk': 5, 'edges_moved_by_brace': 5, 'edges_moved_by_walk_any_size': 9497, 'edges_moved_by_brace_any_size': 8745, 'edges_moved_in_opposite_directions_above_0_05': 0, 'edges_touched_by_both_above_0_05': 0, 'walk_edges_per_action_cell': {'flexion': 0, 'locomotion': 5}, 'brace_edges_per_action_cell': {'flexion': 5, 'locomotion': 0}, 'max_abs_change_walk': 0.549, 'max_abs_change_brace': 0.549}
+   birth                walked on cue A +0.002 m   brace on cue B +0.004   (cue B locomotion +0.004, cue A flexion +0.004)
+   parent_walk          walked on cue A +0.787 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+   parent_brace         walked on cue A +0.005 m   brace on cue B +1.000   (cue B locomotion +0.000, cue A flexion +0.102)
+   mean(walk,brace)     walked on cue A +0.664 m   brace on cue B +0.787   (cue B locomotion +0.051, cue A flexion +0.051)
+   keep(walk,brace)     walked on cue A +0.921 m   brace on cue B +1.000   (cue B locomotion +0.100, cue A flexion +0.100)
+   mean(walk,walk)      walked on cue A +0.787 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+seed 1 {'neurons': 1813, 'edges': 17745, 'empty_routes': ['flexion', 'locomotion'], 'action_cells': {'flexion': 1, 'locomotion': 3}, 'edges_moved_by_walk': 5, 'edges_moved_by_brace': 5, 'edges_moved_by_walk_any_size': 9487, 'edges_moved_by_brace_any_size': 8772, 'edges_moved_in_opposite_directions_above_0_05': 0, 'edges_touched_by_both_above_0_05': 0, 'walk_edges_per_action_cell': {'flexion': 0, 'locomotion': 5}, 'brace_edges_per_action_cell': {'flexion': 5, 'locomotion': 0}, 'max_abs_change_walk': 0.549, 'max_abs_change_brace': 0.549}
+   birth                walked on cue A +0.001 m   brace on cue B +0.004   (cue B locomotion +0.004, cue A flexion +0.004)
+   parent_walk          walked on cue A +0.787 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+   parent_brace         walked on cue A +0.004 m   brace on cue B +1.000   (cue B locomotion +0.000, cue A flexion +0.102)
+   mean(walk,brace)     walked on cue A +0.665 m   brace on cue B +0.787   (cue B locomotion +0.051, cue A flexion +0.051)
+   keep(walk,brace)     walked on cue A +0.922 m   brace on cue B +1.000   (cue B locomotion +0.100, cue A flexion +0.100)
+   mean(walk,walk)      walked on cue A +0.787 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+seed 2 {'neurons': 1813, 'edges': 17745, 'empty_routes': ['flexion', 'locomotion'], 'action_cells': {'flexion': 1, 'locomotion': 3}, 'edges_moved_by_walk': 5, 'edges_moved_by_brace': 5, 'edges_moved_by_walk_any_size': 9382, 'edges_moved_by_brace_any_size': 8688, 'edges_moved_in_opposite_directions_above_0_05': 0, 'edges_touched_by_both_above_0_05': 0, 'walk_edges_per_action_cell': {'flexion': 0, 'locomotion': 5}, 'brace_edges_per_action_cell': {'flexion': 5, 'locomotion': 0}, 'max_abs_change_walk': 0.549, 'max_abs_change_brace': 0.549}
+   birth                walked on cue A +0.002 m   brace on cue B +0.004   (cue B locomotion +0.004, cue A flexion +0.004)
+   parent_walk          walked on cue A +0.786 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+   parent_brace         walked on cue A +0.004 m   brace on cue B +1.000   (cue B locomotion +0.000, cue A flexion +0.102)
+   mean(walk,brace)     walked on cue A +0.665 m   brace on cue B +0.787   (cue B locomotion +0.051, cue A flexion +0.051)
+   keep(walk,brace)     walked on cue A +0.918 m   brace on cue B +1.000   (cue B locomotion +0.100, cue A flexion +0.100)
+   mean(walk,walk)      walked on cue A +0.786 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+seed 3 {'neurons': 1813, 'edges': 17745, 'empty_routes': ['flexion', 'locomotion'], 'action_cells': {'flexion': 1, 'locomotion': 3}, 'edges_moved_by_walk': 5, 'edges_moved_by_brace': 5, 'edges_moved_by_walk_any_size': 9412, 'edges_moved_by_brace_any_size': 8707, 'edges_moved_in_opposite_directions_above_0_05': 0, 'edges_touched_by_both_above_0_05': 0, 'walk_edges_per_action_cell': {'flexion': 0, 'locomotion': 5}, 'brace_edges_per_action_cell': {'flexion': 5, 'locomotion': 0}, 'max_abs_change_walk': 0.549, 'max_abs_change_brace': 0.549}
+   birth                walked on cue A +0.001 m   brace on cue B +0.004   (cue B locomotion +0.004, cue A flexion +0.004)
+   parent_walk          walked on cue A +0.788 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+   parent_brace         walked on cue A +0.004 m   brace on cue B +1.000   (cue B locomotion +0.000, cue A flexion +0.102)
+   mean(walk,brace)     walked on cue A +0.663 m   brace on cue B +0.787   (cue B locomotion +0.051, cue A flexion +0.051)
+   keep(walk,brace)     walked on cue A +0.923 m   brace on cue B +1.000   (cue B locomotion +0.100, cue A flexion +0.100)
+   mean(walk,walk)      walked on cue A +0.788 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+seed 4 {'neurons': 1813, 'edges': 17745, 'empty_routes': ['flexion', 'locomotion'], 'action_cells': {'flexion': 1, 'locomotion': 3}, 'edges_moved_by_walk': 5, 'edges_moved_by_brace': 5, 'edges_moved_by_walk_any_size': 9463, 'edges_moved_by_brace_any_size': 8761, 'edges_moved_in_opposite_directions_above_0_05': 0, 'edges_touched_by_both_above_0_05': 0, 'walk_edges_per_action_cell': {'flexion': 0, 'locomotion': 5}, 'brace_edges_per_action_cell': {'flexion': 5, 'locomotion': 0}, 'max_abs_change_walk': 0.549, 'max_abs_change_brace': 0.549}
+   birth                walked on cue A +0.002 m   brace on cue B +0.004   (cue B locomotion +0.004, cue A flexion +0.004)
+   parent_walk          walked on cue A +0.786 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+   parent_brace         walked on cue A +0.004 m   brace on cue B +1.000   (cue B locomotion +0.000, cue A flexion +0.102)
+   mean(walk,brace)     walked on cue A +0.665 m   brace on cue B +0.787   (cue B locomotion +0.051, cue A flexion +0.051)
+   keep(walk,brace)     walked on cue A +0.922 m   brace on cue B +1.000   (cue B locomotion +0.100, cue A flexion +0.100)
+   mean(walk,walk)      walked on cue A +0.786 m   brace on cue B +0.003   (cue B locomotion +0.102, cue A flexion +0.000)
+wall 165.2 s -> F:\born-wired-cortex-v2\artifacts\fusion_robot_parents.json

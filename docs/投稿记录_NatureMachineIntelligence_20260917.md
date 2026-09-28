@@ -67,9 +67,11 @@
 | RSID | **rs-11070398** |
 | 私有仪表盘 | https://www.researchsquare.com/article/rs-11070398/private/timeline |
 | 2026-09-18 | 选择加入 In Review（"审核中"预印本服务），系统标记 `hasOptedInToPreprint = true` |
-| 当前状态 | 预印本尚未发布（`isPublished = false`，草稿） |
-| 本次选择 | **等待自动发布**：最多 3 周内，预印本连同"正在 Nature Machine Intelligence 审议中"的期刊信息一起发布，并分配 DOI |
-| 另一条路（未选） | 页面上的"发布我的预印本"可立即发布，但暂不带期刊信息；期刊信息后续自动补上 |
+| 2026-09 下旬 | **预印本已发布**（`isPublished = true`），分配 DOI `10.21203/rs.3.rs-11070398/v1` |
+| 当前状态 | 已上线，可引用、可分享；全文随 DOI 永久公开 |
+| 引用格式 | Li, Z. *Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look.* Preprint at https://doi.org/10.21203/rs.3.rs-11070398/v1 (2026). |
+| 当时的选择 | 等待自动发布（连同期刊信息）；期刊那条线 2026-09-18 结束后，改为在仪表盘直接发布（见上行） |
+| 备注 | 页面上的「发布我的预印本」可立即发布，但暂不带期刊信息；期刊信息后续自动补上 |
 
 ## 六、编辑退稿（2026-09-18）
 
@@ -86,7 +88,7 @@ Nature Machine Intelligence 编辑部直接退稿，**没有送外审**（desk r
 
 ## 七、后续待办
 
-1. **预印本**：原本在等"连同期刊信息一起发布"，现在期刊这条线已结束，等待没有意义 → 改为直接在仪表盘按"发布我的预印本"，尽快拿到 DOI，并补进第五节。
+1. **预印本**：~~待办~~ **已完成（2026-09 下旬）**：预印本已发布，DOI `10.21203/rs.3.rs-11070398/v1`，RSID `rs-11070398`（见第五节）。
 2. **转投**：首选 PLOS Computational Biology（全长版已备好：`paper/Born_wired_manuscript.pdf`，含 Author Summary、218 词摘要）；备选 TMLR（免费、滚动投稿、不因"重要性"直接退稿）。
 3. **补证据**（等拿到真实审稿意见再决定要不要做）：同条件强化学习对照、规模放大试验。这两条都需要额外算力，先用审稿意见判断值不值得做。
 

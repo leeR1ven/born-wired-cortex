@@ -9,8 +9,11 @@ Suzhou, Jiangsu, China.
 
 *Version of 2026-09-28. Sections R12, R13, R14, R15, R16, R17 and Methods 5.12 and 5.13 were added
 on this date and describe the rebuilt engine, the nursery, the hidden-layer routes, the cost of a
-larger sheet, the eyes and the ears; the two PDF files in this directory are the 2026-09-17 build
-and do not contain them, and Supplementary Figures 5 and 6 are new with this version. Every number
+larger sheet, the eyes and the ears; R18, claim (P9), Figure 11 and Methods 5.14 were added the same
+day and describe the merge of two taught models. The full manuscript PDF in this directory was
+re-typeset from this file on 2026-09-28 and contains all of it (49 pages, 11 figures); the
+Nature Machine Intelligence short PDF is still the 2026-09-17 build and contains none of it, and
+Supplementary Figures 5 and 6 are new with this version. Every number
 quoted below was produced by the script named next to it; the scripts and the log of every run are
 in the repository, and Section 5.9 says where to find them. Experiments whose outcome contradicted
 our prediction are reported as such and are listed in Section 4.5.*
@@ -19,11 +22,20 @@ our prediction are reported as such and are listed in Section 4.5.*
 
 **Abstract**
 
-Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 584,137 cells and 1,812,331 synapses at 11.2 ms per tick on one consumer GPU, four times the cells of the reference build at about a tenth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden.
+Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 584,137 cells and 1,812,331 synapses at 11.2 ms per tick on one consumer GPU, four times the cells of the reference build at about a tenth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. Two brains that differ only in what they were taught differ only in the numbers written on their
+edges: adding two such weight tables and halving them gives a third model that was never taught
+anything and holds both lessons, both on a 17-cell graph (both cues answered, margins +1.000 and
++1.000, 5/5 seeds) and on the 1,813-cell body, where the merged animal walks 0.66 m on the cue one
+parent learned and braces on the cue the other learned, while a parent merged with itself reproduces
+its own behaviour to three decimals and two parents taught opposite answers to one cue merge into no
+answer at all. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden.
 
 ## Author Summary
 
-Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  Since then I have measured three things the first version had wrong or left out. The middle layers of a sensory network are not just a way station: they still carry the detail the last layer has thrown away, and I could make the body use it -- two things the last layer could not tell apart drove two different muscles, and that held for ten minutes with learning running the whole time. The sheet pays for what is switched on inside it and not for how many cells it has, so a bigger one is affordable, and "too small" turns out to be a measurement rather than an opinion: with ten cells per muscle, forces of 0.50, 0.51, 0.52 and 0.54 all produce the same pattern, and with a hundred they do not. The eyes now converge, focus and look at whatever is moving without any of that being written into the code, and the ears tell front from back and left from right from two raw sound waves. The animal still falls over after a while, and I report that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
+Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  Since then I have measured three things the first version had wrong or left out, and one thing it had not tried at all. The middle layers of a sensory network are not just a way station: they still carry the detail the last layer has thrown away, and I could make the body use it -- two things the last layer could not tell apart drove two different muscles, and that held for ten minutes with learning running the whole time. The sheet pays for what is switched on inside it and not for how many cells it has, so a bigger one is affordable, and "too small" turns out to be a measurement rather than an opinion: with ten cells per muscle, forces of 0.50, 0.51, 0.52 and 0.54 all produce the same pattern, and with a hundred they do not. The eyes now converge, focus and look at whatever is moving without any of that being written into the code, and the ears tell front from back and left from right from two raw sound waves. Two animals that each learned one different thing can also be added together: I averaged their two
+sets of connection strengths and got an animal that does both, which works only because each lesson
+had moved a different set of connections. The animal still falls over after a while, and I report
+that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
 
 ## 1. Introduction
 
@@ -34,8 +46,8 @@ on the left, an answer leaves on the right (Brown et al., 2020), and the loss is
 through the stack (Lillicrap et al., 2020). In that picture the intermediate layers are the
 computation and the output layer *is* the answer.
 
-We work from a different picture, and the difference is not cosmetic. We state it as eight
-claims, (P1) to (P8), so that the results can be read as tests of specific ones.
+We work from a different picture, and the difference is not cosmetic. We state it as nine
+claims, (P1) to (P9), so that the results can be read as tests of specific ones.
 
 * **(P1) A layered sensory network is a compressor.** It exists to take a very large number of
   peripheral channels and reduce them to a small number of cortical channels. Its output is not an
@@ -98,6 +110,14 @@ claims, (P1) to (P8), so that the results can be read as tests of specific ones.
   should *fall* as the sheet grows. R14 and R15 are the measurements of P7 and P8, and both are
   engineering statements that can be checked on one machine rather than scaling laws of the kind
   claimed for language models.
+* **(P9) What one life writes can be combined with what another life wrote, without retraining.** If
+  the instinct table and the local correlation rule are the whole of the machinery, then two brains
+  built from the same table differ only in the numbers their own lives have written on their edges,
+  and those numbers can be added. A third model that was never taught anything then holds both
+  lessons. The claim is deliberately narrow: it is arithmetic on a weight vector over a shared edge
+  list, it preserves what each parent already had, it creates no capability that neither parent had,
+  and it needs the same cells and the same edge list on both sides. Two lessons that want the same
+  edge in opposite directions are its boundary, and R18 measures both sides of it.
 
 ### 1.2 What this paper tests
 
@@ -125,12 +145,15 @@ falsifiable answer:
    number of layers a constant? (**R14**)
 9. How large does the sheet have to be before a behaviour is resolved, and what does a larger sheet
    cost? (**R15**)
+10. Can two brains, each taught one different thing, be added into one brain that does both, and
+   what happens when the two lessons want the same edge? (**R18**)
 
-We also report four supporting measurements: gaze tracking that emerges from primitive reflexes
+We also report five supporting measurements: gaze tracking that emerges from primitive reflexes
 with no tracking rule anywhere in the wiring (**R6**); the tolerance of behaviour to *blurred*
 innate wiring (**R7**); two eyes that converge, focus and move to wherever the picture is changing,
-with none of those three written down anywhere (**R16**); and ears that separate front from back
-and left from right without ever computing a source angle (**R17**).
+with none of those three written down anywhere (**R16**); ears that separate front from back
+and left from right without ever computing a source angle (**R17**); and the addition of two brains
+that were taught different actions into one brain that performs both (**R18**).
 
 ---
 
@@ -1761,6 +1784,77 @@ cells are a sense that nothing yet reads. The front end's frequency resolution i
 source geometry), and nothing here is tested with echoes, with several simultaneous sources or with
 a moving source.
 
+### R18. Two brains, each taught one different thing, added into one brain that does both (Figure 11)
+
+Every measurement above is a measurement of one brain. If the instinct table and the local rule are
+the whole of the machinery, then two brains built from the same table differ only in the numbers
+their own lives have written on their edges, and those numbers can be added. The claim is stated as
+arithmetic on a shared edge list rather than as a property of brains: a third model, which was never
+taught anything, takes the sum of the two weight vectors, and it should hold both lessons. We tested
+it on the smallest graph we have and then on the body.
+
+*One graph of 17 cells.* The parents are the graph used in R14 and R15 (four sensory cells, eight
+tuned hidden cells, one compressed cell, two motor cells and two inhibitory cells; 62 edges, of
+which the eight hidden cells and the compressed cell can reach both motor cells). A parent is taught
+one pairing only: thirty pairings of 0.4 s of a four-channel stimulus with the teacher on one motor
+cell and 0.2 s of rest, with learning on throughout. Parent A is taught that cue A means motor cell
+13; parent B that cue B means motor cell 14. Reading is 0.6 s per cue with the teacher absent and
+learning off, and the number we report for a cue is the margin by which the motor cell that cue is
+meant to drive beats the other one. A single lesson does not answer the other cue: parent A reads
+cue A at +1.000 and cue B at -0.729, parent B reads cue A at -0.726 and cue B at +1.000, and an
+untrained graph reads 0.000 on both. Adding the two weight tables and halving them gives +1.000 on
+both cues, on 5 of 5 seeds. Two other ways of combining the tables give the same result: keeping,
+per edge, whichever parent moved it further from its birth weight, and adding both parents' changes
+to the birth value.
+
+*Why that works is a fact about the two lessons, not about the arithmetic.* Each lesson changes 24
+of the 62 edges at all, and 5 of them by more than 0.05. Parent A's five all end on motor cell 13
+and none on 14; parent B's five all end on 14 and none on 13; and no edge of the graph is moved by
+more than 0.05 in opposite directions by the two lessons (0 of 62). The two lessons write to
+disjoint edges, so halving each of them does not involve a decision about which one to keep.
+
+*Controls.* A parent merged with itself reproduces that parent exactly (+1.000 and -0.729), which is
+what the arithmetic requires, and two untrained parents give 0.000 and 0.000. To check that what
+survives is the content of each lesson and not merely "both cues now answer", the same two lessons
+were taught with the motor cells exchanged -- cue A to motor 14 and cue B to motor 13 -- and the
+merge of those two parents answers cue A with motor 14 and cue B with motor 13, both at +1.000. The
+boundary is the conflict case: two parents taught opposite answers to the same cue (cue A to motor
+13, cue A to motor 14) merge into a model with no answer at all, a margin of 0.000 to 0.001.
+
+*The same operation on the body.* The 1,813-cell controller of R14 is used with the empty route
+extended from one innate action to two (`empty_routes=("flexion", "locomotion")`), so that the eight
+feature cells and the compressed cell have a route laid toward the gait cell and toward the flexion
+cell; both parents are built this way and the birth weights are identical. One parent is taught that
+cue A means walk: six pairings of 2 s of cue A with 0.6 of external drive on the gait cell and 0.5 s
+of rest. The other is taught that cue B means brace, in the same way, on the flexion cell. Each
+lesson moves 5 of the 17,745 edges by more than 0.05, and all five go to its own action cell (walk: 5
+to the gait cell and 0 to flexion; brace: 0 and 5; 5 of 5 seeds). Above that threshold no edge is
+touched by both lessons and none is moved in opposite directions. At any size at all 9,382 to 9,497
+edges change a little, because the innate edges are plastic at 0.005; 0.05 is the size at which a
+change starts to matter. Measured over 8 s per cue, on the same starting pose and the same cell
+state, so that the only difference between arms is the weight vector: an untrained brain walks
+0.001 m on cue A and reads 0.004 on the flexion cell for cue B; the walk parent walks 0.787 m and
+reads 0.003; the brace parent walks 0.004 m and reads 1.000; the merged brain walks 0.664 m *and*
+reads 0.787, on 5 of 5 seeds. Combining the tables by keeping the larger move per edge gives 0.921 m
+and 1.000 -- better than the average, and for a stated reason: the average writes each lesson at
+half the strength its parent had given it, and keeping the larger move keeps each lesson at full
+strength. A parent merged with itself reproduces its own behaviour to three decimals (0.7868 m and
+0.0027, both times), which is the check that installing a weight vector on the graph is faithful and
+not a re-run of the training.
+
+*What R18 does not show.* The parents of a pair are identical apart from the lesson, so this is not
+evidence that two brains with different innate wiring, or of different sizes, can be merged; the
+cells and the edge list have to match. Merging preserves and does not create: a merged model cannot
+do anything neither parent could do, and it inherits everything the local rule cannot do, including
+the toppling of R9. Where the two lessons touch the same edges in opposite directions the result is
+no answer at all, which is measured rather than assumed. The 17-cell case reads two synthetic
+channels and not a retina, and each of its actions is one motor cell; the body case is one gait
+command and one flexion command, not an animal that gets up after falling -- a merge of walking and
+righting needs the righting behaviour itself to exist first (R1, R3), and we have not built that
+pair. Nothing here tests the larger version of the idea, in which many candidate models are written,
+put through a large question set and selected, and no comparison is made with further training of one
+parent, which this system does not have.
+
 ---
 
 ## 4. Discussion
@@ -1773,7 +1867,7 @@ rule is already enough to close a sensorimotor loop and to produce behaviour tha
 attributed cell population by cell population.** Nothing in the results requires a global
 objective, a critic, a reward, or a backward pass.
 
-The eight claims of Section 1.1 are not equally supported, and the difference is the useful part.
+The nine claims of Section 1.1 are not equally supported, and the difference is the useful part.
 Table 1 states, for each of them, the experiment that bears on it and what came out of that
 experiment; the last row is not a claim but the question that R4 was built to answer.
 
@@ -1789,6 +1883,7 @@ experiment; the last row is not a claim but the question that R4 was built to an
 | **(P6)** acquisition during life needs a reward-like signal and no objective | R9: four stages, one brain, dopamine region on or off | **supported, with a boundary.** With the dopamine region lit during stage 3 the sound acquires the walk on 5/5 seeds (0/30 ticks before, 199-200/200 after, standing up included); with it dark, teaching writes 0 connections and the sound still does nothing (0/200, 3/3). The behaviour does not stay upright (4/5 seeds topple 42-101 ticks in), and controls on the same brains show that is the weight-growth rule, not the reward rule. |
 | **(P7)** any layer of a hierarchy, not only the last, is a signal source | R14: a synthetic case where two stimuli reach the compressed cell identically; the same route on a body, five seeds, three conditions; ten minutes with learning always on | **supported, within a declared scope.** With a read-out on the compressed cell alone the two stimuli are one; with a plastic route from the intermediate cells the two motor cells separate, and with learning off they do not. On the body, stimulus B then A then B gives trunk heights of about 0.250, 0.147 and 0.250 m, the second B recovering the first to within 6.8 micrometres. The scope is small (17 cells synthetic, 1,813 cells on the body) and two route caps are declared priors rather than learned. |
 | **(P8)** the sheet is spatial, and a tick costs what is lit rather than what exists | R15: three arms of 1,000 cells differing only in the coordinates of the sheet; two engines measured side by side at 100,000 cells; 100,000 to 800,000 cells at fixed drive | **partly supported.** Depth is told apart by the solid sheet and by nothing else (overlap 0.084 against 0.290 for flat coordinates and 0.343 for random wiring), bought with some loss of separation between different objects (0.041 to 0.081). Cost follows activity in the rebuilt engine (0 cells 0.04 ms, 11,818 cells 13.71 ms) and not in the original one (5.2 to 5.7 ms whatever is alight); eight times the cells cost 1.06 times the time at fixed drive. The prediction that the alight *fraction* falls is confirmed, but the cost per active cell is flat, so a larger sheet resolving the same input with fewer cells is not yet demonstrated. |
+| **(P9)** what one life writes can be combined with what another life wrote | R18: two parents of the 17-cell graph, one lesson each; the same two lessons with the motor cells swapped; two parents taught opposite answers to one cue; two parents of the 1,813-cell controller, one taught to walk and one to brace | **supported, within a declared scope.** Each lesson moves 5 of 62 edges (17-cell) and 5 of 17,745 edges (body) by more than 0.05, and the two lessons of a pair write to disjoint edges, so adding the two weight tables and halving them answers both cues on 5/5 seeds (+1.000 and +1.000) and the merged body walks 0.66 m on one cue and braces on the other. The swapped-lesson control answers both cues with the swapped motor cells, so the merge carries content and not merely "both cues answer". Two parents taught opposite answers to the same cue merge into no answer at all (margin 0.000 to 0.001). The scope: one graph per experiment, parents identical apart from the lesson, nothing retrained after the merge, and no new capability created. |
 | **(Q4)** is local plasticity doing anything a fixed recogniser is not? (question 4 of 1.2, not one of P1-P8) | R4: which hues start the walk, in the same brains, before and after a drift, with the rule on and off, and at three step sizes; the same protocol on two builds | **supported, with a bounded reach and a size that is not reproducible.** The boundary is where the sum of two cell populations crosses: every hue summing to 1.39 or more is accepted on 5/5 and every hue at 0.97 or less is rejected on 0/5. The three hues whose sums fall within 0.05 of the line (96, 168, 180) are decided by the random background connectivity each brain is born with, and the rule carries exactly those hues across the line: on the build of the main table that shows up in one brain of five at a 3- and a 12-degree step and two at 6 degrees, and in 5 of 5 on the earlier build, where every brain sat below the line. In neither build does any brain cross the gap at 120-144 degrees. What is reproducible is the reach of the rule -- to the edge of the island and no further -- not the number of brains in which it has anything to do. |
 
 Four sub-claims are worth separating, because they have different evidential status -- one of
@@ -2167,6 +2262,25 @@ should be attacked, with the honest cost of each.
    method. That is the experiment we would run next, and it is the one the position papers cited in
    4.4 say does not exist yet.
 
+9. *Combining what several lives wrote, which is now measured rather than hoped for.* R18 shows
+   that two models whose cells and edges are the same and whose lessons differ can be added: the
+   average of the two weight tables answers both cues, on the small graph and on the body, and it
+   answers the cue with the motor cell that cue's own parent had taught it. Two things follow for a
+   programme of this kind. The first is that a model need not be trained from scratch for every new
+   capability; a lesson written in one life can be moved into another as numbers, which is the
+   cheapest form of development this project has and the only one that needs no teacher at all. The
+   second is what R18 does *not* carry: merging preserves and never creates, so a search over
+   candidates can only find combinations of what the writing already put there, and the capability
+   itself still has to arrive through item 8 or through R3. Three things are then needed before the
+   idea becomes a method rather than an observation. A question set: every model has to be scored on
+   *all* the behaviours, not on the one it was built for, or a model that happens to be good at
+   something nobody asked about is thrown away. A way to write many candidates cheaply: a candidate
+   is a weight vector over a fixed edge list, so it can be stored as a seed plus the lesson, and the
+   cost of scoring is simulation rather than memory. And a limit we have not got past: models whose
+   *cells and edges differ* cannot be merged this way at all, so a search of this kind needs the
+   graph fixed while the numbers move, which is the opposite of the developmental picture in item 2
+   where the sheet grows. We have the merge and we do not yet have the search.
+
 **What we would not claim.** We do not claim that this architecture will reach general
 intelligence, and we would distrust any paper that claimed it on this evidence. What we do claim
 is that the *first* step — an ordered, attributable, extensible behavioural repertoire with no
@@ -2437,6 +2551,10 @@ sits inside the gap between "wired" (5.6) and "unwired" (15.3).
 
 ### 5.8 Reproducing
 
+The PDF of this manuscript is typeset from this Markdown file by `model/出一份PDF.py`, which converts
+it to HTML with `python-markdown` and prints it with headless Chrome, so the paper can be rebuilt on a
+machine that has neither pandoc nor a TeX installation (`python model/出一份PDF.py`).
+
 ```
 # R1-R8 are run with the prefrontal recurrence switched off (Methods 5.5). In PowerShell:
 $env:前额叶不保留 = '1'                  # bash:  export 前额叶不保留=1
@@ -2603,13 +2721,45 @@ build's own source and its saved cell names (`artifacts/motor_resolution_probe.j
 `artifacts/old_representation_probe.json`).
 
 The plotting scripts for Supplementary Figures 5 and 6 are `出一张图_补充56.py`, which reads the same
-`.log` and `.json` files as the text. The rebuilt engine's test suite is unchanged at 160 tests.
+`.log` and `.json` files as the text. The rebuilt engine's test suite is unchanged at 160 tests; it was run again after the two
+library changes the merge experiments needed and reports 160 tests, all passing.
+
+### 5.14 The merge measurements of 28 September
+
+Both merge experiments use one definition of a model: the cells, the edge list, the structural
+bounds and the injection of external drive are fixed, and a model is a weight vector over that edge
+list. Merging is arithmetic on that vector. No model is retrained after a merge, and no gradient,
+reward, critic or objective appears anywhere in this section; neither does a candidate connection
+table, since the edges that may be written already exist in both parents at a strength too small to
+do anything (R12).
+
+`tools/fuse_parents.py` builds the 17-cell graph of `born_wired/distributed.py` with
+`hidden_routes=True` and trains one pairing per parent: 30 pairings of 0.4 s of a four-channel
+stimulus with 1.2 of external drive on one motor cell, each followed by 0.2 s of rest with learning
+on. Reading is 0.6 s per cue with the teacher absent and learning off, averaged over the last 0.15 s,
+and both the raw motor table and the margin in favour of whatever that arm is meant to answer are
+reported. The arms are: two untrained parents, each parent alone, the arithmetic mean of the two
+weight vectors, the per-edge maximum of the two moves from birth, birth plus both changes, a parent
+averaged with itself, the same two lessons with the motor cells exchanged, and two parents taught
+opposite answers to one cue.
+
+`tools/fuse_robot_parents.py` uses the controller of R14 with the empty route extended to two innate
+actions, so that a lesson can be written beside the gait cell as well as beside the flexion cell
+(`empty_routes=("flexion", "locomotion")`). A lesson is six pairings of 2 s of one cue with 0.6 of
+external drive on the taught action cell and 0.5 s of rest. Every arm restores the same starting
+pose, the same joint noise and the same cell state before it is read, so the only difference between
+arms is the weight vector; restoring the pose is not a weight edit and the pose is the protocol's,
+not the brain's. The check on the operation itself is the arm that installs a parent's own weights
+into a fresh brain, which reproduces that parent's behaviour to three decimals. Both scripts are
+published with their logs (`artifacts/fusion_parents.json`, `artifacts/fusion_parents.log`,
+`artifacts/fusion_robot_parents.json`, `artifacts/fusion_robot_parents.log`) and Figure 11 is drawn
+from those two files.
 
 ## Figures
 
 Each figure is generated from the logs cited in the corresponding result section; the plotting
-scripts are `出一张图_论文_20260915.py` (Figures 1-9), `出一张图_发育.py` (Figure 10) and
-`出一张图_补充56.py` (Supplementary Figures 5 and 6).
+scripts are `出一张图_论文_20260915.py` (Figures 1-9), `出一张图_发育.py` (Figure 10),
+`出一张图_融合.py` (Figure 11) and `出一张图_补充56.py` (Supplementary Figures 5 and 6).
 
 * **Figure 1 — One tick of the system.** A schematic of the whole tick: senses drive the two
   sensory hierarchies, which drive one recurrent cortical sheet; the prefrontal population
@@ -2651,6 +2801,15 @@ scripts are `出一张图_论文_20260915.py` (Figures 1-9), `出一张图_发�
   stage 3 with the dopamine region lit and with it dark. (c) Trunk height reached in stage 1 and
   stage 4, and forward displacement, for each seed. Sources: `日志_发育多种子_A.log`,
   `日志_发育多种子_B.log`, `日志_无奖励对照.log`. Generated by `出一张图_发育.py`.
+* **Figure 11 — Two lessons, one brain.** (a) five seeds of the 17-cell graph: for each arm, the
+  margin by which the motor cell each cue is meant to drive beats the other one, for cue A and for
+  cue B, in favour of that cue's own answer. Ten arms: nothing taught, each parent alone, the
+  average, the per-edge maximum, the sum of the changes, a parent with itself, two untrained
+  parents, the same lessons with the motor cells exchanged, and two parents taught opposite answers
+  to one cue. (b) and (c) the same body, five seeds, on the 1,813-cell controller: metres walked in
+  8 s on cue A, and flexion cell activity on cue B, for six arms. Sources:
+  `artifacts/fusion_parents.json`, `artifacts/fusion_robot_parents.json`. Generated by
+  `出一张图_融合.py`.
 
 * **Supplementary Figure 5 — Flat coordinates and solid coordinates.** Overlap (Jaccard) between
   the sets of cells that end up active for three comparisons — two unrelated objects, one object

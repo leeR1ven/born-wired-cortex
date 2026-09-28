@@ -208,14 +208,40 @@ had been bought by distorting the picture, and the pinna cue for front/back was 
 circuit was reading as the other ear.</p>
 </div>
 
+<h2>Two taught behaviours, added into one brain (28 September 2026)</h2>
+<p class="sub" style="margin-top:6px">Added to the manuscript as R18 and claim (P9), with Figure 11.
+Every number has a named script and a kept log in <code>engine_v2/</code>.</p>
+<div class="honest">
+<p style="margin:0 0 10px"><b>One brain, then another, then the two added together.</b> Two models are built
+from the same cells, the same edge list and the same birth weights; the only difference is what each was
+taught. One is taught a cue that means <i>walk</i>, the other a cue that means <i>brace</i>. Adding the two
+weight tables and halving them gives a third model that was never taught anything and does both: on the
+1,813-cell body it walks <b>0.66&nbsp;m</b> on the cue one parent learned and reads <b>0.787</b> on the flexion
+cell for the cue the other learned, on 5 of 5 seeds, with nothing retrained after the merge. Keeping the
+larger move per edge gives 0.92&nbsp;m and 1.000, better than the average for a stated reason - the average
+writes each lesson at half the strength its parent had given it.</p>
+<p style="margin:0 0 10px">Each 20-second lesson moves 5 of the 17,745 edges by more than 0.05, and the two
+lessons of a pair write to <i>disjoint</i> edges, which is why halving involves no decision about which one
+to keep. In the 17-cell case the same operation answers both cues at +1.000 against -0.73 for a single
+parent; a parent merged with itself reproduces its own behaviour to three decimals; the same two lessons
+taught with the motor cells exchanged merge into a model that answers with the exchanged cells, so the
+merge carries content rather than merely "both cues answer"; and two parents taught <i>opposite</i> answers
+to one cue merge into no answer at all.</p>
+<p style="margin:0"><b>Reported as not shown:</b> merging preserves and never creates, so it cannot supply a
+capability that neither parent had; it needs the same cells and the same edge list on both sides, so two
+models with different innate wiring cannot be merged this way; and the body pair here is a walk command and
+a brace command, not "walking" plus "getting up after falling".</p>
+</div>
+
 <h2>Read it</h2>
 <div class="links">
-<a href="paper/Born_wired_manuscript.pdf">Full manuscript (PDF, 37 pp, 10 figures)</a>
+<a href="paper/Born_wired_manuscript.pdf">Full manuscript (PDF, 49 pp, 11 figures)</a>
 <a href="paper/Born_wired_manuscript.md">Full manuscript (Markdown source)</a>
 <a href="paper/submitted_20260917/Born_wired_NatureMI_line_numbers.pdf">Version submitted 17 Sep 2026 (PDF, 20 pp, line numbers)</a>
 <a href="paper/figures/">Figure files (PNG, 300 dpi)</a>
 <a href="paper/figures_NatureMI/Supplementary_Fig5_spatial_dimension.png">Supplementary Figure 5 - flat coordinates vs solid coordinates (PNG)</a>
 <a href="paper/figures_NatureMI/Supplementary_Fig6_sparse_cost.png">Supplementary Figure 6 - what a tick costs, and what it costs when the sheet grows (PNG)</a>
+<a href="paper/figures/figure11_fusion.png">Figure 11 - two brains, each taught one action, added into one brain that does both (PNG)</a>
 <a href="docs/架构导读_中文.md">中文架构导读</a>
 </div>
 

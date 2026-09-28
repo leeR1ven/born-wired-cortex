@@ -18,20 +18,20 @@ to stand, walk and look》** 的代码、日志、图和数据。
 | 单位 | No. 67 Yuanren Street, Huangjing Town, Taicang, Suzhou, Jiangsu, China |
 | ORCID | 0009-0005-8289-6393 |
 | 邮箱 | rivenlee94@gmail.com |
-| 论文正文（含 2026-09-27 新增的 R12、R13 与方法 5.12，2026-09-28 新增的 R14&ndash;R17 与方法 5.13） | `paper/Born_wired_manuscript.md` |
-| 论文 PDF（全长版，10 图和补充说明都在） | `paper/Born_wired_manuscript.pdf` |
+| 论文正文（含 2026-09-27 新增的 R12、R13 与方法 5.12，2026-09-28 新增的 R14&ndash;R18、方法 5.13/5.14、主张 P9 与图 11） | `paper/Born_wired_manuscript.md` |
+| 论文 PDF（全长版，49 页、11 张图；2026-09-28 重排，含 R18） | `paper/Born_wired_manuscript.pdf` |
 | 论文正文（Nature Machine Intelligence 短版：摘要 146 词 / 正文 3,476 词 / 6 图） | `paper/Born_wired_manuscript_NatureMI.md` |
 | 论文 PDF（Nature Machine Intelligence 短版） | `paper/Born_wired_manuscript_NatureMI.pdf` |
-| 短版用的 10 张图（按 Nature 顺序重新编号） | `paper/figures_NatureMI/` |
+| 短版用的 12 张图（6 张主图 + 6 张补充图，按 Nature 顺序重新编号） | `paper/figures_NatureMI/` |
 | **实际投出去的稿子**（2026-09-17 投 Nature Machine Intelligence，原件存档并附 SHA-256） | `paper/submitted_20260917/` |
 | **投稿记录**（稿件号 NATMACHINTELL-A26095390、状态时间线、预印本 rs-11070398） | `docs/投稿记录_NatureMachineIntelligence_20260917.md` |
 
 ## 现在能看到什么
 
 - **论文全文**：`paper/Born_wired_manuscript.md`（全长版）／`paper/Born_wired_manuscript_NatureMI.md`（20 页短版）
-- **论文 PDF**：`paper/Born_wired_manuscript.pdf`（全长 37 页）／`paper/Born_wired_manuscript_NatureMI.pdf`（20 页）／`paper/submitted_20260917/`（实际投出去的那一版，带行号）
+- **论文 PDF**：`paper/Born_wired_manuscript.pdf`（全长 49 页，2026-09-28 用 `model/出一份PDF.py` 重排，不需要 pandoc）／`paper/Born_wired_manuscript_NatureMI.pdf`（20 页）／`paper/submitted_20260917/`（实际投出去的那一版，带行号）
 - **模型自己走路的回放**：双击 `playback/index.html`，不用装任何东西
-- **预印本**：Research Square `rs-11070398`（平台审核中，上线后此处补 DOI）
+- **预印本**：Research Square `rs-11070398`，DOI `10.21203/rs.3.rs-11070398/v1`（已上线，可引用、可分享）
 - **引用方式**：见 `CITATION.cff`，GitHub 页面右上会出现 "Cite this repository"
 
 
@@ -92,6 +92,39 @@ to stand, walk and look》** 的代码、日志、图和数据。
 把一只耳自己的回声当成了另一只耳。
 
 细节在论文 R14&ndash;R17 与方法 5.13，脚本和日志都在 `engine_v2/`。
+
+## 2026-09-28 又新增：两个学过不同事情的模型，可以相加成一个两样都会的模型
+
+**（论文 R18、主张 P9、图 11；脚本 `engine_v2/tools/fuse_parents.py`、`fuse_robot_parents.py`）**
+
+一句话：**同一套细胞、同一张连接表，两个只差&#8220;学过什么&#8221;的模型，把两套连接权重相加再除以二，
+就得到一个从没被教过的第三个模型，原来两样本事它都会。** 相加之后不训练任何东西。
+
+| | 17 细胞的图 | 真实身体（1,813 细胞 / 17,745 条边） |
+|---|---|---|
+| 每个模型学一件事 | 提示 A → 运动细胞 13；提示 B → 运动细胞 14 | 提示 A → 走路（步态细胞）；提示 B → 屈腿固撑（屈肌细胞） |
+| 一节课改了多少 | 62 条边里有 5 条改动超过 0.05 | 17,745 条边里有 5 条改动超过 0.05 |
+| 两节课写到同一条边上了吗 | 没有（A 的 5 条全到 13，B 的 5 条全到 14） | 没有（各到自己那个动作细胞，重合 0 条） |
+| 单独一个模型 | 只会自己那个提示（另一个提示读数是 −0.73） | 只会走 **0.787 米**，或只会固撑 **1.000** |
+| **相加除以二之后** | 两个提示都对（都是 +1.000，5/5 种子） | **既走 0.664 米，又固撑 0.787**（5/5 种子） |
+| 每条边取&#8220;改动大的那个&#8221; | 两个提示都对 | 走 **0.921 米**、固撑 **1.000**（比取平均更好：平均把每节课的强度砍掉了一半） |
+
+三个对照，用来证明这不是&#8220;随便一相加&#8221;：
+
+- **自己和自己相加**，行为一位不差地复现（走 0.7868 米、固撑 0.0027，两次完全一样）。
+  这同时也是对操作本身的检验：把一套权重装进另一颗脑是可靠的，不是把训练重跑了一遍。
+- **把两个提示对调**（教成提示 A → 细胞 14、提示 B → 细胞 13），相加之后就按对调后的答案来，
+  说明合并保住的是**每节课的具体内容**，不是&#8220;两个提示都亮&#8221;。
+- **边界**：两个模型被教成对**同一个提示**给出**相反**答案，相加之后是**完全没有答案**（0.000）。
+
+照实说不成立的：合并**只会保留、不会创造**，两节课都没有的本事合并后也不会有；
+两边必须有**同一套细胞和同一张连接表**（先天接线不同的两个模型不能这样合）；
+论文里做的是&#8220;一句走路命令&#8221;和&#8220;一句屈腿命令&#8221;，不是&#8220;会走路&#8221;加&#8220;摔倒后会自己站起来&#8221;
+（那需要先有&#8220;站起来&#8221;这个行为本身）。我们现在有的是&#8220;合并&#8221;，还没有&#8220;搜索&#8221;——
+大规模候选 + 大题库 + 选择这一步写进了论文 4.6 的第 9 条，还没有做。
+
+日志：`engine_v2/artifacts/fusion_parents.json`、`fusion_robot_parents.json`（各有同名 `.log`）；
+图 11 由 `model/出一张图_融合.py` 生成，输出 `paper/figures/figure11_fusion.png`。
 
 ## 目录说明
 

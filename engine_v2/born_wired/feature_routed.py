@@ -45,7 +45,8 @@ class FeatureRoutedController(InnateController):
     hidden routes have cap .55. These are explicit structural assumptions.
     """
 
-    def __init__(self, home_angles, lower_limits, upper_limits, *, hidden_routes=True, **parent_parameters):
+    def __init__(self, home_angles, lower_limits, upper_limits, *, hidden_routes=True,
+                 empty_routes=("flexion",), **parent_parameters):
         if not isinstance(hidden_routes, (bool, np.bool_)):
             raise ValueError("hidden_routes must be boolean")
         super().__init__(home_angles, lower_limits, upper_limits, **parent_parameters)
@@ -55,6 +56,16 @@ class FeatureRoutedController(InnateController):
         ids = np.arange(old.n_neurons, old.n_neurons + 13)
         receptor, hidden, compressed = ids[:4], ids[4:12], ids[12:]
         self.groups.update(feature_receptors=receptor, feature_hidden=hidden, feature_compressed=compressed)
+        # Which innate actions a route is laid beside.  A route carries no
+        # action of its own; it is the place a lesson can be written later.
+        actions = []
+        for name in empty_routes:
+            if name not in self.groups or np.size(self.groups[name]) != 1:
+                raise ValueError("each empty route must name one innate action cell")
+            actions.append(int(np.ravel(self.groups[name])[0]))
+        if len(set(actions)) != len(actions):
+            raise ValueError("empty route targets must be distinct")
+        self.empty_route_actions = tuple(actions)
         src, dst, weights, lower, upper, plasticity, tether = [], [], [], [], [], [], []
 
         def add(source, target, weight, cap=None):
@@ -69,10 +80,11 @@ class FeatureRoutedController(InnateController):
                 add(source, target, 1.6 * np.exp(-.5 * ((index-position)/.65)**2))
         for source in hidden:
             add(source, compressed[0], .85)
-        if hidden_routes:
-            for source in hidden:
-                add(source, self.groups["flexion"][0], .001, cap=.55)
-        add(compressed[0], self.groups["flexion"][0], .001, cap=.10)
+        for action in actions:
+            if hidden_routes:
+                for source in hidden:
+                    add(source, action, .001, cap=.55)
+            add(compressed[0], action, .001, cap=.10)
         self.synapses = RegulatedSynapses(
             np.r_[old.src, src], np.r_[old.dst, dst], np.r_[old.weights, weights],
             np.r_[old.signs, np.ones(13)], old.n_neurons + 13,
@@ -94,6 +106,37 @@ class FeatureRoutedController(InnateController):
             initial_adaptation=np.r_[state.adaptation, np.zeros(13)])
         self.initial_weights = self.synapses.weights
         self._initial_voltage = self.network.voltage
+        self._initial_adaptation = self.network.adaptation
+
+    def install_weights(self, weights):
+        """Put another model's weight vector on this same graph.
+
+        The cells, the edge list and the structural bounds do not change, so a
+        weight vector from another model built from the same seed lands on the
+        same addresses and can be averaged, taken elementwise, or added.  The
+        graph is rebuilt around the vector because the device copy of the
+        weights is taken at construction, and the cells are returned to their
+        initial state so that two arms start from the same body and brain.
+        """
+        syn = self.synapses
+        merged = np.asarray(weights, dtype=float)
+        if merged.shape != syn._weights.shape:
+            raise ValueError("weights must match this graph's edge list")
+        merged = np.clip(merged.copy(), syn.lower, syn.w_max)
+        rebuilt = RegulatedSynapses(syn.src, syn.dst, merged, syn.signs, syn.n_neurons,
+                                    lower=syn.lower, upper=syn.w_max, budgets=syn.budgets,
+                                    plasticity=syn.plasticity,
+                                    learning_rate=syn.learning_rate, tether=syn.tether,
+                                    target_activity=syn.target_activity)
+        rebuilt.anchor = syn.anchor
+        state = self.network
+        self.synapses = rebuilt
+        self.network = FeatureInputNetwork(
+            rebuilt, self.groups["feature_receptors"], tau=state._tau,
+            adaptation_tau=state._adaptation_tau, adaptation_gain=state._gain,
+            bias=state._bias, initial_voltage=self._initial_voltage,
+            initial_adaptation=self._initial_adaptation)
+        return rebuilt.weights.copy()
 
     def step(self, observation, *, features=None, **parent_step_parameters):
         features = _vector(np.zeros(4) if features is None else features, 4, "features", low=0, high=1)

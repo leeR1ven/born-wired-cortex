@@ -36,3 +36,6 @@ model/*.err.txt
 model/日志_*.txt
 model/*_控制台.txt
 logs/tmp_*.txt
+
+# 排论文 PDF 时的中间文件（markdown 转出来的 HTML），不是证据，脚本一跑就有
+paper/_build/

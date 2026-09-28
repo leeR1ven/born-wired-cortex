@@ -86,6 +86,29 @@ class DistributedFeatureNetwork:
         """Reset experimental initial activity only; retain the learned graph."""
         self.network = AdaptiveNetwork(self.synapses, tau=.035, adaptation_gain=0, bias=self._bias)
 
+    def install_weights(self, weights):
+        """Put another model's weight vector on this same graph.
+
+        The cells and the edge list do not change, so a weight vector from
+        another model built from the same seed lands on the same addresses and
+        can be averaged, taken elementwise, or added.  The graph is rebuilt
+        around the vector because the device copy of the weights is taken at
+        construction; the structural bounds (lower/upper) are kept.
+        """
+        syn = self.synapses
+        merged = np.asarray(weights, dtype=float)
+        if merged.shape != syn._weights.shape:
+            raise ValueError("weights must match this graph's edge list")
+        merged = np.clip(merged.copy(), syn.lower, syn.w_max)
+        self.synapses = RegulatedSynapses(syn.src, syn.dst, merged, syn.signs, self.n_neurons,
+                                          lower=syn.lower, upper=syn.w_max, budgets=syn.budgets,
+                                          plasticity=syn.plasticity,
+                                          learning_rate=syn.learning_rate, tether=syn.tether,
+                                          target_activity=syn.target_activity)
+        self.initial_weights = self.synapses.weights
+        self.reset_state()
+        return self.synapses.weights.copy()
+
     def step(self, features, motor_input=None, *, dt=.005, learn=True):
         features = _vector(features, 4, "features", low=0, high=1)
         motor_input = _vector(np.zeros(2) if motor_input is None else motor_input,
