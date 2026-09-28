@@ -61,6 +61,18 @@ SCENARIOS = {
     "autonomous": {"autonomy": True, "locomotion": 0.0},
     "driven": {"autonomy": False, "locomotion": 0.65},
     "rest": {"autonomy": False, "locomotion": 0.0},
+    "amble": {"autonomy": False, "locomotion": 0.35},
+    "sprint": {"autonomy": False, "locomotion": 1.0},
+}
+
+# How far past its own starting line the animal has to get before it counts
+# as having crossed the thing in the way.  The number is measured along the
+# direction the animal was facing at the start, so a scene that begins facing
+# west is asked the same question as one that begins facing east.
+CROSSED_PROGRESS = {
+    'passage': 1.70, 'step': 1.10, 'ramp': 1.25, 'curb': .75,
+    'platform': .35, 'wall': .98, 'ramp_top': .50, 'step_top': .30,
+    'platform_top': .65, 'blocked': 1.45,
 }
 
 
@@ -199,6 +211,10 @@ def run_seed(
     scenario: str,
     controller_parameters_for_seed: dict,
     terrain_start: str = 'origin',
+    injected: dict = None,
+    start_yaw: float = None,
+    props: dict = None,
+    startle=None,
 ) -> dict:
     scenario_inputs = SCENARIOS[scenario]
     steps = int(round(duration / NEURAL_DT))
@@ -208,10 +224,26 @@ def run_seed(
     body = Go2Body(model_path=model_path, timestep=PHYSICS_DT)
     # Perturb the physical start, not merely unused association weights.
     initial_yaw = float(np.random.default_rng(seed).uniform(-.12, .12))
-    body.reset(seed=seed, joint_noise=.01, tilt=(0.,0.,initial_yaw))
-    starts = {'origin': (0.,0.), 'passage': (-2.7,-1.05), 'step': (.55,-1.), 'ramp': (.25,-2.1)}
-    body.data.qpos[:2] = starts[terrain_start]
+    start_heading = float(initial_yaw + (0. if start_yaw is None else start_yaw))
+    body.reset(seed=seed, joint_noise=.01, tilt=(0.,0.,start_heading))
+    starts = {'origin': (0.,0.), 'passage': (-2.7,-1.05), 'step': (.55,-1.), 'ramp': (.25,-2.1),
+              'curb': (.35,0.), 'platform': (.90,-2.1), 'wall': (2.6,0.),
+              'ramp_top': (1.20,-2.1,.040), 'step_top': (1.35,-1.,.025),
+              'platform_top': (1.90,-2.1,.060),
+              'blocked': (.90,.20)}
+    start_place = starts[terrain_start]
+    body.data.qpos[:2] = start_place[:2]
+    if len(start_place) > 2:
+        # A scene that begins on top of a prop has to begin on top of it.
+        body.data.qpos[body._base_qpos + 2] += float(start_place[2])
+    if props:
+        for prop_name, place in props.items():
+            prop = mujoco.mj_name2id(body.model, mujoco.mjtObj.mjOBJ_GEOM, prop_name)
+            if prop < 0:
+                raise ValueError('no such prop: %s' % prop_name)
+            body.model.geom_pos[prop] = list(place)
     mujoco.mj_forward(body.model, body.data)
+    facing = np.array([math.cos(start_heading), math.sin(start_heading)])
     senses = ReflexSenses(body)
     controller = make_controller(
         body,
@@ -219,7 +251,17 @@ def run_seed(
         controller_parameters=controller_parameters_for_seed,
     )
     observation = body.observe()
-    environment = senses.observe()
+
+    def sensed():
+        values = senses.observe()
+        if injected:
+            for name, extra in injected.items():
+                values[name] = np.clip(np.asarray(values[name], dtype=float)
+                                       + np.broadcast_to(np.asarray(extra, dtype=float), (4,)),
+                                       0., 1.)
+        return values
+
+    environment = sensed()
     eyes = (
         RawEyes(body, width=controller.eye_width, height=controller.eye_height)
         if body.model.ncam >= 2 else None
@@ -232,6 +274,15 @@ def run_seed(
     previous_position = position.copy()
     horizontal_path = 0.0
     maximum_x = float(position[0])
+    maximum_progress = 0.0
+    minimum_progress = 0.0
+    previous_yaw = float(np.arctan2(body.data.xmat[body._base].reshape(3,3)[1,0],
+                                     body.data.xmat[body._base].reshape(3,3)[0,0]))
+    smooth_yaw = previous_yaw
+    sampled_yaw = previous_yaw
+    yaw_smoothing = 1. - math.exp(-NEURAL_DT/.20)
+    yaw_path = 0.0
+    speeds = []
     up_z = []
     heights = []
     drive_values = []
@@ -266,6 +317,8 @@ def run_seed(
         for step_index in range(steps):
             if eyes is not None and scenario != 'motor_probe' and step_index % 10 == 0:
                 pixels = eyes.observe_raw()
+            startle_now = (float(startle) if isinstance(startle, (int, float))
+                           else (0. if startle is None else float(startle(step_index*NEURAL_DT))))
             target, activation = controller.step(
                 observation,
                 environment=environment,
@@ -273,12 +326,13 @@ def run_seed(
                 locomotion=scenario_inputs["locomotion"],
                 dt=NEURAL_DT,
                 learn=True,
+                startle=startle_now,
                 eye_pixels=pixels,
                 ear_waveform=ears.observe() if scenario != 'motor_probe' else np.zeros((2,160)),
             )
             solved = body.step(target, duration=NEURAL_DT, activation=activation)
             observation = solved
-            environment = senses.observe()
+            environment = sensed()
 
             target = np.asarray(target, dtype=float)
             activation = np.asarray(activation, dtype=float)
@@ -324,6 +378,18 @@ def run_seed(
             position = base_position(body)
             maximum_x = max(maximum_x, float(position[0]))
             horizontal_path += float(np.linalg.norm(position[:2] - previous_position[:2]))
+            progress = float((position[:2] - initial_position[:2]) @ facing)
+            maximum_progress = max(maximum_progress, progress)
+            minimum_progress = min(minimum_progress, progress)
+            rotation_now = body.data.xmat[body._base].reshape(3, 3)
+            yaw_now = float(np.arctan2(rotation_now[1,0], rotation_now[0,0]))
+            previous_yaw = yaw_now
+            smooth_yaw += yaw_smoothing * math.atan2(math.sin(yaw_now - smooth_yaw),
+                                                     math.cos(yaw_now - smooth_yaw))
+            if (step_index + 1) % 5 == 0:
+                yaw_path += abs(float(np.angle(np.exp(1j*(smooth_yaw - sampled_yaw)))))
+                sampled_yaw = smooth_yaw
+            speeds.append(float(np.linalg.norm(np.asarray(solved['body_linear_velocity'])[:2])))
             previous_position = position.copy()
             up_z.append(float(solved["body_up"][2]))
             heights.append(float(solved["body_height"]))
@@ -388,8 +454,20 @@ def run_seed(
             "total_displacement_m": float(np.linalg.norm(final_position - initial_position)),
             "horizontal_path_m": horizontal_path,
             "maximum_world_x": maximum_x,
-            "crossed_test_marker": None if terrain_start == 'origin' else maximum_x >
-                {'passage': -1., 'step': 1.65, 'ramp': 1.5}[terrain_start],
+            "crossed_test_marker": (None if terrain_start not in CROSSED_PROGRESS
+                                     else maximum_progress > CROSSED_PROGRESS[terrain_start]),
+            "final_yaw_rad": float(np.arctan2(
+                body.data.xmat[body._base].reshape(3,3)[1,0],
+                body.data.xmat[body._base].reshape(3,3)[0,0])) - start_heading,
+            "maximum_progress_m": float(maximum_progress),
+            "minimum_progress_m": float(minimum_progress),
+            "yaw_path_rad": float(yaw_path),
+            "lateral_m": float((final_position[:2] - initial_position[:2])
+                                @ np.array([-facing[1], facing[0]])),
+            "straightness": (float(np.linalg.norm(final_position[:2] - initial_position[:2])
+                                    / horizontal_path) if horizontal_path > 0 else 0.),
+            "max_speed_mps": None if not speeds else float(np.max(speeds)),
+            "mean_speed_mps": None if not speeds else float(np.mean(speeds)),
             "fraction_drive_gt_0_35": None if not drive_values else float(np.mean(np.asarray(drive_values) > 0.35)),
             "fraction_drive_lt_0_03": None if not drive_values else float(np.mean(np.asarray(drive_values) < 0.03)),
             "contact_conditioned_foot_slip": slip_summary,

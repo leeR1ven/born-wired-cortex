@@ -58,10 +58,18 @@ PERIOD = 2.                     # one lesson cycle: 1 s held, 1 s let go
 THIGHS = (1, 4, 7, 10)
 
 
-def build(seed, *, hand_teaches, gated, routes=True):
-    """One animal. hand_teaches wires the hand to the touch cells and to dopamine."""
+def build(seed, *, hand_teaches, gated, routes=True, parameters=None):
+    """One animal. hand_teaches wires the hand to the touch cells and to dopamine.
+
+    ``parameters`` overrides the live window's own values; the exam bank passes
+    its reference size and a candidate's genome through here.  Left out, the
+    animal is exactly the one the window runs.
+    """
     body = Go2Body(model_path=ARENA)
-    parameters = dict(json.loads(CONFIG.read_text(encoding="utf-8-sig"))["parameters"])
+    values = dict(json.loads(CONFIG.read_text(encoding="utf-8-sig"))["parameters"])
+    if parameters:
+        values.update(parameters)
+    parameters = values
     parameters.update(seed=seed,
                       backup_routes=((("cochlea", "retreat"),) if routes else ()),
                       dopamine_gain=.9 if gated else 0.,
@@ -75,9 +83,10 @@ def build(seed, *, hand_teaches, gated, routes=True):
 
 
 class Run:
-    def __init__(self, seed, *, hand_teaches, gated, routes=True):
+    def __init__(self, seed, *, hand_teaches, gated, routes=True, parameters=None):
         self.body, self.brain, self.eyes, self.ears = build(
-            seed, hand_teaches=hand_teaches, gated=gated, routes=routes)
+            seed, hand_teaches=hand_teaches, gated=gated, routes=routes,
+            parameters=parameters)
         self.silence = np.zeros((2, self.ears.window_samples))
         self.observation = self.body.reset(seed=seed)
         self.environment = {name: np.zeros(4) for name in ENVIRONMENT}

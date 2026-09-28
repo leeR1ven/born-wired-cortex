@@ -72,6 +72,15 @@
 
 模型越大差距越大：设备上真正贵的东西已经不是连接，而是每步在 host 和显卡之间搬的那几个整片数组。开关是环境变量 `BORN_WIRED_DEVICE`（`auto` / `cpu`），没有显卡就自动退回 host。`tools/compare_engines.py` 会同时报告"每个引擎自己重跑是否逐位一致"和"两个引擎之间差多少"；`tools/probe_engine_speed.py` 给上表。做法、实测与限制见 [GPU 执行引擎](docs/GPU执行引擎_20260927.md)。
 
+## 考试台（题库）
+
+`tools/taskbank.py` 是这套模型的能力清单：**121 道题、15 个方面、7 级先修阶梯**。每道题都是一次真跑出来的行为读数，没有人写好的动作脚本。
+
+- `python tools/taskbank.py --list` 列全部题目；`--tree` 打先修阶梯（0 级站住 → 走 → 走快 → 跑 → 转弯 → 地形 → 一边走一边做别的）；`--explain` 逐题印出「读什么数 / 门槛多少 / 出厂读数 / 这题不证明什么」。
+- 跑一整遍：`python tools/taskbank.py --stage full --seeds 0 1 2 --output artifacts/exam_birth_full.json`。出厂读数已经存在这个文件里，`python tools/taskbank.py --birth-text` 可以把它们印成源码里的 `BIRTH` 字典。
+- 门槛（`BAR`）只有两个来源：沿用仓库原有判据（`validate_reflex_v3.behavior_pass`、`probe_righting.recovered`），或者按出厂实测数字定，而那个数字必须写进 `BIRTH`。`tests/test_taskbank.py` 会拦住「对坏结果也说好」的门槛。
+- 题目清单和判据写在 `docs/题库_第三批_20260928.md`、`docs/题库_第四批_20260928.md`，两份文档都写了这 121 道题**测不了什么**。
+- 挑模型：`tools/screen_candidates.py` 只允许题目里点名的那几十个增益变化，代际之间按「谁cover的题目多」留人，融合就是把两个基因组取平均。
 ## 验证与限制
 
 进展与失败见 [当前状态](docs/当前状态.md)。旧版的一小时测试只属于 `releases/v0_2`，不能当作当前视觉/听觉模型的长测证明。扩大模型和调参过程中保留了摔倒、滑动、无法通过地形等结果。

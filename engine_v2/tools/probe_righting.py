@@ -28,7 +28,8 @@ PHYSICS_DT = 0.002
 SAMPLE_INTERVAL = 0.05
 DRIVE = 0.65
 GROUPS = ('protective_tilt', 'body_touch', 'righting', 'righting_push', 'phase', 'withdrawal')
-POSES = {'on_back': (np.pi, 0.), 'on_side': (np.pi / 2, 0.), 'nose_up': (0., np.pi / 2)}
+POSES = {'on_back': (np.pi, 0.), 'on_side': (np.pi / 2, 0.), 'nose_up': (0., np.pi / 2),
+         'nose_down': (0., -np.pi / 2)}
 IMPACT = dict(start=1.5, force=(0., 140., 0.), duration=.2)
 FORCE = [140.]
 UP_Z = .8
@@ -45,7 +46,7 @@ def group_value(controller, name):
     return None if ids is None else np.asarray(controller.network.activity[ids], dtype=float)
 
 
-def run_seed(*, seed, pose, duration, model_path, parameters, impact):
+def run_seed(*, seed, pose, duration, model_path, parameters, impact, force=None):
     steps = int(round(duration / NEURAL_DT))
     body = Go2Body(model_path=model_path, timestep=PHYSICS_DT)
     tilt = POSES.get(pose)
@@ -84,7 +85,8 @@ def run_seed(*, seed, pose, duration, model_path, parameters, impact):
             if index == steps:
                 break
             if impact and not applied and index * NEURAL_DT >= IMPACT['start']:
-                body.apply_force((IMPACT['force'][0], FORCE[0], IMPACT['force'][2]), IMPACT['duration'])
+                shove = FORCE[0] if force is None else float(force)
+                body.apply_force((IMPACT['force'][0], shove, IMPACT['force'][2]), IMPACT['duration'])
                 applied = True
             target, activation = controller.step(observation, environment=environment, autonomy=False,
                                                  locomotion=DRIVE, dt=NEURAL_DT, learn=True)
