@@ -1378,7 +1378,7 @@ alone drives the retreat cells to 0.519. Lesson length is a knob, and 20 s is no
    removal of the teacher.
 2. *Nothing is written where nothing happened.* The route in the *ignored* arm falls from 0.0001 to
    exactly zero while the tone plays just as often: the tone fires, the retreat cells do not follow,
-   and the local decay term takes the weight to its floor. This is the property the whole framing
+   and the decay term of Methods 5.5 -- the one every synapse in the system already has -- takes the weight to its floor. This is the property the whole framing
    rests on. A correlation rule knows that two cells fired together; it has no representation of
    having been right, and it does not need one.
 3. *The reflex is written onto the empty route.* In the *no route* arm the same lesson, the same
