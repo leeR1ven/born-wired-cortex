@@ -215,6 +215,10 @@ BAR = {
     "run_twenty_m": 2.00,          # twenty seconds of running, in metres
     "run_turn_speed": .25,         # running while it turns, in metres per second
     "opposite_reading": .05,      # the layer under the rods in a black room
+    "long_life_kept": .80,          # the lesson after a minute of living, over the lesson at once
+    "second_tone_kept": .80,        # the first tone, after a second one went down the same route
+    "route_ceiling_floor": .01,     # the route has to move at all before "it slows down" means anything
+    "route_ceiling_slowdown": .25,  # the last equal stretch may add at most this much of the first
 }
 
 # What the birth animal measured, so a bar can be read next to the number it was
@@ -331,6 +335,9 @@ BIRTH = {
     "it_forgets_when_nobody_teaches_anymore": "seed 0 fail (the lesson never faded: 0.970 while the hand was there, 0.971 with nobody teaching (has to fall to 0.679)); seed 1 fail (the lesson never faded: 0.970 while the hand was there, 0.971 with nobody teaching (has to fall to 0.679)); seed 2 fail (the lesson never faded: 0.970 while the hand was there, 0.971 with nobody teaching (has to fall to 0.679))",
     "a_second_short_lesson_adds_to_the_first": "seed 0 PASS (the second lesson added 0.246 (0.626 then 0.872)); seed 1 PASS (the second lesson added 0.246 (0.626 then 0.872)); seed 2 PASS (the second lesson added 0.246 (0.626 then 0.872))",
     "the_lesson_is_still_there_after_a_minute": "seed 0 PASS (tone alone now drives retreat 0.944 over silence); seed 1 PASS (tone alone now drives retreat 0.944 over silence); seed 2 PASS (tone alone now drives retreat 0.944 over silence)",
+    "the_memory_survives_a_long_life": "seed 0 PASS (the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)); seed 1 PASS (the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)); seed 2 PASS (the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975))",
+    "a_second_tone_does_not_wipe_the_first": "seed 0 PASS (the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)); seed 1 PASS (the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)); seed 2 PASS (the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972))",
+    "the_route_stops_growing_at_its_ceiling": "seed 0 PASS (the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]); seed 1 PASS (the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]); seed 2 PASS (the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011])",
     "remembers_two_patterns_at_once": "seed 0 PASS (paired 0.0761, unpaired -0.0002); seed 1 PASS (paired 0.0761, unpaired -0.0002); seed 2 PASS (paired 0.0761, unpaired -0.0002)",
     "the_memory_survives_a_small_change": "seed 0 PASS (the moved copy still meant 0.0934 of the original 0.0761); seed 1 PASS (the moved copy still meant 0.0934 of the original 0.0761); seed 2 PASS (the moved copy still meant 0.0934 of the original 0.0761)",
     "walks_towards_a_bright_thing": "seed 0 PASS (a bright thing in front pulled it 0.077 m further); seed 1 PASS (a bright thing in front pulled it 0.073 m further); seed 2 PASS (a bright thing in front pulled it 0.184 m further)",
@@ -2753,6 +2760,221 @@ def second_lesson_bar(measures):
                   % (measures["added"], measures["first_gain"], measures["second_gain"]))
 
 
+
+
+class _Life:
+    """One animal kept alive across phases, with one ear per tone.
+
+    The bank's other learning questions use ``nursery.Run``, which starts a
+    fresh animal for every phase and so cannot carry a weight from one phase to
+    the next.  A question about what a lesson looks like *later* needs the same
+    animal throughout, so this keeps one body and one brain and walks it from
+    phase to phase.  Nothing here writes a weight: the only thing that touches
+    the local rule is the keeper's hand, driving dopamine through the innate
+    touch route, and the tone, through the innate ear.
+    """
+
+    def __init__(self, ctx, tones):
+        from tools import nursery
+        self.nursery = nursery
+        self.body, self.brain, self.eyes, _ = nursery.build(
+            ctx["seed"], hand_teaches=True, gated=True, routes=True,
+            parameters=ctx["parameters"])
+        self.ears = {name: BinauralSenses(self.body, window_samples=160, emitters=(tone,))
+                     for name, tone in tones.items()}
+        self.silence = np.zeros((2, 160))
+        self.observation = self.body.observe()
+        self.environment = blank_environment()
+        self.base = mujoco.mj_name2id(self.body.model, mujoco.mjtObj.mjOBJ_BODY, "base")
+        self.low, self.upright = 1., 1.
+
+    def phase(self, seconds, tone=None, hand=False, learn=True):
+        ears = self.ears.get(tone)
+        seen = {"retreat": [], "brake": [], "dopamine": [], "cochlea": []}
+        period = self.nursery.PERIOD
+        for step in range(int(round(seconds/DT))):
+            held = hand and (step*DT % period) < period/2
+            grip = self.nursery.HAND
+            self.environment["body_touch"] = np.full(4, grip) if held else np.zeros(4)
+            for name in ("foot_obstacle", "foot_load", "foot_slip"):
+                self.environment[name] = np.zeros(4)
+            target, activation = self.brain.step(
+                self.observation, environment=self.environment,
+                eye_pixels=self.eyes.observe_raw(),
+                ear_waveform=ears.observe() if ears is not None else self.silence,
+                dt=DT, learn=learn, locomotion=self.nursery.WALK)
+            self.body.command_eyes(self.brain.eye_command())
+            self.observation = self.body.step(target, duration=DT, activation=activation)
+            if step % 10 == 0:
+                rates = self.brain.network.activity
+                for name in ("retreat", "brake", "dopamine"):
+                    seen[name].append(float(rates[self.brain.groups[name][0]]))
+                seen["cochlea"].append(float(rates[self.brain.groups["cochlea"]].max()))
+            if step*DT > 1.:
+                self.low = min(self.low, float(self.body.data.xpos[self.base][2]))
+                self.upright = min(self.upright, float(
+                    self.body.data.xmat[self.base].reshape(3, 3)[2, 2]))
+        report = {name: (float(np.mean(values)) if values else 0.)
+                  for name, values in seen.items()}
+        report["min_height"], report["min_up_z"] = self.low, self.upright
+        return report
+
+    def route(self):
+        """The teachable route's own weights: the memory itself, not its effect."""
+        return [float(value) for value in self.brain.nursery_state()["weights"]]
+
+    def close(self):
+        self.eyes.close()
+
+
+def long_life_measure(ctx, lesson_seconds, life_seconds, probe_seconds=4., block=6.):
+    """Taught once, then a stretch of life with the local rule running, then asked again.
+
+    The gap is not a quiet pause: the animal keeps walking and the tone comes
+    and goes, so the rule that carries the lesson runs the whole time.  A quiet
+    pause is already asked about by the sixty second question; what is new here
+    is that it goes on living.
+    """
+    from tools import nursery
+    life = _Life(ctx, {"a": dict(nursery.TONE)})
+    try:
+        life.phase(probe_seconds, tone="a")
+        life.phase(lesson_seconds, tone="a", hand=True)
+        first_tone = life.phase(probe_seconds, tone="a")
+        first_silence = life.phase(probe_seconds)
+        route_after_lesson = life.route()
+        remaining, index = float(life_seconds), 0
+        while remaining > 1e-9:
+            take = min(block, remaining)
+            remaining -= take
+            index += 1
+            life.phase(take, tone=("a" if index % 2 else None))
+        later_tone = life.phase(probe_seconds, tone="a")
+        later_silence = life.phase(probe_seconds)
+        route_after_life = life.route()
+    finally:
+        life.close()
+    first = first_tone["retreat"] - first_silence["retreat"]
+    later = later_tone["retreat"] - later_silence["retreat"]
+    return dict(status="ok", error=None, first_gain=first, later_gain=later,
+                kept=(later/first if abs(first) > 1e-9 else 0.),
+                life_seconds=float(life_seconds), min_up_z=later_tone["min_up_z"],
+                route_after_lesson=route_after_lesson, route_after_life=route_after_life)
+
+
+def long_life_bar(measures):
+    """The lesson has to be there first, and it has to still be there afterwards."""
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    if measures["first_gain"] < BAR["taught_reflex_gain"]:
+        return False, ("there was no lesson to keep (the tone alone drove %.3f over silence)"
+                       % measures["first_gain"])
+    if measures["kept"] < BAR["long_life_kept"]:
+        return False, ("the lesson faded while it lived: %.3f right after the lesson, %.3f "
+                       "after %.0f s of life (kept %.3f, bar %.3f)"
+                       % (measures["first_gain"], measures["later_gain"],
+                          measures["life_seconds"], measures["kept"], BAR["long_life_kept"]))
+    return True, ("the tone alone drove retreat %.3f right after the lesson and %.3f after %.0f s "
+                  "of life with the rule running (kept %.3f)"
+                  % (measures["first_gain"], measures["later_gain"],
+                     measures["life_seconds"], measures["kept"]))
+
+
+TONE_SECOND = {"geom": "sound_high", "frequency": 880., "amplitude": 1.0}
+
+
+def second_tone_measure(ctx, first_seconds=20., second_seconds=20., probe_seconds=4.):
+    """Two tones taught one after the other through the same route.
+
+    The second lesson arrives with the first one already written, and both have
+    to live on the same route cells.  The question is whether the first one
+    survives it, so the first tone is asked about again at the end.
+    """
+    from tools import nursery
+    life = _Life(ctx, {"a": dict(nursery.TONE), "b": dict(TONE_SECOND)})
+    try:
+        life.phase(probe_seconds, tone="a")
+        life.phase(first_seconds, tone="a", hand=True)
+        a_tone = life.phase(probe_seconds, tone="a")
+        a_silence = life.phase(probe_seconds)
+        first_route = life.route()
+        life.phase(second_seconds, tone="b", hand=True)
+        b_tone = life.phase(probe_seconds, tone="b")
+        b_silence = life.phase(probe_seconds)
+        again_tone = life.phase(probe_seconds, tone="a")
+        again_silence = life.phase(probe_seconds)
+        both_route = life.route()
+    finally:
+        life.close()
+    first = a_tone["retreat"] - a_silence["retreat"]
+    second = b_tone["retreat"] - b_silence["retreat"]
+    again = again_tone["retreat"] - again_silence["retreat"]
+    return dict(status="ok", error=None, first_gain=first, second_gain=second, again_gain=again,
+                first_kept=(again/first if abs(first) > 1e-9 else 0.),
+                route_after_first=first_route, route_after_second=both_route)
+
+
+def second_tone_bar(measures):
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    if measures["first_gain"] < BAR["taught_reflex_gain"]:
+        return False, ("the first lesson never took (%.3f on the tone)" % measures["first_gain"])
+    if measures["second_gain"] < BAR["taught_reflex_gain"]:
+        return False, ("the second tone was never learned (%.3f on the tone)"
+                       % measures["second_gain"])
+    if measures["first_kept"] < BAR["second_tone_kept"]:
+        return False, ("the second lesson wiped out the first: %.3f before it, %.3f after "
+                       "(kept %.3f, bar %.3f)"
+                       % (measures["first_gain"], measures["again_gain"],
+                          measures["first_kept"], BAR["second_tone_kept"]))
+    return True, ("the first tone still drove retreat %.3f after the second was learned "
+                  "(%.3f before it, kept %.3f)"
+                  % (measures["again_gain"], measures["first_gain"], measures["first_kept"]))
+
+
+def route_ceiling_measure(ctx, warmup_seconds=4., hold_seconds=20., stretches=3):
+    """The same route held on to over and over: does it keep growing, or stop?
+
+    The keeper holds on for three equal stretches with no pause between them, so
+    the route is used exactly as hard as it can be each time.  Four readings of
+    the route's own weights: before the hold, and at the end of each stretch.
+    """
+    from tools import nursery
+    life = _Life(ctx, {"a": dict(nursery.TONE)})
+    try:
+        life.phase(warmup_seconds, tone="a")
+        reads = [life.route()]
+        for _ in range(stretches):
+            life.phase(hold_seconds, tone="a", hand=True)
+            reads.append(life.route())
+    finally:
+        life.close()
+    sums = [float(np.asarray(part, dtype=float).sum()) for part in reads]
+    rises = [sums[index + 1] - sums[index] for index in range(stretches)]
+    return dict(status="ok", error=None, hold_seconds=float(hold_seconds),
+                first_rise=rises[0], last_rise=rises[-1], rises=rises, sums=sums,
+                ratio=(rises[-1]/rises[0] if abs(rises[0]) > 1e-9 else 0.),
+                route_before=reads[0], route_after=reads[-1])
+
+
+def route_ceiling_bar(measures):
+    """It has to have grown at all, and the second stretch has to add far less."""
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    stretches = " then ".join("%.5f" % value for value in measures["rises"])
+    if measures["first_rise"] <= BAR["route_ceiling_floor"]:
+        return False, ("the route never moved, so there is nothing to ease off: it rose %.5f in "
+                       "the first %.0f s (has to rise more than %.5f)"
+                       % (measures["first_rise"], measures["hold_seconds"],
+                          BAR["route_ceiling_floor"]))
+    if measures["ratio"] > BAR["route_ceiling_slowdown"]:
+        return False, ("the route kept growing just as fast: %s over equal stretches (the last "
+                       "has to be at most %.2f of the first)"
+                       % (stretches, BAR["route_ceiling_slowdown"]))
+    return True, ("the route rose %s over equal %.0f s stretches, ending at %s"
+                  % (stretches, measures["hold_seconds"],
+                     [round(value, 4) for value in measures["route_after"]]))
+
 def two_patterns_measure(ctx, rounds, paired_channel=2, spare_channel=1, gap=0):
     """Two patterns in the room at once: one is paired with a touch, one is not."""
     body = Go2Body(model_path=ctx["model_path"])
@@ -3071,6 +3293,29 @@ task("the_lesson_is_still_there_after_a_minute", "学习", "教完安静一分�
      "安静的时间比「隔三十秒」那一题再长一倍。它仍然只到一分钟量级，"
      "不说明长期记忆。",
      requires=("the_lesson_survives_a_longer_pause",))
+
+
+task("the_memory_survives_a_long_life", "学习", "教完让它自己活一分钟，那件事还在吗", "full", 98.,
+     lambda ctx: long_life_measure(ctx, 20., 60.),
+     long_life_bar,
+     "它活的那一分钟不是安静的：它一直在走，那个声音时有时无，局部规则一直开着。"
+     "这一题只读后退细胞，所以它说明的是那件事还在不在，不说明它记得多久、"
+     "也不说明它分得清别的音。",
+     requires=("the_lesson_survives_a_longer_pause",))
+
+task("a_second_tone_does_not_wipe_the_first", "学习", "学会一个音之后再教一个，前一个会不会被顶掉", "full", 76.,
+     lambda ctx: second_tone_measure(ctx, 20., 20.),
+     second_tone_bar,
+     "两个音走的是同一条可教通路，所以它们抢同一批细胞。这一题只问前一个还在不在，"
+     "不说明它分得清这两个音。",
+     requires=("the_lesson_survives_a_longer_pause",))
+
+task("the_route_stops_growing_at_its_ceiling", "学习", "同一根连接一直用，会不会无脑一直涨", "full", 64.,
+     lambda ctx: route_ceiling_measure(ctx),
+     route_ceiling_bar,
+     "这一题读的是那几根可教连接自己的权重，不是细胞的读数。它只说明连着用一分钟之后它越涨越慢、最后几乎不涨，"
+     "不说明它永远不会再变——真正把它钉住的是它自己的上限和系绳。",
+     requires=("taught_reflex_sticks",))
 
 task("remembers_two_patterns_at_once", "记忆", "两块图案里只配对一块，另一块会不会也被当成危险", "full", 30.,
      lambda ctx: two_patterns_measure(ctx, 5), two_pattern_bar,
@@ -3538,6 +3783,12 @@ TASK_DOC = {
                                      "不亮亮那一半（≤ 0.05）、"
                                      "暗那一半要把自己的汇总层点亮（≥ 0.05），"
                                      "白画面反过来"),
+    "the_memory_survives_a_long_life": ("教完的那一刻的成绩，和它自己走一分钟（边听边走、规则开着）之后的成绩",
+                                        "先学会（≥ 0.05），之后不低于原来的 80%"),
+    "a_second_tone_does_not_wipe_the_first": ("先教 262 Hz、再教 880 Hz，之后分别只听这两个声音",
+                                              "两个音都要 ≥ 0.05，且第一个不低于原来的 80%"),
+    "the_route_stops_growing_at_its_ceiling": ("一直握着不放六十秒，那几根可教连接头、中、后各二十秒各涨多少",
+                                               "头二十秒涨 > 0.01，最后二十秒的涨幅 ≤ 头二十秒的 25%"),
 }
 
 for _entry in TASKS:

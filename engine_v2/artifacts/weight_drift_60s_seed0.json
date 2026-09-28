@@ -1,0 +1,52 @@
+{
+ "seconds": 60.0,
+ "seed": 0,
+ "walk": 0.6,
+ "edges": 1978225,
+ "rose": 624843,
+ "fell": 728710,
+ "still": 624672,
+ "moved_1e-3": 67936,
+ "moved_1e-2": 10700,
+ "largest_rise": 0.0784205732522472,
+ "largest_fall": -0.0019059606195179768,
+ "mean_delta": 0.00010708424373009423,
+ "below_anchor": 685557,
+ "above_anchor": 840281,
+ "memory_start": [
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001
+ ],
+ "memory_end": [
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001
+ ],
+ "fell_by_pair": {
+  "tonic -> motor": 7553,
+  "steering_inhibition -> motor": 2942,
+  "steering -> motor": 2911,
+  "orienting_inhibition -> orienting": 1,
+  "orienting_vigor_inhibition -> locomotion": 1,
+  "righting_upright_inhibition -> righting_fallen": 1,
+  "righting_upright_inhibition -> righting_fallen_hold": 1
+ },
+ "fell_total_more_than_1e-3": 13410,
+ "worst_edges": [
+  "orienting_vigor_inhibition -> locomotion 1.1999 -> 1.1980 (born 1.2000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9980 (born 6.0000)"
+ ]
+}

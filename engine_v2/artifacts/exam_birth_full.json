@@ -49582,6 +49582,114 @@
      "wall_seconds": 69.91238310000335
     },
     {
+     "task": "the_memory_survives_a_long_life",
+     "group": "学习",
+     "seed": 0,
+     "passed": true,
+     "why": "the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "later_gain": 0.9449350003687899,
+      "kept": 0.974559429004602,
+      "life_seconds": 60.0,
+      "min_up_z": 0.932813548912327,
+      "route_after_lesson": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_life": [
+       1.163823539848925,
+       0.031018206314425475,
+       0.00018763396506679667,
+       1.1945724434290161,
+       0.04246992627132469,
+       0.0010749795341611762
+      ]
+     },
+     "wall_seconds": 58.715297499999
+    },
+    {
+     "task": "a_second_tone_does_not_wipe_the_first",
+     "group": "学习",
+     "seed": 0,
+     "passed": true,
+     "why": "the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "second_gain": 0.9683607439135535,
+      "again_gain": 0.942178154597518,
+      "first_kept": 0.9717161540283805,
+      "route_after_first": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_second": [
+       1.0012459466004062,
+       0.06056244657778874,
+       0.7703309736231241,
+       1.101376305955958,
+       0.126473206479464,
+       1.0211537560193358
+      ]
+     },
+     "wall_seconds": 38.9628187000053
+    },
+    {
+     "task": "the_route_stops_growing_at_its_ceiling",
+     "group": "学习",
+     "seed": 0,
+     "passed": true,
+     "why": "the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "hold_seconds": 20.0,
+      "first_rise": 1.9865673081456767,
+      "last_rise": 0.026559583695199507,
+      "rises": [
+       1.9865673081456767,
+       1.1125651943127284,
+       0.026559583695199507
+      ],
+      "sums": [
+       0.00017932500014967084,
+       1.9867466331458263,
+       3.0993118274585547,
+       3.125871411153754
+      ],
+      "ratio": 0.01336958661621742,
+      "route_before": [
+       0.0,
+       0.0,
+       9.896413920375894e-05,
+       0.0,
+       0.0,
+       8.036086094591192e-05
+      ],
+      "route_after": [
+       1.5,
+       0.052787145143680915,
+       0.00018721353496651476,
+       1.5,
+       0.07182223145790333,
+       0.0010748210172037362
+      ]
+     },
+     "wall_seconds": 35.71392550000019
+    },
+    {
      "task": "remembers_two_patterns_at_once",
      "group": "记忆",
      "seed": 0,
@@ -92633,8 +92741,8 @@
     }
    ],
    "summary": {
-    "passed": 96,
-    "total": 123,
+    "passed": 99,
+    "total": 126,
     "failed": [
      "steps_over_the_curb",
      "climbs_onto_the_platform",
@@ -92684,7 +92792,7 @@
      "knows_when_it_is_tipped_over",
      "the_hidden_layer_sees_the_picture"
     ],
-    "wall_seconds": 1500.9070154000365
+    "wall_seconds": 1634.299057100041
    }
   },
   {
@@ -142262,6 +142370,114 @@
      "wall_seconds": 69.75896640000428
     },
     {
+     "task": "the_memory_survives_a_long_life",
+     "group": "学习",
+     "seed": 1,
+     "passed": true,
+     "why": "the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "later_gain": 0.9449350003687899,
+      "kept": 0.974559429004602,
+      "life_seconds": 60.0,
+      "min_up_z": 0.932813548912327,
+      "route_after_lesson": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_life": [
+       1.163823539848925,
+       0.031018206314425475,
+       0.00018763396506679667,
+       1.1945724434290161,
+       0.04246992627132469,
+       0.0010749795341611762
+      ]
+     },
+     "wall_seconds": 55.80470149999746
+    },
+    {
+     "task": "a_second_tone_does_not_wipe_the_first",
+     "group": "学习",
+     "seed": 1,
+     "passed": true,
+     "why": "the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "second_gain": 0.968342437878089,
+      "again_gain": 0.9421755924120354,
+      "first_kept": 0.9717135115164406,
+      "route_after_first": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_second": [
+       1.0012465823138743,
+       0.06056596202356447,
+       0.7703477529877101,
+       1.1013792669200009,
+       0.1264775152514281,
+       1.0211522373335744
+      ]
+     },
+     "wall_seconds": 37.901043200006825
+    },
+    {
+     "task": "the_route_stops_growing_at_its_ceiling",
+     "group": "学习",
+     "seed": 1,
+     "passed": true,
+     "why": "the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "hold_seconds": 20.0,
+      "first_rise": 1.9865673081456767,
+      "last_rise": 0.026559583695199507,
+      "rises": [
+       1.9865673081456767,
+       1.1125651943127284,
+       0.026559583695199507
+      ],
+      "sums": [
+       0.00017932500014967084,
+       1.9867466331458263,
+       3.0993118274585547,
+       3.125871411153754
+      ],
+      "ratio": 0.01336958661621742,
+      "route_before": [
+       0.0,
+       0.0,
+       9.896413920375894e-05,
+       0.0,
+       0.0,
+       8.036086094591192e-05
+      ],
+      "route_after": [
+       1.5,
+       0.052787145143680915,
+       0.00018721353496651476,
+       1.5,
+       0.07182223145790333,
+       0.0010748210172037362
+      ]
+     },
+     "wall_seconds": 36.151895799994236
+    },
+    {
      "task": "remembers_two_patterns_at_once",
      "group": "记忆",
      "seed": 1,
@@ -185313,8 +185529,8 @@
     }
    ],
    "summary": {
-    "passed": 91,
-    "total": 123,
+    "passed": 94,
+    "total": 126,
     "failed": [
      "steps_over_the_curb",
      "climbs_onto_the_platform",
@@ -185372,7 +185588,7 @@
      "knows_when_it_is_tipped_over",
      "the_hidden_layer_sees_the_picture"
     ],
-    "wall_seconds": 1500.4537207000103
+    "wall_seconds": 1630.3113612000088
    }
   },
   {
@@ -234950,6 +235166,114 @@
      "wall_seconds": 69.80790530000377
     },
     {
+     "task": "the_memory_survives_a_long_life",
+     "group": "学习",
+     "seed": 2,
+     "passed": true,
+     "why": "the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "later_gain": 0.9449350003687899,
+      "kept": 0.974559429004602,
+      "life_seconds": 60.0,
+      "min_up_z": 0.932813548912327,
+      "route_after_lesson": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_life": [
+       1.163823539848925,
+       0.031018206314425475,
+       0.00018763396506679667,
+       1.1945724434290161,
+       0.04246992627132469,
+       0.0010749795341611762
+      ]
+     },
+     "wall_seconds": 55.420929600004456
+    },
+    {
+     "task": "a_second_tone_does_not_wipe_the_first",
+     "group": "学习",
+     "seed": 2,
+     "passed": true,
+     "why": "the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "second_gain": 0.9683429346605831,
+      "again_gain": 0.9422006799148537,
+      "first_kept": 0.9717393855314915,
+      "route_after_first": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_second": [
+       1.0010667767337682,
+       0.060527007411901736,
+       0.7703498103869731,
+       1.101371742049956,
+       0.12647268114356638,
+       1.0211512082924514
+      ]
+     },
+     "wall_seconds": 37.77657840000029
+    },
+    {
+     "task": "the_route_stops_growing_at_its_ceiling",
+     "group": "学习",
+     "seed": 2,
+     "passed": true,
+     "why": "the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "hold_seconds": 20.0,
+      "first_rise": 1.9865673081456767,
+      "last_rise": 0.026559583695199507,
+      "rises": [
+       1.9865673081456767,
+       1.1125651943127284,
+       0.026559583695199507
+      ],
+      "sums": [
+       0.00017932500014967084,
+       1.9867466331458263,
+       3.0993118274585547,
+       3.125871411153754
+      ],
+      "ratio": 0.01336958661621742,
+      "route_before": [
+       0.0,
+       0.0,
+       9.896413920375894e-05,
+       0.0,
+       0.0,
+       8.036086094591192e-05
+      ],
+      "route_after": [
+       1.5,
+       0.052787145143680915,
+       0.00018721353496651476,
+       1.5,
+       0.07182223145790333,
+       0.0010748210172037362
+      ]
+     },
+     "wall_seconds": 34.47323449999385
+    },
+    {
      "task": "remembers_two_patterns_at_once",
      "group": "记忆",
      "seed": 2,
@@ -278001,8 +278325,8 @@
     }
    ],
    "summary": {
-    "passed": 91,
-    "total": 123,
+    "passed": 94,
+    "total": 126,
     "failed": [
      "walk_narrow_passage",
      "steps_over_the_curb",
@@ -278058,7 +278382,7 @@
      "knows_when_it_is_tipped_over",
      "the_hidden_layer_sees_the_picture"
     ],
-    "wall_seconds": 1489.6074700000026
+    "wall_seconds": 1617.2782125000012
    }
   }
  ],
@@ -278180,7 +278504,11 @@
   "run_mean_speed": 0.25,
   "run_twenty_m": 2.0,
   "run_turn_speed": 0.25,
-  "opposite_reading": 0.05
+  "opposite_reading": 0.05,
+  "long_life_kept": 0.8,
+  "second_tone_kept": 0.8,
+  "route_ceiling_floor": 0.01,
+  "route_ceiling_slowdown": 0.25
  },
  "arena": "F:\\born-wired-cortex-v2\\models\\reflex_arena.xml",
  "genes": [
@@ -278232,5 +278560,5 @@
   "wall_time",
   "wall_turn_gain"
  ],
- "wall_seconds": 4490.968206100049
+ "wall_seconds": 4881.888630800051
 }

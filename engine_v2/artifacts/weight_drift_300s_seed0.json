@@ -1,0 +1,82 @@
+{
+ "seconds": 300.0,
+ "seed": 0,
+ "walk": 0.6,
+ "edges": 1978225,
+ "rose": 652178,
+ "fell": 710091,
+ "still": 615956,
+ "moved_1e-3": 202527,
+ "moved_1e-2": 18939,
+ "largest_rise": 0.09596122193361373,
+ "largest_fall": -0.025322156895164132,
+ "mean_delta": 0.0003484766934026062,
+ "below_anchor": 677072,
+ "above_anchor": 857483,
+ "memory_start": [
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001
+ ],
+ "memory_end": [
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001,
+  0.0001
+ ],
+ "fell_by_pair": {
+  "retinal_interneurons -> retinal_opponent": 14571,
+  "tonic -> motor": 7587,
+  "vestibular_exc -> motor": 4331,
+  "vestibular_inh -> motor": 4016,
+  "steering_inhibition -> motor": 2923,
+  "steering -> motor": 2701,
+  "photoreceptors -> retinal_contrast": 764,
+  "retinal_interneurons -> retinal_contrast": 764,
+  "retinal_column -> retinal_rise": 382,
+  "retinal_column_trace_inhibition -> retinal_rise": 382,
+  "retinal_column_trace -> retinal_fall": 382,
+  "retinal_column_inhibition -> retinal_fall": 382
+ },
+ "fell_total_more_than_1e-3": 40163,
+ "worst_edges": [
+  "retinal_memory -> aversive 0.0253 -> 0.0000 (born 0.0001)",
+  "retinal_memory -> aversive 0.0240 -> 0.0000 (born 0.0001)",
+  "retinal_memory -> aversive 0.0227 -> 0.0000 (born 0.0001)",
+  "retinal_memory -> aversive 0.0216 -> 0.0000 (born 0.0001)",
+  "tonic -> motor 5.9999 -> 5.9937 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9937 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9937 (born 6.0000)",
+  "tonic -> motor 5.9999 -> 5.9937 (born 6.0000)"
+ ],
+ "rose_by_pair": {
+  "photoreceptors -> retinal_interneurons": 42737,
+  "photoreceptors -> retinal_opponent": 26038,
+  "vestibular_exc -> motor": 14101,
+  "vestibular_inh -> motor": 12965,
+  "tonic -> motor": 11399,
+  "phase -> motor": 7796,
+  "phase_inhibitory -> motor": 6139,
+  "steady -> motor": 4721,
+  "retinal_contrast -> retinal_column": 3813,
+  "retinal_contrast -> retinal_column_trace": 3813,
+  "retinal_contrast -> retinal_trace": 3813,
+  "retinal_contrast -> retinal_change": 3791
+ },
+ "rose_total_more_than_1e-3": 162364,
+ "best_edges": [
+  "retinal_memory -> aversive 0.0040 -> 0.1000 (born 0.0001)",
+  "retinal_memory -> aversive 0.0043 -> 0.1000 (born 0.0001)",
+  "retinal_memory -> aversive 0.0045 -> 0.1000 (born 0.0001)",
+  "retinal_memory -> aversive 0.0047 -> 0.1000 (born 0.0001)",
+  "retinal_memory -> eye_look_left 0.0248 -> 0.1000 (born 0.0125)",
+  "retinal_memory -> eye_look_left 0.0249 -> 0.1000 (born 0.0125)",
+  "retinal_memory -> eye_look_left 0.0254 -> 0.1000 (born 0.0125)",
+  "retinal_memory -> eye_look_left 0.0256 -> 0.1000 (born 0.0125)"
+ ]
+}

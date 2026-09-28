@@ -7,13 +7,15 @@ Suzhou, Jiangsu, China.
 
 **Correspondence:** rivenlee94@gmail.com . ORCID: 0009-0005-8289-6393
 
-*Version of 2026-09-28. Sections R12, R13, R14, R15, R16, R17 and Methods 5.12 and 5.13 were added
+*Version of 2026-09-29. Sections R12, R13, R14, R15, R16, R17 and Methods 5.12 and 5.13 were added
 on this date and describe the rebuilt engine, the nursery, the hidden-layer routes, the cost of a
 larger sheet, the eyes and the ears; R18, claim (P9), Figure 11 and Methods 5.14 were added the same
 day and describe the merge of two taught models; R19 and Methods 5.15 were added the same day and
 describe the opposite cell beside every sense channel, the one that fires when that channel has
-nothing on it. The full manuscript PDF in this directory was
-re-typeset from this file on 2026-09-28 and contains all of it (51 pages, 11 figures); the
+nothing on it; R20, claim (P10) and Methods 5.16 were added on 2026-09-29 and describe what the
+local rule does to a weight when it is used and when it is not, together with the three questions of
+the exam bank that read it. The full manuscript PDF in this directory was
+re-typeset from this file on 2026-09-29 and contains all of it (55 pages, 11 figures); the
 Nature Machine Intelligence short PDF is still the 2026-09-17 build and contains none of it, and
 Supplementary Figures 5 and 6 are new with this version. Every number
 quoted below was produced by the script named next to it; the scripts and the log of every run are
@@ -32,7 +34,7 @@ anything and holds both lessons, both on a 17-cell graph (both cues answered, ma
 +1.000, 5/5 seeds) and on the 1,813-cell body, where the merged animal walks 0.66 m on the cue one
 parent learned and braces on the cue the other learned, while a parent merged with itself reproduces
 its own behaviour to three decimals and two parents taught opposite answers to one cue merge into no
-answer at all. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden.
+answer at all. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden. The connection table also holds itself still without any decay term: over five minutes of ordinary life seven edges in ten do not move by more than 0.001, the largest change anywhere is a tenth of one per cent of a weight, and the table drifts up rather than down -- while a lesson written down the teachable route keeps 97-98% of its read-out after ten minutes of life, after ten minutes of the tone coming back, and after a second lesson on the same route, and a route that is used continuously climbs to its own ceiling and stops (1.98657, then 1.11257, then 0.02656 over three equal twenty-second stretches of teaching).
 
 ## Author Summary
 
@@ -41,7 +43,7 @@ pair of cells, one for what arrived and one for what did not, so a black picture
 something the brain is still reading rather than an absence. Two animals that each learned one different thing can also be added together: I averaged their two
 sets of connection strengths and got an animal that does both, which works only because each lesson
 had moved a different set of connections. The animal still falls over after a while, and I report
-that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
+that rather than hide it. A connection that is used a lot does not grow without limit, and one that is never used does not fade away: the strength of a connection climbs to a ceiling and stops, and an idle one settles back to the strength it was born with and stops there, so the whole table drifts neither up nor down without bound. The result suggests that what a brain is born with matters at least as much as what it learns.
 
 ## 1. Introduction
 
@@ -124,6 +126,14 @@ claims, (P1) to (P9), so that the results can be read as tests of specific ones.
   list, it preserves what each parent already had, it creates no capability that neither parent had,
   and it needs the same cells and the same edge list on both sides. Two lessons that want the same
   edge in opposite directions are its boundary, and R18 measures both sides of it.
+
+* **(P10) Stability is a property of the update rule, not of a decay term.** If the only things that
+  move a weight are a local correlation and a pull back towards the weight the edge was born with,
+  then an edge that is used should climb to its own ceiling and stop, an edge that is not used should
+  return to the weight it was born with and stop there, and a table that is mostly idle should be
+  mostly still -- with no term anywhere that lowers a weight because a network is growing too strong.
+  R20 measures all three, and the shape it reports is the shape long-term imaging of cortical synapses
+  reports: most of the table stable, a small minority moving, and movement bounded in both directions.
 
 ### 1.2 What this paper tests
 
@@ -1913,6 +1923,99 @@ here.
 
 ---
 
+### R20. A memory that is used holds its place, and a memory that is not does not keep sinking (no figure)
+
+Every edge of the rebuilt engine carries two numbers that decide how far it can move: the weight it
+was born with, and its own ceiling. Two readings of the shipped configuration, taken while the animal
+simply lives -- walking with the local rule running and nothing else happening, few minutes apart on
+three seeds (`tools/measure_weight_drift.py`; `artifacts/weight_drift_60s_seed0.log`,
+`artifacts/weight_drift_300s_seed0.log`, `artifacts/weight_drift_300s_seed1.log`) -- say what those
+two numbers do to a table of 1,978,225 movable edges.
+
+| reading | 60 s of life | 300 s of life |
+|---|---|---|
+| edges that rose / fell / did not move | 624,843 / 728,710 / 624,672 | 652,178 / 710,091 / 615,956 |
+| edges that moved by more than 0.001 | 67,936 | 202,527 |
+| edges that moved by more than 0.01 | 10,700 | 18,939 |
+| largest rise | +0.0784 | +0.0960 |
+| largest fall | −0.0019 | −0.0253 |
+| mean change per edge | +0.000107 | +0.000348 |
+| edges above their birth weight | 840,281 | 857,483 |
+
+Five times as much time buys three times as many moved edges, and a largest rise that is barely
+changed (0.0784 to 0.0960). The table is not sliding; it is settling. The second seed reproduces both
+extremes to four decimals (largest rise +0.0960, largest fall −0.0253, 203,100 edges moved by more
+than 0.001). The direction of the drift is up, not down: edges sitting above their birth weight rise
+from 840,281 to 857,483 while those below it fall from 685,557 to 677,072.
+
+Where weights do fall, they fall on the posture drive, and they fall by almost nothing. After 300 s
+the largest fall anywhere in the table is 6.0000 to 5.9937 on `tonic -> motor`, one tenth of one per
+cent of a weight whose structural floor is three per cent below birth; and between those same two
+populations the rises outnumber the falls, 11,399 against 7,587. The other falls are inside the eye's
+own first layer (`retinal_interneurons -> retinal_opponent`, 14,571 edges of the 40,163 that moved by
+more than 0.001) and on the two steering populations. Nothing anywhere in the table loses a
+meaningful fraction of its weight in five minutes of life.
+
+*A lesson is kept.* The teachable route is the one table the animal is meant to keep, and it is kept
+outright. Measured over one minute of life with the rule running (`the_memory_survives_a_long_life`),
+over ten minutes of walking in silence (`artifacts/forget_600_quiet.log`), over ten minutes with the
+tone coming and going (`artifacts/forget_300_life.log`), and with a second lesson written down the
+same route (`a_second_tone_does_not_wipe_the_first`,
+`artifacts/forget_300_second.log`):
+
+| what happened after the lesson | retreat on the tone right after | at the end | kept |
+|---|---|---|---|
+| sixty seconds of ordinary life | 0.970 | 0.945 | 97.5% |
+| ten minutes of walking, silent | 1.000 | 0.975 | 97.5% |
+| ten minutes, the tone coming back | 1.000 | 0.984 | 98.4% |
+| a second tone learned on the same route | 0.970 | 0.942 | 97.2% |
+
+The route's own weights do not fall even where its behavioural read-out dips a little: over ten
+silent minutes they move from 0.9739 to 1.0038 and from 1.0285 to 1.0569, i.e. they rise. A lesson
+that nobody reinforces is not eroded by the rest of the animal's life at this time scale.
+
+*A route that is used stops at its ceiling.* Held on to continuously, with the keeper's hand on the
+body the whole time (`the_route_stops_growing_at_its_ceiling`,
+`artifacts/exam_new_tasks_3seeds.json`), the route's six edges rose by 1.98657 over the first 20 s,
+1.11257 over the next 20 s and 0.02656 over the third, ending at exactly 1.500 on its two largest
+edges -- their `backup_cap`, hit and held. So the route climbs and then stops climbing, and what stops
+it is its own hard ceiling rather than any weariness in the rule.
+
+The three questions of this section are in the bank (`tools/taskbank.py`) and the birth animal passes
+all three on all three seeds, which is what makes them measurements of the shipped animal rather than
+of a special configuration: the bank now asks 126 questions and the birth animal passes 99, 94 and 94
+of them (`artifacts/exam_birth_full.json`).
+
+*What the same quantities do in a brain.* The shape of this rule -- most of a table stable, a small
+minority moving, movement bounded in both directions -- is the shape that long-term imaging of
+cortical synapses reports:
+
+| measurement | result | source |
+|---|---|---|
+| adult mouse visual cortex, one month | about 96% of dendritic spines stable, half-life greater than 13 months; 73% in the critical period | Grutzendler, Kasthuri & Gan (2002) |
+| adult mouse barrel cortex, weeks | about 50% of spines persist at least a month, the rest days or less; experience-dependent plasticity increases turnover | Trachtenberg et al. (2002) |
+| mouse cortex, whole life | a small fraction of new spines, and most spines formed early that survive elimination, are preserved for life; lifelong memories sit in largely stable networks | Yang, Pan & Gan (2009) |
+| adult neocortex, review | overall morphology and a subpopulation of small synaptic structures remarkably stable; cell-type-specific turnover in specific circuits | Holtmaat & Svoboda (2009) |
+| wake and sleep | wakefulness a net increase in synaptic strength, sleep a downscaling; cerebral metabolic rate falls 15-20% after about 2.5 h of sleep | Tononi & Cirelli (2006); Vyazovskiy et al. (2008) |
+
+Two of the three numbers are close: roughly seven edges in ten do not move by more than 0.001 in five
+minutes, and the minority that moves is bounded in both directions, which is the same shape as "a
+small fraction of new spines persists and the rest is removed". What the brain has and this rule does
+not is a *reason* for an edge to be one or the other: in the cortex a spine's stability depends on
+its age and on its history, while here the tether is one constant on every edge of the shipped
+configuration once the route is taken out.
+
+*What R20 does not show.* There is no sleep phase here and no consolidation window: nothing in this
+system rescales the table between waking periods, and the tether is a global constant (0.2) rather
+than a value that reflects how old or how used an edge is. The claim is about the shape of the rule,
+not about a brain-like allocation of stability. It is also measured over minutes. Ten minutes of life
+is not a lifetime, and nothing here says what the table looks like after hours of it. The
+interference question is asked once, for one pair of tones down one route; that is not a claim that
+arbitrary pairs of lessons cannot overwrite one another. And the falling edges of the first table are
+only described, not attributed: which of them changes behaviour, and by how much, is not measured
+here.
+---
+
 ## 4. Discussion
 
 ### 4.1 What the results support
@@ -1940,6 +2043,7 @@ experiment; the last row is not a claim but the question that R4 was built to an
 | **(P7)** any layer of a hierarchy, not only the last, is a signal source | R14: a synthetic case where two stimuli reach the compressed cell identically; the same route on a body, five seeds, three conditions; ten minutes with learning always on | **supported, within a declared scope.** With a read-out on the compressed cell alone the two stimuli are one; with a plastic route from the intermediate cells the two motor cells separate, and with learning off they do not. On the body, stimulus B then A then B gives trunk heights of about 0.250, 0.147 and 0.250 m, the second B recovering the first to within 6.8 micrometres. The scope is small (17 cells synthetic, 1,813 cells on the body) and two route caps are declared priors rather than learned. |
 | **(P8)** the sheet is spatial, and a tick costs what is lit rather than what exists | R15: three arms of 1,000 cells differing only in the coordinates of the sheet; two engines measured side by side at 100,000 cells; 100,000 to 800,000 cells at fixed drive | **partly supported.** Depth is told apart by the solid sheet and by nothing else (overlap 0.084 against 0.290 for flat coordinates and 0.343 for random wiring), bought with some loss of separation between different objects (0.041 to 0.081). Cost follows activity in the rebuilt engine (0 cells 0.04 ms, 11,818 cells 13.71 ms) and not in the original one (5.2 to 5.7 ms whatever is alight); eight times the cells cost 1.06 times the time at fixed drive. The prediction that the alight *fraction* falls is confirmed, but the cost per active cell is flat, so a larger sheet resolving the same input with fewer cells is not yet demonstrated. |
 | **(P9)** what one life writes can be combined with what another life wrote | R18: two parents of the 17-cell graph, one lesson each; the same two lessons with the motor cells swapped; two parents taught opposite answers to one cue; two parents of the 1,813-cell controller, one taught to walk and one to brace | **supported, within a declared scope.** Each lesson moves 5 of 62 edges (17-cell) and 5 of 17,745 edges (body) by more than 0.05, and the two lessons of a pair write to disjoint edges, so adding the two weight tables and halving them answers both cues on 5/5 seeds (+1.000 and +1.000) and the merged body walks 0.66 m on one cue and braces on the other. The swapped-lesson control answers both cues with the swapped motor cells, so the merge carries content and not merely "both cues answer". Two parents taught opposite answers to the same cue merge into no answer at all (margin 0.000 to 0.001). The scope: one graph per experiment, parents identical apart from the lesson, nothing retrained after the merge, and no new capability created. |
+| **(P10)** stability comes from the shape of the rule -- a ceiling and a spring back to the birth weight -- and not from a decay term | R20: 1,978,225 movable edges during 60 s and 300 s of ordinary life, three seeds; the teachable route measured after one minute of life, after ten minutes of walking, after a second lesson on the same route, and after three equal 20 s stretches of continuous use | **supported.** Five times the time buys three times as many moved edges (67,936 to 202,527 of 1,978,225) and a largest rise that barely changes (+0.0784 to +0.0960), so the table settles rather than slides; it drifts up, not down (edges above their birth weight rise from 840,281 to 857,483). The largest fall anywhere in 300 s is 6.0000 to 5.9937 on `tonic -> motor`, a tenth of one per cent of a weight whose structural floor is three per cent below birth, and even between those two populations the rises outnumber the falls. The teachable route keeps 97.5% of its read-out after a minute of life, 97.5% after ten minutes of walking in silence and 98.4% with the tone coming back, and 97.2% after a second lesson is written down the same route; its own weights rise rather than fall over those ten minutes. Held on to continuously it rises 1.98657, then 1.11257, then 0.02656 over three equal 20 s stretches, ending pinned at exactly 1.500 -- its declared cap. The scope: the tether is one constant on every edge of the shipped configuration rather than a value that reflects an edge's age, there is no sleep or consolidation phase, and the interference question is asked once, for one pair of tones down one route. |
 | **(Q4)** is local plasticity doing anything a fixed recogniser is not? (question 4 of 1.2, not one of P1-P8) | R4: which hues start the walk, in the same brains, before and after a drift, with the rule on and off, and at three step sizes; the same protocol on two builds | **supported, with a bounded reach and a size that is not reproducible.** The boundary is where the sum of two cell populations crosses: every hue summing to 1.39 or more is accepted on 5/5 and every hue at 0.97 or less is rejected on 0/5. The three hues whose sums fall within 0.05 of the line (96, 168, 180) are decided by the random background connectivity each brain is born with, and the rule carries exactly those hues across the line: on the build of the main table that shows up in one brain of five at a 3- and a 12-degree step and two at 6 degrees, and in 5 of 5 on the earlier build, where every brain sat below the line. In neither build does any brain cross the gap at 120-144 degrees. What is reproducible is the reach of the rule -- to the edge of the island and no further -- not the number of brains in which it has anything to do. |
 
 Four sub-claims are worth separating, because they have different evidential status -- one of
@@ -2236,6 +2340,14 @@ should be attacked, with the honest cost of each.
    be re-tuned to the equilibrium of growth and decay, exactly as R11 reports for a wider mosaic.
    (Logs `日志_全局衰减000.log`, `日志_全局衰减0005.log`, `日志_全局衰减004.log`; script
    `试_全局衰减_修R9.py`.)
+   The rebuilt engine of Section 5.12 answers the same worry with a term of a different shape
+   rather than with a flat decay, and R20 measures it. There every edge carries the weight it was
+   born with, and the tether is a spring back to that weight: proportional to how far the edge has
+   already moved, so it is strongest on the edges that have changed least, and removed altogether on
+   the one table the animal is meant to keep. A flat decay eats the calibrated edges that carry the
+   instinct table's current; a spring to the birth weight leaves those edges where the table put
+   them. That is why the rebuild does not meet the failure this paragraph reports, and the reason
+   is the shape of the rule rather than a better constant.
    The other half of the same failure is R9's prefrontal accumulator, in which every
    tick's code is added to the last with nothing subtracting it; that one is answerable with a
    single global inhibitory current (R9's knob), and it is the one place in this paper where a
@@ -2835,6 +2947,46 @@ This is structure and not a parameter: a companion sheet adds no gain, no thresh
 its own beyond the injection of one minus the same number, and it is born with the animal like every
 other innate cell.
 
+### 5.16 What the local rule does to a weight, and the three questions that read it
+
+`RegulatedSynapses` (`born_wired/regulation.py`) and the same expression on the graphics card
+(`born_wired/torch_execution.py`, `SynapseTensors.update`) move every movable edge by
+
+    change = learning_rate * modulator * (post - target_activity) * source_rate - tether * (w - anchor)
+
+and one write is `w <- w + plasticity * dt * change`, projected onto the edge's own bounds and onto
+the incoming budget of its target cell on every write. The first term is the correlation: an edge is
+raised when its source fires and its target sits above `target_activity` (0.15) and lowered when its
+source fires and its target sits below it. The second term is the tether: a spring back to `anchor`,
+the weight the edge was born with. There is no decay term -- `decay` is zero in the constructor --
+and no term anywhere lowers a weight because its target fired anyway, which is the failure discussed
+in Section 4.6. The ceiling, the structural floor and the per-cell budget are all hard, because the
+projection runs after every proposal and not at the end of a run.
+
+The shipped configuration gives almost every edge `tether = 0.2` and `learning_rate = 0.12`
+(`born_wired/innate.py`); the teachable route of Section 5.5 is the exception at `tether = 0`, which
+is what lets a lesson keep what it writes, and the posture edges that R12 marks as learned are the
+exception in the other direction. The rule's own answer to "does this stay put" is therefore: an edge
+that is not used relaxes towards the weight it was born with and stops there, and an edge that is used
+climbs to its own ceiling and stops there. Both ends are what R20 measures.
+
+The three questions of R20 are in `tools/taskbank.py`. `the_memory_survives_a_long_life` teaches for
+20 s, then lets the animal walk for 60 s with the rule running and the tone coming and going in 6 s
+blocks, then asks about the tone alone. `a_second_tone_does_not_wipe_the_first` teaches 262 Hz, then
+teaches 880 Hz down the same route, then asks about both tones separately. `the_route_stops_growing_at_its_ceiling`
+holds the keeper's hand on the body for three equal 20 s stretches with no pause and reads the
+route's own weights before the hold and at the end of each stretch. All three need the same animal
+across phases, which `nursery.Run` does not provide (it builds a fresh animal for each phase), so they
+use a `_Life` helper in the same file: one body, one brain, one ear per tone. Nothing in any of them
+writes a weight, and the only thing that drives the dopamine cell is the keeper's hand, through the
+innate touch route. Their readings are `artifacts/weight_drift_60s_seed0.log`,
+`artifacts/weight_drift_300s_seed0.log`, `artifacts/weight_drift_300s_seed1.log`,
+`artifacts/forget_600_quiet.log`, `artifacts/forget_300_life.log`, `artifacts/forget_300_second.log`
+and `artifacts/exam_new_tasks_3seeds.json`; the two drift tools are `tools/measure_weight_drift.py`
+and `tools/measure_forgetting.py`, and both are run against the same nursery configuration the exam
+bank uses, which carries the six route edges on top of the 1,978,219 of Section 5.12.
+The suite was run again after the three questions were added and reports 199 tests, all passing
+(`artifacts/tests_after_memory.log`).
 ## Figures
 
 Each figure is generated from the logs cited in the corresponding result section; the plotting
@@ -2920,7 +3072,9 @@ scripts are `出一张图_论文_20260915.py` (Figures 1-9), `出一张图_发�
 * Fuster, J. M. (2001). The prefrontal cortex - an update: time is of the essence. *Neuron* 30, 319-333.
 * Gewaltig, M.-O., & Diesmann, M. (2007). NEST (NEural Simulation Tool). *Scholarpedia* 2, 1430.
 * Grillner, S., & Wallen, P. (1985). Central pattern generators for locomotion, with special reference to vertebrates. *Annual Review of Neuroscience* 8, 233-261.
+* Grutzendler, J., Kasthuri, N., & Gan, W.-B. (2002). Long-term dendritic spine stability in the adult cortex. *Nature* 420, 812-816.
 * Hebb, D. O. (1949). *The Organization of Behavior: A Neuropsychological Theory.* Wiley.
+* Holtmaat, A., & Svoboda, K. (2009). Experience-dependent structural synaptic plasticity in the mammalian brain. *Nature Reviews Neuroscience* 10, 647-658.
 * Hopfield, J. J. (1982). Neural networks and physical systems with emergent collective computational abilities. *PNAS* 79, 2554-2558.
 * Hubel, D. H., & Wiesel, T. N. (1962). Receptive fields, binocular interaction and functional architecture in the cat's visual cortex. *The Journal of Physiology* 160, 106-154.
 * Hwangbo, J., et al. (2019). Learning agile and dynamic motor skills for legged robots. *Science Robotics* 4, eaau5872.
@@ -2938,8 +3092,12 @@ scripts are `出一张图_论文_20260915.py` (Figures 1-9), `出一张图_发�
 * Rao, R. P. N., & Ballard, D. H. (1999). Predictive coding in the visual cortex: a functional interpretation of some extra-classical receptive-field effects. *Nature Neuroscience* 2, 79-87.
 * Rudin, N., Hoeller, D., Reist, P., & Hutter, M. (2022). Learning to walk in minutes using massively parallel deep reinforcement learning. *Conference on Robot Learning (CoRL)*.
 * Tinbergen, N. (1951). *The Study of Instinct.* Oxford University Press.
+* Tononi, G., & Cirelli, C. (2006). Sleep function and synaptic homeostasis. *Sleep Medicine Reviews* 10, 49-62.
+* Trachtenberg, J. T., Chen, B. E., Knott, G. W., Feng, G., Sanes, J. R., Welker, E., & Svoboda, K. (2002). Long-term in vivo imaging of experience-dependent synaptic plasticity in adult cortex. *Nature* 420, 788-794.
 * Turrigiano, G. G., & Nelson, S. B. (2004). Homeostatic plasticity in the developing nervous system. *Nature Reviews Neuroscience* 5, 97-107.
+* Vyazovskiy, V. V., Cirelli, C., Tononi, G., & Tobler, I. (2008). Cortical metabolic rates as measured by 2-deoxyglucose-uptake are increased after waking and decreased after sleep in mice. *Brain Research Bulletin* 75, 591-597.
 * Wang, X.-J. (2002). Probabilistic decision making by slow reverberation in cortical circuits. *Neuron* 36, 955-968.
+* Yang, G., Pan, F., & Gan, W.-B. (2009). Stably maintained dendritic spines are associated with lifelong memories. *Nature* 462, 920-924.
 
 *(Bibliographic details in this list still need a check against the original sources before
 submission; the citation list has not been machine-verified.)*

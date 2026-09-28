@@ -1,0 +1,549 @@
+{
+ "stage": "full",
+ "genome": {},
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "runs": [
+  {
+   "seed": 0,
+   "results": [
+    {
+     "task": "the_memory_survives_a_long_life",
+     "group": "学习",
+     "seed": 0,
+     "passed": true,
+     "why": "the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "later_gain": 0.9449350003687899,
+      "kept": 0.974559429004602,
+      "life_seconds": 60.0,
+      "min_up_z": 0.932813548912327,
+      "route_after_lesson": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_life": [
+       1.163823539848925,
+       0.031018206314425475,
+       0.00018763396506679667,
+       1.1945724434290161,
+       0.04246992627132469,
+       0.0010749795341611762
+      ]
+     },
+     "wall_seconds": 58.715297499999
+    },
+    {
+     "task": "a_second_tone_does_not_wipe_the_first",
+     "group": "学习",
+     "seed": 0,
+     "passed": true,
+     "why": "the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "second_gain": 0.9683607439135535,
+      "again_gain": 0.942178154597518,
+      "first_kept": 0.9717161540283805,
+      "route_after_first": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_second": [
+       1.0012459466004062,
+       0.06056244657778874,
+       0.7703309736231241,
+       1.101376305955958,
+       0.126473206479464,
+       1.0211537560193358
+      ]
+     },
+     "wall_seconds": 38.9628187000053
+    },
+    {
+     "task": "the_route_stops_growing_at_its_ceiling",
+     "group": "学习",
+     "seed": 0,
+     "passed": true,
+     "why": "the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "hold_seconds": 20.0,
+      "first_rise": 1.9865673081456767,
+      "last_rise": 0.026559583695199507,
+      "rises": [
+       1.9865673081456767,
+       1.1125651943127284,
+       0.026559583695199507
+      ],
+      "sums": [
+       0.00017932500014967084,
+       1.9867466331458263,
+       3.0993118274585547,
+       3.125871411153754
+      ],
+      "ratio": 0.01336958661621742,
+      "route_before": [
+       0.0,
+       0.0,
+       9.896413920375894e-05,
+       0.0,
+       0.0,
+       8.036086094591192e-05
+      ],
+      "route_after": [
+       1.5,
+       0.052787145143680915,
+       0.00018721353496651476,
+       1.5,
+       0.07182223145790333,
+       0.0010748210172037362
+      ]
+     },
+     "wall_seconds": 35.71392550000019
+    }
+   ],
+   "summary": {
+    "passed": 3,
+    "total": 3,
+    "failed": [],
+    "deepest_rung": 3,
+    "frontier": [],
+    "wall_seconds": 133.39204170000448
+   }
+  },
+  {
+   "seed": 1,
+   "results": [
+    {
+     "task": "the_memory_survives_a_long_life",
+     "group": "学习",
+     "seed": 1,
+     "passed": true,
+     "why": "the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "later_gain": 0.9449350003687899,
+      "kept": 0.974559429004602,
+      "life_seconds": 60.0,
+      "min_up_z": 0.932813548912327,
+      "route_after_lesson": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_life": [
+       1.163823539848925,
+       0.031018206314425475,
+       0.00018763396506679667,
+       1.1945724434290161,
+       0.04246992627132469,
+       0.0010749795341611762
+      ]
+     },
+     "wall_seconds": 55.80470149999746
+    },
+    {
+     "task": "a_second_tone_does_not_wipe_the_first",
+     "group": "学习",
+     "seed": 1,
+     "passed": true,
+     "why": "the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "second_gain": 0.968342437878089,
+      "again_gain": 0.9421755924120354,
+      "first_kept": 0.9717135115164406,
+      "route_after_first": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_second": [
+       1.0012465823138743,
+       0.06056596202356447,
+       0.7703477529877101,
+       1.1013792669200009,
+       0.1264775152514281,
+       1.0211522373335744
+      ]
+     },
+     "wall_seconds": 37.901043200006825
+    },
+    {
+     "task": "the_route_stops_growing_at_its_ceiling",
+     "group": "学习",
+     "seed": 1,
+     "passed": true,
+     "why": "the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "hold_seconds": 20.0,
+      "first_rise": 1.9865673081456767,
+      "last_rise": 0.026559583695199507,
+      "rises": [
+       1.9865673081456767,
+       1.1125651943127284,
+       0.026559583695199507
+      ],
+      "sums": [
+       0.00017932500014967084,
+       1.9867466331458263,
+       3.0993118274585547,
+       3.125871411153754
+      ],
+      "ratio": 0.01336958661621742,
+      "route_before": [
+       0.0,
+       0.0,
+       9.896413920375894e-05,
+       0.0,
+       0.0,
+       8.036086094591192e-05
+      ],
+      "route_after": [
+       1.5,
+       0.052787145143680915,
+       0.00018721353496651476,
+       1.5,
+       0.07182223145790333,
+       0.0010748210172037362
+      ]
+     },
+     "wall_seconds": 36.151895799994236
+    }
+   ],
+   "summary": {
+    "passed": 3,
+    "total": 3,
+    "failed": [],
+    "deepest_rung": 3,
+    "frontier": [],
+    "wall_seconds": 129.85764049999852
+   }
+  },
+  {
+   "seed": 2,
+   "results": [
+    {
+     "task": "the_memory_survives_a_long_life",
+     "group": "学习",
+     "seed": 2,
+     "passed": true,
+     "why": "the tone alone drove retreat 0.970 right after the lesson and 0.945 after 60 s of life with the rule running (kept 0.975)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "later_gain": 0.9449350003687899,
+      "kept": 0.974559429004602,
+      "life_seconds": 60.0,
+      "min_up_z": 0.932813548912327,
+      "route_after_lesson": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_life": [
+       1.163823539848925,
+       0.031018206314425475,
+       0.00018763396506679667,
+       1.1945724434290161,
+       0.04246992627132469,
+       0.0010749795341611762
+      ]
+     },
+     "wall_seconds": 55.420929600004456
+    },
+    {
+     "task": "a_second_tone_does_not_wipe_the_first",
+     "group": "学习",
+     "seed": 2,
+     "passed": true,
+     "why": "the first tone still drove retreat 0.942 after the second was learned (0.970 before it, kept 0.972)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "first_gain": 0.9696022348620955,
+      "second_gain": 0.9683429346605831,
+      "again_gain": 0.9422006799148537,
+      "first_kept": 0.9717393855314915,
+      "route_after_first": [
+       0.9547515741576025,
+       0.027567778181426635,
+       0.00018726561285497447,
+       1.0178984225636822,
+       0.04044126744687348,
+       0.0010748744016469108
+      ],
+      "route_after_second": [
+       1.0010667767337682,
+       0.060527007411901736,
+       0.7703498103869731,
+       1.101371742049956,
+       0.12647268114356638,
+       1.0211512082924514
+      ]
+     },
+     "wall_seconds": 37.77657840000029
+    },
+    {
+     "task": "the_route_stops_growing_at_its_ceiling",
+     "group": "学习",
+     "seed": 2,
+     "passed": true,
+     "why": "the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stretches, ending at [1.5, 0.0528, 0.0002, 1.5, 0.0718, 0.0011]",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "hold_seconds": 20.0,
+      "first_rise": 1.9865673081456767,
+      "last_rise": 0.026559583695199507,
+      "rises": [
+       1.9865673081456767,
+       1.1125651943127284,
+       0.026559583695199507
+      ],
+      "sums": [
+       0.00017932500014967084,
+       1.9867466331458263,
+       3.0993118274585547,
+       3.125871411153754
+      ],
+      "ratio": 0.01336958661621742,
+      "route_before": [
+       0.0,
+       0.0,
+       9.896413920375894e-05,
+       0.0,
+       0.0,
+       8.036086094591192e-05
+      ],
+      "route_after": [
+       1.5,
+       0.052787145143680915,
+       0.00018721353496651476,
+       1.5,
+       0.07182223145790333,
+       0.0010748210172037362
+      ]
+     },
+     "wall_seconds": 34.47323449999385
+    }
+   ],
+   "summary": {
+    "passed": 3,
+    "total": 3,
+    "failed": [],
+    "deepest_rung": 3,
+    "frontier": [],
+    "wall_seconds": 127.6707424999986
+   }
+  }
+ ],
+ "reference_size": {
+  "motor_units": 200,
+  "proprio_units": 64,
+  "association_units": 256,
+  "eye_width": 48,
+  "eye_height": 36
+ },
+ "bar": {
+  "walk_furnished_m": 0.35,
+  "walk_flat_m": 0.25,
+  "walk_step_m": 0.3,
+  "walk_ramp_m": 0.25,
+  "walk_passage_m": 0.25,
+  "walk_curb_m": 0.3,
+  "walk_platform_m": 0.3,
+  "walk_own_m": 0.3,
+  "walk_own_far_m": 0.6,
+  "walk_into_wall_m": 0.1,
+  "quiet_idle_m": 0.7,
+  "slip_mps": 0.3,
+  "walk_slip_m": 0.25,
+  "gaze_error_rad": 0.16,
+  "gaze_error_fast_rad": 0.3,
+  "gaze_still_rad": 0.05,
+  "sudden_shift_rad": 0.01,
+  "bank_far_max": 0.8,
+  "bank_near_min": 2.0,
+  "pattern_gain": 0.02,
+  "sound_yaw_rad": 0.02,
+  "pinna_gain": 0.03,
+  "loud_far_gain": 0.06,
+  "high_low_gain": 0.3,
+  "startle_gain": 0.1,
+  "startle_habituation": 0.2,
+  "hears_while_tiring": 0.05,
+  "front_touch_gain": 0.3,
+  "obstacle_gain": 0.3,
+  "slip_gain": 0.05,
+  "lean_gain": 0.15,
+  "tilt_protective_gain": 0.2,
+  "load_gain": 0.05,
+  "wall_gain": 0.05,
+  "taught_reflex_gain": 0.05,
+  "taught_reflex_control": 0.05,
+  "taught_reflex_kept": 0.05,
+  "visual_memory_gain": 0.01,
+  "visual_memory_control": 0.01,
+  "visual_memory_kept": 0.01,
+  "moving_is_not_being_pushed": 0.1,
+  "body_is_not_a_foot": 0.05,
+  "own_eyes_are_felt": 0.0002,
+  "walk_twenty_m": 0.9,
+  "walk_ground_m": 1.0,
+  "walk_speed_mps": 0.15,
+  "heading_hold_rad": 0.6,
+  "straightness": 0.7,
+  "crab_m": 0.25,
+  "touch_hold_fraction": 0.7,
+  "turn_pair_rad": 0.3,
+  "turn_idle_rad": 0.1,
+  "idle_spin_rad": 0.6,
+  "down_ramp_m": 0.25,
+  "down_step_m": 0.25,
+  "down_platform_m": 0.25,
+  "around_block_m": 0.6,
+  "around_block_lateral_m": 0.35,
+  "bang_stop_m": 0.25,
+  "quiet_sound_gain": 0.02,
+  "behind_gain": 0.02,
+  "two_sounds_gain": 0.02,
+  "near_far_angle": 0.02,
+  "slow_gaze_rad": 0.16,
+  "static_gaze_rad": 0.05,
+  "side_touch_gain": 0.3,
+  "back_touch_gain": 0.2,
+  "ground_feet_gain": 0.05,
+  "quick_lesson_gain": 0.05,
+  "kept_under_distraction": 0.05,
+  "second_pattern_gain": 0.01,
+  "one_pairing_gain": 0.01,
+  "stand_long_m": 1.4,
+  "slope_stand_z": 0.85,
+  "walk_thirty_m": 1.3,
+  "foot_lift_fraction": 0.02,
+  "leg_symmetry": 0.2,
+  "passage_quiet_touch": 0.1,
+  "fatigue_ratio": 0.5,
+  "turn_walk_rad": 0.3,
+  "turn_walk_m": 0.45,
+  "back_away_m": 0.1,
+  "behind_hold_rad": 0.35,
+  "colour_gain": 0.02,
+  "size_gain": 0.02,
+  "pitch_gaze_rad": 0.22,
+  "recentre_rad": 0.05,
+  "slow_new_thing_rad": 0.01,
+  "far_gaze_rad": 0.2,
+  "near_gaze_rad": 0.2,
+  "sound_gap_ratio": 0.5,
+  "silence_floor": 0.02,
+  "side_gain": 0.02,
+  "same_side_gain": 0.02,
+  "startle_behind_gain": 0.1,
+  "light_touch_gain": 0.1,
+  "front_load_gain": 0.05,
+  "all_feet_lift_gain": 0.05,
+  "ground_quiet_gain": 0.05,
+  "extinction_drop": 0.3,
+  "second_lesson_gain": 0.01,
+  "two_pattern_gain": 0.01,
+  "shifted_pattern_ratio": 0.3,
+  "bright_pull_m": 0.05,
+  "tip_over_gain": 0.05,
+  "feature_gain": 0.01,
+  "bright_pace_ratio": 1.25,
+  "run_mean_speed": 0.25,
+  "run_twenty_m": 2.0,
+  "run_turn_speed": 0.25,
+  "opposite_reading": 0.05,
+  "long_life_kept": 0.8,
+  "second_tone_kept": 0.8,
+  "route_ceiling_floor": 0.01,
+  "route_ceiling_slowdown": 0.25
+ },
+ "arena": "F:\\born-wired-cortex-v2\\models\\reflex_arena.xml",
+ "genes": [
+  "avoidance_gain",
+  "balanced_rear_lift",
+  "clearance_contact_gain",
+  "clearance_lift",
+  "clearance_swing_gain",
+  "clearance_threshold",
+  "eye_binocular_baseline",
+  "eye_change_common",
+  "eye_change_gain",
+  "eye_change_relay_gain",
+  "eye_change_relay_steps",
+  "eye_change_threshold",
+  "eye_change_trace_time",
+  "eye_flow_threshold",
+  "eye_fusion_gain",
+  "eye_gaze_gain",
+  "eye_grow_threshold",
+  "eye_loom_gain",
+  "eye_loom_threshold",
+  "eye_near_gain",
+  "eye_pitch_gain",
+  "eye_pitch_time",
+  "eye_relay_gain",
+  "eye_row_common",
+  "eye_row_gain",
+  "eye_row_relay_gain",
+  "eye_row_threshold",
+  "eye_row_trace_time",
+  "eye_stereo_gain",
+  "eye_track_gain",
+  "eye_wall_gain",
+  "gait_gain",
+  "lift_gain",
+  "pinna_orient_gain",
+  "rhythm_speed",
+  "righting_gain",
+  "righting_hip_gain",
+  "steady_gain",
+  "steady_inhibition",
+  "stumble_decay",
+  "support_thigh_offset",
+  "wall_brake_gain",
+  "wall_gain",
+  "wall_hip_gain",
+  "wall_retreat_gain",
+  "wall_time",
+  "wall_turn_gain"
+ ],
+ "wall_seconds": 390.9204247000016
+}
