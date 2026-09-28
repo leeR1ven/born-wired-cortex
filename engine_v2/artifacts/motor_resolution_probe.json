@@ -1,0 +1,158 @@
+{
+  "source": "F:\\born-wired-cortex\\model\\\u8fd0\u52a8\u8f93\u51fa\u533a_motor_output.py",
+  "source_sha256": "1095a3ebea8f47cf4a70169ab6689bdc6ed50f22814f5de435e822cdc25fb3d0",
+  "method": "AST-extracted original encode/decode functions; only channel width varied",
+  "actual_current_neurons_per_channel": 10,
+  "results": [
+    {
+      "neurons_per_channel": 10,
+      "theoretical_output_levels": 11,
+      "step_size": 0.1,
+      "max_grid_roundtrip_error": 0.050000000000000044,
+      "stand_active": 60,
+      "sit_active": 46,
+      "stand_sit_differing_cells": 14,
+      "stand_sit_jaccard": 0.7666666666666667,
+      "micro_force_probes": [
+        {
+          "first_channel_input": 0.5,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.51,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.52,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.54,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.55,
+          "decoded_first_channel": 0.6,
+          "same_pattern_as_0_50": false
+        }
+      ]
+    },
+    {
+      "neurons_per_channel": 20,
+      "theoretical_output_levels": 21,
+      "step_size": 0.05,
+      "max_grid_roundtrip_error": 0.025000000000000022,
+      "stand_active": 120,
+      "sit_active": 92,
+      "stand_sit_differing_cells": 28,
+      "stand_sit_jaccard": 0.7666666666666667,
+      "micro_force_probes": [
+        {
+          "first_channel_input": 0.5,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.51,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.52,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.54,
+          "decoded_first_channel": 0.55,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.55,
+          "decoded_first_channel": 0.55,
+          "same_pattern_as_0_50": false
+        }
+      ]
+    },
+    {
+      "neurons_per_channel": 50,
+      "theoretical_output_levels": 51,
+      "step_size": 0.02,
+      "max_grid_roundtrip_error": 0.010000000000000009,
+      "stand_active": 300,
+      "sit_active": 230,
+      "stand_sit_differing_cells": 70,
+      "stand_sit_jaccard": 0.7666666666666667,
+      "micro_force_probes": [
+        {
+          "first_channel_input": 0.5,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.51,
+          "decoded_first_channel": 0.52,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.52,
+          "decoded_first_channel": 0.52,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.54,
+          "decoded_first_channel": 0.54,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.55,
+          "decoded_first_channel": 0.56,
+          "same_pattern_as_0_50": false
+        }
+      ]
+    },
+    {
+      "neurons_per_channel": 100,
+      "theoretical_output_levels": 101,
+      "step_size": 0.01,
+      "max_grid_roundtrip_error": 0.0050000000000001155,
+      "stand_active": 600,
+      "sit_active": 460,
+      "stand_sit_differing_cells": 140,
+      "stand_sit_jaccard": 0.7666666666666667,
+      "micro_force_probes": [
+        {
+          "first_channel_input": 0.5,
+          "decoded_first_channel": 0.5,
+          "same_pattern_as_0_50": true
+        },
+        {
+          "first_channel_input": 0.51,
+          "decoded_first_channel": 0.51,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.52,
+          "decoded_first_channel": 0.52,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.54,
+          "decoded_first_channel": 0.54,
+          "same_pattern_as_0_50": false
+        },
+        {
+          "first_channel_input": 0.55,
+          "decoded_first_channel": 0.55,
+          "same_pattern_as_0_50": false
+        }
+      ]
+    }
+  ],
+  "scope": "Static encoding resolution only; no PFC rerun, no robot, no neural/actuator noise.",
+  "units": "Normalized actuator command, not measured physical muscle force."
+}

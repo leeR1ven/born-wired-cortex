@@ -1,0 +1,12 @@
+standing in front of the striped east wall, room otherwise empty
+bank = summed distance cells (0 parallel, 7 closest); pool = the
+disparity cells that agree at a large offset
+   range     grey     pool    bank    near     brake  contrast
+    0.30   89.751   0.0053   5.941   0.938     0.963    6.9812
+    0.50   83.724   0.0117   2.716   0.287     0.430   10.5410
+    0.80   79.187   0.0625   1.447   0.082     0.137   11.1517
+    1.20   83.761   0.0580   0.414   0.034     0.060    8.6759
+    1.80   81.836   0.0486   0.146   0.027     0.050    6.7578
+    2.50   81.952   0.0446   0.144   0.020     0.039    5.6559
+    3.20   80.045   0.0380   0.143   0.017     0.033    4.1521
+wrote artifacts\wall_distance.png

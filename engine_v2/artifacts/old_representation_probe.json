@@ -1,0 +1,38 @@
+{
+  "source": "saved calibration names, not a live neural replay",
+  "stand_count": 12,
+  "sit_count": 10,
+  "intersection_count": 10,
+  "jaccard": 0.8333333333333334,
+  "sit_subset_of_stand": true,
+  "names_sha256": "88eb31416bc9464cb307c1e302c559370462f74f9b5bb61f69414841bb8b3ceb",
+  "first_frame_motor_l2_distance": 0.7615773105863909,
+  "stand_first_frame": [
+    0.5,
+    0.498,
+    0.5,
+    0.5,
+    0.498,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "sit_first_frame": [
+    0.5,
+    0.498,
+    0.5,
+    0.5,
+    0.498,
+    0.5,
+    0.5,
+    0.3,
+    0.0,
+    0.5,
+    0.3,
+    0.0
+  ]
+}

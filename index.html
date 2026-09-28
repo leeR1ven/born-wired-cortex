@@ -178,6 +178,36 @@ build and reads <b>0.000 in every scene we can build</b>, including a ball closi
 3&nbsp;m/s.</p>
 </div>
 
+<h2>What the middle layers are for, what a bigger sheet costs, and the eyes and ears (28 September 2026)</h2>
+<p class="sub" style="margin-top:6px">Four measurements added to the manuscript as R14&ndash;R17, with two new
+supplementary figures. Every number has a named script and a kept log in <code>engine_v2/</code>.</p>
+<div class="honest">
+<p style="margin:0 0 10px"><b>The middle layers keep what the last layer throws away.</b> In a small case built
+for it, two positions drive the compressed last layer to exactly the same value, so a read-out on that layer
+cannot tell them apart at all; with a plastic route from the intermediate cells, two motor cells separate and
+each answers its own position. On the body, stimulus B then A then B moves the trunk to <b>0.250, 0.147 and
+0.250&nbsp;m</b> - the second B recovers the first to within <b>6.8 micrometres</b>. Switch learning off and the
+separation does not appear. A separate instance runs <b>ten minutes</b> with learning always on and holds it.</p>
+<p style="margin:0 0 10px"><b>A tick costs what is lit, not how many cells exist.</b> With the external drive
+held fixed, 100,000 to 800,000 cells cost <b>1.28 to 1.35&nbsp;ms</b> a step: eight times the cells for
+<b>1.06 times the time</b>. The older engine costs 5.17&ndash;5.71&nbsp;ms whatever is alight, from 0 to 86,064
+cells - it was never sparse. And &ldquo;the model is too small&rdquo; is measurable rather than an opinion: with
+ten motor cells per channel, forces of 0.50, 0.51, 0.52 and 0.54 all produce the same pattern; with a hundred,
+the step is 0.01.</p>
+<p style="margin:0 0 10px"><b>The sheet is spatial.</b> Three arms of 1,000 cells that differ only in their
+coordinates: two objects that share x and y and differ only in depth overlap by <b>0.084</b> on a solid sheet
+against <b>0.290</b> on a flat one and 0.343 with random wiring. The cost is honest too - the flat sheet keeps
+two unrelated objects slightly further apart (0.041 against 0.081).</p>
+<p style="margin:0"><b>Eyes and ears.</b> The eyes converge, focus and move to wherever the picture changes,
+with none of the three written down; the ears tell front from back and left from right from two raw waveforms,
+with no spectrum, delay estimate or angle computed anywhere outside the cells. <b>Reported as unsolved:</b> the
+left eye always turns further than the right, the eyes come to rest about 0.1&nbsp;rad to one side of a ball, and
+convergence falls to zero past about a metre because the stereo offset is written in pixels rather than in
+degrees. Two earlier readings got worse when the eyes were made honest: the distance reading from 2.50&nbsp;m
+had been bought by distorting the picture, and the pinna cue for front/back was a delay that the left/right
+circuit was reading as the other ear.</p>
+</div>
+
 <h2>Read it</h2>
 <div class="links">
 <a href="paper/Born_wired_manuscript.pdf">Full manuscript (PDF, 37 pp, 10 figures)</a>

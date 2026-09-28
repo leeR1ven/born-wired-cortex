@@ -7,21 +7,23 @@ Suzhou, Jiangsu, China.
 
 **Correspondence:** rivenlee94@gmail.com . ORCID: 0009-0005-8289-6393
 
-*Version of 2026-09-28. Sections R12, R13 and Methods 5.12 were added on this date and describe the
-rebuilt engine and the nursery; the two PDF files in this directory are the 2026-09-17 build and do
-not contain them. Every number quoted below was produced by the script named next to it; the scripts
-and the log of every run are in the repository, and Section 5.9 says where to find them. Experiments whose outcome contradicted our prediction are reported as such and are listed
-in Section 4.5.*
+*Version of 2026-09-28. Sections R12, R13, R14, R15, R16, R17 and Methods 5.12 and 5.13 were added
+on this date and describe the rebuilt engine, the nursery, the hidden-layer routes, the cost of a
+larger sheet, the eyes and the ears; the two PDF files in this directory are the 2026-09-17 build
+and do not contain them, and Supplementary Figures 5 and 6 are new with this version. Every number
+quoted below was produced by the script named next to it; the scripts and the log of every run are
+in the repository, and Section 5.9 says where to find them. Experiments whose outcome contradicted
+our prediction are reported as such and are listed in Section 4.5.*
 
 ---
 
 **Abstract**
 
-Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 584,137 cells and 1,812,331 synapses at 11.2 ms per tick on one consumer GPU, four times the cells of the reference build at about a tenth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden.
+Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 584,137 cells and 1,812,331 synapses at 11.2 ms per tick on one consumer GPU, four times the cells of the reference build at about a tenth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden.
 
 ## Author Summary
 
-Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  The animal still falls over after a while, and I report that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
+Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  Since then I have measured three things the first version had wrong or left out. The middle layers of a sensory network are not just a way station: they still carry the detail the last layer has thrown away, and I could make the body use it -- two things the last layer could not tell apart drove two different muscles, and that held for ten minutes with learning running the whole time. The sheet pays for what is switched on inside it and not for how many cells it has, so a bigger one is affordable, and "too small" turns out to be a measurement rather than an opinion: with ten cells per muscle, forces of 0.50, 0.51, 0.52 and 0.54 all produce the same pattern, and with a hundred they do not. The eyes now converge, focus and look at whatever is moving without any of that being written into the code, and the ears tell front from back and left from right from two raw sound waves. The animal still falls over after a while, and I report that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
 
 ## 1. Introduction
 
@@ -32,8 +34,8 @@ on the left, an answer leaves on the right (Brown et al., 2020), and the loss is
 through the stack (Lillicrap et al., 2020). In that picture the intermediate layers are the
 computation and the output layer *is* the answer.
 
-We work from a different picture, and the difference is not cosmetic. We state it as six
-claims, (P1) to (P6), so that the results can be read as tests of specific ones.
+We work from a different picture, and the difference is not cosmetic. We state it as eight
+claims, (P1) to (P8), so that the results can be read as tests of specific ones.
 
 * **(P1) A layered sensory network is a compressor.** It exists to take a very large number of
   peripheral channels and reduce them to a small number of cortical channels. Its output is not an
@@ -77,6 +79,26 @@ claims, (P1) to (P6), so that the results can be read as tests of specific ones.
   error signal computed from a target. What it buys is a link from something the brain can
   already sense to something it can already do (R9).
 
+* **(P7) Every layer of a sensory hierarchy is a signal source, not only the last one.** P1 says
+  that the last layer is a bus rather than an answer; it does not say that it is the only bus.
+  Compression throws detail away, and detail a compressed layer has thrown away is still present in
+  the layers underneath it, so a cell in any layer can be read by the rest of the cortex on the same
+  terms as a cell in the last one. Two consequences are claimed with it. Depth is not a design
+  constant: a layer with nothing to do costs building time and nothing else, so a hierarchy may
+  carry more layers than it currently uses. And what a cell stands for is measured from what drives
+  it rather than assigned by its place in the diagram -- intermediate cells may carry overlapping
+  features, and no cell is a detector until a stimulus has been shown to select it.
+* **(P8) The sheet is spatial, and a tick costs what is lit rather than how many cells exist.** A
+  cortical cell has a position and sends mostly to cells near it plus a few that are not; a flat
+  sheet puts two peripheral channels that are physically adjacent into unrelated places in the
+  network, so the volume of a solid object never becomes a population of its own. Position is also
+  what makes a larger sheet worth building: if the cost of a tick follows the number of cells
+  *active* in it rather than the number present, cells can be added until the resolution is
+  sufficient instead of until the machine is full, and the fraction of the sheet that is alight
+  should *fall* as the sheet grows. R14 and R15 are the measurements of P7 and P8, and both are
+  engineering statements that can be checked on one machine rather than scaling laws of the kind
+  claimed for language models.
+
 ### 1.2 What this paper tests
 
 If the picture above is right, then a system should be able to do real things with
@@ -85,7 +107,7 @@ If the picture above is right, then a system should be able to do real things wi
 * a fixed, pre-specified wiring diagram (which we call the *instinct table*), and
 * a purely local plasticity rule that has no access to any task objective,
 
-driving a real body. We therefore built one and asked seven questions, each of which has a
+driving a real body. We therefore built one and asked nine questions, each of which has a
 falsifiable answer:
 
 1. Does the innate wiring alone close the sensorimotor loop? (**R1**)
@@ -99,10 +121,17 @@ falsifiable answer:
    it? (**R8**)
 7. Can a capability be *acquired* during the life of one brain, with no objective and with
    nothing added to the system except a reward-like population of cells? (**R9**)
+8. Does a layer that is not the last one carry information that the last layer has lost, and is the
+   number of layers a constant? (**R14**)
+9. How large does the sheet have to be before a behaviour is resolved, and what does a larger sheet
+   cost? (**R15**)
 
-We also report two supporting measurements: gaze tracking that emerges from primitive reflexes
-with no tracking rule anywhere in the wiring (**R6**), and the tolerance of behaviour to
-*blurred* innate wiring (**R7**).
+We also report four supporting measurements: gaze tracking that emerges from primitive reflexes
+with no tracking rule anywhere in the wiring (**R6**); the tolerance of behaviour to *blurred*
+innate wiring (**R7**); two eyes that converge, focus and move to wherever the picture is changing,
+with none of those three written down anywhere (**R16**); and ears that separate front from back
+and left from right without ever computing a source angle (**R17**).
+
 ---
 
 ## 2. System
@@ -1477,6 +1506,263 @@ gaze and motion-onset path of R6, and this one is not evidence for anything (`to
 logs `artifacts/loom.log`, `artifacts/loom_ball.log`, `artifacts/loom_wall.log`).
 
 ---
+
+### R14. The last layer is not the only place a signal can come from (no figure)
+
+P1 says that a compressed layer is a bus and not an answer. R14 asks the question that follows from
+it and that the rest of the paper had not asked: if a hierarchy throws detail away, is the detail
+still readable from the layers underneath it, and can a behaviour use it?
+
+**A synthetic case where the two answers differ.** Four position channels feed eight intermediate
+cells tuned to overlapping ranges of those positions, and the eight feed one heavily compressed
+output cell. Two positions are chosen that drive that output cell to the same value: with a read-out
+attached to the compressed cell alone, the two positions are one and the same. Two motor cells are
+then given a plastic route to the eight intermediate cells, and after training each motor cell
+responds to its own position and not to the other. With learning off the routes stay indifferent,
+and with the training pairs reversed the two motor cells reverse as well, which excludes the
+read-out code choosing the action (`tools/evaluate_hidden_routes.py`; the run is stored as
+`artifacts/hidden_routes.json`).
+
+**The same thing on a body.** On the rebuilt engine, thirteen cells and their plastic edges are
+added between the joint-position intermediate cells and the flexion motor units that already exist
+(`born_wired/feature_routed.py`), and five seeds are run in three conditions: the reference route
+alone, the reference route plus hidden routes with learning on, and the same with learning off. With
+the hidden routes and learning on, presenting stimulus B, then A, then B again moves the trunk to
+about 0.250, 0.147 and 0.250 m: the second B recovers the first B's activity exactly (return error
+0) and its height to within 6.8 micrometres. Neither control produces that separation. Fifteen
+cases, 750 s of simulated time, body and neural state continuous throughout
+(`tools/evaluate_routed_robot.py`, `artifacts/routed_robot.json`).
+
+**And over ten minutes of lived time.** A separate instance (seed 11) runs for 600 s with learning
+*always* on, ten consecutive pairings of the two stimuli and a test of each after every pairing. The
+flexion activity for A stays at 1.0 in every cycle and for B stays near zero, the body and the brain
+are never reset, and the animal does not fall (`tools/evaluate_online_features.py`,
+`artifacts/online_features_10min.json`). This is the closest thing in the paper to a capability that
+is *maintained* rather than demonstrated once.
+
+**Depth is not a design constant.** Nothing in the rebuilt engine requires a hierarchy to have a
+given number of layers: a cell is a cell, "layer" and "region" are labels for organisation, and a
+layer that is never driven costs building time and nothing else. The reference build's ladder of
+four parameter layers is a choice and not an invariant, and the general claim is the negative one --
+no result in this paper depends on how many layers there are, only on which cells can reach which.
+
+**There is no clock to set.** The rebuilt engine has no global time base and no run-mode switch.
+Cells are integrated with their own membrane and adaptation time constants and the loop simply runs
+as often as the machine allows; a step is a step rather than a division of a fixed quantum, and
+there is no "full-speed" mode that the same model could be put into or taken out of. What decides a
+tick is the state of the sheet and the number of cells active in it (R15).
+
+**What R14 does not show.** The synthetic case has 17 cells, four input channels and no camera, and
+the body case has 1,813 cells; they are two experiments and the first must not be read as an account
+of the second. The body experiment declares two structural priors rather than learning them: the
+shared compressed route is capped at 0.10 and the intermediate bridges at 0.55, and the two routes
+are allowed different plastic speeds. Testing reads the learned weights with learning off, which
+measures an association that has formed rather than continued learning, and the ten-minute run is
+the evidence that the association survives with learning on. Nothing here shows that routing every
+intermediate layer to every motor unit is optimal, and the added routes cost connections and
+activity.
+
+### R15. How large the sheet has to be, and what "too small" looks like (Supplementary Figures 5 and 6)
+
+Two engineering questions decide whether a system of this kind can be grown rather than argued
+about: does the shape of the sheet matter, and does the cost of a tick follow the size of the sheet
+or the activity in it?
+
+**A flat sheet and a solid one.** Three arms of 1,000 cells each, six local and two random outgoing
+connections per cell, the same input volume and the same seed; the only differences are whether the
+coordinates are two- or three-dimensional and whether the input is wired to nearby cells at all.
+Each arm is shown twenty objects one at a time and the overlap between the sets of cells that end up
+active is measured (Jaccard; lower is better for two unrelated objects, higher is better for one
+object moved a little).
+
+| measure | random wiring | flat coordinates (2D) | solid coordinates (3D) |
+|---|---|---|---|
+| two unrelated objects (lower better) | 0.306 | **0.041** | 0.081 |
+| the same object nudged (higher better) | 0.792 | **0.852** | 0.869 |
+| the same object at a different depth (lower better) | 0.343 | 0.290 | **0.084** |
+
+Depth is therefore carried by the solid sheet and by nothing else, and it is bought at the price of
+some separation between different objects (0.041 to 0.081). That trade is the honest result rather
+than a shape that is better in every way (`tools/probe_spatial_dimension.py`,
+`artifacts/probe_spatial_dimension.log`, Supplementary Figure 5).
+
+**What a tick actually costs.** Two engines are measured side by side at 100,000 cells. The
+original one takes 5.64, 5.17, 5.44, 5.18, 5.47 and 5.71 ms per step for external drives of 0, 0.01,
+0.1, 1, 10 and 50 per cent -- while the number of cells alight goes from 0 to 86,064. Its cost does
+not depend on activity at all, which is to say that it is not a sparse implementation and its
+headroom is already spent. The rebuilt engine's cost does follow the activity: 0 cells alight costs
+0.04 ms and 11,818 cells alight costs 13.71 ms, and the two engines agree on the network state to
+3.3e-16 while the activity is partial, so the speed is not bought with a different model
+(`tools/probe_sparse_cost.py`, `tools/check_sparse_engine.py`; logs
+`artifacts/probe_sparse_cost.log`, `artifacts/check_sparse_engine.log`). When only the sheet grows
+-- 100,000, 200,000, 400,000 and 800,000 cells with the external drive held at 1,000 cells -- the
+cost per step is 1.28, 1.33, 1.30 and 1.35 ms: eight times the cells for 1.06 times the time
+(`tools/probe_sparse_scaling.py`, `artifacts/probe_sparse_scaling.log`).
+
+**What is alight in the build we ship.** In the 160x120 build, one retina holds 367,712 of 408,328
+cells, 90.1 per cent of the sheet. Cells above 0.5 activity are 6.54 per cent of the whole sheet --
+but 4.15 per cent on the retinal side and 28.17 per cent everywhere else -- and 69.00 per cent of
+connections have an active source. One brain step is 60.18 ms with learning on and 39.47 ms with it
+off, and rendering the two eyes is a further 23.51 ms (`artifacts/execution_limits.log`). The cost of
+a step in the shipped build is therefore dominated by the sensory sheet, which is exactly the part
+that is not yet sparse; the association sheet, the part a general system would grow, is the cheap
+part.
+
+**A negative result about the fraction.** P8 predicts that the fraction of the sheet alight should
+fall as the sheet grows, and at fixed drive it does: the same 1,000 driven cells light about 1,180
+of 100,000 (1.2 per cent) and about 1,180 of 800,000 (0.15 per cent). But the cost per active cell
+is roughly flat across the same runs -- every run that lights more than a few hundred cells lands
+between 1.03 and 1.73 milliseconds per thousand active cells -- so this is a
+statement about what the machine must do per active cell and not yet a demonstration that a larger
+sheet resolves the same input with fewer cells. That demonstration needs a task that improves with
+resolution, and it is not in this paper.
+
+**"The model is too small" is a measurable statement.** If capacity is the concern, its effect should
+be visible as a loss of resolution. With ten motor cells per channel the smallest distinguishable
+force step is 0.10, and inputs of 0.50, 0.51, 0.52 and 0.54 all produce the identical pattern of
+active cells; at twenty cells the step is 0.05, at fifty 0.02 and at a hundred 0.01, with the
+round-trip error of the encoding falling from 0.050 to 0.005 (`tools/probe_motor_resolution.py`,
+`artifacts/motor_resolution_probe.json`). The same statement holds on the reference build's
+prefrontal population: the cells named "thinking about standing" number 12 and those for "thinking
+about sitting" number 10, and 10 of them are the same cells -- a Jaccard overlap of 0.83, with
+sitting a subset of standing, which is what one expects if the two are one population separated by a
+threshold rather than two representations (`artifacts/old_representation_probe.json`). Resolution is
+therefore not a matter of opinion in either direction: it can be measured, and where it is too
+coarse the measurement says so.
+
+### R16. Two eyes that converge, focus and look where the picture changes (no figure)
+
+R6 reports gaze that emerges from a motion-onset reflex. R16 asks three narrower questions about
+the eyes themselves, because each of them turned out to have a wrong answer in our own build.
+
+**The picture is sampled, not warped.** The visual front end originally remapped position and then
+read a single pixel at the remapped point, which magnified the centre of the field without bound and
+squeezed the periphery: a ball at 0.60 m was drawn as a horizontal bar. It now samples the unwarped
+image, dividing the field into equal shares and pulling the boundaries towards the centre so that
+the middle of the field carries 2.5 times as many cells per degree as the edge; each cell reports the
+mean of its own patch and nothing is interpolated. The consequence is honest and uncomfortable: the
+old front end's ability to read distance from 2.50 m was bought by that distortion. With the unwarped
+sampling, a target at 2.50 m lights 1 cell with a drive of 0.000 -- the same as parallel -- where the
+warped version lit 2 cells at 0.175; at 0.25 m both light all seven. The reading now begins where the
+geometry says it should, and the results of R6 are unaffected because gaze is not a distance reading
+(`artifacts/retina_modes.png`, `artifacts/bank_honest_vs_warped.log`; Methods 5.6).
+
+**Convergence and the distance bank.** With a ball straight ahead and 600 steps to settle, the two
+eyes do converge, and the angle they reach agrees with the geometry over the near and middle range
+and falls short beyond it: 0.496 rad measured against 0.537 required at 0.20 m, 0.436 against 0.433
+at 0.25 m, 0.368 against 0.363 at 0.30 m, 0.210 against 0.273 at 0.40 m, 0.173 against 0.219 at
+0.50 m, 0.096 against 0.110 at 1.00 m, 0.034 against 0.061 at 1.80 m and 0.001 against 0.037 at
+3.00 m. The bank of seven distance cells turns on monotonically: one cell at 3 m and beyond, two
+between 1.2 and 2.5 m, three between 0.7 and 1.0 m, and seven from 0.35 m inwards. Two defects are
+visible in the same table and are reported rather than smoothed. The shortfall beyond about 1 m has
+a known cause in the design: the stereo offset is specified as a number of retinal *columns* rather
+than as an angle, so the angle it stands for shrinks as the retina is made finer -- the wrong
+direction, and the reason finer eyes made convergence worse rather than better. And the left eye
+consistently turns further than the right (at 0.30 m, -0.234 against +0.134), an asymmetry in the
+muscle wiring whose root we have not found (`docs/眼睛肌肉与自动聚焦_实现_20260923.md`,
+`artifacts/eye_focus_bands.log`).
+
+**Looking at whatever changes.** The eyes move to the place in the picture where activity is
+changing most, and the route that does it is made of cells rather than of a tracking rule: the
+picture is compared with itself one step earlier and the difference drives the eye muscles. Measured
+as the mean absolute angle between the gaze centre and a ball at 0.90 m over the last 230 of 250
+steps, in four scenes and three configurations of the route:
+
+| scene | only the picture | the paper's route, no competition | plus one competing cell |
+|---|---|---|---|
+| clean, fast sweep | 0.0765 | 0.0410 | 0.0449 |
+| clean, still ball | 0.0080 | 0.0096 | 0.0111 |
+| clean, slow sweep | 0.1571 | 0.0859 | 0.1002 |
+| furnished arena | 0.0949 | 0.1488 | 0.0969 |
+
+One competitive inhibitory cell between the two eyes improves the clean moving scenes by about 40
+per cent and does nothing for the arena, and a clean still ball is not chased, which is the wanted
+behaviour. A systematic offset of about 0.1 rad remains -- the eyes come to rest about 0.1 rad to one
+side of the ball -- and we have not removed it (`tools/measure_eye_gaze_routes.py`,
+`artifacts/eye_gaze_routes.log`).
+
+**A wall that can be seen.** A wall of plain colour at 0.30 m renders as five to seven grey levels
+and gives the contrast cells no input at all, so "seeing the wall" had never happened and not hitting
+it rested entirely on touch. With a striped texture the summed distance cells read the wall
+monotonically from 0.30 m to 1.80 m (5.941, 2.716, 1.447, 0.414, 0.146) and the near and brake
+populations fall from 0.938 and 0.963 to 0.017 and 0.033. This is the distance of the wall and not of
+a stripe on it: no cell is asked for metres (`tools/probe_wall_distance.py`,
+`artifacts/wall_distance.log`). The price of the stripes is that the whole picture now changes: the
+mean change signal rises from 0.25 to 0.95, which presses the convergence bank down -- at 0.30 m the
+seven cells go from all lit to none -- and the per-column "this column is busier than it was" route
+reads zero in nine threshold settings across five motions, because a striped wall fills the field
+and a ball at 3 m is one or two pixels. What carries "something is near, slow down" is the
+change-magnitude route together with disparity and not the looming route, which is the same finding
+as R13's route that reads zero, reached from the other direction
+(`docs/墙条纹与逼近判断_20260923.md`).
+
+### R17. Ears that separate front from back without solving for the source (no figure)
+
+Two ears deliver two raw waveforms and nothing else: no spectrum, no arrival times, no distance, no
+direction. The front end that turns them into cell activity is 40 cells and 84 fixed synapses in
+seven named groups, and it performs no FFT, no cross-correlation, no peak search and no angle
+computation; its input is the two waveforms and its output is cell activity in [0, 1]. Two cues are
+therefore available to the cortex, and only two.
+
+*Left from right by a fixed coincidence.* A left-preferring cell is excited by the left ear's
+activity delayed by three samples -- 187.5 microseconds -- together with the right ear's activity
+now, and a mirror pair gives the other side. Three samples is a constant written into the wiring
+before the brain runs, not an estimate of the arrival time taken from the input. The module is
+covered by ten tests, including exchange of the two channels (which exchanges the two orientation
+cells exactly), silence, decay with distance, and independence from the block length the audio is
+delivered in (`docs/auditory_neurons_handoff.md`).
+
+*Front from back by the shape of the spectrum, not by loudness.* The outer ear and the head are
+modelled where they belong, in how the sound reaches the ears: each frequency band is tilted by the
+direction of the source -- high frequencies brighter from in front, duller from behind -- and the
+far ear loses high frequencies by an amount that grows with frequency, with the two ears equal for a
+source dead ahead or dead behind. The cells that read this compare the *shape* of the spectrum
+between the two ears, so a distant loud sound and a near quiet one read the same. A pure tone has no
+shape to compare and gives no front/back reading at all, which is what a real ear does. Measured: a
+source dead ahead at 0.55, 0.85 and 1.70 m gives front cells 0.190, 0.239 and 0.188 with back cells
+at 0.000; dead behind gives front cells 0.082, 0.057 and 0.000 with back cells 0.121, 0.126 and
+0.140 (`docs/auditory_neurons_handoff.md`).
+
+*A way of doing it that was wrong, and what it cost.* The pinna cue was first implemented as a short
+delay added back onto the same ear. That delay fell inside the three-sample coincidence window that
+the left/right circuit reads, so one ear's own echo was read as the other ear, and a source on the
+left turned the eyes to the right. Replacing the delay with a frequency tilt removed the fault,
+because a change of loudness cannot move a phase (`docs/binaural_senses_handoff.md`).
+
+*The cells reach the muscles, and turning is graded rather than a switch.* Turning the front/back
+route on adds 29 per cent to the eye turn and 46 per cent to the orienting population for a source
+behind (0.198 to 0.256 and 0.254 to 0.370), against 11 and 18 per cent for the same source in front:
+the cue contributes most where it is needed, since a source in front is already located by the
+left/right cue. The direction is correct on both sides in every case. With a source swept in angle
+-- 0, 9.5, 22.6, 36.9, 49.4 and more than 59 degrees off centre -- the eye reaches 0.000, 0.011,
+0.043, 0.190, 0.538 and 0.600 (the last is the mechanical limit of the eye), so the response is
+graded over the range rather than a threshold (`tools/measure_sound_turning.py`,
+`artifacts/sound_turning.log`, `docs/眼睛肌肉与自动聚焦_实现_20260923.md`).
+
+*It does not disturb walking.* Fifteen seconds in the furnished arena with the eyes and the ears
+both live, three seeds: 0.922 m walked with the sound-to-orienting route off and 0.916 m with it on,
+with the minimum body height and the minimum vertical axis identical in all three pairs
+(`tools/measure_sound_walking.py`, `artifacts/sound_walking.log`).
+
+*One asymmetry we have not fixed.* A source in front still drives the eyes more than twice as
+strongly as the same source behind (0.532 against 0.198 with the new route at zero gain). That is
+the older left/right route, not this one: the two ears' time difference is the same for a source
+dead ahead and dead behind, the difference is in the frequency content, and the coincidence circuit
+is more sensitive at high frequencies (three samples is 60 degrees of 880 Hz against 18 degrees of
+262 Hz), so a source in front is read more strongly. Both sides are read with the correct sign; the
+response behind is simply weaker, and we have not equalised it.
+
+*What R17 does not show.* The pinna and head-shadow cues are properties of how the sound arrives at
+the ears and are computed in the acoustic front end from the source geometry; the cortex receives
+two waveforms and computes no angle. The two "front" cells have no outgoing edge at all -- setting
+the route's gain to zero leaves nothing -- so what is measured is the back-cell route, and the front
+cells are a sense that nothing yet reads. The front end's frequency resolution is finite
+(512-sample frames leak between bands, a property of the frame and the window rather than of the
+source geometry), and nothing here is tested with echoes, with several simultaneous sources or with
+a moving source.
+
+---
+
 ## 4. Discussion
 
 ### 4.1 What the results support
@@ -1487,7 +1773,7 @@ rule is already enough to close a sensorimotor loop and to produce behaviour tha
 attributed cell population by cell population.** Nothing in the results requires a global
 objective, a critic, a reward, or a backward pass.
 
-The six claims of Section 1.1 are not equally supported, and the difference is the useful part.
+The eight claims of Section 1.1 are not equally supported, and the difference is the useful part.
 Table 1 states, for each of them, the experiment that bears on it and what came out of that
 experiment; the last row is not a claim but the question that R4 was built to answer.
 
@@ -1501,7 +1787,9 @@ experiment; the last row is not a claim but the question that R4 was built to an
 | **(P4)** instinct is the initial state of the sheet | R1 row 4: clear the instinct table, leave everything else untouched | **supported.** The same five brains then stand on 0/5 seeds, approach on 0/5, and settle at exactly the height of the no-sensation control. |
 | **(P5)** a network cannot start from silence | R1 row 4, R3 (staged additions), R7 (blurred map) | **supported.** Random background connectivity with no written wiring produces no ordered behaviour, and each group of rules that is added buys exactly its own capability without disturbing the earlier ones. |
 | **(P6)** acquisition during life needs a reward-like signal and no objective | R9: four stages, one brain, dopamine region on or off | **supported, with a boundary.** With the dopamine region lit during stage 3 the sound acquires the walk on 5/5 seeds (0/30 ticks before, 199-200/200 after, standing up included); with it dark, teaching writes 0 connections and the sound still does nothing (0/200, 3/3). The behaviour does not stay upright (4/5 seeds topple 42-101 ticks in), and controls on the same brains show that is the weight-growth rule, not the reward rule. |
-| **(Q4)** is local plasticity doing anything a fixed recogniser is not? (question 4 of 1.2, not one of P1-P6) | R4: which hues start the walk, in the same brains, before and after a drift, with the rule on and off, and at three step sizes; the same protocol on two builds | **supported, with a bounded reach and a size that is not reproducible.** The boundary is where the sum of two cell populations crosses: every hue summing to 1.39 or more is accepted on 5/5 and every hue at 0.97 or less is rejected on 0/5. The three hues whose sums fall within 0.05 of the line (96, 168, 180) are decided by the random background connectivity each brain is born with, and the rule carries exactly those hues across the line: on the build of the main table that shows up in one brain of five at a 3- and a 12-degree step and two at 6 degrees, and in 5 of 5 on the earlier build, where every brain sat below the line. In neither build does any brain cross the gap at 120-144 degrees. What is reproducible is the reach of the rule -- to the edge of the island and no further -- not the number of brains in which it has anything to do. |
+| **(P7)** any layer of a hierarchy, not only the last, is a signal source | R14: a synthetic case where two stimuli reach the compressed cell identically; the same route on a body, five seeds, three conditions; ten minutes with learning always on | **supported, within a declared scope.** With a read-out on the compressed cell alone the two stimuli are one; with a plastic route from the intermediate cells the two motor cells separate, and with learning off they do not. On the body, stimulus B then A then B gives trunk heights of about 0.250, 0.147 and 0.250 m, the second B recovering the first to within 6.8 micrometres. The scope is small (17 cells synthetic, 1,813 cells on the body) and two route caps are declared priors rather than learned. |
+| **(P8)** the sheet is spatial, and a tick costs what is lit rather than what exists | R15: three arms of 1,000 cells differing only in the coordinates of the sheet; two engines measured side by side at 100,000 cells; 100,000 to 800,000 cells at fixed drive | **partly supported.** Depth is told apart by the solid sheet and by nothing else (overlap 0.084 against 0.290 for flat coordinates and 0.343 for random wiring), bought with some loss of separation between different objects (0.041 to 0.081). Cost follows activity in the rebuilt engine (0 cells 0.04 ms, 11,818 cells 13.71 ms) and not in the original one (5.2 to 5.7 ms whatever is alight); eight times the cells cost 1.06 times the time at fixed drive. The prediction that the alight *fraction* falls is confirmed, but the cost per active cell is flat, so a larger sheet resolving the same input with fewer cells is not yet demonstrated. |
+| **(Q4)** is local plasticity doing anything a fixed recogniser is not? (question 4 of 1.2, not one of P1-P8) | R4: which hues start the walk, in the same brains, before and after a drift, with the rule on and off, and at three step sizes; the same protocol on two builds | **supported, with a bounded reach and a size that is not reproducible.** The boundary is where the sum of two cell populations crosses: every hue summing to 1.39 or more is accepted on 5/5 and every hue at 0.97 or less is rejected on 0/5. The three hues whose sums fall within 0.05 of the line (96, 168, 180) are decided by the random background connectivity each brain is born with, and the rule carries exactly those hues across the line: on the build of the main table that shows up in one brain of five at a 3- and a 12-degree step and two at 6 degrees, and in 5 of 5 on the earlier build, where every brain sat below the line. In neither build does any brain cross the gap at 120-144 degrees. What is reproducible is the reach of the rule -- to the edge of the island and no further -- not the number of brains in which it has anything to do. |
 
 Four sub-claims are worth separating, because they have different evidential status -- one of
 them, the last, we now report as a negative result.
@@ -1555,6 +1843,18 @@ prediction — the reflex still works when wired to the compressed layer — mak
 rather than weaker: the compressed layer is not *useless*, it is *less informative*, and the
 difference only becomes visible when one asks a question that needs the missing detail (where
 exactly, and is it there at all).
+
+The measurement of R14 makes the same point from the other side, and it is the reason P7 was added
+to the framing. Reading the compressed layer is not merely a lossy way of reading a hierarchy; it is
+a way of reading a *different* signal, one in which two stimuli that the layers underneath do keep
+apart have already been merged. A system that reads only the last layer has thrown away that
+distinction before any read-out sees it, which is what the synthetic case shows directly (two
+positions, one compressed response) and what the body case then shows can be recovered: with a
+plastic route from the intermediate cells, the two stimuli end on two different motor cells, and
+with the route present but learning off they do not. What that means for the framing of P1 is not
+that the compressed layer is useless -- R5 already shows the reflex still works through it -- but
+that "which layer" is an empirical question about a signal rather than a design hierarchy with an
+answer at the top.
 
 ### 4.3 What this does not show
 
@@ -1802,7 +2102,12 @@ should be attacked, with the honest cost of each.
 3. *More sensory channels and modality-appropriate front ends.* Vision here is 24x16 macro-pixels
    with a thermometer code; audition is a spectrum. The architecture does not care what an input
    cell represents — a pixel level is an arbitrary choice of the designer — but a general system
-   would need many more channels and would need the hierarchy to be deeper.
+   would need many more channels and would need the hierarchy to be deeper. The measurements of R15
+   and R16 say what the choice of coordinates and of sampling costs. Coordinates decide what an input volume can become: a solid sheet tells two objects apart
+   by depth where a flat one cannot (R15), and a front end that samples an unwarped image at a
+   density that falls towards the periphery keeps the distance reading that the earlier, centre-
+   magnifying sampling had been buying by distortion (R16). Both are the kind of engineering that a
+   general system needs to get right rather than to inherit by accident.
 4. *A body with more than one thing to do.* The Go2 has 16 muscles and the repertoire is 221
    actions. Behaviour of the kind that is interesting — tool use, social interaction — needs a
    body with many more degrees of freedom and with hands. This is engineering, not theory, but it
@@ -1819,6 +2124,18 @@ should be attacked, with the honest cost of each.
    recognition narrows. That is four orders of magnitude below a human cortex, and it is a cost curve
    rather than a scaling law: nothing above 24x32 was run. Nothing here is a scaling claim of the
    kind made for language models (Kaplan et al., 2020).
+
+   The rebuilt engine changes the shape of that curve rather than its direction. Cells are cheap and
+   connections are not, and a tick costs what is active in it: with the sparse engine, eight times
+   the cells cost 1.06 times the time at fixed drive, and 0 cells alight cost 0.04 ms where 11,818
+   cost 13.71 ms (R15). What that buys is the honest version of the scaling claim: the first wall we
+   meet going bigger is two build rules of our own (R13), the second is that the sensory sheet is not
+   yet sparse in the shipped configuration (90.1 per cent of the cells are retina, 28.17 per cent of
+   the non-retinal cells are above 0.5 activity), and the third is that a bigger sheet has to
+   *resolve* the same input with fewer cells, which needs a task that improves with resolution and
+   is not in this paper. "The model is too small" is measurable rather than an opinion: with ten
+   motor cells per channel the force step is 0.10 and 0.50, 0.51, 0.52 and 0.54 are the same
+   pattern, while a hundred cells give a step of 0.01 (R15).
 
 7. *A posture that is held, not a posture that is assumed.* The instinct table carries the body
    from prone to standing, and it has balance reflexes that push against a tilt once one has
@@ -2062,6 +2379,40 @@ recurrence, so it is entered only by contact and reaches the rest of the cortex 
 seven fixed rules into the dopamine region. It is absent from the configuration that produced every other number in this paper, and the code that adds it is switched on by an environment
 variable, so that the measurements above are made on the build they were made on.
 
+**The retina (R16).** The image is sampled without being warped: the field is divided into as many
+shares as there are cells and the dividing boundaries are pulled towards the centre so that the
+middle of the field carries `centre_gain` times as many cells per degree as the edge
+(`centre_gain` = 2.5 in every measurement here); each cell reports the mean of its own patch, the
+patches tile the whole field with no gap and no overlap, and no interpolation is performed. The
+render resolution is set to `ceil(centre_gain)` times the cell count, since finer rendering changes
+no cell's value. Thus the periphery is sampled coarsely rather than deformed, and the earlier
+unbounded magnification of the centre is gone.
+
+**The eyes (R16).** Each eye is one rotational degree of freedom driven by opposing muscles. Three
+routes act on it: a disparity bank of seven cells that reads the agreement between the two images at
+a range of offsets, whose pattern is monotone in the distance of the target; a route driven by how
+much the picture differs from the picture one step earlier; and, through the cortex, the
+prefrontal and orienting populations. The stereo offset is declared as a number of retinal columns
+(`STEREO_OFFSET_MAX` = 6) rather than as an angle, which is the known cause of the shortfall of
+convergence beyond about a metre: as the retina is made finer, six columns stand for a smaller
+angle. The seven-cell bank's thresholds are a fixed list; no cell computes a distance in metres.
+
+**The ears (R17).** Two raw waveforms, one per ear, are the only auditory input. `AuditoryNeurons`
+is 40 cells and 84 fixed synapses, with no learning: raw half-wave receptors, per-ear frequency
+coincidence cells that compare a band's activity with its own activity one period ago, band pools,
+left- and right-preferring binaural coincidence cells (a fixed three-sample delay on one ear against
+the other ear now), binaural energy cells and two orientation cells. Front and back are read by
+`pinna_rates`, four cells that compare the shape of the spectrum between the ears; the acoustic
+front end supplies that shape by tilting each band with the direction of the source
+(`_PINNA_TILT` = 0.45) and by removing high frequencies from the far ear (`_HEAD_SHADOW` = 0.55).
+No FFT, cross-correlation, peak search or source localisation is performed anywhere in the path.
+
+**Walls (R16).** The arena's walls carry a striped texture (`models/wall_stripes.png`, 2048x16,
+bar widths drawn from the geometric series 3, 4, 6, 9, 14, 21, 32, 48 and 72 by seed 97, two grey
+levels 243 and 88). A plain-coloured wall gives the contrast cells no input at the distance at
+which the animal meets it, so the stripes are what makes the wall visible to the visual cells at
+all; the cost is that the whole picture changes at every step, which is reported in R16.
+
 ### 5.7 Protocols
 
 Every experiment in this paper is a frozen protocol: the brain is built from a fixed seed, the
@@ -2187,7 +2538,7 @@ tests rather than by line-by-line reading, and should reproduce independently.
 
 ### 5.11 Statements
 
-**Author contributions.** L.Z. conceived the architecture, wrote the six claims of Section 1.1,
+**Author contributions.** L.Z. conceived the architecture, wrote the claims of Section 1.1,
 authored the instinct table, directed every experiment, rejected results and interpretations he
 judged wrong, and required contradicted predictions to be reported rather than dropped. The code
 was written in an interactive session with a large language model (Section 5.10).
@@ -2239,10 +2590,26 @@ scripts behind R12 and R13 are `tools/nursery.py`, `tools/probe_scale_walls.py`,
 The source tree of the rebuild is published beside the reference model as `engine_v2/`, unchanged
 except that its own artifacts directory keeps only the runs cited above.
 
+### 5.13 Measurements added on 27 and 28 September
+
+R14 to R17 and the scale numbers of R15 use the second implementation of Section 5.12, whose
+development line is published beside it as `engine_v2/`. Every number is produced by a script whose
+name is given next to it and every run is kept as a log in `engine_v2/artifacts/`: the sparse-cost
+and sparse-scaling probes, the engine-comparison tool, the spatial-dimension probe, the eye
+convergence sweep, the gaze-route measurement, the sound-turning and sound-walking measurements and
+the wall-distance probe. Two numbers of R15 come from the reference build rather than from the
+rebuilt engine -- the motor resolution and the prefrontal overlap -- and are computed from that
+build's own source and its saved cell names (`artifacts/motor_resolution_probe.json`,
+`artifacts/old_representation_probe.json`).
+
+The plotting scripts for Supplementary Figures 5 and 6 are `出一张图_补充56.py`, which reads the same
+`.log` and `.json` files as the text. The rebuilt engine's test suite is unchanged at 160 tests.
+
 ## Figures
 
 Each figure is generated from the logs cited in the corresponding result section; the plotting
-script is `出一张图_论文_20260915.py` (Figures 1-9) and `出一张图_发育.py` (Figure 10).
+scripts are `出一张图_论文_20260915.py` (Figures 1-9), `出一张图_发育.py` (Figure 10) and
+`出一张图_补充56.py` (Supplementary Figures 5 and 6).
 
 * **Figure 1 — One tick of the system.** A schematic of the whole tick: senses drive the two
   sensory hierarchies, which drive one recurrent cortical sheet; the prefrontal population
@@ -2284,6 +2651,21 @@ script is `出一张图_论文_20260915.py` (Figures 1-9) and `出一张图_发�
   stage 3 with the dopamine region lit and with it dark. (c) Trunk height reached in stage 1 and
   stage 4, and forward displacement, for each seed. Sources: `日志_发育多种子_A.log`,
   `日志_发育多种子_B.log`, `日志_无奖励对照.log`. Generated by `出一张图_发育.py`.
+
+* **Supplementary Figure 5 — Flat coordinates and solid coordinates.** Overlap (Jaccard) between
+  the sets of cells that end up active for three comparisons — two unrelated objects, one object
+  nudged, one object at a different depth — in three arms of 1,000 cells that differ only in the
+  coordinates of the sheet (random wiring, flat 2D coordinates, solid 3D coordinates). Depth is
+  separated by the solid sheet alone. Source: `artifacts/probe_spatial_dimension.log`. Generated by
+  `出一张图_补充56.py`.
+* **Supplementary Figure 6 — What a tick costs, and what it costs when the sheet grows.** (a) The
+  original engine at 100,000 cells: cost per step against the number of cells alight, which rises
+  from 0 to 86,064 while the cost stays between 5.17 and 5.71 ms; (b) the rebuilt engine at 100,000
+  cells: the same axes, from 0.04 ms at 0 cells to 13.71 ms at 11,818 cells; (c) the rebuilt engine
+  at 100,000, 200,000, 400,000 and 800,000 cells with the external drive held at 1,000 cells, which
+  is 1.28 to 1.35 ms across an eight-fold change in size. Sources:
+  `artifacts/probe_sparse_cost.log`, `artifacts/check_sparse_engine.log`,
+  `artifacts/probe_sparse_scaling.log`. Generated by `出一张图_补充56.py`.
 
 ---
 

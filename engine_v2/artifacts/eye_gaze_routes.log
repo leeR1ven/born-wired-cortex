@@ -1,0 +1,5 @@
+mean |gaze - bearing of the ball| in rad, 250 steps, ball 0.90 m ahead
+config                               clean slow sweep clean still ball clean fast sweep furnished arena
+only the picture (motion route off)         0.0765        0.0080        0.1571        0.0949
+the paper route, no competition             0.0410        0.0096        0.0859        0.1488
+plus one competitive cell (default)         0.0449        0.0111        0.1002        0.0969

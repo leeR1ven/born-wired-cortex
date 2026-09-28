@@ -1,0 +1,14 @@
+eye yaw and left-minus-right orienting, 500 steps, retinas dark
+source           gain      eye yaw    orienting
+front-left        0.0      +0.5316      +0.7869
+front-left        1.2      +0.5887      +0.9291
+behind-left       0.0      +0.1984      +0.2538
+behind-left       1.2      +0.2559      +0.3697
+front-right       0.0      -0.5317      -0.7869
+front-right       1.2      -0.5887      -0.9291
+behind-right      0.0      -0.1979      -0.2538
+behind-right      1.2      -0.2554      -0.3698
+dead front        0.0      +0.0000      -0.0000
+dead front        1.2      -0.0001      -0.0003
+dead behind       0.0      +0.0007      -0.0000
+dead behind       1.2      -0.0000      -0.0014

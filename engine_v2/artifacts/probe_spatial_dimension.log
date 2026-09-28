@@ -1,0 +1,4 @@
+wiring                    different    shifted  same column cells lit
+input at random cells         0.306      0.792        0.343       243   (100 depth pairs)
+flat sheet, 2D coordinates      0.041      0.852        0.290        88   (100 depth pairs)
+solid block, 3D coordinates      0.081      0.869        0.084       116   (100 depth pairs)
