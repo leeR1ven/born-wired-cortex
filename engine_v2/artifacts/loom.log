@@ -1,0 +1,29 @@
+nothing moving, the two eyes held still and the legs at rest
+scene                           outward   inward  looming   growing
+  wall 0.35 m ahead               0.000    0.000    0.000   0.000 (peak 0.000)
+  wall 0.80 m ahead               0.000    0.000    0.000   0.000 (peak 0.000)
+  wall 1.60 m ahead               0.000    0.000    0.000   0.000 (peak 0.000)
+  wall 3.00 m ahead               0.000    0.000    0.000   0.000 (peak 0.000)
+
+the eyes turned by hand, one smooth sweep each way
+  sweep 0.6 rad/s                 0.000    0.000    0.000   0.000
+  sweep 3.0 rad/s                 0.000    0.000    0.000   0.000
+  held hard over                  0.000    0.000    0.000   0.000
+
+one ball walked in from 3.0 m to 0.35 m
+scene                           outward   inward  looming
+  0.5 m/s, closing in             0.000    0.000    0.000   0.000
+  0.5 m/s, arriving               0.000    0.000    0.000   0.000
+  0.5 m/s, arrived                0.000    0.000    0.000   0.000
+  1.5 m/s, closing in             0.000    0.000    0.000   0.000
+  1.5 m/s, arriving               0.000    0.000    0.000   0.000
+  1.5 m/s, arrived                0.000    0.000    0.000   0.000
+  3.0 m/s, closing in             0.000    0.000    0.000   0.000
+  3.0 m/s, arriving               0.000    0.000    0.000   0.000
+  3.0 m/s, arrived                0.000    0.000    0.000   0.000
+
+the animal walking in the furnished arena
+scene                           outward   inward  looming   gait
+  live                            0.000    0.000    0.000   up_z 0.9999, x -0.024 m
+  brake route off                 0.000    0.000    0.000   up_z 0.9999, x -0.024 m
+  cells off                       0.000    0.000    0.000   up_z 0.9999, x -0.024 m

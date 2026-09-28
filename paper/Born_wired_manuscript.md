@@ -1,4 +1,4 @@
-# Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look
+﻿# Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look
 
 **Author:** Zhiwen Li.
 
@@ -7,20 +7,21 @@ Suzhou, Jiangsu, China.
 
 **Correspondence:** rivenlee94@gmail.com . ORCID: 0009-0005-8289-6393
 
-*Version of 2026-09-17. Every number quoted below was produced by the script named next to it;
-the scripts and the log of every run are in the repository, and Section 5.9 says where to find
-them. Experiments whose outcome contradicted our prediction are reported as such and are listed
+*Version of 2026-09-28. Sections R12, R13 and Methods 5.12 were added on this date and describe the
+rebuilt engine and the nursery; the two PDF files in this directory are the 2026-09-17 build and do
+not contain them. Every number quoted below was produced by the script named next to it; the scripts
+and the log of every run are in the repository, and Section 5.9 says where to find them. Experiments whose outcome contradicted our prediction are reported as such and are listed
 in Section 4.5.*
 
 ---
 
 **Abstract**
 
-Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 143,796 model cortical neurons connected by 308,809 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. No rule in the system lowers a weight, and the acquired walk does not yet stay upright; both are reported rather than hidden.
+Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 584,137 cells and 1,812,331 synapses at 11.2 ms per tick on one consumer GPU, four times the cells of the reference build at about a tenth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden.
 
 ## Author Summary
 
-Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. The animal still falls over after a while, and I report that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
+Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  The animal still falls over after a while, and I report that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
 
 ## 1. Introduction
 
@@ -46,10 +47,18 @@ claims, (P1) to (P6), so that the results can be read as tests of specific ones.
   stage. The testable consequence is sharp: remove the recurrent step and the behaviour should go
   with it, while anything the wiring maps directly from sense to muscle should survive untouched
   (R8).
-* **(P3) The prefrontal population compresses again** (Fuster, 2001; Miller & Cohen, 2001). It takes
-  the already-compressed signals of several other regions and reduces them further, and then thinks
-  with exactly the same rules as everything else. Information is unavoidably lost in this second
-  compression; that is a property of the design, not a defect.
+* **(P3) The prefrontal population compresses again, and the path is reciprocal** (Fuster, 2001;
+  Miller & Cohen, 2001). It takes the already-compressed signals of several other regions and
+  reduces them further, and then thinks with exactly the same rules as everything else. Information
+  is unavoidably lost in this second compression; that is a property of the design, not a defect.
+  The compression is not one-way: the same pre-specified connections that carry a region *into* the
+  prefrontal population carry its state back *out* to the regions that fed it. A prefrontal state can
+  therefore re-enter the visual and auditory populations -- which is what imagining seeing or hearing
+  something is in this model, and what is missing in aphantasia -- and re-enter motor memory and motor
+  cortex, so that a state which means "walking" can start the walk with no stimulus present. One
+  asymmetry is deliberate: the regions that report the body are read by the prefrontal population and
+  are never written by it (2.1), because a fabricated body reading is not an idle thought -- it is an
+  instruction.
 * **(P4) Instinct is the initial state of the sheet** (Tinbergen, 1951). The innate part of the
   design is not a separate module and not a set of conditions in code: it is the connectivity the
   cortical sheet is born with, both within a region and between regions, and it includes the
@@ -103,7 +112,7 @@ one recurrent cortical sheet; the sheet drives the muscles. There is nothing els
 
 ### 2.1 A single cortical population
 
-The model cortex is one flat array of **143,796 binary neurons**. It is not divided into
+The model cortex is one flat array of **148,032 binary neurons**. It is not divided into
 modules with separate code paths; the divisions are address ranges inside the array, and every
 region is updated by the same update rule on the same tick.
 
@@ -113,7 +122,7 @@ region is updated by the same update rule on the same tick.
 | visual detail | 23,040 | first layer of the same hierarchy (uncompressed) |
 | visual motion | 1,920 | frame-difference / relay cells used by the gaze reflex |
 | auditory cortex | 30,000 | output of the auditory hierarchy |
-| prefrontal | 53,200 | second-stage compressor over visual, auditory and motor cortex |
+| prefrontal | 57,436 | second-stage compressor; it is fed by the other seven regions |
 | motor cortex | 160 | 16 muscles x 10 cells; the number of lit cells is the force |
 | motor memory | 3,576 | time cells; lighting the first cell of an action plays the whole action |
 | proprioception | 480 | joint-angle-derived body sense |
@@ -122,9 +131,9 @@ region is updated by the same update rule on the same tick.
 | dopamine | 200 | reward signal; when lit, co-active synapses are written immediately
 (only used in R9, silent otherwise) |
 | inhibitory pool | 8,000 | every suppressive instinct borrows a cell from here |
-| **total** | **143,796** | |
+| **total** | **148,032** | |
 
-All 143,796 cells are updated simultaneously, once per 20 ms tick (50 Hz), by
+All 148,032 cells are updated simultaneously, once per 20 ms tick (50 Hz), by
 
 > a cell fires on this tick if the excitatory current it receives plus whatever else arrives on
 > its soma exceeds a fixed threshold of 1.0, and it is not held below threshold by an
@@ -134,7 +143,7 @@ There is no separate "inference" pass and no read-out layer. The motor command i
 activity of 160 cells in the same array.
 
 One region departs from "each tick replaces the state". Inside each named block of the prefrontal
-population the cells are wired head-to-tail into a closed chain (6,281 synapses in five blocks), and
+population the cells are wired head-to-tail into a closed chain (6,566 synapses in seven blocks), and
 the main loop *adds* the newly computed prefrontal code to the code still running, so that a block
 outlasts the stimulus that lit it. We report R1-R8 with that persistence **switched off** -- the
 prefrontal code is recomputed from its input on every tick -- because that is the configuration
@@ -142,6 +151,49 @@ those experiments were run in, and because it makes the causal reading of R2 and
 R9, and the rows marked as persistent in R2 and R8, report both configurations side by side;
 Methods 5.5 gives the switch and why persistence is there at all: a code that cannot outlast its
 stimulus cannot be thought with (P2).
+
+**The reciprocal return line.** The prefrontal population is not a sink. The seven regions are
+compressed into it through the network's own local connections -- three layers of 57,436 cells,
+2,412,312 synapses born at fixed random weights -- and the same connection table is then used
+*backwards*, with the same fixed weights, to carry the prefrontal state out again (Methods 5.1).
+This is the model's imagination: a prefrontal state re-enters the visual and auditory populations
+and is seen and heard in the mind's eye -- cutting those two is the anatomical analogue of
+aphantasia and of the loss of inner speech -- and it re-enters motor memory and motor cortex, so
+that the prefrontal population can hold and steer an action and not only watch one.
+
+Two properties of this path are decisions rather than consequences, and both are in the direction of
+keeping the animal from hallucinating a body that it does not have.
+
+* **The return is thresholded once per region**, at 40% of that region's own peak, and not against a
+  single peak taken over the whole returned vector. With one global threshold the two large regions
+  (visual, 23,040 cells; auditory, 30,000) set the scale and a small one (vestibular, 120 cells) can
+  never be reached at all.
+* **The three body-sense regions are input-only.** The prefrontal population reads proprioception,
+  vestibular state and body state, and never writes back into them. Those three regions are wired
+  straight to behaviour, so a returned reading is not a thought one can have and discard: it acts.
+  We measured it. With the return line open to all seven regions, an animal standing in front of a
+  steady red image received 12-22 returned cells per tick into proprioception, 17 into the vestibular
+  region and 13 into body state; that lit "tilted over -> stand up" and "stop -> keep standing" while
+  the walk was already running, three actions were in motor memory at the same time, and it fell at
+  tick 126. Imagining an injury does not hurt, and imagining a tilt must not straighten the body.
+* **The return into motor memory sustains an action; it does not start one.** Motor memory is a
+  timeline whose cells *are* actions: lighting one cell runs a whole 60-tick programme. The returned
+  pattern is deliberately coarse -- a spread of "roughly what is being thought", not a code -- and a
+  spread laid on a timeline crosses action boundaries. Measured, this is not hypothetical: a body
+  placed prone stands up to 0.265 m and then sags back to 0.180 m, because on tick 51 the return
+  sent back the *head cell of the next action along the timeline* ("lie down", whose first cell sits
+  immediately after the last cell of "stand up"), and that programme started running next to the
+  stance. It sinks the body because motor cortex encodes force by recruitment -- how many cells of a
+  muscle's pool are lit -- so two actions lit at the same time give each muscle the **largest** of
+  the two forces, not the average. We did not repair this by removing the path: that would leave the
+  prefrontal population unable to reach the motor system at all, the opposite of what this section is
+  about. The return into motor memory is instead intersected with the cells that motor memory is
+  already running on that tick, so the route can hold an action but cannot start one. Starting an
+  action is what the precise routes are for -- the innate `看着红 -> 前进1.2`, and the
+  visual/auditory/prefrontal synapses onto action entry cells, which are plastic. With that one
+  change the same brain holds **0.261 m** and walks the same distance (1.85 m in the standard run).
+  The write-up, including the variant that simply disconnects the route and why we rejected it, is in
+  `docs/修复_前额叶七路与返回线_20260918.md` (section 7).
 
 ### 2.2 The instinct table
 
@@ -169,7 +221,7 @@ table. They group as follows.
 | auditory | 3 | a broadband sound -> shuffle in place; a fixed narrow-band tone -> hold the standing posture **and** suppress the walking action |
 | gaze | 345 | 9 coarse direction rules, 14 per-column rules driven from the *uncompressed* visual layer, and 322 rules implementing the motion-onset reflex of R7 |
 
-Expanding the table produces **308,809** excitatory synapses (plus 6,855 inhibitory ones). Everything else in the network is
+Expanding the table produces **309,148** excitatory synapses (plus 6,857 inhibitory ones). Everything else in the network is
 sparse random background connectivity generated from a fixed seed; we refer to different seeds
 as different *brains*.
 
@@ -274,21 +326,21 @@ and before the cortical step. Nothing else changes.
 
 | condition | ticks with the walking action lit (of 200) | first fire | path length | prefrontal cells active (mean) |
 |---|---|---|---|---|
-| red, prefrontal intact | **199/200** (5/5) | tick 2 | 0.93-2.31 m | 2782-2785 |
-| red, prefrontal silenced | **0/200** (5/5) | never | 0.21-1.15 m | 0 |
-| black screen, prefrontal intact | 0/200 (5/5) | never | 0.55 m | 368 |
-| blue screen, prefrontal intact | **183-194/200** (5/5) | ticks 7-18 | 0.76-2.25 m | 2872-2880 |
-| blue screen, prefrontal recomputed each tick | 0/200 (5/5) | never | 0.18-1.48 m | 1444-1445 |
+| red, prefrontal intact | **199/200** (5/5) | tick 2 | 2.17-2.53 m | 1460-1461 |
+| red, prefrontal silenced | **0/200** (5/5) | never | 0.24-1.41 m | 0 |
+| black screen, prefrontal intact | 0/200 (5/5) | never | 0.55 m | 359 |
+| blue screen, prefrontal intact | 0/200 (5/5) | never | 0.22-1.40 m | 1554-1564 |
+| blue screen, prefrontal recomputed each tick | 0/200 (5/5) | never | 0.22-1.40 m | 1524-1534 |
 
-(logs: `日志_前额叶多种子_新A.log`, `日志_前额叶多种子_新B.log`; script
-`实验_前额叶_多种子.py`. Row 5 is the control in which the prefrontal code is *not* allowed to
-persist -- it is recomputed from its input on every tick, which is what this table measured
-before the population was given recurrent wiring.)
+(logs: `日志_前额叶多种子_新A.log`; script `实验_前额叶_多种子.py`, five build seeds. Row 5 is the
+control in which the prefrontal code is *not* allowed to persist -- it is recomputed from its input
+on every tick.)
 
 Two things are worth separating here. First, the ablation is *specific*: silencing a population
-of 53,200 cells removes a specific visually guided behaviour and leaves the sensory response
-itself intact — a blue screen still drives 1444 prefrontal cells when the code is recomputed
-every tick, and 2872 when it persists (rows 5 and 4) — while the behaviour that needs that
+of 57,436 cells removes a specific visually guided behaviour and leaves the sensory response
+itself intact — a blue screen still drives 1,524 prefrontal cells when the code is recomputed
+every tick, and 1,554 when it persists (rows 5 and 4), while the red screen that does drive the
+behaviour lights 1,460 cells in that same population — and the behaviour that needs that
 population's contribution is gone on 5/5 seeds.
 
 Second, the mechanism is arithmetic rather than logical. The rule "red ahead -> walk" is written
@@ -301,60 +353,67 @@ another context be driven by one region alone. The ablation shows that *this* be
 *this* situation, requires the prefrontal contribution; it does not show that behaviour in
 general is gated by the prefrontal cortex.
 
-The path length in the two rows that read 0/200 is the body sagging and being dragged by
-whatever posture reflex is still running; the walking action itself never lights. Row 5 is the
-clean control for row 4: same stimulus, same weights, one difference — the prefrontal code is
-recomputed on every tick instead of being allowed to persist — and the behaviour disappears.
+The path lengths in the four rows that read 0/200 are the body sagging and being dragged by
+whatever posture reflex is still running; the walking action itself never lights.
 
-**The same stimulus, with and without persistence.** Per tick a blue screen delivers 0.73 of the
-1.0 that the walk needs, so the arithmetic of the next paragraph is unchanged. But a deficit that
-is never repaired inside one tick can still be repaired across ticks, and with persistence it is:
-the walk starts at tick 7 to 18 and then runs on its own dynamics (R8). The boundary is still a
-threshold; what persistence changes is whether it is crossed in *space* (how red the image is, on
-this tick) or in *time* (how long the image has been there).
+**The same stimulus, with and without persistence.** Rows 4 and 5 differ in one thing: whether the
+prefrontal code persists across ticks or is recomputed from its input on every tick. On the build
+reported here the two agree -- a blue screen delivers 0.72 to 0.74 of the 1.0 the walk needs and
+neither configuration crosses -- and that is a *change* from the previous build of this system,
+which is worth stating rather than quietly dropping. In the earlier build a blue screen with
+persistence reached a sum of 1.07 and started the walk at tick 7 to 18 on 5/5 seeds.
+
+Three things about the prefrontal path changed between the two builds (2.1): the population is fed
+by seven regions instead of three; the return line is thresholded per region instead of against a
+single peak taken over the whole return vector; and the return into motor memory is now intersected
+with the action that region is already running. Any of the three can account for the difference, and
+we have not separated them, so we report the current behaviour next to the earlier number rather than
+attributing it. What the comparison does show is how much of the earlier effect ran through the
+return line: with persistence, a blue screen used to drive the `看着红` block to 0.99 of its cells
+and now drives it to 0.59 (the table below).
 
 **The two halves, measured separately.** R2 shows that the behaviour needs both halves; it does
 not show what each half contributes. We measured both, tick by tick, in the same closed loop. Each
 row gives the mean fraction of the named block that is lit over 200 ticks, the drive that fraction
 contributes, the sum, and the walking tick count.
 
-| scene | `视觉:中有红` lit (of 1346) | `前额叶:看着红` lit (of 1360) | drive from the visual half (0.80 x) | from the prefrontal half (0.85 x) | sum | walking |
+| scene | `视觉:中有红` lit (of 1346) | `前额叶:看着红` lit (of 1440) | drive from the visual half (0.80 x) | from the prefrontal half (0.85 x) | sum | walking |
 |---|---|---|---|---|---|---|
 | *prefrontal recomputed each tick (the R1-R8 configuration)* | | | | | | |
 | red ahead | **1.00** | **1.00** | 0.80 | 0.85 | **1.65** | 199/200 (5/5 seeds) |
 | black | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0/200 (5/5) |
-| blue | 0.29 | 0.58 | 0.23 | 0.50 | 0.73 | 0/200 (5/5) |
-| green | 0.30 | 0.62 | 0.24 | 0.53 | 0.77 | 0/200 (5/5) |
+| blue | 0.29 | 0.57 | 0.24 | 0.48 | 0.72 | 0/200 (5/5) |
+| green | 0.32 | 0.60 | 0.26 | 0.51 | 0.77 | 0/200 (5/5) |
 | *with the prefrontal loops (the R9 configuration)* | | | | | | |
 | red ahead | 1.00 | 1.00 | 0.80 | 0.85 | **1.65** | 199/200 (5/5) |
 | black | 0.00 | 0.11 | 0.00 | 0.09 | 0.09 | 0/200 (5/5) |
-| blue | 0.29 | **0.99** | 0.23 | **0.84** | **1.07** | **194, 194, 192, 194, 183 / 200 (5/5)** |
-| green | 0.30 | **0.99** | 0.24 | **0.84** | **1.08** | **193, 193, 194, 195, 0 / 200 (4/5)** |
+| blue | 0.29 | **0.59** | 0.24 | 0.50 | 0.74 | 0/200 (5/5) |
+| green | 0.32 | **0.61** | 0.26 | 0.52 | 0.78 | 0/200 (5/5) |
 
 (logs: `日志_两半_无环.log` for the first block and `日志_两半_新.log` for the second, same script,
 5 seeds each, both re-run on the build of this paper; `实验_两半各亮多少.py`; the firing threshold
 is 1.0)
 
 The visual half is the same in both blocks, because it is the front end: near-binary (1.00 for red,
-0.29-0.30 for blue and green, 0.00 for black). The prefrontal half is what changes. Recomputed
-every tick it is a partial responder (0.58 for blue, 0.62 for green); persistent, it saturates at
-0.99 for any colour that lights it at all, the sum rises from 0.73 to 1.07 and from 0.77 to 1.08,
-and blue and green now start the walk. Black, whose two halves still sum to 0.09, still does not
-(0/200 on 5/5).
+0.29-0.32 for blue and green, 0.00 for black). The prefrontal half is the one that moves, and on
+this build it barely moves with persistence: 0.57 against 0.59 for blue, 0.60 against 0.61 for
+green. Persistence therefore no longer drives it into saturation, the sums rise only from 0.72 to
+0.74 and from 0.77 to 0.78, and neither colour crosses the threshold. The one thing persistence
+does change in this table is the black row: with nothing on the screen at all, the block drifts up
+to 0.11 of its cells over the run -- activation that no sensory input is producing -- which is the
+accumulation R9 reports as the unfinished part of the system.
 
 Two things follow. First, in the configuration of R1-R8 both halves are colour-selective but not
 equally so: the visual half is close to binary for this colour (1.00 for red against 0.29 for
-blue), while the prefrontal half is a partial responder (1.00 against 0.58). Neither half reaches
+blue), while the prefrontal half is a partial responder (1.00 against 0.57). Neither half reaches
 1.0 by itself for any colour in this table; only the sum does, and only for the colour the instinct
 was calibrated on. That is the mechanism of the approach instinct in full, and it is arithmetic on
-the somata of the action's first time cell, not a condition in code. It is also the mechanism that
-persistence breaks: a population that keeps what it has lit stops being colour-selective, and the
-threshold that discriminated between colours becomes a threshold in time instead (R9).
+the somata of the action's first time cell, not a condition in code.
 
 Second, this is the quantitative reason the ablation above is specific rather than catastrophic. A
-blue screen still drives 1,444 prefrontal cells; but for *this* rule the two halves deliver 0.73
-on that tick, which is short of 1.0. The system is not deciding "not red" -- it is falling short
-of a threshold, and how long it stays short is what decides the behaviour.
+blue screen still drives 1,524 prefrontal cells; but for *this* rule the two halves deliver 0.72 on
+that tick, which is short of 1.0. The system is not deciding "not red" -- it is falling short of a
+threshold.
 
 ### R3. The repertoire grows by adding innate structure, not by retraining (Figure 4)
 
@@ -843,7 +902,7 @@ into the motor cortex itself and the gait came apart -- three of five seeds fell
 metre.
 
 *(b) Loops inside the prefrontal population.* Inside each named block of the prefrontal population
-the cells are wired head-to-tail into a closed chain (6,281 synapses in five blocks) with the same
+the cells are wired head-to-tail into a closed chain (6,566 synapses in seven blocks) with the same
 current as any other instinct, and the main loop *adds* the newly computed prefrontal code to the
 code already running instead of replacing it, so that a named block stays lit after the stimulus
 that lit it has stopped being present. The loops are written only in the prefrontal population: a
@@ -859,7 +918,7 @@ whether the loops are needed for *acquiring* an association (they are not) and f
 | 1 birth | prone, black screen, broadband sound only, 30 ticks | off | **0 / 30** (5/5 seeds) |
 | 2 innate | standing, red region ahead, no sound, 30 ticks | off | **30 / 30** (5/5) |
 | 3 teaching | standing, red ahead *and* sound, 200 ticks | **on** | running |
-| 4 test | cortical sheet cleared, prone again, black screen, **sound only**, 200 ticks | off | **199-200 / 200** (5/5) |
+| 4 test | cortical sheet cleared, prone again, black screen, **sound only**, 200 ticks | off | **200 / 200** (5/5) |
 
 (logs: `日志_发育多种子_A.log`, `日志_发育多种子_B.log`; script
 `实验_发育_声音叫走路_多种子.py`. The dopamine-dark control is `实验_发育_无奖励对照.py`
@@ -869,13 +928,14 @@ whether the loops are needed for *acquiring* an association (they are not) and f
 Stages 1 and 4 are the *same stimulus on the same brain*, before and after. In stage 1 the sound
 lights its own block -- 18 to 34 of the 1097 cells of the named block `听觉:低频响` -- and nothing
 else happens: the walking action is lit on none of the 30 ticks, and the body only settles onto the
-floor (0.035-0.046 m). In stage 4 the walking action is lit on essentially every tick, and the
-body, which has been placed on its belly, first stands up (trunk height 0.099 m to 0.327-0.391 m,
-5/5 seeds) and then walks 1.00-2.43 m.
+floor (0.030-0.049 m). In stage 4 the walking action is lit on essentially every tick, and the
+body, which has been placed on its belly, first stands up (trunk height 0.118-0.156 m to 0.300-0.396 m,
+5/5 seeds) and then walks 0.55-1.23 m.
 
-Teaching writes **490,659-552,186** new excitatory connections on top of the 308,809 innate ones,
-and they land where the teaching happened: auditory 137,688-155,459, visual 74,402-90,584,
-proprioceptive 47,393-61,491, prefrontal 10,827-10,911, motor 2,570-3,167, vestibular 2,133-4,897.
+Teaching writes **242,685-396,607** new excitatory connections on top of the 309,148 innate ones,
+and they land where the teaching happened: auditory 121,510-147,104, proprioceptive
+103,491-120,985, visual 39,233-40,548, vestibular 6,634-11,172, motor 3,882-3,935, body state
+1,635, motor memory 138-197, visual motion 168, prefrontal 40.
 Nothing here is written by hand and there is no teacher signal; the only difference between stage 1
 and stage 3 is that 200 cells were lit while the behaviour was running.
 
@@ -893,18 +953,23 @@ up*: with the loops, 5/5 brains stand up in stage 4; without them, 1/5 does (fin
 either way, but acting on a thought about standing up requires the thought about standing up to
 last longer than the tick that produced it.
 
-**What persistence costs, and what we did not get right.** With the loops, the prefrontal
-population is an accumulator with no decay: under a constant stimulus it grows from 1581 active
-cells on the first tick to 2916 by tick 200, because each tick's code is added to the last and
-nothing removes it. The same property shows up in behaviour: with the loops, a *blue* screen drives
-the walk on 194, 194, 192, 194 and 183 of 200 ticks (first fire at ticks 7, 7, 9, 7 and 18), where
-the same protocol without the loops gives 0/200 on five of five seeds -- the instantaneous boundary
-of R4 becomes a boundary in *time* once the population integrates. And the accumulator over-drives
-the innate locomotor loop: the innate walk toward red, with no learning and no sound at all,
-topples after 66 and 68 ticks on seeds 20260915 and 20260916 with the loops, while the same two
-brains walk 2.26 m and 2.51 m without falling when the prefrontal is replaced every tick. A
-recurrent population needs a way to forget, and the loops we wrote have none: that, and not the
-reward rule, is the unfinished part of this system.
+**What persistence costs, and what we did not get right.** With the loops the prefrontal
+population is an accumulator: each tick's code is added to the last and nothing removes it, so a
+named block stays lit after the stimulus that lit it has gone (R8). That is what the loops are for
+-- a code that cannot outlast its stimulus cannot be thought with -- and it is what lets the sound
+of stage 4 keep the walk running. What the loops do *not* do on this build is stay
+colour-selective. A blue screen drives the block to 0.59 of its cells against 0.57 without the
+loops, and the sums are 0.74 and 0.72 (R2), so on this build a sub-threshold colour is not carried
+across the line; on the earlier build of the system it was (blue reached 1.07 and the walk started
+on 5/5 seeds), and R2 reports the change next to the numbers rather than hiding it. What the loops
+do cost is visible in the same table: with a black screen, and no stimulus anywhere in the run, the
+block drifts up to 0.11 of its cells, activation that the image is not producing.
+
+The accumulator also over-drives the innate locomotor loop: the innate walk toward red, with no
+learning and no sound at all, topples after 66 and 68 ticks on seeds 20260915 and 20260916 with the
+loops, while the same two brains walk 2.26 m and 2.51 m without falling when the prefrontal is
+replaced every tick. A recurrent population needs a way to forget, and the loops we wrote have
+none: that, and not the reward rule, is the unfinished part of this system.
 
 **A knob for the accumulation, and what it buys.** The accumulation is not intrinsic to the loops:
 what is missing is anything that subtracts. One global quantity supplies it -- let every prefrontal
@@ -937,8 +1002,8 @@ it trades unbounded growth for a population that is either sparse-hundreds or da
 between.
 
 **What fails in R9.** On 4 of 5 seeds the acquired behaviour does not stay upright: the body
-topples 42-101 ticks into the test, after 1.00-1.18 m (the fifth seed walks 2.43 m with a
-3-degree tilt). Two controls on the same taught brains rule out the reward-written connections and
+topples 67-105 ticks into the test, after 1.03-1.23 m (the fifth seed walks the full 200 ticks,
+0.55 m, tilted 11 degrees). Two controls on the same taught brains rule out the reward-written connections and
 locate the rest.
 
 | seed | never taught: red *and* sound, no learning | taught: test, learning on | taught: test, learning off |
@@ -1134,7 +1199,7 @@ that peak at 24x16 from 7,005 MB to 1,434 MB and changes no number in this paper
 
 | mosaic | degrees per cell (h x v) | cortical cells | excitatory / inhibitory synapses | build | tick*, no plasticity | tick*, with plasticity | resident | peak |
 |---|---|---|---|---|---|---|---|---|
-| 24x16 (this paper) | 6.25 x 3.13 | 143,796 | 11.6 M / 4.9 M | 10.7 s | 1 ms (970 Hz) | 2 ms | 543 MB | 1,434 MB |
+| 24x16 (this paper) | 6.25 x 3.13 | 148,032 | 11.6 M / 4.9 M | 10.7 s | 1 ms (970 Hz) | 2 ms | 543 MB | 1,434 MB |
 | 24x32 | 3.13 x 3.13 | 214,836 | 16.2 M / 6.1 M | 14.0 s | 2 ms (653 Hz) | 3 ms | 700 MB | 1,890 MB |
 | 24x48 | 2.08 x 3.13 | 285,876 | 20.9 M / 7.4 M | 19.3 s | 2 ms (458 Hz) | 5 ms | 855 MB | 2,599 MB |
 | 24x64 | 1.56 x 3.13 | 356,916 | 25.5 M / 9.2 M | 24.1 s | 3 ms (363 Hz) | 5 ms | 1,030 MB | 3,054 MB |
@@ -1166,7 +1231,7 @@ ticks on all 4,890,945 inhibitory synapses at 24x16 (`验证_学抑制_逐拍对
 0.0). (ii) That benchmark flatters the result, and the live number is the one that matters. It drives
 the network with a uniform 2 percent of cells active, and after the first step that pattern does not
 sustain itself, so what it times is the cost of the scan; a brain that is actually looking at
-something holds about 6,000 of its 143,796 cells active on every tick, where the scan was not the
+something holds about 6,000 of its 148,032 cells active on every tick, where the scan was not the
 dominant cost in the first place. In the closed loop at 24x16, with the world rendering the mosaic
 and the body being driven, a tick costs 58 ms with the rule disabled and **158 ms** with it enabled
 (`诊断_整拍耗时.py`; the same live tick cost 215 ms before the fix, at identical activity, log
@@ -1183,7 +1248,7 @@ behaviour is expressed is what breaks it.
 **The cheap end of that programme, run.** Nothing had to be re-derived by hand: the calibration
 and the table are generated from the mosaic size, so widening to 24x32 produced 34 direction names
 instead of 16 and 965 rules instead of 581, expanded to 357,274 innate excitatory synapses where
-24x16 has 308,809. Calibration runs in 20 s and a brain builds in 51 s. We then re-ran the
+24x16 has 309,148. Calibration runs in 20 s and a brain builds in 51 s. We then re-ran the
 behaviours that go through the eye, and the righting reflex, which does not.
 
 | behaviour | 24x16 | 24x32 |
@@ -1252,6 +1317,164 @@ does not buy the compressed layer the ability to localise.
 were re-run at 24x32 and the drift of R4, the shifted map of R7, the stimulus-removal and
 recurrence-removal of R8, and the acquisition of R9 and R10 were not. The re-tuning that (iii)
 calls for has not been done either: we report the mis-calibration rather than a fix.
+
+### R12. A route that is born empty, and the four arms that say what a lesson writes on it (no figure)
+
+R9 and R10 show that a capability can appear during the life of one brain. They also show why that
+is not yet a recipe. The fast path writes a synapse from *every* cell that was active on the
+previous tick to *every* cell that became active on this one, so what it writes is not the lesson:
+it is everything that happened to be co-active while the reward was on. R9 installs one association
+with 242,685-396,607 new connections, and R10's most instructive arm is a brain that was rewarded on
+all 200 teaching ticks, wrote 480,928 connections, and acquired nothing. A recipe needs somewhere for
+the lesson to land, and R12 measures the smallest one we could build.
+
+**Three additions, all off by default.** (i) A *backup route*, named at build time as a pair of
+populations (`backup_routes`, `born_wired/reflex_controller.py`): every edge from the first
+population to the second is laid down at birth at a weight of 0.0001 -- too small to move any cell --
+with a lower bound of zero, a ceiling of 1.5, and no tether to a birth weight. The graph is fixed
+once it is built, so an edge that does not exist can never appear later; a backup route is the other
+way round: it exists, it conducts nothing, and it is the only thing a lesson is allowed to write.
+(ii) The dopamine population is a single ordinary cell (`dopamine`, tau 0.05). Its rate says "this
+moment counts" and nothing about what was right; it is read by `learning_modulation`, which scales
+the local rule instead of replacing it -- while dopamine fires the rule runs at its own rate, and
+while it is quiet the rule is slowed by `dopamine_gain` (0.9 here). Which edges change is still
+decided only by which cells fired together. (iii) One innate afferent, `touch -> dopamine` at gain
+4.0, so that the keeper's hand reaches the gate through the same kind of connection as everything
+else. The hand is a teacher here for a reason that has nothing to do with the lesson: touching the
+body already drives the retreat cells, by one of the instinct rules of R10. The keeper supplies the
+*pairing*; the innate wiring supplies the *meaning*.
+
+All three sit at their factory value, and the control is exact: with `dopamine_gain` and
+`touch_dopamine_gain` at zero and no routes named, the model is the one it was, bit for bit --
+checked by comparing the whole activity array rather than a summary (`tests/test_nursery.py`).
+
+**The lesson.** A 262 Hz tone, which nothing in the innate graph carries to the retreat cells; the
+animal walking throughout (the constant locomotion drive of R2's walking protocol); the keeper's hand
+on the body for one second and off for one second, twenty times. Read at the end: the weights on the
+route, then six seconds of the tone alone with no hand, of silence, and the tone again.
+
+| arm | hand | dopamine gate | route at birth | route after the lesson | retreat cells, tone alone | leg-drive cells | retreat cells, in silence |
+|---|---|---|---|---|---|---|---|
+| **taught** | 1 s on / 1 s off | on | 0.0001 (six edges) | **0.95, 0.99** | **1.000** | **0.504** | 0.020 |
+| *ignored* | never | on | 0.0001 (six edges) | **0.000** | 0.000 | 0.000 | 0.000 |
+| *ungated* | 1 s on / 1 s off | off | 0.0001 (six edges) | 1.45, **1.50** (the ceiling) | 1.000 | 0.509 | 0.022 |
+| *no route* | 1 s on / 1 s off | on | the edge does not exist | -- | 0.057, gone by the next phase | 0.003 | 0.000 |
+| all arms, before the lesson | -- | -- | 0.0001 (six edges) | -- | 0.000 | 0.000 | -- |
+
+(logs `nursery_20s_20260928.log`, `nursery_20s_20260928.json`, `nursery_noroute_20260928.log`;
+script `tools/nursery.py`. The
+route named is `cochlea -> retreat` and holds six edges at the shipped widths; the four arms are one
+seed each.) A 6 s lesson is in the same log: the route reaches 0.30 instead of 0.95, and the tone
+alone drives the retreat cells to 0.519. Lesson length is a knob, and 20 s is not a threshold.
+
+**Four things the arms say.**
+
+1. *A reflex is acquired.* Twenty seconds of contact took a sound that meant nothing -- the retreat
+   cells are at 0.000 with the tone at birth -- to a sound that commands retreat, at 1.000, sustained
+   across two test phases. The leg-drive cells, which are what actually moves the thighs, follow at
+   0.504 under the tone against 0.009 in silence, and the thigh angles move as well
+   (0.85, 0.83, 0.85, 0.80 under the tone against 0.81, 0.82, 0.85, 0.88 in silence; two of
+   the four separate clearly and two do not). The acquisition survives the
+   removal of the teacher.
+2. *Nothing is written where nothing happened.* The route in the *ignored* arm falls from 0.0001 to
+   exactly zero while the tone plays just as often: the tone fires, the retreat cells do not follow,
+   and the local decay term takes the weight to its floor. This is the property the whole framing
+   rests on. A correlation rule knows that two cells fired together; it has no representation of
+   having been right, and it does not need one.
+3. *The reflex is written onto the empty route.* In the *no route* arm the same lesson, the same
+   hand and the same gate write nothing that outlasts the lesson: the tone lifts the retreat cells to
+   0.057 at the end of the lesson -- a trace -- and to 0.000 on the next phase. The causal claim is
+   therefore not "dopamine wrote a reflex"; it is "dopamine wrote a reflex *onto the route that was
+   laid down*".
+4. *Co-activation decides whether a weight is written, and the gate decides how hard.* The *ungated*
+   arm acquires the reflex too, and writes to the ceiling (1.50) instead of stopping just below it
+   (0.99). That is the honest reading of the gate: what it buys is not the ability to learn -- the
+   local rule learns without it -- but that the rule is slow when nothing is being taught.
+   Demonstrating the second half needs a different experiment from this one, in which many cells are
+   co-active outside the lesson. We have not run it.
+
+Within the *taught* route, four of the six edges stay near zero (0.031, 0.000, 0.040, 0.001) while
+two reach 0.95 and 0.99: only the cells that actually fired together under that tone were written.
+The keeper names two populations; the co-activity picks the cells. That is the division of labour the
+framing predicts, and it is the reason the recipe can be stated without a teacher who knows anything
+about the inside of the brain.
+
+**What this does not show.** The animal of this build shuffles rather than walks -- across these
+phases the body covers 0.001 m to 0.523 m in six seconds -- so the metres column of the log is not a
+measure of anything, and the read-outs used here are the retreat and leg-drive cells and the thigh
+angles. A lesson taught on this body is not a gait, and reaching one is the problem R9 and R10 also
+report. The arms are one seed each. On a re-run of all four arms the route weights, the cell rates
+and the 0.057 trace reproduce exactly and the mean thigh angles move in the third decimal, which is
+why they are quoted to two. And what is written is one link between one sense and one action,
+not a representation: before this can be called a training method, the same machinery has to be shown
+to write a *structure* rather than a reflex.
+
+### R13. What the rebuilt engine costs, and the two rules that stop the sheet from growing (no figure)
+
+R11 measures what the reference engine costs and finds the tick dominated by plasticity at 24x16. Two
+questions follow, and both were answered by rebuilding the engine rather than by adding structure to
+it: what does a tick cost once the sheet is bigger, and what -- as opposed to what hardware -- stops
+the sheet from being bigger still.
+
+**The rebuilt engine.** The same architecture, re-implemented around the same update rule and the
+same "instinct as initial condition" design, with raw senses only: two eyes that deliver two RGB
+images with no matching, no object recognition and no distance, two ears that deliver a sound
+pressure waveform with no source localisation, and a body that reports its own state. It runs on the
+graphics card, and its shipped configuration is 192x144 pixels per eye with 1,600 motor, 512
+proprioceptive and 2,048 association units -- **584,137 cells, 1,812,331 synapses**. One step of the
+whole loop costs **11.19 ms (89.4 steps/s)**, of which the brain is 7.24 ms, the eyes 2.84 ms and the
+physics 0.77 ms (`artifacts/profile_after_nursery.log`). Against the reference build's live tick --
+148,032 cells, 158 ms per tick with plasticity enabled (R11) -- the rebuilt engine carries **3.9
+times the cells at about a fourteenth of the cost**, and the whole 160-test suite of the rebuild
+passes in 135 s (`artifacts/tests_20260928.log`).
+
+Three changes account for it, and all three are required to be bit-identical to the code they
+replace, checked by a fingerprint tool that compares cell count, edge count, the initial weight
+digest, and the weight and activity digests after 20 and 200 steps (`tools/check_model_fingerprint.py`):
+the synaptic update is put back on the 50 ms cadence the rule always specified instead of running on
+every 10 ms step; the structural quantities the rule needs are measured once at build time instead of
+re-derived every tick; and the per-step array arithmetic writes in place, which also removes the
+3 MB-per-eye-per-step allocation that produced occasional 71 ms render spikes (now 4.8 ms worst case).
+
+**What a bigger sheet costs is connections, not cells.** With the region widths held at
+160x120/800-256-1024 the whole step is 9.39 ms (106 steps/s); at the shipped 192x144/1600-512-2048 it
+is 11.98 ms (84 steps/s); at 256x192/1600-512-2048 it is 18.58 ms (54 steps/s). Cell count rises by
+43 percent across the first two while the step cost rises by 28 percent, and most of that is the
+tick's fixed traffic between host and device rather than the neurons. This is the same relationship
+R11 reports on the reference engine -- cells are cheap in memory, and what costs is per-tick work
+proportional to activity -- and it is why "add cells when a capability is missing" is an engineering
+proposition rather than a wall.
+
+**Two build rules stop it, and neither is the hardware.**
+
+* *An incoming budget.* A region's own size is checked against the excitation its inputs can deliver.
+  At 192x144 with the shipped widths, proprioceptive sizes of 512, 640, 768 and 896 all build, and
+  1,024 is refused: `ValueError: structural lower bounds exceed an incoming budget`. The same probe
+  widens the association region to 3,072 and 4,096 and the motor region to 3,200 without a refusal.
+* *The offscreen buffer the eyes are drawn into.* The arena declares `offwidth="1280"`, and the
+  renderer draws three images of the eye's own width, so the widest permitted eye is 1280/3, a little
+  under 427 pixels. 256x192, 320x240 and 384x288 render; 448x336 is refused with `Image width 1344 >
+  framebuffer width 1280`.
+
+Neither refusal is a cost and neither is a hardware limit: the first is a structural rule of our own
+design, and the second is one number in the arena file. Together they cap the sheet at 320x240 with
+2,400/768/3,072 units, which builds at 1,527,993 cells and 3,852,147 synapses. Both are reported
+because a reader who intends to grow this system will meet them before meeting the graphics card.
+(`tools/probe_scale_walls.py`, log `artifacts/scale_walls_20260928.log`.)
+
+**A route we built, cannot read, and are reporting as zero.** The eye population contains one cell
+(`eye_looming`) whose resting level is -0.5, which is driven at weight 1.0 by the conjunction of
+outward and inward motion in the two eyes, and which drives the brake. It is the beginning of a
+"something is coming at me" reflex. Its read-out is **0.000 in every scene we can build**: a striped
+wall at 0.35, 0.80, 1.60 and 3.00 m; the two eyes swept by hand at 0.6 and 3.0 rad/s; a ball walked
+in from 3.0 m to 0.35 m at 0.5, 1.5 and 3.0 m/s; and the animal walking by itself. It stays at 0.000
+when the thresholds that feed it are lowered by a factor of five, and per-frame logs show the reason:
+the conjunction never leaves zero, while its two components reach 0.08 against a wall closing at
+1.6 m/s and 0.11 for the single-eye rise and fall signals. A cell that needs 0.5 of drive is not
+reached by 0.08. We report this as a route that does nothing rather than repairing it silently, in
+the same spirit as R5's compressed layer and R4's boundary: the eye reflex that *does* work is the
+gaze and motion-onset path of R6, and this one is not evidence for anything (`tools/measure_loom.py`,
+logs `artifacts/loom.log`, `artifacts/loom_ball.log`, `artifacts/loom_wall.log`).
 
 ---
 ## 4. Discussion
@@ -1346,7 +1569,7 @@ contact with the body, through a sensory region, rather than by a flag in the sc
 the strong sense -- a repertoire that grows because of what the brain has already done -- remains a
 design commitment, and we say so rather than dressing up R9 and R10 as more than they are.
 
-**Scale.** Everything here runs on 143,796 neurons on one CPU core, and R11 measures what a wider
+**Scale.** Everything here runs on 148,032 neurons on one CPU core, and R11 measures what a wider
 cortex costs on the same machine: up to 925,236 neurons and 62.4 million excitatory synapses, with
 7,200 MB of peak memory as the ceiling. The cheap end of that programme -- 24x32 -- we have since run
 with behaviour, and it is instructive in both directions: the righting reflex is unchanged to the
@@ -1423,7 +1646,7 @@ and there is still no objective, no back-propagation and no language model anywh
   outlives the red for the same reason the character group outlives the prompt: a recurrent
   population with a local correlation rule holds a state. But holding one is not free at any size.
   In the character build the same protocol with a small activity budget left 45 of 46 prompts
-  completely dark -- the state died instead of circulating. The cortical sheet at 143,796 cells is
+  completely dark -- the state died instead of circulating. The cortical sheet at 148,032 cells is
   in that regime: it does not spontaneously grow the loops that would let a thought persist, which
   is why R9 has to give the prefrontal population its loops explicitly. What separates the two
   builds is scale and connection density, not the rule.
@@ -1441,6 +1664,24 @@ et al., 2002). It shares the ambition of the large-scale reconstructions of cort
 their method: those build a detailed model of a known circuit, whereas here the circuit is
 trivially simple and the question is what the *initial condition* buys (Eliasmith et al., 2012;
 Markram et al., 2015; Gewaltig & Diesmann, 2007).
+
+*How a system of this kind is trained.* "An agent that builds its own repertoire over a lifetime,
+rather than one that optimises a fixed objective", is a named open problem and not a solved recipe.
+The 2024 position paper on open-endedness research states that a general algorithm "remains elusive"
+(arXiv:2406.04268), and the doctoral work that comes closest to the framing here -- self-sufficient
+agents that must discover not only a policy but the reward that defines it -- concludes that
+reinforcement learning alone cannot be sufficient, because the reward itself has to be found
+(Colas, 2022). Six pieces of a recipe exist in the literature and none of them is the whole: the
+co-generation of behaviour and its environment (Wang et al., 2019), the reference implementation of
+a thousand-model sensorimotor agent (Neural Computation, 2026, doi:10.1162/neco.a.1508), the only
+large-scale demonstration that a route from single neurons to behaviour can be composed by hand
+rather than trained (Eliasmith et al., 2012), the finding that a developmental prior can carry as
+much information as the experience that follows it (Krotov et al., 2023, doi:10.1038/s41467-023-37980-1),
+the classical division of labour between a fast learner and a slow substrate (McClelland et al.,
+1995) with its reinforcement-learning form (eLife, 2014, doi:10.7554/eLife.04811), and the
+intrinsically motivated exploration that an animal uses before it can be taught anything (Oudeyer et
+al., 2007). We take the position that these are pieces and are not the method: R12 is a candidate for
+one of them -- where a lesson lands -- and not for the rest.
 
 ### 4.5 What would falsify the framing
 
@@ -1594,6 +1835,21 @@ should be attacked, with the honest cost of each.
    table: a posture here is not a state the body is put into, it is something the cortex has to
    keep doing, and it is not yet a single missing line.
 
+8. *Somewhere for the lesson to land, and a teacher who is cheaper than the answer.* R12 is the
+   first complete instance in this project of a recipe rather than a mechanism, and it is short
+   enough to state: name two populations as worth connecting, lay the whole route down empty, and
+   let one cell decide when a moment counts. The teacher has to be present, has to touch the animal,
+   and has to know that those two populations ought to talk to each other -- it does not know which
+   cell, how strongly, in which direction, or whether what it wrote was right, and it never sees the
+   inside of the brain. What R12 also shows is the price of the honesty that the *ignored* arm
+   reports: a weight whose two ends are never together decays to its floor, and a weight that is
+   written stops decaying, so the total weight of the sheet is bounded by experience rather than by a
+   global decay term -- which is the repair this project tried and abandoned in item 1. What is
+   missing is stated in R12: this writes one reflex between one sense and one action, and the same
+   machinery would have to be shown to write a *structure* before the recipe can be called a training
+   method. That is the experiment we would run next, and it is the one the position papers cited in
+   4.4 say does not exist yet.
+
 **What we would not claim.** We do not claim that this architecture will reach general
 intelligence, and we would distrust any paper that claimed it on this evidence. What we do claim
 is that the *first* step — an ordered, attributable, extensible behavioural repertoire with no
@@ -1605,7 +1861,7 @@ agents have been paying for it with an optimisation loop they may not need for t
 
 ### 5.1 Cortex
 
-The cortex is a flat boolean array of 143,796 cells (`皮层连接_cortex_links.py`). One tick is 20 ms. The
+The cortex is a flat boolean array of 148,032 cells (`皮层连接_cortex_links.py`). One tick is 20 ms. The
 unit is deliberately cruder than a conductance-based or spiking model (Izhikevich, 2003) and the
 tick is a coarse stand-in for cortical dynamics (Buzsaki & Draguhn, 2004); both simplifications are
 choices, and R8 is the experiment that asks how much they cost. The update is a single vectorised
@@ -1631,6 +1887,26 @@ random excitation (motor, motor memory, visual motion) and one region emits none
 detail), so that adding the detail region could not perturb the global excitation/inhibition
 balance. The background is generated from a seed; different seeds are different brains.
 
+The prefrontal population is not wired by the instinct table. It sits behind its own three-layer
+feed-forward network (`前额叶神经网络` in `前额叶区_prefrontal.py`): three layers of 57,436 units,
+21 fixed local contacts per unit, weights uniform in [0, 0.1], hidden-layer threshold 0.55 and
+output-layer threshold 1.2, so that a wide, sparse input becomes a narrow, sparse output. Only the
+output layer is part of the cortical array; the two hidden layers are the compression itself. The
+network is fed by seven regions -- visual, auditory, proprioception, vestibular, body state, motor
+memory and motor -- each of which is first blurred by its own half-width (10, 10, 5, 5, 5, 10, 1
+cells) so that a sparse code can drive a fixed-threshold layer at all. That table (`输入路`) is the
+single source of truth: the tick and the return line both read it, so a region cannot be added to
+one and forgotten in the other.
+
+The return line (`天生互惠返回线`) is the same network used in reverse -- the same neighbour tables
+and the same fixed weights, no plasticity, no learning -- with two differences. The return is
+thresholded against *each region's own peak* at 40%, not against a single peak taken over the whole
+returned vector, because with one global threshold the large regions set the scale and the vestibular
+region (120 cells) can never be reached. And the return into motor memory is intersected with the
+cells that motor memory is already running: a returned cell there starts a whole action rather than
+shading one, so this route sustains and does not ignite (2.1). The three body-sense regions carry no
+return line at all: they are read by the prefrontal population and never written by it (2.1).
+
 ### 5.2 Regions and calibration
 
 Names are not hand-written. Calibration (`本能工具_instincts.py: 标定`) lights a physical
@@ -1641,7 +1917,7 @@ were calibrated with a ball of radius 0.30 m; the per-column names used by the g
 re-calibrated with a ball of radius 0.05 m, because a ball that fills a whole cell is visible to
 every layer and would not distinguish them.
 
-Region widths: visual 23,040; visual detail 23,040; auditory 30,000; prefrontal 53,200;
+Region widths: visual 23,040; visual detail 23,040; auditory 30,000; prefrontal 57,436;
 motor 160 (16 muscles x 10 cells); motor memory 3,576; proprioception 480; vestibular 120;
 body state 60; visual motion 1,920; inhibitory 8,000.
 
@@ -1651,7 +1927,7 @@ body state 60; visual motion 1,920; inhibitory 8,000.
 `source_region:name -> target_region:name strength frozen`. A second, derived file
 (`反射表.txt`) contributes 4 further rules computed from the same trained locomotion policy: in
 a given tilt condition, hold a given shank above a force floor. The table currently holds 585
-rules and expands to 308,809 excitatory synapses plus the inhibitory edges.
+rules and expands to 309,148 excitatory synapses plus the inhibitory edges.
 
 A rule whose source is a *motor memory* name (rather than a sensory name) is expanded
 differently: the action's time cells are chained to each other, each time cell is wired to the
@@ -1729,7 +2005,7 @@ The update on a synapse that is co-activated in the accepted order is w <- w + e
 where m is the per-region multiplier of the last row of the table; a synapse whose presynaptic cell
 was active but whose postsynaptic cell did not follow is decayed by w <- w * (1 - (1 - d) * m) with
 d the per-tick decay. A new synapse is created at 0.001 once its pair has been seen in the accepted
-order four times, and then follows the same rule. There is no term anywhere that lowers a weight
+order four times, and then follows the same rule. In the configuration reported here there is no term that lowers a weight
 because the postsynaptic cell fired anyway, which is the failure discussed in 4.6. Frozen synapses
 (a flag in the instinct table) are never modified. The 0.02 multiplier is how "balance reflexes
 barely change in a lifetime" is expressed; it is a single number, not a special case in code.
@@ -1754,6 +2030,21 @@ persistence rows of the R2 table, are the only measurements in this paper that u
 configuration is stated wherever the two differ. Either configuration can be selected for any
 script from the environment (`前额叶不保留=1`), so every protocol in this paper can be re-run both
 ways with the code in the repository.
+
+**The nursery: a route that is born empty, a gate, and a keeper.** A backup route is written by
+`backup_edge()` in `born_wired/reflex_controller.py` for each pair of populations named in
+`backup_routes`, as the complete set of edges from the first population to the second. Every such
+edge is born at weight 0.0001, with its lower bound set to zero, its ceiling set to `backup_cap`
+(1.5), its plasticity set to `backup_plasticity` (1.0), and its tether removed; the tether is what
+holds an instinct at the strength the table gave it, and removing it is what lets a lesson keep what
+it writes. Because the edge exists from birth, no edge has to be created later, and the rule that
+writes to it is the ordinary local rule, not a second code path. The gate is a single cell
+(`dopamine`, tau 0.05) whose rate is read by `learning_modulation()`, which returns
+`righting_modulation() * (1 - dopamine_gain * (1 - dopamine_rate))`; with `dopamine_gain` at zero
+this is exactly the modulation the animal had before the nursery existed, which is what makes the
+control bit-exact. `touch_dopamine_gain` is the strength of the only innate edge into that cell
+(`touch -> dopamine`), and it is zero unless a keeper is being simulated. The lesson protocol, the
+four arms and the read-outs are `tools/nursery.py`; its assertions are `tests/test_nursery.py`.
 
 ### 5.6 Body, sensors, eyes
 
@@ -1878,6 +2169,11 @@ and R8 as looping animations, one panel per sensory condition, with each panel r
 freshly built brain of the same seed, so a reader can watch the behaviour without running the
 simulator.
 
+Two trees, because there are two implementations and no result mixes them. R1-R11 are produced by
+the reference model in `model/` with the logs in `logs/`; R12 and R13 are produced by the rebuilt
+engine in `engine_v2/` with the runs cited in those sections under `engine_v2/artifacts/`. A reader
+who wants to check a single claim needs one tree and the log named next to the claim.
+
 ### 5.10 Use of AI assistance
 
 The code, the experimental protocols and this manuscript were produced in an interactive
@@ -1906,6 +2202,42 @@ list. The code, the experimental protocols and the manuscript were written in an
 session with the DeepSeek large language model, at the direction of the human author
 (Section 5.10).
 ---
+
+### 5.12 The rebuilt engine
+
+R12 and R13 use a second implementation of the architecture, and no other result in this paper does.
+It was written because the reference engine's tick (R11: 158 ms with plasticity enabled at 24x16)
+could not be run in a closed loop with a body, and because the quantity that decides a tick turned
+out to be connections rather than cells. The invariants are the ones of Section 1.1: one population
+of cells updated on one tick; no negative weights, suppression always by an inhibitory cell; no
+separate inference pass and no read-out layer; every input a raw sense (two RGB images, a sound
+pressure waveform, body state) with no distance, direction or object computed anywhere outside the
+cortex; and learning by a local correlation rule that cannot see a target.
+
+| parameter | value |
+|---|---|
+| cells, shipped configuration | 584,137 |
+| synapses, shipped configuration | 1,812,331 |
+| eye | 192x144 pixels per eye, three channels, ten threshold pairs |
+| motor / proprioceptive / association units | 1,600 / 512 / 2,048 |
+| tick | 10 ms of body time; the synaptic update runs every 50 ms of accumulated time |
+| engine | graphics card (CUDA), with an automatically selected host fallback |
+| whole step | 11.19 ms (89.4 steps/s), brain 7.24 ms, eyes 2.84 ms, physics 0.77 ms |
+
+The correspondence with the reference build is at the level of the architecture and the rule, not of
+the cell count, and the two builds are therefore never mixed inside one result: every number in
+R1-R11 comes from the build of Methods 5.1, and every number in R12 and R13 from this one. Where the
+rebuild reproduces a published result it reproduces it in kind rather than to the digit (the gaze
+reflex, the righting sequence, the red-approach walk).
+
+The rebuild's own test suite is run with `python -m unittest discover -s tests` (160 tests, 135 s,
+`artifacts/tests_20260928.log`), and its fingerprint tool is
+`tools/check_model_fingerprint.py`, which is the instrument every change was required to pass. The
+scripts behind R12 and R13 are `tools/nursery.py`, `tools/probe_scale_walls.py`,
+`tools/probe_model_scale.py`, `tools/profile_live_step.py`, `tools/check_model_fingerprint.py` and
+`tools/measure_loom.py`; their logs are named in those sections and are in `engine_v2/artifacts/`.
+The source tree of the rebuild is published beside the reference model as `engine_v2/`, unchanged
+except that its own artifacts directory keeps only the runs cited above.
 
 ## Figures
 

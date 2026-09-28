@@ -24,8 +24,8 @@ import 身体_go2 as 身体
 
 def 包装(self, 输出激活, 抑制量=0.0):
     r = 原返回(self, 输出激活, 抑制量)
-    记录['回全部'] = int(r.sum())
-    记录['回运动'] = int(r[视宽 + 听宽:].sum())
+    记录['回全部'] = sum(int(v.sum()) for v in r.values())
+    记录['回运动'] = int(r['运动'].sum())
     return r
 type(前额.返回线).返回 = 包装
 

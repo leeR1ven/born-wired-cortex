@@ -1,0 +1,11 @@
+262 Hz tone, 20 s lesson, the live window's own parameters
+--- no route (seed 0) ---
+  before      0.523 m  retreat 0.000  leg-drive 0.000  brake 0.653  walk 0.003  dopamine 0.000  cochlea 0.787  min_h 0.305  up_z 0.999
+  lesson     -0.994 m  retreat 0.759  leg-drive 0.276  brake 0.998  walk 0.000  dopamine 0.581  cochlea 0.793  min_h 0.067  up_z 0.885
+  tone        0.065 m  retreat 0.057  leg-drive 0.003  brake 0.248  walk 0.005  dopamine 0.000  cochlea 0.794  min_h 0.307  up_z 0.994
+  silence    -0.066 m  retreat 0.000  leg-drive 0.000  brake 0.166  walk 0.000  dopamine 0.000  cochlea 0.013  min_h 0.302  up_z 0.996
+  left_leg   -0.100 m  retreat 0.000  leg-drive 0.000  brake 0.139  walk 0.046  dopamine 0.000  cochlea 0.789  min_h 0.318  up_z 0.997
+  thighs with the tone alone: [0.8234, 0.8266, 0.8587, 0.8613]
+  thighs in silence:          [0.8037, 0.834, 0.8494, 0.886]
+  route born          []
+  route after lesson  []

@@ -43,7 +43,7 @@ for h in (0, 24, 48, 72, 96, 120, 144, 168, 180, 204, 240, 270, 300, 330):
     图 = 渐变.彩色块(h)
     out = np.asarray(视觉.网.前向传播(视觉.图像转信号(图)), dtype=bool)
     n视 = int(out[视红].sum())
-    前 = np.asarray(前额.前额网.前向传播(out, 空听, 空运), dtype=bool)
+    前 = np.asarray(前额.前额网.前向传播({"视觉": out, "听觉": 空听, "运动": 空运}), dtype=bool)
     n前 = int(前[前红].sum())
     视半 = 权重视觉 * n视 / float(视红.size)
     前半 = 权重前额 * n前 / float(前红.size)

@@ -30,3 +30,9 @@ model/*.html
 # 大件（模型权重、语料、压缩包）不入库
 *.npz
 *.zip
+
+# 运行时的控制台/临时输出，不是论文证据（论文引用的日志在 logs/ 里）
+model/*.err.txt
+model/日志_*.txt
+model/*_控制台.txt
+logs/tmp_*.txt

@@ -24,11 +24,11 @@ import 身体_go2 as 身体
 
 def 包装(self, 输出激活, 抑制量=0.0):
     r = 原返回(self, 输出激活, 抑制量)
-    if 挡[0] == 2:
-        return np.zeros_like(r)
-    if 挡[0] == 1:
-        r = r.copy()
-        r[视宽 + 听宽:] = False
+    if 挡[0] == 2:                      # 整条返回线掐掉
+        return {名: np.zeros_like(v) for 名, v in r.items()}
+    if 挡[0] == 1:                      # 只掐掉"送回运动区"那一段
+        r = dict(r)
+        r['运动'] = np.zeros_like(r['运动'])
     return r
 type(前额.返回线).返回 = 包装
 

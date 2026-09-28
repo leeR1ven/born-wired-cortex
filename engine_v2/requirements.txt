@@ -1,0 +1,10 @@
+numpy==2.4.6
+scipy>=1.11
+torch>=2.4
+mujoco==3.13.0
+Pillow>=11
+matplotlib>=3.9
+# Optional accelerator for the auditory per-sample loop. Without it the module
+# runs the same recurrence in NumPy (see born_wired/auditory_neurons.py); with
+# it that loop is about thirteen times faster and the numbers are identical.
+-numba>=0.60

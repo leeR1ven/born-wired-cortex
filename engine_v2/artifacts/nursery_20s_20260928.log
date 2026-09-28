@@ -1,0 +1,41 @@
+262 Hz tone, 20 s lesson, the live window's own parameters
+--- taught (seed 0) ---
+  before      0.523 m  retreat 0.000  leg-drive 0.000  brake 0.653  walk 0.003  dopamine 0.000  cochlea 0.787  min_h 0.305  up_z 0.999
+  lesson     -2.576 m  retreat 0.968  leg-drive 0.466  brake 0.998  walk 0.000  dopamine 0.581  cochlea 0.757  min_h 0.068  up_z 0.942
+  tone       -0.989 m  retreat 1.000  leg-drive 0.504  brake 0.225  walk 0.012  dopamine 0.000  cochlea 0.646  min_h 0.303  up_z 0.938
+  silence     0.295 m  retreat 0.020  leg-drive 0.009  brake 0.114  walk 0.000  dopamine 0.000  cochlea 0.010  min_h 0.307  up_z 0.995
+  left_leg   -0.293 m  retreat 0.983  leg-drive 0.490  brake 0.137  walk 0.000  dopamine 0.000  cochlea 0.606  min_h 0.310  up_z 0.990
+  thighs with the tone alone: [0.8484, 0.8314, 0.8523, 0.7986]
+  thighs in silence:          [0.8101, 0.817, 0.8463, 0.8796]
+  route born          [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+  route after lesson  [0.9515, 0.0306, 0.0003, 0.986, 0.0404, 0.0013]
+--- ignored (seed 0) ---
+  before      0.523 m  retreat 0.000  leg-drive 0.000  brake 0.653  walk 0.003  dopamine 0.000  cochlea 0.787  min_h 0.305  up_z 0.999
+  lesson      0.421 m  retreat 0.000  leg-drive 0.000  brake 0.688  walk 0.000  dopamine 0.000  cochlea 0.803  min_h 0.306  up_z 0.996
+  tone        0.001 m  retreat 0.000  leg-drive 0.000  brake 0.692  walk 0.000  dopamine 0.000  cochlea 0.803  min_h 0.318  up_z 0.997
+  silence     0.004 m  retreat 0.000  leg-drive 0.000  brake 0.693  walk 0.000  dopamine 0.000  cochlea 0.013  min_h 0.318  up_z 0.997
+  left_leg    0.000 m  retreat 0.000  leg-drive 0.000  brake 0.692  walk 0.000  dopamine 0.000  cochlea 0.791  min_h 0.318  up_z 0.997
+  thighs with the tone alone: [0.8114, 0.8054, 0.8597, 0.8563]
+  thighs in silence:          [0.8064, 0.8103, 0.8535, 0.8629]
+  route born          [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+  route after lesson  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+--- ungated (seed 0) ---
+  before      0.523 m  retreat 0.000  leg-drive 0.000  brake 0.653  walk 0.003  dopamine 0.000  cochlea 0.787  min_h 0.305  up_z 0.999
+  lesson     -2.609 m  retreat 0.975  leg-drive 0.476  brake 0.998  walk 0.000  dopamine 0.581  cochlea 0.756  min_h 0.068  up_z 0.941
+  tone       -0.958 m  retreat 1.000  leg-drive 0.509  brake 0.204  walk 0.036  dopamine 0.000  cochlea 0.645  min_h 0.303  up_z 0.941
+  silence     0.316 m  retreat 0.022  leg-drive 0.011  brake 0.083  walk 0.003  dopamine 0.000  cochlea 0.010  min_h 0.308  up_z 0.995
+  left_leg   -0.324 m  retreat 0.983  leg-drive 0.498  brake 0.110  walk 0.004  dopamine 0.000  cochlea 0.608  min_h 0.310  up_z 0.991
+  thighs with the tone alone: [0.8501, 0.8325, 0.8543, 0.7999]
+  thighs in silence:          [0.8146, 0.8181, 0.8492, 0.8826]
+  route born          [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]
+  route after lesson  [1.4457, 0.0451, 0.0004, 1.5, 0.0597, 0.0017]
+--- no route (seed 0) ---
+  before      0.523 m  retreat 0.000  leg-drive 0.000  brake 0.653  walk 0.003  dopamine 0.000  cochlea 0.787  min_h 0.305  up_z 0.999
+  lesson     -0.994 m  retreat 0.759  leg-drive 0.276  brake 0.998  walk 0.000  dopamine 0.581  cochlea 0.793  min_h 0.067  up_z 0.885
+  tone        0.065 m  retreat 0.057  leg-drive 0.003  brake 0.250  walk 0.003  dopamine 0.000  cochlea 0.794  min_h 0.307  up_z 0.994
+  silence    -0.066 m  retreat 0.000  leg-drive 0.000  brake 0.166  walk 0.000  dopamine 0.000  cochlea 0.013  min_h 0.302  up_z 0.996
+  left_leg   -0.100 m  retreat 0.000  leg-drive 0.000  brake 0.139  walk 0.044  dopamine 0.000  cochlea 0.789  min_h 0.318  up_z 0.997
+  thighs with the tone alone: [0.8233, 0.8265, 0.8587, 0.8613]
+  thighs in silence:          [0.8037, 0.834, 0.8494, 0.886]
+  route born          []
+  route after lesson  []

@@ -1,0 +1,33 @@
+walking straight at the striped east wall from 2.6 m, 0.6 m/s, 250 steps
+ - eye_change_threshold=None eye_flow_threshold=None
+                           change   rise   fall    out    inw   grow   loom   bank   near  brake
+   standing still           0.904  0.000  0.001  0.000  0.000  0.000  0.000  0.101  0.017  0.035
+   sideways 0.6 m/s         0.930  0.000  0.000  0.000  0.000  0.000  0.000  0.157  0.026  0.047
+   closing in 0.6 m/s       0.878  0.000  0.004  0.000  0.000  0.000  0.000  0.135  0.028  0.049
+   closing in 1.6 m/s       0.756  0.000  0.039  0.000  0.000  0.000  0.000  0.167  0.028  0.051
+   backing off 0.6 m/s      0.765  0.000  0.001  0.000  0.000  0.000  0.000  0.100  0.011  0.022
+
+ - eye_change_threshold=0.02 eye_flow_threshold=0.1
+                           change   rise   fall    out    inw   grow   loom   bank   near  brake
+   standing still           0.936  0.000  0.017  0.010  0.010  0.000  0.000  0.101  0.017  0.034
+   sideways 0.6 m/s         0.971  0.000  0.001  0.000  0.000  0.000  0.000  0.153  0.026  0.047
+   closing in 0.6 m/s       0.911  0.000  0.026  0.017  0.016  0.000  0.000  0.120  0.028  0.049
+   closing in 1.6 m/s       0.791  0.000  0.114  0.083  0.081  0.000  0.000  0.178  0.028  0.050
+   backing off 0.6 m/s      0.845  0.000  0.017  0.009  0.008  0.000  0.000  0.100  0.011  0.022
+
+ - eye_change_threshold=0.05 eye_flow_threshold=0.2
+                           change   rise   fall    out    inw   grow   loom   bank   near  brake
+   standing still           0.938  0.000  0.013  0.004  0.004  0.000  0.000  0.101  0.017  0.034
+   sideways 0.6 m/s         0.960  0.000  0.001  0.000  0.000  0.000  0.000  0.134  0.025  0.046
+   closing in 0.6 m/s       0.907  0.000  0.027  0.012  0.011  0.000  0.000  0.148  0.028  0.050
+   closing in 1.6 m/s       0.791  0.000  0.106  0.062  0.060  0.000  0.000  0.149  0.028  0.050
+   backing off 0.6 m/s      0.851  0.000  0.015  0.004  0.004  0.000  0.000  0.102  0.011  0.023
+
+ - eye_change_threshold=0.1 eye_flow_threshold=0.4
+                           change   rise   fall    out    inw   grow   loom   bank   near  brake
+   standing still           0.927  0.000  0.014  0.001  0.001  0.000  0.000  0.101  0.017  0.034
+   sideways 0.6 m/s         0.961  0.000  0.000  0.000  0.000  0.000  0.000  0.141  0.026  0.047
+   closing in 0.6 m/s       0.898  0.000  0.020  0.003  0.003  0.000  0.000  0.174  0.028  0.050
+   closing in 1.6 m/s       0.788  0.000  0.096  0.032  0.031  0.000  0.000  0.148  0.028  0.051
+   backing off 0.6 m/s      0.840  0.000  0.012  0.000  0.000  0.000  0.000  0.101  0.011  0.023
+

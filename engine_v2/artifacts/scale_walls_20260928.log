@@ -1,0 +1,37 @@
+====================================================================================================
+what the arena declares for the offscreen buffer the eyes are drawn into
+  offwidth   1280
+  offheight  1024
+====================================================================================================
+wall 1: a region's own size, against the incoming excitation budget
+192x144 proprio_units=512                      ok          587321 cells   1818715 edges
+192x144 proprio_units=640                      ok          588857 cells   1819243 edges
+192x144 proprio_units=768                      ok          590393 cells   1819723 edges
+192x144 proprio_units=896                      ok          591929 cells   1820203 edges
+192x144 proprio_units=1024                     REFUSED   ValueError: structural lower bounds exceed an incoming budget
+192x144 association_units=2048                 ok          587321 cells   1818715 edges
+192x144 association_units=3072                 ok          588345 cells   1953883 edges
+192x144 association_units=4096                 ok          589369 cells   2089051 edges
+192x144 motor_units=1600                       ok          587321 cells   1818715 edges
+192x144 motor_units=3200                       ok          606521 cells   2183515 edges
+====================================================================================================
+wall 2: the width of the eye, against the offscreen buffer
+eye 256x192                                    ok        frame (2, 192, 256, 3)
+eye 320x240                                    ok        frame (2, 240, 320, 3)
+eye 384x288                                    ok        frame (2, 288, 384, 3)
+eye 448x336                                    REFUSED   ValueError: Image width 1344 > framebuffer width 1280. Either reduce the image
+width or specify a larger offscreen framebuffer in the model XML using the
+clause:
+<visual>
+  <global offwidth="my_width"/>
+</visual>
+eye 512x384                                    REFUSED   ValueError: Image width 1536 > framebuffer width 1280. Either reduce the image
+width or specify a larger offscreen framebuffer in the model XML using the
+clause:
+<visual>
+  <global offwidth="my_width"/>
+</visual>
+====================================================================================================
+wall 3: the whole animal at once
+320x240 2400/768/3072                          ok         1527993 cells   3852147 edges
+320x240 2400/512/3072                          ok         1524921 cells   3851139 edges

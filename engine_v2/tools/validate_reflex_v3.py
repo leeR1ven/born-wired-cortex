@@ -1,0 +1,486 @@
+#!/usr/bin/env python3
+"""Run a bounded closed-loop validation of the reflex controller."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import math
+import platform
+import sys
+import time
+from pathlib import Path
+
+import mujoco
+import numpy as np
+
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from born_wired.go2_body import DEFAULT_MODEL, Go2Body
+from born_wired.reflex_controller import ReflexController
+from born_wired.reflex_senses import ReflexSenses
+from born_wired.embodied import EmbodiedController
+from born_wired.stereo_senses import RawEyes
+from born_wired.binaural_senses import BinauralSenses
+
+
+NEURAL_DT = 0.01
+PHYSICS_DT = 0.002
+SAMPLE_INTERVAL = 0.5
+CONTROLLER_DEFAULTS = {
+    "motor_units": 200,
+    "proprio_units": 64,
+    "association_units": 256,
+    "balanced_gait": True,
+    "avoidance_gain": 0.25,
+    "withdrawal_gain": 0.35,
+    "startle_gain": 0.18,
+    "support_calf": -1.5,
+}
+SOURCE_FILES = (
+    "born_wired/embodied.py",
+    "born_wired/auditory_neurons.py",
+    "born_wired/stereo_senses.py",
+    "born_wired/binaural_senses.py",
+    "born_wired/reflex_controller.py",
+    "born_wired/reflex_senses.py",
+    "born_wired/go2_body.py",
+    "born_wired/feature_routed.py",
+    "born_wired/innate.py",
+    "born_wired/adaptive.py",
+    "born_wired/regulation.py",
+    "born_wired/synapses.py",
+    "born_wired/encoding.py",
+)
+SCENARIOS = {
+    'motor_probe': {'autonomy': False, 'locomotion': .65},
+    "autonomous": {"autonomy": True, "locomotion": 0.0},
+    "driven": {"autonomy": False, "locomotion": 0.65},
+    "rest": {"autonomy": False, "locomotion": 0.0},
+}
+
+
+def parse_seeds(value: str) -> list[int]:
+    try:
+        seeds = [int(item.strip()) for item in value.split(",") if item.strip()]
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("seeds must be comma-separated integers") from exc
+    if not seeds:
+        raise argparse.ArgumentTypeError("seeds must not be empty")
+    return seeds
+
+
+def positive_duration(value: str) -> float:
+    try:
+        duration = float(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("duration must be a number") from exc
+    if not math.isfinite(duration) or duration <= 0:
+        raise argparse.ArgumentTypeError("duration must be positive and finite")
+    return duration
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for chunk in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def source_hashes() -> dict[str, str]:
+    return {name: sha256_file(ROOT / name) for name in SOURCE_FILES}
+
+
+def load_live_parameters() -> dict:
+    with (ROOT / "live_config.json").open(encoding="utf-8-sig") as source:
+        config = json.load(source)
+    parameters = config.get("parameters", {})
+    if not isinstance(parameters, dict):
+        raise ValueError("live_config.json parameters must be an object")
+    return dict(parameters)
+
+
+def as_list(value) -> list:
+    return np.asarray(value).tolist()
+
+
+def finite(value) -> bool:
+    return bool(np.isfinite(np.asarray(value, dtype=float)).all())
+
+
+def group_mean(controller: ReflexController, name: str) -> float:
+    ids = np.asarray(controller.groups[name], dtype=int)
+    return float(np.mean(controller.network.activity[ids]))
+
+
+def base_position(body: Go2Body) -> np.ndarray:
+    base_id = int(body.model.body("base").id)
+    return body.data.xpos[base_id].copy()
+
+
+def floor_z(body: Go2Body) -> float:
+    floor_id = int(body.model.geom("floor").id)
+    return float(body.data.geom_xpos[floor_id, 2])
+
+
+def make_controller(
+    body: Go2Body,
+    *,
+    seed: int,
+    controller_parameters: dict,
+) -> ReflexController:
+    return EmbodiedController(
+        body.home_angles,
+        body.lower_limits,
+        body.upper_limits,
+        seed=seed,
+        **controller_parameters,
+    )
+
+
+def controller_parameters(config_parameters: dict) -> dict:
+    parameters = dict(CONTROLLER_DEFAULTS)
+    parameters.update(config_parameters)
+    return parameters
+
+
+def initial_sample(
+    *,
+    time_s: float,
+    position: np.ndarray,
+    controller: ReflexController,
+    environment: dict,
+) -> dict:
+    diagnostics = controller.diagnostics()["reflex_activity"]
+    return {
+        "time": float(time_s),
+        "position": as_list(position),
+        "drive": group_mean(controller, "rhythm_recruitment"),
+        "forward_drive": group_mean(controller, "locomotion"),
+        "curiosity": float(diagnostics["curiosity"][0]),
+        "fatigue": float(diagnostics["fatigue"][0]),
+        "rest": float(diagnostics["rest"][0]),
+        "initiation": float(diagnostics["initiation"][0]),
+        "retinal_activity": controller.diagnostics().get('retinal_activity'),
+        "binocular_activity": controller.diagnostics().get('binocular_population_activity'),
+        "auditory_activity": controller.diagnostics().get('auditory_activity'),
+        "reflex_activity": diagnostics,
+        "motor_effort": float(environment['motor_effort']),
+        "body_touch": as_list(environment['body_touch']),
+        "foot_obstacle": as_list(environment['foot_obstacle']),
+    }
+
+
+def sample(
+    *,
+    time_s: float,
+    position: np.ndarray,
+    controller: ReflexController,
+    environment: dict,
+) -> dict:
+    return initial_sample(
+        time_s=time_s,
+        position=position,
+        controller=controller,
+        environment=environment,
+    )
+
+
+def run_seed(
+    *,
+    seed: int,
+    duration: float,
+    model_path: Path,
+    scenario: str,
+    controller_parameters_for_seed: dict,
+    terrain_start: str = 'origin',
+) -> dict:
+    scenario_inputs = SCENARIOS[scenario]
+    steps = int(round(duration / NEURAL_DT))
+    if not math.isclose(steps * NEURAL_DT, duration, rel_tol=0.0, abs_tol=1e-9):
+        raise ValueError("duration must be an integer multiple of 0.01 seconds")
+
+    body = Go2Body(model_path=model_path, timestep=PHYSICS_DT)
+    # Perturb the physical start, not merely unused association weights.
+    initial_yaw = float(np.random.default_rng(seed).uniform(-.12, .12))
+    body.reset(seed=seed, joint_noise=.01, tilt=(0.,0.,initial_yaw))
+    starts = {'origin': (0.,0.), 'passage': (-2.7,-1.05), 'step': (.55,-1.), 'ramp': (.25,-2.1)}
+    body.data.qpos[:2] = starts[terrain_start]
+    mujoco.mj_forward(body.model, body.data)
+    senses = ReflexSenses(body)
+    controller = make_controller(
+        body,
+        seed=seed,
+        controller_parameters=controller_parameters_for_seed,
+    )
+    observation = body.observe()
+    environment = senses.observe()
+    eyes = (
+        RawEyes(body, width=controller.eye_width, height=controller.eye_height)
+        if body.model.ncam >= 2 else None
+    )
+    ears = BinauralSenses(body, window_samples=160)
+    pixels = None
+
+    position = base_position(body)
+    initial_position = position.copy()
+    previous_position = position.copy()
+    horizontal_path = 0.0
+    maximum_x = float(position[0])
+    up_z = []
+    heights = []
+    drive_values = []
+    contact_slip = [[] for _ in range(4)]
+    clearance_gt_2mm = [[] for _ in range(4)]
+    timeline = [
+        sample(
+            time_s=0.0,
+            position=position,
+            controller=controller,
+            environment=environment,
+        )
+    ]
+    next_sample_time = SAMPLE_INTERVAL
+    max_scaffold_relative_change = 0.0
+    checks = {
+        "all_finite": True,
+        "targets_within_limits": True,
+        "activation_in_range": True,
+        "weights_finite": True,
+        "weights_within_bounds": True,
+        "activity_in_range": True,
+        "adaptation_in_range": True,
+        "observations_finite": True,
+        "time_monotonic": True,
+    }
+    previous_time = float(body.data.time)
+    started = time.perf_counter()
+    error = None
+
+    try:
+        for step_index in range(steps):
+            if eyes is not None and scenario != 'motor_probe' and step_index % 10 == 0:
+                pixels = eyes.observe_raw()
+            target, activation = controller.step(
+                observation,
+                environment=environment,
+                autonomy=scenario_inputs["autonomy"],
+                locomotion=scenario_inputs["locomotion"],
+                dt=NEURAL_DT,
+                learn=True,
+                eye_pixels=pixels,
+                ear_waveform=ears.observe() if scenario != 'motor_probe' else np.zeros((2,160)),
+            )
+            solved = body.step(target, duration=NEURAL_DT, activation=activation)
+            observation = solved
+            environment = senses.observe()
+
+            target = np.asarray(target, dtype=float)
+            activation = np.asarray(activation, dtype=float)
+            weights = controller.synapses.weights
+            checks["all_finite"] = checks["all_finite"] and bool(
+                finite(target) and finite(activation) and finite(weights)
+            )
+            checks["targets_within_limits"] = checks["targets_within_limits"] and bool(
+                np.all(target >= controller.lower) and np.all(target <= controller.upper)
+            )
+            checks["activation_in_range"] = checks["activation_in_range"] and bool(
+                np.all((activation >= 0) & (activation <= 1))
+            )
+            checks["weights_finite"] = checks["weights_finite"] and finite(weights)
+            checks["weights_within_bounds"] = checks["weights_within_bounds"] and bool(
+                np.all(weights >= controller.synapses.lower)
+                and np.all(weights <= controller.synapses.w_max)
+            )
+            checks["activity_in_range"] = bool(
+                np.all((controller.network.activity >= 0) & (controller.network.activity <= 1))
+            ) and checks["activity_in_range"]
+            checks["adaptation_in_range"] = bool(
+                np.all((controller.network.adaptation >= 0) & (controller.network.adaptation <= 1))
+            ) and checks["adaptation_in_range"]
+            checks["observations_finite"] = checks["observations_finite"] and bool(
+                finite(solved["body_height"])
+                and finite(solved["body_up"])
+                and finite(solved["joint_position"])
+                and finite(solved["joint_velocity"])
+                and finite(environment["foot_slip_mps"])
+            )
+
+            current_time = float(body.data.time)
+            checks["time_monotonic"] = checks["time_monotonic"] and current_time > previous_time
+            previous_time = current_time
+
+            diagnostics = controller.diagnostics()
+            max_scaffold_relative_change = max(
+                max_scaffold_relative_change,
+                float(diagnostics["scaffold_max_relative_change"]),
+            )
+
+            position = base_position(body)
+            maximum_x = max(maximum_x, float(position[0]))
+            horizontal_path += float(np.linalg.norm(position[:2] - previous_position[:2]))
+            previous_position = position.copy()
+            up_z.append(float(solved["body_up"][2]))
+            heights.append(float(solved["body_height"]))
+            drive_values.append(group_mean(controller, "rhythm_recruitment"))
+
+            for foot in range(4):
+                if bool(environment["foot_contact"][foot]):
+                    contact_slip[foot].append(float(environment["foot_slip_mps"][foot]))
+                clearance_gt_2mm[foot].append(
+                    bool(float(solved["foot_position"][foot, 2])
+                         - float(body.model.geom_size[body._feet[foot], 0]) - floor_z(body) > 0.002)
+                )
+
+            elapsed = (step_index + 1) * NEURAL_DT
+            if elapsed + 1e-9 >= next_sample_time:
+                timeline.append(
+                    sample(
+                        time_s=elapsed,
+                        position=position,
+                        controller=controller,
+                        environment=environment,
+                    )
+                )
+                next_sample_time += SAMPLE_INTERVAL
+    except Exception as exc:  # Preserve failed seeds in the report.
+        error = f"{type(exc).__name__}: {exc}"
+
+    wall_duration = time.perf_counter() - started
+    if eyes is not None:
+        eyes.close()
+    final_position = previous_position
+    slip_summary = [
+        {
+            "mean_mps": None if not values else float(np.mean(values)),
+            "max_mps": None if not values else float(np.max(values)),
+            "contact_samples": len(values),
+        }
+        for values in contact_slip
+    ]
+    clearance_summary = [
+        {
+            "fraction_gt_2mm": None if not values else float(np.mean(values)),
+            "samples": len(values),
+        }
+        for values in clearance_gt_2mm
+    ]
+    return {
+        "seed": seed,
+        "initial_joint_noise_rad": .01,
+        "initial_yaw_rad": initial_yaw,
+        "terrain_start": terrain_start,
+        "scenario": scenario,
+        "status": "ok" if error is None else "error",
+        "behavior_pass": bool(error is None and all(checks.values()) and up_z
+                              and min(up_z) > .5 and min(heights) > .15),
+        "error": error,
+        "steps": steps,
+        "wall_duration_seconds": wall_duration,
+        "metrics": {
+            "minimum_up_z": None if not up_z else float(np.min(up_z)),
+            "minimum_height_m": None if not heights else float(np.min(heights)),
+            "total_displacement_m": float(np.linalg.norm(final_position - initial_position)),
+            "horizontal_path_m": horizontal_path,
+            "maximum_world_x": maximum_x,
+            "crossed_test_marker": None if terrain_start == 'origin' else maximum_x >
+                {'passage': -1., 'step': 1.65, 'ramp': 1.5}[terrain_start],
+            "fraction_drive_gt_0_35": None if not drive_values else float(np.mean(np.asarray(drive_values) > 0.35)),
+            "fraction_drive_lt_0_03": None if not drive_values else float(np.mean(np.asarray(drive_values) < 0.03)),
+            "contact_conditioned_foot_slip": slip_summary,
+            "foot_clearance_gt_2mm_fraction": clearance_summary,
+            "maximum_scaffold_relative_change": max_scaffold_relative_change,
+        },
+        "checks": checks,
+        "no_resets": True,
+        "explicit_resets": 0,
+        "timeline": timeline,
+    }
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--seeds", type=parse_seeds, default=[0, 1, 2])
+    parser.add_argument("--duration", type=positive_duration, default=60.0)
+    parser.add_argument("--model", type=Path)
+    parser.add_argument("--scenario", choices=tuple(SCENARIOS), default="autonomous")
+    parser.add_argument('--terrain-start', choices=('origin','passage','step','ramp'), default='origin')
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    model_path = (args.model if args.model is not None else Path(DEFAULT_MODEL)).resolve()
+    config_parameters = load_live_parameters()
+    source_sha256 = source_hashes()
+    results = []
+    for seed in args.seeds:
+        parameters = controller_parameters(config_parameters)
+        try:
+            result = run_seed(
+                seed=seed,
+                duration=args.duration,
+                model_path=model_path,
+                scenario=args.scenario,
+                controller_parameters_for_seed=parameters,
+                terrain_start=args.terrain_start,
+            )
+        except Exception as exc:
+            result = {
+                "seed": seed,
+                "scenario": args.scenario,
+                "status": "error",
+                "error": f"{type(exc).__name__}: {exc}",
+                "metrics": None,
+                "checks": None,
+                "no_resets": None,
+                "timeline": [],
+            }
+        result["controller_parameters"] = dict(parameters, seed=seed)
+        results.append(result)
+        print(json.dumps({
+            "seed": seed,
+            "scenario": args.scenario,
+            "status": result["status"],
+            "error": result["error"],
+        }, ensure_ascii=False))
+
+    payload = {
+        "scenario": args.scenario,
+        "duration_seconds": args.duration,
+        "neural_dt_seconds": NEURAL_DT,
+        "physics_dt_seconds": PHYSICS_DT,
+        "learn": True,
+        "learning_interval_seconds": .05,
+        "drive_metric": "mean activity of shared rhythm_recruitment neurons, includes orienting",
+        "model": str(model_path),
+        "model_sha256": sha256_file(model_path),
+        "runner_sha256": sha256_file(Path(__file__)),
+        "model_source": "cli" if args.model is not None else "default",
+        "live_config_parameters": config_parameters,
+        "controller_defaults": CONTROLLER_DEFAULTS,
+        "source_sha256": source_sha256,
+        "versions": {
+            "python": platform.python_version(),
+            "python_full": sys.version,
+            "numpy": np.__version__,
+            "mujoco": mujoco.__version__,
+        },
+        "results": results,
+    }
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return 0 if all(r.get('behavior_pass', False) for r in results) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
