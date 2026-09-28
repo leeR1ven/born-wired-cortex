@@ -74,12 +74,13 @@
 
 ## 考试台（题库）
 
-`tools/taskbank.py` 是这套模型的能力清单：**121 道题、15 个方面、7 级先修阶梯**。每道题都是一次真跑出来的行为读数，没有人写好的动作脚本。
+`tools/taskbank.py` 是这套模型的能力清单：**123 道题、15 个方面、7 级先修阶梯**。每道题都是一次真跑出来的行为读数，没有人写好的动作脚本。
 
 - `python tools/taskbank.py --list` 列全部题目；`--tree` 打先修阶梯（0 级站住 → 走 → 走快 → 跑 → 转弯 → 地形 → 一边走一边做别的）；`--explain` 逐题印出「读什么数 / 门槛多少 / 出厂读数 / 这题不证明什么」。
 - 跑一整遍：`python tools/taskbank.py --stage full --seeds 0 1 2 --output artifacts/exam_birth_full.json`。出厂读数已经存在这个文件里，`python tools/taskbank.py --birth-text` 可以把它们印成源码里的 `BIRTH` 字典。
 - 门槛（`BAR`）只有两个来源：沿用仓库原有判据（`validate_reflex_v3.behavior_pass`、`probe_righting.recovered`），或者按出厂实测数字定，而那个数字必须写进 `BIRTH`。`tests/test_taskbank.py` 会拦住「对坏结果也说好」的门槛。
-- 题目清单和判据写在 `docs/题库_第三批_20260928.md`、`docs/题库_第四批_20260928.md`，两份文档都写了这 121 道题**测不了什么**。
+- 每个感觉通道都是**一对细胞**：进来的那一格，和它旁边那一格（`1 − 进来的那一格`，所以没有信号时它亮着）。安静、黑屏、没人碰的时候读数不是 0，而是相反那格满亮；四只脚的受力格加上相反格，逐格恒等于 1。四道题在看这件事（`the_dark_room_is_not_silence`、`a_quiet_room_is_not_a_sound`、`nothing_touching_it_is_not_nothing`、`the_weight_pair_still_carries_the_weight`），论文里是结果 R19 和方法 5.15。
+- 题目清单和判据写在 `docs/题库_第三批_20260928.md`、`docs/题库_第四批_20260928.md`，两份文档都写了这 123 道题**测不了什么**。
 - 挑模型：`tools/screen_candidates.py` 只允许题目里点名的那几十个增益变化，代际之间按「谁cover的题目多」留人，融合就是把两个基因组取平均。
 ## 验证与限制
 

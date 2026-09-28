@@ -156,6 +156,17 @@ class ReflexController(FeatureRoutedController):
         foot = cells('foot_obstacle', 4)
         load = cells('foot_load', 4)
         slip = cells('foot_slip', 4)
+        # Every sense is a pair: one cell that says what arrived, and the cell
+        # beside it that says nothing arrived on this channel.  The second one
+        # is what makes "nothing is touching me", "the feet carry no weight"
+        # and "the room is silent" readings of their own instead of an empty
+        # vector.  Both halves are driven in step() from the same number, so
+        # they always add up to one channel; nothing downstream reads the
+        # second half yet.
+        cells('body_touch_opposite', 4)
+        cells('foot_obstacle_opposite', 4)
+        cells('foot_load_opposite', 4)
+        cells('foot_slip_opposite', 4)
         tilt = cells('protective_tilt', 1)
         # Which way the body is being pushed off its feet, one cell for each of
         # the four ways it can go, and one leg per cell that reaches out to
@@ -268,7 +279,8 @@ class ReflexController(FeatureRoutedController):
         initiation = cells('initiation', 2, bias=-.45, tau=.15)
         retina = cells('retina', 18)  # two eyes, L/C/R sectors, R/G/B opponency
         stereo_near = cells('stereo_near', 3)
-        cochlea = cells('cochlea', 6)  # left/right localization channels x frequency
+        cochlea = cells('cochlea', 6)
+        cells('cochlea_opposite', 6)  # left/right localization channels x frequency
         appetitive = cells('appetitive', 1, fatigue=3., fatigue_tau=20., tau=.15)
         orient = cells('orienting', 2, fatigue=.4, fatigue_tau=3.)
         orient_i = cells('orienting_inhibition', 2, sign=-1)
@@ -279,12 +291,14 @@ class ReflexController(FeatureRoutedController):
         steering = cells('steering', 2, tau=.15)
         steering_i = cells('steering_inhibition', 2, sign=-1)
         auditory_spatial = cells('auditory_spatial', 6)
+        cells('auditory_spatial_opposite', 6)
         # One cell per ear for a sound whose top band stands out and one for a
         # sound whose bottom band does: the outer ear brightens what comes from
         # in front and dulls what comes from behind, and these are the cells that
         # answer that. They carry no edges to any muscle yet, so they are sense
         # cells the local rule may grow from, not an action.
         auditory_pinna = cells('auditory_pinna', 4)
+        cells('auditory_pinna_opposite', 4)
         auditory_approach = cells('auditory_approach', 2, bias=-.3)
         auditory_avoid = cells('auditory_avoid', 2, bias=-.3)
         # Dopamine is not a critic and carries no answer about right or wrong.
@@ -811,6 +825,7 @@ class ReflexController(FeatureRoutedController):
             g = self.groups
             for name, values in sensor_values.items():
                 external[g[name]] = values
+                external[g[name + '_opposite']] = 1. - values
             gravity = _vector(sensed['gravity_direction'], 3, 'gravity_direction', low=-1, high=1)
             external[g['protective_tilt']] = np.clip((.70+gravity[2])/.70, 0, 1)
             # Local gravity is the world vertical in body axes, so its forward
@@ -822,8 +837,11 @@ class ReflexController(FeatureRoutedController):
             external[g['effort_receptor']] = effort
             external[g['autonomous_receptor']] = float(autonomy)
             external[g['cochlea']] = auditory
+            external[g['cochlea_opposite']] = 1. - auditory
             external[g['auditory_spatial']] = spatial
+            external[g['auditory_spatial_opposite']] = 1. - spatial
             external[g['auditory_pinna']] = pinna
+            external[g['auditory_pinna_opposite']] = 1. - pinna
         self.network.reflex_input = external
         try:
             return super().step(sensed, modulator=self.learning_modulation(), **parameters)

@@ -87,10 +87,13 @@ DISTANCE_THRESHOLDS = (-0.10, 0.03, 0.16, 0.26, 0.37, 0.43, 0.60)
 
 
 class RetinalInputNetwork(ReflexInputNetwork):
-    def __init__(self, *args, pixel_ids, eye_ids=None, **kwargs):
+    def __init__(self, *args, pixel_ids, eye_ids=None, opposite_ids=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.pixel_ids = np.asarray(pixel_ids)
         self.pixel_current = np.zeros(len(self.pixel_ids))
+        self.opposite_ids = None if opposite_ids is None else np.asarray(opposite_ids)
+        self.opposite_current = np.zeros(
+            0 if opposite_ids is None else len(self.opposite_ids))
         self.eye_ids = None if eye_ids is None else np.asarray(eye_ids)
         self.eye_current = np.zeros(0 if eye_ids is None else len(self.eye_ids))
 
@@ -111,6 +114,8 @@ class RetinalInputNetwork(ReflexInputNetwork):
             external = _checked_in_place(external, self.n_neurons, 'external_exc', low=0)
         with np.errstate(over='raise', invalid='raise'):
             external[self.pixel_ids] += self.pixel_current
+            if self.opposite_ids is not None:
+                external[self.opposite_ids] += self.opposite_current
             if self.eye_ids is not None:
                 external[self.eye_ids] += self.eye_current
         return super().step_owned(external, *args, check=False, **kwargs)
@@ -281,6 +286,18 @@ class EmbodiedController(ReflexController):
             return ids
 
         pixels = cells('photoreceptors', 2*self.eye_height*self.eye_width*3).reshape(self.eye_shape)
+        # The other half of the same picture, and the same idea as the one in
+        # the reflex senses: the cell beside each photoreceptor says "no light
+        # came in here".  A pixel hands its brightness to one cell and its
+        # darkness to the cell beside it, so the input layer is never empty - a
+        # black screen lights this half exactly as a white one lights the other.
+        # The dark half carries its own summary cells rather than adding itself
+        # to the bright one: that summary is the animal's colour reading (red
+        # drives the aversive cells, green the appetitive ones), and "not red"
+        # is not red.  So the dark half has a reading of its own and, for now,
+        # no innate valence: nothing downstream reads it yet.
+        unlit = cells('photoreceptors_opposite', pixels.size).reshape(self.eye_shape)
+        unlit_summary = cells('retina_opposite', 18)
         pixel_i = cells('retinal_interneurons', pixels.size, -1, time=.01).reshape(self.eye_shape)
         opponent = cells('retinal_opponent', pixels.size, base=-.08).reshape(self.eye_shape)
         contrast = cells('retinal_contrast', 2*EYE_ROWS*self.eye_columns*2,
@@ -408,6 +425,8 @@ class EmbodiedController(ReflexController):
             # Retinotopic convergence is synaptic summation, not image pooling.
             edge(target, self.groups['retina'].reshape(2,3,3)[eye,sector,channel],
                  self.retina_summary_gain)
+            edge(unlit[eye,row,col,channel], unlit_summary.reshape(2,3,3)[eye,sector,channel],
+                 self.retina_summary_gain)
 
         for eye, row, col, polarity in np.ndindex(contrast.shape):
             y = int(self.eye_contrast_rows[row])
@@ -530,7 +549,7 @@ class EmbodiedController(ReflexController):
         anchor.flags.writeable = False
         self.synapses.anchor = anchor
         self.network = RetinalInputNetwork(self.synapses, self.groups['feature_receptors'],
-            pixel_ids=pixels.ravel(), eye_ids=eye_ids,
+            pixel_ids=pixels.ravel(), opposite_ids=unlit.ravel(), eye_ids=eye_ids,
             tau=np.r_[net._tau,tau], adaptation_tau=np.r_[net._adaptation_tau,np.full(n,.4)],
             adaptation_gain=np.r_[net._gain,beta], bias=np.r_[net._bias,bias],
             initial_voltage=np.r_[net.voltage,initial], initial_adaptation=np.r_[net.adaptation,np.zeros(n)],
@@ -1031,10 +1050,13 @@ class EmbodiedController(ReflexController):
         # fresh float array built from the picture every step. The finally
         # below zeroes the same vector, so no reader sees a stale frame.
         pixels = self.network.pixel_current
+        unlit = self.network.opposite_current
         if live:
             np.divide(raw.ravel(), 255., out=pixels)
+            np.subtract(1., pixels, out=unlit)
         else:
             pixels.fill(0.)
+            unlit.fill(0.)
         if self.eye_encoder is not None:
             angle = np.asarray(observation['eye_position'], dtype=float).reshape(4)
             normalized = np.clip((angle - self.eye_lower)/self.eye_span, 0, 1)
@@ -1046,6 +1068,7 @@ class EmbodiedController(ReflexController):
                                 auditory_pinna_activity=auditory_pinna, **kwargs)
         finally:
             self.network.pixel_current.fill(0.)
+            self.network.opposite_current.fill(0.)
             if self.eye_encoder is not None:
                 self.network.eye_current.fill(0.)
 
@@ -1063,6 +1086,7 @@ class EmbodiedController(ReflexController):
             self.groups['binocular']].reshape(
                 EYE_ROWS, self.eye_binocular_columns, 2, STEREO_OFFSET_MAX+1).mean(axis=(0, 1, 2)).tolist()
         result['retinal_activity'] = rates[self.groups['retina']].reshape(2,3,3).tolist()
+        result['retinal_opposite_activity'] = rates[self.groups['retina_opposite']].reshape(2,3,3).tolist()
         result['auditory_activity'] = rates[self.groups['cochlea']].reshape(2,3).tolist()
         if self.eye_encoder is not None:
             result['eye_command'] = self.eye_command().tolist()

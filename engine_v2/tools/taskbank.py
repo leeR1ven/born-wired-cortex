@@ -91,8 +91,8 @@ BAR = {
     "walk_passage_m": .25,        # 10 s from inside the passage mouth
     "walk_curb_m": .30,           # 10 s from 0.80 m before the curb
     "walk_platform_m": .30,       # 10 s from 0.90 m before the platform
-    "walk_driven_m": .30,         # 8 s with the external drive at 0.65
-    "walk_driven_far_m": .60,     # 16 s with the external drive at 0.65
+    "walk_own_m": .30,            # 8 s of walking with nothing driving it
+    "walk_own_far_m": .60,        # 16 s of walking with nothing driving it
     "walk_into_wall_m": .10,      # 12 s aimed at the east wall; it must not pass it
     "quiet_idle_m": .70,          # 6 s of standing still: the animal creeps 0.54 m
     "slip_mps": .30,              # worst sliding speed of a planted foot
@@ -132,12 +132,12 @@ BAR = {
     "body_is_not_a_foot": .05,    # a body touch must read on the righting cells
     "own_eyes_are_felt": .0002,   # eye proprioception with the eyes turned
     # --- walking further, walking faster, holding a line ---
-    "walk_twenty_m": .90,         # 20 s with the external drive held on
-    "walk_ground_m": 1.00,        # 16 s with the external drive held on
-    "walk_speed_mps": .15,        # mean horizontal speed, 10 s driven
+    "walk_twenty_m": .90,         # 20 s of walking on its own
+    "walk_ground_m": 1.00,        # 16 s of walking on its own
+    "walk_speed_mps": .15,        # mean horizontal speed over ten seconds
     "heading_hold_rad": .60,      # how much heading it may wander through
     "straightness": .70,          # net displacement / path length
-    "crab_m": .25,                # sideways drift over a driven walk
+    "crab_m": .25,                # sideways drift over a ten-second walk
     "touch_hold_fraction": .70,   # a front touch must cut the distance to this
     # --- turning ---
     "turn_pair_rad": .30,         # right-hand sound yaw minus left-hand sound yaw
@@ -170,7 +170,7 @@ BAR = {
     # --- standing on its own, third batch ---
     "stand_long_m": 1.40,          # 20 s idle: the animal creeps 1.40 m
     "slope_stand_z": .85,          # standing still on the ramp top
-    "walk_thirty_m": 1.30,         # 30 s with the external drive held on
+    "walk_thirty_m": 1.30,         # 30 s of walking on its own
     # --- the quality of the gait ---
     "foot_lift_fraction": .02,     # every foot has to leave the ground sometimes
     "leg_symmetry": .20,           # how far apart the two legs of a pair may be
@@ -210,11 +210,11 @@ BAR = {
     "tip_over_gain": .05,          # tipped over, read off its own righting cells
     "feature_gain": .01,           # two pictures, cell by cell in the feature layers
     # --- running, and the dark ---
-    "walk_faster_ratio": 1.25,     # a bigger order has to buy real speed
+    "bright_pace_ratio": 1.25,     # a bright thing in front has to buy real speed
     "run_mean_speed": .25,         # ten seconds of running, in metres per second
     "run_twenty_m": 2.00,          # twenty seconds of running, in metres
     "run_turn_speed": .25,         # running while it turns, in metres per second
-    "dark_room_reading": .05,      # the layer under the rods in a black room
+    "opposite_reading": .05,      # the layer under the rods in a black room
 }
 
 # What the birth animal measured, so a bar can be read next to the number it was
@@ -224,8 +224,8 @@ BIRTH = {
     "stands_still": "seed 0 PASS (stayed put at 0.543 m); seed 1 PASS (stayed put at 0.521 m); seed 2 PASS (stayed put at 0.441 m)",
     "walk_flat": "seed 0 PASS (walked 0.556 m, stayed up); seed 1 PASS (walked 0.519 m, stayed up); seed 2 PASS (walked 0.455 m, stayed up)",
     "walk_furnished": "seed 0 PASS (walked 0.590 m, stayed up); seed 1 PASS (walked 0.609 m, stayed up); seed 2 PASS (walked 0.644 m, stayed up)",
-    "walk_when_driven": "seed 0 PASS (walked 0.557 m, stayed up); seed 1 PASS (walked 0.519 m, stayed up); seed 2 PASS (walked 0.463 m, stayed up)",
-    "keeps_walking_when_driven": "seed 0 PASS (walked 0.663 m, stayed up); seed 1 PASS (walked 0.620 m, stayed up); seed 2 PASS (walked 0.659 m, stayed up)",
+    "walks_without_being_told": "seed 0 PASS (walked 0.557 m, stayed up); seed 1 PASS (walked 0.518 m, stayed up); seed 2 PASS (walked 0.453 m, stayed up)",
+    "keeps_walking_without_being_told": "seed 0 PASS (walked 0.658 m, stayed up); seed 1 PASS (walked 0.622 m, stayed up); seed 2 PASS (walked 0.655 m, stayed up)",
     "feet_do_not_slide": "seed 0 PASS (worst sliding foot 0.039 m/s); seed 1 PASS (worst sliding foot 0.061 m/s); seed 2 PASS (worst sliding foot 0.043 m/s)",
     "walk_low_step": "seed 0 PASS (walked 0.381 m, stayed up); seed 1 PASS (walked 0.549 m, stayed up); seed 2 PASS (walked 0.588 m, stayed up)",
     "walk_ramp": "seed 0 PASS (walked 0.447 m, stayed up); seed 1 PASS (walked 0.430 m, stayed up); seed 2 PASS (walked 0.367 m, stayed up)",
@@ -268,21 +268,21 @@ BIRTH = {
     "an_idle_animal_does_not_walk_for_a_ball": "seed 0 PASS (stayed put at 0.557 m); seed 1 PASS (stayed put at 0.518 m); seed 2 PASS (stayed put at 0.453 m)",
     "moving_is_not_being_pushed": "seed 0 PASS (a shove read 1.0000 above its own walking); seed 1 PASS (a shove read 1.0000 above its own walking); seed 2 PASS (a shove read 1.0000 above its own walking)",
     "the_body_is_not_a_foot": "seed 0 PASS (身上和脚上 moved 0.98127 and 0.19493); seed 1 PASS (身上和脚上 moved 0.98127 and 0.19493); seed 2 PASS (身上和脚上 moved 0.98127 and 0.19493)",
-    "walks_in_a_straight_line": "seed 0 fail (直度 = 0.6244, bar 0.7000); seed 1 fail (直度 = 0.6358, bar 0.7000); seed 2 fail (直度 = 0.4637, bar 0.7000)",
-    "does_not_crab_sideways": "seed 0 PASS (往旁边蹭的距离 = 0.0466); seed 1 PASS (往旁边蹭的距离 = 0.0333); seed 2 PASS (往旁边蹭的距离 = 0.1409)",
-    "holds_its_heading_while_driven": "seed 0 fail (一路累计转头 = 1.1723, bar 0.6000); seed 1 fail (一路累计转头 = 1.0413, bar 0.6000); seed 2 fail (一路累计转头 = 1.8060, bar 0.6000)",
-    "walks_for_twenty_seconds": "seed 0 fail (walked 0.660 m, bar 0.900 m); seed 1 fail (walked 0.617 m, bar 0.900 m); seed 2 fail (walked 0.775 m, bar 0.900 m)",
-    "walks_at_a_steady_pace": "seed 0 fail (平均速度 averaged 0.087 m/s, bar 0.150); seed 1 fail (平均速度 averaged 0.080 m/s, bar 0.150); seed 2 fail (平均速度 averaged 0.099 m/s, bar 0.150)",
-    "covers_ground_in_sixteen_seconds": "seed 0 fail (walked 0.663 m, bar 1.000 m); seed 1 fail (walked 0.620 m, bar 1.000 m); seed 2 fail (walked 0.659 m, bar 1.000 m)",
-    "turns_towards_a_sound_while_walking": "seed 0 PASS (边走边听: the two sides came apart by -0.828 rad); seed 1 PASS (边走边听: the two sides came apart by -0.737 rad); seed 2 PASS (边走边听: the two sides came apart by -0.584 rad)",
+    "walks_in_a_straight_line": "seed 0 fail (直度 = 0.6221, bar 0.7000); seed 1 fail (直度 = 0.6381, bar 0.7000); seed 2 fail (直度 = 0.4508, bar 0.7000)",
+    "does_not_crab_sideways": "seed 0 PASS (往旁边蹭的距离 = 0.0459); seed 1 PASS (往旁边蹭的距离 = 0.0342); seed 2 PASS (往旁边蹭的距离 = 0.1467)",
+    "holds_its_heading_while_it_walks": "seed 0 fail (一路累计转头 = 1.1749, bar 0.6000); seed 1 fail (一路累计转头 = 1.0354, bar 0.6000); seed 2 fail (一路累计转头 = 1.7423, bar 0.6000)",
+    "walks_for_twenty_seconds": "seed 0 fail (walked 0.654 m, bar 0.900 m); seed 1 fail (walked 0.620 m, bar 0.900 m); seed 2 fail (walked 0.786 m, bar 0.900 m)",
+    "walks_at_a_steady_pace": "seed 0 fail (平均速度 averaged 0.087 m/s, bar 0.150); seed 1 fail (平均速度 averaged 0.079 m/s, bar 0.150); seed 2 fail (平均速度 averaged 0.100 m/s, bar 0.150)",
+    "covers_ground_in_sixteen_seconds": "seed 0 fail (walked 0.658 m, bar 1.000 m); seed 1 fail (walked 0.622 m, bar 1.000 m); seed 2 fail (walked 0.655 m, bar 1.000 m)",
+    "turns_towards_a_sound_while_walking": "seed 0 PASS (边走边听: the two sides came apart by -0.831 rad); seed 1 PASS (边走边听: the two sides came apart by -0.747 rad); seed 2 PASS (边走边听: the two sides came apart by -0.576 rad)",
     "turns_towards_a_sound_while_standing": "seed 0 PASS (the two sides came apart by -0.831 rad); seed 1 PASS (the two sides came apart by -0.747 rad); seed 2 PASS (the two sides came apart by -0.576 rad)",
     "does_not_spin_on_the_spot": "seed 0 fail (没人管它时 turned through 1.154 rad (bar 0.600)); seed 1 fail (没人管它时 turned through 1.031 rad (bar 0.600)); seed 2 fail (没人管它时 turned through 1.726 rad (bar 0.600))",
-    "walks_down_the_ramp": "seed 0 PASS (came off 坡: walked 0.612 m, 0.557 m past the edge); seed 1 PASS (came off 坡: walked 0.624 m, 0.561 m past the edge); seed 2 PASS (came off 坡: walked 0.658 m, 0.628 m past the edge)",
-    "steps_down_the_low_step": "seed 0 PASS (came off 台阶: walked 0.365 m, 0.353 m past the edge); seed 1 PASS (came off 台阶: walked 0.543 m, 0.519 m past the edge); seed 2 PASS (came off 台阶: walked 0.502 m, 0.477 m past the edge)",
-    "steps_down_from_the_platform": "seed 0 fail (walked 0.516 m but never came off 台子 (reached 0.458 m)); seed 1 fail (walked 0.455 m but never came off 台子 (reached 0.414 m)); seed 2 fail (walked 0.533 m but never came off 台子 (reached 0.505 m))",
-    "goes_around_the_block": "seed 0 fail (not upright the whole way (min up_z 0.273, min height 0.177)); seed 1 fail (walked 0.160 m, bar 0.600 m); seed 2 fail (walked 0.210 m, bar 0.600 m)",
-    "a_touch_on_the_front_holds_it_back": "seed 0 fail (it fell over in one of the two runs (free min up_z 0.993, held min up_z -0.996)); seed 1 fail (it fell over in one of the two runs (free min up_z 0.990, held min up_z -0.998)); seed 2 fail (it fell over in one of the two runs (free min up_z 0.993, held min up_z -0.998))",
-    "a_bang_stops_it_walking": "seed 0 fail (那一声砰 barely slowed it: 0.426 m against 0.558 m free (limit 0.391)); seed 1 fail (那一声砰 barely slowed it: 0.405 m against 0.511 m free (limit 0.358)); seed 2 fail (那一声砰 barely slowed it: 0.384 m against 0.454 m free (limit 0.318))",
+    "walks_down_the_ramp": "seed 0 PASS (came off 坡: walked 0.630 m, 0.564 m past the edge); seed 1 PASS (came off 坡: walked 0.637 m, 0.571 m past the edge); seed 2 PASS (came off 坡: walked 0.585 m, 0.549 m past the edge)",
+    "steps_down_the_low_step": "seed 0 PASS (came off 台阶: walked 0.297 m, 0.304 m past the edge); seed 1 PASS (came off 台阶: walked 0.418 m, 0.417 m past the edge); seed 2 PASS (came off 台阶: walked 0.550 m, 0.536 m past the edge)",
+    "steps_down_from_the_platform": "seed 0 fail (walked 0.501 m but never came off 台子 (reached 0.448 m)); seed 1 fail (walked 0.508 m but never came off 台子 (reached 0.458 m)); seed 2 fail (walked 0.576 m but never came off 台子 (reached 0.538 m))",
+    "goes_around_the_block": "seed 0 fail (walked 0.382 m, bar 0.600 m); seed 1 fail (walked 0.617 m but never got past the block (reached 0.372 m)); seed 2 fail (walked 0.129 m, bar 0.600 m)",
+    "a_touch_on_the_front_holds_it_back": "seed 0 fail (it fell over in one of the two runs (free min up_z 0.994, held min up_z -0.979)); seed 1 fail (it fell over in one of the two runs (free min up_z 0.990, held min up_z -0.969)); seed 2 fail (it fell over in one of the two runs (free min up_z 0.992, held min up_z -0.999))",
+    "a_bang_stops_it_walking": "seed 0 fail (那一声砰 barely slowed it: 0.425 m against 0.556 m free (limit 0.389)); seed 1 fail (那一声砰 barely slowed it: 0.405 m against 0.511 m free (limit 0.358)); seed 2 fail (那一声砰 barely slowed it: 0.396 m against 0.462 m free (limit 0.323))",
     "gets_up_after_a_hard_shove": "seed 0 PASS (on its feet from 3.97 s and still there at the end (final up_z 0.696)); seed 1 fail (got up at 3.39 s and then went back down (final up_z 0.309)); seed 2 PASS (on its feet from 4.01 s and still there at the end (final up_z 0.821))",
     "eyes_converge_on_a_near_thing": "seed 0 fail (gain = 0.00564, bar 0.02000); seed 1 fail (gain = 0.00564, bar 0.02000); seed 2 fail (gain = 0.00564, bar 0.02000)",
     "eyes_look_at_a_still_thing_at_the_side": "seed 0 PASS (停在旁边的东西: the eyes went 0.1083 and -0.1156 rad); seed 1 PASS (停在旁边的东西: the eyes went 0.1083 and -0.1156 rad); seed 2 PASS (停在旁边的东西: the eyes went 0.1083 and -0.1156 rad)",
@@ -304,13 +304,13 @@ BIRTH = {
     "stays_up_when_nudged_gently": "seed 0 PASS (on its feet from 3.59 s and still there at the end (final up_z 0.897)); seed 1 PASS (on its feet from 0.50 s and still there at the end (final up_z 1.000)); seed 2 PASS (on its feet from 0.50 s and still there at the end (final up_z 1.000))",
     "all_four_feet_leave_the_ground": "seed 0 PASS (all four feet lifted (front 0.279/0.153 rear 0.176/0.296)); seed 1 PASS (all four feet lifted (front 0.237/0.149 rear 0.165/0.505)); seed 2 PASS (all four feet lifted (front 0.198/0.069 rear 0.183/0.265))",
     "the_two_sides_step_alike": "seed 0 PASS (both pairs stepped alike (front 0.279/0.153, rear 0.176/0.296)); seed 1 fail (one leg of a pair did the lifting (front 0.237/0.149, rear 0.165/0.505, bar 0.200)); seed 2 PASS (both pairs stepped alike (front 0.198/0.069, rear 0.183/0.265))",
-    "keeps_walking_for_thirty_seconds": "seed 0 fail (walked 0.656 m, bar 1.300 m); seed 1 fail (walked 0.616 m, bar 1.300 m); seed 2 fail (walked 0.874 m, bar 1.300 m)",
-    "does_not_slow_down_on_a_long_walk": "seed 0 fail (slowed to 0.172 of its starting pace (0.094 m/s then, 0.016 m/s later, bar 0.500)); seed 1 fail (slowed to 0.075 of its starting pace (0.091 m/s then, 0.007 m/s later, bar 0.500)); seed 2 fail (slowed to 0.423 of its starting pace (0.079 m/s then, 0.033 m/s later, bar 0.500))",
-    "keeps_walking_while_it_turns": "seed 0 PASS (一边走一边响: turned it -1.227 rad and it kept walking (0.646 m and 0.772 m)); seed 1 PASS (一边走一边响: turned it -1.032 rad and it kept walking (0.621 m and 0.771 m)); seed 2 PASS (一边走一边响: turned it -0.638 rad and it kept walking (0.599 m and 0.894 m))",
+    "keeps_walking_for_thirty_seconds": "seed 0 fail (walked 0.651 m, bar 1.300 m); seed 1 fail (walked 0.618 m, bar 1.300 m); seed 2 fail (walked 0.923 m, bar 1.300 m)",
+    "does_not_slow_down_on_a_long_walk": "seed 0 fail (slowed to 0.195 of its starting pace (0.094 m/s then, 0.018 m/s later, bar 0.500)); seed 1 fail (slowed to 0.075 of its starting pace (0.091 m/s then, 0.007 m/s later, bar 0.500)); seed 2 fail (slowed to 0.436 of its starting pace (0.078 m/s then, 0.034 m/s later, bar 0.500))",
+    "keeps_walking_while_it_turns": "seed 0 PASS (一边走一边响: turned it -1.213 rad and it kept walking (0.648 m and 0.773 m)); seed 1 PASS (一边走一边响: turned it -1.093 rad and it kept walking (0.621 m and 0.769 m)); seed 2 PASS (一边走一边响: turned it -0.595 rad and it kept walking (0.600 m and 0.907 m))",
     "backs_away_from_a_hand_on_its_chest": "seed 0 fail (胸口上那只手 did not back it off (0.001 m, bar 0.100)); seed 1 fail (胸口上那只手 did not back it off (0.001 m, bar 0.100)); seed 2 fail (胸口上那只手 did not back it off (0.001 m, bar 0.100))",
-    "keeps_its_line_with_a_sound_behind": "seed 0 PASS (kept its line with a sound behind it (0.230 rad of drift)); seed 1 fail (the sound behind swung its heading 0.536 rad (bar 0.350)); seed 2 fail (the sound behind swung its heading 0.529 rad (bar 0.350))",
-    "does_not_fall_walking_into_the_wall": "seed 0 PASS (stayed on its feet against the wall (reached x 2.901, min up_z 0.996)); seed 1 PASS (stayed on its feet against the wall (reached x 2.856, min up_z 0.994)); seed 2 PASS (stayed on its feet against the wall (reached x 2.836, min up_z 0.994))",
-    "threads_the_passage_without_touching": "seed 0 fail (walked 0.356 m but never came out of the passage (0.392 m past the start)); seed 1 fail (walked 0.228 m, bar 0.250 m); seed 2 fail (not upright the whole way (min up_z -0.240, min height 0.231))",
+    "keeps_its_line_with_a_sound_behind": "seed 0 PASS (kept its line with a sound behind it (0.219 rad of drift)); seed 1 fail (the sound behind swung its heading 0.534 rad (bar 0.350)); seed 2 fail (the sound behind swung its heading 0.531 rad (bar 0.350))",
+    "does_not_fall_walking_into_the_wall": "seed 0 PASS (stayed on its feet against the wall (reached x 2.905, min up_z 0.995)); seed 1 PASS (stayed on its feet against the wall (reached x 2.904, min up_z 0.996)); seed 2 PASS (stayed on its feet against the wall (reached x 2.831, min up_z 0.996))",
+    "threads_the_passage_without_touching": "seed 0 fail (walked 0.268 m but never came out of the passage (0.403 m past the start)); seed 1 fail (walked 0.281 m but never came out of the passage (0.429 m past the start)); seed 2 fail (not upright the whole way (min up_z -0.269, min height 0.120))",
     "sees_a_red_square_from_a_green_one": "seed 0 PASS (红方块和绿方块 came apart by 0.11737); seed 1 PASS (红方块和绿方块 came apart by 0.11737); seed 2 PASS (红方块和绿方块 came apart by 0.11737)",
     "sees_a_big_ball_from_a_small_one": "seed 0 PASS (大球和小球 came apart by 0.14810); seed 1 PASS (大球和小球 came apart by 0.14810); seed 2 PASS (大球和小球 came apart by 0.14810)",
     "eyes_follow_the_ball_up_and_down": "seed 0 PASS (the eye pitch stayed 0.116 rad from the ball); seed 1 PASS (the eye pitch stayed 0.116 rad from the ball); seed 2 PASS (the eye pitch stayed 0.116 rad from the ball)",
@@ -319,7 +319,7 @@ BIRTH = {
     "the_eyes_let_go_when_it_is_gone": "seed 0 PASS (it looked (0.1081 rad) and then let go (0.0054 rad)); seed 1 PASS (it looked (0.1081 rad) and then let go (0.0054 rad)); seed 2 PASS (it looked (0.1081 rad) and then let go (0.0054 rad))",
     "notices_a_thing_that_creeps_in": "seed 0 PASS (the eyes swung 0.0430 rad towards the thing that appeared); seed 1 PASS (the eyes swung 0.0430 rad towards the thing that appeared); seed 2 PASS (the eyes swung 0.0430 rad towards the thing that appeared)",
     "a_sound_that_stops_is_no_longer_heard": "seed 0 PASS (那一声 fell from 0.0833 to 0.0000 when it stopped); seed 1 PASS (那一声 fell from 0.0833 to 0.0000 when it stopped); seed 2 PASS (那一声 fell from 0.0833 to 0.0000 when it stopped)",
-    "a_quiet_room_is_not_a_sound": "seed 0 PASS (安静的屋子 stayed at ['0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000']); seed 1 PASS (安静的屋子 stayed at ['0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000']); seed 2 PASS (安静的屋子 stayed at ['0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'])",
+    "a_quiet_room_is_not_a_sound": "seed 0 PASS (安静的屋子: every channel that received nothing had its opposite cell lit); seed 1 PASS (安静的屋子: every channel that received nothing had its opposite cell lit); seed 2 PASS (安静的屋子: every channel that received nothing had its opposite cell lit)",
     "ears_tell_left_from_right": "seed 0 PASS (左肩和右肩的声音 came apart by 0.05895); seed 1 PASS (左肩和右肩的声音 came apart by 0.05895); seed 2 PASS (左肩和右肩的声音 came apart by 0.05895)",
     "two_sounds_at_one_shoulder_are_still_two": "seed 0 PASS (同一边两个声音 came apart by 0.12421); seed 1 PASS (同一边两个声音 came apart by 0.12421); seed 2 PASS (同一边两个声音 came apart by 0.12421)",
     "a_bang_behind_it_still_startles": "seed 0 PASS (背后那一声 came apart by 0.22222); seed 1 PASS (背后那一声 came apart by 0.22222); seed 2 PASS (背后那一声 came apart by 0.22222)",
@@ -333,15 +333,17 @@ BIRTH = {
     "the_lesson_is_still_there_after_a_minute": "seed 0 PASS (tone alone now drives retreat 0.944 over silence); seed 1 PASS (tone alone now drives retreat 0.944 over silence); seed 2 PASS (tone alone now drives retreat 0.944 over silence)",
     "remembers_two_patterns_at_once": "seed 0 PASS (paired 0.0761, unpaired -0.0002); seed 1 PASS (paired 0.0761, unpaired -0.0002); seed 2 PASS (paired 0.0761, unpaired -0.0002)",
     "the_memory_survives_a_small_change": "seed 0 PASS (the moved copy still meant 0.0934 of the original 0.0761); seed 1 PASS (the moved copy still meant 0.0934 of the original 0.0761); seed 2 PASS (the moved copy still meant 0.0934 of the original 0.0761)",
-    "walks_towards_a_bright_thing": "seed 0 PASS (a bright thing in front pulled it 0.072 m further); seed 1 PASS (a bright thing in front pulled it 0.070 m further); seed 2 PASS (a bright thing in front pulled it 0.182 m further)",
+    "walks_towards_a_bright_thing": "seed 0 PASS (a bright thing in front pulled it 0.077 m further); seed 1 PASS (a bright thing in front pulled it 0.073 m further); seed 2 PASS (a bright thing in front pulled it 0.184 m further)",
     "knows_when_it_is_tipped_over": "seed 0 fail (gain_mean = 0.00000, bar 0.05000); seed 1 fail (gain_mean = 0.00000, bar 0.05000); seed 2 fail (gain_mean = 0.00000, bar 0.05000)",
     "the_hidden_layer_sees_the_picture": "seed 0 fail (横条纹和竖条纹 did not come apart: 0.00000, bar 0.01000); seed 1 fail (横条纹和竖条纹 did not come apart: 0.00000, bar 0.01000); seed 2 fail (横条纹和竖条纹 did not come apart: 0.00000, bar 0.01000)",
     "the_compressed_layer_sees_the_picture": "seed 0 fail (横条纹和竖条纹 did not come apart: 0.00000, bar 0.01000); seed 1 fail (横条纹和竖条纹 did not come apart: 0.00000, bar 0.01000); seed 2 fail (横条纹和竖条纹 did not come apart: 0.00000, bar 0.01000)",
-    "walks_faster_when_the_world_asks_for_it": "seed 0 fail (走路指令给大一点时 changed the speed by 1.00 times (0.087 then 0.087 m/s, bar 1.25)); seed 1 fail (走路指令给大一点时 changed the speed by 1.00 times (0.080 then 0.080 m/s, bar 1.25)); seed 2 fail (走路指令给大一点时 changed the speed by 1.01 times (0.100 then 0.101 m/s, bar 1.25))",
-    "runs_when_the_world_asks_for_it": "seed 0 fail (满指令那十秒 averaged 0.087 m/s, bar 0.250); seed 1 fail (满指令那十秒 averaged 0.080 m/s, bar 0.250); seed 2 fail (满指令那十秒 averaged 0.101 m/s, bar 0.250)",
-    "runs_for_twenty_seconds": "seed 0 fail (walked 0.662 m, bar 2.000 m); seed 1 fail (walked 0.618 m, bar 2.000 m); seed 2 fail (walked 0.669 m, bar 2.000 m)",
-    "keeps_running_while_it_turns": "seed 0 fail (一边跑一边响: it turned but crawled (0.075 m/s, bar 0.250)); seed 1 fail (一边跑一边响: it turned but crawled (0.073 m/s, bar 0.250)); seed 2 fail (一边跑一边响: it turned but crawled (0.077 m/s, bar 0.250))",
-    "the_dark_room_is_not_silence": "seed 0 fail (全黑画面 left the layer under the rods at 0.00000, bar 0.05000); seed 1 fail (全黑画面 left the layer under the rods at 0.00000, bar 0.05000); seed 2 fail (全黑画面 left the layer under the rods at 0.00000, bar 0.05000)",
+    "hurries_towards_a_bright_thing": "seed 0 fail (前面有亮东西时: with an empty room it does not even hold a steady pace (0.086 m/s, bar 0.150)); seed 1 fail (前面有亮东西时: with an empty room it does not even hold a steady pace (0.084 m/s, bar 0.150)); seed 2 fail (前面有亮东西时: with an empty room it does not even hold a steady pace (0.096 m/s, bar 0.150))",
+    "runs_without_being_told": "seed 0 fail (没人管它的那十秒 averaged 0.087 m/s, bar 0.250); seed 1 fail (没人管它的那十秒 averaged 0.079 m/s, bar 0.250); seed 2 fail (没人管它的那十秒 averaged 0.100 m/s, bar 0.250)",
+    "runs_for_twenty_seconds": "seed 0 fail (walked 0.654 m, bar 2.000 m); seed 1 fail (walked 0.620 m, bar 2.000 m); seed 2 fail (walked 0.786 m, bar 2.000 m)",
+    "keeps_running_while_it_turns": "seed 0 fail (一边跑一边响: it turned but crawled (0.072 m/s, bar 0.250)); seed 1 fail (一边跑一边响: it turned but crawled (0.073 m/s, bar 0.250)); seed 2 fail (一边跑一边响: it turned but crawled (0.077 m/s, bar 0.250))",
+    "nothing_touching_it_is_not_nothing": "seed 0 PASS (没被碰的站姿: every channel that received nothing had its opposite cell lit); seed 1 PASS (没被碰的站姿: every channel that received nothing had its opposite cell lit); seed 2 PASS (没被碰的站姿: every channel that received nothing had its opposite cell lit)",
+    "the_weight_pair_still_carries_the_weight": "seed 0 PASS (四只脚的受力那一对: foot_load and its opposite add up to one channel (worst 0.000 off)); seed 1 PASS (四只脚的受力那一对: foot_load and its opposite add up to one channel (worst 0.000 off)); seed 2 PASS (四只脚的受力那一对: foot_load and its opposite add up to one channel (worst 0.000 off))",
+    "the_dark_room_is_not_silence": "seed 0 PASS (全黑画面: black lit the dark half 0.96985 (summary 0.97143) and left the bright half at 0.00000); seed 1 PASS (全黑画面: black lit the dark half 0.96985 (summary 0.97143) and left the bright half at 0.00000); seed 2 PASS (全黑画面: black lit the dark half 0.96985 (summary 0.97143) and left the bright half at 0.00000)",
 }
 TASKS = []
 
@@ -1530,7 +1532,7 @@ def turn_pair_bar(measures, bar_key, what):
     return True, "%s: the two sides came apart by %.3f rad" % (what, value)
 
 
-def at_least_bar(measures, key, bar_key, what, walk="walk_driven_m"):
+def at_least_bar(measures, key, bar_key, what, walk="walk_own_m"):
     passed, why = walk_bar(measures, walk)
     if not passed:
         return False, why
@@ -1540,7 +1542,7 @@ def at_least_bar(measures, key, bar_key, what, walk="walk_driven_m"):
     return True, "%s = %.4f" % (what, value)
 
 
-def at_most_bar(measures, key, bar_key, what, walk="walk_driven_m"):
+def at_most_bar(measures, key, bar_key, what, walk="walk_own_m"):
     passed, why = walk_bar(measures, walk)
     if not passed:
         return False, why
@@ -1551,7 +1553,7 @@ def at_most_bar(measures, key, bar_key, what, walk="walk_driven_m"):
 
 
 def pace_bar(measures, what):
-    passed, why = walk_bar(measures, "walk_driven_m")
+    passed, why = walk_bar(measures, "walk_own_m")
     if not passed:
         return False, why
     if measures["mean_speed_mps"] < BAR["walk_speed_mps"]:
@@ -1608,7 +1610,7 @@ def held_back_bar(measures, bar_key, what):
     if not free["behavior_pass"] or not held["behavior_pass"]:
         return False, ("it fell over in one of the two runs (free min up_z %.3f, "
                        "held min up_z %.3f)" % (free["min_up_z"], held["min_up_z"]))
-    if free["displacement_m"] < BAR["walk_driven_m"]:
+    if free["displacement_m"] < BAR["walk_own_m"]:
         return False, ("it did not walk even with nothing in the way (%.3f m)"
                        % free["displacement_m"])
     limit = BAR[bar_key] * free["displacement_m"]
@@ -1620,8 +1622,8 @@ def held_back_bar(measures, bar_key, what):
 
 
 def held_back_measure(ctx, seconds, injected=None, startle=None):
-    free = walk_measure(ctx, seconds, "driven", "origin", props=SILENT)
-    held = walk_measure(ctx, seconds, "driven", "origin", props=SILENT,
+    free = walk_measure(ctx, seconds, "autonomous", "origin", props=SILENT)
+    held = walk_measure(ctx, seconds, "autonomous", "origin", props=SILENT,
                         injected=injected, startle=startle)
     return dict(status="ok", error=None, free=free, held=held)
 
@@ -1756,17 +1758,18 @@ task("walk_furnished", "走路", "带着满场道具走一段，不会摔倒", "
      "只说明它在这一次抽到的场地里走了这么远，不说明它认路或认得任何东西。",
      requires=("walk_flat",))
 
-task("walk_when_driven", "走路", "外面给一个前进指令，它会不会走", "full", 8.,
-     lambda ctx: walk_measure(ctx, 8., "driven", "origin"),
-     lambda m: walk_bar(m, "walk_driven_m"),
-     "指令来自控制器外部输入，和本能节律无关；通了只说明这条外部通路还在。",
+task("walks_without_being_told", "走路", "没人给它任何指令，它自己会不会往前走", "full", 8.,
+     lambda ctx: walk_measure(ctx, 8., "autonomous", "origin"),
+     lambda m: walk_bar(m, "walk_own_m"),
+     "没有外部指令可用，这一题只问它自己走不走得动。出厂动物不会用前进指令，"
+     "这半米是它自己蹭出来的，所以它出生时就已经过了这一题。",
      requires=("stands_still",))
 
-task("keeps_walking_when_driven", "走路", "一直给着前进指令，它是一直走还是走两步就停", "full", 16.,
-     lambda ctx: walk_measure(ctx, 16., "driven", "origin"),
-     lambda m: walk_bar(m, "walk_driven_far_m"),
+task("keeps_walking_without_being_told", "走路", "没人管它，它是一直走还是走两步就停", "full", 16.,
+     lambda ctx: walk_measure(ctx, 16., "autonomous", "origin"),
+     lambda m: walk_bar(m, "walk_own_far_m"),
      "走远了不等于走得稳：这一题只看距离，不看姿势好不好看。",
-     requires=("walk_when_driven",))
+     requires=("walks_without_being_told",))
 
 task("feet_do_not_slide", "走路", "走路时踩在地上的脚会不会打滑", "full", 10.,
      lambda ctx: walk_measure(ctx, 10., "autonomous", "origin"), slip_bar,
@@ -2025,55 +2028,55 @@ task("the_body_is_not_a_foot", "自我", "身上被碰和脚上被绊，是同�
 # bank without anyone having to read the lambdas.
 
 # ---- 第二批：把站着、走着、转着、上下地形、听着、摸着再问细一点
-task("walks_in_a_straight_line", "走路", "一直给前进指令，它走的是一条线还是一路画龙", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "origin"),
+task("walks_in_a_straight_line", "走路", "它自己走的时候，走的是一条线还是一路画龙", "full", 10.,
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "origin"),
      lambda m: at_least_bar(m, "straightness", "straightness", "直度"),
      "直度是净位移除以走过的路程。它一路画龙但没摔倒也会低于 1。这一题不说明它会朝一个目标走。",
-     requires=("walk_when_driven",))
+     requires=("walks_without_being_told",))
 
-task("does_not_crab_sideways", "走路", "一直给前进指令，它是往前走还是往旁边蹭", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "origin"),
+task("does_not_crab_sideways", "走路", "它自己走的时候，是往前走还是往旁边蹭", "full", 10.,
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "origin"),
      lambda m: at_most_bar(m, "lateral_m", "crab_m", "往旁边蹭的距离"),
      "量的是终点相对起点、垂直于出发朝向的那一段。它不说明走得直，只说明没横着漂。",
-     requires=("walk_when_driven",))
+     requires=("walks_without_being_told",))
 
-task("holds_its_heading_while_driven", "走路", "一直给前进指令，它的朝向会不会越走越歪", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "origin"),
+task("holds_its_heading_while_it_walks", "走路", "它自己走的时候，朝向会不会越走越歪", "full", 10.,
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "origin"),
      lambda m: at_most_bar(m, "yaw_path_rad", "heading_hold_rad", "一路累计转头"),
      "读的是一路上朝向一共转过多少（不管左右，算绝对值累计）。"
      "它不说明它能不能拐弯，只说明它不会自己慢慢打转。",
-     requires=("walk_when_driven",))
+     requires=("walks_without_being_told",))
 
-task("walks_for_twenty_seconds", "走路", "前进指令一直给二十秒，它是一直走还是走两步就停", "full", 20.,
-     lambda ctx: walk_measure(ctx, 20., "driven", "origin"),
+task("walks_for_twenty_seconds", "走路", "没人管它二十秒，它是一直走还是走两步就停", "full", 20.,
+     lambda ctx: walk_measure(ctx, 20., "autonomous", "origin"),
      lambda m: walk_bar(m, "walk_twenty_m"),
      "和 16 秒那一题同一条线，只是时间更长；它不说明它能走多远，只说明它不会自己停下来。",
-     requires=("keeps_walking_when_driven",))
+     requires=("keeps_walking_without_being_told",))
 
-task("walks_at_a_steady_pace", "走快", "同样是前进指令，它走的平均速度够不够快", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "origin"),
+task("walks_at_a_steady_pace", "走快", "它自己走的时候，平均速度够不够快", "full", 10.,
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "origin"),
      lambda m: pace_bar(m, "平均速度"),
      "出厂动物主要是在原地踏步，平均速度只有 0.09 米/秒。速度来自先天步态，"
      "所以这一题是给「步态调得更快」的候选留的。",
-     requires=("walk_when_driven",))
+     requires=("walks_without_being_told",))
 
 task("covers_ground_in_sixteen_seconds", "走快", "十六秒里到底走出去了多少米", "full", 16.,
-     lambda ctx: walk_measure(ctx, 16., "driven", "origin"),
+     lambda ctx: walk_measure(ctx, 16., "autonomous", "origin"),
      lambda m: walk_bar(m, "walk_ground_m"),
      "它只算净位移，绕圈子走也会算低。它不说明它知道要去哪。",
-     requires=("keeps_walking_when_driven",))
+     requires=("keeps_walking_without_being_told",))
 
 task("turns_towards_a_sound_while_walking", "转弯", "一边走一边左边响或右边响，身体会朝那边转吗", "full", 16.,
-     lambda ctx: turn_pair_measure(ctx, 8., "driven"),
+     lambda ctx: turn_pair_measure(ctx, 8., "autonomous"),
      lambda m: turn_pair_bar(m, "turn_pair_rad", "边走边听"),
      "两边各走一次八秒，比的是收尾时朝向差多少。它只说明声音能左右引导身体，"
      "不说明它能奔着声音走过去。",
-     requires=("walk_when_driven", "turn_to_sound"))
+     requires=("walks_without_being_told", "turn_to_sound"))
 
 task("turns_towards_a_sound_while_standing", "转弯", "站着不动时一边响一下，身体会不会朝那边偏", "full", 16.,
      lambda ctx: stand_turn_measure(ctx, 8.),
      lambda m: stand_turn_bar(m, "站着听"),
-     "和上一题同样的两个声源，只是没有前进指令。它测的是「不用走路也会转」，"
+     "和上一题同样的两个声源，只是它站着不动。它测的是「不用走路也会转」，"
      "不说明它站得稳不稳。",
      requires=("stands_still", "turn_to_sound"))
 
@@ -2084,25 +2087,25 @@ task("does_not_spin_on_the_spot", "转弯", "没人叫它动，它会不会自�
      requires=("stands_still",))
 
 task("walks_down_the_ramp", "地形", "站在坡顶上往前走，它能不能顺坡下来", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "ramp_top", start_yaw=math.pi),
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "ramp_top", start_yaw=math.pi),
      lambda m: down_bar(m, "down_ramp_m", "坡"),
      "它只要走出坡的边缘就算过。它不测下坡时稳不稳，只测有没有卡在坡顶。",
      requires=("walk_ramp",))
 
 task("steps_down_the_low_step", "地形", "站在矮台阶上往前走，它能不能走下来", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "step_top", start_yaw=math.pi),
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "step_top", start_yaw=math.pi),
      lambda m: down_bar(m, "down_step_m", "台阶"),
      "台阶只有一厘米多高，所以这一题其实是「从高一点点的地方迈下来」。",
      requires=("walk_low_step",))
 
 task("steps_down_from_the_platform", "地形", "站在矮台上往前走，它能不能走到地面上", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "platform_top", start_yaw=math.pi),
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "platform_top", start_yaw=math.pi),
      lambda m: down_bar(m, "down_platform_m", "台子"),
      "台子比台阶高，所以这一题比上面那题难一点；它不测落地缓冲，只测有没有下来。",
      requires=("climbs_onto_the_platform",))
 
 task("goes_around_the_block", "地形", "正前方横着一块挡板，它会不会绕开", "full", 12.,
-     lambda ctx: walk_measure(ctx, 12., "driven", "blocked"),
+     lambda ctx: walk_measure(ctx, 12., "autonomous", "blocked"),
      around_bar,
      "过线的条件是既越过了挡板、又确实往旁边挪过一段。它不说明它看见了挡板，"
      "也不说明它知道往哪边绕更好。",
@@ -2112,13 +2115,13 @@ task("a_touch_on_the_front_holds_it_back", "摸与本体", "身上一直被碰�
      lambda ctx: held_back_measure(ctx, 8., injected={"body_touch": [.8, 0., 0., 0.]}),
      lambda m: held_back_bar(m, "touch_hold_fraction", "身上被碰"),
      "比的是同一个驱动、同一段时间，碰和不碰各走多远。碰是喂进触觉通道的，不是真的手。",
-     requires=("feels_a_touch_on_the_front", "walk_when_driven"))
+     requires=("feels_a_touch_on_the_front", "walks_without_being_told"))
 
 task("a_bang_stops_it_walking", "听", "走得好好的突然来一声，它会停下来吗", "full", 16.,
      lambda ctx: held_back_measure(ctx, 8., startle=1.),
      lambda m: held_back_bar(m, "touch_hold_fraction", "那一声砰"),
      "收尾的读数还是位移：受惊这条通路本来就接着运动。它不说明它知道声音从哪来。",
-     requires=("a_bang_makes_it_startle", "walk_when_driven"))
+     requires=("a_bang_makes_it_startle", "walks_without_being_told"))
 
 task("gets_up_after_a_hard_shove", "自救", "站着被人用更大的力气推倒，它还能起来吗", "full", 7.,
      lambda ctx: righting_measure(ctx, "impact", 7., True, force=220.),
@@ -2398,7 +2401,7 @@ def back_away_bar(measures, what):
 
 def behind_hold_bar(measures):
     """A sound at its back must not swing its heading and must not stop it."""
-    passed, why = walk_bar(measures, "walk_driven_m")
+    passed, why = walk_bar(measures, "walk_own_m")
     if not passed:
         return False, why
     if abs(measures["yaw_rad"]) > BAR["behind_hold_rad"]:
@@ -2572,6 +2575,43 @@ def sound_gap_bar(measures, what):
                        % (what, measures["quiet"], measures["loud"], BAR["sound_gap_ratio"]))
     return True, ("%s fell from %.4f to %.4f when it stopped"
                   % (what, measures["loud"], measures["quiet"]))
+
+
+def opposite_bar(measures, pairs, what, quiet_bar="silence_floor",
+                 reading_bar="opposite_reading"):
+    """For each pair: nothing came in on the channel, and the other cell says so.
+
+    Every sense is two cells: one carries what arrived, the other carries what
+    did not.  In a scene where nothing arrives, the first has to be quiet and
+    the second has to be lit - not the other way round, and not both.
+    """
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    for quiet_key, opposite_key in pairs:
+        quiet = float(np.max(np.atleast_1d(measures["parts"][quiet_key])))
+        if quiet > BAR[quiet_bar]:
+            return False, ("%s: %s was not quiet (%.5f, bar %.5f)"
+                           % (what, quiet_key, quiet, BAR[quiet_bar]))
+        lit = float(np.min(np.atleast_1d(measures["parts"][opposite_key])))
+        if lit < BAR[reading_bar]:
+            return False, ("%s: %s stayed at %.5f, bar %.5f"
+                           % (what, opposite_key, lit, BAR[reading_bar]))
+    return True, ("%s: every channel that received nothing had its opposite cell lit"
+                  % what)
+
+
+def full_pair_bar(measures, key, what, tolerance=.10):
+    """A channel and its opposite carry one thing between them, cell by cell."""
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    driven = np.atleast_1d(measures["parts"][key])
+    opposite = np.atleast_1d(measures["parts"][key + "_opposite"])
+    error = float(np.max(np.abs(driven + opposite - 1.)))
+    if error > tolerance:
+        return False, ("%s: %s and its opposite add up to one channel only within "
+                       "%.3f, bar %.3f" % (what, key, error, tolerance))
+    return True, ("%s: %s and its opposite add up to one channel (worst %.3f off)"
+                  % (what, key, error))
 
 
 def at_most_cells_bar(measures, key, bar_key, what):
@@ -2794,13 +2834,17 @@ def shifted_pattern_bar(measures):
 
 def bright_pull_measure(ctx, seconds, distance=1.60):
     """The same walk with a bright thing in front of it and with nothing there."""
-    ahead = walk_measure(ctx, seconds, "driven", "origin",
+    ahead = walk_measure(ctx, seconds, "autonomous", "origin",
                          props=dict(SILENT, green_target=(distance, 0., .32)))
-    away = walk_measure(ctx, seconds, "driven", "origin", props=SILENT)
+    away = walk_measure(ctx, seconds, "autonomous", "origin", props=SILENT)
     if ahead["status"] != "ok" or away["status"] != "ok":
         return dict(status="error", error=ahead["error"] or away["error"])
+    ahead_speed = float(ahead["mean_speed_mps"] or 0.)
+    away_speed = float(away["mean_speed_mps"] or 0.)
     return dict(status="ok", error=None, ahead=ahead, away=away,
-                pull=ahead["progress_m"] - away["progress_m"])
+                pull=ahead["progress_m"] - away["progress_m"],
+                ahead_speed=ahead_speed, away_speed=away_speed,
+                pace_ratio=(ahead_speed / away_speed if away_speed > 1e-6 else 0.))
 
 
 def bright_pull_bar(measures):
@@ -2811,7 +2855,7 @@ def bright_pull_bar(measures):
     if not ahead["behavior_pass"] or not away["behavior_pass"]:
         return False, ("it fell over in one of the two runs (min up_z %.3f and %.3f)"
                        % (ahead["min_up_z"], away["min_up_z"]))
-    if away["progress_m"] < BAR["walk_driven_m"]:
+    if away["progress_m"] < BAR["walk_own_m"]:
         return False, ("it does not walk with an empty room either (%.3f m)" % away["progress_m"])
     if measures["pull"] < BAR["bright_pull_m"]:
         return False, ("the bright thing did not pull it forward (%.3f m more than nothing, "
@@ -2861,43 +2905,43 @@ task("the_two_sides_step_alike", "走路", "左右两条腿是一样干活，还
      requires=("walk_flat",))
 
 task("keeps_walking_for_thirty_seconds", "走路", "没人管它，三十秒里是一直走还是走走停停", "full", 30.,
-     lambda ctx: walk_measure(ctx, 30., "driven", "origin"),
+     lambda ctx: walk_measure(ctx, 30., "autonomous", "origin"),
      lambda m: walk_bar(m, "walk_thirty_m"),
      "只比距离，不看它是怎么走的。三十秒里摔过再爬起来的也算不过。",
      requires=("walks_for_twenty_seconds",))
 
 task("does_not_slow_down_on_a_long_walk", "走快", "走久了会不会越走越慢", "full", 20.,
-     lambda ctx: step_windows(ctx, 20., "driven", "origin", 5.), fatigue_bar,
+     lambda ctx: step_windows(ctx, 20., "autonomous", "origin", 5.), fatigue_bar,
      "比的是头五秒和末五秒的平均速度。它不区分是累了，还是换了种走法。",
      requires=("walks_at_a_steady_pace",))
 
 task("keeps_walking_while_it_turns", "转弯", "一边走一边有声音，它会不会朝着声音转过去、还继续走", "full", 16.,
-     lambda ctx: turn_pair_measure(ctx, 16., "driven"),
+     lambda ctx: turn_pair_measure(ctx, 16., "autonomous"),
      lambda m: walk_turn_bar(m, "一边走一边响"),
      "两次都要走得动，而且两次的收尾朝向要分开。走得好但没转，或者转了但不走，"
      "都算不过。",
      requires=("turns_towards_a_sound_while_walking",))
 
 task("backs_away_from_a_hand_on_its_chest", "转弯", "胸口一直被顶着，会不会往后退", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "origin", injected={"body_touch": .8}),
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "origin", injected={"body_touch": .8}),
      lambda m: back_away_bar(m, "胸口上那只手"),
      "读的是它有没有真的往后退。它不说明它想退到哪去。",
      requires=("a_touch_on_the_front_holds_it_back",))
 
 task("keeps_its_line_with_a_sound_behind", "转弯", "背后有声音，会不会被它带得偏方向", "full", 12.,
-     lambda ctx: walk_measure(ctx, 12., "driven", "origin",
+     lambda ctx: walk_measure(ctx, 12., "autonomous", "origin",
                               props=dict(SILENT, sound_low=(-1.40, 0., .30))),
      behind_hold_bar,
      "这一题要的是「不该转」：背后的声音不该让它偏航，也不该让它停下来。",
-     requires=("walk_when_driven",))
+     requires=("walks_without_being_told",))
 
 task("does_not_fall_walking_into_the_wall", "地形", "朝墙上走，是停下来还是被撞翻", "full", 12.,
-     lambda ctx: walk_measure(ctx, 12., "driven", "wall"), wall_upright_bar,
+     lambda ctx: walk_measure(ctx, 12., "autonomous", "wall"), wall_upright_bar,
      "和「撞墙停下」那一题不同，这一题只看它有没有被自己撞翻。",
      requires=("stops_at_the_wall",))
 
 task("threads_the_passage_without_touching", "地形", "过窄通道时会不会蹭着墙走", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "driven", "passage"), passage_quiet_bar,
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "passage"), passage_quiet_bar,
      "过了通道还要没把墙细胞点亮。它不说明它看见了墙。",
      requires=("walk_narrow_passage",))
 task("sees_a_red_square_from_a_green_one", "看", "同一个方块，红色和绿色，脑里读数一样吗", "full", 4.,
@@ -2950,11 +2994,12 @@ task("a_sound_that_stops_is_no_longer_heard", "听", "声音停了，耳朵里�
      "同一个声源，先响两秒再挪走。它测的是耳朵跟着世界走，不是耳朵在自说自话。",
      requires=("turn_to_sound",))
 
-task("a_quiet_room_is_not_a_sound", "听", "屋里没声音时，它会不会幻听", "full", 2.,
-     lambda ctx: cell_read(ctx, cells=("cochlea", "abrupt_sound"), seconds=2., tail=2.,
-                           clean=True, props=SILENT),
-     lambda m: at_most_cells_bar(m, "cochlea", "silence_floor", "安静的屋子"),
-     "这是「声音停了」那一题的对照：什么都听不见的时候，耳蜗就该是安静的。",
+task("a_quiet_room_is_not_a_sound", "听", "屋里没声音时：耳蜗安静吗、说不出话的那格亮不亮", "full", 2.,
+     lambda ctx: cell_read(ctx, cells=("cochlea", "abrupt_sound", "cochlea_opposite"),
+                           seconds=2., tail=2., clean=True, props=SILENT),
+     lambda m: opposite_bar(m, (("cochlea", "cochlea_opposite"),), "安静的屋子"),
+     "这是「声音停了」那一题的对照：什么都听不见的时候，耳蜗该是安静的，而它旁边那格"
+     "「什么都没听见」的细胞该是亮的。它只说明这一对还在，不说明它听得出「安静」。",
      requires=("turn_to_sound",))
 
 task("ears_tell_left_from_right", "听", "声音在左肩和右肩，耳朵分得开吗", "full", 4.,
@@ -3072,13 +3117,13 @@ task("the_compressed_layer_sees_the_picture", "特征层", "再往下压一层�
 REQUIRES = {
     "walk_flat": ("stands_still",),
     "walk_furnished": ("walk_flat",),
-    "walk_when_driven": ("walk_flat",),
-    "keeps_walking_when_driven": ("walk_when_driven",),
+    "walks_without_being_told": ("walk_flat",),
+    "keeps_walking_without_being_told": ("walks_without_being_told",),
     "feet_do_not_slide": ("walk_flat",),
-    "walk_low_step": ("walk_flat", "walk_when_driven"),
+    "walk_low_step": ("walk_flat", "walks_without_being_told"),
     "walk_ramp": ("walk_low_step",),
     "walk_narrow_passage": ("walk_flat",),
-    "stops_at_the_wall": ("walk_when_driven",),
+    "stops_at_the_wall": ("walks_without_being_told",),
     "get_up_from_side": ("get_up_from_back",),
     "nose_up_recover": ("get_up_from_back",),
     "nose_down_recover": ("get_up_from_back",),
@@ -3100,34 +3145,30 @@ for _entry in TASKS:
         _entry["requires"] = tuple(REQUIRES[_entry["name"]])
 
 
-def pace_pair_measure(ctx, seconds=10., slow="amble", fast="sprint"):
-    """The same walk ordered twice, at two different forward drives."""
-    slow_run = walk_measure(ctx, seconds, slow, "origin")
-    fast_run = walk_measure(ctx, seconds, fast, "origin")
-    if slow_run["status"] != "ok" or fast_run["status"] != "ok":
-        return dict(status="error", error=slow_run["error"] or fast_run["error"])
-    slow_speed = float(slow_run["mean_speed_mps"] or 0.)
-    fast_speed = float(fast_run["mean_speed_mps"] or 0.)
-    return dict(status="ok", error=None, slow=slow_run, fast=fast_run,
-                slow_speed=slow_speed, fast_speed=fast_speed,
-                ratio=(fast_speed / slow_speed if slow_speed > 1e-6 else 0.))
+def bright_pace_bar(measures, what, bar_key="bright_pace_ratio"):
+    """A bright thing in front has to buy a faster walk, not just a longer one.
 
-
-def speed_ratio_bar(measures, what, bar_key="walk_faster_ratio"):
-    """A bigger order has to buy a real increase in speed, not just a number."""
+    Both runs have to stay up, and the empty room has to be a real walk already:
+    a ratio of two stalls is not speed.
+    """
     if measures.get("status") != "ok":
         return False, "run failed: %s" % measures.get("error")
-    for name in ("slow", "fast"):
+    for name in ("ahead", "away"):
         if not measures[name]["behavior_pass"]:
             return False, ("%s: it fell over (min up_z %.3f)"
                            % (what, measures[name]["min_up_z"]))
-    if measures["ratio"] < BAR[bar_key]:
-        return False, ("%s changed the speed by %.2f times (%.3f then %.3f m/s, bar %.2f)"
-                       % (what, measures["ratio"], measures["slow_speed"],
-                          measures["fast_speed"], BAR[bar_key]))
-    return True, ("%s: %.3f m/s then %.3f m/s, %.2f times"
-                  % (what, measures["slow_speed"], measures["fast_speed"],
-                     measures["ratio"]))
+    if measures["away_speed"] < BAR["walk_speed_mps"]:
+        return False, ("%s: with an empty room it does not even hold a steady pace "
+                       "(%.3f m/s, bar %.3f)"
+                       % (what, measures["away_speed"], BAR["walk_speed_mps"]))
+    if measures["pace_ratio"] < BAR[bar_key]:
+        return False, ("%s changed the speed by %.2f times (%.3f m/s with the thing, "
+                       "%.3f without, bar %.2f)"
+                       % (what, measures["pace_ratio"], measures["ahead_speed"],
+                          measures["away_speed"], BAR[bar_key]))
+    return True, ("%s: %.3f m/s with the bright thing and %.3f m/s without, %.2f times"
+                  % (what, measures["ahead_speed"], measures["away_speed"],
+                     measures["pace_ratio"]))
 
 
 def run_bar(measures, bar_key, what):
@@ -3169,53 +3210,111 @@ def run_turn_bar(measures, what):
 
 
 def dark_room_measure(ctx, seconds=.35, tail=.35):
-    """A black screen: the layer under the rods, when there is nothing to see."""
+    """A black screen and a white one: is the input layer ever empty?
+
+    The animal's input layer is two halves of the same picture: a pixel hands
+    its brightness to one cell and its darkness to the cell beside it.  A black
+    screen has to light one half and leave the other alone; a white one has to
+    swap them over.  Both halves moving together would be one number in two
+    places, not a second channel.  Each half also has summary cells of its own,
+    so the question is asked of the layer that reads the input as well.
+    """
     black = np.zeros((2, 36, 48, 3), dtype=np.uint8)
-    return cell_read(ctx, cells=("retinal_opponent", "photoreceptors"),
-                     seconds=seconds, tail=tail, clean=True, picture=black)
+    white = np.full((2, 36, 48, 3), 255, dtype=np.uint8)
+    cells = ("photoreceptors", "photoreceptors_opposite", "retina", "retina_opposite")
+    dark = cell_read(ctx, cells=cells, seconds=seconds, tail=tail, clean=True, picture=black)
+    light = cell_read(ctx, cells=cells, seconds=seconds, tail=tail, clean=True, picture=white)
+    if dark["status"] != "ok" or light["status"] != "ok":
+        return dict(status="error", error=dark["error"] or light["error"])
+    return dict(status="ok", error=None, black=dark, white=light,
+                black_opposite=float(dark["photoreceptors_opposite"]),
+                black_light=float(dark["photoreceptors"]),
+                black_summary_opposite=float(dark["retina_opposite"]),
+                white_opposite=float(light["photoreceptors_opposite"]),
+                white_light=float(light["photoreceptors"]),
+                white_summary_light=float(light["retina"]))
 
 
-def dark_room_bar(measures, what, bar_key="dark_room_reading"):
-    """The dark has to be a reading of its own, not an empty vector."""
+def dark_room_bar(measures, what, bar_key="opposite_reading"):
+    """Each half of the input layer has to be lit by one kind of screen."""
     if measures.get("status") != "ok":
         return False, "run failed: %s" % measures.get("error")
-    value = float(measures["retinal_opponent"])
-    if value < BAR[bar_key]:
-        return False, ("%s left the layer under the rods at %.5f, bar %.5f"
-                       % (what, value, BAR[bar_key]))
-    return True, "%s read %.5f in a black room" % (what, value)
+    if measures["black_opposite"] < BAR[bar_key]:
+        return False, ("%s: a black screen left the dark half at %.5f, bar %.5f"
+                       % (what, measures["black_opposite"], BAR[bar_key]))
+    if measures["black_light"] > BAR[bar_key]:
+        return False, ("%s: a black screen lit the bright half anyway (%.5f, bar %.5f)"
+                       % (what, measures["black_light"], BAR[bar_key]))
+    if measures["white_opposite"] > BAR[bar_key]:
+        return False, ("%s: a white screen lit the dark half as well (%.5f, bar %.5f)"
+                       % (what, measures["white_opposite"], BAR[bar_key]))
+    if measures["black_summary_opposite"] < BAR[bar_key]:
+        return False, ("%s: the dark half reached its summary cells at only %.5f, "
+                       "bar %.5f"
+                       % (what, measures["black_summary_opposite"], BAR[bar_key]))
+    return True, ("%s: black lit the dark half %.5f (summary %.5f) and left the "
+                  "bright half at %.5f"
+                  % (what, measures["black_opposite"], measures["black_summary_opposite"],
+                     measures["black_light"]))
 
 
-task("walks_faster_when_the_world_asks_for_it", "跑", "让它走快一点，它真的会快吗", "full", 20.,
-     lambda ctx: pace_pair_measure(ctx, 10.),
-     lambda m: speed_ratio_bar(m, "走路指令给大一点时"),
-     "两次都是同一条路、同样十秒，只有外部前进指令不同。读的是指令有没有真的"
-     "把速度顶上去；出厂动物两次几乎一模一样，所以它出生时不过。",
+task("hurries_towards_a_bright_thing", "跑", "前面放个亮东西，它会不会走得比空房间快", "full", 20.,
+     lambda ctx: bright_pull_measure(ctx, 10.),
+     lambda m: bright_pace_bar(m, "前面有亮东西时"),
+     "同样两个场景，只有前面有没有那个亮东西的区别。读的是"
+     "平均速度之比，不是走了多远。出厂动物有一条「"
+     "亮东西让它多走几步」的弱通路，但两次一样快，"
+     "所以它出生时不过。它不说明它奔着亮东西去。",
      requires=("walks_at_a_steady_pace",))
 
-task("runs_when_the_world_asks_for_it", "跑", "把前进指令拉满，它跑得起来吗", "full", 10.,
-     lambda ctx: walk_measure(ctx, 10., "sprint", "origin"),
-     lambda m: run_bar(m, "run_mean_speed", "满指令那十秒"),
-     "读的是全程平均速度，不是某一瞬间的快。跑不动、或者跑两步就摔，都算不过。",
-     requires=("walks_faster_when_the_world_asks_for_it",))
+task("runs_without_being_told", "跑", "没人管它，它自己跑得起来吗", "full", 10.,
+     lambda ctx: walk_measure(ctx, 10., "autonomous", "origin"),
+     lambda m: run_bar(m, "run_mean_speed", "没人管它的那十秒"),
+     "没有外部指令可用，读的是它自己十秒里"
+     "的全程平均速度，不是某一瞬间的快。跑不动、"
+     "或者跑两步就摔，都算不过。",
+     requires=("hurries_towards_a_bright_thing",))
 
-task("runs_for_twenty_seconds", "跑", "让它跑二十秒，它跑得下去吗", "full", 20.,
-     lambda ctx: walk_measure(ctx, 20., "sprint", "origin"),
+task("runs_for_twenty_seconds", "跑", "让它自己跑二十秒，它跑得下去吗", "full", 20.,
+     lambda ctx: walk_measure(ctx, 20., "autonomous", "origin"),
      lambda m: walk_bar(m, "run_twenty_m"),
-     "只比二十秒里走出去多远，不看步态好不好看；这二十秒里摔过再爬起来的也算不过。",
-     requires=("runs_when_the_world_asks_for_it",))
+     "只比二十秒里走出去多远，不看步态好不好看；"
+     "这二十秒里摔过再爬起来的也算不过。",
+     requires=("runs_without_being_told",))
 
 task("keeps_running_while_it_turns", "跑", "一边跑一边听到声音，还跑得动吗", "full", 16.,
-     lambda ctx: turn_pair_measure(ctx, 16., "sprint"),
+     lambda ctx: turn_pair_measure(ctx, 16., "autonomous"),
      lambda m: run_turn_bar(m, "一边跑一边响"),
-     "它在走的状态下早就转得动了，这一题额外要求转向的过程中速度不掉下来。",
-     requires=("runs_when_the_world_asks_for_it", "turns_towards_a_sound_while_walking"))
+     "它在走的状态下早就转得动了，这一题额外要求"
+     "转向的过程中速度不掉下来。",
+     requires=("runs_without_being_told", "turns_towards_a_sound_while_walking"))
 
-task("the_dark_room_is_not_silence", "看", "全黑的屋里，感光层下面那层还亮着吗", "full", 2.,
+task("nothing_touching_it_is_not_nothing", "摸与本体", "没人碰它也没绊到它时，说不出话的那几格亮不亮", "full", 3.,
+     lambda ctx: cell_read(ctx, cells=("body_touch", "body_touch_opposite",
+                                       "foot_obstacle", "foot_obstacle_opposite",
+                                       "foot_slip", "foot_slip_opposite"),
+                           seconds=3., tail=2., clean=True, props=SILENT),
+     lambda m: opposite_bar(m, (("body_touch", "body_touch_opposite"),
+                                ("foot_obstacle", "foot_obstacle_opposite"),
+                                ("foot_slip", "foot_slip_opposite")), "没被碰的站姿"),
+     "站着、没人碰、四只脚都在地上：碰、绊、打滑三路都该安静，它们旁边那格该亮着。"
+     "它只说明「什么都没发生」是一条真的读数，不说明它知道自己在站着。",
+     requires=("stands_still",))
+
+task("the_weight_pair_still_carries_the_weight", "摸与本体", "脚上受力那一对，合起来是不是一整档", "full", 3.,
+     lambda ctx: cell_read(ctx, cells=("foot_load", "foot_load_opposite"),
+                           seconds=3., tail=2., clean=True, props=SILENT),
+     lambda m: full_pair_bar(m, "foot_load", "四只脚的受力那一对"),
+     "受力那一路和它旁边那格合起来才是完整的一档：一格说「这只脚吃了多少力」，"
+     "另一格说「还差多少」。它不说明它分得清是哪只脚。",
+     requires=("stands_still",))
+
+task("the_dark_room_is_not_silence", "看", "全黑的屋里，输入层暗的那一半亮着吗", "full", 2.,
      lambda ctx: dark_room_measure(ctx),
      lambda m: dark_room_bar(m, "全黑画面"),
-     "出厂动物在全黑画面下视觉层整排是 0，光信号就是它唯一的读数，暗本身没有通道。"
-     "这一题不过就说明：它没有「相反神经元」那一半。它不说明它在黑屋里意识到自己看不见。",
+     "输入层现在是成对的：每个像素把亮度交给一格、把「没光进来」交给旁边那格，"
+     "没光的那一半还有自己的汇总层。这一题问的只是这两半在不在、黑的时候是不是反过来的；"
+     "它不说明它意识到自己在黑屋里——这两半现在没有出边，黑画面到不了反射层。",
      requires=("eyes_follow_ball",))
 
 TASK_DOC = {
@@ -3224,8 +3323,8 @@ TASK_DOC = {
     "walk_flat": ("走了多远、全程最低的直立程度", "全程不倒并且移动 ≥ 0.25 米"),
     "walk_furnished": ("12 秒满场走了多远、全程最低的直立程度",
                        "全程不倒并且移动 ≥ 0.35 米"),
-    "walk_when_driven": ("外部 0.65 前进输入下走了多远", "全程不倒并且移动 ≥ 0.30 米"),
-    "keeps_walking_when_driven": ("外部输入一直给着，16 秒走了多远",
+    "walks_without_being_told": ("没人给它任何指令时走了多远", "全程不倒并且移动 ≥ 0.30 米"),
+    "keeps_walking_without_being_told": ("没人管它，16 秒走了多远",
                                   "全程不倒并且移动 ≥ 0.60 米"),
     "feet_do_not_slide": ("落地那几帧每只脚的滑移速度", "全程不倒、≥ 0.25 米，最滑的一脚 ≤ 0.30 米/秒"),
     "walk_low_step": ("从台阶前 0.55 米出发走 10 秒", "不倒、≥ 0.30 米，并且越过了台阶外沿"),
@@ -3301,7 +3400,7 @@ TASK_DOC = {
                                  "直度 ≥ 0.70，并且全程不倒、≥ 0.30 米"),
     "does_not_crab_sideways": ("受驱动走 10 秒后，横向偏出出发朝向多少米",
                                "横向 ≤ 0.25 米，并且全程不倒、≥ 0.30 米"),
-    "holds_its_heading_while_driven": ("受驱动走 10 秒里朝向累计转过多少弧度",
+    "holds_its_heading_while_it_walks": ("受驱动走 10 秒里朝向累计转过多少弧度",
                                        "累计 ≤ 1.20 弧度，并且全程不倒、≥ 0.30 米"),
     "walks_for_twenty_seconds": ("驱动一直给着，20 秒走了多远",
                                  "全程不倒、位移 ≥ 0.90 米"),
@@ -3312,7 +3411,7 @@ TASK_DOC = {
                                             "右边那次要比左边那次更偏右 ≥ 0.30 弧度"),
     "turns_towards_a_sound_while_standing": ("站着不动，左边响和右边响各 8 秒的收尾朝向",
                                              "同样是右边比左边更偏右 ≥ 0.10 弧度"),
-    "does_not_spin_on_the_spot": ("没人给指令时 8 秒里朝向累计转过多少",
+    "does_not_spin_on_the_spot": ("没人碰它时 8 秒里朝向累计转过多少",
                                   "直立 ≥ 0.9 并且累计 ≤ 1.20 弧度"),
     "walks_down_the_ramp": ("从坡顶朝坡下走 10 秒", "全程不倒、≥ 0.25 米，并且越过了坡的外沿"),
     "steps_down_the_low_step": ("从矮台阶上朝外走 10 秒", "全程不倒、≥ 0.25 米，并且越过了台阶外沿"),
@@ -3387,7 +3486,12 @@ TASK_DOC = {
                                        "朝它那边摆动 ≥ 0.01 弧度"),
     "a_sound_that_stops_is_no_longer_heard": ("声源挪走前后各半秒的耳蜗活动",
                                               "响着时 ≥ 0.02，停掉后 ≤ 响着时的 0.50"),
-    "a_quiet_room_is_not_a_sound": ("一间没有声音的屋子里的耳蜗活动", "每一格都不超过 0.02"),
+    "a_quiet_room_is_not_a_sound": ("安静的屋子里，耳蜗那一路和它旁边那格的平均活动",
+                                    "耳蜗每一格 ≤ 0.02，旁边那格每一格 ≥ 0.05"),
+    "nothing_touching_it_is_not_nothing": ("没被碰的站姿里，碰、绊、打滑三路和它们旁边那格",
+                                           "三路的每一格 ≤ 0.02，旁边那三格的每一格 ≥ 0.05"),
+    "the_weight_pair_still_carries_the_weight": ("四只脚各自的受力格和旁边那格之和",
+                                                 "每一对相加都落在 1 ± 0.10 内"),
     "ears_tell_left_from_right": ("同一声在左肩和右肩时耳廓四个格子的逐格差", "逐格平均差 ≥ 0.02"),
     "two_sounds_at_one_shoulder_are_still_two": ("同一边两个声源一起亮和只亮一个时耳廓细胞的逐格差",
                                                  "逐格平均差 ≥ 0.02"),
@@ -3419,16 +3523,21 @@ TASK_DOC = {
                                           "逐格平均差 ≥ 0.01"),
     "the_compressed_layer_sees_the_picture": ("同一对比下，再往下一层的逐格差",
                                               "逐格平均差 ≥ 0.01"),
-    "walks_faster_when_the_world_asks_for_it": ("同样十秒、同一条路，外部前进指令 0.35 和 1.0 两次的平均速度之比",
-                                                "快的至少是慢的 1.25 倍，两次都不倒"),
-    "runs_when_the_world_asks_for_it": ("外部前进指令拉到 1.0 走十秒，全程平均速度",
-                                        "全程不倒，平均 ≥ 0.25 米/秒"),
-    "runs_for_twenty_seconds": ("外部前进指令拉到 1.0 走二十秒的净位移",
+    "hurries_towards_a_bright_thing": ("同样十秒、同一条路，前面有亮东西和空房间两次的平均速度之比",
+                                       "两次都不倒、空房间那次平均速度 ≥ 0.15 米/秒，"
+                                       "并且有亮东西那次快 ≥ 1.25 倍"),
+    "runs_without_being_told": ("没人给它任何指令，它自己走十秒的全程平均速度",
+                                "全程不倒，平均 ≥ 0.25 米/秒"),
+    "runs_for_twenty_seconds": ("没人管它，二十秒的净位移",
                                 "≥ 2.00 米，且全程不倒"),
     "keeps_running_while_it_turns": ("一边跑一边左右各响一次：两次的位移、平均速度和收尾朝向差",
                                      "两次位移 ≥ 0.45 米、平均速度 ≥ 0.25 米/秒、朝向差 ≥ 0.30 弧度"),
-    "the_dark_room_is_not_silence": ("全黑画面下感光层下面那一层的平均活动",
-                                     "≥ 0.05（出厂动物是 0.00）"),
+    "the_dark_room_is_not_silence": ("全黑画面和全白画面下，输入层两半"
+                                     "和它们各自的汇总层的平均活动",
+                                     "黑画面要亮着暗那一半（≥ 0.05）、"
+                                     "不亮亮那一半（≤ 0.05）、"
+                                     "暗那一半要把自己的汇总层点亮（≥ 0.05），"
+                                     "白画面反过来"),
 }
 
 for _entry in TASKS:

@@ -1,0 +1,13 @@
+engine     cuda
+neurons    523579
+edges      1296513
+retina     160x120  drawn 480x360
+phase           mean ms     min ms     max ms
+body_senses        0.20       0.18       0.27
+eye_render         2.69       2.30       3.60
+ear_relay          0.18       0.14       0.22
+brain              6.59       5.06      11.15
+physics            0.87       0.60       1.37
+sum of parts      10.54
+whole_step        10.54       8.73      15.38
+steps/s    94.9

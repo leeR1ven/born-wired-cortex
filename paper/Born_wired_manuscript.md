@@ -10,8 +10,10 @@ Suzhou, Jiangsu, China.
 *Version of 2026-09-28. Sections R12, R13, R14, R15, R16, R17 and Methods 5.12 and 5.13 were added
 on this date and describe the rebuilt engine, the nursery, the hidden-layer routes, the cost of a
 larger sheet, the eyes and the ears; R18, claim (P9), Figure 11 and Methods 5.14 were added the same
-day and describe the merge of two taught models. The full manuscript PDF in this directory was
-re-typeset from this file on 2026-09-28 and contains all of it (49 pages, 11 figures); the
+day and describe the merge of two taught models; R19 and Methods 5.15 were added the same day and
+describe the opposite cell beside every sense channel, the one that fires when that channel has
+nothing on it. The full manuscript PDF in this directory was
+re-typeset from this file on 2026-09-28 and contains all of it (51 pages, 11 figures); the
 Nature Machine Intelligence short PDF is still the 2026-09-17 build and contains none of it, and
 Supplementary Figures 5 and 6 are new with this version. Every number
 quoted below was produced by the script named next to it; the scripts and the log of every run are
@@ -22,7 +24,9 @@ our prediction are reported as such and are listed in Section 4.5.*
 
 **Abstract**
 
-Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 584,137 cells and 1,812,331 synapses at 11.2 ms per tick on one consumer GPU, four times the cells of the reference build at about a tenth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. Two brains that differ only in what they were taught differ only in the numbers written on their
+Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 750,075 cells and 1,978,219 synapses at 13.3 ms per tick on one consumer GPU, five times the cells of the reference build at about a twelfth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. Every sense channel
+is a pair of cells -- one carrying what came in, one carrying what did not -- so a black screen or a
+silent room is still a reading in the input layer rather than nothing at all. Two brains that differ only in what they were taught differ only in the numbers written on their
 edges: adding two such weight tables and halving them gives a third model that was never taught
 anything and holds both lessons, both on a 17-cell graph (both cues answered, margins +1.000 and
 +1.000, 5/5 seeds) and on the 1,813-cell body, where the merged animal walks 0.66 m on the cue one
@@ -32,7 +36,9 @@ answer at all. No rule lowers a weight in the configuration reported here (a glo
 
 ## Author Summary
 
-Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  Since then I have measured three things the first version had wrong or left out, and one thing it had not tried at all. The middle layers of a sensory network are not just a way station: they still carry the detail the last layer has thrown away, and I could make the body use it -- two things the last layer could not tell apart drove two different muscles, and that held for ten minutes with learning running the whole time. The sheet pays for what is switched on inside it and not for how many cells it has, so a bigger one is affordable, and "too small" turns out to be a measurement rather than an opinion: with ten cells per muscle, forces of 0.50, 0.51, 0.52 and 0.54 all produce the same pattern, and with a hundred they do not. The eyes now converge, focus and look at whatever is moving without any of that being written into the code, and the ears tell front from back and left from right from two raw sound waves. Two animals that each learned one different thing can also be added together: I averaged their two
+Most artificial intelligence today works like a machine that is fed examples and graded until it gets them right. A brain does not work that way. It is born with a great deal of wiring already in place, and the only rule its synapses can use is that cells which fire together tend to connect more strongly. I wanted to know how far that starting point alone can carry a body. To find out, I built a simulated brain of about 140,000 cells, gave it a fixed set of inborn connections, put it inside a simulated four-legged body, and let it run with no reward and no training. It got up from lying down, walked toward a red object it could see, and followed a moving object with its eyes. When I removed the inborn connections, the same brain could do nothing. When I silenced one part of it, the animal stopped using its eyes to walk but kept its reflexes. More recently I found that the animal can also be taught. If I lay a connection between two parts of its brain at a strength far too small to do anything, and then touch it while a tone plays, for twenty seconds, it learns that the tone means *back away* -- and if I never lay that connection, or never touch it, the same lesson teaches it nothing at all. The lesson only strengthens what the animal was already doing, which is why it needs the animal to already be doing something.  Since then I have measured three things the first version had wrong or left out, and one thing it had not tried at all. The middle layers of a sensory network are not just a way station: they still carry the detail the last layer has thrown away, and I could make the body use it -- two things the last layer could not tell apart drove two different muscles, and that held for ten minutes with learning running the whole time. The sheet pays for what is switched on inside it and not for how many cells it has, so a bigger one is affordable, and "too small" turns out to be a measurement rather than an opinion: with ten cells per muscle, forces of 0.50, 0.51, 0.52 and 0.54 all produce the same pattern, and with a hundred they do not. The eyes now converge, focus and look at whatever is moving without any of that being written into the code, and the ears tell front from back and left from right from two raw sound waves. Every sense is also a
+pair of cells, one for what arrived and one for what did not, so a black picture or a silent room is
+something the brain is still reading rather than an absence. Two animals that each learned one different thing can also be added together: I averaged their two
 sets of connection strengths and got an animal that does both, which works only because each lesson
 had moved a different set of connections. The animal still falls over after a while, and I report
 that rather than hide it. The result suggests that what a brain is born with matters at least as much as what it learns.
@@ -314,8 +320,9 @@ in Methods 5.5.
 The body is a Unitree Go2 quadruped simulated in MuJoCo with joint-angle servos: the 160 motor
 cells decode to 16 target angles, and the physics runs ten MuJoCo sub-steps of 2 ms per cortical tick.
 The visual hierarchy receives a 1920x1080 first-person image, downsamples it to a 24x16
-macro-pixel grid with three colour channels and 10 cell-pairs per level, so one visual cell
-subtends about 6.25 degrees horizontally. The field of view is 100 degrees horizontal by 75
+macro-pixel grid with three colour channels and 10 cell-pairs per level (one cell of a pair says
+its level has been reached, the other that it has not), so one visual cell subtends about 6.25
+degrees horizontally. The field of view is 100 degrees horizontal by 75
 degrees vertical. The auditory hierarchy receives a 4096-bin spectrum. Proprioception,
 vestibular and body-state regions receive hand-defined predicates over the joint angles and
 trunk pose. The eyes have two degrees of freedom with a 30 degree range, a strong viscous load
@@ -1473,12 +1480,12 @@ same "instinct as initial condition" design, with raw senses only: two eyes that
 images with no matching, no object recognition and no distance, two ears that deliver a sound
 pressure waveform with no source localisation, and a body that reports its own state. It runs on the
 graphics card, and its shipped configuration is 192x144 pixels per eye with 1,600 motor, 512
-proprioceptive and 2,048 association units -- **584,137 cells, 1,812,331 synapses**. One step of the
-whole loop costs **11.19 ms (89.4 steps/s)**, of which the brain is 7.24 ms, the eyes 2.84 ms and the
-physics 0.77 ms (`artifacts/profile_after_nursery.log`). Against the reference build's live tick --
-148,032 cells, 158 ms per tick with plasticity enabled (R11) -- the rebuilt engine carries **3.9
-times the cells at about a fourteenth of the cost**, and the whole 160-test suite of the rebuild
-passes in 135 s (`artifacts/tests_20260928.log`).
+proprioceptive and 2,048 association units -- **750,075 cells, 1,978,219 synapses**. One step of the
+whole loop costs **13.29 ms (75.2 steps/s)**, of which the brain is 9.24 ms, the eyes 2.86 ms and the
+physics 0.82 ms (`artifacts/profile_after_opposite.log`). Against the reference build's live tick --
+148,032 cells, 158 ms per tick with plasticity enabled (R11) -- the rebuilt engine carries **five
+times the cells at about a twelfth of the cost**, and the whole 199-test suite of the rebuild
+passes in 130 s (`artifacts/tests_after_opposite.log`).
 
 Three changes account for it, and all three are required to be bit-identical to the code they
 replace, checked by a fingerprint tool that compares cell count, edge count, the initial weight
@@ -1489,9 +1496,10 @@ re-derived every tick; and the per-step array arithmetic writes in place, which 
 3 MB-per-eye-per-step allocation that produced occasional 71 ms render spikes (now 4.8 ms worst case).
 
 **What a bigger sheet costs is connections, not cells.** With the region widths held at
-160x120/800-256-1024 the whole step is 9.39 ms (106 steps/s); at the shipped 192x144/1600-512-2048 it
-is 11.98 ms (84 steps/s); at 256x192/1600-512-2048 it is 18.58 ms (54 steps/s). Cell count rises by
-43 percent across the first two while the step cost rises by 28 percent, and most of that is the
+160x120/800-256-1024 the whole step is 10.54 ms (94.9 steps/s) over 523,579 cells; at the shipped
+192x144/1600-512-2048 it is 13.29 ms (75.2 steps/s) over 750,075; at 256x192/1600-512-2048 it is
+20.67 ms (48.4 steps/s) over 1,286,267. Cell count rises by
+43 percent across the first two while the step cost rises by 26 percent, and most of that is the
 tick's fixed traffic between host and device rather than the neurons. This is the same relationship
 R11 reports on the reference engine -- cells are cheap in memory, and what costs is per-tick work
 proportional to activity -- and it is why "add cells when a capability is missing" is an engineering
@@ -1510,9 +1518,9 @@ proposition rather than a wall.
 
 Neither refusal is a cost and neither is a hardware limit: the first is a structural rule of our own
 design, and the second is one number in the arena file. Together they cap the sheet at 320x240 with
-2,400/768/3,072 units, which builds at 1,527,993 cells and 3,852,147 synapses. Both are reported
+2,400/768/3,072 units, which builds at 1,988,843 cells and 4,312,947 synapses. Both are reported
 because a reader who intends to grow this system will meet them before meeting the graphics card.
-(`tools/probe_scale_walls.py`, log `artifacts/scale_walls_20260928.log`.)
+(`tools/probe_scale_walls.py`, log `artifacts/scale_walls_after_opposite.log`.)
 
 **A route we built, cannot read, and are reporting as zero.** The eye population contains one cell
 (`eye_looming`) whose resting level is -0.5, which is driven at weight 1.0 by the conjunction of
@@ -1854,6 +1862,54 @@ righting needs the righting behaviour itself to exist first (R1, R3), and we hav
 pair. Nothing here tests the larger version of the idea, in which many candidate models are written,
 put through a large question set and selected, and no comparison is made with further training of one
 parent, which this system does not have.
+
+---
+
+### R19. Every sense is a pair, including the cell that fires on nothing (no figure)
+
+Every sense channel in this system carries the same channel twice: one cell saying that a level has
+been reached, the cell beside it saying that it has not, so that a channel with nothing on it still
+has a reading. The reference build coded every channel this way at its input layer (Section 2.4),
+and where a channel is recruited rather than cut into levels the same two readings are the lit
+prefix and the unlit remainder of one population. The rebuilt engine of Section 5.12 carries a
+companion cell beside each of the four reflex senses -- touch, foot obstacle, foot load and foot
+slip, four cells each -- beside the three auditory sheets (six, six and four cells), and beside
+every photoreceptor; in every case the companion is driven by one minus the same number, in the
+same step, so the second is lit whenever the first is not. The visual pair also gets one thing no
+other pair has: the unlit half of the picture converges on a sheet of its own (`retina_opposite`),
+with the same gain and the same sector rule the lit half uses to reach `retina`
+(`born_wired/embodied.py`).
+
+The point of the pair is that a channel with nothing on it is still a reading. Measured on the birth
+animal of the rebuilt engine, three seeds each, in the exam bank (`engine_v2/tools/taskbank.py`): on
+a black screen the unlit half of the visual input reads 0.96985 and the lit half reads 0.00000, and
+the unlit half's own sheet reads 0.97143; on a white screen the two swap. In a silent room the
+auditory channel reads 0.00000 and its opposite cell reads 0.98983. Standing with nothing touching
+the body, the touch, obstacle and slip channels each read 0.00000 and their opposite cells read
+1.00000. The four feet of that pose carry 0.42 to 0.54 of the load channel, and each foot's load
+cell plus its opposite cell adds up to 1.000 (worst error 0.000 over the four feet). Four questions
+of the bank ask exactly this -- ``the_dark_room_is_not_silence``, ``a_quiet_room_is_not_a_sound``,
+``nothing_touching_it_is_not_nothing`` and ``the_weight_pair_still_carries_the_weight`` -- and the
+birth animal passes all four on all three seeds (``engine_v2/artifacts/exam_birth_full.json``).
+
+*What the pair costs.* The pair adds 165,938 cells and 165,888 synapses to the shipped configuration
+of R13: one companion beside every photoreceptor (165,888), eighteen cells on the unlit half's own
+summary sheet, and four companions on each of the four reflex senses (32). The cell and synapse
+counts of that configuration therefore read 750,075 and 1,978,219 where R13 reads 584,137 and
+1,812,331, and a fresh profile of the same configuration reads 13.29 ms per step where the profile
+R13 quotes reads 11.19 ms (`artifacts/profile_after_opposite.log`); what part of the step is the
+pair itself is not separated here. The reflex companions carry no synapse.
+
+*What R19 does not show.* Nothing downstream reads the second cell of any pair yet: no edge leaves
+an opposite sheet toward a reflex, association or motor cell, and the dark half of the picture stops
+at its own convergence sheet. A black picture therefore still reaches no reflex cell, and this is
+not a claim that the animal notices that the light has gone out. The earlier single-layer build had
+the same gap for a different reason and reported it: with the pair summed into one number at the
+last layer, a black frame left the whole output sheet inhibited and dark, because every negative
+cell of every pair was lit and nothing above them preferred the dark. Closing that gap needs cells
+that prefer the dark the way a retina has both ON and OFF cells, so that an unlit picture drives a
+layer above the input; that is a structural step with its own measurements, and it is not taken
+here.
 
 ---
 
@@ -2674,7 +2730,7 @@ session with the DeepSeek large language model, at the direction of the human au
 
 ### 5.12 The rebuilt engine
 
-R12 and R13 use a second implementation of the architecture, and no other result in this paper does.
+R12 to R17 and R19 use a second implementation of the architecture, and no result before R12 does.
 It was written because the reference engine's tick (R11: 158 ms with plasticity enabled at 24x16)
 could not be run in a closed loop with a body, and because the quantity that decides a tick turned
 out to be connections rather than cells. The invariants are the ones of Section 1.1: one population
@@ -2685,22 +2741,22 @@ cortex; and learning by a local correlation rule that cannot see a target.
 
 | parameter | value |
 |---|---|
-| cells, shipped configuration | 584,137 |
-| synapses, shipped configuration | 1,812,331 |
-| eye | 192x144 pixels per eye, three channels, ten threshold pairs |
+| cells, shipped configuration | 750,075 |
+| synapses, shipped configuration | 1,978,219 |
+| eye | 192x144 pixels per eye, three channels, one cell per pixel and channel plus the companion cell of R19 |
 | motor / proprioceptive / association units | 1,600 / 512 / 2,048 |
 | tick | 10 ms of body time; the synaptic update runs every 50 ms of accumulated time |
 | engine | graphics card (CUDA), with an automatically selected host fallback |
-| whole step | 11.19 ms (89.4 steps/s), brain 7.24 ms, eyes 2.84 ms, physics 0.77 ms |
+| whole step | 13.29 ms (75.2 steps/s), brain 9.24 ms, eyes 2.86 ms, physics 0.82 ms |
 
 The correspondence with the reference build is at the level of the architecture and the rule, not of
 the cell count, and the two builds are therefore never mixed inside one result: every number in
-R1-R11 comes from the build of Methods 5.1, and every number in R12 and R13 from this one. Where the
+R1-R11 comes from the build of Methods 5.1, and every number in R12 to R17 and R19 from this one. Where the
 rebuild reproduces a published result it reproduces it in kind rather than to the digit (the gaze
 reflex, the righting sequence, the red-approach walk).
 
-The rebuild's own test suite is run with `python -m unittest discover -s tests` (160 tests, 135 s,
-`artifacts/tests_20260928.log`), and its fingerprint tool is
+The rebuild's own test suite is run with `python -m unittest discover -s tests` (199 tests, 130 s,
+`artifacts/tests_after_opposite.log`), and its fingerprint tool is
 `tools/check_model_fingerprint.py`, which is the instrument every change was required to pass. The
 scripts behind R12 and R13 are `tools/nursery.py`, `tools/probe_scale_walls.py`,
 `tools/probe_model_scale.py`, `tools/profile_live_step.py`, `tools/check_model_fingerprint.py` and
@@ -2710,7 +2766,7 @@ except that its own artifacts directory keeps only the runs cited above.
 
 ### 5.13 Measurements added on 27 and 28 September
 
-R14 to R17 and the scale numbers of R15 use the second implementation of Section 5.12, whose
+R14 to R17, R19 and the scale numbers of R15 use the second implementation of Section 5.12, whose
 development line is published beside it as `engine_v2/`. Every number is produced by a script whose
 name is given next to it and every run is kept as a log in `engine_v2/artifacts/`: the sparse-cost
 and sparse-scaling probes, the engine-comparison tool, the spatial-dimension probe, the eye
@@ -2721,8 +2777,8 @@ build's own source and its saved cell names (`artifacts/motor_resolution_probe.j
 `artifacts/old_representation_probe.json`).
 
 The plotting scripts for Supplementary Figures 5 and 6 are `出一张图_补充56.py`, which reads the same
-`.log` and `.json` files as the text. The rebuilt engine's test suite is unchanged at 160 tests; it was run again after the two
-library changes the merge experiments needed and reports 160 tests, all passing.
+`.log` and `.json` files as the text. The rebuilt engine's test suite was run again after the last
+change of 28 September, and reports 199 tests, all passing (`artifacts/tests_after_opposite.log`).
 
 ### 5.14 The merge measurements of 28 September
 
@@ -2754,6 +2810,30 @@ into a fresh brain, which reproduces that parent's behaviour to three decimals. 
 published with their logs (`artifacts/fusion_parents.json`, `artifacts/fusion_parents.log`,
 `artifacts/fusion_robot_parents.json`, `artifacts/fusion_robot_parents.log`) and Figure 11 is drawn
 from those two files.
+
+### 5.15 The opposite cell on every sense channel
+
+Each sense is two sheets of cells. For the reflex senses the pair is made in one place:
+``born_wired/reflex_controller.py`` creates ``body_touch_opposite``, ``foot_obstacle_opposite``,
+``foot_load_opposite`` and ``foot_slip_opposite`` (four cells each), ``cochlea_opposite`` (six),
+``auditory_spatial_opposite`` (six) and ``auditory_pinna_opposite`` (four), and in every step the
+driven sheet receives the sensory vector while its companion receives one minus that vector, taken
+from the same array. For vision, ``born_wired/embodied.py`` creates one cell per pixel per colour
+channel beside each photoreceptor, driven by one minus the pixel, and that sheet converges on
+``retina_opposite`` with the same gain and the same three-sector rule the lit sheet uses to reach
+``retina``.
+
+The lit and the unlit half are kept on separate cells on purpose. A cell that summed both halves of
+a pair with the same sign would lose the brightness altogether, and ``retina`` is this animal's
+colour reading -- red drives the aversive cells, green the appetitive ones, blue the curiosity cells
+-- where "not red" is not red. The unlit halves therefore have sheets of their own, and at present
+no innate valence and no reader: no edge leaves any opposite sheet toward a reflex, an association
+or a motor cell, and the only consumers are the four exam questions named in R19 and the live
+window's own readout (``retinal_opposite_activity``).
+
+This is structure and not a parameter: a companion sheet adds no gain, no threshold and no rule of
+its own beyond the injection of one minus the same number, and it is born with the animal like every
+other innate cell.
 
 ## Figures
 
