@@ -34,7 +34,7 @@ anything and holds both lessons, both on a 17-cell graph (both cues answered, ma
 +1.000, 5/5 seeds) and on the 1,813-cell body, where the merged animal walks 0.66 m on the cue one
 parent learned and braces on the cue the other learned, while a parent merged with itself reproduces
 its own behaviour to three decimals and two parents taught opposite answers to one cue merge into no
-answer at all. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden. The connection table also holds itself still without any decay term: over five minutes of ordinary life seven edges in ten do not move by more than 0.001, the largest change anywhere is a tenth of one per cent of a weight, and the table drifts up rather than down -- while a lesson written down the teachable route keeps 97-98% of its read-out after ten minutes of life, after ten minutes of the tone coming back, and after a second lesson on the same route, and a route that is used continuously climbs to its own ceiling and stops (1.98657, then 1.11257, then 0.02656 over three equal twenty-second stretches of teaching).
+answer at all. No rule lowers a weight in the configuration reported here (a global-decay knob exists, is off by default, and is reported in 4.6 as something that does not help), and the acquired walk does not yet stay upright; both are reported rather than hidden. The connection table also holds itself still without any decay term: over five minutes of ordinary life nine edges in ten do not move by more than 0.001, the largest change anywhere is a tenth of one per cent of a weight, and the table drifts up rather than down -- while a lesson written down the teachable route keeps 97-98% of its read-out after ten minutes of life, after ten minutes of the tone coming back, and after a second lesson on the same route, and a route that is used continuously climbs to its own ceiling and stops (1.98657, then 1.11257, then 0.02656 over three equal twenty-second stretches of teaching).
 
 ## Author Summary
 
@@ -1953,8 +1953,10 @@ the largest fall anywhere in the table is 6.0000 to 5.9937 on `tonic -> motor`, 
 cent of a weight whose structural floor is three per cent below birth; and between those same two
 populations the rises outnumber the falls, 11,399 against 7,587. The other falls are inside the eye's
 own first layer (`retinal_interneurons -> retinal_opponent`, 14,571 edges of the 40,163 that moved by
-more than 0.001) and on the two steering populations. Nothing anywhere in the table loses a
-meaningful fraction of its weight in five minutes of life.
+more than 0.001) and on the two steering populations. The largest absolute fall anywhere -- 0.0253
+-- is an edge born at almost nothing (a visual memory edge that had been inflated to 0.0253 and
+relaxed back to 0.0000, `retinal_memory -> aversive`); among the edges the instinct table
+calibrated, the largest fall in five minutes of life is the tenth of one per cent above.
 
 *A lesson is kept.* The teachable route is the one table the animal is meant to keep, and it is kept
 outright. Measured over one minute of life with the rule running (`the_memory_survives_a_long_life`),
@@ -1998,8 +2000,9 @@ cortical synapses reports:
 | adult neocortex, review | overall morphology and a subpopulation of small synaptic structures remarkably stable; cell-type-specific turnover in specific circuits | Holtmaat & Svoboda (2009) |
 | wake and sleep | wakefulness a net increase in synaptic strength, sleep a downscaling; cerebral metabolic rate falls 15-20% after about 2.5 h of sleep | Tononi & Cirelli (2006); Vyazovskiy et al. (2008) |
 
-Two of the three numbers are close: roughly seven edges in ten do not move by more than 0.001 in five
-minutes, and the minority that moves is bounded in both directions, which is the same shape as "a
+Two of the three numbers are close: nine edges in ten do not move by more than 0.001 in five
+minutes (202,527 of 1,978,225 moved further), and the minority that moves is bounded in both
+directions, which is the same shape as "a
 small fraction of new spines persists and the rest is removed". What the brain has and this rule does
 not is a *reason* for an edge to be one or the other: in the cortex a spine's stability depends on
 its age and on its history, while here the tether is one constant on every edge of the shipped
