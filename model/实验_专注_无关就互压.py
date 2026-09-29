@@ -161,9 +161,10 @@ def main():
                f"信号钉住时视觉区除输入外还亮：出生 {b.get('信号外还亮', -1)} / 无关 {无['信号外还亮']} / 相关 {关['信号外还亮']}")
         结果[str(seed)] = dict(基线=b, 无关=无, 相关=关)
     记("")
-    with open("日志_专注_无关就互压.log", "w", encoding="utf-8") as f:
+    名 = "日志_专注_无关就互压_%s" % ("真实" if 真实 else "小球")
+    with open(名 + ".log", "w", encoding="utf-8") as f:
         f.write("\n".join(行) + "\n")
-    with open("日志_专注_无关就互压.json", "w", encoding="utf-8") as f:
+    with open(名 + ".json", "w", encoding="utf-8") as f:
         json.dump(结果, f, ensure_ascii=False, indent=1)
 
 

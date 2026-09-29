@@ -14,7 +14,11 @@ day and describe the merge of two taught models; R19 and Methods 5.15 were added
 describe the opposite cell beside every sense channel, the one that fires when that channel has
 nothing on it; R20, claim (P10) and Methods 5.16 were added on 2026-09-29 and describe what the
 local rule does to a weight when it is used and when it is not, together with the three questions of
-the exam bank that read it. The full manuscript PDF in this directory was
+the exam bank that read it. R21 was added the same day and measures the inhibition between two
+populations as a function of whether they were ever active together; the same day corrected the
+generator of the background inhibitory wiring, whose local half had never been produced, and every
+experiment of R1-R12 was re-run afterwards with the corrected wiring -- the readings in this version
+are those re-runs. The full manuscript PDF in this directory was
 re-typeset from this file on 2026-09-29 and contains all of it (55 pages, 11 figures); the
 Nature Machine Intelligence short PDF is still the 2026-09-17 build and contains none of it, and
 Supplementary Figures 5 and 6 are new with this version. Every number
@@ -26,7 +30,7 @@ our prediction are reported as such and are listed in Section 4.5.*
 
 **Abstract**
 
-Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.73 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 750,075 cells and 1,978,219 synapses at 13.3 ms per tick on one consumer GPU, five times the cells of the reference build at about a twelfth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. Every sense channel
+Brains are born with largely pre-specified cortical wiring, and the only rule locally available to a synapse is correlation between the neurons it connects; machine-learning agents instead optimise a global objective. How far does the biological combination reach on its own? We built a system of 148,032 model cortical neurons connected by 309,148 pre-specified "instinct" synapses, driving a simulated quadruped with no reward, no error signal, no gradient and no training loop. Placed prone, it stands up on 5/5 network seeds; shown red, it walks toward the stimulus on 5/5, over a median 1.61 m; with no sensory input it collapses; with the instinct table cleared the same brains can neither stand nor approach (0/5). Silencing the prefrontal population abolishes visually guided walking (0/200 ticks, 5/5) while leaving a wired reflex unchanged. The behaviour is produced by the cortex rather than by the stimulus: removing the recurrent step removes the action while sparing the reflex. Adding innate structure grows the repertoire without retraining; a 200-cell dopamine population writes one new sense-to-action link during the life of a single brain; gaze tracking emerges from static look-at rules and a motion-onset reflex rather than being written down. Acquisition becomes a recipe once the sheet is given somewhere to write: a route laid between two populations at a weight too small to do anything, twenty seconds of contact, and one cell whose firing says only that this moment counts -- after which a tone that meant nothing drives the retreat cells at 1.000, while the same lesson writes nothing if the route was not laid down or the animal was never touched. The sheet can also be grown rather than retrained: a rebuilt engine carries 750,075 cells and 1,978,219 synapses at 13.3 ms per tick on one consumer GPU, five times the cells of the reference build at about a twelfth of the cost per tick, and what caps a larger sheet is two build rules rather than the hardware. A layer that is not the last one is a signal source on the same terms as the last, and the detail a compressed layer has lost is still readable underneath it: with a plastic route from the intermediate cells, two stimuli that the compressed layer cannot tell apart drive two different motor cells, in a 17-cell case and on a 1,813-cell body alike, and over ten minutes with learning always on. The sheet is spatial, and a step costs what is lit rather than what exists -- with the external drive held fixed, eight times the cells cost 1.06 times the time -- so the only walls met on the way up are rules of our own design. Two eyes converge, focus and move to wherever the picture is changing without any of the three being written down, and two ears separate front from back and left from right from two raw waveforms, with no spectrum, delay estimate or angle computed anywhere outside the cells. Every sense channel
 is a pair of cells -- one carrying what came in, one carrying what did not -- so a black screen or a
 silent room is still a reading in the input layer rather than nothing at all. Two brains that differ only in what they were taught differ only in the numbers written on their
 edges: adding two such weight tables and halving them gives a third model that was never taught
@@ -54,8 +58,8 @@ on the left, an answer leaves on the right (Brown et al., 2020), and the loss is
 through the stack (Lillicrap et al., 2020). In that picture the intermediate layers are the
 computation and the output layer *is* the answer.
 
-We work from a different picture, and the difference is not cosmetic. We state it as nine
-claims, (P1) to (P9), so that the results can be read as tests of specific ones.
+We work from a different picture, and the difference is not cosmetic. We state it as ten
+claims, (P1) to (P10), so that the results can be read as tests of specific ones.
 
 * **(P1) A layered sensory network is a compressor.** It exists to take a very large number of
   peripheral channels and reduce them to a small number of cortical channels. Its output is not an
@@ -68,7 +72,10 @@ claims, (P1) to (P9), so that the results can be read as tests of specific ones.
   by the current weights and the currents arriving on the somata. There is no separate inference
   stage. The testable consequence is sharp: remove the recurrent step and the behaviour should go
   with it, while anything the wiring maps directly from sense to muscle should survive untouched
-  (R8).
+  (R8). Co-activation has a size, and what sets the size is inhibition rather than anything being
+  switched off: most cells sit below threshold, a cell that is active while another is not gains
+  inhibitory weight on it, and the inhibitory current arriving anywhere grows with how much of the
+  sheet is active (R21).
 * **(P3) The prefrontal population compresses again, and the path is reciprocal** (Fuster, 2001;
   Miller & Cohen, 2001). It takes the already-compressed signals of several other regions and
   reduces them further, and then thinks with exactly the same rules as everything else. Information
@@ -218,6 +225,48 @@ All 148,032 cells are updated simultaneously, once per 20 ms tick (50 Hz), by
 There is no separate "inference" pass and no read-out layer. The motor command is literally the
 activity of 160 cells in the same array.
 
+**Where the inhibition comes from.** Every suppression in the instinct table borrows a cell from the
+8,000-cell inhibitory pool, and that cell's outgoing synapses are built by the connection builder
+rather than written in the table. Each inhibitory cell takes a fixed number of targets; half of them
+are taken from the addresses closest to its own (`抑制半径` = 4 addresses), half are scattered over
+the whole sheet, and every such synapse carries the same fixed weight (`抑制强度` = 1.5) and never
+changes. The split is a decision rather than a detail: the scattered half is what keeps two distant
+representations from being lit at once (R21), the local half is what keeps mutually exclusive codes
+(two postures, two colours) from co-firing, and the local half is the half that failed to build on
+the first attempt. The edge list is laid out source by source, and the builder split *that list* in
+half instead of splitting *each source's own targets*, so "the local half" was in fact the first half
+of the *sources*: on the reference build only 54,565 of the 148,032 cells could emit any inhibition
+at all, the whole prefrontal population (57,436 cells) emitted none, and the edge count was
+5,102,714. Corrected, 124,792 cells emit inhibition -- including all 57,436 prefrontal cells -- and
+the edge count is 7,239,774.
+
+We did not re-tune the strength constants, and the reason is a measurement rather than a preference.
+`诊断_修前修后_抑制电流对照.py` (log `诊断_修前修后_抑制电流对照.log`) rebuilds both versions of the
+builder side by side, on one seed and one red screen, and what the correction changes is *who can
+inhibit and where the inhibition lands*, not how hard the sheet is pressed:
+
+| build | inhibitory edges | cells that emit inhibition | inhibitory current per tick, whole sheet | arriving on the walk chain's head cell |
+|---|---|---|---|---|
+| before the correction | 5,102,714 | 54,565 (prefrontal 0) | 18,933 | 2.84 |
+| after the correction | 7,239,774 | 124,792 (prefrontal 57,436) | **21,485 (113%)** | **2.70 (95%)** |
+
+`抑制强度` = 1.5 and `抑制就近比例` = 0.5 are therefore left at the values they were calibrated to,
+and the one number that did have to be chosen is the local radius. Twelve seeds, placed prone and
+then shown red:
+
+| local radius (`抑制半径`) | stands up | walks toward red | median final height | median distance |
+|---|---|---|---|---|
+| 24 addresses | **5 / 12** | 12 / 12 | 0.199 m | +1.11 m |
+| 4 addresses | **12 / 12** | 11 / 12 | 0.258 m | +1.49 m |
+
+A wide local radius buys one seed of walking (12/12 against 11/12, the twelfth seed travelling
++0.03 m) and loses seven seeds of standing, so we took the radius that stands up and report the
+trade rather than the choice. Responsibility was localised to the local half rather than to the extra
+emitting cells by `诊断_抑制_拆开看_全随机还是就近.py`, and to the radius rather than to the strength
+or to the birth weights by `诊断_抑制就近比例扫一扫.py`, `诊断_抑制强度扫一扫.py` and
+`诊断_出生抑制权重扫一扫.py`. R1-R9 are reported on the corrected build; Methods 5.17 lists exactly
+what was re-measured and what was not.
+
 One region departs from "each tick replaces the state". Inside each named block of the prefrontal
 population the cells are wired head-to-tail into a closed chain (6,566 synapses in seven blocks), and
 the main loop *adds* the newly computed prefrontal code to the code still running, so that a block
@@ -357,12 +406,14 @@ the body, and gave it nothing but its own senses.
 
 | condition | measure | 5 seeds |
 |---|---|---|
-| placed prone, no instruction | final trunk height | **5/5 above 0.20 m**; median 0.261 m (min 0.261) from a starting 0.099 m |
-| placed upright, red region in front | forward displacement in 4 s | **5/5 above 0.30 m**; median +1.73 m (min +1.48, max +2.09) |
+| placed prone, no instruction | final trunk height | **5/5 above 0.20 m**; median 0.256 m (0.254-0.261) from a starting 0.099 m |
+| placed upright, red region in front | forward displacement in 4 s | **5/5 above 0.30 m**; median +1.61 m (min +0.75, max +1.84) |
 | placed upright, **no sensory input at all** | final trunk height / tilt | **5/5 collapsed**; median 0.184 m, tilted 41 degrees |
 | placed prone, **instinct table cleared** (background connectivity only) | final trunk height, then forward displacement with red ahead | **0/5 above 0.20 m**; median 0.184 m, every seed exactly the no-sensation value; **0/5 approach** (median -0.12 m) |
 
-(logs: `日志_闭环多种子_新.log`, `日志_白脑_新.log`; scripts `实验_闭环前提_多种子.py`, `实验_白脑对照.py`)
+(logs: `日志_闭环多种子_新.log`, `日志_白脑_新.log`; scripts `实验_闭环前提_多种子.py`,
+`实验_白脑对照.py`. The twelve-seed readings quoted below are `诊断_抑制半径_多种子.log`,
+script `诊断_抑制半径_多种子.py`.)
 
 The third row is the control that matters. With the sensory regions blanked, the body does not
 "do nothing gracefully" — it falls over, because the motor cells are receiving no current from
@@ -370,11 +421,27 @@ anywhere and the servo set-points collapse to rest. Nothing in the simulation ho
 except the cortex. Standing up happens because the body-state and proprioceptive regions report
 *lying down*, and the instinct table contains the rule "lying down -> stand up".
 
-Because the stand-up trajectory lives in the motor repertoire, the *height* reached is identical
-across seeds (0.261 m); what the random background changes is the walking distance, which varies
-between 1.48 and 2.09 m across the five seeds. We report this rather than a single run because
-the single-run version of this table appeared in an earlier draft of this project and was not
-reproducible evidence.
+Because the stand-up trajectory lives in the motor repertoire, the *height* reached is nearly the
+same across seeds (0.254 to 0.261 m, which is the stance pose itself); what the random background
+changes is the walking distance, which varies between 0.75 and 1.84 m across the five seeds. We
+report this rather than a single run because the single-run version of this table appeared in an
+earlier draft of this project and was not reproducible evidence. Twelve seeds of the same protocol
+give the height on **12/12** (0.253 to 0.262 m) and the approach on 11/12; the seed that misses
+travels 0.03 m, and it is not one of the five in the table.
+
+**What the local half of the inhibitory wiring costs, and how its radius is set.** Each cell has
+100 inhibitory outgoing synapses, 50 scattered over the whole sheet and 50 within a small radius
+(Methods 2.1). In this body that radius is not a free parameter, because the motor repertoire is a
+single timeline with one cell per tick (2.2): the local half reaches across as many ticks as the
+radius is wide, and the righting chain is itself a run of adjacent ticks. At a radius of 24 cells
+-- long enough to span more than one whole action -- the standing column reads **5/12** in the
+twelve-seed run (median 0.199 m, barely clear of the 0.184 m the body settles at with no sensation
+at all), while the approach column is 12/12. At a radius of 4 the standing column is **12/12**
+(median 0.258 m) and the approach column 11/12. The two readings bracket the same trade -- a
+shorter local radius leaves the innate chains intact and leaves the sheet's total inhibitory drive
+where the rest of the table was calibrated -- and we set the radius to 4 and report both, together
+with the sweeps of the two parameters that control this wiring (`诊断_抑制就近比例扫一扫.log`,
+`诊断_抑制强度扫一扫.log`). Nothing else in the model was re-tuned after the wiring was corrected.
 
 
 **Standing up is not, in this body, a control problem, and R1 should not be read as if it were.**
@@ -403,11 +470,11 @@ and before the cortical step. Nothing else changes.
 
 | condition | ticks with the walking action lit (of 200) | first fire | path length | prefrontal cells active (mean) |
 |---|---|---|---|---|
-| red, prefrontal intact | **199/200** (5/5) | tick 2 | 2.17-2.53 m | 1460-1461 |
-| red, prefrontal silenced | **0/200** (5/5) | never | 0.24-1.41 m | 0 |
-| black screen, prefrontal intact | 0/200 (5/5) | never | 0.55 m | 359 |
-| blue screen, prefrontal intact | 0/200 (5/5) | never | 0.22-1.40 m | 1554-1564 |
-| blue screen, prefrontal recomputed each tick | 0/200 (5/5) | never | 0.22-1.40 m | 1524-1534 |
+| red, prefrontal intact | **199/200** (5/5) | tick 2 | 1.28-1.76 m | 1456-1460 |
+| red, prefrontal silenced | **0/200** (5/5) | never | 0.35-1.67 m | 0 |
+| black screen, prefrontal intact | 0/200 (5/5) | never | 0.28-1.47 m | 310-324 |
+| blue screen, prefrontal intact | 0/200 (5/5) | never | 0.16-0.29 m | 1555-1558 |
+| blue screen, prefrontal recomputed each tick | 0/200 (5/5) | never | 0.16-0.29 m | 1524-1527 |
 
 (logs: `日志_前额叶多种子_新A.log`; script `实验_前额叶_多种子.py`, five build seeds. Row 5 is the
 control in which the prefrontal code is *not* allowed to persist -- it is recomputed from its input
@@ -416,8 +483,8 @@ on every tick.)
 Two things are worth separating here. First, the ablation is *specific*: silencing a population
 of 57,436 cells removes a specific visually guided behaviour and leaves the sensory response
 itself intact — a blue screen still drives 1,524 prefrontal cells when the code is recomputed
-every tick, and 1,554 when it persists (rows 5 and 4), while the red screen that does drive the
-behaviour lights 1,460 cells in that same population — and the behaviour that needs that
+every tick, and 1,555 when it persists (rows 5 and 4), while the red screen that does drive the
+behaviour lights 1,456 cells in that same population — and the behaviour that needs that
 population's contribution is gone on 5/5 seeds.
 
 Second, the mechanism is arithmetic rather than logical. The rule "red ahead -> walk" is written
@@ -435,8 +502,8 @@ whatever posture reflex is still running; the walking action itself never lights
 
 **The same stimulus, with and without persistence.** Rows 4 and 5 differ in one thing: whether the
 prefrontal code persists across ticks or is recomputed from its input on every tick. On the build
-reported here the two agree -- a blue screen delivers 0.72 to 0.74 of the 1.0 the walk needs and
-neither configuration crosses -- and that is a *change* from the previous build of this system,
+reported here the two agree -- a blue screen drives the two halves to 0.72 and 0.74 of the 1.0 the walk needs
+and neither configuration crosses -- and that is a *change* from the previous build of this system,
 which is worth stating rather than quietly dropping. In the earlier build a blue screen with
 persistence reached a sum of 1.07 and started the walk at tick 7 to 18 on 5/5 seeds.
 
@@ -447,37 +514,50 @@ with the action that region is already running. Any of the three can account for
 we have not separated them, so we report the current behaviour next to the earlier number rather than
 attributing it. What the comparison does show is how much of the earlier effect ran through the
 return line: with persistence, a blue screen used to drive the `看着红` block to 0.99 of its cells
-and now drives it to 0.59 (the table below).
+and now drives it to 0.58 (the table below).
 
 **The two halves, measured separately.** R2 shows that the behaviour needs both halves; it does
 not show what each half contributes. We measured both, tick by tick, in the same closed loop. Each
 row gives the mean fraction of the named block that is lit over 200 ticks, the drive that fraction
 contributes, the sum, and the walking tick count.
 
-| scene | `视觉:中有红` lit (of 1346) | `前额叶:看着红` lit (of 1440) | drive from the visual half (0.80 x) | from the prefrontal half (0.85 x) | sum | walking |
-|---|---|---|---|---|---|---|
-| *prefrontal recomputed each tick (the R1-R8 configuration)* | | | | | | |
-| red ahead | **1.00** | **1.00** | 0.80 | 0.85 | **1.65** | 199/200 (5/5 seeds) |
-| black | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0/200 (5/5) |
-| blue | 0.29 | 0.57 | 0.24 | 0.48 | 0.72 | 0/200 (5/5) |
-| green | 0.32 | 0.60 | 0.26 | 0.51 | 0.77 | 0/200 (5/5) |
-| *with the prefrontal loops (the R9 configuration)* | | | | | | |
-| red ahead | 1.00 | 1.00 | 0.80 | 0.85 | **1.65** | 199/200 (5/5) |
-| black | 0.00 | 0.11 | 0.00 | 0.09 | 0.09 | 0/200 (5/5) |
-| blue | 0.29 | **0.59** | 0.24 | 0.50 | 0.74 | 0/200 (5/5) |
-| green | 0.32 | **0.61** | 0.26 | 0.52 | 0.78 | 0/200 (5/5) |
+| scene | `视觉:中有红` lit (of 1346) | `前额叶:看着红` lit (of 1440) | drive from the visual half (0.80 x) | from the prefrontal half (0.85 x) | drive, both halves | inhibition arriving at the same cell | net | walking |
+|---|---|---|---|---|---|---|---|---|
+| *prefrontal recomputed each tick (the R1-R8 configuration)* | | | | | | | | |
+| red ahead | **1.00** | **1.00** | 0.80 | 0.85 | **1.65** | 2.90 | -1.12 | 199/200 (5/5 seeds) |
+| black | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0/200 (5/5) |
+| blue | 0.29 | 0.57 | 0.24 | 0.48 | 0.72 | 0.29 | +0.43 | 0/200 (5/5) |
+| green | 0.32 | 0.60 | 0.26 | 0.51 | 0.77 | 0.11 | +0.66 | 0/200 (5/5) |
+| *with the prefrontal loops (the R9 configuration)* | | | | | | | | |
+| red ahead | 1.00 | 1.00 | 0.80 | 0.85 | **1.65** | 2.90 | -1.12 | 199/200 (5/5) |
+| black | 0.00 | 0.10 | 0.00 | 0.09 | 0.09 | 0.00 | +0.09 | 0/200 (5/5) |
+| blue | 0.29 | **0.58** | 0.24 | 0.50 | 0.74 | 0.29 | +0.45 | 0/200 (5/5) |
+| green | 0.32 | **0.61** | 0.26 | 0.52 | 0.78 | 0.11 | +0.66 | 0/200 (5/5) |
 
 (logs: `日志_两半_无环.log` for the first block and `日志_两半_新.log` for the second, same script,
 5 seeds each, both re-run on the build of this paper; `实验_两半各亮多少.py`; the firing threshold
 is 1.0)
 
+**Why the red row's net is negative while the walk is running.** The inhibition column is the
+corrected background wiring (Methods 2.1), and what it is doing is worth separating from what the
+instinct does. Hold the red screen, the body and the seed fixed and only stop the action's time-line
+from handing off -- clear the motor-memory region at the end of every tick, so no tick cell can drive
+the next one -- and the same cell reads 1.64 of drive against **0.00** of inhibition (net **+1.64**),
+because the inhibition was the line itself. Let the line run and the same cell reads 1.78 against
+2.79 (net -1.01), and the walk is lit on 199 of 200 ticks. The drive is therefore what starts the
+action: 1.64 for red against 0.09 for a black screen, both with the line held still. What the
+inhibition column measures is the running trajectory inhibiting its own neighbourhood, and that is
+why the red row -- the only row in which the action runs -- is the only row with a negative net.
+(log: `诊断_头细胞的抑制是谁给的.log`; script `诊断_头细胞的抑制是谁给的.py`; five seeds, red and black,
+200 ticks per arm.)
+
 The visual half is the same in both blocks, because it is the front end: near-binary (1.00 for red,
 0.29-0.32 for blue and green, 0.00 for black). The prefrontal half is the one that moves, and on
-this build it barely moves with persistence: 0.57 against 0.59 for blue, 0.60 against 0.61 for
+this build it barely moves with persistence: 0.57 against 0.58 for blue, 0.60 against 0.61 for
 green. Persistence therefore no longer drives it into saturation, the sums rise only from 0.72 to
 0.74 and from 0.77 to 0.78, and neither colour crosses the threshold. The one thing persistence
 does change in this table is the black row: with nothing on the screen at all, the block drifts up
-to 0.11 of its cells over the run -- activation that no sensory input is producing -- which is the
+to 0.10 of its cells over the run -- activation that no sensory input is producing -- which is the
 accumulation R9 reports as the unfinished part of the system.
 
 Two things follow. First, in the configuration of R1-R8 both halves are colour-selective but not
@@ -528,7 +608,7 @@ tone *while* red is present, and holding the gaze on a small moving ball.
 (log: `日志_分阶段_新.log`; script `实验_本能分阶段.py`; three build seeds per stage, and all five
 behaviours re-measured at every stage)
 
-The medians behind the matrix: standing up leaves the trunk at 0.184 m at stage A and 0.261 m from
+The medians behind the matrix: standing up leaves the trunk at 0.184 m at stage A and 0.255 m from
 stage B onwards; the walking action is lit on 0 of 200 ticks at stages A and B and on 199 of 200
 from stage C; the sound response is 0 ticks at A-C and 100 ticks from D; gaze error is 15.3 degrees
 (unwired) at A-D and 5.6 degrees at E. The no-sensation control collapses to 0.184 m at every
@@ -556,7 +636,7 @@ behaviour, not only in the table.
 **One cell of the matrix fails.** "Stopped by the tone" is 0/3 at every stage, including E, where
 all 585 rules are present. The tone *does* stop the walking: with red alone the walking action is
 lit on 199 of 200 ticks, and with red and the tone together it is lit on 15 of 200 (median), and the
-body travels 0.11 m instead of 1.83 m. Fifteen ticks is one further cycle of the fifteen-tick walk,
+body travels 0.04 m instead of 1.00 m. Fifteen ticks is one further cycle of the fifteen-tick walk,
 so the action terminates within one cycle of the tone arriving. It nevertheless fails the criterion
 we fixed in advance (at most 10 of 200 ticks) and we report it as a failure rather than move the
 threshold afterwards..
@@ -585,104 +665,96 @@ before any drift, and once after a 3-degree sweep has run to its stopping point.
 columns are the control for the "after" columns: the same brains, the same weights, the same
 stimulus schedule, with nothing but that one sweep between them.
 
-| hue | `视觉:中有红` lit (of 1346) | `前额叶:看着红` lit (of 1360) | visual half | prefrontal half | sum | seeds that start the walk, **before** the drift | **after** it |
+| hue | `视觉:中有红` lit (of 1346) | `前额叶:看着红` lit (of 1440) | visual half | prefrontal half | sum | seeds that start the walk, **before** the drift | **after** it |
 |---|---|---|---|---|---|---|---|
-| 0 deg (red) | 1346 | 1357 | 0.80 | 0.85 | 1.65 | 5/5 | 5/5 |
-| 24 | 1192 | 1248 | 0.71 | 0.78 | 1.49 | 5/5 | 5/5 |
-| 48 | 1149 | 1248 | 0.68 | 0.78 | 1.46 | 5/5 | 5/5 |
-| 72 | 1038 | 1243 | 0.62 | 0.78 | 1.39 | 5/5 | 5/5 |
-| **96** | 663 | 1051 | 0.39 | 0.66 | **1.05** | **4/5** | **5/5** |
-| 120 (green) | 367 | 844 | 0.22 | 0.53 | 0.75 | 0/5 | 0/5 |
-| 144 | 439 | 959 | 0.26 | 0.60 | 0.86 | 0/5 | 0/5 |
-| **168** | 529 | 1106 | 0.31 | 0.69 | **1.01** | **4/5** | **5/5** |
-| **180 (cyan)** | 565 | 1111 | 0.34 | 0.69 | **1.03** | **4/5** | **5/5** |
-| 204 | 507 | 1070 | 0.30 | 0.67 | 0.97 | 0/5 | 0/5 |
-| 240 (blue) | 337 | 794 | 0.20 | 0.50 | 0.70 | 0/5 | 0/5 |
-| black screen | 0 | 3 | 0.00 | 0.00 | 0.00 | 0/5 | 0/5 |
+| 0 deg (red) | 1346 | 1428 | 0.80 | 0.84 | 1.64 | 5/5 | 5/5 |
+| 24 | 1192 | 1329 | 0.71 | 0.78 | 1.49 | 5/5 | 5/5 |
+| 48 | 1149 | 1309 | 0.68 | 0.77 | 1.46 | 5/5 | 5/5 |
+| 72 | 1038 | 1298 | 0.62 | 0.77 | 1.38 | 5/5 | 5/5 |
+| **96** | 663 | 1093 | 0.39 | 0.65 | **1.04** | **0/5** | **4/5** |
+| 120 (green) | 367 | 862 | 0.22 | 0.51 | 0.73 | 0/5 | 0/5 |
+| 144 | 439 | 1006 | 0.26 | 0.59 | 0.85 | 0/5 | 0/5 |
+| **168** | 529 | 1147 | 0.31 | 0.68 | **0.99** | **1/5** | **3/5** |
+| **180 (cyan)** | 565 | 1165 | 0.34 | 0.69 | **1.02** | **2/5** | **2/5** |
+| 204 | 507 | 1111 | 0.30 | 0.66 | 0.96 | 0/5 | 0/5 |
+| 240 (blue) | 337 | 817 | 0.20 | 0.48 | 0.68 | 0/5 | 0/5 |
+| black screen | 0 | 0 | 0.00 | 0.00 | 0.00 | 0/5 | 0/5 |
 
-(logs: `日志_色相红块_新.log` for the two populations (identical to the pre-loops
-`旧日志_20260916_加环前/日志_色相红块.log`), `日志_渐变边界_无环.log` for the behaviour; scripts
-`诊断_色相_红块.py`, `实验_渐变_边界.py`. R4, like R1-R3 and R5-R8, was measured with the prefrontal
+(logs: `日志_色相红块_新.log` for the two populations and `日志_渐变边界_无环.log` for the behaviour,
+both re-run on the corrected wiring; scripts `诊断_色相_红块.py`, `实验_渐变_边界.py`. R4, like R1-R3 and R5-R8, was measured with the prefrontal
 non-persistent -- `前额叶不保留=1`, Methods 5.5.)
 
 Two things are in this table, and they came apart.
 
-**The boundary is where the sum crosses, and it is there in a brain that has never learned.** Every
-hue whose two halves sum to 1.01 or more starts the walk on **4-5 of 5** brains; every hue whose
-halves sum to 0.97 or less starts it on **0 of 5**. Nothing else predicts the column, and the pattern
-is monotone in the sum and *not* monotone in hue: cyan at 180 degrees, the opposite of red, comes
-closer to starting the walk (sum 1.03) than green at 120 degrees (sum 0.75), which is only half as
-far around the circle. The column is also not something learning built. With the correlation rule of
-2.3 switched off entirely -- no weight changes at all, before the probe or during it -- the same five
-brains give the same column: 96, 168 and 180 degrees recognised on four of five, every hue at 0.97 or
-below silent on all five (`日志_色相点亮_无环不学.log`, `诊断_色相点亮_前测.py` with `不学=1`).
+**The boundary follows the sum, and it is there in a brain that has never learned.** Every hue whose
+two halves sum to 1.38 or more starts the walk on **5 of 5** brains, and every hue whose halves sum to
+0.96 or less starts it on **0 of 5**; the three hues in between -- 0.99, 1.02 and 1.04 -- are the only
+split ones, at 1, 2 and 0 of 5. Nothing else predicts the column, and the order is monotone in the sum
+and *not* monotone in hue: cyan at 180 degrees, the opposite of red, comes closer to starting the walk
+(sum 1.02) than green at 120 degrees (sum 0.73), which is only half as far around the circle. The
+column is also not something learning built. With the correlation rule of 2.3 switched off entirely --
+no weight changes at all, before the probe or during it -- the same five brains give the same column:
+96, 168 and 180 degrees recognised on 0, 1 and 2 of five, and every hue at 0.96 or below silent on all
+five (`日志_色相点亮_无环不学.log`, `诊断_色相点亮_前测.py` with `不学=1`).
 
-**The drift moves one brain, and it is the brain that was sitting on the line.** The three hues that
-change between the two columns are exactly the three whose sums lie inside 0.05 of the threshold: 96,
-168 and 180 degrees, going from 4 of 5 brains to 5 of 5. The brain that changes is seed 20260918,
-which sat at 0 of 8 ticks on all three of those hues before the drift and at 7 of 8 after it. Every
-hue at 0.97 or less stays silent in both columns, and no hue moves in the other direction. The drift
-does move the boundary, then -- in one brain of five, at the three hues that were within a twentieth
-of the line.
+**The drift moves the hues that were sitting on the line, and nothing else.** The three hues that
+change between the two columns are exactly the three whose sums lie within 0.05 of the threshold. At
+96 degrees the drift takes the column from 0 of 5 brains to 4 of 5, and the per-seed tick counts from
+0, 0, 0, 0, 0 to 7, 0, 7, 7, 7; at 168 degrees it takes 1 of 5 to 3 of 5; at 180 degrees, which two
+brains already recognised, it changes nothing. Every hue at 0.96 or less stays silent in both columns,
+and no hue moves in the other direction. Being walked out to 96 degrees is not the same as being
+taught a new colour -- the brain has never been given a reward for this one, and nothing in the
+protocol says which colour is wanted -- but it is enough to carry four brains of five across the line
+at 96 and two at 168.
 
 **The sweep measures how far the rule reaches.** The protocol above also gives a single number per
 run: how far the colour can drift before recognition stops.
 
 | step size | plasticity | hue at which the sweep stopped (one value per seed, in seed order) | median |
 |---|---|---|---|
-| 3 deg | **on** | 96, 96, 96, 96, 96 | **96** |
-| 3 deg | off | 96, 96, 96, 96, **72** | 96 |
-| 6 deg | **on** | 102, 102, 102, 102, 102 | **102** |
-| 6 deg | off | 102, 96, 102, 102, **72** | 102 |
+| 3 deg | **on** | 96, 93, 96, 96, 96 | **96** |
+| 3 deg | off | 78, 45, 72, 87, 93 | 78 |
+| 6 deg | **on** | 96, 90, 96, 96, 96 | **96** |
+| 6 deg | off | 78, 42, 72, 84, 90 | 78 |
 | 12 deg | **on** | 96, 96, 96, 96, 96 | **96** |
-| 12 deg | off | 96, 96, 96, 96, **72** | 96 |
+| 12 deg | off | 72, 48, 72, 84, 84 | 72 |
 
-(logs: `日志_渐变正式_新.log` for the 3-degree rows and `日志_渐变正式_6和12.log` for the rest, both
-on the build of this paper; script `实验_渐变_正式协议.py`; the same non-persistent configuration as
-the table above.)
+(log: `日志_渐变正式_新.log`, all three step sizes in one run on the build of this paper; script
+`实验_渐变_正式协议.py`; the same non-persistent configuration as the table above.)
 
-The brain that moves at every step size is seed 20260918, and it is the one whose sums at 96, 168
-and 180 degrees lie within 0.05 of the threshold. With the rule off it stops at 72 degrees; with the
-rule on it reaches the top of the grid -- 96 at a step of 3 and of 12 degrees, 102 at 6 -- and the
-tail probes of that run then start the walk at 180 degrees on 7 of 8 ticks, where with the rule off
-they start it on 0 of 8. One further brain, seed 20260915, moves at the 6-degree step and not at the
-other two, and the difference between those runs is the grid rather than the rule: the sum of the
-two populations is not monotone in hue (it falls from 1.05 at 96 degrees to 0.75 at 120 and rises
-again to 1.03 at 180), so the largest grid point below the boundary is 96 degrees at a step of 3 or
-12 and 102 degrees at a step of 6, and whether a brain crosses at 102 depends on which side of the
-line its sum at 102 degrees falls. Counting how many brains move across step sizes would be counting
-grid points rather than brains.
+The rule moves the boundary outward at every step size, and where it stops does not depend on the
+grid: with the correlation rule on the sweep stops at 96 degrees in 13 of the 15 runs and at 90 or 93
+in the other two, at steps of 3, 6 and 12 degrees alike. With the rule off it stops between 42 and 93
+degrees, a median of 78 over the fifteen runs against a median of 96 with the rule on. What stops the
+sweep is the hue at which the visual half falls off its island -- 0.39 at 96 degrees against 0.22 at
+120 -- and not how finely the sweep is gridded. The tail probes say the same thing from the other
+side: after the sweep has stopped at 96, a jump straight to 120 degrees starts the walk on 0 of 8
+ticks in all thirty runs of both conditions, while a jump to 180 degrees starts it on 7 of 8 in 9 of
+the 15 runs with the rule on and 6 of the 15 with it off.
 
-**So the rule carries a marginal stimulus to the edge of its island, and no further.** On the build
-of the main table, four brains of five already sit just above the line at those three hues, so a rule
-that can push a marginal stimulus across the line has almost nothing left to push, and the effect
-shows up in one brain of five at a step of 3 or 12 degrees and two at a step of 6. On the earlier build all five brains sat just *below* the line at the same three
-hues, and there the same rule carried all five out to 96 degrees and across the gap to 168 and 180. In both builds the rule moves the boundary outward as far as the
-edge of the visual island the colour belongs to -- 96 degrees, where the visual half of the sum
-falls from 0.39 to 0.22 -- and in neither build does it cross the gap at 120-144 degrees, which
-stays refused by every brain in every condition. The prediction we started from -- that a synapse
-with no tolerance, only a rate, would widen recognition wherever its cells had been co-active -- is
-therefore **half right, and the half that fails is the instructive one**: the rule does widen
-recognition, but only over the island the sensory front end already formed, and only for stimuli
-whose drive is already within a few hundredths of the line, so on the build we report it is visible
-in one brain of five rather than in all five. Learning fills in a boundary; it does not draw one.
+**So the rule carries a marginal stimulus to the edge of the island it belongs to, and no further.**
+The three hues whose sums sit within 0.05 of the threshold are the only ones the rule moves, and the
+reach of the rule is the reach of the island: recognition is extended out to 96 degrees, where the
+visual half of the sum falls from 0.39 to 0.22, and it never crosses the gap at 120-144 degrees, which
+stays refused by every brain in every condition. The prediction we started from -- that a synapse with
+no tolerance, only a rate, would widen recognition wherever its cells had been co-active -- is
+**right about the widening and wrong about its reach**: the rule does widen recognition, but only over
+the island the sensory front end already formed, and only for stimuli whose drive is already within a
+few hundredths of the line. Learning fills in a boundary; it does not draw one.
 
-**Why we quote two builds of the system.** A hue whose two halves sum to 1.05 is 0.05 above the
-threshold; a hue at 1.01 is 0.01 above it. Whether a hue that marginal ignites is decided by the
-random background connectivity the brain happens to be born with, and by nothing we control. We know
-this because we measured the same protocol twice, on two builds that differ by 200 cells (the
-dopamine region of R9) and by the draw of that background connectivity. On the earlier build the
-same five brains sat *below* the line at all three of those hues before any drift -- 0 of 5 at 96, at
-168 and at 180 -- while with the correlation rule off their sweeps stopped between 48 and 72 degrees,
-and with it on between 84 and 96: 96 degrees in 14 of the 15 runs, across step sizes of 3, 6 and 12
-degrees. On the build of the main table,
-four brains of five sit above the line at the same three hues and one does not, and only that one
-moves. The measurement of the *sums* is stable across builds; which side of the line a 1.05 hue falls
-on is a draw, and it is that draw which decides how much work the rule has left to do. We therefore
-make the claim about the sums and about the reach of the rule rather than about how many brains will
-show it: the boundary of a behaviour assembled from two populations is the value at which those
-populations sum past threshold, and the local rule can carry a stimulus sitting within a few
-hundredths of that value across the line and as far as the edge of its island, and no further.
+**Why the boundary sits where it does rather than where the threshold is.** A hue whose two halves
+sum to 1.02 is 0.02 above the nominal threshold, and it starts the walk on 2 brains of 5, while a hue
+at 1.38 starts it on 5 of 5. Whether a hue that marginal ignites is decided by the random background
+connectivity the brain happens to be born with, and by nothing we control -- and the same protocol
+measured on two wirings of that background shows it. On the wiring of the previous version the same
+three hues sat *above* the line and four brains of five recognised them before any drift; on the
+corrected wiring of this version they sit just below it and 0, 1 and 2 of five do. The measurement of
+the *sums* is stable between the two wirings (1.65 against 1.64 at 0 degrees, 1.05 against 1.04 at
+96); which side of the line a marginal hue falls on is a draw. We therefore make the claim about the
+sums and about the reach of the rule rather than about how many brains will show it: the boundary of
+a behaviour assembled from two populations is the value at which those populations sum past threshold,
+and the local rule can carry a stimulus sitting within a few hundredths of that value across the line
+and as far as the edge of its island, and no further.
 
 **And the population it all rests on is not a concept.** The same table shows that the block the
 calibration labelled "there is red in front of you" is lit on **42 percent** of its cells by a cyan
@@ -746,23 +818,26 @@ turn, and placed the same small ball in all 16 columns:
 | reflex wired to | columns where the layer has a name for that direction | columns the eye turns toward |
 |---|---|---|
 | nothing (control) | 0 / 16 | 0 / 16 |
-| layer 1 | 14 / 16 | 10 / 16 |
-| layer 2 | 13 / 16 | 9 / 16 |
-| layer 3 (compressed) | 13 / 16 | 10 / 16 |
+| layer 1 | 14 / 16 | **0 / 16** |
+| layer 2 | 13 / 16 | **0 / 16** |
+| layer 3 (compressed) | 13 / 16 | **0 / 16** |
 
 (log: `日志_分层.log`; script `实验_追踪靠的是哪一层.py`)
 
-The compressed layer still supports saccades. The reason is that a "blurred" name is still a
-*selective* name: the cells that respond to a ball in column c are scattered in space, but they
-still respond preferentially to column c, and in this reflex it is the identity of the active
-name that matters, not where its cells sit. So the cost of compression in this system is
-representational precision, not the loss of the function. We report the prediction failing
-rather than dropping the experiment, because it defines the boundary of the claim: *the
-compressed layer is not the answer, but neither is it useless.* What the measurement does
-establish is the thing the framing needs — that the amount of information about the outside
-world carried by the last layer of a hierarchy is strictly smaller than what the first layer
-carries, and that "read the answer off the last layer" would therefore be reading the wrong
-place.
+On the wiring we report, no layer supports the re-wired reflex. Re-calibrating the same per-column
+names at each layer and wiring the identical reflex to each in turn now leaves the eye unmoved in
+every arm, including the uncompressed first layer whose columns are perfectly exclusive: the reflex
+fires, and the eye does not turn. The innate reflex of R6 -- the one the instinct table actually
+calibrates, wired to the visual-detail region -- still turns the eye in every gaze experiment of this
+paper, so what fails is the re-wired reflex and not gaze. The likely cause is the correction to
+background inhibitory wiring described in Methods 2.1: the corrected wiring gives each cell local
+inhibitory neighbours, and a reflex weaker than the innate one no longer clears them. We report the
+measurement rather than the older one, which was taken before that correction, and we note plainly
+that on the corrected wiring this experiment no longer discriminates between layers; the two results
+above it do not depend on it. What they establish is what the framing needs -- that the amount of
+information about the outside world carried by the last layer of a hierarchy is strictly smaller than
+what the first layer carries, and that the reading of an answer off the last layer would therefore be
+reading the wrong place.
 ### R6. Gaze tracking is emergent, not written down (Figure 7)
 
 Nothing in the instinct table refers to movement, velocity, or tracking. The gaze behaviour is
@@ -788,7 +863,7 @@ Measured behaviour:
 
 | scene | mean angular distance between the gaze centre and the object | eye at the end |
 |---|---|---|
-| 0.05 m ball crossing the field from -25 deg at 0.5 m/s | **5.6 deg** (max 29.2 while the object is still far off) | +24.6 deg |
+| 0.05 m ball crossing the field from -25 deg at 0.5 m/s | **5.6 deg** (max 29.2 while the object is still far off) | +24.7 deg |
 | 0.05 m ball suddenly appearing at +20 deg, 2 s in | **4.8 deg** | +21.4 deg |
 | empty scene for the whole trial | **0.0 deg — the eye does not move at all** | +0.0 deg |
 
@@ -819,9 +894,9 @@ Ball placed straight ahead, 4 s, eye free:
 
 | shift | rules changed | walking still works | final eye angle | where the object ends up relative to gaze centre |
 |---|---|---|---|---|
-| -3 columns (-18.8 deg) | 222 | 7/8 ticks | +16.4 | -16.4 |
-| -2 columns (-12.5 deg) | 246 | 7/8 ticks | +10.7 | -10.7 |
-| -1 column (-6.2 deg) | 291 | 7/8 ticks | +3.6 | -3.6 |
+| -3 columns (-18.8 deg) | 222 | 7/8 ticks | +16.2 | -16.2 |
+| -2 columns (-12.5 deg) | 246 | 7/8 ticks | +9.7 | -9.7 |
+| -1 column (-6.2 deg) | 291 | 7/8 ticks | +3.2 | -3.2 |
 | 0 (baseline) | 0 | 7/8 ticks | +0.0 | +0.0 |
 | +1 | 291 | 7/8 ticks | +0.0 | +0.0 |
 | +2 | 246 | 7/8 ticks | -6.4 | +6.4 |
@@ -830,8 +905,9 @@ Ball placed straight ahead, 4 s, eye free:
 (log: `日志_整体偏移_正前方_新.log`, re-run on the current code in the non-persistent
 configuration, reproducing every entry of this table; script `实验_本能表整体偏移_正前方.py`)
 
-Outside the plateau, the resting point moves by one cell for every cell of imposed shift —
-6.4 degrees, within measurement noise of the 6.25-degree cell width — in both directions. The
+Outside the plateau, the resting point moves with the imposed shift and does not collapse: one
+column of shift leaves it 3.2 degrees off, two 9.7 and three 16.2, against a cell width of 6.25
+degrees. The
 plateau at shifts of 0 and +1 is a consequence of the dead zone being two cells wide: while the
 object is inside the (shifted) dead zone it receives no pull, so the eye does not move.
 Throughout, the behaviour remains ordered: the eye turns, stops, and leaves the object
@@ -851,12 +927,13 @@ independently, so the score is how many of three draws still work.
 |---|---|---|---|
 | none (baseline) | 1/1 | 1/1 | 1/1 |
 | random, 10% | 3/3 | 3/3 | 3/3 |
-| random, 25% | 3/3 | 3/3 | **0/3** |
-| random, 50% | **0/3** | 3/3 | 1/3 |
-| random, 75% | 1/3 | 3/3 | **0/3** |
+| random, 25% | 3/3 | 3/3 | **1/3** |
+| random, 50% | **0/3** | 3/3 | 2/3 |
+| random, 75% | 0/3 | 3/3 | **0/3** |
 | random, 100% | 0/3 | 3/3 | 0/3 |
-| one column over, 25% | 3/3 | 3/3 | 1/3 |
-| one column over, 50% | 0/3 | 3/3 | 1/3 |
+| one column over, 10% | 3/3 | 3/3 | 3/3 |
+| one column over, 25% | 3/3 | 3/3 | 2/3 |
+| one column over, 50% | 0/3 | 3/3 | 2/3 |
 | one column over, 75% | 1/3 | 3/3 | 1/3 |
 | one column over, 100% | 0/3 | 3/3 | 0/3 |
 
@@ -866,9 +943,9 @@ baseline was run once because all draws coincide when nothing is replaced)
 The pattern is not the one we expected, and it is more informative for it. The number of rules a
 behaviour is built from does not predict its tolerance. Walking is driven by exactly two rules that
 each contribute half the threshold, and it survives losing a quarter of the table; the gaze reflex
-is driven by 336 rules and fails on all three draws once a quarter of the table has been re-wired,
-because each of its rules names a specific visual column, and a destroyed column is a direction the
-eye no longer knows at all. What survives everything is the auditory pathway -- a single rule whose
+is driven by 336 rules and is the first to go, because each of its rules names a specific visual
+column and a destroyed column is a direction the eye no longer knows at all: at a quarter of the
+table re-wired it survives in 1 draw of 3, and by three quarters it is gone. What survives everything is the auditory pathway -- a single rule whose
 source is one named block, still working on 3/3 draws after *every* name in the auditory region has
 been replaced by some other name in that same region. The broadband sound is a broad stimulus;
 whatever the rule now points at, the stimulus lights it. Redundancy in the *stimulus* buys more
@@ -884,43 +961,46 @@ A red region is present for the first half second and is then replaced by a blac
 is counted by the same criterion as everywhere in this paper (the walking action's time cells are
 lit); the two codes are counted as the number of active cells inside the named blocks.
 
-| condition, after t = 1.0 s | walking action lit | `视觉:中有红` (1346 cells) | `前额叶:看着红` (1360 cells) |
+| condition, after t = 1.0 s | walking action lit | `视觉:中有红` (1346 cells) | `前额叶:看着红` (1440 cells) |
 |---|---|---|---|
 | *prefrontal recomputed each tick (the R1-R8 configuration)* | | | |
-| red throughout | 495 / 495 | 1346 | 1360 |
-| red removed at 0.5 s | **495 / 495** | **0** | **3** |
-| red removed at 0.5 s, action's time cells cleared once at 1.0 s | **0 / 495** | 0 | 1 |
-| never red, same clearing at 1.0 s | 0 / 495 | 0 | 2 |
-| never red (control, no clearing) | 0 / 495 | 0 | 3 |
+| red throughout | 495 / 495 | 1346 | 1433 |
+| red removed at 0.5 s | **495 / 495** | **0** | **5** |
+| red removed at 0.5 s, action's time cells cleared once at 1.0 s | **0 / 495** | 0 | 4 |
+| never red, same clearing at 1.0 s | 0 / 495 | 0 | 4 |
+| never red (control, no clearing) | 0 / 495 | 0 | 4 |
 | *with the prefrontal loops (the R9 configuration)* | | | |
-| red throughout | 495 / 495 | 1346 | 1360 |
-| red removed at 0.5 s | **495 / 495** | **0** | **1360** |
-| red removed at 0.5 s, action's time cells cleared once at 1.0 s | **0 / 495** | 0 | 1360 |
-| never red, same clearing at 1.0 s | 0 / 495 | 0 | 148 |
-| never red (control, no clearing) | 0 / 495 | 0 | 148 |
+| red throughout | 495 / 495 | 1346 | 1434 |
+| red removed at 0.5 s | **495 / 495** | **0** | **420** |
+| red removed at 0.5 s, action's time cells cleared once at 1.0 s | **0 / 495** | 0 | 427 |
+| never red, same clearing at 1.0 s | 0 / 495 | 0 | 152 |
+| never red (control, no clearing) | 0 / 495 | 0 | 152 |
 
 (5 seeds each; logs `日志_想还在吗_无环.log` and `日志_想还在吗_有环.log`, per-tick traces
 `日志_想还在吗_轨迹_无环.csv` and `日志_想还在吗_轨迹_有环.csv`; script `实验_想还在吗.py`)
 
 Row 2 makes the point in both configurations, and the difference between them is what R9 is about.
 The stimulus is gone, the visual code is at zero in both -- and the walking action is still lit on
-**every one of the 495 ticks**. What differs is the prefrontal code: 3 cells of 1360 when it is
-recomputed every tick, and all **1360** when it persists. In the persistent configuration there is
-literally a code for *red is there* running in the cortex while there is no red; in the
-non-persistent one there is not, and the walking continues anyway, because what is running the
-walk is the action's own trajectory.
+**every one of the 495 ticks**. What differs is the prefrontal code: 5 cells of 1440 when it is
+recomputed every tick, and **420** of 1440 when it persists, against 152 for a run that never saw red
+at all. In the persistent configuration a code for *red is there* is therefore running in the cortex
+while there is no red, on 29 percent of the block rather than on all of it; in the non-persistent one
+it is not, and the walking continues anyway, because what is running the walk is the action's own
+trajectory. (The corrected inhibitory wiring of this version is what holds the persistent code to a
+third of the block instead of saturating it: inhibition from the block's own activity is what decides
+how much of it stays lit -- R21.)
 
 Row 3 is where the two part company, and it is worth being careful about it. Clearing the action's
 fifteen time cells once stops the walk for good in both configurations (0 of 495 ticks) -- but for
-different reasons. Without persistence there is simply no drive left: the prefrontal code is at one
-cell. With persistence the thought is still fully lit, all 1360 cells, and the walk still does not
+different reasons. Without persistence there is simply no drive left: the prefrontal code is at four
+cells. With persistence the thought is still lit, 427 cells of the block, and the walk still does not
 come back -- because the drive that starts the walk is the sum of two halves, 0.80 from the visual
 region and 0.85 from the prefrontal (R2), and with the visual half at zero the surviving 0.85 is
 below the threshold of 1.0. The persistent code holds the thought; it cannot on its own re-start
 the action.
 
 The last two rows of the second block also show what persistence costs. With a black screen and no
-red anywhere in the run, the block drifts up to 148 of its 1360 cells over three seconds --
+red anywhere in the run, the block rises to 152 of its 1440 cells over three seconds --
 activation that no sensory input is producing -- and it does not start the walk (0 of 495 ticks).
 This is the same accumulation that R9 reports as the unfinished part of the system.
 
@@ -938,7 +1018,7 @@ purely feed-forward arc, sense to cortex to muscle, built from the same wiring.
 
 | behaviour | intact cortex (3 seeds) | recurrent step removed |
 |---|---|---|
-| stand up from prone, final trunk height | **0.261 m** (3/3) | **0.184 m** (0/3) |
+| stand up from prone, final trunk height | **0.255 m** (3/3) | **0.184 m** (0/3) |
 | red ahead: ticks with the walking action lit, of 200 | **199 / 199 / 199** | **0 / 0 / 0** |
 | small moving object: mean gaze error | 5.6 deg (3/3) | **5.6 deg (3/3)** |
 
@@ -1001,45 +1081,54 @@ whether the loops are needed for *acquiring* an association (they are not) and f
 | 3 teaching | standing, red ahead *and* sound, 200 ticks | **on** | running |
 | 4 test | cortical sheet cleared, prone again, black screen, **sound only**, 200 ticks | off | **200 / 200** (5/5) |
 
-(logs: `日志_发育多种子_A.log`, `日志_发育多种子_B.log`; script
+(logs: `日志_发育多种子_A.log` -- five seeds, re-run after the correction of 2.1. The earlier
+143,796-cell sheet, whose prefrontal population was 53,200 cells, is kept alongside it:
+`日志_发育多种子_A_修前.log` and `日志_发育多种子_B.log` are the same experiment on that build, and
+the sentences below that quote "the earlier build" read from those two. Script
 `实验_发育_声音叫走路_多种子.py`. The dopamine-dark control is `实验_发育_无奖励对照.py`
-(`日志_无奖励对照.log`); the no-loops control is `实验_发育_无环对照.py` (`日志_无环对照.log`,
-`日志_无环对照B.log`); the gait control is `诊断_天生步态稳不稳.py` (`日志_天生步态.log`).)
+(`日志_无奖励对照.log`); the no-loops control is `实验_发育_无环对照.py`
+(`日志_无环对照.log`, and `日志_无环对照_修前.log` and `日志_无环对照B.log` on the earlier build);
+the gait control is `诊断_天生步态稳不稳.py` (`日志_天生步态.log`). Controls not re-run after the
+correction are read from the earlier build; Methods 5.17 says which.)
 
 Stages 1 and 4 are the *same stimulus on the same brain*, before and after. In stage 1 the sound
 lights its own block -- 18 to 34 of the 1097 cells of the named block `听觉:低频响` -- and nothing
 else happens: the walking action is lit on none of the 30 ticks, and the body only settles onto the
-floor (0.030-0.049 m). In stage 4 the walking action is lit on essentially every tick, and the
-body, which has been placed on its belly, first stands up (trunk height 0.118-0.156 m to 0.300-0.396 m,
-5/5 seeds) and then walks 0.55-1.23 m.
+floor (0.023-0.072 m). In stage 4 the walking action is lit on essentially every tick, and the
+body, which has been placed on its belly, first stands up (trunk height 0.305-0.376 m, 5/5 seeds)
+and then walks 0.52-1.74 m.
 
-Teaching writes **242,685-396,607** new excitatory connections on top of the 309,148 innate ones,
-and they land where the teaching happened: auditory 121,510-147,104, proprioceptive
-103,491-120,985, visual 39,233-40,548, vestibular 6,634-11,172, motor 3,882-3,935, body state
-1,635, motor memory 138-197, visual motion 168, prefrontal 40.
+Teaching writes **286,487-380,931** new excitatory connections on top of the 309,148 innate ones,
+and they land where the teaching happened: auditory 148,928-179,787, proprioceptive
+79,523-90,704, visual 19,385-43,287, vestibular 4,794-16,716, motor 5,240-7,425, body state
+1,380, motor memory 76-276, visual motion 184-224, prefrontal 40 (the breakdown is printed for four
+of the five seeds; for seed 20260916 the log gives the total and an empty breakdown line).
 Nothing here is written by hand and there is no teacher signal; the only difference between stage 1
 and stage 3 is that 200 cells were lit while the behaviour was running.
 
 **The control the claim needs.** The same four stages, with the dopamine region left dark: teaching
-writes **0 new connections**, and stage 4 stays at **0/200 ticks** of walking on 3/3 seeds -- the
-body never stands up (final height 0.103-0.205 m, which is the prone height). It is the
+writes **0, 7 and 13** new connections on the three seeds, and stage 4 stays at **0/200 ticks** of
+walking on 3/3 seeds -- the body never stands up (final height 0.101-0.115 m, which is the prone
+height). It is the
 reward-like signal, not the passage of time and not the sound, that does the writing.
 
 **What each addition buys.** Repeating the same four stages with the prefrontal replaced every tick
--- no loops, no persistence -- still acquires the behaviour: the walking action is lit on 199-200 of
-200 test ticks on 5/5 seeds and the body travels 1.13-2.43 m, with 640,698-716,731 connections
-written. So **the association does not need persistence**. What persistence buys is the *standing
-up*: with the loops, 5/5 brains stand up in stage 4; without them, 1/5 does (final heights of 0.155,
-0.060, 0.061 and 0.155 m against 0.352 m). The reading we take is that the sound reaches the walking entry
-either way, but acting on a thought about standing up requires the thought about standing up to
-last longer than the tick that produced it.
+-- no loops, no persistence -- still acquires the behaviour: the walking action is lit on 200 of
+200 test ticks on both seeds re-run after the correction, and the body travels 0.96-1.01 m, with
+320,764-391,491 connections written; on the earlier build the same configuration gave 199-200 of 200
+ticks on 5/5 seeds, 1.13-2.43 m and 640,698-716,731 connections. So **the association does not need
+persistence**. What persistence buys is the *standing up*: with the loops, 5/5 brains stand up in
+stage 4; without them, 1/5 did on the earlier build, and neither of the two seeds re-run after the
+correction does (final heights 0.063 and 0.056 m against 0.305-0.376 m with the loops). The reading
+we take is that the sound reaches the walking entry either way, but acting on a thought about
+standing up requires the thought about standing up to last longer than the tick that produced it.
 
 **What persistence costs, and what we did not get right.** With the loops the prefrontal
 population is an accumulator: each tick's code is added to the last and nothing removes it, so a
 named block stays lit after the stimulus that lit it has gone (R8). That is what the loops are for
 -- a code that cannot outlast its stimulus cannot be thought with -- and it is what lets the sound
 of stage 4 keep the walk running. What the loops do *not* do on this build is stay
-colour-selective. A blue screen drives the block to 0.59 of its cells against 0.57 without the
+colour-selective. A blue screen drives the block to 0.58 of its cells against 0.57 without the
 loops, and the sums are 0.74 and 0.72 (R2), so on this build a sub-threshold colour is not carried
 across the line; on the earlier build of the system it was (blue reached 1.07 and the walk started
 on 5/5 seeds), and R2 reports the change next to the numbers rather than hiding it. What the loops
@@ -1082,10 +1171,10 @@ times a small number is a small number. We report the knob as a bounded result, 
 it trades unbounded growth for a population that is either sparse-hundreds or dark, with little room
 between.
 
-**What fails in R9.** On 4 of 5 seeds the acquired behaviour does not stay upright: the body
-topples 67-105 ticks into the test, after 1.03-1.23 m (the fifth seed walks the full 200 ticks,
-0.55 m, tilted 11 degrees). Two controls on the same taught brains rule out the reward-written connections and
-locate the rest.
+**What fails in R9.** On 3 of the 5 seeds re-run after the correction the acquired behaviour does
+not stay upright: the body topples 49, 72 and 77 ticks into the test. The other two walk the full 200
+ticks, 1.74 m straight and 0.52 m tilted 11 degrees. Two controls on the same taught brains rule out
+the reward-written connections and locate the rest.
 
 | seed | never taught: red *and* sound, no learning | taught: test, learning on | taught: test, learning off |
 |---|---|---|---|
@@ -2029,6 +2118,67 @@ interference question is asked once, for one pair of tones down one route; that 
 arbitrary pairs of lessons cannot overwrite one another. And the falling edges of the first table are
 only described, not attributed: which of them changes behaviour, and by how much, is not measured
 here.
+### R21. What keeps a thought from lighting the whole sheet (no figure)
+
+Nothing in this system switches a cell off. A cell fires when the excitatory current arriving on its
+soma reaches 1.0, and that current is already net of the inhibitory cells driven by whatever was
+active on the same tick (Methods 2.1). Sparseness is therefore a consequence of wiring and of
+nothing else, and there are two parts to it. A cell carries 100 inhibitory outgoing synapses --
+half of them on the addresses nearest its own, half scattered over the sheet (Methods 2.1) -- so the
+total inhibitory current arriving anywhere rises with how much of the sheet is lit; and the
+correlation rule of 2.3 runs on the inhibitory side as well as on the
+excitatory one, so that cells which are active together lose the inhibitory weight between them
+(-0.0005 per tick, plus a disinhibitory cell at +0.02) while a cell that is active against a silent
+one gains it (+0.0005 per tick, capped at 0.6).
+
+**Protocol.** We hold 60 prefrontal cells lit -- "the thing being thought about" -- and 200 visual
+cells lit -- "something in the world" -- and measure the inhibitory current the first delivers to
+the second, in two arms whose only difference is their history. In the *unrelated* arm the two
+blocks are each lit for 30 ticks but never together, separated by 40 ticks of silence, which is
+longer than the trace's life, so the rule counts them as uncorrelated; the pair of episodes is
+repeated eight times. In the *related* arm the same two blocks are lit together, for the same eight
+rounds.
+
+| arm | P -> A inhibitory weight | inhibitory current delivered to the signal cells | net drive on the signal cells | cells the signal then recruits |
+|---|---|---|---|---|
+| at birth, no history | 0.072 | 14.5 | -- | -- |
+| unrelated, eight rounds apart | **0.320** | **64.4** | +37.8 without the thought, **-18.3** with it | **0** |
+| related, eight rounds together | **0.0031** (81 per cent of the edges driven to zero) | **0.3** | +37.8 without the thought, **+54.7** with it | **4** |
+
+(log: `日志_专注_无关就互压_小球.log` and its `.json`; script `实验_专注_无关就互压.py`, both
+arms in the same run on the same build, seeds 20260914 and 20260915, at a width of 视觉 2,000 /
+听觉 500 / 前额叶 2,000 / 运动 200. The second seed reproduces every column -- 0.327 and 63
+against 0.0038 and 0.5, 118-fold; -16.7 with the thought against +54.4; 1 cell recruited against
+7. The same script at 148,032 cells keeps the direction, 0.077 to 0.263 against 0.015, 17.5-fold,
+with a much smaller absolute current on any single 60-cell-to-200-cell pair:
+`日志_专注_无关就互压_真实.log`.)
+
+The two arms are compared **within** the run, and the "without the thought" column is identical in
+both (37.8): the two arms receive the same eight rounds of activity in the same order and differ
+only in whether the two blocks overlap. What they show is the rule working in both directions. A
+thought that is never active with a population drives its synapses onto that population to 0.320 --
+near the 0.6 cap, and 209 times the current the related arm leaves behind, or 118 times on the
+second seed -- and it takes the signal cells from 37.8 to -18.3, i.e. from above threshold to below
+it, without silencing the signal itself: those 200 cells are driven from outside and they fire
+either way. A thought that is repeatedly active with the same population drives 81 per cent of
+those synapses to zero, leaves the signal 17 points *better* off than it was alone, and the signal
+then recruits 4 further visual cells where the unrelated thought recruited none.
+
+That is the sense in which a thought has a boundary without anything being excluded. Cells that
+have nothing to do with what is currently lit do not stop firing; they stop being able to drive
+anything further, because the inhibition arriving with them grows faster than the excitation. The
+other half of the same mechanism is the activity-dependent inhibitory current of R9's knob: an
+extra inhibitory current on a population, proportional to how many of its own cells are active, is
+what stops a recurrent population from filling up as it thinks.
+
+**What R21 does not show.** The inhibitory rule is slow -- 0.0005 per tick -- so the effect needs
+tens of seconds of an animal's life; the arms above run eight rounds, about 22 seconds of simulated
+time. The measurement is on named populations of a small build, and the real-scale run shows that
+the absolute current between any one 60-cell and any one 200-cell population is small even where
+the ratio holds; the aggregate is not measured here. And nothing here says that this is what
+attention is. It says that the inhibition between two populations is a function of their shared
+history, and that this is enough to keep a thought bounded.
+
 ---
 
 ## 4. Discussion
@@ -2041,7 +2191,7 @@ rule is already enough to close a sensorimotor loop and to produce behaviour tha
 attributed cell population by cell population.** Nothing in the results requires a global
 objective, a critic, a reward, or a backward pass.
 
-The nine claims of Section 1.1 are not equally supported, and the difference is the useful part.
+The ten claims of Section 1.1 are not equally supported, and the difference is the useful part.
 Table 1 states, for each of them, the experiment that bears on it and what came out of that
 experiment; the last row is not a claim but the question that R4 was built to answer.
 
@@ -2050,7 +2200,7 @@ experiment; the last row is not a claim but the question that R4 was built to an
 | claim | test | outcome |
 |---|---|---|
 | **(P1)** a sensory hierarchy is a compressor whose output is a bus | R5: localisation and name overlap, measured layer by layer | **supported.** Layer 1 places every newly active cell inside the column a 0.31-cell ball occupies; layer 3 scatters the same ball over up to 13 columns and produces nothing at all for a ball at dead centre. Direction names are perfectly exclusive in layers 1-2 and 14 percent shared (worst column 75 percent) in layer 3, where one column is lost. |
-| **(P2)** thought is co-activation of a cortical population | R8: remove the stimulus, then remove the recurrence | **supported.** Stimulus removed: both codes read zero (0 and 3 cells of 1346 and 1360) while the walking action stays lit on 495 of 495 ticks. Recurrence removed: the one wired reflex is unchanged to a decimal place and every action disappears. |
+| **(P2)** thought is co-activation of a cortical population | R8: remove the stimulus, then remove the recurrence. R21: whether two populations were ever active together decides the inhibition between them | **supported.** Stimulus removed: both codes read zero (0 and 5 cells of 1346 and 1440) while the walking action stays lit on 495 of 495 ticks. Recurrence removed: the one wired reflex is unchanged to a decimal place and every action disappears. Inhibition: 64.4 units of current between two populations that were never lit together against 0.3 between two that always were, 209-fold, and the signal cells go from +37.8 to -18.3 with the unrelated thought. |
 | **(P3)** the prefrontal population compresses a second time | R2: silence it; measure both halves of the drive. R9: give it loops and watch it over 200 ticks | **partly supported.** It supplies 0.85 of the 1.65 that crosses the threshold, and removing it abolishes the behaviour. Whether it accumulates its own state over time *is* now tested (R9): given loops it does, and with no mechanism for decay the accumulation is unbounded (1581 to 2916 active cells over 200 ticks), and it over-drives the motor loop. |
 | **(P4)** instinct is the initial state of the sheet | R1 row 4: clear the instinct table, leave everything else untouched | **supported.** The same five brains then stand on 0/5 seeds, approach on 0/5, and settle at exactly the height of the no-sensation control. |
 | **(P5)** a network cannot start from silence | R1 row 4, R3 (staged additions), R7 (blurred map) | **supported.** Random background connectivity with no written wiring produces no ordered behaviour, and each group of rules that is added buys exactly its own capability without disturbing the earlier ones. |
@@ -2505,7 +2655,10 @@ expanded into `source -> inhibitory cell -> target`. No synapse in the network i
 
 Background connectivity is sparse and random: 100 outgoing excitatory synapses per cell, 50% of
 them to other regions, born with weights uniform in [0, 0.15], 30% of them frozen; 100 outgoing
-inhibitory synapses per cell, half of them within a 24-cell radius. Three regions receive no
+inhibitory synapses per cell, half of them within a 4-cell radius. That local half is
+deliberately short-range, because motor memory is one timeline with one cell per tick (2.2): a
+local radius of tens of cells makes the first ticks of an innate chain suppress the ticks that
+follow it, and R1 measures what that costs. Three regions receive no
 random excitation (motor, motor memory, visual motion) and one region emits none (visual
 detail), so that adding the detail region could not perturb the global excitation/inhibition
 balance. The background is generated from a seed; different seeds are different brains.
@@ -3011,6 +3164,31 @@ and `tools/measure_forgetting.py`, and both are run against the same nursery con
 bank uses, which carries the six route edges on top of the 1,978,219 of Section 5.12.
 The suite was run again after the three questions were added and reports 199 tests, all passing
 (`artifacts/tests_after_memory.log`).
+### 5.17 What was re-measured after the wiring correction of 29 September
+
+The correction to the inhibitory builder described in 2.1 was made after the first version of this
+manuscript. It changes which cells can send inhibition and where the inhibition lands, so every
+result whose numbers depend on the inhibitory edges was measured again. The split is:
+
+* **Re-measured on the corrected build.** R1 (`日志_闭环多种子_新.log`, `诊断_抑制半径_多种子.log`);
+  R2 (`日志_两半_无环.log`, `日志_两半_新.log`, `日志_色相红块_新.log`, `日志_前额叶多种子_新A.log`,
+  and the cell-level reading in `诊断_头细胞的抑制是谁给的.log`); R3 (`日志_分阶段_新.log`); R4
+  (`日志_渐变正式_新.log`, `日志_色相点亮_无环不学.log`, `日志_渐变边界_无环.log`); R5
+  (`日志_分层.log`, `日志_前几层.log`, `日志_方位分辨力.log`); R6 (`日志_眼睛跟随.log`); R7
+  (`日志_整体偏移_正前方_新.log`, `日志_存活曲线_新.log`); R8 (`日志_想还在吗_无环.log`,
+  `日志_想还在吗_有环.log`, `日志_切断回响_有环.log`); R21 (`日志_专注_无关就互压_小球.log`,
+  `日志_专注_无关就互压_真实.log`); and the four stages of R9 together with its dopamine-dark and
+  no-loop controls (`日志_发育多种子_A.log`, `日志_无奖励对照.log`, `日志_无环对照.log`). The
+  earlier-build logs that the same sections compare against are kept under `_修前`:
+  `日志_发育多种子_A_修前.log`, `日志_无环对照_修前.log`, `日志_眼睛跟随_三幕_修前.log`.
+* **Not re-measured.** The rest of R9 (`日志_摔是谁干的2.log`, `日志_摔是谁干的3_无环.log`,
+  `日志_冻死进运动.log`, `日志_前额叶打走路链.log`, `日志_返回线截断.log`, `日志_打折R9.log`,
+  `日志_天生步态.log`), all of R10 and R12, and the scale measurements of R11. These were taken on
+  the build before the correction and are reported as they were taken.
+* **Unaffected.** R13-R20 use the rebuilt engine of 5.12, which gives suppression to named cells
+  rather than to a randomised inhibitory pool and does not contain the rule that was corrected, so
+  none of their numbers move.
+
 ## Figures
 
 Each figure is generated from the logs cited in the corresponding result section; the plotting
