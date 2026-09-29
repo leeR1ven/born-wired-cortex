@@ -1,4 +1,4 @@
-﻿# Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look
+# Born wired: innate cortical connectivity plus local plasticity is enough to stand, walk and look
 
 **Author:** Zhiwen Li.
 
@@ -81,11 +81,19 @@ claims, (P1) to (P9), so that the results can be read as tests of specific ones.
   asymmetry is deliberate: the regions that report the body are read by the prefrontal population and
   are never written by it (2.1), because a fabricated body reading is not an idle thought -- it is an
   instruction.
+  Order inside the prefrontal population is carried by its own connections and by nothing else. The
+  population is not addressed by an index: there is no hippocampal address, no positional code and
+  no clock, and the sequence a thought has is the sequence its own Hebbian weights give it (R9).
+  Nothing has to hand it a number that says where in a sequence it is (4.6, "There is no clock to
+  set").
 * **(P4) Instinct is the initial state of the sheet** (Tinbergen, 1951). The innate part of the
   design is not a separate module and not a set of conditions in code: it is the connectivity the
   cortical sheet is born with, both within a region and between regions, and it includes the
   suppressive connections (a rule that must suppress something drives an inhibitory cell; there are
-  no negative weights anywhere in the system). Everything the sheet does it does with that wiring,
+  no negative weights anywhere in the system). The table is not the record of one animal's life: it
+  is a blurred mixture of the maps many lives wrote, which is why it is roughly right in direction and
+  wrong in detail, and why R7 blurs it further instead of randomising it. Everything the sheet does it
+  does with that wiring,
   and what experience changes, it changes slowly and locally.
 * **(P5) A network cannot start from silence** (Pfeifer & Bongard, 2006). A newborn cortex already
   has ordered wiring, because an organism that must discover standing, breathing and gaze
@@ -802,6 +810,10 @@ take every direction-bearing source name in the instinct table (`细_列c`, and 
 `trace_/change_/relay k_` names derived from them) and shift it by a whole number of columns,
 leaving everything else untouched. This is what "the inherited map is roughly right but not
 exactly right" looks like.
+
+Nothing in the table is one animal's map (P4), so a shift is not the corruption of a correct
+answer: it is one more blur of a mixture that was already blurred, and the question the table has to
+answer is only whether the direction survives.
 
 Ball placed straight ahead, 4 s, eye free:
 
@@ -2402,6 +2414,15 @@ should be attacked, with the honest cost of each.
    is not in this paper. "The model is too small" is measurable rather than an opinion: with ten
    motor cells per channel the force step is 0.10 and 0.50, 0.51, 0.52 and 0.54 are the same
    pattern, while a hundred cells give a step of 0.01 (R15).
+
+   The same property that makes a tick cheap is also what makes a sheet of this kind *pageable*.
+   What a tick touches is the edges incident on the cells active in it (R13), so a cell that is
+   neither lit nor next to anything lit costs nothing to leave unwritten: the sheet can be stored as
+   an edge list and brought in by position on demand, and the part of it resident at any moment then
+   follows the part that is alight rather than the number of cells that exist. That is the route we
+   would take to a much larger sheet, and it is a consequence of P8 rather than a result of this
+   paper: what is measured here is that a tick costs what is lit (R15), not that a paging layer
+   exists. At the sizes reported here the whole sheet is resident and the question does not arise.
 
 7. *A posture that is held, not a posture that is assumed.* The instinct table carries the body
    from prone to standing, and it has balance reflexes that push against a tilt once one has
