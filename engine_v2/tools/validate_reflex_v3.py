@@ -146,12 +146,19 @@ def make_controller(
     seed: int,
     controller_parameters: dict,
 ) -> ReflexController:
+    parameters = dict(controller_parameters)
+    if getattr(body, "has_eyes", False) and "eye_limits" not in parameters:
+        # The eyes are muscles, and a controller built without eye limits has
+        # no eye motor cells at all: ``eye_command`` raises, so the walking
+        # brain could not point its eyes no matter what its visual cortex saw.
+        # The same limits the standing gaze exams pass.
+        parameters["eye_limits"] = (body.eye_lower_limits, body.eye_upper_limits)
     return EmbodiedController(
         body.home_angles,
         body.lower_limits,
         body.upper_limits,
         seed=seed,
-        **controller_parameters,
+        **parameters,
     )
 
 
@@ -316,6 +323,8 @@ def run_seed(
     previous_time = float(body.data.time)
     started = time.perf_counter()
     error = None
+    eye_travel_rad = 0.0
+    eye_angle_rad = None
 
     try:
         for step_index in range(steps):
@@ -334,6 +343,20 @@ def run_seed(
                 eye_pixels=pixels,
                 ear_waveform=ears.observe() if scenario != 'motor_probe' else np.zeros((2,160)),
             )
+            # The eyes are muscles, and the brain already says where to point
+            # them: the walking loop simply never asked.  Uncommanded, the eye
+            # motors held whatever angle they were left at, so a walking animal
+            # could not look at anything no matter what its visual cortex did.
+            # This is the same command the standing gaze exams use, sent every
+            # step while it walks.
+            if getattr(controller, "eye_encoder", None) is not None:
+                eye_command = controller.eye_command()
+                body.command_eyes(eye_command)
+                eye_angle_now = .5 * (float(eye_command[0]) + float(eye_command[2]))
+                if eye_angle_rad is not None:
+                    eye_travel_rad += abs(eye_angle_now - eye_angle_rad)
+                eye_angle_rad = eye_angle_now
+
             solved = body.step(target, duration=NEURAL_DT, activation=activation)
             observation = solved
             environment = sensed()
@@ -411,14 +434,14 @@ def run_seed(
 
             elapsed = (step_index + 1) * NEURAL_DT
             if elapsed + 1e-9 >= next_sample_time:
-                timeline.append(
-                    sample(
-                        time_s=elapsed,
-                        position=position,
-                        controller=controller,
-                        environment=environment,
-                    )
+                entry = sample(
+                    time_s=elapsed,
+                    position=position,
+                    controller=controller,
+                    environment=environment,
                 )
+                entry["eye_angle_rad"] = eye_angle_rad
+                timeline.append(entry)
                 next_sample_time += SAMPLE_INTERVAL
     except Exception as exc:  # Preserve failed seeds in the report.
         error = f"{type(exc).__name__}: {exc}"
@@ -479,6 +502,8 @@ def run_seed(
             "contact_conditioned_foot_slip": slip_summary,
             "foot_clearance_gt_2mm_fraction": clearance_summary,
             "maximum_scaffold_relative_change": max_scaffold_relative_change,
+            "eye_travel_rad": float(eye_travel_rad),
+            "final_eye_angle_rad": eye_angle_rad,
         },
         "checks": checks,
         "no_resets": True,
