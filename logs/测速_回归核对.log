@@ -1,0 +1,11 @@
+engine cuda, probe on the birth animal, 48.8 s
+   the_association_loop_holds_what_it_was_given   now False  audit False  same
+   the_compressed_layer_sees_the_picture          now False  audit False  same
+   eyes_converge_on_a_near_thing                  now False  audit False  same
+   get_up_from_back                               now True   audit True   same
+   threads_the_passage_without_touching           now False  audit False  same
+   backs_away_from_a_hand_on_its_chest            now False  audit False  same
+   walks_in_a_straight_line                       now False  audit False  same
+   runs_without_being_told                        now False  audit False  same
+passed_tasks now: ['get_up_from_back']
+EVERY VERDICT IDENTICAL TO THE PRE-CHANGE AUDIT: True
