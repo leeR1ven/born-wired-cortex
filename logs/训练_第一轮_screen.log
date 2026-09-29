@@ -1,0 +1,983 @@
+    birth    stands_still                       pass    9.0s
+    birth    walk_furnished                     pass   17.0s
+    birth    get_up_from_back                   FAIL    2.5s
+    birth    stay_up_when_pushed                pass    2.7s
+    birth    eyes_follow_ball                   pass    1.9s
+    birth    turn_to_sound                      pass    3.9s
+    birth    does_not_spin_on_the_spot          FAIL   10.9s
+birth                        5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0001  stands_still                       pass    9.6s
+    s0-0001  walk_furnished                     pass   17.5s
+    s0-0001  get_up_from_back                   pass    2.5s
+    s0-0001  stay_up_when_pushed                pass    2.8s
+    s0-0001  eyes_follow_ball                   pass    2.0s
+    s0-0001  turn_to_sound                      pass    4.3s
+    s0-0001  does_not_spin_on_the_spot          FAIL   10.5s
+s0-0001                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0002  stands_still                       pass    9.7s
+    s0-0002  walk_furnished                     pass   18.1s
+    s0-0002  get_up_from_back                   FAIL    2.5s
+    s0-0002  stay_up_when_pushed                pass    2.7s
+    s0-0002  eyes_follow_ball                   pass    1.9s
+    s0-0002  turn_to_sound                      pass    4.1s
+    s0-0002  does_not_spin_on_the_spot          FAIL   11.1s
+s0-0002                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0003  stands_still                       pass    9.7s
+    s0-0003  walk_furnished                     pass   18.3s
+    s0-0003  get_up_from_back                   FAIL    2.6s
+    s0-0003  stay_up_when_pushed                pass    2.6s
+    s0-0003  eyes_follow_ball                   pass    2.0s
+    s0-0003  turn_to_sound                      pass    3.9s
+    s0-0003  does_not_spin_on_the_spot          FAIL   11.2s
+s0-0003                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0004  stands_still                       pass    9.7s
+    s0-0004  walk_furnished                     pass   18.5s
+    s0-0004  get_up_from_back                   FAIL    2.7s
+    s0-0004  stay_up_when_pushed                FAIL    2.7s
+    s0-0004  eyes_follow_ball                   pass    2.1s
+    s0-0004  turn_to_sound                      pass    4.1s
+    s0-0004  does_not_spin_on_the_spot          FAIL   10.6s
+s0-0004                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0005  stands_still                       pass    8.2s
+    s0-0005  walk_furnished                     pass   14.5s
+    s0-0005  get_up_from_back                   FAIL    2.5s
+    s0-0005  stay_up_when_pushed                pass    2.7s
+    s0-0005  eyes_follow_ball                   pass    2.1s
+    s0-0005  turn_to_sound                      pass    4.3s
+    s0-0005  does_not_spin_on_the_spot          FAIL   11.0s
+s0-0005                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0006  stands_still                       pass    8.2s
+    s0-0006  walk_furnished                     pass   14.6s
+    s0-0006  get_up_from_back                   pass    2.5s
+    s0-0006  stay_up_when_pushed                pass    2.8s
+    s0-0006  eyes_follow_ball                   pass    2.2s
+    s0-0006  turn_to_sound                      pass    4.4s
+    s0-0006  does_not_spin_on_the_spot          FAIL   11.2s
+s0-0006                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0007  stands_still                       pass    8.1s
+    s0-0007  walk_furnished                     pass   14.6s
+    s0-0007  get_up_from_back                   pass    2.6s
+    s0-0007  stay_up_when_pushed                pass    2.7s
+    s0-0007  eyes_follow_ball                   pass    1.9s
+    s0-0007  turn_to_sound                      pass    4.0s
+    s0-0007  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0007                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0008  stands_still                       pass    9.7s
+    s0-0008  walk_furnished                     pass   18.2s
+    s0-0008  get_up_from_back                   FAIL    2.6s
+    s0-0008  stay_up_when_pushed                pass    2.8s
+    s0-0008  eyes_follow_ball                   pass    1.9s
+    s0-0008  turn_to_sound                      pass    4.1s
+    s0-0008  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0008                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0009  stands_still                       pass    9.6s
+    s0-0009  walk_furnished                     pass   18.4s
+    s0-0009  get_up_from_back                   FAIL    2.6s
+    s0-0009  stay_up_when_pushed                pass    2.6s
+    s0-0009  eyes_follow_ball                   pass    1.9s
+    s0-0009  turn_to_sound                      pass    4.0s
+    s0-0009  does_not_spin_on_the_spot          FAIL   12.6s
+s0-0009                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0010  stands_still                       pass    9.7s
+    s0-0010  walk_furnished                     pass   18.1s
+    s0-0010  get_up_from_back                   FAIL    2.7s
+    s0-0010  stay_up_when_pushed                FAIL    2.8s
+    s0-0010  eyes_follow_ball                   pass    2.1s
+    s0-0010  turn_to_sound                      pass    4.1s
+    s0-0010  does_not_spin_on_the_spot          FAIL   11.2s
+s0-0010                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0011  stands_still                       pass    8.1s
+    s0-0011  walk_furnished                     pass   15.0s
+    s0-0011  get_up_from_back                   pass    2.5s
+    s0-0011  stay_up_when_pushed                pass    2.8s
+    s0-0011  eyes_follow_ball                   pass    2.2s
+    s0-0011  turn_to_sound                      pass    4.2s
+    s0-0011  does_not_spin_on_the_spot          FAIL   10.8s
+s0-0011                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0012  stands_still                       pass    8.2s
+    s0-0012  walk_furnished                     pass   14.6s
+    s0-0012  get_up_from_back                   pass    2.5s
+    s0-0012  stay_up_when_pushed                pass    2.8s
+    s0-0012  eyes_follow_ball                   pass    2.2s
+    s0-0012  turn_to_sound                      pass    4.3s
+    s0-0012  does_not_spin_on_the_spot          FAIL   11.1s
+s0-0012                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0013  stands_still                       pass    8.1s
+    s0-0013  walk_furnished                     pass   14.7s
+    s0-0013  get_up_from_back                   FAIL    2.5s
+    s0-0013  stay_up_when_pushed                pass    2.7s
+    s0-0013  eyes_follow_ball                   pass    1.9s
+    s0-0013  turn_to_sound                      pass    4.0s
+    s0-0013  does_not_spin_on_the_spot          FAIL   11.9s
+s0-0013                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0014  stands_still                       pass    9.6s
+    s0-0014  walk_furnished                     pass   18.2s
+    s0-0014  get_up_from_back                   FAIL    2.4s
+    s0-0014  stay_up_when_pushed                FAIL    2.7s
+    s0-0014  eyes_follow_ball                   pass    1.9s
+    s0-0014  turn_to_sound                      pass    4.1s
+    s0-0014  does_not_spin_on_the_spot          FAIL   11.3s
+s0-0014                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0015  stands_still                       pass    9.1s
+    s0-0015  walk_furnished                     pass   18.8s
+    s0-0015  get_up_from_back                   FAIL    2.5s
+    s0-0015  stay_up_when_pushed                FAIL    2.7s
+    s0-0015  eyes_follow_ball                   pass    1.9s
+    s0-0015  turn_to_sound                      pass    4.0s
+    s0-0015  does_not_spin_on_the_spot          FAIL   11.0s
+s0-0015                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0016  stands_still                       pass    9.9s
+    s0-0016  walk_furnished                     pass   18.2s
+    s0-0016  get_up_from_back                   FAIL    2.7s
+    s0-0016  stay_up_when_pushed                FAIL    2.8s
+    s0-0016  eyes_follow_ball                   pass    2.0s
+    s0-0016  turn_to_sound                      pass    4.2s
+    s0-0016  does_not_spin_on_the_spot          FAIL   10.3s
+s0-0016                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0017  stands_still                       pass    8.5s
+    s0-0017  walk_furnished                     pass   15.0s
+    s0-0017  get_up_from_back                   FAIL    2.3s
+    s0-0017  stay_up_when_pushed                FAIL    2.6s
+    s0-0017  eyes_follow_ball                   pass    2.2s
+    s0-0017  turn_to_sound                      pass    4.4s
+    s0-0017  does_not_spin_on_the_spot          FAIL   11.1s
+s0-0017                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0018  stands_still                       pass    8.6s
+    s0-0018  walk_furnished                     pass   15.1s
+    s0-0018  get_up_from_back                   FAIL    2.3s
+    s0-0018  stay_up_when_pushed                FAIL    2.6s
+    s0-0018  eyes_follow_ball                   pass    2.2s
+    s0-0018  turn_to_sound                      pass    4.4s
+    s0-0018  does_not_spin_on_the_spot          FAIL   11.3s
+s0-0018                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0019  stands_still                       pass    8.6s
+    s0-0019  walk_furnished                     pass   15.0s
+    s0-0019  get_up_from_back                   FAIL    2.4s
+    s0-0019  stay_up_when_pushed                FAIL    2.5s
+    s0-0019  eyes_follow_ball                   pass    2.2s
+    s0-0019  turn_to_sound                      pass    4.4s
+    s0-0019  does_not_spin_on_the_spot          FAIL   10.9s
+s0-0019                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0020  stands_still                       pass    8.6s
+    s0-0020  walk_furnished                     pass   15.1s
+    s0-0020  get_up_from_back                   FAIL    2.5s
+    s0-0020  stay_up_when_pushed                pass    2.6s
+    s0-0020  eyes_follow_ball                   pass    2.2s
+    s0-0020  turn_to_sound                      pass    4.3s
+    s0-0020  does_not_spin_on_the_spot          FAIL   11.8s
+s0-0020                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0021  stands_still                       pass    9.9s
+    s0-0021  walk_furnished                     pass   17.9s
+    s0-0021  get_up_from_back                   FAIL    2.6s
+    s0-0021  stay_up_when_pushed                pass    2.8s
+    s0-0021  eyes_follow_ball                   pass    2.0s
+    s0-0021  turn_to_sound                      pass    4.0s
+    s0-0021  does_not_spin_on_the_spot          FAIL   12.5s
+s0-0021                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0022  stands_still                       pass    9.4s
+    s0-0022  walk_furnished                     pass   18.5s
+    s0-0022  get_up_from_back                   FAIL    2.5s
+    s0-0022  stay_up_when_pushed                pass    2.7s
+    s0-0022  eyes_follow_ball                   pass    2.0s
+    s0-0022  turn_to_sound                      pass    4.0s
+    s0-0022  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0022                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0023  stands_still                       pass    9.8s
+    s0-0023  walk_furnished                     pass   19.2s
+    s0-0023  get_up_from_back                   pass    2.6s
+    s0-0023  stay_up_when_pushed                FAIL    2.7s
+    s0-0023  eyes_follow_ball                   pass    1.9s
+    s0-0023  turn_to_sound                      pass    4.0s
+    s0-0023  does_not_spin_on_the_spot          FAIL   11.5s
+s0-0023                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0024  stands_still                       pass    9.7s
+    s0-0024  walk_furnished                     pass   18.5s
+    s0-0024  get_up_from_back                   FAIL    2.9s
+    s0-0024  stay_up_when_pushed                pass    2.8s
+    s0-0024  eyes_follow_ball                   pass    2.0s
+    s0-0024  turn_to_sound                      pass    3.7s
+    s0-0024  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0024                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0025  stands_still                       pass    9.7s
+    s0-0025  walk_furnished                     pass   18.3s
+    s0-0025  get_up_from_back                   FAIL    2.5s
+    s0-0025  stay_up_when_pushed                pass    2.7s
+    s0-0025  eyes_follow_ball                   pass    1.9s
+    s0-0025  turn_to_sound                      pass    4.0s
+    s0-0025  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0025                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0026  stands_still                       pass    9.7s
+    s0-0026  walk_furnished                     FAIL   18.6s
+    s0-0026  get_up_from_back                   pass    2.7s
+    s0-0026  stay_up_when_pushed                FAIL    2.7s
+    s0-0026  eyes_follow_ball                   pass    1.9s
+    s0-0026  turn_to_sound                      pass    4.0s
+    s0-0026  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0026                      4/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound']
+    s0-0027  stands_still                       pass    9.7s
+    s0-0027  walk_furnished                     pass   18.2s
+    s0-0027  get_up_from_back                   pass    2.6s
+    s0-0027  stay_up_when_pushed                pass    2.6s
+    s0-0027  eyes_follow_ball                   pass    1.9s
+    s0-0027  turn_to_sound                      pass    3.9s
+    s0-0027  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0027                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0028  stands_still                       pass    9.6s
+    s0-0028  walk_furnished                     pass   18.9s
+    s0-0028  get_up_from_back                   pass    2.7s
+    s0-0028  stay_up_when_pushed                pass    2.7s
+    s0-0028  eyes_follow_ball                   pass    2.0s
+    s0-0028  turn_to_sound                      pass    4.1s
+    s0-0028  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0028                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0029  stands_still                       pass    9.7s
+    s0-0029  walk_furnished                     pass   18.1s
+    s0-0029  get_up_from_back                   pass    2.5s
+    s0-0029  stay_up_when_pushed                pass    2.7s
+    s0-0029  eyes_follow_ball                   pass    2.0s
+    s0-0029  turn_to_sound                      pass    4.0s
+    s0-0029  does_not_spin_on_the_spot          FAIL   12.5s
+s0-0029                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0030  stands_still                       pass   10.0s
+    s0-0030  walk_furnished                     pass   18.3s
+    s0-0030  get_up_from_back                   FAIL    2.5s
+    s0-0030  stay_up_when_pushed                pass    2.7s
+    s0-0030  eyes_follow_ball                   pass    1.9s
+    s0-0030  turn_to_sound                      pass    3.9s
+    s0-0030  does_not_spin_on_the_spot          FAIL   12.5s
+s0-0030                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0031  stands_still                       pass    9.7s
+    s0-0031  walk_furnished                     pass   18.3s
+    s0-0031  get_up_from_back                   FAIL    2.6s
+    s0-0031  stay_up_when_pushed                pass    2.8s
+    s0-0031  eyes_follow_ball                   pass    1.9s
+    s0-0031  turn_to_sound                      pass    4.2s
+    s0-0031  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0031                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0032  stands_still                       pass    9.5s
+    s0-0032  walk_furnished                     pass   19.1s
+    s0-0032  get_up_from_back                   FAIL    2.8s
+    s0-0032  stay_up_when_pushed                pass    2.9s
+    s0-0032  eyes_follow_ball                   pass    2.0s
+    s0-0032  turn_to_sound                      pass    4.0s
+    s0-0032  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0032                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0033  stands_still                       pass    9.6s
+    s0-0033  walk_furnished                     pass   18.7s
+    s0-0033  get_up_from_back                   FAIL    2.7s
+    s0-0033  stay_up_when_pushed                FAIL    2.6s
+    s0-0033  eyes_follow_ball                   pass    1.9s
+    s0-0033  turn_to_sound                      pass    3.9s
+    s0-0033  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0033                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0034  stands_still                       pass    9.7s
+    s0-0034  walk_furnished                     pass   18.4s
+    s0-0034  get_up_from_back                   FAIL    2.5s
+    s0-0034  stay_up_when_pushed                FAIL    2.7s
+    s0-0034  eyes_follow_ball                   pass    2.0s
+    s0-0034  turn_to_sound                      pass    4.1s
+    s0-0034  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0034                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0035  stands_still                       pass   10.2s
+    s0-0035  walk_furnished                     pass   18.6s
+    s0-0035  get_up_from_back                   FAIL    2.6s
+    s0-0035  stay_up_when_pushed                FAIL    2.7s
+    s0-0035  eyes_follow_ball                   pass    1.9s
+    s0-0035  turn_to_sound                      pass    4.1s
+    s0-0035  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0035                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0036  stands_still                       pass   10.1s
+    s0-0036  walk_furnished                     FAIL   18.6s
+    s0-0036  get_up_from_back                   FAIL    2.6s
+    s0-0036  stay_up_when_pushed                pass    2.7s
+    s0-0036  eyes_follow_ball                   pass    2.0s
+    s0-0036  turn_to_sound                      pass    4.0s
+    s0-0036  does_not_spin_on_the_spot          FAIL   11.8s
+s0-0036                      4/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound']
+    s0-0037  stands_still                       pass    9.7s
+    s0-0037  walk_furnished                     pass   18.4s
+    s0-0037  get_up_from_back                   FAIL    2.6s
+    s0-0037  stay_up_when_pushed                pass    2.8s
+    s0-0037  eyes_follow_ball                   pass    2.0s
+    s0-0037  turn_to_sound                      pass    4.1s
+    s0-0037  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0037                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0038  stands_still                       pass    9.7s
+    s0-0038  walk_furnished                     pass   18.2s
+    s0-0038  get_up_from_back                   pass    2.7s
+    s0-0038  stay_up_when_pushed                pass    2.6s
+    s0-0038  eyes_follow_ball                   pass    2.2s
+    s0-0038  turn_to_sound                      pass    4.1s
+    s0-0038  does_not_spin_on_the_spot          FAIL   11.6s
+s0-0038                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0039  stands_still                       pass   10.0s
+    s0-0039  walk_furnished                     pass   18.6s
+    s0-0039  get_up_from_back                   FAIL    2.6s
+    s0-0039  stay_up_when_pushed                pass    2.8s
+    s0-0039  eyes_follow_ball                   pass    2.0s
+    s0-0039  turn_to_sound                      pass    3.9s
+    s0-0039  does_not_spin_on_the_spot          FAIL   11.6s
+s0-0039                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0040  stands_still                       pass    9.9s
+    s0-0040  walk_furnished                     pass   19.1s
+    s0-0040  get_up_from_back                   FAIL    2.6s
+    s0-0040  stay_up_when_pushed                pass    2.7s
+    s0-0040  eyes_follow_ball                   pass    1.9s
+    s0-0040  turn_to_sound                      pass    4.1s
+    s0-0040  does_not_spin_on_the_spot          FAIL   10.7s
+s0-0040                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0041  stands_still                       pass    9.5s
+    s0-0041  walk_furnished                     pass   18.9s
+    s0-0041  get_up_from_back                   FAIL    2.5s
+    s0-0041  stay_up_when_pushed                FAIL    2.7s
+    s0-0041  eyes_follow_ball                   pass    2.1s
+    s0-0041  turn_to_sound                      pass    4.2s
+    s0-0041  does_not_spin_on_the_spot          FAIL   11.9s
+s0-0041                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0042  stands_still                       pass    9.6s
+    s0-0042  walk_furnished                     pass   18.5s
+    s0-0042  get_up_from_back                   FAIL    2.8s
+    s0-0042  stay_up_when_pushed                pass    2.8s
+    s0-0042  eyes_follow_ball                   pass    2.0s
+    s0-0042  turn_to_sound                      pass    4.1s
+    s0-0042  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0042                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0043  stands_still                       pass    9.8s
+    s0-0043  walk_furnished                     pass   18.5s
+    s0-0043  get_up_from_back                   pass    2.5s
+    s0-0043  stay_up_when_pushed                pass    2.7s
+    s0-0043  eyes_follow_ball                   pass    2.0s
+    s0-0043  turn_to_sound                      pass    4.0s
+    s0-0043  does_not_spin_on_the_spot          FAIL   12.5s
+s0-0043                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0044  stands_still                       pass    9.9s
+    s0-0044  walk_furnished                     pass   18.5s
+    s0-0044  get_up_from_back                   pass    2.6s
+    s0-0044  stay_up_when_pushed                FAIL    2.8s
+    s0-0044  eyes_follow_ball                   pass    1.9s
+    s0-0044  turn_to_sound                      pass    4.0s
+    s0-0044  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0044                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0045  stands_still                       pass    9.8s
+    s0-0045  walk_furnished                     pass   18.8s
+    s0-0045  get_up_from_back                   FAIL    2.6s
+    s0-0045  stay_up_when_pushed                pass    2.8s
+    s0-0045  eyes_follow_ball                   pass    1.9s
+    s0-0045  turn_to_sound                      pass    4.1s
+    s0-0045  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0045                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0046  stands_still                       pass    9.4s
+    s0-0046  walk_furnished                     pass   18.8s
+    s0-0046  get_up_from_back                   FAIL    2.7s
+    s0-0046  stay_up_when_pushed                pass    2.8s
+    s0-0046  eyes_follow_ball                   pass    2.0s
+    s0-0046  turn_to_sound                      pass    3.9s
+    s0-0046  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0046                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0047  stands_still                       pass    9.5s
+    s0-0047  walk_furnished                     pass   18.6s
+    s0-0047  get_up_from_back                   FAIL    2.5s
+    s0-0047  stay_up_when_pushed                pass    2.7s
+    s0-0047  eyes_follow_ball                   pass    1.9s
+    s0-0047  turn_to_sound                      pass    4.4s
+    s0-0047  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0047                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0048  stands_still                       pass    9.8s
+    s0-0048  walk_furnished                     pass   18.5s
+    s0-0048  get_up_from_back                   FAIL    2.6s
+    s0-0048  stay_up_when_pushed                pass    2.7s
+    s0-0048  eyes_follow_ball                   pass    2.0s
+    s0-0048  turn_to_sound                      pass    4.1s
+    s0-0048  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0048                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0049  stands_still                       pass    9.6s
+    s0-0049  walk_furnished                     pass   18.9s
+    s0-0049  get_up_from_back                   FAIL    2.8s
+    s0-0049  stay_up_when_pushed                FAIL    2.7s
+    s0-0049  eyes_follow_ball                   pass    1.9s
+    s0-0049  turn_to_sound                      pass    4.1s
+    s0-0049  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0049                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0050  stands_still                       pass    9.7s
+    s0-0050  walk_furnished                     pass   18.7s
+    s0-0050  get_up_from_back                   pass    2.7s
+    s0-0050  stay_up_when_pushed                pass    2.7s
+    s0-0050  eyes_follow_ball                   pass    1.9s
+    s0-0050  turn_to_sound                      pass    4.1s
+    s0-0050  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0050                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0051  stands_still                       pass    9.6s
+    s0-0051  walk_furnished                     pass   18.8s
+    s0-0051  get_up_from_back                   FAIL    2.6s
+    s0-0051  stay_up_when_pushed                pass    2.6s
+    s0-0051  eyes_follow_ball                   pass    1.9s
+    s0-0051  turn_to_sound                      pass    4.0s
+    s0-0051  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0051                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0052  stands_still                       pass    9.7s
+    s0-0052  walk_furnished                     pass   18.5s
+    s0-0052  get_up_from_back                   FAIL    2.6s
+    s0-0052  stay_up_when_pushed                pass    2.8s
+    s0-0052  eyes_follow_ball                   pass    1.9s
+    s0-0052  turn_to_sound                      pass    4.1s
+    s0-0052  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0052                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0053  stands_still                       pass    9.7s
+    s0-0053  walk_furnished                     pass   18.6s
+    s0-0053  get_up_from_back                   FAIL    2.5s
+    s0-0053  stay_up_when_pushed                pass    2.6s
+    s0-0053  eyes_follow_ball                   pass    2.0s
+    s0-0053  turn_to_sound                      pass    4.1s
+    s0-0053  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0053                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0054  stands_still                       pass    9.9s
+    s0-0054  walk_furnished                     pass   18.7s
+    s0-0054  get_up_from_back                   FAIL    2.6s
+    s0-0054  stay_up_when_pushed                pass    2.8s
+    s0-0054  eyes_follow_ball                   pass    1.9s
+    s0-0054  turn_to_sound                      pass    4.0s
+    s0-0054  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0054                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0055  stands_still                       pass    9.5s
+    s0-0055  walk_furnished                     pass   18.7s
+    s0-0055  get_up_from_back                   pass    2.4s
+    s0-0055  stay_up_when_pushed                FAIL    2.8s
+    s0-0055  eyes_follow_ball                   pass    2.1s
+    s0-0055  turn_to_sound                      pass    4.3s
+    s0-0055  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0055                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0056  stands_still                       pass    9.6s
+    s0-0056  walk_furnished                     pass   18.5s
+    s0-0056  get_up_from_back                   FAIL    2.5s
+    s0-0056  stay_up_when_pushed                pass    3.0s
+    s0-0056  eyes_follow_ball                   pass    2.0s
+    s0-0056  turn_to_sound                      pass    4.1s
+    s0-0056  does_not_spin_on_the_spot          FAIL   11.7s
+s0-0056                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0057  stands_still                       pass    9.8s
+    s0-0057  walk_furnished                     pass   18.5s
+    s0-0057  get_up_from_back                   pass    2.5s
+    s0-0057  stay_up_when_pushed                pass    2.6s
+    s0-0057  eyes_follow_ball                   pass    1.9s
+    s0-0057  turn_to_sound                      pass    4.0s
+    s0-0057  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0057                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0058  stands_still                       pass    9.7s
+    s0-0058  walk_furnished                     pass   18.7s
+    s0-0058  get_up_from_back                   FAIL    2.6s
+    s0-0058  stay_up_when_pushed                pass    2.8s
+    s0-0058  eyes_follow_ball                   pass    2.0s
+    s0-0058  turn_to_sound                      pass    4.1s
+    s0-0058  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0058                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0059  stands_still                       pass    8.8s
+    s0-0059  walk_furnished                     pass   18.9s
+    s0-0059  get_up_from_back                   pass    2.8s
+    s0-0059  stay_up_when_pushed                pass    2.8s
+    s0-0059  eyes_follow_ball                   pass    1.9s
+    s0-0059  turn_to_sound                      pass    4.2s
+    s0-0059  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0059                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0060  stands_still                       pass    9.5s
+    s0-0060  walk_furnished                     pass   18.9s
+    s0-0060  get_up_from_back                   pass    2.8s
+    s0-0060  stay_up_when_pushed                pass    2.7s
+    s0-0060  eyes_follow_ball                   pass    1.9s
+    s0-0060  turn_to_sound                      pass    4.0s
+    s0-0060  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0060                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0061  stands_still                       pass    9.6s
+    s0-0061  walk_furnished                     pass   18.6s
+    s0-0061  get_up_from_back                   pass    2.6s
+    s0-0061  stay_up_when_pushed                FAIL    2.7s
+    s0-0061  eyes_follow_ball                   pass    1.9s
+    s0-0061  turn_to_sound                      pass    4.0s
+    s0-0061  does_not_spin_on_the_spot          FAIL   13.0s
+s0-0061                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0062  stands_still                       pass    9.9s
+    s0-0062  walk_furnished                     pass   18.9s
+    s0-0062  get_up_from_back                   FAIL    2.6s
+    s0-0062  stay_up_when_pushed                pass    2.7s
+    s0-0062  eyes_follow_ball                   pass    2.0s
+    s0-0062  turn_to_sound                      pass    4.0s
+    s0-0062  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0062                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0063  stands_still                       pass   10.0s
+    s0-0063  walk_furnished                     pass   18.6s
+    s0-0063  get_up_from_back                   pass    2.5s
+    s0-0063  stay_up_when_pushed                FAIL    2.6s
+    s0-0063  eyes_follow_ball                   pass    1.8s
+    s0-0063  turn_to_sound                      pass    3.9s
+    s0-0063  does_not_spin_on_the_spot          FAIL   11.7s
+s0-0063                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0064  stands_still                       pass    9.7s
+    s0-0064  walk_furnished                     pass   19.1s
+    s0-0064  get_up_from_back                   FAIL    2.6s
+    s0-0064  stay_up_when_pushed                pass    3.0s
+    s0-0064  eyes_follow_ball                   pass    1.9s
+    s0-0064  turn_to_sound                      pass    4.0s
+    s0-0064  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0064                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0065  stands_still                       pass    9.8s
+    s0-0065  walk_furnished                     pass   18.6s
+    s0-0065  get_up_from_back                   FAIL    2.6s
+    s0-0065  stay_up_when_pushed                pass    2.7s
+    s0-0065  eyes_follow_ball                   pass    1.9s
+    s0-0065  turn_to_sound                      pass    4.0s
+    s0-0065  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0065                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0066  stands_still                       pass    9.4s
+    s0-0066  walk_furnished                     pass   16.7s
+    s0-0066  get_up_from_back                   FAIL    2.6s
+    s0-0066  stay_up_when_pushed                pass    2.8s
+    s0-0066  eyes_follow_ball                   pass    1.9s
+    s0-0066  turn_to_sound                      pass    4.0s
+    s0-0066  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0066                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0067  stands_still                       pass    9.0s
+    s0-0067  walk_furnished                     pass   18.4s
+    s0-0067  get_up_from_back                   FAIL    2.6s
+    s0-0067  stay_up_when_pushed                pass    2.7s
+    s0-0067  eyes_follow_ball                   pass    1.9s
+    s0-0067  turn_to_sound                      pass    3.9s
+    s0-0067  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0067                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0068  stands_still                       pass    9.5s
+    s0-0068  walk_furnished                     pass   18.7s
+    s0-0068  get_up_from_back                   FAIL    2.5s
+    s0-0068  stay_up_when_pushed                pass    2.7s
+    s0-0068  eyes_follow_ball                   pass    1.9s
+    s0-0068  turn_to_sound                      pass    4.0s
+    s0-0068  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0068                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0069  stands_still                       pass    9.5s
+    s0-0069  walk_furnished                     pass   18.2s
+    s0-0069  get_up_from_back                   pass    2.8s
+    s0-0069  stay_up_when_pushed                pass    2.7s
+    s0-0069  eyes_follow_ball                   pass    1.9s
+    s0-0069  turn_to_sound                      pass    4.0s
+    s0-0069  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0069                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0070  stands_still                       pass    9.4s
+    s0-0070  walk_furnished                     pass   18.5s
+    s0-0070  get_up_from_back                   pass    2.5s
+    s0-0070  stay_up_when_pushed                pass    2.6s
+    s0-0070  eyes_follow_ball                   pass    1.9s
+    s0-0070  turn_to_sound                      pass    4.0s
+    s0-0070  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0070                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0071  stands_still                       pass    9.6s
+    s0-0071  walk_furnished                     pass   18.3s
+    s0-0071  get_up_from_back                   pass    2.5s
+    s0-0071  stay_up_when_pushed                FAIL    2.8s
+    s0-0071  eyes_follow_ball                   pass    1.9s
+    s0-0071  turn_to_sound                      pass    4.0s
+    s0-0071  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0071                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0072  stands_still                       pass    9.8s
+    s0-0072  walk_furnished                     pass   18.6s
+    s0-0072  get_up_from_back                   pass    2.6s
+    s0-0072  stay_up_when_pushed                FAIL    2.6s
+    s0-0072  eyes_follow_ball                   pass    1.9s
+    s0-0072  turn_to_sound                      pass    3.9s
+    s0-0072  does_not_spin_on_the_spot          FAIL   11.7s
+s0-0072                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0073  stands_still                       pass    9.4s
+    s0-0073  walk_furnished                     pass   18.4s
+    s0-0073  get_up_from_back                   FAIL    2.6s
+    s0-0073  stay_up_when_pushed                pass    2.6s
+    s0-0073  eyes_follow_ball                   pass    1.9s
+    s0-0073  turn_to_sound                      pass    4.3s
+    s0-0073  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0073                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0074  stands_still                       pass    9.5s
+    s0-0074  walk_furnished                     pass   18.1s
+    s0-0074  get_up_from_back                   FAIL    2.5s
+    s0-0074  stay_up_when_pushed                FAIL    2.6s
+    s0-0074  eyes_follow_ball                   pass    2.0s
+    s0-0074  turn_to_sound                      pass    4.3s
+    s0-0074  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0074                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0075  stands_still                       pass    9.7s
+    s0-0075  walk_furnished                     pass   18.5s
+    s0-0075  get_up_from_back                   pass    2.5s
+    s0-0075  stay_up_when_pushed                pass    2.7s
+    s0-0075  eyes_follow_ball                   pass    2.0s
+    s0-0075  turn_to_sound                      pass    4.1s
+    s0-0075  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0075                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0076  stands_still                       pass    9.8s
+    s0-0076  walk_furnished                     pass   19.3s
+    s0-0076  get_up_from_back                   pass    2.5s
+    s0-0076  stay_up_when_pushed                pass    2.6s
+    s0-0076  eyes_follow_ball                   pass    1.9s
+    s0-0076  turn_to_sound                      pass    3.9s
+    s0-0076  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0076                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0077  stands_still                       pass    9.3s
+    s0-0077  walk_furnished                     pass   18.4s
+    s0-0077  get_up_from_back                   FAIL    2.6s
+    s0-0077  stay_up_when_pushed                pass    2.8s
+    s0-0077  eyes_follow_ball                   pass    1.9s
+    s0-0077  turn_to_sound                      pass    4.2s
+    s0-0077  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0077                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0078  stands_still                       pass    9.5s
+    s0-0078  walk_furnished                     pass   17.9s
+    s0-0078  get_up_from_back                   FAIL    2.9s
+    s0-0078  stay_up_when_pushed                pass    2.9s
+    s0-0078  eyes_follow_ball                   pass    1.9s
+    s0-0078  turn_to_sound                      pass    4.0s
+    s0-0078  does_not_spin_on_the_spot          FAIL   12.6s
+s0-0078                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0079  stands_still                       pass    9.5s
+    s0-0079  walk_furnished                     pass   18.4s
+    s0-0079  get_up_from_back                   FAIL    2.5s
+    s0-0079  stay_up_when_pushed                pass    2.7s
+    s0-0079  eyes_follow_ball                   pass    1.9s
+    s0-0079  turn_to_sound                      pass    4.1s
+    s0-0079  does_not_spin_on_the_spot          FAIL   12.5s
+s0-0079                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0080  stands_still                       pass    9.9s
+    s0-0080  walk_furnished                     pass   18.3s
+    s0-0080  get_up_from_back                   pass    2.5s
+    s0-0080  stay_up_when_pushed                pass    2.7s
+    s0-0080  eyes_follow_ball                   pass    1.9s
+    s0-0080  turn_to_sound                      pass    4.0s
+    s0-0080  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0080                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0081  stands_still                       pass    9.8s
+    s0-0081  walk_furnished                     pass   18.5s
+    s0-0081  get_up_from_back                   pass    2.5s
+    s0-0081  stay_up_when_pushed                FAIL    2.6s
+    s0-0081  eyes_follow_ball                   pass    1.9s
+    s0-0081  turn_to_sound                      pass    4.0s
+    s0-0081  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0081                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0082  stands_still                       pass    9.5s
+    s0-0082  walk_furnished                     pass   18.8s
+    s0-0082  get_up_from_back                   pass    2.7s
+    s0-0082  stay_up_when_pushed                pass    2.7s
+    s0-0082  eyes_follow_ball                   pass    1.9s
+    s0-0082  turn_to_sound                      pass    4.2s
+    s0-0082  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0082                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0083  stands_still                       pass    9.5s
+    s0-0083  walk_furnished                     pass   18.5s
+    s0-0083  get_up_from_back                   FAIL    2.5s
+    s0-0083  stay_up_when_pushed                pass    2.7s
+    s0-0083  eyes_follow_ball                   pass    2.0s
+    s0-0083  turn_to_sound                      pass    4.4s
+    s0-0083  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0083                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0084  stands_still                       pass    9.5s
+    s0-0084  walk_furnished                     pass   18.8s
+    s0-0084  get_up_from_back                   pass    2.6s
+    s0-0084  stay_up_when_pushed                pass    2.7s
+    s0-0084  eyes_follow_ball                   pass    1.9s
+    s0-0084  turn_to_sound                      pass    4.0s
+    s0-0084  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0084                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0085  stands_still                       pass    9.6s
+    s0-0085  walk_furnished                     pass   18.7s
+    s0-0085  get_up_from_back                   pass    2.6s
+    s0-0085  stay_up_when_pushed                FAIL    2.7s
+    s0-0085  eyes_follow_ball                   pass    1.8s
+    s0-0085  turn_to_sound                      pass    4.1s
+    s0-0085  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0085                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0086  stands_still                       pass    9.5s
+    s0-0086  walk_furnished                     pass   18.8s
+    s0-0086  get_up_from_back                   pass    2.7s
+    s0-0086  stay_up_when_pushed                pass    2.7s
+    s0-0086  eyes_follow_ball                   pass    2.0s
+    s0-0086  turn_to_sound                      pass    4.0s
+    s0-0086  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0086                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0087  stands_still                       pass    9.6s
+    s0-0087  walk_furnished                     pass   18.7s
+    s0-0087  get_up_from_back                   FAIL    2.7s
+    s0-0087  stay_up_when_pushed                pass    2.7s
+    s0-0087  eyes_follow_ball                   pass    1.9s
+    s0-0087  turn_to_sound                      pass    4.0s
+    s0-0087  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0087                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0088  stands_still                       pass    9.6s
+    s0-0088  walk_furnished                     pass   18.4s
+    s0-0088  get_up_from_back                   FAIL    2.5s
+    s0-0088  stay_up_when_pushed                pass    2.7s
+    s0-0088  eyes_follow_ball                   pass    2.0s
+    s0-0088  turn_to_sound                      pass    3.9s
+    s0-0088  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0088                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0089  stands_still                       pass    9.8s
+    s0-0089  walk_furnished                     pass   18.3s
+    s0-0089  get_up_from_back                   pass    2.6s
+    s0-0089  stay_up_when_pushed                FAIL    2.8s
+    s0-0089  eyes_follow_ball                   pass    1.9s
+    s0-0089  turn_to_sound                      pass    4.0s
+    s0-0089  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0089                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0090  stands_still                       pass    9.7s
+    s0-0090  walk_furnished                     pass   18.6s
+    s0-0090  get_up_from_back                   FAIL    2.6s
+    s0-0090  stay_up_when_pushed                pass    2.7s
+    s0-0090  eyes_follow_ball                   pass    1.9s
+    s0-0090  turn_to_sound                      pass    3.9s
+    s0-0090  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0090                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0091  stands_still                       pass    9.6s
+    s0-0091  walk_furnished                     pass   19.1s
+    s0-0091  get_up_from_back                   FAIL    2.5s
+    s0-0091  stay_up_when_pushed                pass    2.7s
+    s0-0091  eyes_follow_ball                   pass    2.0s
+    s0-0091  turn_to_sound                      pass    4.2s
+    s0-0091  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0091                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0092  stands_still                       pass    9.6s
+    s0-0092  walk_furnished                     pass   18.7s
+    s0-0092  get_up_from_back                   FAIL    2.4s
+    s0-0092  stay_up_when_pushed                pass    2.7s
+    s0-0092  eyes_follow_ball                   pass    2.0s
+    s0-0092  turn_to_sound                      pass    4.2s
+    s0-0092  does_not_spin_on_the_spot          FAIL   12.3s
+s0-0092                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0093  stands_still                       pass    9.5s
+    s0-0093  walk_furnished                     pass   18.5s
+    s0-0093  get_up_from_back                   FAIL    2.7s
+    s0-0093  stay_up_when_pushed                pass    2.9s
+    s0-0093  eyes_follow_ball                   pass    1.9s
+    s0-0093  turn_to_sound                      pass    4.0s
+    s0-0093  does_not_spin_on_the_spot          FAIL   12.7s
+s0-0093                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0094  stands_still                       pass    9.6s
+    s0-0094  walk_furnished                     pass   18.7s
+    s0-0094  get_up_from_back                   pass    2.5s
+    s0-0094  stay_up_when_pushed                pass    2.6s
+    s0-0094  eyes_follow_ball                   pass    1.9s
+    s0-0094  turn_to_sound                      pass    4.0s
+    s0-0094  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0094                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0095  stands_still                       pass    8.8s
+    s0-0095  walk_furnished                     pass   18.9s
+    s0-0095  get_up_from_back                   FAIL    2.5s
+    s0-0095  stay_up_when_pushed                pass    2.7s
+    s0-0095  eyes_follow_ball                   pass    1.9s
+    s0-0095  turn_to_sound                      pass    4.0s
+    s0-0095  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0095                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0096  stands_still                       pass    9.5s
+    s0-0096  walk_furnished                     pass   18.6s
+    s0-0096  get_up_from_back                   pass    2.5s
+    s0-0096  stay_up_when_pushed                pass    2.7s
+    s0-0096  eyes_follow_ball                   pass    2.0s
+    s0-0096  turn_to_sound                      pass    4.0s
+    s0-0096  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0096                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0097  stands_still                       pass    9.7s
+    s0-0097  walk_furnished                     pass   18.3s
+    s0-0097  get_up_from_back                   FAIL    2.5s
+    s0-0097  stay_up_when_pushed                pass    2.7s
+    s0-0097  eyes_follow_ball                   pass    2.1s
+    s0-0097  turn_to_sound                      pass    4.0s
+    s0-0097  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0097                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0098  stands_still                       pass    9.7s
+    s0-0098  walk_furnished                     pass   18.5s
+    s0-0098  get_up_from_back                   pass    2.5s
+    s0-0098  stay_up_when_pushed                pass    2.7s
+    s0-0098  eyes_follow_ball                   pass    1.9s
+    s0-0098  turn_to_sound                      pass    4.1s
+    s0-0098  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0098                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0099  stands_still                       pass    9.8s
+    s0-0099  walk_furnished                     pass   18.7s
+    s0-0099  get_up_from_back                   pass    2.4s
+    s0-0099  stay_up_when_pushed                pass    2.7s
+    s0-0099  eyes_follow_ball                   pass    1.9s
+    s0-0099  turn_to_sound                      pass    4.0s
+    s0-0099  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0099                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0100  stands_still                       pass    9.6s
+    s0-0100  walk_furnished                     pass   18.7s
+    s0-0100  get_up_from_back                   FAIL    2.6s
+    s0-0100  stay_up_when_pushed                pass    2.9s
+    s0-0100  eyes_follow_ball                   pass    2.2s
+    s0-0100  turn_to_sound                      pass    4.0s
+    s0-0100  does_not_spin_on_the_spot          FAIL   12.2s
+s0-0100                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0101  stands_still                       pass    9.5s
+    s0-0101  walk_furnished                     pass   18.6s
+    s0-0101  get_up_from_back                   FAIL    2.6s
+    s0-0101  stay_up_when_pushed                pass    2.7s
+    s0-0101  eyes_follow_ball                   pass    2.1s
+    s0-0101  turn_to_sound                      pass    4.1s
+    s0-0101  does_not_spin_on_the_spot          FAIL   12.4s
+s0-0101                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0102  stands_still                       pass    8.6s
+    s0-0102  walk_furnished                     pass   17.4s
+    s0-0102  get_up_from_back                   FAIL    2.6s
+    s0-0102  stay_up_when_pushed                pass    2.5s
+    s0-0102  eyes_follow_ball                   pass    1.9s
+    s0-0102  turn_to_sound                      pass    4.0s
+    s0-0102  does_not_spin_on_the_spot          FAIL   11.5s
+s0-0102                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0103  stands_still                       pass    9.0s
+    s0-0103  walk_furnished                     pass   17.2s
+    s0-0103  get_up_from_back                   FAIL    2.0s
+    s0-0103  stay_up_when_pushed                pass    2.7s
+    s0-0103  eyes_follow_ball                   pass    1.9s
+    s0-0103  turn_to_sound                      pass    4.0s
+    s0-0103  does_not_spin_on_the_spot          FAIL   11.3s
+s0-0103                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0104  stands_still                       pass    9.5s
+    s0-0104  walk_furnished                     pass   19.2s
+    s0-0104  get_up_from_back                   FAIL    2.7s
+    s0-0104  stay_up_when_pushed                pass    2.8s
+    s0-0104  eyes_follow_ball                   pass    2.0s
+    s0-0104  turn_to_sound                      pass    4.1s
+    s0-0104  does_not_spin_on_the_spot          FAIL   11.7s
+s0-0104                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0105  stands_still                       pass    9.7s
+    s0-0105  walk_furnished                     pass   18.8s
+    s0-0105  get_up_from_back                   pass    2.6s
+    s0-0105  stay_up_when_pushed                pass    2.7s
+    s0-0105  eyes_follow_ball                   pass    2.1s
+    s0-0105  turn_to_sound                      pass    4.1s
+    s0-0105  does_not_spin_on_the_spot          FAIL   11.8s
+s0-0105                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0106  stands_still                       pass    9.5s
+    s0-0106  walk_furnished                     pass   17.9s
+    s0-0106  get_up_from_back                   FAIL    2.5s
+    s0-0106  stay_up_when_pushed                pass    2.6s
+    s0-0106  eyes_follow_ball                   pass    1.9s
+    s0-0106  turn_to_sound                      pass    4.0s
+    s0-0106  does_not_spin_on_the_spot          FAIL   12.0s
+s0-0106                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0107  stands_still                       pass    9.6s
+    s0-0107  walk_furnished                     pass   18.7s
+    s0-0107  get_up_from_back                   FAIL    2.5s
+    s0-0107  stay_up_when_pushed                FAIL    2.7s
+    s0-0107  eyes_follow_ball                   pass    1.9s
+    s0-0107  turn_to_sound                      pass    4.0s
+    s0-0107  does_not_spin_on_the_spot          FAIL   11.8s
+s0-0107                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0108  stands_still                       pass    9.7s
+    s0-0108  walk_furnished                     pass   18.5s
+    s0-0108  get_up_from_back                   FAIL    2.5s
+    s0-0108  stay_up_when_pushed                FAIL    2.7s
+    s0-0108  eyes_follow_ball                   pass    1.9s
+    s0-0108  turn_to_sound                      pass    4.1s
+    s0-0108  does_not_spin_on_the_spot          FAIL   11.9s
+s0-0108                      4/7 ['eyes_follow_ball', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0109  stands_still                       pass    9.4s
+    s0-0109  walk_furnished                     pass   18.5s
+    s0-0109  get_up_from_back                   FAIL    2.6s
+    s0-0109  stay_up_when_pushed                pass    2.8s
+    s0-0109  eyes_follow_ball                   pass    2.0s
+    s0-0109  turn_to_sound                      pass    4.3s
+    s0-0109  does_not_spin_on_the_spot          FAIL   11.9s
+s0-0109                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0110  stands_still                       pass    9.5s
+    s0-0110  walk_furnished                     pass   18.4s
+    s0-0110  get_up_from_back                   FAIL    2.5s
+    s0-0110  stay_up_when_pushed                pass    2.6s
+    s0-0110  eyes_follow_ball                   pass    1.9s
+    s0-0110  turn_to_sound                      pass    4.1s
+    s0-0110  does_not_spin_on_the_spot          FAIL   11.8s
+s0-0110                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0111  stands_still                       pass    9.8s
+    s0-0111  walk_furnished                     pass   18.4s
+    s0-0111  get_up_from_back                   pass    2.5s
+    s0-0111  stay_up_when_pushed                pass    2.7s
+    s0-0111  eyes_follow_ball                   pass    1.9s
+    s0-0111  turn_to_sound                      pass    4.0s
+    s0-0111  does_not_spin_on_the_spot          FAIL   11.3s
+s0-0111                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0112  stands_still                       pass    9.6s
+    s0-0112  walk_furnished                     pass   19.1s
+    s0-0112  get_up_from_back                   pass    2.4s
+    s0-0112  stay_up_when_pushed                pass    2.8s
+    s0-0112  eyes_follow_ball                   pass    2.0s
+    s0-0112  turn_to_sound                      pass    4.2s
+    s0-0112  does_not_spin_on_the_spot          FAIL   11.7s
+s0-0112                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0113  stands_still                       pass    9.5s
+    s0-0113  walk_furnished                     pass   18.2s
+    s0-0113  get_up_from_back                   FAIL    2.6s
+    s0-0113  stay_up_when_pushed                pass    2.7s
+    s0-0113  eyes_follow_ball                   pass    2.2s
+    s0-0113  turn_to_sound                      pass    4.3s
+    s0-0113  does_not_spin_on_the_spot          FAIL   11.3s
+s0-0113                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0114  stands_still                       pass    9.5s
+    s0-0114  walk_furnished                     pass   18.4s
+    s0-0114  get_up_from_back                   FAIL    2.6s
+    s0-0114  stay_up_when_pushed                pass    2.8s
+    s0-0114  eyes_follow_ball                   pass    2.1s
+    s0-0114  turn_to_sound                      pass    4.5s
+    s0-0114  does_not_spin_on_the_spot          FAIL   12.1s
+s0-0114                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0115  stands_still                       pass    9.8s
+    s0-0115  walk_furnished                     pass   18.2s
+    s0-0115  get_up_from_back                   pass    2.6s
+    s0-0115  stay_up_when_pushed                FAIL    2.9s
+    s0-0115  eyes_follow_ball                   pass    1.9s
+    s0-0115  turn_to_sound                      pass    4.1s
+    s0-0115  does_not_spin_on_the_spot          FAIL   11.6s
+s0-0115                      5/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'turn_to_sound', 'walk_furnished']
+    s0-0116  stands_still                       pass    9.5s
+    s0-0116  walk_furnished                     pass   18.8s
+    s0-0116  get_up_from_back                   FAIL    2.5s
+    s0-0116  stay_up_when_pushed                pass    2.7s
+    s0-0116  eyes_follow_ball                   pass    2.0s
+    s0-0116  turn_to_sound                      pass    4.0s
+    s0-0116  does_not_spin_on_the_spot          FAIL   11.0s
+s0-0116                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0117  stands_still                       pass    9.7s
+    s0-0117  walk_furnished                     pass   18.8s
+    s0-0117  get_up_from_back                   pass    2.9s
+    s0-0117  stay_up_when_pushed                pass    2.7s
+    s0-0117  eyes_follow_ball                   pass    1.9s
+    s0-0117  turn_to_sound                      pass    4.1s
+    s0-0117  does_not_spin_on_the_spot          FAIL   11.7s
+s0-0117                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0118  stands_still                       pass    9.3s
+    s0-0118  walk_furnished                     pass   18.6s
+    s0-0118  get_up_from_back                   FAIL    2.7s
+    s0-0118  stay_up_when_pushed                pass    2.6s
+    s0-0118  eyes_follow_ball                   pass    1.9s
+    s0-0118  turn_to_sound                      pass    3.9s
+    s0-0118  does_not_spin_on_the_spot          FAIL   11.1s
+s0-0118                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0119  stands_still                       pass    9.6s
+    s0-0119  walk_furnished                     pass   17.4s
+    s0-0119  get_up_from_back                   FAIL    2.6s
+    s0-0119  stay_up_when_pushed                pass    2.7s
+    s0-0119  eyes_follow_ball                   pass    2.0s
+    s0-0119  turn_to_sound                      pass    4.0s
+    s0-0119  does_not_spin_on_the_spot          FAIL   11.9s
+s0-0119                      5/7 ['eyes_follow_ball', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+    s0-0120  stands_still                       pass    9.3s
+    s0-0120  walk_furnished                     pass   18.6s
+    s0-0120  get_up_from_back                   pass    2.7s
+    s0-0120  stay_up_when_pushed                pass    2.8s
+    s0-0120  eyes_follow_ball                   pass    1.9s
+    s0-0120  turn_to_sound                      pass    4.1s
+    s0-0120  does_not_spin_on_the_spot          FAIL   11.1s
+s0-0120                      6/7 ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+kept list -> artifacts\淇濈暀_绗竴杞甠鍊欓€?jsonl (31 animals at the top score 6)
+121 candidates examined, 0 merged animals
+task                     candidates passing
+eyes_follow_ball         121 / 121
+stands_still             121 / 121
+turn_to_sound            121 / 121
+walk_furnished           119 / 121
+stay_up_when_pushed      93 / 121
+get_up_from_back         43 / 121
+best candidate: 6 of 7 tasks ['eyes_follow_ball', 'get_up_from_back', 'stands_still', 'stay_up_when_pushed', 'turn_to_sound', 'walk_furnished']
+kept: 31 candidates pass >= 6 of 7 tasks
+gene                     mean |step| pass vs fail, biggest gaps
+  get_up_from_back       wall_gain 3.257/1.475, righting_gain 0.619/0.050, eye_change_common 0.688/1.009, steady_inhibition 0.558/0.248
+  stay_up_when_pushed    righting_gain 0.497/0.262, lift_gain 0.038/0.154, eye_change_relay_gain 0.095/0.145, pinna_orient_gain 0.190/0.145
+wall 102.7 min, ledger F:\born-wired-cortex\engine_v2\artifacts\screen_ledger.jsonl

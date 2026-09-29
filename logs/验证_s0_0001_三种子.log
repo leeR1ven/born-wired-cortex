@@ -1,0 +1,25 @@
+ 0 stands_still                           PASS  stayed put at 0.543 m
+ 0 walk_furnished                         PASS  walked 0.590 m, stayed up
+ 0 get_up_from_back                       PASS  on its feet from 3.07 s and still there at the end (final up_z 0.990)
+ 0 stay_up_when_pushed                    PASS  on its feet from 3.15 s and still there at the end (final up_z 0.547)
+ 0 eyes_follow_ball                       PASS  looked 0.074 rad off the ball
+ 0 turn_to_sound                          PASS  right-hand sound pulled the eyes -0.2754 rad towards it
+ 0 does_not_spin_on_the_spot              fail  没人管它时 turned through 1.154 rad (bar 0.600)
+ 0 会了 6/7，最高到第 2 级
+ 1 stands_still                           PASS  stayed put at 0.521 m
+ 1 walk_furnished                         PASS  walked 0.609 m, stayed up
+ 1 get_up_from_back                       PASS  on its feet from 3.17 s and still there at the end (final up_z 1.000)
+ 1 stay_up_when_pushed                    PASS  on its feet from 3.16 s and still there at the end (final up_z 0.948)
+ 1 eyes_follow_ball                       PASS  looked 0.074 rad off the ball
+ 1 turn_to_sound                          PASS  right-hand sound pulled the eyes -0.2754 rad towards it
+ 1 does_not_spin_on_the_spot              fail  没人管它时 turned through 1.031 rad (bar 0.600)
+ 1 会了 6/7，最高到第 2 级
+ 2 stands_still                           PASS  stayed put at 0.441 m
+ 2 walk_furnished                         PASS  walked 0.644 m, stayed up
+ 2 get_up_from_back                       fail  never stayed on its feet (final up_z -0.466, height 0.151)
+ 2 stay_up_when_pushed                    PASS  on its feet from 2.52 s and still there at the end (final up_z 0.862)
+ 2 eyes_follow_ball                       PASS  looked 0.074 rad off the ball
+ 2 turn_to_sound                          PASS  right-hand sound pulled the eyes -0.2754 rad towards it
+ 2 does_not_spin_on_the_spot              fail  没人管它时 turned through 1.726 rad (bar 0.600)
+ 2 会了 5/7，最高到第 2 级
+-> artifacts\验证_s0_0001_三种子.json

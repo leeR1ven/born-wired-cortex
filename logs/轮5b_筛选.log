@@ -1,0 +1,5 @@
+worker 0 -> 轮5_筛选_part0.jsonl (300 candidates, log 轮5_筛选_part0.log)
+worker 1 -> 轮5_筛选_part1.jsonl (300 candidates, log 轮5_筛选_part1.log)
+worker 2 -> 轮5_筛选_part2.jsonl (300 candidates, log 轮5_筛选_part2.log)
+worker 3 -> 轮5_筛选_part3.jsonl (300 candidates, log 轮5_筛选_part3.log)
+worker 4 -> 轮5_筛选_part4.jsonl (300 candidates, log 轮5_筛选_part4.log)

@@ -1,0 +1,261 @@
+{
+ "before": "artifacts\\审计_出生动物_无返回线_before_returnline.jsonl",
+ "after": "artifacts\\审计_出生动物_返回线_s0.jsonl",
+ "tolerance": 0.0005,
+ "added": [
+  "the_widest_layer_reaches_the_muscles",
+  "keeps_its_line_towards_what_it_sees"
+ ],
+ "gone": [],
+ "flipped": [
+  {
+   "task": "get_up_from_back",
+   "before_from": false,
+   "after_to": true
+  },
+  {
+   "task": "nose_down_recover",
+   "before_from": true,
+   "after_to": false
+  },
+  {
+   "task": "nose_up_recover",
+   "before_from": true,
+   "after_to": false
+  },
+  {
+   "task": "stays_up_when_nudged_gently",
+   "before_from": true,
+   "after_to": false
+  },
+  {
+   "task": "walk_narrow_passage",
+   "before_from": true,
+   "after_to": false
+  }
+ ],
+ "moved": [
+  {
+   "task": "covers_ground_in_sixteen_seconds",
+   "before": 0.6578592688120398,
+   "after": 0.6626992446794537,
+   "delta": 0.004839975867413915
+  },
+  {
+   "task": "does_not_spin_on_the_spot",
+   "before": 0.40697752109138075,
+   "after": 0.4118051850984903,
+   "delta": 0.0048276640071095445
+  },
+  {
+   "task": "get_up_from_back",
+   "before": -0.7321910233987113,
+   "after": 0.999828169564146,
+   "delta": 1.7320191929628574
+  },
+  {
+   "task": "get_up_from_side",
+   "before": 0.9999022992511383,
+   "after": 0.6007478369897482,
+   "delta": -0.39915446226139006
+  },
+  {
+   "task": "gets_up_after_a_hard_shove",
+   "before": 0.6960824926432233,
+   "after": 0.8534927102094346,
+   "delta": 0.15741021756621132
+  },
+  {
+   "task": "keeps_walking_without_being_told",
+   "before": 0.6578592688120398,
+   "after": 0.6626992446794537,
+   "delta": 0.004839975867413915
+  },
+  {
+   "task": "nose_down_recover",
+   "before": 0.5740466182862303,
+   "after": 0.13558115879140992,
+   "delta": -0.43846545949482035
+  },
+  {
+   "task": "nose_up_recover",
+   "before": 0.6198350922587296,
+   "after": -0.809443933394702,
+   "delta": -1.4292790256534316
+  },
+  {
+   "task": "runs_for_twenty_seconds",
+   "before": 0.6544747339949422,
+   "after": 0.6592397799223646,
+   "delta": 0.00476504592742244
+  },
+  {
+   "task": "runs_without_being_told",
+   "before": 0.08742310759139094,
+   "after": 0.088043617277611,
+   "delta": 0.0006205096862200582
+  },
+  {
+   "task": "stands_still",
+   "before": 0.5426107796962649,
+   "after": 0.546855210466541,
+   "delta": 0.004244430770276031
+  },
+  {
+   "task": "stands_still_for_twenty_seconds",
+   "before": 0.6544747339949422,
+   "after": 0.6592397799223646,
+   "delta": 0.00476504592742244
+  },
+  {
+   "task": "stay_up_when_pushed",
+   "before": 0.7851319808176107,
+   "after": 0.9473198269305438,
+   "delta": 0.16218784611293313
+  },
+  {
+   "task": "walk_flat",
+   "before": 0.5562573205593784,
+   "after": 0.5613874200265093,
+   "delta": 0.005130099467130944
+  },
+  {
+   "task": "walk_furnished",
+   "before": 0.589570288405722,
+   "after": 0.5945691789395811,
+   "delta": 0.004998890533859046
+  },
+  {
+   "task": "walks_at_a_steady_pace",
+   "before": 0.08742310759139094,
+   "after": 0.088043617277611,
+   "delta": 0.0006205096862200582
+  },
+  {
+   "task": "walks_for_twenty_seconds",
+   "before": 0.6544747339949422,
+   "after": 0.6592397799223646,
+   "delta": 0.00476504592742244
+  },
+  {
+   "task": "walks_without_being_told",
+   "before": 0.5569775210913808,
+   "after": 0.5618051850984903,
+   "delta": 0.0048276640071095445
+  }
+ ],
+ "unmoved": [
+  "climbs_onto_the_platform",
+  "eyes_follow_ball",
+  "eyes_follow_fast_ball",
+  "eyes_hold_a_slow_thing",
+  "steps_over_the_curb",
+  "the_association_layer_reads_the_body",
+  "the_association_loop_holds_what_it_was_given"
+ ],
+ "unreadable": [
+  "a_bang_behind_it_still_startles",
+  "a_bang_makes_it_startle",
+  "a_bang_stops_it_walking",
+  "a_quiet_room_is_not_a_sound",
+  "a_second_short_lesson_adds_to_the_first",
+  "a_second_tone_does_not_wipe_the_first",
+  "a_sound_keeps_startling_less",
+  "a_sound_that_stops_is_no_longer_heard",
+  "a_touch_on_the_front_holds_it_back",
+  "all_four_feet_leave_the_ground",
+  "an_idle_animal_does_not_walk_for_a_ball",
+  "an_idle_animal_does_not_walk_for_a_touch",
+  "backs_away_from_a_hand_on_its_chest",
+  "braces_when_it_is_tipped_over",
+  "does_not_crab_sideways",
+  "does_not_fall_walking_into_the_wall",
+  "does_not_slow_down_on_a_long_walk",
+  "ears_hear_a_sound_behind",
+  "ears_hear_something_far_away",
+  "ears_tell_front_from_back",
+  "ears_tell_high_from_low",
+  "ears_tell_left_from_right",
+  "ears_tell_loud_from_far",
+  "eyes_converge_on_a_near_thing",
+  "eyes_follow_the_ball_both_ways",
+  "eyes_follow_the_ball_close_up",
+  "eyes_follow_the_ball_far_away",
+  "eyes_follow_the_ball_up_and_down",
+  "eyes_hold_still_on_a_still_thing",
+  "eyes_look_at_a_still_thing_at_the_side",
+  "eyes_on_a_new_thing",
+  "eyes_see_a_pattern_not_a_blank",
+  "eyes_tell_near_from_far",
+  "feels_a_light_hand_too",
+  "feels_a_load_on_one_foot",
+  "feels_a_slipping_foot",
+  "feels_a_touch_behind_it",
+  "feels_a_touch_on_both_sides_at_once",
+  "feels_a_touch_on_the_front",
+  "feels_a_touch_on_the_left_side",
+  "feels_a_touch_on_the_right_side",
+  "feels_the_ground_under_the_back_legs",
+  "feels_the_ground_under_the_front_legs",
+  "feels_which_way_it_is_leaning",
+  "feet_do_not_slide",
+  "goes_around_the_block",
+  "holds_its_heading_while_it_walks",
+  "hurries_towards_a_bright_thing",
+  "it_forgets_when_nobody_teaches_anymore",
+  "its_own_eyes_are_felt",
+  "keeps_its_line_with_a_sound_behind",
+  "keeps_running_while_it_turns",
+  "keeps_walking_for_thirty_seconds",
+  "keeps_walking_while_it_turns",
+  "knows_when_it_is_tipped_over",
+  "learns_the_lesson_in_five_seconds",
+  "lifts_each_of_the_four_feet",
+  "lifts_the_foot_that_was_caught",
+  "moving_is_not_being_pushed",
+  "nothing_is_taught_without_a_teacher",
+  "nothing_touching_it_is_not_nothing",
+  "notices_a_thing_that_creeps_in",
+  "remembers_a_second_pattern",
+  "remembers_after_one_pairing",
+  "remembers_two_patterns_at_once",
+  "sees_a_big_ball_from_a_small_one",
+  "sees_a_red_square_from_a_green_one",
+  "stands_still_on_a_slope",
+  "startled_but_still_hearing",
+  "stays_up_when_nudged_gently",
+  "steps_down_from_the_platform",
+  "steps_down_the_low_step",
+  "stops_at_the_wall",
+  "taught_reflex_sticks",
+  "the_body_is_not_a_foot",
+  "the_compressed_layer_sees_the_picture",
+  "the_dark_room_is_not_silence",
+  "the_eyes_let_go_when_it_is_gone",
+  "the_flat_ground_is_not_a_bump",
+  "the_hidden_layer_sees_the_picture",
+  "the_lesson_is_still_there_after_a_minute",
+  "the_lesson_is_still_there_later",
+  "the_lesson_survives_a_longer_pause",
+  "the_memory_is_still_there_later",
+  "the_memory_survives_a_long_life",
+  "the_memory_survives_a_small_change",
+  "the_pattern_means_nothing_without_pairing",
+  "the_route_stops_growing_at_its_ceiling",
+  "the_two_sides_step_alike",
+  "the_weight_pair_still_carries_the_weight",
+  "threads_the_passage_without_touching",
+  "turn_to_sound",
+  "turns_towards_a_sound_while_standing",
+  "turns_towards_a_sound_while_walking",
+  "two_sounds_at_once_are_still_two",
+  "two_sounds_at_one_shoulder_are_still_two",
+  "visual_memory_holds",
+  "walk_low_step",
+  "walk_narrow_passage",
+  "walk_ramp",
+  "walks_down_the_ramp",
+  "walks_in_a_straight_line",
+  "walks_towards_a_bright_thing"
+ ]
+}

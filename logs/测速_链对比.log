@@ -1,0 +1,48 @@
+=== same 24 candidates (scaffold 0, genome-seed-base 900), 8 workers, GPU ===
+
+--- full bank: all eight questions asked (artifacts/_测速_C_gpu全档.jsonl) ---
+merged 24 rows from 8 parts -> artifacts\_测速_C_gpu全档.jsonl
+ledger artifacts\_测速_C_gpu全档.jsonl: 24 candidates, 24 of them built (the rest are genomes the engine refused, not animals that failed)
+score spread: 1 passed x18, 0 passed x6
+best 1, median 1, worst 0
+each question in the order it is asked: how many got as far as it, and how many of those passed
+   the_association_loop_holds_what_it_was_given      24 of    24 reached       0 passed  (0.0%)
+   the_compressed_layer_sees_the_picture             24 of    24 reached       0 passed  (0.0%)
+   eyes_converge_on_a_near_thing                     24 of    24 reached       0 passed  (0.0%)
+   get_up_from_back                                  24 of    24 reached      16 passed  (66.7%)
+   threads_the_passage_without_touching              24 of    24 reached       0 passed  (0.0%)
+   backs_away_from_a_hand_on_its_chest               24 of    24 reached       0 passed  (0.0%)
+   walks_in_a_straight_line                          24 of    24 reached       2 passed  (8.3%)
+   runs_without_being_told                           24 of    24 reached       0 passed  (0.0%)
+44.8 min of simulation in the round, 112.0 s per animal
+
+--- chain: stop at the first miss (artifacts/_测速_A2_gpu链条.jsonl) ---
+merged 24 rows from 8 parts -> artifacts\_测速_A2_gpu链条.jsonl
+ledger artifacts\_测速_A2_gpu链条.jsonl: 24 candidates, 24 of them built (the rest are genomes the engine refused, not animals that failed)
+score spread: 0 passed x24
+best 0, median 0, worst 0
+each question in the order it is asked: how many got as far as it, and how many of those passed
+   the_association_loop_holds_what_it_was_given      24 of    24 reached       0 passed  (0.0%)
+   the_compressed_layer_sees_the_picture              0 of    24 reached       0 passed  (0.0%)
+   eyes_converge_on_a_near_thing                      0 of    24 reached       0 passed  (0.0%)
+   get_up_from_back                                   0 of    24 reached       0 passed  (0.0%)
+   threads_the_passage_without_touching               0 of    24 reached       0 passed  (0.0%)
+   backs_away_from_a_hand_on_its_chest                0 of    24 reached       0 passed  (0.0%)
+   walks_in_a_straight_line                           0 of    24 reached       0 passed  (0.0%)
+   runs_without_being_told                            0 of    24 reached       0 passed  (0.0%)
+the chain cut 24 of 24 short; the 0 that answered every question are the ones this stage kept
+2.0 min of simulation in the round, 5.1 s per animal
+
+--- what the chain threw away ---
+full run: 24 candidates, 18 passed at least one question
+chained run kept (answered every question): 0
+positions of the questions those 18 passed in the full run:
+   1 the_association_loop_holds_what_it_was_given   passed by 0
+   2 the_compressed_layer_sees_the_picture          passed by 0
+   3 eyes_converge_on_a_near_thing                  passed by 0
+   4 get_up_from_back                               passed by 16
+   5 threads_the_passage_without_touching           passed by 0
+   6 backs_away_from_a_hand_on_its_chest            passed by 0
+   7 walks_in_a_straight_line                       passed by 2
+   8 runs_without_being_told                        passed by 0
+so the chain would drop 18 of the 18, because it stops at question 1 for all of them

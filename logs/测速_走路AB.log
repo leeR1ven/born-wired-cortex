@@ -1,0 +1,6 @@
+one 10 s walk, the same animal in the same process, alternating:
+  round 0: old  15.35 s  new   9.25 s   (progress 0.581 / 0.581, straightness 0.6236 / 0.6236, up_z 0.9925 / 0.9925)
+  round 1: old  15.00 s  new   9.10 s   (progress 0.581 / 0.581, straightness 0.6236 / 0.6236, up_z 0.9925 / 0.9925)
+  round 2: old  15.27 s  new   9.77 s   (progress 0.581 / 0.581, straightness 0.6236 / 0.6236, up_z 0.9925 / 0.9925)
+
+10 s walk:  old 15.27 s  ->  new 9.25 s   (39% off, 6.02 s saved)

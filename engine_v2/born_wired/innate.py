@@ -17,7 +17,9 @@ class InnateController:
                  balance_gain=.22, gait_gain=.65, swing_delay=.16,
                  rhythm_speed=2., rear_lift=1.8,
                  scaffold_fraction=.03, balanced_gait=False, lift_gain=.35,
-                 balanced_rear_lift=1.):
+                 balanced_rear_lift=1.,
+                 association_fan_in_gain=1., association_recurrence_gain=1.,
+                 association_return_gain=0.):
         if isinstance(motor_units, bool) or not isinstance(motor_units, numbers.Integral) or motor_units < 10:
             raise ValueError('motor_units must be an integer >= 10')
         for name, value, minimum in (('proprio_units', proprio_units, 8), ('association_units', association_units, 8)):
@@ -33,6 +35,15 @@ class InnateController:
         gait_gain = _scalar(gait_gain, 'gait_gain')
         lift_gain = _scalar(lift_gain, 'lift_gain')
         balanced_rear_lift = _scalar(balanced_rear_lift, 'balanced_rear_lift', positive=True)
+        # The three gains that decide what the widest layer does.  All three
+        # are named, so a search can move them: 1, 1 and 0 reproduce the wiring
+        # exactly as it was built before they existed - checked with
+        # tools/check_model_fingerprint.py - and raising the third is what
+        # gives the association layer a way back out to the muscles at all.
+        fan_in_gain = _scalar(association_fan_in_gain, 'association_fan_in_gain')
+        recurrence_gain = _scalar(association_recurrence_gain,
+                                  'association_recurrence_gain')
+        return_gain = _scalar(association_return_gain, 'association_return_gain')
         if not isinstance(balanced_gait, (bool, np.bool_)):
             raise ValueError('balanced_gait must be boolean')
         swing_delay = _scalar(swing_delay, 'swing_delay', positive=True)
@@ -166,11 +177,24 @@ class InnateController:
         for target in association:
             fan_in = min(len(sensory), 128, round(64 * proprio_units / 32))
             for source in rng.choice(sensory, fan_in, replace=False):
-                edge(source, target, float(rng.uniform(.18, .30)))
+                edge(source, target, float(rng.uniform(.18, .30)) * fan_in_gain)
         for source in association:
             candidates = association[association != source]
             for target in rng.choice(candidates, 4, replace=False):
-                edge(source, target, .025)
+                edge(source, target, .025 * recurrence_gain)
+        # The association layer had no way out: it heard the body and echoed,
+        # and nothing it did could reach a muscle.  This is the return line.
+        # At gain zero it draws no edge at all and the animal is the animal it
+        # was; raised, a sparse fixed scaffold carries the layer's state back
+        # to the legs.  Which units a cell reaches is a fixed scaffold, not a
+        # tuned projection, and what it does with them is left to the gain and
+        # to learning - no action is named anywhere in it.
+        if return_gain:
+            for index, source in enumerate(association):
+                units = motor.reshape(12, motor_units)[index % 12]
+                for offset in range(4):
+                    edge(source, units[(index * 3 + offset) % motor_units],
+                         .02 * return_gain)
         n = len(signs)
         budget = np.full(n, 40.)
         self.synapses = RegulatedSynapses(src, dst, weights, signs, n, lower=lower,
@@ -229,12 +253,50 @@ class InnateController:
         target = np.clip(self.lower + motor.mean(axis=1) * self.span, self.lower, self.upper)
         return target, activation
 
+    def _scaffold(self):
+        """The scaffold edges: where they sit in the weight table, and their birth weights.
+
+        Cached against the synapse object rather than computed once at build,
+        because a subclass replaces ``synapses`` after this class has run; the
+        identity check notices and rebuilds.
+        """
+        synapses = self.synapses
+        cached = getattr(self, "_scaffold_cache", None)
+        if cached is None or cached[0] is not synapses:
+            slots = np.flatnonzero(np.asarray(synapses.tether) > 0)
+            cached = (synapses, slots, self.initial_weights[slots])
+            self._scaffold_cache = cached
+        return cached[1], cached[2]
+
+    def scaffold_drift(self, weights=None):
+        """How far the scaffold has moved: the one number a run actually keeps.
+
+        ``diagnostics`` builds a whole dictionary - it copies the weight table
+        and turns the memory weights into Python floats - and that costs about
+        5 ms.  A run loop that reads it every step, to keep the largest value
+        of this one entry, was paying 5 ms a step for four entries it threw
+        away.  The same number is computed here in place, so the biggest single
+        item in a walking exam is gone.
+
+        ``weights`` is the full table, when the caller already took one: every
+        read of it is a device-to-host copy, and a run loop that also checks
+        the table's bounds should pay for that copy once, not twice.
+        """
+        slots, reference = self._scaffold()
+        scratch = getattr(self, "_scaffold_scratch", None)
+        if scratch is None or scratch.size != slots.size:
+            scratch = self._scaffold_scratch = np.empty(slots.size, dtype=float)
+        np.take(self.synapses.weights if weights is None else weights, slots, out=scratch)
+        np.divide(scratch, reference, out=scratch)
+        np.subtract(scratch, 1., out=scratch)
+        np.abs(scratch, out=scratch)
+        return float(scratch.max())
+
     def diagnostics(self):
         rate = self.network.activity
         w = self.synapses.weights
         return dict(neurons=self.network.n_neurons, edges=len(w),
                     max_weight_change=float(np.max(np.abs(w - self.initial_weights))),
-                    scaffold_max_relative_change=float(np.max(np.abs(w[self.synapses.tether > 0]
-                         / self.initial_weights[self.synapses.tether > 0] - 1))),
+                    scaffold_max_relative_change=self.scaffold_drift(),
                     memory_weights=w[self.synapses.tether == 0].tolist(),
                     mean_activity=float(rate.mean()), active_fraction=float(np.mean(rate > .01)))

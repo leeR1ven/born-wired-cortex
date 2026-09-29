@@ -1,9 +1,12 @@
 {
-  "revision": "v0.18-all-regions",
+  "revision": "v0.19-association-return-line",
   "controller": "embodied",
   "locomotion": 0.0,
   "flexion": 0.0,
   "parameters": {
+    "association_fan_in_gain": 1.0,
+    "association_recurrence_gain": 1.0,
+    "association_return_gain": 1.0,
     "association_units": 2048,
     "avoidance_gain": 0.2,
     "balanced_rear_lift": 1.4,

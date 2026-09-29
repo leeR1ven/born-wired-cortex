@@ -168,7 +168,11 @@ def initial_sample(
     controller: ReflexController,
     environment: dict,
 ) -> dict:
-    diagnostics = controller.diagnostics()["reflex_activity"]
+    # One readout, not four: each call copies the weight table, and a sample
+    # is taken twenty times a walk, so the three extra calls were three times
+    # the cost of a sample for no extra information.
+    reading = controller.diagnostics()
+    diagnostics = reading["reflex_activity"]
     return {
         "time": float(time_s),
         "position": as_list(position),
@@ -178,9 +182,9 @@ def initial_sample(
         "fatigue": float(diagnostics["fatigue"][0]),
         "rest": float(diagnostics["rest"][0]),
         "initiation": float(diagnostics["initiation"][0]),
-        "retinal_activity": controller.diagnostics().get('retinal_activity'),
-        "binocular_activity": controller.diagnostics().get('binocular_population_activity'),
-        "auditory_activity": controller.diagnostics().get('auditory_activity'),
+        "retinal_activity": reading.get('retinal_activity'),
+        "binocular_activity": reading.get('binocular_population_activity'),
+        "auditory_activity": reading.get('auditory_activity'),
         "reflex_activity": diagnostics,
         "motor_effort": float(environment['motor_effort']),
         "body_touch": as_list(environment['body_touch']),
@@ -369,10 +373,12 @@ def run_seed(
             checks["time_monotonic"] = checks["time_monotonic"] and current_time > previous_time
             previous_time = current_time
 
-            diagnostics = controller.diagnostics()
+            # The whole dictionary was asked for here every step, and only
+            # this one entry was read out of it: the other four cost about
+            # 4 ms a step and went in the bin.  Same number, asked for by name.
             max_scaffold_relative_change = max(
                 max_scaffold_relative_change,
-                float(diagnostics["scaffold_max_relative_change"]),
+                controller.scaffold_drift(weights),
             )
 
             position = base_position(body)

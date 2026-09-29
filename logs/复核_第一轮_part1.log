@@ -1,0 +1,67 @@
+11 kept animals, 3 seed(s), stage screen
+  birth
+    birth          seed 0   5/7
+    birth          seed 1   4/7
+    birth          seed 2   5/7
+  s0-0001  (screened at 6/7)
+    s0-0001        seed 0   6/7
+    s0-0001        seed 1   6/7
+    s0-0001        seed 2   5/7
+  s0-0011  (screened at 6/7)
+    s0-0011        seed 0   6/7
+    s0-0011        seed 1   5/7
+    s0-0011        seed 2   6/7
+  s0-0028  (screened at 6/7)
+    s0-0028        seed 0   6/7
+    s0-0028        seed 1   5/7
+    s0-0028        seed 2   5/7
+  s0-0043  (screened at 6/7)
+    s0-0043        seed 0   6/7
+    s0-0043        seed 1   4/7
+    s0-0043        seed 2   5/7
+  s0-0059  (screened at 6/7)
+    s0-0059        seed 0   6/7
+    s0-0059        seed 1   6/7
+    s0-0059        seed 2   6/7
+  s0-0070  (screened at 6/7)
+    s0-0070        seed 0   6/7
+    s0-0070        seed 1   5/7
+    s0-0070        seed 2   6/7
+  s0-0080  (screened at 6/7)
+    s0-0080        seed 0   6/7
+    s0-0080        seed 1   6/7
+    s0-0080        seed 2   6/7
+  s0-0086  (screened at 6/7)
+    s0-0086        seed 0   6/7
+    s0-0086        seed 1   6/7
+    s0-0086        seed 2   5/7
+  s0-0098  (screened at 6/7)
+    s0-0098        seed 0   6/7
+    s0-0098        seed 1   5/7
+    s0-0098        seed 2   5/7
+  s0-0111  (screened at 6/7)
+    s0-0111        seed 0   6/7
+    s0-0111        seed 1   5/7
+    s0-0111        seed 2   5/7
+  s0-0120  (screened at 6/7)
+    s0-0120        seed 0   6/7
+    s0-0120        seed 1   5/7
+    s0-0120        seed 2   6/7
+
+animal       passed on every seed count  beyond birth
+birth        eyes_follow_ball s 4      -
+s0-0001      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0011      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0028      eyes_follow_ball s 4      -
+s0-0043      eyes_follow_ball s 4      -
+s0-0059      eyes_follow_ball g 6      get_up_from_back, stay_up_when_pushed
+s0-0070      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0080      eyes_follow_ball g 6      get_up_from_back, stay_up_when_pushed
+s0-0086      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0098      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0111      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0120      eyes_follow_ball g 5      get_up_from_back
+
+held something the birth animal did not, on every seed: s0-0001, s0-0011, s0-0059, s0-0070, s0-0080, s0-0086, s0-0098, s0-0111, s0-0120
+-> artifacts\复核_第一轮_part1.json
+wall 32.3 min

@@ -31,6 +31,7 @@ the note on each task says what the failing reading does and does not prove.
     python tools/taskbank.py --stage screen --seeds 0 1 2
 """
 import argparse
+import inspect
 import json
 import math
 import sys
@@ -76,6 +77,32 @@ SIZE_KEYS = tuple(REFERENCE_SIZE)
 _RAW_GENES = {name: value for name, value in load_live_parameters().items()
               if name not in SIZE_KEYS}
 GENES = tuple(sorted(_RAW_GENES))
+
+
+def _unaccepted_genes():
+    """Named gains the controller would refuse.
+
+    The config file is read again every time an exam asks for its parameters,
+    but the engine module is imported once, at the start.  Editing the config
+    while a round is running therefore leaves that round asking old code for
+    parameters it has never heard of: every exam comes back an error and the
+    round goes on drawing candidates that cannot be built.  The engine does
+    raise, but only one exam at a time; this says it once, before anything
+    starts, with the whole list at once.
+    """
+    from born_wired.embodied import EmbodiedController
+    accepted = set()
+    for klass in EmbodiedController.__mro__:
+        try:
+            accepted |= set(inspect.signature(klass.__init__).parameters)
+        except (TypeError, ValueError):
+            continue
+    return sorted(set(GENES) - accepted)
+
+
+_REFUSED_GENES = _unaccepted_genes()
+if _REFUSED_GENES:
+    raise SystemExit("live_config.json names gains no controller accepts: %s" % _REFUSED_GENES)
 # A few of the named gains are whole numbers of steps, not sizes: half of a step
 # is not a step.  Mutation has to round those rather than blend them.
 INTEGER_GENES = frozenset(name for name, value in _RAW_GENES.items()
@@ -143,6 +170,7 @@ BAR = {
     "turn_pair_rad": .30,         # right-hand sound yaw minus left-hand sound yaw
     "turn_idle_rad": .10,         # and the same for an animal that is not walking
     "idle_spin_rad": .60,         # heading travelled through while idle
+    "idle_spin_progress_m": .15,  # ...with less than this ground covered is pivoting
     # --- going down and going round ---
     "down_ramp_m": .25,
     "down_step_m": .25,
@@ -219,7 +247,152 @@ BAR = {
     "second_tone_kept": .80,        # the first tone, after a second one went down the same route
     "route_ceiling_floor": .01,     # the route has to move at all before "it slows down" means anything
     "route_ceiling_slowdown": .25,  # the last equal stretch may add at most this much of the first
+    # --- the association layer, which is neither an input nor a muscle ---
+    "association_driven_gain": .02,  # a body state has to move it at all
+    "association_hold_gain": .01,    # and something of it has to still be there after
+    "association_return_gain": .00005,  # and it has to reach the muscles at all
+                                       # (birth reads 0.00000; gain 1 reads +1.6e-4)
+    "straight_gain": .05,              # a thing to head for has to keep the walk straighter
+                                       # (birth reads +0.102 / +0.093 / +0.180 at three seeds)
 }
+
+
+def _upright(measures):
+    """Nothing below means anything if it fell over on the way.
+
+    A gate that holds has to leave the slack alone, so it returns infinity
+    rather than zero: zero would read as "passed by nothing at all".
+    """
+    return float("inf") if measures.get("behavior_pass") else -1.
+
+
+def _recovered(measures):
+    """A righting question is about ending on its feet, not about falling over."""
+    return float("inf") if measures.get("recovered") else -1.
+
+
+def _on_its_feet(measures):
+    """Standing questions are about staying up, so falling is the whole miss."""
+    return float("inf") if measures.get("min_up_z", 0.) >= .9 else -1.
+
+
+def _marker_bar(measures, key):
+    """It has to walk the distance *and* get past the thing in the way."""
+    slack = float(measures["displacement_m"]) - BAR[key]
+    if not measures.get("crossed_marker"):
+        slack = min(slack, -1.)
+    return min(slack, _upright(measures))
+
+
+def _idle_spin(measures):
+    """Pivoting is turning a lot and getting nowhere: either one alone is fine."""
+    return max(BAR["idle_spin_rad"] - float(measures["yaw_path_rad"]),
+               float(measures["displacement_m"]) - BAR["idle_spin_progress_m"])
+
+
+# Which reading decides each question, so a score can say "missed the bar by a
+# hair" where pass/fail can only say "failed".  A round that only counts
+# passes cannot tell an animal that missed by three percent from one that never
+# moved at all, and those two are not the same animal to breed from.
+#
+# ``path`` is where the reading sits in the answer, ``bar`` is the number it is
+# compared with - a name in BAR or a plain number - and ``sign`` is +1 when a
+# bigger reading is better.  ``gate`` is a second reading that has to hold
+# before the number means anything: an animal that fell over did not "walk a
+# little", it fell over.  A question whose bar combines readings carries a
+# ``rule`` instead.  A question with no entry here is scored pass/fail only;
+# the margin of a question nobody has written down is not guessed at.
+MARGIN = {
+    # --- standing ---
+    "stands_still": dict(path="displacement_m", bar="quiet_idle_m", sign=-1,
+                         gate=_on_its_feet),
+    "stands_still_for_twenty_seconds": dict(path="displacement_m", bar="quiet_idle_m",
+                                            sign=-1, gate=_on_its_feet),
+    # --- walking ---
+    "walk_flat": dict(path="displacement_m", bar="walk_flat_m", sign=+1, gate=_upright),
+    "walk_furnished": dict(path="displacement_m", bar="walk_furnished_m", sign=+1,
+                           gate=_upright),
+    "walks_without_being_told": dict(path="displacement_m", bar="walk_own_m", sign=+1,
+                                     gate=_upright),
+    "keeps_walking_without_being_told": dict(path="displacement_m", bar="walk_own_far_m",
+                                             sign=+1, gate=_upright),
+    "walks_for_twenty_seconds": dict(path="displacement_m", bar="walk_twenty_m", sign=+1,
+                                     gate=_upright),
+    "walks_at_a_steady_pace": dict(path="mean_speed_mps", bar="walk_speed_mps", sign=+1,
+                                   gate=_upright),
+    "covers_ground_in_sixteen_seconds": dict(path="displacement_m", bar="walk_ground_m",
+                                             sign=+1, gate=_upright),
+    # --- running ---
+    "runs_without_being_told": dict(path="mean_speed_mps", bar="run_mean_speed", sign=+1,
+                                    gate=_upright),
+    "runs_for_twenty_seconds": dict(path="displacement_m", bar="run_twenty_m", sign=+1,
+                                    gate=_upright),
+    # --- terrain ---
+    "steps_over_the_curb": dict(rule=lambda m: _marker_bar(m, "walk_curb_m")),
+    "climbs_onto_the_platform": dict(rule=lambda m: _marker_bar(m, "walk_platform_m")),
+    # --- righting ---
+    "get_up_from_back": dict(path="final_up_z", bar=.5, sign=+1, gate=_recovered),
+    "get_up_from_side": dict(path="final_up_z", bar=.5, sign=+1, gate=_recovered),
+    "nose_up_recover": dict(path="final_up_z", bar=.5, sign=+1, gate=_recovered),
+    "nose_down_recover": dict(path="final_up_z", bar=.5, sign=+1, gate=_recovered),
+    "stay_up_when_pushed": dict(path="final_up_z", bar=.5, sign=+1, gate=_recovered),
+    "gets_up_after_a_hard_shove": dict(path="final_up_z", bar=.5, sign=+1, gate=_recovered),
+    # --- turning ---
+    "does_not_spin_on_the_spot": dict(rule=_idle_spin),
+    # --- seeing ---
+    "eyes_follow_ball": dict(path="mean_abs_error_rad", bar="gaze_error_rad", sign=-1),
+    "eyes_follow_fast_ball": dict(path="mean_abs_error_rad", bar="gaze_error_fast_rad",
+                                  sign=-1),
+    "eyes_hold_a_slow_thing": dict(path="mean_abs_error_rad", bar="gaze_error_rad",
+                                   sign=-1),
+    # --- the widest layer ---
+    "the_association_layer_reads_the_body": dict(path="driven", sign=+1,
+                                                 bar="association_driven_gain"),
+    "the_association_loop_holds_what_it_was_given": dict(path="held", sign=+1,
+                                                         bar="association_hold_gain"),
+    "the_widest_layer_reaches_the_muscles": dict(path="reach", sign=+1,
+                                                 bar="association_return_gain"),
+    # --- what a thing to head for does to the line it walks ---
+    "keeps_its_line_towards_what_it_sees": dict(path="straight_gain", sign=+1,
+                                                bar="straight_gain"),
+}
+
+
+def margin(task, measures):
+    """How much room the reading behind a question had, signed: >0 passed.
+
+    ``None`` when the question has no margin written down, when the run failed,
+    or when the answer does not carry the reading - a margin that cannot be
+    read is not reported as zero, because zero is a real answer.
+    """
+    recipe = MARGIN.get(task)
+    if not recipe or not isinstance(measures, dict) or measures.get("status") != "ok":
+        return None
+    if "rule" in recipe:
+        try:
+            return float(recipe["rule"](measures))
+        except Exception:
+            return None
+    value = measures
+    for part in recipe["path"].split("."):
+        if not isinstance(value, dict) or part not in value:
+            return None
+        value = value[part]
+    if value is None:
+        return None
+    bar = recipe["bar"]
+    if isinstance(bar, str):
+        if bar not in BAR:
+            return None
+        bar = BAR[bar]
+    slack = float(recipe["sign"]) * (float(value) - float(bar))
+    gate = recipe.get("gate")
+    if gate is not None:
+        try:
+            slack = min(slack, float(gate(measures)))
+        except Exception:
+            pass
+    return slack
 
 # What the birth animal measured, so a bar can be read next to the number it was
 # set from.  Every string is written by ``--birth-text`` out of a real run of
@@ -381,8 +554,21 @@ def reference_parameters(genome=None):
     return values
 
 
+def revision():
+    """Which animal the gains describe, as the config file spells it.
+
+    A ledger row is only worth anything if it says which animal it measured.
+    The wiring of this project has already changed twice under the same task
+    names - the suppression wiring, then the association return line - and both
+    times the readings moved.  ``context`` carries it so every record can.
+    """
+    with (ROOT / "live_config.json").open(encoding="utf-8-sig") as source:
+        config = json.load(source)
+    return str(config.get("revision", ""))
+
+
 def context(genome, seed):
-    return dict(genome=dict(genome or {}), seed=int(seed),
+    return dict(genome=dict(genome or {}), seed=int(seed), revision=revision(),
                 parameters=reference_parameters(genome), model_path=ARENA)
 
 
@@ -759,6 +945,30 @@ def righting_bar(measures):
 # ---------------------------------------------------------------------------
 # reading cells the plain way: one situation, one bar
 # ---------------------------------------------------------------------------
+def retention_bar(measures, key, above_key, fraction, what):
+    """The compressed layer must keep a stated share of what the layer above had.
+
+    An absolute bar here is a knife edge: the bank under the eye reads 0.0103
+    apart on the two pictures against a bar of 0.01, a margin three per cent
+    wide, and a bar that tight decides nothing.  Asking for a share of the layer
+    above says the thing the question is actually about - how much of the
+    picture survives the squeeze - and it does not depend on how hard the
+    pictures are.
+    """
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    value = measures.get("separation", {}).get(key)
+    above = measures.get("separation", {}).get(above_key)
+    if value is None or above is None:
+        return False, "no reading for %s or %s" % (key, above_key)
+    kept = value / above if above > 1e-12 else 0.
+    if kept < fraction:
+        return False, ("%s kept only %.1f%% of what %s carried (%.5f of %.5f, bar %.0f%%)"
+                       % (what, 100. * kept, above_key, value, above, 100. * fraction))
+    return True, ("%s kept %.1f%% of what %s carried (%.5f of %.5f)"
+                  % (what, 100. * kept, above_key, value, above))
+
+
 def separation_bar(measures, key, bar_key, what):
     """A group's cells must land in a different pattern in the two situations."""
     if measures.get("status") != "ok":
@@ -1571,14 +1781,27 @@ def pace_bar(measures, what):
 
 
 def idle_pace_bar(measures, what):
+    """Turning is a state, not a fault, so the bar is not about turning.
+
+    The room is only so big, so an animal that walks will also curve.  The old
+    bar here - heading travelled through <= .60 rad - sat below the whole
+    population: every one of the 121 mutants turned between .77 and 2.15 rad,
+    and every one of them got at least 0.32 m from where it started.  It was
+    asking "does it walk", not "does it spin".  What is a fault is spending the
+    motion on pivoting: turning a lot and getting nowhere.  That is the bar
+    now.  How far it turned is still reported either way.
+    """
     if measures["status"] != "ok":
         return False, "run failed: %s" % measures["error"]
     if measures["min_up_z"] < .9:
         return False, "lost its footing (min up_z %.3f)" % measures["min_up_z"]
-    if measures["yaw_path_rad"] > BAR["idle_spin_rad"]:
-        return False, ("%s turned through %.3f rad (bar %.3f)"
-                       % (what, measures["yaw_path_rad"], BAR["idle_spin_rad"]))
-    return True, "%s turned through %.3f rad" % (what, measures["yaw_path_rad"])
+    if (measures["yaw_path_rad"] > BAR["idle_spin_rad"]
+            and measures["displacement_m"] < BAR["idle_spin_progress_m"]):
+        return False, ("%s turned through %.3f rad but got only %.3f m from where it "
+                       "started: that is pivoting on the spot"
+                       % (what, measures["yaw_path_rad"], measures["displacement_m"]))
+    return True, ("%s turned through %.3f rad while getting %.3f m along"
+                  % (what, measures["yaw_path_rad"], measures["displacement_m"]))
 
 
 def down_bar(measures, distance_key, what):
@@ -2087,10 +2310,11 @@ task("turns_towards_a_sound_while_standing", "转弯", "站着不动时一边响
      "不说明它站得稳不稳。",
      requires=("stands_still", "turn_to_sound"))
 
-task("does_not_spin_on_the_spot", "转弯", "没人叫它动，它会不会自己原地打转", "screen", 8.,
+task("does_not_spin_on_the_spot", "转弯", "没人叫它动，它是往前走，还是原地打转", "screen", 8.,
      lambda ctx: stand_still_measure(ctx, 8.),
      lambda m: idle_pace_bar(m, "没人管它时"),
-     "读的是八秒里朝向一共转过多少。这一题的正解是「转得少」，所以数字低才是好。",
+     "读的是八秒里朝向转过多少、同时离出发点走了多远。转多少本身不是好坏："
+     "场地就这么大，会走路的动物必然会转。只有「转得多、同时没走出去」才算原地打转。",
      requires=("stands_still",))
 
 task("walks_down_the_ramp", "地形", "站在坡顶上往前走，它能不能顺坡下来", "full", 10.,
@@ -2527,7 +2751,7 @@ def feature_layer_measure(ctx, seconds=.35, tail=.35):
     return contrast_read(ctx,
                          {"picture": _stripes(), "seconds": seconds, "tail": tail, "clean": True},
                          {"picture": _bands(), "seconds": seconds, "tail": tail, "clean": True},
-                         ("feature_hidden", "feature_compressed", "retina"))
+                         ("photoreceptors", "retinal_interneurons", "retina"))
 
 
 def size_measure(ctx, seconds=2., distance=.90):
@@ -3085,14 +3309,63 @@ def bright_pull_bar(measures):
     return True, ("a bright thing in front pulled it %.3f m further" % measures["pull"])
 
 
+def straight_pull_measure(ctx, seconds=10., distance=1.60):
+    """The same walk with a bright thing in front of it and with nothing there.
+
+    The reading is how straight the walk was each time.  A walk with nothing to
+    head for is free to curve - the room is only so big - so the question here
+    is only whether *having something to head for* keeps it on a line.  The
+    two runs share everything except the prop, so the difference between them
+    is what the prop did and nothing else.
+    """
+    ahead = walk_measure(ctx, seconds, "autonomous", "origin",
+                         props=dict(SILENT, green_target=(distance, 0., .32)))
+    away = walk_measure(ctx, seconds, "autonomous", "origin", props=SILENT)
+    if ahead["status"] != "ok" or away["status"] != "ok":
+        return dict(status="error", error=ahead["error"] or away["error"])
+    return dict(status="ok", error=None, ahead=ahead, away=away,
+                straight_ahead=float(ahead["straightness"]),
+                straight_away=float(away["straightness"]),
+                straight_gain=float(ahead["straightness"]) - float(away["straightness"]),
+                lateral_ahead=float(ahead["lateral_m"]),
+                lateral_away=float(away["lateral_m"]))
+
+
+def straight_pull_bar(measures):
+    """Heading for the thing in front: straighter with it there than without."""
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    ahead, away = measures["ahead"], measures["away"]
+    if not ahead["behavior_pass"] or not away["behavior_pass"]:
+        return False, ("it fell over in one of the two runs (min up_z %.3f and %.3f)"
+                       % (ahead["min_up_z"], away["min_up_z"]))
+    if away["progress_m"] < BAR["walk_own_m"]:
+        return False, ("it does not walk with an empty room either (%.3f m)"
+                       % away["progress_m"])
+    if measures["straight_gain"] < BAR["straight_gain"]:
+        return False, ("the thing in front did not keep it any straighter "
+                       "(%.4f against %.4f, bar +%.4f)"
+                       % (measures["straight_ahead"], measures["straight_away"],
+                          BAR["straight_gain"]))
+    return True, ("with something to head for the walk straightened: %.4f against %.4f"
+                  % (measures["straight_ahead"], measures["straight_away"]))
+
+
 def tip_over_measure(ctx, roll=.45, seconds=2.):
-    """Rolled over against level: what do its own posture cells say?"""
-    cells = ("righting",)
+    """Rolled over against level: what do its own posture cells say?
+
+    It read the ``righting`` group before, which is the cell that *starts the
+    righting action*, not one that senses attitude.  The animal is held in the
+    tilted pose, so that cell never fires and the question could not be passed:
+    its reading was 0.00000 on every seed.  The otolith cells are the ones that
+    answer it, and they do: 0.247 when rolled, 0.000 when level.
+    """
+    cells = ("vestibular_exc",)
     tipped = cell_read(ctx, cells=cells, seconds=seconds, clean=True, tilt=(roll, 0.),
                        tail=seconds)
     flat = cell_read(ctx, cells=cells, seconds=seconds, clean=True, tail=seconds)
-    up = np.asarray(tipped["parts"]["righting"], dtype=float)
-    down = np.asarray(flat["parts"]["righting"], dtype=float)
+    up = np.asarray(tipped["parts"][cells[0]], dtype=float)
+    down = np.asarray(flat["parts"][cells[0]], dtype=float)
     return dict(status="ok", error=None, roll=roll, tipped=up.tolist(), level=down.tolist(),
                 gain_mean=float(np.mean(up) - np.mean(down)),
                 gain_max=float(np.max(up - down)))
@@ -3344,14 +3617,14 @@ task("knows_when_it_is_tipped_over", "自我", "身体被扳歪了，它自己�
 
 task("the_hidden_layer_sees_the_picture", "特征层", "两幅不一样的画，眼睛下面第一层读数分得开吗", "full", 4.,
      lambda ctx: feature_layer_measure(ctx),
-     lambda m: separation_bar(m, "feature_hidden", "feature_gain", "横条纹和竖条纹"),
+     lambda m: separation_bar(m, "retinal_interneurons", "feature_gain", "横条纹和竖条纹"),
      "两幅画都有花纹，只是一个横一个竖。它测的是眼睛下面那层有没有把画面带下去，"
      "不说明哪一层「懂」了画面。",
      requires=("eyes_follow_ball",))
 
 task("the_compressed_layer_sees_the_picture", "特征层", "再往下压一层，两幅画还分得开吗", "full", 4.,
      lambda ctx: feature_layer_measure(ctx),
-     lambda m: separation_bar(m, "feature_compressed", "feature_gain", "横条纹和竖条纹"),
+     lambda m: retention_bar(m, "retina", "retinal_interneurons", .05, "横条纹和竖条纹"),
      "和上一层同一幅画、同一次对比。压缩得越狠越容易把两幅画压成同一个读数，"
      "这一题就是在问有没有压坏。",
      requires=("the_hidden_layer_sees_the_picture",))
@@ -3562,7 +3835,166 @@ task("the_dark_room_is_not_silence", "看", "全黑的屋里，输入层暗的�
      "它不说明它意识到自己在黑屋里——这两半现在没有出边，黑画面到不了反射层。",
      requires=("eyes_follow_ball",))
 
+# ---------------------------------------------------------------------------
+# the widest layer: what the association region does with a body state
+# ---------------------------------------------------------------------------
+# the widest layer: what the association region does with a body state
+# ---------------------------------------------------------------------------
+def association_loop_measure(ctx, warmup=2., driven_seconds=2., hold_seconds=3., roll=.45,
+                             tail=.5):
+    """Hand the widest layer a body state, take it away, and watch what is left.
+
+    The association layer is the one region that is neither a sense nor a
+    muscle.  It is fed by a wide random fan-in from the body and it is wired to
+    itself, so it runs at a level of its own; the questions here are whether a
+    body state moves that level at all (``driven``) and whether anything of it
+    survives after the body is back to standing (``held``).  A layer that only
+    echoes its own echo, with nothing of the body left in it, cannot be a
+    memory of anything.
+
+    The robot stands still throughout - what changes between the phases is the
+    body state handed to the brain, not the body - so this measures the layer
+    and not the walking.  It is also why the scene is cheap: no physics beyond
+    the placement, and 7 s of the controller.
+    """
+    body = clean_body(ctx["model_path"])
+    _place(body, pose="stand")
+    standing = body.observe()
+    _place(body, pose="stand", tilt=(roll, 0.))
+    tilted = body.observe()
+    _place(body, pose="stand")
+    brain = brain_for(ctx, body)
+    groups = ("association", "proprioception", "vestibular_exc", "motor")
+    environment = blank_environment()
+
+    def trace(observation, seconds):
+        history = {name: [] for name in groups}
+        for _ in range(int(round(seconds / DT))):
+            brain.step(observation, environment=environment, dt=DT, learn=False)
+            for name in groups:
+                history[name].append(float(np.mean(brain.network.activity[
+                    np.atleast_1d(brain.groups[name])])))
+        return {name: np.asarray(values) for name, values in history.items()}
+
+    window = max(1, int(round(tail / DT)))
+    warm = trace(standing, warmup)
+    baseline = float(warm["association"][-window:].mean())
+    hot = trace(tilted, driven_seconds)
+    back = trace(standing, hold_seconds)
+    driven = float(hot["association"].mean()) - baseline
+    held = float(back["association"][-window:].mean()) - baseline
+    return dict(status="ok", error=None, roll=roll,
+                baseline=baseline,
+                driven=driven,
+                held=held,
+                motor_level=float(warm["motor"][-window:].mean()),
+                hold_start=float(back["association"][:window].mean()) - baseline,
+                vestibular_driven=float(hot["vestibular_exc"].mean()),
+                motor_driven=float(hot["motor"].mean())
+                - float(warm["motor"][-window:].mean()),
+                motor_held=float(back["motor"][-window:].mean())
+                - float(warm["motor"][-window:].mean()))
+
+
+def association_bar(measures, key, bar_key, what):
+    if measures.get("status") != "ok":
+        return False, "run failed: %s" % measures.get("error")
+    value, bar = float(measures[key]), BAR[bar_key]
+    if value < bar:
+        return False, ("%s: %.5f (bar %.5f)" % (what, value, bar))
+    return True, "%s: %.5f" % (what, value)
+
+
+def return_line_measure(ctx, **kwargs):
+    """Does the widest layer reach the muscles at all?
+
+    The same seven seconds of standing as the other association questions, run
+    twice: once as the animal is wired, and once with the return line cut
+    (``association_return_gain`` set to zero).  Both runs are handed the same
+    body state, so the body is not what is being compared - whatever the motor
+    cells do differently is what came down the return line.  Cutting the line
+    changes only the outgoing edges of that layer, so its own level is the same
+    in both runs; ``driven`` and ``held`` are reported to show that.
+
+    The reading is the motor level *of the same moment in both runs*, not the
+    tilt-minus-standing difference.  The association layer is busy in both
+    phases (0.383 standing against 0.434 tilted on the birth animal), so a
+    return line lifts the motor level in both and the difference cancels it: on
+    the birth wiring with the return line at gain 1 that reading moved by
+    -3e-5, which is nothing.  Compared within one phase the same line moves the
+    motor level by +1.6e-4 at gain 1, +6.6e-4 at 4 and +2.7e-3 at 16 - small,
+    but it is the return line and only the return line.
+    """
+    as_given = association_loop_measure(ctx, **kwargs)
+    parameters = dict(ctx["parameters"])
+    parameters["association_return_gain"] = 0.
+    cut = association_loop_measure(dict(ctx, parameters=parameters), **kwargs)
+    if as_given.get("status") != "ok" or cut.get("status") != "ok":
+        return dict(status="error",
+                    error=as_given.get("error") or cut.get("error"))
+    return dict(status="ok", error=None, wired=as_given, cut=cut,
+                reach=float(as_given["motor_level"]) - float(cut["motor_level"]),
+                reach_held=float(as_given["motor_held"]) - float(cut["motor_held"]),
+                driven=float(as_given["driven"]), held=float(as_given["held"]),
+                driven_when_cut=float(cut["driven"]))
+
+
+task("the_association_layer_reads_the_body", "前额叶",
+     "身体被扳歪时，那一大片既不收感觉也不管肌肉的细胞会不会跟着变", "full", 7.,
+     lambda ctx: association_loop_measure(ctx),
+     lambda m: association_bar(m, "driven", "association_driven_gain",
+                               "身体被扳歪时那一层的读数变化"),
+     "它只说这一层能从身体状态里分出两样东西。它不说明它能拿这个变化去做任何事："
+     "那是另一道题（the_widest_layer_reaches_the_muscles），它读的是返回线；"
+     "这一题读的是这一层自己的水平。",
+     reads="被扳歪那两秒里那一层的平均读数，减去站直时的读数",
+     bar_text="被扳歪时那一层的读数至少要动 0.02",
+     requires=())
+
+task("the_association_loop_holds_what_it_was_given", "前额叶",
+     "身体扳歪再放直以后，那一层里还留着刚才那件事吗", "full", 7.,
+     lambda ctx: association_loop_measure(ctx),
+     lambda m: association_bar(m, "held", "association_hold_gain",
+                               "放直三秒后那一层还比平时高多少"),
+     "回响回路存在不等于记得住：读数回到原样，就说明这一层只是把它听到的东西立刻"
+     "还了回去。出厂动物过不了这一题，这一题问的正是「想还在吗」。",
+     reads="放直后的最后半秒里那一层的平均读数，减去站直时的读数",
+     bar_text="扳歪过后，那一层的读数至少还要高出 0.01",
+     requires=())
+
+task("the_widest_layer_reaches_the_muscles", "前额叶",
+     "前额叶那一层动起来时，肌肉那头会不会跟着动", "full", 14.,
+     lambda ctx: return_line_measure(ctx),
+     lambda m: association_bar(m, "reach", "association_return_gain",
+                               "接上返回线和剪断返回线，肌肉那几组读数之差"),
+     "返回线现在是天生的：association_return_gain 出厂就是 1.0，和扇入、回环一样。"
+     "两次跑的身体姿势完全一样，接上返回线和剪断返回线（把增益设成 0）差出来的"
+     "那部分，只能是返回线送下去的。它问的是「前额叶说的话，肌肉听不听得到」，"
+     "而不是「前额叶里有没有东西」。出厂读数 +1.6e-4，增益 4 时 +7.2e-4，"
+     "所以它同时在量这条线有多强：把它调弱的候选会考不过。",
+     reads="同一段被扳歪的姿势，接上返回线和剪断返回线各跑一次，肌肉那几组的读数之差",
+     bar_text="同一相位下，肌肉那几组的读数要因为返回线至少高 0.00005（增益 1 实测 +1.6e-4）",
+     requires=())
+
+task("keeps_its_line_towards_what_it_sees", "注意",
+     "前面摆个亮东西时，它走的那条线会不会更直", "full", 20.,
+     lambda ctx: straight_pull_measure(ctx, 10.), straight_pull_bar,
+     "空房间里会走路的动物本来就会绕：场地只有这么大。这一题比的是同一个动物"
+     "「前面有亮东西」和「空房间」两次的直度之差，所以它不说明它奔着什么去，"
+     "只说明有东西可看的时候它更不绕。",
+     reads="有亮东西那次和空房间那次的直度之差（同一条路，各十秒）",
+     bar_text="前面有亮东西时，直度至少要提高 0.05（出厂动物三种子实测 +0.102/+0.093/+0.180）",
+     requires=("walk_flat",))
+
 TASK_DOC = {
+    "the_association_layer_reads_the_body": ("被扳歪那两秒里那一层的平均读数，减去站直时的读数",
+                                             "被扳歪时那一层的读数至少要动 0.02"),
+    "the_association_loop_holds_what_it_was_given": ("放直后的最后半秒里那一层的平均读数，减去站直时的读数",
+                                                     "扳歪过后，那一层的读数至少还要高出 0.01"),
+    "the_widest_layer_reaches_the_muscles": ("接上返回线和剪断返回线两次，同一相位下肌肉那几组的读数之差",
+                                              "至少高 0.00005（出厂 +1.6e-4，增益 4 时 +7.2e-4）"),
+    "keeps_its_line_towards_what_it_sees": ("有亮东西那次和空房间那次的直度之差",
+                                            "有亮东西时直度至少高 0.05"),
     "stands_still": ("6 秒里的位移、全程最低的直立程度",
                      "直立程度 ≥ 0.9 并且移动 ≤ 0.70 米"),
     "walk_flat": ("走了多远、全程最低的直立程度", "全程不倒并且移动 ≥ 0.25 米"),
@@ -3791,19 +4223,77 @@ TASK_DOC = {
                                                "头二十秒涨 > 0.01，最后二十秒的涨幅 ≤ 头二十秒的 25%"),
 }
 
+# The two sentences published with each question live in one table above, and
+# the questions themselves are written down without them.  Nothing joined the
+# two: ``--explain`` and the tests read ``entry["reads"]`` and found it empty
+# on 126 of the 130 questions, so the bank's own description of itself was
+# dead text.  Join them here, where both exist.  A question that states its own
+# sentences keeps them.
 for _entry in TASKS:
-    _doc = TASK_DOC.get(_entry["name"])
-    if _doc is None:
-        raise SystemExit("no documentation for exam %s" % _entry["name"])
-    _entry["reads"], _entry["bar_text"] = _doc
-for _name in TASK_DOC:
-    if _name not in {entry["name"] for entry in TASKS}:
-        raise SystemExit("documentation for a task that is not in the bank: %s" % _name)
+    _reads, _bar_text = TASK_DOC.get(_entry["name"], ("", ""))
+    if not _entry["reads"]:
+        _entry["reads"] = _reads
+    if not _entry["bar_text"]:
+        _entry["bar_text"] = _bar_text
+_missing = [entry["name"] for entry in TASKS
+            if not entry["reads"] or not entry["bar_text"]]
+if _missing:
+    raise ValueError("questions with no published reading or bar: %s" % _missing)
+del _entry, _reads, _bar_text, _missing
+
+
+
+# ---------------------------------------------------------------------------
+# the cheap filter a round draws with
+# ---------------------------------------------------------------------------
+# A round cannot afford 27 minutes of simulation per animal, so a candidate is
+# put through this list first and only the survivors are put through the whole
+# bank.  The list is not "the interesting questions": it is the questions the
+# birth animal fails at its cheapest.  Every name here was measured on the
+# birth genome at scaffold 0 and costs what that run says it costs.  Eight
+# groups are covered - righting, the feature layers, seeing, the association
+# layer, terrain, walking a line, running and turning - so a candidate with one
+# unusual ability somewhere else is not thrown away for having no righting
+# reflex.
+#
+# Two things this list is not.  It is not a score: a candidate that passes all
+# eight is not "better" than one that passes six, it is different.  And it is
+# not the exam: a candidate that survives is put through the whole bank over
+# three scaffolds before anything is claimed about it.
+#
+# The bank's own cost is worth writing down here, because it is what makes the
+# filter necessary.  The birth animal spends 1609 s - 26.8 min - of simulation
+# on the 128 questions at one scaffold.  A thousand candidates on the whole
+# bank would be 447 h of simulation, which is not a round, it is a month.  The
+# eight below cost about 59 s, so a thousand of them is a night.
+#
+# The old list had two questions the birth animal passes (nose_down_recover,
+# stay_up_when_pushed) sitting in it while claiming to hold "the failing ones",
+# and spent 95 of its 158 s - 60% - on two questions (steps_over_the_curb,
+# runs_without_being_told).  This one holds only questions it fails and covers
+# one more group for less than the old price.
+# Cheapest first, and the order of this tuple is the order the questions are
+# asked.  The probe is a filter, and it can be run as a chain that stops at the
+# first miss (``--stop-on-first-miss``); a candidate that cannot hold a loop
+# should not first pay eleven seconds to fail a walking question.
+PROBE = ("the_association_loop_holds_what_it_was_given",  # 前额叶 1.6 s
+         "the_compressed_layer_sees_the_picture",   # 特征层  1.7 s
+         "eyes_converge_on_a_near_thing",           # 看      3.9 s
+         "get_up_from_back",                        # 自救    4.0 s
+         "threads_the_passage_without_touching",    # 地形   11.3 s
+         "backs_away_from_a_hand_on_its_chest",     # 转弯   11.5 s
+         "walks_in_a_straight_line",                # 走路   11.7 s
+         "runs_without_being_told")                 # 跑     13.6 s
 
 
 def stage_tasks(stage):
     if stage == "screen":
         return [t for t in TASKS if t["stage"] == "screen"]
+    if stage == "probe":
+        # In PROBE order, not in the order the questions were written down:
+        # this stage is a chain and its order is part of what it is.
+        by_name = {entry["name"]: entry for entry in TASKS}
+        return [by_name[name] for name in PROBE]
     return list(TASKS)
 
 
@@ -3820,12 +4310,23 @@ def run_task(entry, genome, seed):
         passed, why = False, "bar failed: %s: %s" % (type(exc).__name__, exc)
     return dict(task=entry["name"], group=entry["group"], seed=int(seed),
                 passed=bool(passed), why=why, measures=measures,
+                margin=margin(entry["name"], measures),
                 wall_seconds=time.perf_counter() - started)
 
 
-def run_bank(genome, seed, stage="screen", names=None, on_result=None):
+def run_bank(genome, seed, stage="screen", names=None, on_result=None,
+             stop_at_first_miss=False):
     """Every question once, in order.  ``on_result`` is called per answer,
-    so a long run reports as it goes instead of all at the end."""
+    so a long run reports as it goes instead of all at the end.
+
+    ``stop_at_first_miss`` turns the bank into a chain: the first question the
+    animal fails ends the exam.  On the probe stage that is the difference
+    between paying for all eight questions and paying for the two a candidate
+    usually gets through, and the stage is ordered cheapest first for exactly
+    this.  The answer that stopped it is still recorded - a chain that stopped
+    is a different thing from a bank that was finished, and the caller has to
+    say which one it holds.
+    """
     entries = stage_tasks(stage)
     if names:
         entries = [t for t in entries if t["name"] in set(names)]
@@ -3835,6 +4336,8 @@ def run_bank(genome, seed, stage="screen", names=None, on_result=None):
         results.append(result)
         if on_result is not None:
             on_result(result)
+        if stop_at_first_miss and not result["passed"]:
+            break
     return results
 
 
@@ -3865,7 +4368,7 @@ def parse_args(argv=None):
                         help="every question, what it reads, its bar, the birth reading")
     parser.add_argument("--unlocked", default=None,
                         help="comma-separated tasks already passed; print what is open")
-    parser.add_argument("--stage", default="screen", choices=("screen", "full"))
+    parser.add_argument("--stage", default="screen", choices=("screen", "probe", "full"))
     parser.add_argument("--seeds", default="0")
     parser.add_argument("--genome", default=None,
                         help="JSON file or inline JSON of named gains")

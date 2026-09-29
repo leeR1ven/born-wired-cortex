@@ -1,0 +1,25 @@
+    birth    steps_over_the_curb                        FAIL   17.5s  walked 0.583 m but never crossed the far side of the thing in the way 
+    birth    get_up_from_back                           FAIL    3.0s  got up at 2.10 s and then went back down (final up_z -0.732)
+    birth    nose_down_recover                          pass    2.9s  on its feet from 2.65 s and still there at the end (final up_z 0.574)
+    birth    stay_up_when_pushed                        pass    3.3s  on its feet from 3.24 s and still there at the end (final up_z 0.785)
+    birth    eyes_tell_near_from_far                    FAIL    6.8s  the ball came to 0.25 m and the distance cells only reached 0.10
+    birth    the_compressed_layer_sees_the_picture      FAIL    2.1s  横条纹和竖条纹 kept only 2.6% of what retinal_interneurons carried (0.01026 o
+    birth    runs_without_being_told                    FAIL   14.9s  没人管它的那十秒 averaged 0.087 m/s, bar 0.250
+    birth    the_association_loop_holds_what_it_was_given FAIL    2.2s  放直三秒后那一层还比平时高多少: 0.00000 (bar 0.01000)
+    birth    steps_over_the_curb                        FAIL   15.0s  walked 0.537 m but never crossed the far side of the thing in the way 
+    birth    get_up_from_back                           FAIL    2.9s  never stayed on its feet (final up_z 0.477, height 0.155)
+    birth    nose_down_recover                          FAIL    3.0s  got up at 2.41 s and then went back down (final up_z -0.066)
+    birth    stay_up_when_pushed                        FAIL    3.4s  got up at 3.32 s and then went back down (final up_z 0.327)
+    birth    eyes_tell_near_from_far                    FAIL    6.3s  the ball came to 0.25 m and the distance cells only reached 0.10
+    birth    the_compressed_layer_sees_the_picture      FAIL    2.0s  横条纹和竖条纹 kept only 2.6% of what retinal_interneurons carried (0.01026 o
+    birth    runs_without_being_told                    FAIL   14.8s  没人管它的那十秒 averaged 0.079 m/s, bar 0.250
+    birth    the_association_loop_holds_what_it_was_given FAIL    2.2s  放直三秒后那一层还比平时高多少: 0.00000 (bar 0.01000)
+    birth    steps_over_the_curb                        FAIL   16.1s  walked 0.565 m but never crossed the far side of the thing in the way 
+    birth    get_up_from_back                           FAIL    3.2s  never stayed on its feet (final up_z -0.860, height 0.141)
+    birth    nose_down_recover                          FAIL    3.4s  got up at 2.15 s and then went back down (final up_z -0.804)
+    birth    stay_up_when_pushed                        pass    3.7s  on its feet from 3.46 s and still there at the end (final up_z 0.838)
+    birth    eyes_tell_near_from_far                    FAIL    7.7s  the ball came to 0.25 m and the distance cells only reached 0.10
+    birth    the_compressed_layer_sees_the_picture      FAIL    2.3s  横条纹和竖条纹 kept only 2.6% of what retinal_interneurons carried (0.01026 o
+    birth    runs_without_being_told                    FAIL   16.8s  没人管它的那十秒 averaged 0.100 m/s, bar 0.250
+    birth    the_association_loop_holds_what_it_was_given FAIL    2.5s  放直三秒后那一层还比平时高多少: 0.00000 (bar 0.01000)
+birth: 3/24 passed, 2.6 min of simulation, artifacts\探测_出生动物_三种子.jsonl

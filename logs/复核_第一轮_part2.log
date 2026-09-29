@@ -1,0 +1,62 @@
+10 kept animals, 3 seed(s), stage screen
+  birth
+    birth          seed 0   5/7
+    birth          seed 1   4/7
+    birth          seed 2   5/7
+  s0-0006  (screened at 6/7)
+    s0-0006        seed 0   6/7
+    s0-0006        seed 1   6/7
+    s0-0006        seed 2   6/7
+  s0-0012  (screened at 6/7)
+    s0-0012        seed 0   6/7
+    s0-0012        seed 1   4/7
+    s0-0012        seed 2   5/7
+  s0-0029  (screened at 6/7)
+    s0-0029        seed 0   6/7
+    s0-0029        seed 1   6/7
+    s0-0029        seed 2   5/7
+  s0-0050  (screened at 6/7)
+    s0-0050        seed 0   6/7
+    s0-0050        seed 1   4/7
+    s0-0050        seed 2   6/7
+  s0-0060  (screened at 6/7)
+    s0-0060        seed 0   6/7
+    s0-0060        seed 1   6/7
+    s0-0060        seed 2   5/7
+  s0-0075  (screened at 6/7)
+    s0-0075        seed 0   6/7
+    s0-0075        seed 1   5/7
+    s0-0075        seed 2   4/7
+  s0-0082  (screened at 6/7)
+    s0-0082        seed 0   6/7
+    s0-0082        seed 1   6/7
+    s0-0082        seed 2   5/7
+  s0-0094  (screened at 6/7)
+    s0-0094        seed 0   6/7
+    s0-0094        seed 1   5/7
+    s0-0094        seed 2   4/7
+  s0-0099  (screened at 6/7)
+    s0-0099        seed 0   6/7
+    s0-0099        seed 1   5/7
+    s0-0099        seed 2   6/7
+  s0-0112  (screened at 6/7)
+    s0-0112        seed 0   6/7
+    s0-0112        seed 1   5/7
+    s0-0112        seed 2   5/7
+
+animal       passed on every seed count  beyond birth
+birth        eyes_follow_ball s 4      -
+s0-0006      eyes_follow_ball g 6      get_up_from_back, stay_up_when_pushed
+s0-0012      eyes_follow_ball s 4      -
+s0-0029      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0050      eyes_follow_ball s 4      -
+s0-0060      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0075      eyes_follow_ball s 4      -
+s0-0082      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0094      eyes_follow_ball s 4      -
+s0-0099      eyes_follow_ball s 5      stay_up_when_pushed
+s0-0112      eyes_follow_ball s 5      stay_up_when_pushed
+
+held something the birth animal did not, on every seed: s0-0006, s0-0029, s0-0060, s0-0082, s0-0099, s0-0112
+-> artifacts\复核_第一轮_part2.json
+wall 29.5 min

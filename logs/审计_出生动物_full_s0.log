@@ -1,0 +1,90 @@
+    birth    the_lesson_is_still_there_later            pass   29.0s  tone alone now drives retreat 0.945 over silence
+    birth    visual_memory_holds                        pass    6.0s  the pattern drives the aversive cells 0.0761 over silence
+    birth    the_pattern_means_nothing_without_pairing  pass    1.3s  the pattern drives the aversive cells -0.0000 over silence
+    birth    the_memory_is_still_there_later            pass    7.4s  the pattern drives the aversive cells 0.1413 over silence
+    birth    an_idle_animal_does_not_walk_for_a_touch   pass    9.4s  stayed put at 0.193 m
+    birth    an_idle_animal_does_not_walk_for_a_ball    pass   10.4s  stayed put at 0.557 m
+    birth    moving_is_not_being_pushed                 pass   10.7s  a shove read 1.0000 above its own walking
+    birth    the_body_is_not_a_foot                     pass    2.1s  身上和脚上 moved 0.98127 and 0.19493
+    birth    walks_in_a_straight_line                   FAIL   11.7s  直度 = 0.6221, bar 0.7000
+    birth    does_not_crab_sideways                     pass   11.7s  往旁边蹭的距离 = 0.0459
+    birth    holds_its_heading_while_it_walks           FAIL   13.2s  一路累计转头 = 1.1749, bar 0.6000
+    birth    walks_for_twenty_seconds                   FAIL   26.6s  walked 0.654 m, bar 0.900 m
+    birth    walks_at_a_steady_pace                     FAIL   14.7s  平均速度 averaged 0.087 m/s, bar 0.150
+    birth    covers_ground_in_sixteen_seconds           FAIL   22.8s  walked 0.658 m, bar 1.000 m
+    birth    turns_towards_a_sound_while_walking        pass   23.9s  边走边听: the two sides came apart by -0.831 rad
+    birth    turns_towards_a_sound_while_standing       pass   22.8s  the two sides came apart by -0.831 rad
+    birth    does_not_spin_on_the_spot                  pass   11.8s  没人管它时 turned through 1.154 rad while getting 0.557 m along
+    birth    walks_down_the_ramp                        pass   16.2s  came off 坡: walked 0.630 m, 0.564 m past the edge
+    birth    steps_down_the_low_step                    pass   16.3s  came off 台阶: walked 0.297 m, 0.304 m past the edge
+    birth    steps_down_from_the_platform               FAIL   16.6s  walked 0.501 m but never came off 台子 (reached 0.448 m)
+    birth    goes_around_the_block                      FAIL   17.4s  walked 0.382 m, bar 0.600 m
+    birth    a_touch_on_the_front_holds_it_back         FAIL   23.1s  it fell over in one of the two runs (free min up_z 0.994, held min up_
+    birth    a_bang_stops_it_walking                    FAIL   22.7s  那一声砰 barely slowed it: 0.425 m against 0.556 m free (limit 0.389)
+    birth    gets_up_after_a_hard_shove                 pass    2.9s  on its feet from 3.97 s and still there at the end (final up_z 0.696)
+    birth    eyes_converge_on_a_near_thing              FAIL    3.9s  gain = 0.00564, bar 0.02000
+    birth    eyes_look_at_a_still_thing_at_the_side     pass    4.0s  停在旁边的东西: the eyes went 0.1083 and -0.1156 rad
+    birth    its_own_eyes_are_felt                      pass    1.3s  gain = 0.00065
+    birth    eyes_hold_a_slow_thing                     pass    3.5s  looked 0.080 rad off the ball
+    birth    ears_hear_something_far_away               pass    2.6s  远处那一声 came apart by 0.04687
+    birth    ears_hear_a_sound_behind                   pass    2.6s  后面那一声 came apart by 0.04115
+    birth    two_sounds_at_once_are_still_two           pass    2.5s  两处一起响 came apart by 0.15975
+    birth    feels_a_touch_on_the_left_side             pass    2.3s  左边和右边被碰 moved 0.97603 and 0.97603
+    birth    feels_a_touch_behind_it                    pass    2.3s  后面和前面被碰 moved 0.96173 and 0.96173
+    birth    feels_a_touch_on_both_sides_at_once        pass    2.4s  one touch lit 1 sector and two touches lit 2
+    birth    feels_the_ground_under_the_back_legs       pass    1.7s  承重的后腿 moved 0.09023 and 0.09023
+    birth    learns_the_lesson_in_five_seconds          pass   11.1s  tone alone now drives retreat 0.626 over silence
+    birth    the_lesson_survives_a_longer_pause         pass   44.8s  tone alone now drives retreat 0.945 over silence
+    birth    remembers_a_second_pattern                 pass    7.0s  the pattern drives the aversive cells 0.0761 over silence
+    birth    remembers_after_one_pairing                pass    2.3s  the pattern drives the aversive cells 0.1324 over silence
+    birth    stands_still_for_twenty_seconds            pass   24.4s  stood for the whole twenty seconds: 0.654 m of drift, min up_z 0.992
+    birth    stands_still_on_a_slope                    pass   10.2s  stayed upright on the slope (min up_z 0.998)
+    birth    stays_up_when_nudged_gently                pass    2.9s  on its feet from 3.59 s and still there at the end (final up_z 0.897)
+    birth    all_four_feet_leave_the_ground             pass   11.7s  all four feet lifted (front 0.279/0.153 rear 0.176/0.296)
+    birth    the_two_sides_step_alike                   pass   12.5s  both pairs stepped alike (front 0.279/0.153, rear 0.176/0.296)
+    birth    keeps_walking_for_thirty_seconds           FAIL   35.3s  walked 0.651 m, bar 1.300 m
+    birth    does_not_slow_down_on_a_long_walk          FAIL   23.0s  slowed to 0.195 of its starting pace (0.094 m/s then, 0.018 m/s later,
+    birth    keeps_walking_while_it_turns               pass   35.7s  一边走一边响: turned it -1.213 rad and it kept walking (0.648 m and 0.773 m)
+    birth    backs_away_from_a_hand_on_its_chest        FAIL   11.5s  胸口上那只手 did not back it off (0.001 m, bar 0.100)
+    birth    keeps_its_line_with_a_sound_behind         pass   13.4s  kept its line with a sound behind it (0.219 rad of drift)
+    birth    does_not_fall_walking_into_the_wall        pass   13.4s  stayed on its feet against the wall (reached x 2.905, min up_z 0.995)
+    birth    threads_the_passage_without_touching       FAIL   11.3s  walked 0.268 m but never came out of the passage (0.403 m past the sta
+    birth    sees_a_red_square_from_a_green_one         pass    1.7s  红方块和绿方块 came apart by 0.11737
+    birth    sees_a_big_ball_from_a_small_one           pass    3.2s  大球和小球 came apart by 0.14810
+    birth    eyes_follow_the_ball_up_and_down           pass    2.0s  the eye pitch stayed 0.116 rad from the ball
+    birth    eyes_follow_the_ball_far_away              pass    2.0s  looked 0.054 rad off the ball
+    birth    eyes_follow_the_ball_close_up              pass    2.0s  looked 0.120 rad off the ball
+    birth    the_eyes_let_go_when_it_is_gone            pass    2.3s  it looked (0.1081 rad) and then let go (0.0054 rad)
+    birth    notices_a_thing_that_creeps_in             pass    3.1s  the eyes swung 0.0430 rad towards the thing that appeared
+    birth    a_sound_that_stops_is_no_longer_heard      pass    1.5s  那一声 fell from 0.0833 to 0.0000 when it stopped
+    birth    a_quiet_room_is_not_a_sound                pass    1.1s  安静的屋子: every channel that received nothing had its opposite cell lit
+    birth    ears_tell_left_from_right                  pass    2.6s  左肩和右肩的声音 came apart by 0.05895
+    birth    two_sounds_at_one_shoulder_are_still_two   pass    2.6s  同一边两个声音 came apart by 0.12421
+    birth    a_bang_behind_it_still_startles            pass    2.5s  背后那一声 came apart by 0.22222
+    birth    feels_a_touch_on_the_right_side            pass    2.3s  右边和左边被碰 moved 0.97603 and 0.97603
+    birth    feels_a_light_hand_too                     pass    2.3s  轻轻搭上来 moved 0.94121 and 0.94121
+    birth    feels_the_ground_under_the_front_legs      pass    1.7s  承重的前腿 moved 0.09023 and 0.09023
+    birth    lifts_each_of_the_four_feet                pass    3.5s  all four legs reported themselves (['0.684', '0.684', '0.684', '0.684'
+    birth    the_flat_ground_is_not_a_bump              pass    1.2s  平地 stayed at ['0.0000', '0.0000', '0.0000', '0.0000']
+    birth    it_forgets_when_nobody_teaches_anymore     FAIL   54.6s  the lesson never faded: 0.970 while the hand was there, 0.971 with nob
+    birth    a_second_short_lesson_adds_to_the_first    pass   26.3s  the second lesson added 0.246 (0.626 then 0.872)
+    birth    the_lesson_is_still_there_after_a_minute   pass   67.5s  tone alone now drives retreat 0.944 over silence
+    birth    the_memory_survives_a_long_life            pass   62.8s  the tone alone drove retreat 0.970 right after the lesson and 0.945 af
+    birth    a_second_tone_does_not_wipe_the_first      pass   41.4s  the first tone still drove retreat 0.942 after the second was learned 
+    birth    the_route_stops_growing_at_its_ceiling     pass   37.3s  the route rose 1.98657 then 1.11257 then 0.02656 over equal 20 s stret
+    birth    remembers_two_patterns_at_once             pass    5.8s  paired 0.0761, unpaired -0.0002
+    birth    the_memory_survives_a_small_change         pass    6.1s  the moved copy still meant 0.0934 of the original 0.0761
+    birth    walks_towards_a_bright_thing               pass   26.7s  a bright thing in front pulled it 0.077 m further
+    birth    knows_when_it_is_tipped_over               pass    2.6s  gain_mean = 0.24746
+    birth    the_hidden_layer_sees_the_picture          pass    1.5s  横条纹和竖条纹 came apart by 0.39887
+    birth    the_compressed_layer_sees_the_picture      FAIL    1.7s  横条纹和竖条纹 kept only 2.6% of what retinal_interneurons carried (0.01026 o
+    birth    hurries_towards_a_bright_thing             FAIL   27.0s  前面有亮东西时: with an empty room it does not even hold a steady pace (0.086
+    birth    runs_without_being_told                    FAIL   13.6s  没人管它的那十秒 averaged 0.087 m/s, bar 0.250
+    birth    runs_for_twenty_seconds                    FAIL   26.9s  walked 0.654 m, bar 2.000 m
+    birth    keeps_running_while_it_turns               FAIL   41.8s  一边跑一边响: it turned but crawled (0.072 m/s, bar 0.250)
+    birth    nothing_touching_it_is_not_nothing         pass    1.4s  没被碰的站姿: every channel that received nothing had its opposite cell lit
+    birth    the_weight_pair_still_carries_the_weight   pass    1.3s  四只脚的受力那一对: foot_load and its opposite add up to one channel (worst 0.0
+    birth    the_dark_room_is_not_silence               pass    1.5s  全黑画面: black lit the dark half 0.96985 (summary 0.97143) and left the b
+    birth    the_association_layer_reads_the_body       pass    2.1s  身体被扳歪时那一层的读数变化: 0.03852
+    birth    the_association_loop_holds_what_it_was_given FAIL    1.6s  放直三秒后那一层还比平时高多少: 0.00000 (bar 0.01000)
+birth: 103/128 passed, 26.8 min of simulation, artifacts\审计_出生动物_full_s0.jsonl
