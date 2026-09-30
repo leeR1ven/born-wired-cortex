@@ -18,8 +18,10 @@ fi
 export PYTHONIOENCODING=utf-8
 export MUJOCO_GL="${MUJOCO_GL:-egl}"
 
-CORES=$(nproc)
-RAM_GB=$(free -g 2>/dev/null | awk '/^Mem:/{print $2}' || echo 16)
+# 真正能用的核数/内存，从 cgroup 配额取（不是宿主机的 nproc / free）
+source "$ROOT/cloud/machine.sh"
+CORES=$(cpu_cores)
+RAM_GB=$(mem_gb)
 # 日志目录自己建一下：精简的上云包里 logs/ 可能根本没跟着来
 mkdir -p "$ROOT/logs"
 KIDS="${KIDS:-64}"
@@ -29,7 +31,7 @@ PARENTS="${PARENTS:-artifacts/题1f_演化_g01_keep.jsonl}"
 if [ ! -f "$PARENTS" ]; then echo "找不到爹的台账 $PARENTS"; exit 1; fi
 WORKER_LIST="${WORKERS:-8 16 24}"
 
-echo "这台机器：$CORES 核 / ${RAM_GB} GB 内存（cgroup 限 24 核）；每一档跑 $KIDS 只孩子，爹用 $PARENTS"
+echo "这台机器：$CORES 核 / ${RAM_GB} GB 内存（按 cgroup 配额算）；每一档跑 $KIDS 只孩子，爹用 $PARENTS"
 echo
 printf '%8s %10s %12s %14s\n' "进程数" "花多久" "每只多少秒" "每小时多少只"
 for W in $WORKER_LIST; do

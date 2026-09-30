@@ -10,6 +10,8 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT/engine_v2"
+# 这台机器真正能用的核数/内存（不是宿主机的 nproc / free）
+source "$ROOT/cloud/machine.sh"
 # 解释器：优先用 cloud/new_python.sh 造在仓库里的 .venv（镜像只有 python 3.8 时用它），
 # 其次用 PY=... 指定的，最后才用系统的 python3。
 if [ -n "${PY:-}" ]; then :
@@ -21,7 +23,14 @@ export MUJOCO_GL="${MUJOCO_GL:-egl}"
 
 KIDS="${CANDIDATES:-300}"
 GEN="${GENERATIONS:-20}"
-WORKERS="${WORKERS:-$(nproc)}"
+# 进程数默认按 cgroup 配额来，别按 nproc：容器里 nproc 报的是宿主机核数（这台报 96），
+# 照它开就是 96 个进程抢 24 核的配额，内存也会超（一只约 1.9 GB）。
+WORKERS="${WORKERS:-$(cpu_cores)}"
+BY_RAM=$(( $(mem_gb) / 2 ))
+if [ "$WORKERS" -gt "$BY_RAM" ]; then
+    echo "内存只给 $(mem_gb) GB，进程数从 $WORKERS 降到 $BY_RAM（一只约 1.9 GB）"
+    WORKERS="$BY_RAM"
+fi
 PARENTS="${PARENTS:-artifacts/题1f_演化_g01_keep.jsonl}"
 START_GEN="${START_GEN:-2}"
 PREFIX="${PREFIX:-artifacts/题1f_演化_云}"
