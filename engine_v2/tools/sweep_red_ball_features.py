@@ -64,6 +64,8 @@ def main(argv=None):
     ap.add_argument("--scenery", action="store_true")
     ap.add_argument("--patch-at", default="0.0,0.0", help="打 ASCII 方块图的球位置：方位,高低（弧度）")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--table-out", default=None,
+                    help="把逐细胞的位置野表写到这个文件：接线要用的是这张表，不是拟合直线")
     args = ap.parse_args(argv)
 
     def spread(text):
@@ -247,6 +249,29 @@ def main(argv=None):
         report["layers"][name] = dict(size=int(sizes[name]),
                                       selective=int((z > 6).sum()),
                                       best_z=float(z[order[0]]) if len(order) else 0.)
+    # 逐细胞的位置野表：每个细胞「球落在哪个位置时它最亮」，外加峰值和选择性 z。
+    # 接线用的是这张表本身，不是一条拟合直线 —— 视网膜四周采样疏、中间密，一条直线
+    # 在边缘能差好几列（实测 3.9 列）。索引就是各层的展平顺序：
+    # retinal_opponent 是（眼, 行, 列, 色），所以红色通道是 index % 3 == 0。
+    if args.table_out:
+        table = dict(colour=args.colour, options=vars(args), places=truth.tolist(),
+                     eye_shape=[int(v) for v in brain.eye_shape], cells={})
+        for name in LAYERS:
+            cell_map = maps[name]
+            peak = cell_map.max(axis=1)
+            mean = cell_map.mean(axis=1)
+            spread = (peak - mean) / (cell_map.std(axis=1) + 1e-9)
+            best = cell_map.argmax(axis=1)
+            table["cells"][name] = dict(size=int(cell_map.shape[0]),
+                                       best_place=[int(v) for v in best],
+                                       peak=[round(float(v), 4) for v in peak],
+                                       z=[round(float(v), 2) for v in spread])
+        table_path = Path(args.table_out)
+        table_path.parent.mkdir(parents=True, exist_ok=True)
+        table_path.write_text(json.dumps(table, ensure_ascii=False), encoding="utf-8")
+        print("\n位置野表 -> %s（%d 个细胞 x %d 个位置）"
+              % (table_path, sum(v["size"] for v in table["cells"].values()), len(places)))
+
     if args.out:
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.out).write_text(json.dumps(report, ensure_ascii=False), encoding="utf-8")

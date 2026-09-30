@@ -1,0 +1,78 @@
+{
+ "options": {
+  "colour": "green",
+  "bearings": "-0.25,0,0.25",
+  "elevations": "0",
+  "distance": 0.9,
+  "size": 0.06,
+  "settle": 40,
+  "read": 20,
+  "scenery": false,
+  "out": "artifacts\\红球特征神经元_绿对照.json"
+ },
+ "records": [
+  {
+   "colour": "green",
+   "bearing": -0.25,
+   "elevation": 0.0333,
+   "left_column": -1.0,
+   "right_column": -1.0,
+   "left_row": -1.0,
+   "right_row": -1.0,
+   "left_red": 0.0,
+   "right_red": 0.0,
+   "left_retina_red": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "left_pixel_max": [
+    0.367,
+    0.816,
+    0.5
+   ]
+  },
+  {
+   "colour": "green",
+   "bearing": 0.0,
+   "elevation": 0.0404,
+   "left_column": -1.0,
+   "right_column": -1.0,
+   "left_row": -1.0,
+   "right_row": -1.0,
+   "left_red": 0.0,
+   "right_red": 0.0,
+   "left_retina_red": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "left_pixel_max": [
+    0.369,
+    0.843,
+    0.502
+   ]
+  },
+  {
+   "colour": "green",
+   "bearing": 0.2428,
+   "elevation": 0.04,
+   "left_column": -1.0,
+   "right_column": -1.0,
+   "left_row": -1.0,
+   "right_row": -1.0,
+   "left_red": 0.0,
+   "right_red": 0.0,
+   "left_retina_red": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "left_pixel_max": [
+    0.369,
+    0.809,
+    0.502
+   ]
+  }
+ ]
+}
