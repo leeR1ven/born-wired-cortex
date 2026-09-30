@@ -31,6 +31,10 @@ from born_wired.binaural_senses import BinauralSenses
 NEURAL_DT = 0.01
 PHYSICS_DT = 0.002
 SAMPLE_INTERVAL = 0.5
+# How far it has to move before the clock on "is it still going anywhere" is
+# reset.  Smaller than this and a shivering animal reads as travelling; bigger
+# and a slow one reads as stopped.
+PROGRESS_STEP_M = 0.05
 CONTROLLER_DEFAULTS = {
     "motor_units": 200,
     "proprio_units": 64,
@@ -226,7 +230,20 @@ def run_seed(
     start_yaw: float = None,
     props: dict = None,
     startle=None,
+    distance_goal_m: float = None,
+    pace_gate=None,
+    stall_seconds: float = None,
 ) -> dict:
+    """One closed-loop run.
+
+    ``distance_goal_m`` ends the run the moment it has travelled that far, so a
+    walker that gets there in forty seconds does not cost the four hundred a
+    slow one would have.  ``pace_gate`` is ``(seconds, metres)``: at that time,
+    if it has not covered that far, it never will in useful time and the run
+    stops there.  ``stall_seconds`` stops a run that has not moved
+    ``PROGRESS_STEP_M`` in that long.  All three are off unless asked for, so
+    every existing exam reads exactly as it did.
+    """
     scenario_inputs = SCENARIOS[scenario]
     steps = int(round(duration / NEURAL_DT))
     if not math.isclose(steps * NEURAL_DT, duration, rel_tol=0.0, abs_tol=1e-9):
@@ -325,6 +342,13 @@ def run_seed(
     error = None
     eye_travel_rad = 0.0
     eye_angle_rad = None
+    travelled_m = 0.0
+    elapsed_loop = 0.0
+    reached_goal = False
+    stalled_early = False
+    too_slow = False
+    progress_position = initial_position.copy()
+    progress_time = 0.0
 
     try:
         for step_index in range(steps):
@@ -405,6 +429,21 @@ def run_seed(
             )
 
             position = base_position(body)
+            elapsed_loop = (step_index + 1) * NEURAL_DT
+            travelled_m = float(np.linalg.norm(position[:2] - initial_position[:2]))
+            if distance_goal_m is not None and travelled_m >= distance_goal_m:
+                reached_goal = True
+                break
+            if float(np.linalg.norm(position[:2] - progress_position[:2])) >= PROGRESS_STEP_M:
+                progress_position = position.copy()
+                progress_time = elapsed_loop
+            if stall_seconds is not None and elapsed_loop - progress_time > stall_seconds:
+                stalled_early = True
+                break
+            if (pace_gate is not None and elapsed_loop >= pace_gate[0]
+                    and travelled_m < pace_gate[1]):
+                too_slow = True
+                break
             maximum_x = max(maximum_x, float(position[0]))
             horizontal_path += float(np.linalg.norm(position[:2] - previous_position[:2]))
             progress = float((position[:2] - initial_position[:2]) @ facing)
@@ -504,6 +543,13 @@ def run_seed(
             "maximum_scaffold_relative_change": max_scaffold_relative_change,
             "eye_travel_rad": float(eye_travel_rad),
             "final_eye_angle_rad": eye_angle_rad,
+        },
+        "ended": {
+            "reached_goal": bool(reached_goal),
+            "stalled": bool(stalled_early),
+            "too_slow": bool(too_slow),
+            "travelled_m": float(travelled_m),
+            "elapsed_s": float(elapsed_loop),
         },
         "checks": checks,
         "no_resets": True,

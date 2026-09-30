@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# 量这台机器开几个进程最划算：同一批孩子，换进程数各跑一遍，报每只多少秒、每小时多少只。
+#
+#   bash cloud/bench.sh                 # 默认试 8 / 16 / 24 个进程
+#   WORKERS="8 12" KIDS=48 bash cloud/bench.sh
+#
+# 注意：每一档的头十几秒是 python/torch 起进程的开销，孩子数给少了会把这一档显得偏慢。
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT/engine_v2"
+PY="${PY:-python3}"
+export PYTHONIOENCODING=utf-8
+export MUJOCO_GL="${MUJOCO_GL:-egl}"
+
+CORES=$(nproc)
+RAM_GB=$(free -g 2>/dev/null | awk '/^Mem:/{print $2}' || echo 16)
+KIDS="${KIDS:-64}"
+WORKER_LIST="${WORKERS:-8 16 24}"
+
+echo "这台机器：$CORES 核 / ${RAM_GB} GB 内存；每一档跑 $KIDS 只孩子"
+echo
+printf '%8s %10s %12s %14s\n' "进程数" "花多久" "每只多少秒" "每小时多少只"
+for W in $WORKER_LIST; do
+    if [ "$W" -gt "$CORES" ]; then echo "跳过 $W：这台只有 $CORES 核"; continue; fi
+    if [ "$W" -gt $((RAM_GB / 2)) ]; then echo "跳过 $W：内存不够（一个进程要 1.1 GB 左右）"; continue; fi
+    LOG="$ROOT/logs/上云测速_${W}进程.log"
+    START=$(date +%s)
+    "$PY" -X utf8 -u tools/evolve.py --candidates "$KIDS" --generations 1 --workers "$W" \
+        --quiet --out-prefix "artifacts/_上云测速_$W" --seed 5 > "$LOG" 2>&1
+    TAKEN=$(( $(date +%s) - START ))
+    awk -v w="$W" -v s="$TAKEN" -v k="$KIDS" \
+        'BEGIN{printf "%8d %9ds %13.1f %14.0f\n", w, s, s*w/k, k*3600.0/s}'
+    echo "         （明细 $LOG）"
+done
+echo
+echo "挑每小时最多的那一档当进程数，然后：WORKERS=<那一档> bash cloud/run.sh"

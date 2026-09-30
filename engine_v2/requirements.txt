@@ -1,10 +1,14 @@
+# 跑训练（tensor 演化 / 十秒赛 / 融合）要装的第三方包。
+# 版本按 2026-09-30 在本机跑通的那一档钉住。
+#
+# torch 单独说：云平台的镜像一般已经装好对口的 CUDA 版 torch，直接用镜像里的那份最快。
+# 镜像里没有才手动装，显卡机：
+#   pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+# 纯 CPU 机器：
+#   pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
 numpy==2.4.6
-scipy>=1.11
-torch>=2.4
 mujoco==3.13.0
-Pillow>=11
-matplotlib>=3.9
-# Optional accelerator for the auditory per-sample loop. Without it the module
-# runs the same recurrence in NumPy (see born_wired/auditory_neurons.py); with
-# it that loop is about thirteen times faster and the numbers are identical.
--numba>=0.60
+scipy==1.17.1
+numba==0.65.1
+pillow==12.2.0
+torch==2.7.1

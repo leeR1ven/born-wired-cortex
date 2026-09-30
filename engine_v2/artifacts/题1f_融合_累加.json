@@ -1,0 +1,20 @@
+{
+ "base": 623,
+ "fast": 523,
+ "score": 1.7441564098459688,
+ "genome": {
+  "association_recurrence_gain": 0.9372386705371429,
+  "eye_flow_threshold": 1.042712372399517,
+  "eye_change_relay_gain": 0.5375155914594678,
+  "pinna_orient_gain": 1.27321623241077,
+  "support_thigh_offset": 0.17654965796484934,
+  "wall_retreat_gain": 0.8729774364433196,
+  "eye_relay_gain": 19.681726469517866,
+  "gait_gain": 1.08030371510007,
+  "wall_hip_gain": 0.9855748642179216,
+  "association_fan_in_gain": 0.9086501328991935,
+  "clearance_contact_gain": 2.5473525402444603,
+  "eye_grow_threshold": 0.28361510116007504,
+  "steady_gain": 0.36387788758427825
+ }
+}
