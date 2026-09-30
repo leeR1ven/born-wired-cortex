@@ -14,6 +14,8 @@ echo "仓库      $ROOT"
 echo "处理器    $(nproc) 核"
 echo "内存      $(free -g 2>/dev/null | awk '/^Mem:/{print $2" GB"}')"
 "$PY" -c 'import sys, torch; print("python   ", sys.version.split()[0]); print("torch    ", torch.__version__, "| cuda 可用:", torch.cuda.is_available())' 2>/dev/null || echo "torch    还没装"
+"$PY" -c 'import sys; sys.exit(0 if sys.version_info >= (3, 10) else 1)' \
+    || echo "注意：这台机器的 python 比 3.10 老，有几个工具用了 X | Y 这种写法，会跑不了"
 
 if command -v apt-get >/dev/null 2>&1; then
     echo "装系统库（无头渲染要的 EGL/GL）..."
@@ -24,13 +26,26 @@ fi
 
 echo "装 python 依赖..."
 "$PY" -m pip install -q -U pip
-if "$PY" -c 'import torch' 2>/dev/null; then
-    echo "镜像里已经有 torch，跳过它，只补其余的"
-    grep -v -i '^torch' "$ROOT/engine_v2/requirements.txt" > /tmp/req_no_torch.txt
-    "$PY" -m pip install -q -r /tmp/req_no_torch.txt
-else
-    "$PY" -m pip install -q -r "$ROOT/engine_v2/requirements.txt"
-fi
+
+# torch 交给镜像（镜像里那份跟驱动是对口的），其余照 requirements.txt 装。
+# 一处版本关系要照顾：torch 比 2.3 老的话跟 numpy 2.x 不兼容，那就把 numpy 压回 1.x。
+NUMPY_SPEC=$("$PY" - <<'PYEOF'
+import importlib.metadata as meta
+try:
+    version = meta.version("torch").split("+")[0].split(".")
+    older = (int(version[0]), int(version[1])) < (2, 3)
+except Exception:
+    older = False
+print("numpy<2" if older else "numpy==2.4.6")
+PYEOF
+)
+echo "numpy 装这一档：$NUMPY_SPEC"
+sed -e 's/^torch.*/torch  # 交给镜像/' -e "s/^numpy==.*/$NUMPY_SPEC/" \
+    "$ROOT/engine_v2/requirements.txt" | grep -v '交给镜像' > /tmp/req_cloud.txt
+"$PY" -m pip install -q -i "${PIP_INDEX:-https://pypi.tuna.tsinghua.edu.cn/simple}" \
+    -r /tmp/req_cloud.txt \
+    || "$PY" -m pip install -q -i "${PIP_INDEX:-https://pypi.tuna.tsinghua.edu.cn/simple}" \
+        "$NUMPY_SPEC" mujoco scipy numba pillow
 
 export MUJOCO_GL=egl
 if ! grep -q 'MUJOCO_GL' "$HOME/.bashrc" 2>/dev/null; then
