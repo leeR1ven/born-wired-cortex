@@ -19,6 +19,20 @@ _MODEL_DIR = Path(os.environ.get("GO2模型目录") or Path(__file__).resolve().
 DEFAULT_MODEL = str(_MODEL_DIR / "scene.xml")
 
 
+def configured_model(value, fallback):
+    """配置里写的模型路径，这台机器上没有就退回仓库那一份。
+
+    live_config.json 是跟着仓库走的，里面那个 model 却是某台机器上的绝对路径，换台机器
+    （比如云服务器）就变成解析 XML 失败。退回 fallback，并说一句用的是哪个。
+    """
+    if value:
+        path = Path(value)
+        if path.exists():
+            return path
+        print(f"配置里的模型不在这台机器上：{path} —— 改用 {fallback}")
+    return fallback
+
+
 def _scalar(value, name, positive=False):
     array = np.asarray(value)
     if array.shape or array.dtype.kind not in "iuf":

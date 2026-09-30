@@ -8,7 +8,7 @@ import json, sys, time
 from pathlib import Path
 import numpy as np
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
-from born_wired.go2_body import Go2Body, DEFAULT_MODEL
+from born_wired.go2_body import Go2Body, DEFAULT_MODEL, configured_model
 from born_wired.embodied import EmbodiedController
 from born_wired.stereo_senses import RawEyes
 
@@ -19,7 +19,7 @@ ENVIRONMENT = ('body_touch', 'foot_obstacle', 'foot_load', 'foot_slip')
 def main():
     ticks = int(sys.argv[1]) if len(sys.argv) > 1 else 400
     config = json.loads(CONFIG.read_text(encoding='utf-8-sig'))
-    body = Go2Body(config.get('model', DEFAULT_MODEL))
+    body = Go2Body(configured_model(config.get('model'), DEFAULT_MODEL))
     brain = EmbodiedController(body.home_angles, body.lower_limits, body.upper_limits,
                                eye_limits=(body.eye_lower_limits, body.eye_upper_limits),
                                **config.get('parameters', {}))

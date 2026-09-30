@@ -29,6 +29,11 @@ if command -v apt-get >/dev/null 2>&1; then
         libegl1 libgl1 libosmesa6 libglib2.0-0 libsm6 libxext6 libxrender1
 fi
 
+# 光有 libegl1 还不够：EGL 得能挑到 N 卡那份实现，挑不到就会安安静静落到 Mesa 的
+# 软件光栅上（不报错），渲染慢 177 倍 —— 详见 cloud/gpu_render.sh 里的实测数字。
+bash "$ROOT/cloud/gpu_render.sh" \
+    || echo "（渲染库没装成，见上面的报错；先接着往下走，但渲染可能很慢）"
+
 echo "装 python 依赖..."
 "$PY" -m pip install -q -U pip
 

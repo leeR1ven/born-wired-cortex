@@ -55,9 +55,26 @@ cd born-wired-cortex
 bash cloud/setup.sh
 ```
 
-它做四件事：装 EGL/GL 系统库（云上无头渲染要的）、装 `engine_v2/requirements.txt`（镜像里
-已有 torch 就跳过 torch）、把 `MUJOCO_GL=egl` 写进 `~/.bashrc`（**少这一句，眼睛渲染直接
-报错**）、生 4 只孩子冒烟。看到冒烟那行的「没摔/倒了」就是装好了。
+它做五件事：装 EGL/GL 系统库（云上无头渲染要的）、把「渲染那半驱动」装齐（见下面那条
+177 倍的坑）、装 `engine_v2/requirements.txt`（镜像里已有 torch 就跳过 torch）、把
+`MUJOCO_GL=egl` 写进 `~/.bashrc`（**少这一句，眼睛渲染直接报错**）、生 4 只孩子冒烟。
+看到冒烟那行的「没摔/倒了」就是装好了。
+
+### 2.1 这里最容易踩的坑：渲染悄悄落到软件光栅上
+
+镜像里常常只有驱动里跑 CUDA 的那半，没有渲染的那半（`libEGL_nvidia`）。这时
+`MUJOCO_GL=egl` **不会报错**，会安安静静地用 Mesa 的软件光栅。我们在一台 4090 机器上量到：
+同一行代码取一次眼睛画面 **464.6 毫秒**；装完 `cloud/gpu_render.sh` 之后是 **2.6 毫秒**，
+差 177 倍。表现是 `nvidia-smi` 里 GPU 几乎闲的（软件光栅在 CPU 上干活），一整只孩子 55 秒，
+一台 4090 比本机还慢。
+
+```bash
+bash cloud/gpu_render.sh     # setup.sh 会自己调它，单独跑也行
+```
+
+它装完还会把被带歪的 CUDA 符号链接拨回宿主驱动版本。不拨回去，`torch.cuda.is_available()`
+会变成 False —— 容器里那几个 `.so` 是宿主挂进来的，dpkg 换不动，报的是
+`Invalid cross-device link`。
 
 ## 3. 量这台机器开几个进程最划算
 

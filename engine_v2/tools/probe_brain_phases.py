@@ -18,7 +18,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from born_wired.go2_body import Go2Body
+from born_wired.go2_body import Go2Body, configured_model
 from born_wired.embodied import EmbodiedController
 from born_wired.stereo_senses import RawEyes
 from born_wired.binaural_senses import BinauralSenses
@@ -32,7 +32,7 @@ def main():
     parser.add_argument('--config', type=Path, default=ROOT / 'live_config.json')
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding='utf-8-sig'))
-    body = Go2Body(config.get('model', ROOT / 'models/reflex_arena.xml'))
+    body = Go2Body(configured_model(config.get('model'), ROOT / 'models/reflex_arena.xml'))
     brain = EmbodiedController(body.home_angles, body.lower_limits, body.upper_limits,
                                eye_limits=(body.eye_lower_limits, body.eye_upper_limits),
                                **config.get('parameters', {}))
