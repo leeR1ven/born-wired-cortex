@@ -12,7 +12,7 @@ import mujoco
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from born_wired.go2_body import Go2Body
+from born_wired.go2_body import Go2Body, DEFAULT_MODEL
 from born_wired.innate import InnateController
 from born_wired.feature_routed import FeatureRoutedController
 
@@ -24,7 +24,7 @@ def main():
     parser.add_argument('--demo', action='store_true', help='scheduled sensory-input demonstration')
     parser.add_argument('--feature-routes', action='store_true', help='enable hidden-layer feature routes; A/D select feature, X clears it')
     parser.add_argument('--record', type=Path, help='save a GIF (implies headless)')
-    parser.add_argument('--model', default=r'C:\mujoco_models\unitree_go2\scene.xml')
+    parser.add_argument('--model', default=DEFAULT_MODEL)
     args = parser.parse_args()
     if not np.isfinite(args.seconds) or args.seconds <= 0:
         parser.error('--seconds must be positive and finite')

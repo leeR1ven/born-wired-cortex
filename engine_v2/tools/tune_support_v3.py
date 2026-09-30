@@ -15,7 +15,7 @@ SOURCES = ["born_wired/innate.py", "born_wired/go2_body.py", "born_wired/reflex_
            "born_wired/adaptive.py", "born_wired/regulation.py", "born_wired/synapses.py",
            "born_wired/encoding.py", "tools/tune_support_v3.py"]
 IMPORT_HASHES = {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in SOURCES}
-from born_wired.go2_body import Go2Body
+from born_wired.go2_body import Go2Body, DEFAULT_MODEL
 from born_wired.innate import InnateController
 from born_wired.reflex_senses import ReflexSenses
 from born_wired.regulation import RegulatedSynapses
@@ -200,7 +200,7 @@ def run_case(config, learn):
 
 def main():
     started = time.perf_counter()
-    model_path = Path(r"C:\mujoco_models\unitree_go2\scene.xml")
+    model_path = Path(DEFAULT_MODEL)
     report = dict(command="python tools/tune_support_v3.py", python=platform.python_version(),
                   numpy=np.__version__, mujoco=mujoco.__version__, source_sha256=IMPORT_HASHES,
                   model_xml_sha256={str(path): hashlib.sha256(path.read_bytes()).hexdigest()

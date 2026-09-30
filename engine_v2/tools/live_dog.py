@@ -12,7 +12,7 @@ from mujoco import viewer as viewer_module
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from born_wired.go2_body import Go2Body
+from born_wired.go2_body import Go2Body, DEFAULT_MODEL
 from born_wired.runtime import reload_runtime_modules
 from born_wired import torch_execution
 
@@ -70,7 +70,7 @@ def main():
         except (OSError, ValueError):
             pass
     config = read_config()
-    body = Go2Body(config.get('model', r'C:\mujoco_models\unitree_go2\scene.xml'))
+    body = Go2Body(config.get('model', DEFAULT_MODEL))
     brain = build_brain(body, config)
     observation = body.observe()
     controls = dict(locomotion=config.get('locomotion', 0.), flexion=config.get('flexion', 0.), cues=np.zeros(4), features=np.zeros(4), autonomy=True, startle=0.)

@@ -5,11 +5,18 @@ muscles are position servos, so an eye target is an angle, not a torque;
 they are commanded separately from the leg targets.
 """
 
+import os
+from pathlib import Path
+
 import numpy as np
 import mujoco
 
 
-DEFAULT_MODEL = r"C:\mujoco_models\unitree_go2\scene.xml"
+# Go2 那套文件跟着仓库走（models/unitree_go2），换台机器也一样。想用机器上另外一份，
+# 就用环境变量 GO2模型目录 指过去。原来这里写死 C:\mujoco_models，非 Windows 的机器
+# （比如云服务器）一加载就报找不到文件。
+_MODEL_DIR = Path(os.environ.get("GO2模型目录") or Path(__file__).resolve().parents[1] / "models" / "unitree_go2")
+DEFAULT_MODEL = str(_MODEL_DIR / "scene.xml")
 
 
 def _scalar(value, name, positive=False):

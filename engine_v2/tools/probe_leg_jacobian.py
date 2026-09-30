@@ -13,7 +13,7 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = Path(r"C:\mujoco_models\unitree_go2\scene.xml")
+MODEL_PATH = ROOT / 'models' / 'unitree_go2' / 'scene.xml'  # 资产跟着仓库走，别再写死 C:\mujoco_models
 sys.path.insert(0, str(ROOT))
 
 
