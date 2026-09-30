@@ -1,0 +1,11 @@
+这台机器：96 核 / 377 GB 内存（cgroup 限 24 核）；每一档跑 64 只孩子，爹用 artifacts/题1f_演化_g01_keep.jsonl
+
+进程数  花多久 每只多少秒 每小时多少只
+       8       120s          15.0           1920
+         （明细 /hy-tmp/bwc/logs/上云测速_8进程.log）
+      16        83s          20.8           2776
+         （明细 /hy-tmp/bwc/logs/上云测速_16进程.log）
+      24        79s          29.6           2916
+         （明细 /hy-tmp/bwc/logs/上云测速_24进程.log）
+
+挑每小时最多的那一档当进程数，然后：WORKERS=<那一档> bash cloud/run.sh
