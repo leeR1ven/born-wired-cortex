@@ -59,9 +59,17 @@ if ! grep -q 'MUJOCO_GL' "$HOME/.bashrc" 2>/dev/null; then
 fi
 
 cd "$ROOT/engine_v2"
-echo "冒烟：生 4 只孩子，确认建得出来、跑得动..."
-PYTHONIOENCODING=utf-8 "$PY" -X utf8 -u tools/evolve.py --candidates 4 --generations 1 \
-    --workers 4 --quiet --out-prefix artifacts/_上云冒烟 --seed 1
+# 冒烟用的爹：就用随包带来的那份 keep 台账。别用 evolve.py 的默认值 —— 默认那份是 6 MB 的
+# 比赛台账，上云的精简包里没有。
+SMOKE_PARENTS="${SMOKE_PARENTS:-artifacts/题1f_演化_g01_keep.jsonl}"
+if [ ! -f "$SMOKE_PARENTS" ]; then
+    echo "冒烟要用的台账不见了：$SMOKE_PARENTS"
+    echo "（精简包只带这一份 keep 台账；缺了就用 SMOKE_PARENTS=... 指一份）"
+    exit 1
+fi
+echo "冒烟：生 4 只孩子，确认建得出来、跑得动（爹用 $SMOKE_PARENTS）..."
+PYTHONIOENCODING=utf-8 "$PY" -X utf8 -u tools/evolve.py --parents "$SMOKE_PARENTS" \
+    --candidates 4 --generations 1 --workers 4 --quiet --out-prefix artifacts/_上云冒烟 --seed 1
 
 echo
 echo "装好了。下一步：bash cloud/bench.sh 量一下这台机器开几个进程最划算。"

@@ -1,2 +1,4 @@
 # 云端是 Linux，脚本必须是 LF，否则 bash 会报 "\r: command not found"
 *.sh text eol=lf
+# 网格是二进制性质的数据，别让 git 换行尾（换了就跟 C:\mujoco_models 那份对不上了）
+*.obj -text
