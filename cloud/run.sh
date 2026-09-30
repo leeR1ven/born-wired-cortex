@@ -10,7 +10,12 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT/engine_v2"
-PY="${PY:-python3}"
+# 解释器：优先用 cloud/new_python.sh 造在仓库里的 .venv（镜像只有 python 3.8 时用它），
+# 其次用 PY=... 指定的，最后才用系统的 python3。
+if [ -n "${PY:-}" ]; then :
+elif [ -x "$ROOT/.venv/bin/python" ]; then PY="$ROOT/.venv/bin/python"
+else PY=python3
+fi
 export PYTHONIOENCODING=utf-8
 export MUJOCO_GL="${MUJOCO_GL:-egl}"
 
