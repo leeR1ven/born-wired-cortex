@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mujoco model="Born Wired - sensory arena">
-  <compiler angle="radian" meshdir="C:\mujoco_models\unitree_go2\assets" autolimits="true" />
+  <compiler angle="radian" meshdir="unitree_go2/assets" autolimits="true" />
   <option cone="elliptic" impratio="100" />
   <default>
     <default class="go2">
@@ -57,9 +57,9 @@
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
     <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
-    <texture name="irregular" type="2d" file="F:\born-wired-cortex-v2\models\stereo_texture.png" />
+    <texture name="irregular" type="2d" file="stereo_texture.png" />
     <material name="textured" texture="irregular" texrepeat="1 1" texuniform="false" />
-    <texture name="qrwall" type="2d" file="F:\born-wired-cortex-v2\models\wall_qr.png" />
+    <texture name="qrwall" type="2d" file="wall_qr.png" />
     <material name="qrwall" texture="qrwall" texrepeat="1 1" texuniform="false" />
   </asset>
   <worldbody>

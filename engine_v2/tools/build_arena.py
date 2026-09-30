@@ -1,5 +1,6 @@
 """Build a reproducible physical sensing arena; contains no control logic."""
 from pathlib import Path
+import os
 import xml.etree.ElementTree as ET
 import numpy as np
 import mujoco
@@ -8,11 +9,34 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def unitree_root():
+    """Go2 那套文件在哪儿。
+
+    先认仓库里自带的那一份（models/unitree_go2），这样哪台机器 —— 包括云上的 ——
+    建出来的场地都一样；以前那份机器上的公共目录还可以用环境变量 GO2模型目录 指过去。
+    """
+    override = os.environ.get('GO2模型目录')
+    if override:
+        return Path(override)
+    local = ROOT / 'models' / 'unitree_go2'
+    if not (local / 'go2.xml').exists():
+        raise SystemExit(f"Go2 模型目录不见了：{local}（可以用环境变量 GO2模型目录 指一份）")
+    return local
+
+
 def build(destination=ROOT/'models/reflex_arena.xml'):
-    source = Path(r'C:\mujoco_models\unitree_go2')
+    destination = Path(destination)
+    source = unitree_root()
     robot = ET.parse(source/'go2.xml').getroot()
     robot.set('model', 'Born Wired - sensory arena')
-    robot.find('compiler').set('meshdir', str(source/'assets'))
+    # meshdir 和下面两张贴图都写成相对 XML 的位置。绝对路径会把这份场地钉死在建它
+    # 的那台机器上，换台机器（比如上云）就直接打不开，模型一只都建不出来。
+    assets = source / "assets"
+    try:
+        meshdir = os.path.relpath(assets, destination.parent)
+    except ValueError:            # Windows 上跨盘符没有相对路径
+        meshdir = str(assets)
+    robot.find('compiler').set('meshdir', meshdir.replace(os.sep, '/'))
     scene = ET.parse(source/'scene.xml').getroot()
     for section in scene:
         if section.tag == 'include':
@@ -22,6 +46,14 @@ def build(destination=ROOT/'models/reflex_arena.xml'):
             existing.extend(list(section))
         else:
             robot.append(section)
+    # 视网膜是先把画面画进离屏缓冲再读出来的，默认 640x480 会把那片网卡在 640
+    # 格宽上，而这片场地的网比这宽，所以把缓冲调大。（这行原来只改在 XML 里，
+    # 一重新生成就被抹掉了，所以挪进生成器里来。）
+    global_view = robot.find('visual/global')
+    if global_view is not None:
+        global_view.set("offwidth", "1280")
+        global_view.set("offheight", "1024")
+
     world = robot.find('worldbody')
     base = world.find("body[@name='base']")
     rotation = np.array([[0., 0., -1.], [-1., 0., 0.], [0., 1., 0.]])
@@ -63,7 +95,6 @@ def build(destination=ROOT/'models/reflex_arena.xml'):
     for name, pos, size, rgba in objects:
         ET.SubElement(world, 'geom', name=name, type='box', pos=pos, size=size, rgba=rgba,
                       material='qrwall')
-    destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     # Nonperiodic visual texture supplies actual stereo correspondence.
     rng = np.random.default_rng(401)
@@ -71,7 +102,7 @@ def build(destination=ROOT/'models/reflex_arena.xml'):
     texture_path = destination.parent/'stereo_texture.png'
     Image.fromarray(np.repeat(tex, 3, axis=2)).save(texture_path)
     asset = robot.find('asset')
-    ET.SubElement(asset, 'texture', name='irregular', type='2d', file=str(texture_path))
+    ET.SubElement(asset, 'texture', name='irregular', type='2d', file=texture_path.name)
     ET.SubElement(asset, 'material', name='textured', texture='irregular', texrepeat='1 1', texuniform='false')
     # The wall covering. It is a code: a grid of square modules, half of them
     # dark, carrying the big square marks a code wears in its corners and a few
@@ -107,7 +138,7 @@ def build(destination=ROOT/'models/reflex_arena.xml'):
     picture = np.repeat((value*shade)[..., None], 3, axis=2).astype(np.uint8)
     wall_path = destination.parent/'wall_qr.png'
     Image.fromarray(picture).save(wall_path)
-    ET.SubElement(asset, 'texture', name='qrwall', type='2d', file=str(wall_path))
+    ET.SubElement(asset, 'texture', name='qrwall', type='2d', file=wall_path.name)
     ET.SubElement(asset, 'material', name='qrwall', texture='qrwall', texrepeat='1 1',
                   texuniform='false')
     props = [
