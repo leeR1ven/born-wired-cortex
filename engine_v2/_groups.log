@@ -1,0 +1,60 @@
+组数 163  神经元总数 59361
+
+[eye] 29 个：
+    eye_band_inhibition 1
+    eye_band_left 5
+    eye_band_pull_left 2
+    eye_band_pull_right 2
+    eye_band_right 5
+    eye_bands_agree 5
+    eye_bands_apart 20
+    eye_convergence_in 1
+    eye_convergence_out 1
+    eye_distance 7
+    eye_fusion 1
+    eye_gaze_inhibition 1
+    eye_growing 2
+    eye_look_down 1
+    eye_look_left 1
+    eye_look_right 1
+    eye_look_right_inhibition 1
+    eye_look_up 1
+    eye_look_up_inhibition 1
+    eye_looming 1
+    eye_motor 96
+    eye_proprioception 64
+    eye_swell_left 2
+    eye_swell_right 2
+    eye_vergence 2
+    eye_vergence_in 1
+    eye_vergence_inhibition 1
+    eye_vergence_out 1
+    eye_vergence_out_inhibition 1
+
+[locomot] 1 个：
+    locomotion 1
+
+[rhythm] 1 个：
+    rhythm_recruitment 2
+
+[turn] 2 个：
+    wall_turn 2
+    wall_turn_inhibition 2
+
+[steer] 2 个：
+    steering 2
+    steering_inhibition 2
+
+[association] 1 个：
+    association 256
+
+[initiat] 1 个：
+    initiation 2
+
+[fatigue] 2 个：
+    fatigue 1
+    fatigue_inhibition 1
+
+[com] 2 个：
+    feature_compressed 1
+    locomotion 1

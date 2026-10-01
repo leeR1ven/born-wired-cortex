@@ -1,0 +1,1 @@
+{"label": "s0-0001", "scaffold": 0, "stage": "screen", "exam_seeds": [0], "n_passed": 6, "n_tasks": 7, "passed_tasks": ["eyes_follow_ball", "get_up_from_back", "stands_still", "stay_up_when_pushed", "turn_to_sound", "walk_furnished"], "genome": {"eye_row_common": 0.0, "eye_pitch_time": 0.2452677933336559, "righting_gain": 2.7789841077275073}, "touched": {}}

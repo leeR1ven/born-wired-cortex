@@ -1,0 +1,41 @@
+往左拐的转向细胞：wall_turn[0], wall_turn_inhibition[1]
+往右拐的转向细胞：wall_turn[1], wall_turn_inhibition[0]
+球：左边 0.50 弧度、1.50 米
+Traceback (most recent call last):
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 197, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 175, in main
+    body, brain, eyes, geom = build(genome, chase, seed=args.seed, eye=not args.no_eye)
+                              ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 83, in build
+    brain = EmbodiedController(body.home_angles, body.lower_limits, body.upper_limits,
+                               seed=seed,
+                               eye_limits=(body.eye_lower_limits, body.eye_upper_limits),
+                               **parameters)
+  File "F:\born-wired-cortex\engine_v2\born_wired\embodied.py", line 561, in __init__
+    self.synapses = RegulatedSynapses(
+                    ~~~~~~~~~~~~~~~~~^
+        np.r_[old.src,sources], np.r_[old.dst,targets], np.r_[old.weights,w],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        learning_rate=old.learning_rate,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        target_activity=np.r_[old.target_activity,np.full(n,.15)])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\born-wired-cortex\engine_v2\born_wired\regulation.py", line 32, in __init__
+    super().__init__(src, dst, initial, signs, n_neurons, w_max=upper,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     budgets=budgets, plasticity=plasticity,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     learning_rate=learning_rate, decay=0)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\born-wired-cortex\engine_v2\born_wired\synapses.py", line 122, in __init__
+    self._weights = self._project(initial)
+                    ~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\born-wired-cortex\engine_v2\born_wired\regulation.py", line 80, in _project
+    for movable, dst, lower, available in self._structure():
+                                          ~~~~~~~~~~~~~~~^^
+  File "F:\born-wired-cortex\engine_v2\born_wired\regulation.py", line 63, in _structure
+    raise ValueError('structural lower bounds exceed an incoming budget')
+ValueError: structural lower bounds exceed an incoming budget

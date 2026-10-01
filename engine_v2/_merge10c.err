@@ -1,0 +1,4 @@
+F:\born-wired-cortex\engine_v2\tools\merge_cloud_eye.py:133: RuntimeWarning: Mean of empty slice
+  per_eye.append(dict(n=len(side_offsets), mean=float(np.nanmean(seen)),
+F:\born-wired-cortex\engine_v2\tools\merge_cloud_eye.py:134: RuntimeWarning: All-NaN slice encountered
+  worst=float(np.nanmax(seen)),

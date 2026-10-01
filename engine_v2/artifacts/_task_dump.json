@@ -1,0 +1,1887 @@
+[
+ {
+  "name": "stands_still",
+  "group": "站立",
+  "question": "没人叫它走的时候，它站得住、也不乱走吗",
+  "stage": "screen",
+  "sim_seconds": 6.0,
+  "measure": "<lambda>",
+  "bar": "quiet_bar",
+  "note": "出厂这只 6 秒会慢慢蹭出半米，所以门槛定在 0.70 米，只拦得住「走起来」和「倒下去」。它不说明它能站得纹丝不动。",
+  "reads": "6 秒里的位移、全程最低的直立程度",
+  "bar_text": "直立程度 ≥ 0.9 并且移动 ≤ 0.70 米",
+  "requires": []
+ },
+ {
+  "name": "walk_flat",
+  "group": "走路",
+  "question": "光地板上走一段",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "光地板比满场道具容易，通过它只说明没有道具时走得动。",
+  "reads": "走了多远、全程最低的直立程度",
+  "bar_text": "全程不倒并且移动 ≥ 0.25 米",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "walk_furnished",
+  "group": "走路",
+  "question": "带着满场道具走一段，不会摔倒",
+  "stage": "screen",
+  "sim_seconds": 12.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "只说明它在这一次抽到的场地里走了这么远，不说明它认路或认得任何东西。",
+  "reads": "12 秒满场走了多远、全程最低的直立程度",
+  "bar_text": "全程不倒并且移动 ≥ 0.35 米",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "walks_without_being_told",
+  "group": "走路",
+  "question": "没人给它任何指令，它自己会不会往前走",
+  "stage": "full",
+  "sim_seconds": 8.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "没有外部指令可用，这一题只问它自己走不走得动。出厂动物不会用前进指令，这半米是它自己蹭出来的，所以它出生时就已经过了这一题。",
+  "reads": "没人给它任何指令时走了多远",
+  "bar_text": "全程不倒并且移动 ≥ 0.30 米",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "keeps_walking_without_being_told",
+  "group": "走路",
+  "question": "没人管它，它是一直走还是走两步就停",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "走远了不等于走得稳：这一题只看距离，不看姿势好不好看。",
+  "reads": "没人管它，16 秒走了多远",
+  "bar_text": "全程不倒并且移动 ≥ 0.60 米",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "feet_do_not_slide",
+  "group": "走路",
+  "question": "走路时踩在地上的脚会不会打滑",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "slip_bar",
+  "note": "数的是落地那几帧的滑移速度。它只在这一种地面和这一档步态下成立。",
+  "reads": "落地那几帧每只脚的滑移速度",
+  "bar_text": "全程不倒、≥ 0.25 米，最滑的一脚 ≤ 0.30 米/秒",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "walk_low_step",
+  "group": "地形",
+  "question": "从低台阶前出发，能不能走过去",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "走的是同一道台阶，不是随便什么地形；它不说明它「看见」了台阶。它也没走到台阶跟前，所以这题测的其实是「朝台阶那边走」而不是「迈上去」。",
+  "reads": "从台阶前 0.55 米出发走 10 秒",
+  "bar_text": "不倒、≥ 0.30 米，并且越过了台阶外沿",
+  "requires": [
+   "walk_flat",
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "walk_ramp",
+  "group": "地形",
+  "question": "从斜坡前出发，能不能爬上去",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "走的是同一道斜坡，不是随便什么坡度。",
+  "reads": "从斜坡前 0.25 米出发走 10 秒",
+  "bar_text": "不倒、≥ 0.25 米，并且越过了坡顶线",
+  "requires": [
+   "walk_low_step"
+  ]
+ },
+ {
+  "name": "walk_narrow_passage",
+  "group": "地形",
+  "question": "从窄通道口出发，能不能穿过去",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "走的是同一段通道，不是随便什么宽度；撞墙再蹭过去也算过，只要没倒。",
+  "reads": "从通道口出发走 10 秒",
+  "bar_text": "不倒、≥ 0.25 米，并且越过了通道口前面那条线",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "steps_over_the_curb",
+  "group": "地形",
+  "question": "路上横着一条矮坎，它会迈过去还是绊一下",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "这题要的是走到坎跟前并越过它，比上面那几道走路的题难一档；被绊一下再过去也算过，它没在量步态好不好。",
+  "reads": "从矮坎前 0.80 米出发走 10 秒",
+  "bar_text": "不倒、≥ 0.30 米，并且越过了坎的位置",
+  "requires": [
+   "walk_low_step"
+  ]
+ },
+ {
+  "name": "climbs_onto_the_platform",
+  "group": "地形",
+  "question": "前面一块矮台，它能上到台面上吗",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "台面很矮；它不说明它能爬真的台阶。它同样比走路那几道难一档。",
+  "reads": "从矮台前 0.90 米出发走 10 秒",
+  "bar_text": "不倒、≥ 0.30 米，并且越过了台面外沿",
+  "requires": [
+   "walk_ramp"
+  ]
+ },
+ {
+  "name": "stops_at_the_wall",
+  "group": "地形",
+  "question": "一直往前走，前面有堵墙，它是停下来还是撞上去",
+  "stage": "full",
+  "sim_seconds": 12.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是墙上的接触细胞有没有亮、以及它有没有停在墙前；它不说明它「知道」那是墙。",
+  "reads": "12 秒里最远到过的 x、末段墙上接触细胞的活动",
+  "bar_text": "不倒、≥ 0.60 米，没穿过 x=3.42，并且末段墙细胞 ≥ 门槛",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "get_up_from_back",
+  "group": "自救",
+  "question": "仰面朝天时自己翻回四脚着地",
+  "stage": "screen",
+  "sim_seconds": 6.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "一个姿势一次机会。翻身成功不等于在任何姿势下都能翻身。",
+  "reads": "从仰面开始，多久站回四脚着地、最后还站着吗",
+  "bar_text": "中途站住过 0.5 秒以上，并且结束时直立程度 ≥ 0.5",
+  "requires": []
+ },
+ {
+  "name": "get_up_from_side",
+  "group": "自救",
+  "question": "侧躺时自己翻回四脚着地",
+  "stage": "full",
+  "sim_seconds": 6.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "见 get_up_from_back 的说明：一个姿势一次机会。",
+  "reads": "从侧躺开始",
+  "bar_text": "同 get_up_from_back",
+  "requires": [
+   "get_up_from_back"
+  ]
+ },
+ {
+  "name": "nose_up_recover",
+  "group": "自救",
+  "question": "头朝上竖起来时能不能落回四脚着地",
+  "stage": "full",
+  "sim_seconds": 6.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "见 get_up_from_back 的说明：一个姿势一次机会。",
+  "reads": "从头朝上竖着开始",
+  "bar_text": "同 get_up_from_back",
+  "requires": [
+   "get_up_from_back"
+  ]
+ },
+ {
+  "name": "nose_down_recover",
+  "group": "自救",
+  "question": "头朝下栽着时能不能翻回四脚着地",
+  "stage": "full",
+  "sim_seconds": 6.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "见 get_up_from_back 的说明：一个姿势一次机会。",
+  "reads": "从头朝下栽着开始",
+  "bar_text": "同 get_up_from_back",
+  "requires": [
+   "get_up_from_back"
+  ]
+ },
+ {
+  "name": "stay_up_when_pushed",
+  "group": "自救",
+  "question": "站稳后被推一把，能不能站回来",
+  "stage": "screen",
+  "sim_seconds": 7.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "推的是固定方向、固定力的一次撞击，不是一整套外力测试。",
+  "reads": "站好后被 140 牛推 0.2 秒",
+  "bar_text": "同 get_up_from_back",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "eyes_follow_ball",
+  "group": "看",
+  "question": "一个球从眼前扫过，眼睛会不会跟着走",
+  "stage": "screen",
+  "sim_seconds": 2.5,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "量的是眼球角度和球的真实方位之差。它不说明这只动物看见了球是什么。",
+  "reads": "球扫过时眼球角度与球真实方位之差的平均",
+  "bar_text": "平均差 ≤ 0.16 弧度",
+  "requires": []
+ },
+ {
+  "name": "eyes_follow_fast_ball",
+  "group": "看",
+  "question": "球扫得快一点，眼睛还跟不跟得上",
+  "stage": "full",
+  "sim_seconds": 2.5,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "跟得上慢球和快球，不说明它能预判，也不说明它看见了颜色。",
+  "reads": "两倍速度扫过时的平均差",
+  "bar_text": "平均差 ≤ 0.30 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_follow_the_ball_both_ways",
+  "group": "看",
+  "question": "球往左扫、再往右扫，两个方向都跟得上吗",
+  "stage": "full",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "sweep_pair_bar",
+  "note": "两个方向都跟得上，不说明它在别的速度、别的距离上也行。",
+  "reads": "左扫一次、右扫一次各自的平均差",
+  "bar_text": "两次都 ≤ 0.16 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_on_a_new_thing",
+  "group": "看",
+  "question": "一样东西从旁边冒出来就动，眼睛会不会转过去",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "它测的是「出现并移动」这一类。一样东西只是存在、从不变化，这个模型的眼睛是不会转过去的，那一点在下面 still 那一题里有读数。",
+  "reads": "东西出现并移动后，眼球摆动多少、朝哪边",
+  "bar_text": "朝它那边摆动 ≥ 0.01 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_hold_still_on_a_still_thing",
+  "group": "看",
+  "question": "一样东西就摆在那儿不动，眼睛会不会瞎转",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "still_bar",
+  "note": "这是上一题的反面：不动的画面就不该被追。它是「不动作」的门槛，所以它单独通过不能说明眼睛好用。",
+  "reads": "东西出现但一动不动时，眼球摆动多少",
+  "bar_text": "摆动 ≤ 0.02 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_tell_near_from_far",
+  "group": "看",
+  "question": "一个球从两米外凑到跟前，脑里那份距离读数会满起来吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "approach_bar",
+  "note": "读的是距离细胞的总活动，不是眼睛的角度，也不是谁量出了几米。它不说明它在别的球、别的位置上还算得准。",
+  "reads": "球从 2 米到 0.25 米，脑里距离细胞的总活动",
+  "bar_text": "2 米处 ≤ 0.80，0.25 米处 ≥ 2.00",
+  "requires": [
+   "eyes_converge_on_a_near_thing"
+  ]
+ },
+ {
+  "name": "eyes_see_a_pattern_not_a_blank",
+  "group": "看",
+  "question": "有花纹的画面和全黑，眼睛这一层读数一样吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "只说明眼睛感光这一层在画面刚出现时会醒一下。一块均匀的亮画面在这个模型里和全黑读一样，而且这一层约四分之一秒后就自己落了（下面的光细胞一直是 0.43）——这两件事本身也是读数，不全是好话。",
+  "reads": "有花纹的画面和全黑画面下感光那一层的活动差",
+  "bar_text": "差值 ≥ 0.02",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "turn_to_sound",
+  "group": "听",
+  "question": "左边和右边各响一下，眼睛有没有分别",
+  "stage": "screen",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "sound_bar",
+  "note": "只比较左、右两个场景。响度和音高都是同一档，换一个频率未必还对。",
+  "reads": "同一声放右、放左时眼球各停在哪",
+  "bar_text": "右边的读数比左边更偏右，差 ≥ 0.02 弧度",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "ears_tell_front_from_back",
+  "group": "听",
+  "question": "同一个声音在前面和后面，耳朵能分开吗",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "只说明耳廓那一层对前后有分别；它不说明它会转过头去找。",
+  "reads": "同一个声音在前面和后面时耳廓四个格子的逐格差",
+  "bar_text": "逐格平均差 ≥ 0.08",
+  "requires": [
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "ears_tell_loud_from_far",
+  "group": "听",
+  "question": "近处响和远处响，耳朵里的读数一样吗",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "远近在这里是两个固定位置；它不说明它会用响度去估距离。",
+  "reads": "同一个声音在 1.1 米和 3.2 米时耳蜗细胞的活动差",
+  "bar_text": "差值 ≥ 门槛",
+  "requires": [
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "ears_tell_high_from_low",
+  "group": "听",
+  "question": "高低两个音，耳朵能不能分开",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是整组耳蜗细胞的总变化；分的到底是不是「音高」这一题不下结论。",
+  "reads": "高音和低音各自在耳蜗里上三格减下三格",
+  "bar_text": "高音的这个差值比低音高出 ≥ 门槛",
+  "requires": [
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "a_bang_makes_it_startle",
+  "group": "听",
+  "question": "突然来一声，脑里有没有受惊这回事",
+  "stage": "full",
+  "sim_seconds": 2.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "输入线直接连到受惊细胞；通了只说明这根线还在，不说明它害怕。",
+  "reads": "有砰一声和没有时受惊细胞的活动差",
+  "bar_text": "差值 ≥ 门槛",
+  "requires": []
+ },
+ {
+  "name": "a_sound_keeps_startling_less",
+  "group": "听",
+  "question": "连着响很多声，受惊会不会一次比一次轻",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "habituation_bar",
+  "note": "读的是受惊细胞自己往下掉多少。它是疲劳，不是「学会了不用怕」。",
+  "reads": "砰声一直响着，受惊细胞头 0.2 秒减尾 0.2 秒",
+  "bar_text": "往下掉 ≥ 0.20",
+  "requires": [
+   "a_bang_makes_it_startle"
+  ]
+ },
+ {
+  "name": "feels_a_touch_on_the_front",
+  "group": "摸与本体",
+  "question": "身体前面被碰和后面被碰，脑里的读数一样吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "碰的是控制器里的身体触觉通道，不是真的手。身体触觉分的是前/左/后/右四块，不是四只脚——四只脚走的是另一条通道。",
+  "reads": "身体前面被碰和后面被碰时后退细胞的活动差",
+  "bar_text": "差值 ≥ 0.30",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "lifts_the_foot_that_was_caught",
+  "group": "摸与本体",
+  "question": "一只脚被绊住，抬起的是不是那只脚",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "身体被按住不动，只有腿上的读数和相位在跑；抬脚动作本身这一题不测。",
+  "reads": "绊住某一只脚时那条腿的抬脚细胞，减去另一条腿的",
+  "bar_text": "两个方向都要高出 ≥ 门槛",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "feels_a_slipping_foot",
+  "group": "摸与本体",
+  "question": "一只脚打滑，脑里知道是哪只吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是打滑下游那个慢细胞；它不说明它会改步态。",
+  "reads": "某一只脚打滑时那条腿的后退细胞，减去另一条腿的",
+  "bar_text": "两个方向都要高出 ≥ 0.05",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "feels_which_way_it_is_leaning",
+  "group": "摸与本体",
+  "question": "身体往一边歪，脑里有没有方向",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "leaning_bar",
+  "note": "歪的方向是直接喂进去的重力方向；它只说明方向细胞接对了，不说明它靠这个站住了。",
+  "reads": "身体往一边滚时四个方向细胞各自相对平放时升了多少",
+  "bar_text": "最大的一格升 ≥ 门槛",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "braces_when_it_is_tipped_over",
+  "group": "摸与本体",
+  "question": "快被推倒时，护住自己的那类细胞会不会醒",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "tipped_bar",
+  "note": "读的是一个「快要倒了」的细胞；它亮起来不等于它真的会做出保护动作。",
+  "reads": "快倒和平放时护身细胞的平均活动差",
+  "bar_text": "差值 ≥ 门槛",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "feels_a_load_on_one_foot",
+  "group": "摸与本体",
+  "question": "一只脚上压了重物，是哪只脚上的细胞在响",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "这个细胞自己会很快疲劳，所以门槛看的是刚压上去那一小段。",
+  "reads": "某一只脚压上重物时那条腿的承重细胞，减去另一条腿的",
+  "bar_text": "两个方向都要高出 ≥ 门槛",
+  "requires": [
+   "feels_a_touch_on_the_front"
+  ]
+ },
+ {
+  "name": "startled_but_still_hearing",
+  "group": "听",
+  "question": "听腻了那一声，耳朵是不是就听不见了",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "hearing_bar",
+  "note": "读的是同一个场景里两个细胞：受惊往下掉的时候，耳蜗那一层还亮着。它是「习惯化不等于听不见」，不是「学会了不用怕」。",
+  "reads": "砰声一直响着：受惊细胞的头尾落差，和耳蜗细胞的尾段",
+  "bar_text": "落差 ≥ 0.20 并且耳蜗尾段 ≥ 0.20",
+  "requires": [
+   "a_sound_keeps_startling_less"
+  ]
+ },
+ {
+  "name": "taught_reflex_sticks",
+  "group": "学习",
+  "question": "被摸二十秒教会“这个声音=后退”，教会了吗",
+  "stage": "full",
+  "sim_seconds": 32.0,
+  "measure": "<lambda>",
+  "bar": "taught_reflex_bar",
+  "note": "这一题允许老师在场（手摸到身体）。它证明的是这条通路能被写进去，不是它自己弄懂了声音的意思。",
+  "reads": "教之前、教完只听声音、只听安静三种情况下后退细胞的活动",
+  "bar_text": "撤掉手后声音带来的后退比安静高 ≥ 0.05",
+  "requires": []
+ },
+ {
+  "name": "nothing_is_taught_without_a_teacher",
+  "group": "学习",
+  "question": "没人教，光听声音，它会自己学会吗",
+  "stage": "full",
+  "sim_seconds": 32.0,
+  "measure": "<lambda>",
+  "bar": "taught_reflex_control_bar",
+  "note": "这是上一题的对照臂：同样的时长、同样的声音，只是没有手，所以「没学会」才是对的。",
+  "reads": "同样的时长同样的声音，只是没有手",
+  "bar_text": "声音带来的后退比安静高 < 0.05",
+  "requires": [
+   "taught_reflex_sticks"
+  ]
+ },
+ {
+  "name": "the_lesson_is_still_there_later",
+  "group": "学习",
+  "question": "教完先安静一会儿，那件事还记得吗",
+  "stage": "full",
+  "sim_seconds": 42.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "只隔十秒。这一题不说明能记多久，只说明它不是当场就散。",
+  "reads": "教完先安静 10 秒，再只听声音",
+  "bar_text": "仍然比安静高 ≥ 0.05",
+  "requires": [
+   "taught_reflex_sticks"
+  ]
+ },
+ {
+  "name": "visual_memory_holds",
+  "group": "记忆",
+  "question": "一块蓝色图案和身体接触配过几次，图案还有意义吗",
+  "stage": "full",
+  "sim_seconds": 26.0,
+  "measure": "<lambda>",
+  "bar": "visual_memory_bar",
+  "note": "量的是回避细胞对图案的反应比安静时高多少。它不说明它“看见了一个东西”。",
+  "reads": "蓝块与身体被摸配对 5 轮后，只给蓝块时回避细胞比安静高多少",
+  "bar_text": "高出 ≥ 0.01",
+  "requires": []
+ },
+ {
+  "name": "the_pattern_means_nothing_without_pairing",
+  "group": "记忆",
+  "question": "从没配对过的图案，会不会自己就有意义",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "这是配对那一题的对照臂：没配过就不该有意义，所以「没意义」才是对的。",
+  "reads": "同样的蓝块，一次都没配对过",
+  "bar_text": "高出 < 0.01",
+  "requires": [
+   "visual_memory_holds"
+  ]
+ },
+ {
+  "name": "the_memory_is_still_there_later",
+  "group": "记忆",
+  "question": "配完对再隔一会儿，还认得那块图案吗",
+  "stage": "full",
+  "sim_seconds": 34.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "隔的是四段各两秒的空转，不是几分钟；这一题不说明长期记忆。",
+  "reads": "配对后再空转 4 段，然后只给蓝块",
+  "bar_text": "高出 ≥ 0.01",
+  "requires": [
+   "visual_memory_holds"
+  ]
+ },
+ {
+  "name": "an_idle_animal_does_not_walk_for_a_touch",
+  "group": "注意",
+  "question": "没人叫它走，光是身上有接触，它会自己走起来吗",
+  "stage": "full",
+  "sim_seconds": 8.0,
+  "measure": "<lambda>",
+  "bar": "quiet_bar",
+  "note": "接触是喂进触觉通道的，不是真的手。它测的是「无关的输入会不会把它带跑」。",
+  "reads": "没人叫它走、只喂进身上接触时的位移",
+  "bar_text": "直立 ≥ 0.9 并且移动 ≤ 0.10 米",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "an_idle_animal_does_not_walk_for_a_ball",
+  "group": "注意",
+  "question": "没人叫它走，眼前摆个东西，它会自己走起来吗",
+  "stage": "full",
+  "sim_seconds": 8.0,
+  "measure": "<lambda>",
+  "bar": "quiet_bar",
+  "note": "空场里站着，道具都还在原地。它测的是「没有指令时它会不会自己找事做」。",
+  "reads": "没人叫它走、道具都在原地时的位移",
+  "bar_text": "直立 ≥ 0.9 并且移动 ≤ 0.10 米",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "moving_is_not_being_pushed",
+  "group": "自我",
+  "question": "自己走路的晃动，和被人推一把，是不是两回事",
+  "stage": "full",
+  "sim_seconds": 13.0,
+  "measure": "<lambda>",
+  "bar": "pushing_bar",
+  "note": "两边读的都是同一个「快倒了」细胞的峰值；它只说明被推和自己走在这条线上分得开，不说明它知道那个推力来自外面。",
+  "reads": "自己走 6 秒和被人推 7 秒里，快倒细胞各自的峰值",
+  "bar_text": "被推的峰值比自己走的高出 ≥ 门槛",
+  "requires": [
+   "walk_flat",
+   "get_up_from_back"
+  ]
+ },
+ {
+  "name": "the_body_is_not_a_foot",
+  "group": "自我",
+  "question": "身上被碰和脚上被绊，是同一件事吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "两条通道本来就该接在不同的细胞上，所以这一题只是在查它们没有接反。",
+  "reads": "身上被碰和脚上被绊时，护身细胞各自的活动差",
+  "bar_text": "身上那一侧高出 ≥ 0.05",
+  "requires": [
+   "feels_a_touch_on_the_front"
+  ]
+ },
+ {
+  "name": "walks_in_a_straight_line",
+  "group": "走路",
+  "question": "它自己走的时候，走的是一条线还是一路画龙",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "直度是净位移除以走过的路程。它一路画龙但没摔倒也会低于 1。这一题不说明它会朝一个目标走。",
+  "reads": "受驱动走 10 秒：净位移除以走过的路程",
+  "bar_text": "直度 ≥ 0.70，并且全程不倒、≥ 0.30 米",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "does_not_crab_sideways",
+  "group": "走路",
+  "question": "它自己走的时候，是往前走还是往旁边蹭",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "量的是终点相对起点、垂直于出发朝向的那一段。它不说明走得直，只说明没横着漂。",
+  "reads": "受驱动走 10 秒后，横向偏出出发朝向多少米",
+  "bar_text": "横向 ≤ 0.25 米，并且全程不倒、≥ 0.30 米",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "holds_its_heading_while_it_walks",
+  "group": "走路",
+  "question": "它自己走的时候，朝向会不会越走越歪",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是一路上朝向一共转过多少（不管左右，算绝对值累计）。它不说明它能不能拐弯，只说明它不会自己慢慢打转。",
+  "reads": "受驱动走 10 秒里朝向累计转过多少弧度",
+  "bar_text": "累计 ≤ 1.20 弧度，并且全程不倒、≥ 0.30 米",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "walks_for_twenty_seconds",
+  "group": "走路",
+  "question": "没人管它二十秒，它是一直走还是走两步就停",
+  "stage": "full",
+  "sim_seconds": 20.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和 16 秒那一题同一条线，只是时间更长；它不说明它能走多远，只说明它不会自己停下来。",
+  "reads": "驱动一直给着，20 秒走了多远",
+  "bar_text": "全程不倒、位移 ≥ 0.90 米",
+  "requires": [
+   "keeps_walking_without_being_told"
+  ]
+ },
+ {
+  "name": "walks_at_a_steady_pace",
+  "group": "走快",
+  "question": "它自己走的时候，平均速度够不够快",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "出厂动物主要是在原地踏步，平均速度只有 0.09 米/秒。速度来自先天步态，所以这一题是给「步态调得更快」的候选留的。",
+  "reads": "受驱动走 10 秒里的平均水平速度",
+  "bar_text": "≥ 0.15 米/秒，并且全程不倒、≥ 0.30 米",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "covers_ground_in_sixteen_seconds",
+  "group": "走快",
+  "question": "十六秒里到底走出去了多少米",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "它只算净位移，绕圈子走也会算低。它不说明它知道要去哪。",
+  "reads": "16 秒里的净位移",
+  "bar_text": "全程不倒、位移 ≥ 1.00 米",
+  "requires": [
+   "keeps_walking_without_being_told"
+  ]
+ },
+ {
+  "name": "turns_towards_a_sound_while_walking",
+  "group": "转弯",
+  "question": "一边走一边左边响或右边响，身体会朝那边转吗",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "两边各走一次八秒，比的是收尾时朝向差多少。它只说明声音能左右引导身体，不说明它能奔着声音走过去。",
+  "reads": "左边响和右边响各走 8 秒，收尾朝向差多少",
+  "bar_text": "右边那次要比左边那次更偏右 ≥ 0.30 弧度",
+  "requires": [
+   "walks_without_being_told",
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "turns_towards_a_sound_while_standing",
+  "group": "转弯",
+  "question": "站着不动时一边响一下，身体会不会朝那边偏",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和上一题同样的两个声源，只是它站着不动。它测的是「不用走路也会转」，不说明它站得稳不稳。",
+  "reads": "站着不动，左边响和右边响各 8 秒的收尾朝向",
+  "bar_text": "同样是右边比左边更偏右 ≥ 0.10 弧度",
+  "requires": [
+   "stands_still",
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "does_not_spin_on_the_spot",
+  "group": "转弯",
+  "question": "没人叫它动，它是往前走，还是原地打转",
+  "stage": "screen",
+  "sim_seconds": 8.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是八秒里朝向转过多少、同时离出发点走了多远。转多少本身不是好坏：场地就这么大，会走路的动物必然会转。只有「转得多、同时没走出去」才算原地打转。",
+  "reads": "没人碰它时 8 秒里朝向累计转过多少，这时离出发点有多远",
+  "bar_text": "直立 ≥ 0.9，并且不许「转得多、同时又几乎没走出去」",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "walks_down_the_ramp",
+  "group": "地形",
+  "question": "站在坡顶上往前走，它能不能顺坡下来",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "它只要走出坡的边缘就算过。它不测下坡时稳不稳，只测有没有卡在坡顶。",
+  "reads": "从坡顶朝坡下走 10 秒",
+  "bar_text": "全程不倒、≥ 0.25 米，并且越过了坡的外沿",
+  "requires": [
+   "walk_ramp"
+  ]
+ },
+ {
+  "name": "steps_down_the_low_step",
+  "group": "地形",
+  "question": "站在矮台阶上往前走，它能不能走下来",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "台阶只有一厘米多高，所以这一题其实是「从高一点点的地方迈下来」。",
+  "reads": "从矮台阶上朝外走 10 秒",
+  "bar_text": "全程不倒、≥ 0.25 米，并且越过了台阶外沿",
+  "requires": [
+   "walk_low_step"
+  ]
+ },
+ {
+  "name": "steps_down_from_the_platform",
+  "group": "地形",
+  "question": "站在矮台上往前走，它能不能走到地面上",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "台子比台阶高，所以这一题比上面那题难一点；它不测落地缓冲，只测有没有下来。",
+  "reads": "从矮台上朝外走 10 秒",
+  "bar_text": "全程不倒、≥ 0.25 米，并且越过了台面外沿",
+  "requires": [
+   "climbs_onto_the_platform"
+  ]
+ },
+ {
+  "name": "goes_around_the_block",
+  "group": "地形",
+  "question": "正前方横着一块挡板，它会不会绕开",
+  "stage": "full",
+  "sim_seconds": 12.0,
+  "measure": "<lambda>",
+  "bar": "around_bar",
+  "note": "过线的条件是既越过了挡板、又确实往旁边挪过一段。它不说明它看见了挡板，也不说明它知道往哪边绕更好。",
+  "reads": "挡板正前方出发走 12 秒",
+  "bar_text": "全程不倒、≥ 0.60 米，越过挡板，并且横向挪过 ≥ 0.35 米",
+  "requires": [
+   "stops_at_the_wall"
+  ]
+ },
+ {
+  "name": "a_touch_on_the_front_holds_it_back",
+  "group": "摸与本体",
+  "question": "身上一直被碰着，它还会照直走吗",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "比的是同一个驱动、同一段时间，碰和不碰各走多远。碰是喂进触觉通道的，不是真的手。",
+  "reads": "同样驱动同样时长，身上一直有接触和没有接触各走多远",
+  "bar_text": "两边都不倒，被碰那次 ≤ 自由那次的 0.70",
+  "requires": [
+   "feels_a_touch_on_the_front",
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "a_bang_stops_it_walking",
+  "group": "听",
+  "question": "走得好好的突然来一声，它会停下来吗",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "收尾的读数还是位移：受惊这条通路本来就接着运动。它不说明它知道声音从哪来。",
+  "reads": "同样驱动同样时长，一直响着砰声和没有砰声各走多远",
+  "bar_text": "两边都不倒，有砰声那次 ≤ 自由那次的 0.70",
+  "requires": [
+   "a_bang_makes_it_startle",
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "gets_up_after_a_hard_shove",
+  "group": "自救",
+  "question": "站着被人用更大的力气推倒，它还能起来吗",
+  "stage": "full",
+  "sim_seconds": 7.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "和「被推一把」是同一套判据，只是那一下更重。它不说明它扛得住连续推。",
+  "reads": "站好后被 220 牛推 0.2 秒",
+  "bar_text": "同 stay_up_when_pushed 的判据",
+  "requires": [
+   "stay_up_when_pushed"
+  ]
+ },
+ {
+  "name": "eyes_converge_on_a_near_thing",
+  "group": "看",
+  "question": "东西凑到跟前时，两只眼睛会不会一起往里收",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是眼球自己转到哪（眼肌的本体读数），不是画面。没有这一步之前，这一层细胞一直是静止的偏置，读不出任何东西。",
+  "reads": "球在 0.25 米和 2 米时，眼睛内收细胞减外展细胞",
+  "bar_text": "近距离比远距离高出 ≥ 0.10",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_look_at_a_still_thing_at_the_side",
+  "group": "看",
+  "question": "一样东西停在旁边不动，眼睛会转到那边去吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "左边停一个球、右边停一个球，各起一个全新的脑子，看最后眼球停在哪儿。它只说明眼睛会朝那一边去，不说明它看得清那是什么。",
+  "reads": "球停在左边和停在右边，各自稳定后眼球角度",
+  "bar_text": "两次都要朝球那边偏 ≥ 0.05 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "its_own_eyes_are_felt",
+  "group": "看",
+  "question": "眼睛自己转到哪，脑里知不知道自己转了",
+  "stage": "full",
+  "sim_seconds": 2.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是眼球本体那组细胞，在一个眼睛被命令转开、一个不转的对比下差多少。这条线本身很弱，门槛就是按出厂动物自己的读数留的。",
+  "reads": "眼球被命令转开和不转时，眼球本体细胞的活动差",
+  "bar_text": "差值 ≥ 0.0002",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_hold_a_slow_thing",
+  "group": "看",
+  "question": "东西慢慢扫过，眼睛还跟不跟得住",
+  "stage": "full",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和追球那一题是同一条线，只是速度减半。慢的比快的更难过，因为慢的目标每帧变化小。",
+  "reads": "球用一半速度扫过时的平均跟踪误差",
+  "bar_text": "平均差 ≤ 0.16 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "ears_hear_something_far_away",
+  "group": "听",
+  "question": "很远的地方响一声，耳朵还听得见吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "比的是三米外的一声和一间没有声音的屋子。它测的是听得见的下限，不是听得准不准。",
+  "reads": "三米外的一声和没有声音时耳蜗细胞的活动差",
+  "bar_text": "差值 ≥ 0.02",
+  "requires": [
+   "startled_but_still_hearing"
+  ]
+ },
+ {
+  "name": "ears_hear_a_sound_behind",
+  "group": "听",
+  "question": "声音在背后和在前头，耳朵里的读数一样吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是耳廓那组细胞前后两格。它只说明前后分得开，不说明它知道那是什么声音。",
+  "reads": "同一声在背后和在前头时耳廓细胞的逐格差",
+  "bar_text": "逐格平均差 ≥ 0.02",
+  "requires": [
+   "ears_tell_front_from_back"
+  ]
+ },
+ {
+  "name": "two_sounds_at_once_are_still_two",
+  "group": "听",
+  "question": "两个地方同时响，耳朵里会不会糊成一团",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "比的是两个声源同时亮起，和只亮一个。它不说明它能同时听清两件事。",
+  "reads": "两个声源同时亮和只亮一个时耳廓细胞的逐格差",
+  "bar_text": "逐格平均差 ≥ 0.02（比的是花样，不是总量）",
+  "requires": [
+   "ears_tell_front_from_back"
+  ]
+ },
+ {
+  "name": "feels_a_touch_on_the_left_side",
+  "group": "摸与本体",
+  "question": "左边被碰，脑里会不会往右边让",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是两条相反的让路细胞：左边被碰该亮左让那一条，右边被碰该亮另一条。",
+  "reads": "左边被碰和右边被碰时两条让路细胞各自的差",
+  "bar_text": "两个方向都要高出 ≥ 0.30",
+  "requires": [
+   "feels_a_touch_on_the_front"
+  ]
+ },
+ {
+  "name": "feels_a_touch_behind_it",
+  "group": "摸与本体",
+  "question": "背后被碰，脑里有没有「后面」这一格",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是四格「身上贴着东西」的慢细胞：后面被碰该亮后面那格，前面被碰该亮前面那格。它只说明四格没有接反，不说明它靠这个量出了位置。",
+  "reads": "后面被碰和前面被碰时四格「贴着东西」细胞各自的差",
+  "bar_text": "两个方向都要高出 ≥ 0.20",
+  "requires": [
+   "feels_a_touch_on_the_front"
+  ]
+ },
+ {
+  "name": "feels_a_touch_on_both_sides_at_once",
+  "group": "摸与本体",
+  "question": "同时碰到两处，脑里还算得清吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "two_touch_bar",
+  "note": "比的是「只碰前面」和「前面加左边一起碰」。它测的是两路能不能同时存在，不说明它分得清先后。",
+  "reads": "只碰前面，和前面加左边一起碰时，四格「贴着东西」细胞亮了几格",
+  "bar_text": "只碰前面亮 1 格，两处一起碰要亮 ≥ 2 格",
+  "requires": [
+   "feels_a_touch_on_the_left_side"
+  ]
+ },
+ {
+  "name": "feels_the_ground_under_the_back_legs",
+  "group": "摸与本体",
+  "question": "后腿踩实了没有，是哪条腿的报告",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和前面那条承重的题是同一条线，只是换成后腿。四条腿各接一遍才算接全。",
+  "reads": "后腿压上重物时那条腿的承重细胞，减去另一条",
+  "bar_text": "两个方向都要高出 ≥ 0.05",
+  "requires": [
+   "feels_a_load_on_one_foot"
+  ]
+ },
+ {
+  "name": "learns_the_lesson_in_five_seconds",
+  "group": "学习",
+  "question": "只教五秒，够不够学会「这个声音=后退」",
+  "stage": "full",
+  "sim_seconds": 17.0,
+  "measure": "<lambda>",
+  "bar": "taught_reflex_bar",
+  "note": "和二十秒那一题是同一套判据，只是时间缩短到四分之一。它测的是学得多快，不是学得多好。",
+  "reads": "只教五秒，之后只听声音和只听安静两种情况下后退细胞的活动",
+  "bar_text": "声音带来的后退比安静高 ≥ 0.05",
+  "requires": [
+   "taught_reflex_sticks"
+  ]
+ },
+ {
+  "name": "the_lesson_survives_a_longer_pause",
+  "group": "学习",
+  "question": "教完之后安静三十秒，那件事还在吗",
+  "stage": "full",
+  "sim_seconds": 62.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "比十秒那一题长得多，但仍然只是十几秒量级；它不说明长期记忆。",
+  "reads": "教完先安静 30 秒，再只听声音",
+  "bar_text": "仍然比安静高 ≥ 0.05",
+  "requires": [
+   "the_lesson_is_still_there_later"
+  ]
+ },
+ {
+  "name": "remembers_a_second_pattern",
+  "group": "记忆",
+  "question": "换一块别的颜色，配过对以后还有意义吗",
+  "stage": "full",
+  "sim_seconds": 26.0,
+  "measure": "<lambda>",
+  "bar": "visual_memory_bar",
+  "note": "和蓝色那块图案用同一套配对和判据，只是换成绿色。它测的是这套机制对另一块图案也一样，不说明它能同时记住两块。",
+  "reads": "绿色图案配对 5 轮后，只给图案时回避细胞比安静高多少",
+  "bar_text": "高出 ≥ 0.01",
+  "requires": [
+   "visual_memory_holds"
+  ]
+ },
+ {
+  "name": "remembers_after_one_pairing",
+  "group": "记忆",
+  "question": "只配对一次，够不够",
+  "stage": "full",
+  "sim_seconds": 14.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "它测的是一次就够不够，不是记多久。配得少还读得出来，说明这条线写得比较快。",
+  "reads": "只配对 1 轮，然后只给图案",
+  "bar_text": "高出 ≥ 0.01",
+  "requires": [
+   "visual_memory_holds"
+  ]
+ },
+ {
+  "name": "stands_still_for_twenty_seconds",
+  "group": "站立",
+  "question": "没人叫它走，站二十秒会不会自己倒下去",
+  "stage": "full",
+  "sim_seconds": 20.0,
+  "measure": "<lambda>",
+  "bar": "stand_long_bar",
+  "note": "二十秒里它可能还是会一点点往前蹭。这一题只拦「走起来」和「倒下去」，不说明它站得像雕像。",
+  "reads": "20 秒里的位移、全程最低的直立程度",
+  "bar_text": "直立程度 ≥ 0.9 并且移动 ≤ 1.40 米",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "stands_still_on_a_slope",
+  "group": "站立",
+  "question": "站在斜坡上也站得住吗",
+  "stage": "full",
+  "sim_seconds": 8.0,
+  "measure": "<lambda>",
+  "bar": "slope_stand_bar",
+  "note": "坡是场地里那一道，不是随便什么坡度；它不说明它知道自己在坡上。",
+  "reads": "坡顶站 8 秒，全程最低的直立程度",
+  "bar_text": "直立程度 ≥ 0.85",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "stays_up_when_nudged_gently",
+  "group": "站立",
+  "question": "被轻轻撞一下，会不会自己站回来",
+  "stage": "full",
+  "sim_seconds": 7.0,
+  "measure": "<lambda>",
+  "bar": "righting_bar",
+  "note": "和大力推那一题是同一条判据，只是推力减半。它测的是小干扰下能不能站稳。",
+  "reads": "站好后被 90 牛推 0.2 秒",
+  "bar_text": "中途站住过 0.5 秒以上，结束时直立程度 ≥ 0.5",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "all_four_feet_leave_the_ground",
+  "group": "走路",
+  "question": "走路时四只脚都会抬起来吗",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "foot_lift_bar",
+  "note": "读的是每只脚离地超过两毫米的时间占比。它只说明四条腿都在参与，不说明步态好看。",
+  "reads": "走 10 秒里每只脚离地超过 2 毫米的时间占比",
+  "bar_text": "全程不倒、≥ 0.25 米，四只脚每只 ≥ 0.02",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "the_two_sides_step_alike",
+  "group": "走路",
+  "question": "左右两条腿是一样干活，还是一条拖着一条",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "leg_symmetry_bar",
+  "note": "比的是同一条带子上两只脚的抬脚占比。它不说明两条腿的力气一样大。",
+  "reads": "同一批抬脚占比里，同一条带子两只脚的差",
+  "bar_text": "全程不倒、≥ 0.25 米，前对和后对的差都 ≤ 0.20",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "keeps_walking_for_thirty_seconds",
+  "group": "走路",
+  "question": "没人管它，三十秒里是一直走还是走走停停",
+  "stage": "full",
+  "sim_seconds": 30.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "只比距离，不看它是怎么走的。三十秒里摔过再爬起来的也算不过。",
+  "reads": "三十秒走了多远",
+  "bar_text": "全程不倒并且移动 ≥ 1.30 米",
+  "requires": [
+   "walks_for_twenty_seconds"
+  ]
+ },
+ {
+  "name": "does_not_slow_down_on_a_long_walk",
+  "group": "走快",
+  "question": "走久了会不会越走越慢",
+  "stage": "full",
+  "sim_seconds": 20.0,
+  "measure": "<lambda>",
+  "bar": "fatigue_bar",
+  "note": "比的是头五秒和末五秒的平均速度。它不区分是累了，还是换了种走法。",
+  "reads": "二十秒里头五秒和末五秒各自的平均速度",
+  "bar_text": "全程不倒、头五秒 ≥ 0.15 米/秒，末五秒 ≥ 头五秒的 0.50",
+  "requires": [
+   "walks_at_a_steady_pace"
+  ]
+ },
+ {
+  "name": "keeps_walking_while_it_turns",
+  "group": "转弯",
+  "question": "一边走一边有声音，它会不会朝着声音转过去、还继续走",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "两次都要走得动，而且两次的收尾朝向要分开。走得好但没转，或者转了但不走，都算不过。",
+  "reads": "左边响和右边响各走 16 秒，各自的前进量和收尾朝向",
+  "bar_text": "两次都不倒、都要走 ≥ 0.45 米，朝向差 ≥ 0.30 弧度",
+  "requires": [
+   "turns_towards_a_sound_while_walking"
+  ]
+ },
+ {
+  "name": "backs_away_from_a_hand_on_its_chest",
+  "group": "转弯",
+  "question": "胸口一直被顶着，会不会往后退",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是它有没有真的往后退。它不说明它想退到哪去。",
+  "reads": "胸口一直有接触的 10 秒里最大的后退量",
+  "bar_text": "不倒，并且往后退 ≥ 0.10 米",
+  "requires": [
+   "a_touch_on_the_front_holds_it_back"
+  ]
+ },
+ {
+  "name": "keeps_its_line_with_a_sound_behind",
+  "group": "转弯",
+  "question": "背后有声音，会不会被它带得偏方向",
+  "stage": "full",
+  "sim_seconds": 12.0,
+  "measure": "<lambda>",
+  "bar": "behind_hold_bar",
+  "note": "这一题要的是「不该转」：背后的声音不该让它偏航，也不该让它停下来。",
+  "reads": "背后有声音时走 12 秒的收尾朝向和距离",
+  "bar_text": "全程不倒、≥ 0.30 米，并且朝向偏 ≤ 0.35 弧度",
+  "requires": [
+   "walks_without_being_told"
+  ]
+ },
+ {
+  "name": "does_not_fall_walking_into_the_wall",
+  "group": "地形",
+  "question": "朝墙上走，是停下来还是被撞翻",
+  "stage": "full",
+  "sim_seconds": 12.0,
+  "measure": "<lambda>",
+  "bar": "wall_upright_bar",
+  "note": "和「撞墙停下」那一题不同，这一题只看它有没有被自己撞翻。",
+  "reads": "朝墙走 12 秒里最低的直立程度、最远到的 x",
+  "bar_text": "直立程度 ≥ 0.9 并且没穿过 x=3.42",
+  "requires": [
+   "stops_at_the_wall"
+  ]
+ },
+ {
+  "name": "threads_the_passage_without_touching",
+  "group": "地形",
+  "question": "过窄通道时会不会蹭着墙走",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "passage_quiet_bar",
+  "note": "过了通道还要没把墙细胞点亮。它不说明它看见了墙。",
+  "reads": "从通道口走 10 秒，越过通道口没有、墙接触细胞的峰值",
+  "bar_text": "不倒、≥ 0.25 米、越过通道口，并且墙细胞峰值 ≤ 0.10",
+  "requires": [
+   "walk_narrow_passage"
+  ]
+ },
+ {
+  "name": "sees_a_red_square_from_a_green_one",
+  "group": "看",
+  "question": "同一个方块，红色和绿色，脑里读数一样吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "同一个形状、同一个位置，只有颜色不同。它测的是感光层下面那层对颜色有没有分开，不说明它知道那叫红色。",
+  "reads": "红方块和绿方块分别给眼睛，对色那层细胞逐格的差",
+  "bar_text": "逐格平均差 ≥ 0.02",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "sees_a_big_ball_from_a_small_one",
+  "group": "看",
+  "question": "同一个位置，大球和小球，读数一样吗",
+  "stage": "full",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "球的位置不动，只换大小。它只说明「占的画面大小」这一路有读数，不说明它量出了远近。",
+  "reads": "同一个球换大小（0.18 米和 0.05 米），感光变化层逐格的差",
+  "bar_text": "逐格平均差 ≥ 0.02",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_follow_the_ball_up_and_down",
+  "group": "看",
+  "question": "球上下移动，眼睛会不会跟着上下看",
+  "stage": "full",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "上下这一路本来就比左右弱得多，门槛是按出厂读数留的；它不说明眼睛的俯仰已经好用。",
+  "reads": "球上下扫过时眼球俯仰角与球仰角之差的平均",
+  "bar_text": "平均差 ≤ 0.22 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_follow_the_ball_far_away",
+  "group": "看",
+  "question": "球在两米外扫过，还跟得住吗",
+  "stage": "full",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和追球那一题是同一条线，球放到两米外。远的比近的难过，因为每帧动的角度小。",
+  "reads": "球在两米外扫过时的平均跟踪误差",
+  "bar_text": "平均差 ≤ 0.20 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "eyes_follow_the_ball_close_up",
+  "group": "看",
+  "question": "球贴着鼻子扫过，还跟得住吗",
+  "stage": "full",
+  "sim_seconds": 5.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "球在四十厘米处扫过，角度变化快得多。它测的是跟得上快变化，不说明它把球看得清楚。",
+  "reads": "球在四十厘米处扫过时的平均跟踪误差",
+  "bar_text": "平均差 ≤ 0.20 弧度",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "the_eyes_let_go_when_it_is_gone",
+  "group": "看",
+  "question": "东西走了，眼睛会不会自己转回来",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "recentre_bar",
+  "note": "两段都要读：前面要真的看过去，后面要真的松开。一只从头到尾没动过的眼睛也算「没留在空地方」，所以前半段是必须的。",
+  "reads": "球停在旁边时的眼球角度、球撤走后的眼球角度",
+  "bar_text": "停着时朝球偏 ≥ 0.05 弧度，撤走后偏 ≤ 0.05 弧度",
+  "requires": [
+   "eyes_look_at_a_still_thing_at_the_side"
+  ]
+ },
+ {
+  "name": "notices_a_thing_that_creeps_in",
+  "group": "看",
+  "question": "一样东西慢慢冒出来，眼睛发不发现",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "比冒出来那一题动得更慢。眼睛这一路靠「画面变了」，动得越慢越难发现。",
+  "reads": "东西出现并慢慢移动后，眼球摆动多少、朝哪边",
+  "bar_text": "朝它那边摆动 ≥ 0.01 弧度",
+  "requires": [
+   "eyes_on_a_new_thing"
+  ]
+ },
+ {
+  "name": "a_sound_that_stops_is_no_longer_heard",
+  "group": "听",
+  "question": "声音停了，耳朵里是不是也停了",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "同一个声源，先响两秒再挪走。它测的是耳朵跟着世界走，不是耳朵在自说自话。",
+  "reads": "声源挪走前后各半秒的耳蜗活动",
+  "bar_text": "响着时 ≥ 0.02，停掉后 ≤ 响着时的 0.50",
+  "requires": [
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "a_quiet_room_is_not_a_sound",
+  "group": "听",
+  "question": "屋里没声音时：耳蜗安静吗、说不出话的那格亮不亮",
+  "stage": "full",
+  "sim_seconds": 2.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "这是「声音停了」那一题的对照：什么都听不见的时候，耳蜗该是安静的，而它旁边那格「什么都没听见」的细胞该是亮的。它只说明这一对还在，不说明它听得出「安静」。",
+  "reads": "安静的屋子里，耳蜗那一路和它旁边那格的平均活动",
+  "bar_text": "耳蜗每一格 ≤ 0.02，旁边那格每一格 ≥ 0.05",
+  "requires": [
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "ears_tell_left_from_right",
+  "group": "听",
+  "question": "声音在左肩和右肩，耳朵分得开吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和前后那一题是同一条线，换成正左右。它只说明两边分得开。",
+  "reads": "同一声在左肩和右肩时耳廓四个格子的逐格差",
+  "bar_text": "逐格平均差 ≥ 0.02",
+  "requires": [
+   "turn_to_sound"
+  ]
+ },
+ {
+  "name": "two_sounds_at_one_shoulder_are_still_two",
+  "group": "听",
+  "question": "同一个方向两个声音一起响，耳朵会不会糊成一团",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "两个声源都在同一边，只比花样不比总量。它不说明它分得清两个声音各自是什么。",
+  "reads": "同一边两个声源一起亮和只亮一个时耳廓细胞的逐格差",
+  "bar_text": "逐格平均差 ≥ 0.02",
+  "requires": [
+   "two_sounds_at_once_are_still_two"
+  ]
+ },
+ {
+  "name": "a_bang_behind_it_still_startles",
+  "group": "听",
+  "question": "背后突然来一声，会不会受惊",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "比的是同一间屋子有没有那一声。它只说明受惊这条路不分方向地接着。",
+  "reads": "背后有砰声和没有时受惊细胞的活动差",
+  "bar_text": "差值 ≥ 0.10",
+  "requires": [
+   "a_bang_makes_it_startle"
+  ]
+ },
+ {
+  "name": "feels_a_touch_on_the_right_side",
+  "group": "摸与本体",
+  "question": "右边被碰，脑里会往哪边让",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "左边那一题的镜像，四次把四个方向凑齐。它只说明没有接反。",
+  "reads": "右边被碰和左边被碰时两条让路细胞各自的差",
+  "bar_text": "两个方向都要高出 ≥ 0.30",
+  "requires": [
+   "feels_a_touch_on_the_left_side"
+  ]
+ },
+ {
+  "name": "feels_a_light_hand_too",
+  "group": "摸与本体",
+  "question": "轻轻搭一只手，脑里还知道在哪边吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和握手那一题是同一条线，力度降到不到一半。它测的是轻的也没被漏掉。",
+  "reads": "轻轻碰（0.30）左边和右边时两条让路细胞各自的差",
+  "bar_text": "两个方向都要高出 ≥ 0.10",
+  "requires": [
+   "feels_a_touch_on_the_left_side"
+  ]
+ },
+ {
+  "name": "feels_the_ground_under_the_front_legs",
+  "group": "摸与本体",
+  "question": "前腿踩实了没有",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和后腿那条承重的题是同一条线。四条腿各接一遍才算接全。",
+  "reads": "前腿压上重物时那条腿的承重细胞，减去另一条",
+  "bar_text": "两个方向都要高出 ≥ 0.05",
+  "requires": [
+   "feels_the_ground_under_the_back_legs"
+  ]
+ },
+ {
+  "name": "lifts_each_of_the_four_feet",
+  "group": "摸与本体",
+  "question": "四条腿各绊一次，抬的是不是那条",
+  "stage": "full",
+  "sim_seconds": 8.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "一腿一次共四次，每次都要是那条腿自己的细胞最亮。它比两方向那一题严，因为剩下的两条腿也一起被查了。",
+  "reads": "四条腿各绊一次，每次抬脚那组细胞里最亮的一格是不是那条腿",
+  "bar_text": "四条腿都要是自己那条腿最亮",
+  "requires": [
+   "lifts_the_foot_that_was_caught"
+  ]
+ },
+ {
+  "name": "the_flat_ground_is_not_a_bump",
+  "group": "摸与本体",
+  "question": "平地上站着，会不会觉得自己踩着东西",
+  "stage": "full",
+  "sim_seconds": 2.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和「脚被绊」那一题配对的对照：平地上不该有绊住的读数。",
+  "reads": "平地上站着的抬脚细胞和绊住细胞",
+  "bar_text": "两组的每一格都不超过 0.05",
+  "requires": [
+   "feels_a_touch_on_the_front"
+  ]
+ },
+ {
+  "name": "it_forgets_when_nobody_teaches_anymore",
+  "group": "学习",
+  "question": "没人接着教，学会的东西会不会自己淡掉",
+  "stage": "full",
+  "sim_seconds": 62.0,
+  "measure": "<lambda>",
+  "bar": "extinction_bar",
+  "note": "先教会，再让那个声音自己响三十秒、没人摸它。它测的是「没人撑着的记忆会退」，不说明退回原样。",
+  "reads": "教会时的成绩，和之后没人教三十秒的成绩",
+  "bar_text": "先学会（≥ 0.05），再掉到原来的 70% 以下",
+  "requires": [
+   "the_lesson_survives_a_longer_pause"
+  ]
+ },
+ {
+  "name": "a_second_short_lesson_adds_to_the_first",
+  "group": "学习",
+  "question": "再教一遍，第二遍会不会更牢",
+  "stage": "full",
+  "sim_seconds": 32.0,
+  "measure": "<lambda>",
+  "bar": "second_lesson_bar",
+  "note": "两次各五秒，中间隔着一次考试。它测的是重复有没有用，不说明睡一觉还在。",
+  "reads": "第一个五秒教完的成绩，和第二个五秒教完的成绩",
+  "bar_text": "第一遍学会（≥ 0.05），第二遍还要再高 ≥ 0.01",
+  "requires": [
+   "learns_the_lesson_in_five_seconds"
+  ]
+ },
+ {
+  "name": "the_lesson_is_still_there_after_a_minute",
+  "group": "学习",
+  "question": "教完安静一分钟，还记得吗",
+  "stage": "full",
+  "sim_seconds": 92.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "安静的时间比「隔三十秒」那一题再长一倍。它仍然只到一分钟量级，不说明长期记忆。",
+  "reads": "教完先安静 60 秒，再只听声音",
+  "bar_text": "仍然比安静高 ≥ 0.05",
+  "requires": [
+   "the_lesson_survives_a_longer_pause"
+  ]
+ },
+ {
+  "name": "the_memory_survives_a_long_life",
+  "group": "学习",
+  "question": "教完让它自己活一分钟，那件事还在吗",
+  "stage": "full",
+  "sim_seconds": 98.0,
+  "measure": "<lambda>",
+  "bar": "long_life_bar",
+  "note": "它活的那一分钟不是安静的：它一直在走，那个声音时有时无，局部规则一直开着。这一题只读后退细胞，所以它说明的是那件事还在不在，不说明它记得多久、也不说明它分得清别的音。",
+  "reads": "教完的那一刻的成绩，和它自己走一分钟（边听边走、规则开着）之后的成绩",
+  "bar_text": "先学会（≥ 0.05），之后不低于原来的 80%",
+  "requires": [
+   "the_lesson_survives_a_longer_pause"
+  ]
+ },
+ {
+  "name": "a_second_tone_does_not_wipe_the_first",
+  "group": "学习",
+  "question": "学会一个音之后再教一个，前一个会不会被顶掉",
+  "stage": "full",
+  "sim_seconds": 76.0,
+  "measure": "<lambda>",
+  "bar": "second_tone_bar",
+  "note": "两个音走的是同一条可教通路，所以它们抢同一批细胞。这一题只问前一个还在不在，不说明它分得清这两个音。",
+  "reads": "先教 262 Hz、再教 880 Hz，之后分别只听这两个声音",
+  "bar_text": "两个音都要 ≥ 0.05，且第一个不低于原来的 80%",
+  "requires": [
+   "the_lesson_survives_a_longer_pause"
+  ]
+ },
+ {
+  "name": "the_route_stops_growing_at_its_ceiling",
+  "group": "学习",
+  "question": "同一根连接一直用，会不会无脑一直涨",
+  "stage": "full",
+  "sim_seconds": 64.0,
+  "measure": "<lambda>",
+  "bar": "route_ceiling_bar",
+  "note": "这一题读的是那几根可教连接自己的权重，不是细胞的读数。它只说明连着用一分钟之后它越涨越慢、最后几乎不涨，不说明它永远不会再变——真正把它钉住的是它自己的上限和系绳。",
+  "reads": "一直握着不放六十秒，那几根可教连接头、中、后各二十秒各涨多少",
+  "bar_text": "头二十秒涨 > 0.01，最后二十秒的涨幅 ≤ 头二十秒的 25%",
+  "requires": [
+   "taught_reflex_sticks"
+  ]
+ },
+ {
+  "name": "remembers_two_patterns_at_once",
+  "group": "记忆",
+  "question": "两块图案里只配对一块，另一块会不会也被当成危险",
+  "stage": "full",
+  "sim_seconds": 30.0,
+  "measure": "<lambda>",
+  "bar": "two_pattern_bar",
+  "note": "配对的那块要有意义，没配对的那块要没有。它测的是记忆有没有摊到别的图案上，不说明它认得「这是哪一块」。",
+  "reads": "配对的那块图案和没配过的那块，各自让回避细胞高多少",
+  "bar_text": "配对那块 ≥ 0.01，没配的那块 < 0.01",
+  "requires": [
+   "visual_memory_holds"
+  ]
+ },
+ {
+  "name": "the_memory_survives_a_small_change",
+  "group": "记忆",
+  "question": "图案挪了一点点，还认得出来吗",
+  "stage": "full",
+  "sim_seconds": 30.0,
+  "measure": "<lambda>",
+  "bar": "shifted_pattern_bar",
+  "note": "配对时用的是原来那块，考试时用的是同一块往上挪了几行的版本。这和「同一个人慢慢变老还认得」是同一类问题，只是这里只挪一点点。",
+  "reads": "配对的图案，和把它挪几行以后的同一个图案",
+  "bar_text": "原图案 ≥ 0.01，挪过的那块 ≥ 原图案的 30%",
+  "requires": [
+   "visual_memory_holds"
+  ]
+ },
+ {
+  "name": "walks_towards_a_bright_thing",
+  "group": "注意",
+  "question": "前面有个亮东西，会不会朝着它多走几步",
+  "stage": "full",
+  "sim_seconds": 20.0,
+  "measure": "<lambda>",
+  "bar": "bright_pull_bar",
+  "note": "同样两个场景，只有一个亮东西在不在前面的区别。它测的是「亮的东西会不会把它多带走一点」，不说明它奔着什么去。",
+  "reads": "同样 10 秒，前面有亮东西和没有，各走多远",
+  "bar_text": "两边都不倒、空场那次 ≥ 0.30 米，有亮东西那次多走 ≥ 0.05 米",
+  "requires": [
+   "walk_flat"
+  ]
+ },
+ {
+  "name": "knows_when_it_is_tipped_over",
+  "group": "自我",
+  "question": "身体被扳歪了，它自己的姿态细胞知不知道",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "读的是它自己那组「我正不正」的细胞，在被扳歪和站正两个状态下的差。它只说明姿态这件事在脑里有读数。",
+  "reads": "身体被扳歪 0.45 弧度和站着时，它自己那组耳石（姿态）细胞的活动差",
+  "bar_text": "平均差 ≥ 0.05",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "the_hidden_layer_sees_the_picture",
+  "group": "特征层",
+  "question": "两幅不一样的画，眼睛下面第一层读数分得开吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "两幅画都有花纹，只是一个横一个竖。它测的是眼睛下面那层有没有把画面带下去，不说明哪一层「懂」了画面。",
+  "reads": "横条纹和竖条纹分别给眼睛，眼睛下面第一层（视网膜中间神经元）逐格的差",
+  "bar_text": "逐格平均差 ≥ 0.01",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ },
+ {
+  "name": "the_compressed_layer_sees_the_picture",
+  "group": "特征层",
+  "question": "再往下压一层，两幅画还分得开吗",
+  "stage": "full",
+  "sim_seconds": 4.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "和上一层同一幅画、同一次对比。压缩得越狠越容易把两幅画压成同一个读数，这一题就是在问有没有压坏。",
+  "reads": "同一对比下，压缩后的 18 细胞输出层的逐格差，以及它占上一层差异的比例",
+  "bar_text": "压缩后仍要留下上一层差异的 ≥ 5%",
+  "requires": [
+   "the_hidden_layer_sees_the_picture"
+  ]
+ },
+ {
+  "name": "hurries_towards_a_bright_thing",
+  "group": "跑",
+  "question": "前面放个亮东西，它会不会走得比空房间快",
+  "stage": "full",
+  "sim_seconds": 20.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "同样两个场景，只有前面有没有那个亮东西的区别。读的是平均速度之比，不是走了多远。出厂动物有一条「亮东西让它多走几步」的弱通路，但两次一样快，所以它出生时不过。它不说明它奔着亮东西去。",
+  "reads": "同样十秒、同一条路，前面有亮东西和空房间两次的平均速度之比",
+  "bar_text": "两次都不倒、空房间那次平均速度 ≥ 0.15 米/秒，并且有亮东西那次快 ≥ 1.25 倍",
+  "requires": [
+   "walks_at_a_steady_pace"
+  ]
+ },
+ {
+  "name": "runs_without_being_told",
+  "group": "跑",
+  "question": "没人管它，它自己跑得起来吗",
+  "stage": "full",
+  "sim_seconds": 10.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "没有外部指令可用，读的是它自己十秒里的全程平均速度，不是某一瞬间的快。跑不动、或者跑两步就摔，都算不过。",
+  "reads": "没人给它任何指令，它自己走十秒的全程平均速度",
+  "bar_text": "全程不倒，平均 ≥ 0.25 米/秒",
+  "requires": [
+   "hurries_towards_a_bright_thing"
+  ]
+ },
+ {
+  "name": "runs_for_twenty_seconds",
+  "group": "跑",
+  "question": "让它自己跑二十秒，它跑得下去吗",
+  "stage": "full",
+  "sim_seconds": 20.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "只比二十秒里走出去多远，不看步态好不好看；这二十秒里摔过再爬起来的也算不过。",
+  "reads": "没人管它，二十秒的净位移",
+  "bar_text": "≥ 2.00 米，且全程不倒",
+  "requires": [
+   "runs_without_being_told"
+  ]
+ },
+ {
+  "name": "keeps_running_while_it_turns",
+  "group": "跑",
+  "question": "一边跑一边听到声音，还跑得动吗",
+  "stage": "full",
+  "sim_seconds": 16.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "它在走的状态下早就转得动了，这一题额外要求转向的过程中速度不掉下来。",
+  "reads": "一边跑一边左右各响一次：两次的位移、平均速度和收尾朝向差",
+  "bar_text": "两次位移 ≥ 0.45 米、平均速度 ≥ 0.25 米/秒、朝向差 ≥ 0.30 弧度",
+  "requires": [
+   "runs_without_being_told",
+   "turns_towards_a_sound_while_walking"
+  ]
+ },
+ {
+  "name": "nothing_touching_it_is_not_nothing",
+  "group": "摸与本体",
+  "question": "没人碰它也没绊到它时，说不出话的那几格亮不亮",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "站着、没人碰、四只脚都在地上：碰、绊、打滑三路都该安静，它们旁边那格该亮着。它只说明「什么都没发生」是一条真的读数，不说明它知道自己在站着。",
+  "reads": "没被碰的站姿里，碰、绊、打滑三路和它们旁边那格",
+  "bar_text": "三路的每一格 ≤ 0.02，旁边那三格的每一格 ≥ 0.05",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "the_weight_pair_still_carries_the_weight",
+  "group": "摸与本体",
+  "question": "脚上受力那一对，合起来是不是一整档",
+  "stage": "full",
+  "sim_seconds": 3.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "受力那一路和它旁边那格合起来才是完整的一档：一格说「这只脚吃了多少力」，另一格说「还差多少」。它不说明它分得清是哪只脚。",
+  "reads": "四只脚各自的受力格和旁边那格之和",
+  "bar_text": "每一对相加都落在 1 ± 0.10 内",
+  "requires": [
+   "stands_still"
+  ]
+ },
+ {
+  "name": "the_dark_room_is_not_silence",
+  "group": "看",
+  "question": "全黑的屋里，输入层暗的那一半亮着吗",
+  "stage": "full",
+  "sim_seconds": 2.0,
+  "measure": "<lambda>",
+  "bar": "<lambda>",
+  "note": "输入层现在是成对的：每个像素把亮度交给一格、把「没光进来」交给旁边那格，没光的那一半还有自己的汇总层。这一题问的只是这两半在不在、黑的时候是不是反过来的；它不说明它意识到自己在黑屋里——这两半现在没有出边，黑画面到不了反射层。",
+  "reads": "全黑画面和全白画面下，输入层两半和它们各自的汇总层的平均活动",
+  "bar_text": "黑画面要亮着暗那一半（≥ 0.05）、不亮亮那一半（≤ 0.05）、暗那一半要把自己的汇总层点亮（≥ 0.05），白画面反过来",
+  "requires": [
+   "eyes_follow_ball"
+  ]
+ }
+]

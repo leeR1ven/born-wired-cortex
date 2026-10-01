@@ -1,0 +1,20 @@
+冠军：第 36 代 第 158 只  线上读数 走了 9.45 米、没摔=True、直度 0.92
+基因 50 条
+
+融合：走路基因 + 红球接线（球在眼前） ...
+  走了 8.89 米（路程 9.97、直度 0.89）最低直立分量 0.627  左眼偏心 1.7 度、右眼偏心 2.6 度  用时 3.1 秒
+
+对照一：只有走路基因（球也在眼前） ...
+  走了 8.89 米（路程 10.18、直度 0.87）最低直立分量 0.570  左眼偏心 3.8 度、右眼偏心 5.6 度  用时 3.4 秒
+
+对照二：走路基因 + 红球接线，但不摆球（和云端同一条件） ...
+F:\born-wired-cortex\engine_v2\tools\merge_cloud_eye.py:133: RuntimeWarning: Mean of empty slice
+  per_eye.append(dict(n=len(side_offsets), mean=float(np.nanmean(seen)),
+F:\born-wired-cortex\engine_v2\tools\merge_cloud_eye.py:134: RuntimeWarning: All-NaN slice encountered
+  worst=float(np.nanmax(seen)),
+  走了 8.94 米（路程 10.07、直度 0.89）最低直立分量 0.626  左眼偏心 nan 度、右眼偏心 nan 度  用时 3.6 秒
+
+结论：
+  走路：融合 8.89 米 vs 对照 8.89 米（差 +0.00 米）
+  看球：融合 左 1.7 / 右 2.6 度 vs 对照 左 3.8 / 右 5.6 度
+  存到 artifacts\_复核_本地vs云端.json

@@ -1,0 +1,29 @@
+test_a_body_without_eye_joints_gets_no_eye_cells (tests.test_eye_muscles.EyeMuscleTests.test_a_body_without_eye_joints_gets_no_eye_cells) ... ok
+test_a_sound_still_turns_the_eyes_with_the_direct_route_silenced (tests.test_eye_muscles.EyeMuscleTests.test_a_sound_still_turns_the_eyes_with_the_direct_route_silenced)
+The named orienting cells carry the same reflex on their own edges. ... ok
+test_both_eyes_swing_the_same_way_for_a_target_on_one_side (tests.test_eye_muscles.EyeMuscleTests.test_both_eyes_swing_the_same_way_for_a_target_on_one_side) ... ok
+test_each_gaze_cell_takes_all_four_routes_on_its_own_edges (tests.test_eye_muscles.EyeMuscleTests.test_each_gaze_cell_takes_all_four_routes_on_its_own_edges)
+Parallel, not in series: no route is a gate the others pass through. ... ok
+test_every_commanded_angle_stays_inside_its_joint_limits (tests.test_eye_muscles.EyeMuscleTests.test_every_commanded_angle_stays_inside_its_joint_limits) ... ok
+test_nothing_in_view_leaves_only_the_parallel_eyes_cell_lit (tests.test_eye_muscles.EyeMuscleTests.test_nothing_in_view_leaves_only_the_parallel_eyes_cell_lit) ... ok
+test_silencing_one_route_removes_only_that_route (tests.test_eye_muscles.EyeMuscleTests.test_silencing_one_route_removes_only_that_route) ... ok
+test_the_bank_is_graded_so_each_cell_needs_more_than_the_one_below_it (tests.test_eye_muscles.EyeMuscleTests.test_the_bank_is_graded_so_each_cell_needs_more_than_the_one_below_it) ... ok
+test_the_bank_turns_on_more_cells_as_the_target_comes_closer (tests.test_eye_muscles.EyeMuscleTests.test_the_bank_turns_on_more_cells_as_the_target_comes_closer)
+One more cell for each band the target has come inside. ... ok
+test_the_eyes_turn_toward_a_sound_on_one_side (tests.test_eye_muscles.EyeMuscleTests.test_the_eyes_turn_toward_a_sound_on_one_side) ... ok
+test_the_memory_route_into_the_eyes_is_plastic (tests.test_eye_muscles.EyeMuscleTests.test_the_memory_route_into_the_eyes_is_plastic) ... ok
+test_the_muscles_rest_at_the_angle_the_joints_were_built_with (tests.test_eye_muscles.EyeMuscleTests.test_the_muscles_rest_at_the_angle_the_joints_were_built_with) ... ok
+test_the_two_eyes_turn_toward_each_other_as_the_target_comes_closer (tests.test_eye_muscles.EyeMuscleTests.test_the_two_eyes_turn_toward_each_other_as_the_target_comes_closer) ... ok
+test_with_every_sound_route_silenced_the_eyes_stay_put (tests.test_eye_muscles.EyeMuscleTests.test_with_every_sound_route_silenced_the_eyes_stay_put) ... ok
+test_a_picture_as_weak_as_a_rendered_room_still_reaches_the_bank (tests.test_embodied.EmbodiedVisionTests.test_a_picture_as_weak_as_a_rendered_room_still_reaches_the_bank)
+A rendered edge moves a contrast cell a fifth of the way, a fully ... ok
+test_invalid_raw_pixels_leave_neural_and_synaptic_state_unchanged (tests.test_embodied.EmbodiedVisionTests.test_invalid_raw_pixels_leave_neural_and_synaptic_state_unchanged) ... ok
+test_irregular_texture_preserves_offset_preference (tests.test_embodied.EmbodiedVisionTests.test_irregular_texture_preserves_offset_preference) ... ok
+test_raw_color_and_retinal_side_reach_distinct_downstream_cells (tests.test_embodied.EmbodiedVisionTests.test_raw_color_and_retinal_side_reach_distinct_downstream_cells) ... ok
+test_shifted_bright_edges_recruit_different_binocular_cells (tests.test_embodied.EmbodiedVisionTests.test_shifted_bright_edges_recruit_different_binocular_cells) ... ok
+test_visual_ablation_removes_raw_pixel_effect_on_motor_trajectory (tests.test_embodied.EmbodiedVisionTests.test_visual_ablation_removes_raw_pixel_effect_on_motor_trajectory) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 43.429s
+
+OK

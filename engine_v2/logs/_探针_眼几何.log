@@ -1,0 +1,13 @@
+base xpos [0.   0.   0.27]
+base xmat
+ [[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+eye_left xpos [0.3  0.11 0.32]
+   cam pos [0. 0. 0.]  fovy 60.0
+   cam quat [-0.5 -0.5  0.5  0.5]
+eye_right xpos [ 0.3  -0.11  0.32]
+   cam pos [0. 0. 0.]  fovy 60.0
+   cam quat [-0.5 -0.5  0.5  0.5]
+nq 23 nu 16
+eye joint names: [None, 'FL_hip_joint', 'FL_thigh_joint', 'FL_calf_joint', 'FR_hip_joint', 'FR_thigh_joint', 'FR_calf_joint', 'RL_hip_joint', 'RL_thigh_joint', 'RL_calf_joint', 'RR_hip_joint', 'RR_thigh_joint', 'RR_calf_joint', 'eye_left_yaw_joint', 'eye_left_pitch_joint', 'eye_right_yaw_joint', 'eye_right_pitch_joint']

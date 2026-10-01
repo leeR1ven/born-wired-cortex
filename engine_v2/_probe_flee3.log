@@ -1,0 +1,65 @@
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 65288 (\N{FULLWIDTH LEFT PARENTHESIS}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 31859 (\N{CJK UNIFIED IDEOGRAPH-7C73}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 65289 (\N{FULLWIDTH RIGHT PARENTHESIS}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 32418 (\N{CJK UNIFIED IDEOGRAPH-7EA2}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 29699 (\N{CJK UNIFIED IDEOGRAPH-7403}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 26032 (\N{CJK UNIFIED IDEOGRAPH-65B0}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 36867 (\N{CJK UNIFIED IDEOGRAPH-9003}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 27861 (\N{CJK UNIFIED IDEOGRAPH-6CD5}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 65306 (\N{FULLWIDTH COLON}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 22987 (\N{CJK UNIFIED IDEOGRAPH-59CB}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 32456 (\N{CJK UNIFIED IDEOGRAPH-7EC8}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 32972 (\N{CJK UNIFIED IDEOGRAPH-80CC}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 31163 (\N{CJK UNIFIED IDEOGRAPH-79BB}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 29399 (\N{CJK UNIFIED IDEOGRAPH-72D7}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 24367 (\N{CJK UNIFIED IDEOGRAPH-5F2F}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 32447 (\N{CJK UNIFIED IDEOGRAPH-7EBF}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 36148 (\N{CJK UNIFIED IDEOGRAPH-8D34}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 22330 (\N{CJK UNIFIED IDEOGRAPH-573A}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 22320 (\N{CJK UNIFIED IDEOGRAPH-5730}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 32469 (\N{CJK UNIFIED IDEOGRAPH-7ED5}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 22280 (\N{CJK UNIFIED IDEOGRAPH-5708}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 31186 (\N{CJK UNIFIED IDEOGRAPH-79D2}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 21407 (\N{CJK UNIFIED IDEOGRAPH-539F}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 26469 (\N{CJK UNIFIED IDEOGRAPH-6765}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 30340 (\N{CJK UNIFIED IDEOGRAPH-7684}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 22681 (\N{CJK UNIFIED IDEOGRAPH-5899}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 36335 (\N{CJK UNIFIED IDEOGRAPH-8DEF}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 20986 (\N{CJK UNIFIED IDEOGRAPH-51FA}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 21457 (\N{CJK UNIFIED IDEOGRAPH-53D1}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+F:\born-wired-cortex\engine_v2\_probe_flee3.py:40: UserWarning: Glyph 28857 (\N{CJK UNIFIED IDEOGRAPH-70B9}) missing from font(s) DejaVu Sans.
+  fig.tight_layout(); fig.savefig(out, dpi=110)
+球走了 18.0 米，离场中心 2.81 -> 7.51 米（最远 7.51）
+球绕的角度：173 度（一圈=360）
+狗离球：2.51 米 -> 13.65 米（最近 0.33）
+球走的路程 7.8 米、狗走的路程 6.5 米
+图： F:\born-wired-cortex\engine_v2\artifacts\新逃法_球路线.png

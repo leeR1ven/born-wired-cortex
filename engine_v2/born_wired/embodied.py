@@ -145,8 +145,19 @@ class EmbodiedController(ReflexController):
                  eye_band_push=.25, eye_row_relay_gain=None,
                  eye_row_gain=None, eye_row_threshold=None,
                  eye_row_trace_time=None, eye_row_common=None,
+                 eye_red=None,
+                 chase_red=None,
                  **kwargs):
         super().__init__(*args, **kwargs)
+        # The red-ball route: a list of edges from single red retinal cells
+        # onto the eye muscles, built outside this module from a measured map
+        # of where each red cell looks.  It is a genome and not a drawing:
+        # every candidate wires its own, and which one wins is decided by
+        # watching where the eyes then go.  None leaves the animal as it was.
+        self.eye_red = eye_red
+        # 追球：眼睛偏到哪一边，身子就往哪一边拐。哪几个转向细胞算「往左拐」由
+        # chase_red 指出来（量出来的，不是猜的）；None 就是原来的动物。
+        self.chase_red = chase_red
         # The picture size belongs to this animal, not to the module: everything
         # below is derived from these two numbers, and the raw eyes are built to
         # match (tools/live_dog.py reads them back off the controller). Raising
@@ -274,10 +285,14 @@ class EmbodiedController(ReflexController):
         old, net = self.synapses, self.network
         signs, bias, tau, beta, initial, budgets = [], [], [], [], [], []
 
+        sign_of = {}
+
         def cells(name, count, sign=1, base=0., time=.015, adaptation=0., start=None, budget=40.):
             ids = np.arange(old.n_neurons+len(signs), old.n_neurons+len(signs)+count)
             self.groups[name] = ids
             signs.extend(np.broadcast_to(sign, (count,)).tolist())
+            for offset, value in enumerate(np.broadcast_to(sign, (count,)).tolist()):
+                sign_of[int(ids[offset])] = float(value)
             bias.extend(np.broadcast_to(base, (count,)).tolist())
             tau.extend(np.broadcast_to(time, (count,)).tolist())
             beta.extend(np.broadcast_to(adaptation, (count,)).tolist())
@@ -514,8 +529,13 @@ class EmbodiedController(ReflexController):
             edge(cell, self.groups['appetitive'][0], .0001, True)
             edge(cell, self.groups['aversive'][min(2,col*3//4)], .0001, True)
 
+        self._sign_of = sign_of
         self.eye_encoder = None
         self.eye_motor_units = 0
+        self.eye_muscle_direct = False
+        self.eye_speed = 1.5
+        self.eye_rest_time = .6
+        self._eye_angle = np.zeros(4)
         self.eye_gain = eye_gain
         self.eye_lower = self.eye_upper = self.eye_span = np.zeros(0)
         eye_ids = None
@@ -533,7 +553,8 @@ class EmbodiedController(ReflexController):
                                        eye_near_gain, eye_fusion_gain, eye_wall_gain,
                                        eye_loom_gain, eye_band_gain, eye_band_threshold,
                                        eye_band_common, eye_band_push, eye_row_relay_gain,
-                                       eye_row_gain, eye_row_common)
+                                       eye_row_gain, eye_row_common, self.eye_red,
+                                       chase=self.chase_red)
 
         w = np.asarray(weights)
         n = len(signs)
@@ -567,7 +588,7 @@ class EmbodiedController(ReflexController):
                     sound_gain,
                     memory_gain, orient_gain, near_gain, fusion_gain, wall_gain, loom_gain,
                     band_gain, band_threshold, band_common, band_push, row_relay_gain,
-                    row_gain, row_common):
+                    row_gain, row_common, red=None, chase=None):
         """Wire the four eye muscles, their gaze drives and the distance bank.
 
         Every entry is an ordinary graph cell or synapse. Where a muscle settles
@@ -584,6 +605,8 @@ class EmbodiedController(ReflexController):
             raise ValueError('the eye rest angle must lie inside its limits')
         self.eye_lower, self.eye_upper, self.eye_span = lower, upper, span
         self.eye_motor_units = int(motor_units)
+        direct = bool(red is not None and red.get('direct'))
+        self.eye_muscle_direct = direct
         self.eye_encoder = TuningEncoder(4, int(proprio_units))
         # One eye leads and the other follows. The lead is a wiring convenience,
         # not a one-way street: both retinas feed the same cells below, so either
@@ -593,19 +616,129 @@ class EmbodiedController(ReflexController):
         subordinate = 1 - dominant
         follower, leader = 2*subordinate, 2*dominant
         inward = 1. if subordinate else -1.
-        centres = (np.arange(self.eye_motor_units) + .5)/self.eye_motor_units
-        muscle_bias = np.tile(.5 - gain*centres, 4)
-        resting = gain*operating
-        settled = resting + 2.*gaze_gain*gain/span
-        settled += vergence_steps*gain/span
-        # The band reflex at the end of this method is one more voice on each
-        # eye's own muscle, one command cell each way, so the resource a muscle
-        # unit can hold has to cover that pair too.
-        settled += 2.*band_push*gain/span
-        muscle = cells('eye_motor', 4*self.eye_motor_units, base=muscle_bias,
-                       start=muscle_bias + np.repeat(resting, self.eye_motor_units),
-                       budget=1. + float(settled.max()))
+        if direct:
+            # 用户 2026-09-30 指定的眼肌：一只眼 4 个神经元 —— 四个方向各一个，
+            # 全是「大力气」（继续转）。红色特征细胞直接接它们，中间不再有指令细胞，
+            # 也没有那条 24 级的阶梯。怎么读在 _eye_follow：哪个方向的神经元亮着，
+            # 眼球就往那个方向继续转；没有神经元亮时，眼球自己往回飘到正前方。
+            # 每根轴两个：正方向一个、负方向一个。
+            self.eye_motor_units = 2
+            # 预算要给足：每个眼肌神经元会接几百上千根红线，而一根就够推满，所以这些
+            # 线不能被预算按比例削细 —— 削细了就变成「信号越少力气越小」，用户
+            # 2026-09-30 明确说力气是固定的。
+            muscle = cells('eye_motor', 4*2, base=0.,
+                           time=float(red.get('motor_time', .2)),
+                           budget=1. + float(len(red['edges'])))
+            self.eye_speed = float(red.get('speed', 1.5))
+            self.eye_rest_time = float(red.get('rest_time', .6))
+            self.eye_rest_speed = float(red.get('rest_speed', .3))
+        else:
+            centres = (np.arange(self.eye_motor_units) + .5)/self.eye_motor_units
+            muscle_bias = np.tile(.5 - gain*centres, 4)
+            resting = gain*operating
+            settled = resting + 2.*gaze_gain*gain/span
+            settled += vergence_steps*gain/span
+            # The band reflex at the end of this method is one more voice on each
+            # eye's own muscle, one command cell each way, so the resource a muscle
+            # unit can hold has to cover that pair too.
+            settled += 2.*band_push*gain/span
+            # A red-route push is one more voice on the same muscle, so the resource
+            # a muscle unit can hold has to cover that one too.
+            if red is not None:
+                pushes = red.get('push')
+                if pushes is None:
+                    asked = [float(red['move_push'])]*4
+                else:
+                    yaw = max(float(pushes['left'][0]), float(pushes['right'][0]))
+                    pitch = max(float(pushes['down'][0]), float(pushes['up'][0]))
+                    asked = [yaw, pitch, yaw, pitch]
+                settled = settled + np.asarray(asked, dtype=float)*gain/span
+            # The muscle's own lag is a property of the muscle, not of the wiring
+            # above it: slower muscle, smoother following.
+            muscle_time = .015 if red is None else float(red.get('motor_time', .015))
+            muscle = cells('eye_motor', 4*self.eye_motor_units, base=muscle_bias,
+                           time=muscle_time,
+                           start=muscle_bias + np.repeat(resting, self.eye_motor_units),
+                           budget=1. + float(settled.max()))
         cells('eye_proprioception', 4*self.eye_encoder.size//4)
+        if chase is not None:
+            # 追球（用户 2026-09-30）：眼睛已经偏到哪一边，身子就往哪一边拐。
+            # 球偏在左边，眼睛就得往左转去看它；眼睛一旦偏在左边，这里的「眼睛朝哪边」
+            # 那几个位置神经元就亮着，于是「往左拐」的两个细胞也一直亮着，狗就一直往左
+            # 拐。球转到两眼正中间，那几个位置神经元灭了，拐弯自己就停 —— 拐多少不靠算
+            # 角度，靠眼睛偏到哪一排位置神经元上。
+            #
+            # 拐弯的两个细胞是这一关新加的，不借别人的：原来的 wall_turn 那条路顺便被
+            # 走路本身的触觉一直喂着（脚踩地就算「碰到东西」），借来用狗会不分青红皂白
+            # 一直拐。新加的这两个细胞平时全灭，只有眼睛偏了才亮，所以不接追球的时候走
+            # 路跟原来一模一样。
+            # 推力大小就是 chase['turn_gain'] 一个数；「眼睛偏左该往左拐还是往右拐」由
+            # chase['flip'] 翻过来试，不用负的权重。
+            bank = self.groups['eye_proprioception']
+            per = len(bank)//4
+            pivot = int(chase.get('pivot', per//2))
+            if str(chase.get('source', 'position')) == 'position':
+                # 眼睛朝哪边：这一排练位置神经元 0 号在最右、最后一号在最左，正前方落在
+                # 中间那两个上（实测：眼睛转到 +0.60 弧度时亮到 15 号，正前方亮 7 号和
+                # 8 号，两头各 7 号）。左边半排接「往左拐」、右边半排接「往右拐」，正中间
+                # 那两个不接 —— 眼睛在正前方时不该拐弯。
+                reach = {'left': range(pivot + 1, per), 'right': range(0, pivot - 1)}
+                units = {side: [int(bank[joint*per + k]) for joint in (0, 2) for k in keys]
+                         for side, keys in reach.items()}
+            else:
+                # 另一条路：眼肌神经元本身。谁在推、往哪边推，一样说得清眼睛朝哪边，
+                # 只是它一直在「推一下、飘回来」地抖，增益得开大些。
+                units = {'left': [int(muscle[0]), int(muscle[4])],
+                         'right': [int(muscle[1]), int(muscle[5])]}
+            if chase.get('flip'):
+                units['left'], units['right'] = units['right'], units['left']
+            # 2026-09-30 第二条路：把「眼睛偏在哪一边」直接报给模型本来那个
+            # 「转向、凑过去看」的细胞（看到绿色的东西时用的就是它）。狗拐弯的
+            # 力不是这里给的，是基因 avoidance_gain（steering→髋 的那根线）；
+            # 这里只决定「往哪边拐」。这条路上的细胞带疲劳，推一下自己会收，
+            # 所以不会像恒定拧髋那样把步态顶死。
+            route = str(chase.get('route', 'motor'))
+            make_turn_cells = route != 'orient'
+            if not make_turn_cells:
+                orient = self.groups['orienting']
+                weight = float(chase.get('gain', 1.))
+                for side, key in (('left', 0), ('right', 1)):
+                    for unit in units[side]:
+                        edge(unit, orient[key], weight)
+            turn_gain = float(chase.get('turn_gain', .25)) if make_turn_cells else 0.
+            turn_time = float(chase.get('turn_time', .3))
+            if make_turn_cells:
+                turn_left = cells('chase_turn_left', 1, time=turn_time)[0]
+                turn_left_i = cells('chase_turn_left_inhibition', 1, -1, time=.03)[0]
+                turn_right = cells('chase_turn_right', 1, time=turn_time)[0]
+                turn_right_i = cells('chase_turn_right_inhibition', 1, -1, time=.03)[0]
+                edge(turn_left, turn_left_i, 1.)
+                edge(turn_right, turn_right_i, 1.)
+
+                def turn_effect(driving, holding, joint, radians):
+                    # 电机那一排是一个关节一整排的调谐细胞，整排一起推、推一样多，
+                    # 读出来的角度就整体偏过去一点 —— 这就是 innate 里 motor_effect 的
+                    # 做法，这里照抄。这一层的 edge 一次只接一个目标，所以自己摊开。
+                    source = driving if radians >= 0 else holding
+                    strength = abs(radians)*self.motor_gain/self.span[joint]
+                    for unit in self.groups['motor'].reshape(12, self.motor_units)[joint]:
+                        edge(source, unit, strength)
+
+                # 和 wall_turn 一模一样的拐法：前腿的髋往一边拧、后腿往另一边拧，身子就
+                # 转过来。只在髋关节（每三条里第一条）上使劲，别的关节一动都不动。
+                for j in range(12):
+                    leg, joint = j//3, j%3
+                    if joint == 0:
+                        front = 1 if leg < 2 else -1
+                        turn_effect(turn_left, turn_left_i, j, front*turn_gain)
+                        turn_effect(turn_right, turn_right_i, j, -front*turn_gain)
+                gain = float(chase.get('gain', 1.))
+                for side, cell in (('left', turn_left), ('right', turn_right)):
+                    # 一排位置神经元同时亮的大约两个（三角调谐曲线），所以每根线的粗细是
+                    # gain/2，合起来正好是 gain —— 不然一排接几根线、拐弯的力就变几倍。
+                    each = gain/2.
+                    for unit in units[side]:
+                        edge(unit, cell, each)
         # The four gaze cells now carry several parallel voices, so the
         # incoming resource each of them can hold has to cover all of them.
         look_budget = (1. + max(track_gain, gaze_inhibition) + relay_gain
@@ -666,9 +799,10 @@ class EmbodiedController(ReflexController):
 
         # The rest of the body already supplies a standing current to each joint;
         # the eye muscles are no different.
-        for joint in range(4):
-            for unit in muscle.reshape(4, self.eye_motor_units)[joint]:
-                edge(self.groups['tonic'][0], unit, resting[joint])
+        if not direct:
+            for joint in range(4):
+                for unit in muscle.reshape(4, self.eye_motor_units)[joint]:
+                    edge(self.groups['tonic'][0], unit, resting[joint])
 
         # How far the contrast sits from the middle of a retina, counted from
         # both retinas at once. Left of centre pulls one way, right of centre
@@ -845,6 +979,12 @@ class EmbodiedController(ReflexController):
 
         def push(joint, source, radians):
             """A cell pushes one eye joint; an inhibitory source pushes it back."""
+            if direct:
+                # 一只眼 8 个神经元时，推的是这个方向的「大力气」神经元（继续转）；
+                # 兴奋性的推正方向，抑制性的推负方向 —— 靠这个细胞自己的符号认。
+                going = 0 if self._sign_of.get(int(source), 1.) > 0 else 1
+                edge(source, muscle[joint*2 + going], abs(radians)/span[joint])
+                return
             for unit in muscle.reshape(4, self.eye_motor_units)[joint]:
                 edge(source, unit, abs(radians)*gain/span[joint])
 
@@ -863,6 +1003,126 @@ class EmbodiedController(ReflexController):
         # the two retinas.
         push(follower, vergence[0] if inward > 0 else vergence_i, vergence_steps)
         push(leader, vergence_i if inward > 0 else vergence[0], vergence_steps)
+
+        # The red route.  Everything above decides where the eyes go from the
+        # shape of the picture; this one decides it from one colour alone.  Every
+        # edge starts at a single red retinal cell - the cell that answers when
+        # the ball sits in one particular place - and ends on a cell that
+        # commands a muscle.  Which cell reaches which command cell, and how
+        # hard, is the candidate's own business: it is drawn at random inside the
+        # rules the caller lays down, and the round keeps whichever drawing the
+        # eyes answer best.  Nothing here compares an angle at run time: the
+        # picture arrives, the cells that recognise it fire, and the eye moves.
+        #
+        # Every direction gets two strengths and a latch of its own.
+        #
+        # Two strengths, because one reflex cannot do the job.  A single
+        # proportional push always leaves a droop: the eye settles wherever the
+        # push happens to balance the resting current, so the further the ball
+        # is off to one side the further the eye lags behind it, and driving
+        # that droop down means a push so strong that the eye slams from one end
+        # of its travel to the other.  The far cells therefore drive the move
+        # cell, whose push is most of a joint's travel, and the near cells drive
+        # the hold cell, whose push is a fraction of that.
+        #
+        # The latch is what removes the droop.  A command cell that excites
+        # itself keeps firing after the picture has stopped asking: the push
+        # stops being a reading of the angle the ball is off by now and becomes
+        # the running total of every angle it has been off by, so the eye stays
+        # where it was sent instead of sagging back towards the middle.  Measured
+        # with tools/wire_red_gaze.py, the identical wiring trembles across half
+        # a radian without the latch.  Cells for opposite directions press each
+        # other down, so the two sides cannot both drive at once.
+        #
+        # Which cell reaches which command cell, and how hard, is still the
+        # caller's: it is drawn from the measured position table and the round
+        # keeps whichever wiring the eyes answer best.  Nothing here compares an
+        # angle at run time: the picture arrives, the cells that recognise it
+        # fire, and the eye moves.
+        if red is not None:
+            # One set of command cells per eye, fed only by that eye's own red
+            # cells and pushing only that eye's own muscles.  With one shared set
+            # the two eyes are told the same thing and can only stare in the same
+            # direction - which is wrong for anything closer than the horizon.
+            # Each eye turning until its own picture is centred puts both eyes on
+            # the ball, and the nearer the ball the more they turn toward each
+            # other: convergence falls out of the wiring instead of being a
+            # separate reflex.  Which eye a cell belongs to is not a guess, it is
+            # where the cell sits in the retinal layer.
+            per_eye = bool(red.get('per_eye', False))
+            stride = int(np.prod(self.eye_shape[1:]))
+
+            def whose(cell):
+                return int(cell)//stride if per_eye else None
+
+            wanted = {}
+            for cell, direction, tier, weight in red['edges']:
+                key = (str(tier), str(direction), whose(cell))
+                wanted[key] = wanted.get(key, 0.) + float(weight)
+            if direct:
+                # 用户 2026-09-30 指定：红色特征细胞直接接到眼肌神经元上，中间不再有指令细胞那一层。
+                # 每根轴四个：正大力气、正小力气、负大力气、负小力气。一个细胞摊到多少
+                # 力 = 它在整档里占多少，所以球偏得越远、推得越久——「继续转」本来就会转到转不动为止。
+                # 每根线都一样粗（spec 里已经定成 1.0）：一根红线就足以把眼肌神经元推满，
+                # 于是它发出的是**固定的力** —— 球点亮几个细胞、亮得多少，都不改变力气。
+                # 用户 2026-09-30：力气本来就该是固定的，不是信号越多越大。
+                for cell, direction, tier, weight in red['edges']:
+                    side = str(direction)
+                    eye = whose(cell)
+                    if eye is None:
+                        raise ValueError('direct red wiring needs per_eye')
+                    axis = 0 if side in ('left', 'right') else 1
+                    joint = 2*eye + axis
+                    going = 0 if side in ('left', 'down') else 1
+                    edge(self.groups['retinal_opponent'][int(cell)], muscle[joint*2 + going],
+                         float(weight))
+            else:
+                latch = max(0., float(red.get('latch', 0.)))
+                cross = max(0., float(red.get('cross', 0.)))
+                command, mirrored = {}, {}
+                for key, total in wanted.items():
+                    name = 'eye_red_' + '_'.join(str(part) for part in key)
+                    command[key] = cells(name, 1, 1, time=float(red.get('cell_time', .03)),
+                                         budget=1. + total + latch)[0]
+                    mirrored[key] = cells(name + '_inhibition', 1, -1, time=.01,
+                                          budget=1. + cross)[0]
+                # A cell may not reach itself, so the latch is a pair that excites the
+                # pair: whatever fires, keeps firing.
+                for key, cell in command.items():
+                    edge(cell, mirrored[key], 1.)
+                    if latch > 0:
+                        relay = cells('eye_red_' + '_'.join(str(part) for part in key) + '_relay',
+                                      1, 1, time=.03, budget=1. + latch)[0]
+                        edge(cell, relay, latch)
+                        edge(relay, cell, latch)
+                if cross > 0:
+                    for key in list(command):
+                        tier, side, eye = key
+                        for here, other in (('left', 'right'), ('right', 'left'),
+                                            ('up', 'down'), ('down', 'up')):
+                            if side == here and (tier, other, eye) in mirrored:
+                                edge(command[key], mirrored[(tier, other, eye)], cross)
+                pushes = red.get('push')
+                for tier, rank in (('move', 0), ('hold', 1)):
+                    for side, axis in (('left', 0), ('right', 0), ('down', 1), ('up', 1)):
+                        for eye in ((0, 1) if per_eye else (None,)):
+                            key = (tier, side, eye)
+                            cell = command.get(key)
+                            if cell is None:
+                                continue
+                            source = mirrored[key] if side in ('right', 'up') else cell
+                            if pushes is None:
+                                strength = float(red['move_push'] if tier == 'move'
+                                                 else red['hold_push'])
+                            else:
+                                strength = float(pushes[side][rank])
+                            joints = ((2*eye + axis,) if per_eye
+                                      else ((0, 2) if axis == 0 else (1, 3)))
+                            for joint in joints:
+                                push(joint, source, strength)
+                for cell, direction, tier, weight in red['edges']:
+                    edge(self.groups['retinal_opponent'][cell],
+                         command[(str(tier), str(direction), whose(cell))], float(weight))
 
         # The angle between the two eyes, as a fraction of a half-turn of the
         # joint. One cell reads the eye that turns in, one reads the eye that
@@ -1071,11 +1331,30 @@ class EmbodiedController(ReflexController):
             self.network.opposite_current.fill(0.)
             if self.eye_encoder is not None:
                 self.network.eye_current.fill(0.)
+                if self.eye_muscle_direct:
+                    self._eye_follow(float(kwargs.get('dt', .002)))
+
+    def _eye_follow(self, dt):
+        """一只眼 4 个神经元时眼睛怎么动。
+
+        每根轴两个：四个方向各一个，谁被激活谁就发出**固定的力** —— 眼肌神经元一被推
+        就饱和（放电率到 1），所以力气不随信号多少变化：球在视网膜上点亮几个细胞、
+        亮了多少，眼睛都只用同一个固定速度往那边转。
+        同时眼睛一直被一个固定的回正力往正前方拉。球停在正中间那一小圈时两边都不亮，
+        回正把眼睛拉回去，球又偏出去，眼睛再转回来 —— 于是绕着球来回抖，这是应该的。
+        """
+        rates = self.network.rates_at(self.groups['eye_motor']).reshape(4, 2)
+        drive = rates[:, 0] - rates[:, 1]
+        pull = -np.sign(self._eye_angle)*self.eye_rest_speed
+        angle = self._eye_angle + (drive*self.eye_speed + pull)*dt
+        self._eye_angle = np.clip(angle, self.eye_lower, self.eye_upper)
 
     def eye_command(self):
         """Angle the eye muscles are currently commanded to, in radians."""
         if self.eye_encoder is None:
             raise RuntimeError('this controller has no eye muscles')
+        if self.eye_muscle_direct:
+            return self._eye_angle.copy()
         units = self.network.rates_at(self.groups['eye_motor']).reshape(4, self.eye_motor_units)
         return np.clip(self.eye_lower + units.mean(axis=1)*self.eye_span, self.eye_lower, self.eye_upper)
 

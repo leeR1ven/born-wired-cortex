@@ -1,0 +1,1220 @@
+[
+ {
+  "index": 13,
+  "seed": 536004,
+  "chase": {
+   "route": "motor",
+   "source": "position",
+   "flip": false,
+   "pivot": 8,
+   "gain": 1.374,
+   "turn_gain": 0.0899,
+   "turn_time": 0.173
+  },
+  "covered": 2,
+  "best": 0.12831015036212323,
+  "both": true,
+  "hits": 5,
+  "total": 18,
+  "moved": 17,
+  "shifted_m": 2.0439011033683308,
+  "worst_lowest": -0.7680645358207091,
+  "rows": [
+   {
+    "bearing": -0.7,
+    "distance": 2.5,
+    "closest": 1.028317237931735,
+    "toward_deg": 15.631459739076334,
+    "travelled_m": 8.601378331970784,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8820149947736035
+   },
+   {
+    "bearing": -0.5,
+    "distance": 2.5,
+    "closest": 1.2911452552278893,
+    "toward_deg": 22.041922540076243,
+    "travelled_m": 4.7516087359856005,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.6879538436512629
+   },
+   {
+    "bearing": -0.3,
+    "distance": 2.5,
+    "closest": 1.0008962152786465,
+    "toward_deg": 19.474312704583728,
+    "travelled_m": 4.63586036374944,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7522466696719177
+   },
+   {
+    "bearing": 0.3,
+    "distance": 2.5,
+    "closest": 0.20975538190350684,
+    "toward_deg": 6.1011983700258785,
+    "travelled_m": 6.331057986735489,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8955769122873853
+   },
+   {
+    "bearing": 0.5,
+    "distance": 2.5,
+    "closest": 0.08840948594485015,
+    "toward_deg": 10.158925472733934,
+    "travelled_m": 6.746579525725304,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.9086708846473966
+   },
+   {
+    "bearing": 0.7,
+    "distance": 2.5,
+    "closest": 1.9143136292994276,
+    "toward_deg": 42.74185005020977,
+    "travelled_m": 8.789263377791286,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8797050565438264
+   },
+   {
+    "bearing": -0.7,
+    "distance": 3.5,
+    "closest": 1.7474594926396918,
+    "toward_deg": 30.408529268715775,
+    "travelled_m": 8.78975156211782,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8794383225719391
+   },
+   {
+    "bearing": -0.5,
+    "distance": 3.5,
+    "closest": 1.4965635119725778,
+    "toward_deg": 20.98001213034497,
+    "travelled_m": 7.084672191104732,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8469153647744159
+   },
+   {
+    "bearing": -0.3,
+    "distance": 3.5,
+    "closest": 1.9925279949141168,
+    "toward_deg": 5.329763394986377,
+    "travelled_m": 1.2488832809628214,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": -0.7680645358207091
+   },
+   {
+    "bearing": 0.3,
+    "distance": 3.5,
+    "closest": 0.8423307501799688,
+    "toward_deg": 12.931731596897706,
+    "travelled_m": 3.5732789214470793,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.9574192220350437
+   },
+   {
+    "bearing": 0.5,
+    "distance": 3.5,
+    "closest": 0.6412224090313324,
+    "toward_deg": 6.692651101517281,
+    "travelled_m": 6.982611312748839,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8183178583120893
+   },
+   {
+    "bearing": 0.7,
+    "distance": 3.5,
+    "closest": 2.70027972229912,
+    "toward_deg": 43.823659582021406,
+    "travelled_m": 8.78926760672733,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8797037707765281
+   },
+   {
+    "bearing": -0.7,
+    "distance": 4.5,
+    "closest": 2.2735491555258913,
+    "toward_deg": 31.08387865055082,
+    "travelled_m": 8.78926177929509,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8797091488667922
+   },
+   {
+    "bearing": -0.5,
+    "distance": 4.5,
+    "closest": 1.357814485167269,
+    "toward_deg": 11.24417791291099,
+    "travelled_m": 8.474349212708917,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8865019194857682
+   },
+   {
+    "bearing": -0.3,
+    "distance": 4.5,
+    "closest": 0.19544616394967662,
+    "toward_deg": 1.2185159228643079,
+    "travelled_m": 8.339758793205823,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8841120239315913
+   },
+   {
+    "bearing": 0.3,
+    "distance": 4.5,
+    "closest": 1.6850704179719513,
+    "toward_deg": 21.36589857631602,
+    "travelled_m": 6.814816350529625,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8740468587681371
+   },
+   {
+    "bearing": 0.5,
+    "distance": 4.5,
+    "closest": 2.3684426415748203,
+    "toward_deg": 21.963447450877094,
+    "travelled_m": 8.390240978526913,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8997522325055701
+   },
+   {
+    "bearing": 0.7,
+    "distance": 4.5,
+    "closest": 3.4444509867698647,
+    "toward_deg": 44.45001228839019,
+    "travelled_m": 8.789268920213129,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8797010091305163
+   }
+  ]
+ },
+ {
+  "index": 172,
+  "seed": 379395,
+  "chase": {
+   "route": "motor",
+   "source": "muscle",
+   "flip": false,
+   "pivot": 6,
+   "gain": 0.878,
+   "turn_gain": 0.1708,
+   "turn_time": 0.307
+  },
+  "covered": 2,
+  "best": 0.16346615570915438,
+  "both": true,
+  "hits": 6,
+  "total": 18,
+  "moved": 17,
+  "shifted_m": 1.957813077235503,
+  "worst_lowest": 0.14867787825968223,
+  "rows": [
+   {
+    "bearing": -0.7,
+    "distance": 2.5,
+    "closest": 0.7634118361041496,
+    "toward_deg": 11.336747995104826,
+    "travelled_m": 8.520625288577367,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8874201851335751
+   },
+   {
+    "bearing": -0.5,
+    "distance": 2.5,
+    "closest": 1.0100627520330894,
+    "toward_deg": 17.066332757679636,
+    "travelled_m": 1.7125521020128927,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": 0.6914926918298212
+   },
+   {
+    "bearing": -0.3,
+    "distance": 2.5,
+    "closest": 0.962353930856026,
+    "toward_deg": 38.11036746158683,
+    "travelled_m": 2.8101621209434957,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.758348786328328
+   },
+   {
+    "bearing": 0.3,
+    "distance": 2.5,
+    "closest": 1.3916741652360023,
+    "toward_deg": 32.15994196942694,
+    "travelled_m": 5.347080532553774,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.9083912304347307
+   },
+   {
+    "bearing": 0.5,
+    "distance": 2.5,
+    "closest": 0.030871592646406574,
+    "toward_deg": 8.38871832785016,
+    "travelled_m": 3.8548344324209594,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8978812793045363
+   },
+   {
+    "bearing": 0.7,
+    "distance": 2.5,
+    "closest": 2.0744516319412503,
+    "toward_deg": 48.238017903767755,
+    "travelled_m": 8.686112953713863,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8869634105023381
+   },
+   {
+    "bearing": -0.7,
+    "distance": 3.5,
+    "closest": 0.5078132068354558,
+    "toward_deg": 2.961988375676684,
+    "travelled_m": 8.017998652050661,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8751238088346662
+   },
+   {
+    "bearing": -0.5,
+    "distance": 3.5,
+    "closest": 0.49894473815872814,
+    "toward_deg": 11.879762865879133,
+    "travelled_m": 6.382405936325432,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8908229751704337
+   },
+   {
+    "bearing": -0.3,
+    "distance": 3.5,
+    "closest": 1.6653439238329424,
+    "toward_deg": 31.684789090935524,
+    "travelled_m": 5.5073910894239235,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8626270564818053
+   },
+   {
+    "bearing": 0.3,
+    "distance": 3.5,
+    "closest": 2.4070505999548026,
+    "toward_deg": 52.24188078713129,
+    "travelled_m": 6.805292757588956,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8964076167523265
+   },
+   {
+    "bearing": 0.5,
+    "distance": 3.5,
+    "closest": 2.9881149392546282,
+    "toward_deg": 74.10794771063179,
+    "travelled_m": 2.296422404502574,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8872722060550626
+   },
+   {
+    "bearing": 0.7,
+    "distance": 3.5,
+    "closest": 2.9357492074422558,
+    "toward_deg": 48.23129984367877,
+    "travelled_m": 8.684854207855299,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8878118045936482
+   },
+   {
+    "bearing": -0.7,
+    "distance": 4.5,
+    "closest": 1.5368593936258859,
+    "toward_deg": 17.901229513156718,
+    "travelled_m": 8.644550648234874,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8877015660675363
+   },
+   {
+    "bearing": -0.5,
+    "distance": 4.5,
+    "closest": 0.5133448131633501,
+    "toward_deg": 1.198784590737883,
+    "travelled_m": 8.344034387062448,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8758559925144666
+   },
+   {
+    "bearing": -0.3,
+    "distance": 4.5,
+    "closest": 2.5026954566305952,
+    "toward_deg": 1.5547253410569046,
+    "travelled_m": 2.0961436828441666,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.9374797997415043
+   },
+   {
+    "bearing": 0.3,
+    "distance": 4.5,
+    "closest": 2.779315110783893,
+    "toward_deg": 46.76185346277328,
+    "travelled_m": 5.933852678420128,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8990099733867405
+   },
+   {
+    "bearing": 0.5,
+    "distance": 4.5,
+    "closest": 1.6444397499007875,
+    "toward_deg": 14.94530271143492,
+    "travelled_m": 2.971727711748948,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.14867787825968223
+   },
+   {
+    "bearing": 0.7,
+    "distance": 4.5,
+    "closest": 3.840088156994739,
+    "toward_deg": 50.80950827497212,
+    "travelled_m": 8.662788080481008,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8847662954949866
+   }
+  ]
+ },
+ {
+  "index": 118,
+  "seed": 686745,
+  "chase": {
+   "route": "orient",
+   "source": "position",
+   "flip": true,
+   "pivot": 7,
+   "gain": 0.879,
+   "turn_gain": 0.2451,
+   "turn_time": 0.369
+  },
+  "covered": 2,
+  "best": 0.7992624840732646,
+  "both": true,
+  "hits": 8,
+  "total": 18,
+  "moved": 16,
+  "shifted_m": 6.1319045587965,
+  "worst_lowest": -0.7824559614282133,
+  "rows": [
+   {
+    "bearing": -0.7,
+    "distance": 2.5,
+    "closest": 0.3250298128616821,
+    "toward_deg": 2.368718042343704,
+    "travelled_m": 7.819924179658041,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.838433156914121
+   },
+   {
+    "bearing": -0.5,
+    "distance": 2.5,
+    "closest": 0.5859124151352613,
+    "toward_deg": 14.609178186997864,
+    "travelled_m": 8.014937725055775,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.9123552056555211
+   },
+   {
+    "bearing": -0.3,
+    "distance": 2.5,
+    "closest": 0.0622720949706351,
+    "toward_deg": 4.988708044114935,
+    "travelled_m": 3.155483140674548,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.6014336212021671
+   },
+   {
+    "bearing": 0.3,
+    "distance": 2.5,
+    "closest": 0.5299680844862978,
+    "toward_deg": 2.7370449303368662,
+    "travelled_m": 8.111777789575303,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8739365666468524
+   },
+   {
+    "bearing": 0.5,
+    "distance": 2.5,
+    "closest": 1.0151963848544872,
+    "toward_deg": 7.274231526004589,
+    "travelled_m": 8.047601675543135,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8732577670236968
+   },
+   {
+    "bearing": 0.7,
+    "distance": 2.5,
+    "closest": 1.3576124018369948,
+    "toward_deg": 14.265641328566671,
+    "travelled_m": 7.986990083374332,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8715450704418317
+   },
+   {
+    "bearing": -0.7,
+    "distance": 3.5,
+    "closest": 2.1636717799249525,
+    "toward_deg": 48.242962990754826,
+    "travelled_m": 8.184787159444465,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8804959745120376
+   },
+   {
+    "bearing": -0.5,
+    "distance": 3.5,
+    "closest": 1.0422346135475997,
+    "toward_deg": 11.56783713264581,
+    "travelled_m": 7.304764244689904,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.977698068844731
+   },
+   {
+    "bearing": -0.3,
+    "distance": 3.5,
+    "closest": 0.4298978548857206,
+    "toward_deg": 3.176161862706733,
+    "travelled_m": 7.384632874130862,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.9787601751249209
+   },
+   {
+    "bearing": 0.3,
+    "distance": 3.5,
+    "closest": 0.3815305933293911,
+    "toward_deg": 4.826174200025406,
+    "travelled_m": 8.053732886885072,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8713826466560464
+   },
+   {
+    "bearing": 0.5,
+    "distance": 3.5,
+    "closest": 0.07612058206428725,
+    "toward_deg": 11.12559627812133,
+    "travelled_m": 7.375706059734066,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8739114831197334
+   },
+   {
+    "bearing": 0.7,
+    "distance": 3.5,
+    "closest": 1.5959963549272613,
+    "toward_deg": 12.543321925004662,
+    "travelled_m": 7.922924867692046,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8779348015979823
+   },
+   {
+    "bearing": -0.7,
+    "distance": 4.5,
+    "closest": 3.3105894748123665,
+    "toward_deg": 56.91939123995511,
+    "travelled_m": 8.018557960892467,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8782473779553099
+   },
+   {
+    "bearing": -0.5,
+    "distance": 4.5,
+    "closest": 2.677500383920281,
+    "toward_deg": 45.97833254572117,
+    "travelled_m": 8.061203782047992,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8747290425450754
+   },
+   {
+    "bearing": -0.3,
+    "distance": 4.5,
+    "closest": 3.5720026499986957,
+    "toward_deg": 24.627458987238608,
+    "travelled_m": 0.7559158197410022,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": -0.17062208148877767
+   },
+   {
+    "bearing": 0.3,
+    "distance": 4.5,
+    "closest": 0.4622511143109061,
+    "toward_deg": 9.518936444345293,
+    "travelled_m": 7.926330659550598,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.9157762489834285
+   },
+   {
+    "bearing": 0.5,
+    "distance": 4.5,
+    "closest": 3.2043881169867343,
+    "toward_deg": 67.31458746445439,
+    "travelled_m": 1.1003001374310173,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": -0.7824559614282133
+   },
+   {
+    "bearing": 0.7,
+    "distance": 4.5,
+    "closest": 2.1964162357472614,
+    "toward_deg": 18.58059004176398,
+    "travelled_m": 8.028118521946489,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8770805854114855
+   }
+  ]
+ },
+ {
+  "index": 70,
+  "seed": 585971,
+  "chase": {
+   "route": "motor",
+   "source": "muscle",
+   "flip": false,
+   "pivot": 10,
+   "gain": 0.407,
+   "turn_gain": 0.2109,
+   "turn_time": 0.254
+  },
+  "covered": 2,
+  "best": 0.07878709236984686,
+  "both": false,
+  "hits": 6,
+  "total": 18,
+  "moved": 15,
+  "shifted_m": 0.6642031196121082,
+  "worst_lowest": -0.9419707175091215,
+  "rows": [
+   {
+    "bearing": -0.7,
+    "distance": 2.5,
+    "closest": 1.1330726729815845,
+    "toward_deg": 28.772130182962126,
+    "travelled_m": 8.694626681509295,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8923144501390053
+   },
+   {
+    "bearing": -0.5,
+    "distance": 2.5,
+    "closest": 0.46641675094527896,
+    "toward_deg": 13.592961673757266,
+    "travelled_m": 7.454398568689478,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8970955098513127
+   },
+   {
+    "bearing": -0.3,
+    "distance": 2.5,
+    "closest": 2.0102693816058403,
+    "toward_deg": 37.05482872179373,
+    "travelled_m": 6.464203350638772,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.9040484631035024
+   },
+   {
+    "bearing": 0.3,
+    "distance": 2.5,
+    "closest": 1.3572920264429043,
+    "toward_deg": 21.867022903226605,
+    "travelled_m": 1.6124334329640415,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": -0.7832886232232
+   },
+   {
+    "bearing": 0.5,
+    "distance": 2.5,
+    "closest": 0.6743237797885924,
+    "toward_deg": 22.00396419833947,
+    "travelled_m": 5.8301193021531095,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8798868475012299
+   },
+   {
+    "bearing": 0.7,
+    "distance": 2.5,
+    "closest": 1.9000405217616587,
+    "toward_deg": 38.892884464133026,
+    "travelled_m": 8.715235405289942,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8937504262554776
+   },
+   {
+    "bearing": -0.7,
+    "distance": 3.5,
+    "closest": 1.6446657071333708,
+    "toward_deg": 29.715438361725475,
+    "travelled_m": 8.69692053439132,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8944922348695272
+   },
+   {
+    "bearing": -0.5,
+    "distance": 3.5,
+    "closest": 0.9676852259923763,
+    "toward_deg": 12.287035545540352,
+    "travelled_m": 8.412836224188657,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.895063423068989
+   },
+   {
+    "bearing": -0.3,
+    "distance": 3.5,
+    "closest": 2.239728758480597,
+    "toward_deg": 27.600644160001128,
+    "travelled_m": 0.853285913430754,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": -0.9419707175091215
+   },
+   {
+    "bearing": 0.3,
+    "distance": 3.5,
+    "closest": 2.3510734860986986,
+    "toward_deg": 21.327913297752364,
+    "travelled_m": 1.6576007464634457,
+    "hit": false,
+    "moving": false,
+    "lowest_up_z": -0.7812012959495875
+   },
+   {
+    "bearing": 0.5,
+    "distance": 3.5,
+    "closest": 0.051993564703516695,
+    "toward_deg": 2.9327856552425033,
+    "travelled_m": 7.1425429881468245,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8779416141702326
+   },
+   {
+    "bearing": 0.7,
+    "distance": 3.5,
+    "closest": 2.698027326752243,
+    "toward_deg": 41.23608689709992,
+    "travelled_m": 8.718907179943606,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8928659510179519
+   },
+   {
+    "bearing": -0.7,
+    "distance": 4.5,
+    "closest": 2.285130988025969,
+    "toward_deg": 32.99711699976317,
+    "travelled_m": 8.715276580449776,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8932566045566798
+   },
+   {
+    "bearing": -0.5,
+    "distance": 4.5,
+    "closest": 1.3684534203958065,
+    "toward_deg": 14.547595148185431,
+    "travelled_m": 8.667726704571175,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.9013900486090176
+   },
+   {
+    "bearing": -0.3,
+    "distance": 4.5,
+    "closest": 0.5807947456028439,
+    "toward_deg": 4.952622209600958,
+    "travelled_m": 8.622652348886593,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8871535292985988
+   },
+   {
+    "bearing": 0.3,
+    "distance": 4.5,
+    "closest": 0.6331975455787918,
+    "toward_deg": 0.41736015310919233,
+    "travelled_m": 8.31665321024511,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.9071244296884127
+   },
+   {
+    "bearing": 0.5,
+    "distance": 4.5,
+    "closest": 2.5450885562523418,
+    "toward_deg": 27.3500173602892,
+    "travelled_m": 8.695256009909265,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8946854026300546
+   },
+   {
+    "bearing": 0.7,
+    "distance": 4.5,
+    "closest": 3.410613888139899,
+    "toward_deg": 41.72040474637603,
+    "travelled_m": 8.725202169351215,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8938883942988667
+   }
+  ]
+ },
+ {
+  "index": 88,
+  "seed": 40873,
+  "chase": {
+   "route": "orient",
+   "source": "position",
+   "flip": false,
+   "pivot": 5,
+   "gain": 1.005,
+   "turn_gain": 0.1462,
+   "turn_time": 0.49
+  },
+  "covered": 2,
+  "best": 0.7661305683495002,
+  "both": false,
+  "hits": 5,
+  "total": 18,
+  "moved": 18,
+  "shifted_m": 0.015263826573680596,
+  "worst_lowest": 0.8774517854854421,
+  "rows": [
+   {
+    "bearing": -0.7,
+    "distance": 2.5,
+    "closest": 1.9861745704761706,
+    "toward_deg": 52.31886169867378,
+    "travelled_m": 8.535501517284825,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8780598770127841
+   },
+   {
+    "bearing": -0.5,
+    "distance": 2.5,
+    "closest": 1.685025997409623,
+    "toward_deg": 41.84748219748193,
+    "travelled_m": 8.533349045310882,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8777840633238038
+   },
+   {
+    "bearing": -0.3,
+    "distance": 2.5,
+    "closest": 1.2451186752433332,
+    "toward_deg": 31.0430964600252,
+    "travelled_m": 8.534239885735479,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8787266021345378
+   },
+   {
+    "bearing": 0.3,
+    "distance": 2.5,
+    "closest": 0.1614179461490029,
+    "toward_deg": 0.4950005380699067,
+    "travelled_m": 8.537654238103325,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8782164491628186
+   },
+   {
+    "bearing": 0.5,
+    "distance": 2.5,
+    "closest": 0.6419594177962782,
+    "toward_deg": 9.480213968394757,
+    "travelled_m": 8.536599250836971,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8774517854854421
+   },
+   {
+    "bearing": 0.7,
+    "distance": 2.5,
+    "closest": 1.117813703779802,
+    "toward_deg": 19.771139259478964,
+    "travelled_m": 8.536189754505704,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8775108405948869
+   },
+   {
+    "bearing": -0.7,
+    "distance": 3.5,
+    "closest": 2.804797674742818,
+    "toward_deg": 53.43418346014972,
+    "travelled_m": 8.535144750876924,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8780417210171482
+   },
+   {
+    "bearing": -0.5,
+    "distance": 3.5,
+    "closest": 2.3596340327749257,
+    "toward_deg": 43.16450052206513,
+    "travelled_m": 8.535161142778184,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8779284147753544
+   },
+   {
+    "bearing": -0.3,
+    "distance": 3.5,
+    "closest": 1.7907602847898938,
+    "toward_deg": 31.59417963256218,
+    "travelled_m": 8.536209266553687,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8777375670439951
+   },
+   {
+    "bearing": 0.3,
+    "distance": 3.5,
+    "closest": 0.1464289241352837,
+    "toward_deg": 0.5393009977820165,
+    "travelled_m": 8.53363483905951,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8779666241669922
+   },
+   {
+    "bearing": 0.5,
+    "distance": 3.5,
+    "closest": 0.8301117353359826,
+    "toward_deg": 10.156435744799388,
+    "travelled_m": 8.534309483328915,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8788178463495558
+   },
+   {
+    "bearing": 0.7,
+    "distance": 3.5,
+    "closest": 1.4920192578586768,
+    "toward_deg": 20.660277654645068,
+    "travelled_m": 8.53130952010409,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8810641086187118
+   },
+   {
+    "bearing": -0.7,
+    "distance": 4.5,
+    "closest": 3.634010350165615,
+    "toward_deg": 54.088523732090955,
+    "travelled_m": 8.5350027980722,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8779965049114661
+   },
+   {
+    "bearing": -0.5,
+    "distance": 4.5,
+    "closest": 3.0567785501829934,
+    "toward_deg": 42.9181595163854,
+    "travelled_m": 8.537504823064975,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.87815026951221
+   },
+   {
+    "bearing": -0.3,
+    "distance": 4.5,
+    "closest": 2.3622888346211157,
+    "toward_deg": 32.1301533454614,
+    "travelled_m": 8.538783859514785,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.878013357124847
+   },
+   {
+    "bearing": 0.3,
+    "distance": 4.5,
+    "closest": 0.16118237692720905,
+    "toward_deg": 0.2676998769914719,
+    "travelled_m": 8.532152506746812,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.8787090016594546
+   },
+   {
+    "bearing": 0.5,
+    "distance": 4.5,
+    "closest": 1.052669345778188,
+    "toward_deg": 10.747521157393551,
+    "travelled_m": 8.536042543186843,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8780126563936423
+   },
+   {
+    "bearing": 0.7,
+    "distance": 4.5,
+    "closest": 1.87118562834803,
+    "toward_deg": 21.428351920536524,
+    "travelled_m": 8.534875531769138,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.8779609718964307
+   }
+  ]
+ },
+ {
+  "index": 149,
+  "seed": 553199,
+  "chase": {
+   "route": "orient",
+   "source": "position",
+   "flip": true,
+   "pivot": 5,
+   "gain": 1.541,
+   "turn_gain": 0.2826,
+   "turn_time": 0.161
+  },
+  "covered": 2,
+  "best": 0.2642505044228311,
+  "both": false,
+  "hits": 7,
+  "total": 18,
+  "moved": 18,
+  "shifted_m": 0.0325503952889133,
+  "worst_lowest": 0.7224436294918797,
+  "rows": [
+   {
+    "bearing": -0.7,
+    "distance": 2.5,
+    "closest": 2.0884793575232026,
+    "toward_deg": 74.55036110743171,
+    "travelled_m": 8.120113062419424,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7249987678743979
+   },
+   {
+    "bearing": -0.5,
+    "distance": 2.5,
+    "closest": 1.8883970226699787,
+    "toward_deg": 56.3557886236548,
+    "travelled_m": 8.390200871703657,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7235311988592724
+   },
+   {
+    "bearing": -0.3,
+    "distance": 2.5,
+    "closest": 1.620130624439186,
+    "toward_deg": 48.30741478460223,
+    "travelled_m": 8.31662673514961,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7224436294918797
+   },
+   {
+    "bearing": 0.3,
+    "distance": 2.5,
+    "closest": 0.6321167430068111,
+    "toward_deg": 22.805919132121026,
+    "travelled_m": 8.122823514561558,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.7231909383430941
+   },
+   {
+    "bearing": 0.5,
+    "distance": 2.5,
+    "closest": 0.14252301943149046,
+    "toward_deg": 12.347729114882716,
+    "travelled_m": 8.131963672262758,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.7252484662093487
+   },
+   {
+    "bearing": 0.7,
+    "distance": 2.5,
+    "closest": 0.3502262518003832,
+    "toward_deg": 2.434586046469635,
+    "travelled_m": 8.120858615117074,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.7262110272236499
+   },
+   {
+    "bearing": -0.7,
+    "distance": 3.5,
+    "closest": 3.0466480943097873,
+    "toward_deg": 75.66197898853564,
+    "travelled_m": 8.11918991767855,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7249815802818518
+   },
+   {
+    "bearing": -0.5,
+    "distance": 3.5,
+    "closest": 2.842198828975204,
+    "toward_deg": 65.1612101646937,
+    "travelled_m": 8.110433636517127,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.724469730506003
+   },
+   {
+    "bearing": -0.3,
+    "distance": 3.5,
+    "closest": 2.455006934025373,
+    "toward_deg": 50.412099659704694,
+    "travelled_m": 8.260877220771128,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7259871621105193
+   },
+   {
+    "bearing": 0.3,
+    "distance": 3.5,
+    "closest": 1.0361771724286966,
+    "toward_deg": 22.50463956082893,
+    "travelled_m": 8.117070285614512,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7247183015875758
+   },
+   {
+    "bearing": 0.5,
+    "distance": 3.5,
+    "closest": 0.36165619360951257,
+    "toward_deg": 11.904039598638015,
+    "travelled_m": 8.118826457367877,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.727126501078594
+   },
+   {
+    "bearing": 0.7,
+    "distance": 3.5,
+    "closest": 0.30109751857026207,
+    "toward_deg": 1.610741273906047,
+    "travelled_m": 8.107934616627736,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.7244581758002139
+   },
+   {
+    "bearing": -0.7,
+    "distance": 4.5,
+    "closest": 4.023493048896964,
+    "toward_deg": 76.26061356733202,
+    "travelled_m": 8.12005083536894,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7249973146487615
+   },
+   {
+    "bearing": -0.5,
+    "distance": 4.5,
+    "closest": 3.782771739437236,
+    "toward_deg": 65.36953948653819,
+    "travelled_m": 8.122666139902407,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.725109266123195
+   },
+   {
+    "bearing": -0.3,
+    "distance": 4.5,
+    "closest": 3.4253740946310485,
+    "toward_deg": 54.71918407621419,
+    "travelled_m": 8.114462321164218,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.724811028004062
+   },
+   {
+    "bearing": 0.3,
+    "distance": 4.5,
+    "closest": 1.4509585036153205,
+    "toward_deg": 22.346219760080594,
+    "travelled_m": 8.117364945447768,
+    "hit": false,
+    "moving": true,
+    "lowest_up_z": 0.7243064338468082
+   },
+   {
+    "bearing": 0.5,
+    "distance": 4.5,
+    "closest": 0.6445100836064563,
+    "toward_deg": 11.675511142278701,
+    "travelled_m": 8.110006079637758,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.7267647311279074
+   },
+   {
+    "bearing": 0.7,
+    "distance": 4.5,
+    "closest": 0.2543204727285861,
+    "toward_deg": 0.6727326790789141,
+    "travelled_m": 8.122747008048506,
+    "hit": true,
+    "moving": true,
+    "lowest_up_z": 0.7263569221676617
+   }
+  ]
+ }
+]

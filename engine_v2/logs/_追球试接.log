@@ -1,0 +1,25 @@
+往左拐的转向细胞：wall_turn[0], wall_turn_inhibition[1]
+往右拐的转向细胞：wall_turn[1], wall_turn_inhibition[0]
+球：左边 0.50 弧度、1.50 米
+Traceback (most recent call last):
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 197, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 175, in main
+    body, brain, eyes, geom = build(genome, chase, seed=args.seed, eye=not args.no_eye)
+                              ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 83, in build
+    brain = EmbodiedController(body.home_angles, body.lower_limits, body.upper_limits,
+                               seed=seed,
+                               eye_limits=(body.eye_lower_limits, body.eye_upper_limits),
+                               **parameters)
+  File "F:\born-wired-cortex\engine_v2\born_wired\embodied.py", line 543, in __init__
+    eye_ids = self.eye_muscles(cells, edge, eye_limits, eye_motor_units, eye_proprio_units,
+                               eye_gain, eye_gaze_gain, eye_track_gain, eye_pitch_gain,
+    ...<11 lines>...
+                               eye_row_gain, eye_row_common, self.eye_red,
+                               chase=self.chase_red)
+  File "F:\born-wired-cortex\engine_v2\born_wired\embodied.py", line 681, in eye_muscles
+    bank = self.groups['eye_proprioception']
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'eye_proprioception'

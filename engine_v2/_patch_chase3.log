@@ -1,0 +1,17 @@
+改好 rank（追球第一优先）
+改好 exam 调用（加追球秒数/弯度）
+改好 run_one 写进新判分
+改好 pick_follows + 新 pick_parents
+改好 generation_line
+改好 默认少生多代
+改好 考多少秒
+改好 复试默认关
+改好 job 里带追球秒数
+改好 开跑那行提示
+改好 冠军易主那行
+改好 每只一行
+改好 挑爹那一行
+改好 爹名单那行
+改好 收工那行
+改好 文档那一段
+写回 F:\born-wired-cortex\engine_v2\tools\evolve_chase.py

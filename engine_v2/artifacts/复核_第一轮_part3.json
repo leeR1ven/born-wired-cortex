@@ -1,0 +1,618 @@
+{
+ "stage": "screen",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "birth": {
+  "label": "birth",
+  "genome": {},
+  "seeds": [
+   0,
+   1,
+   2
+  ],
+  "per_seed": [
+   {
+    "seed": 0,
+    "passed": 5,
+    "total": 7,
+    "failed": [
+     "does_not_spin_on_the_spot",
+     "get_up_from_back"
+    ]
+   },
+   {
+    "seed": 1,
+    "passed": 4,
+    "total": 7,
+    "failed": [
+     "does_not_spin_on_the_spot",
+     "get_up_from_back",
+     "stay_up_when_pushed"
+    ]
+   },
+   {
+    "seed": 2,
+    "passed": 5,
+    "total": 7,
+    "failed": [
+     "does_not_spin_on_the_spot",
+     "get_up_from_back"
+    ]
+   }
+  ],
+  "held": [
+   "eyes_follow_ball",
+   "stands_still",
+   "turn_to_sound",
+   "walk_furnished"
+  ],
+  "ever": [
+   "eyes_follow_ball",
+   "stands_still",
+   "stay_up_when_pushed",
+   "turn_to_sound",
+   "walk_furnished"
+  ]
+ },
+ "animals": [
+  {
+   "label": "s0-0007",
+   "genome": {
+    "eye_pitch_gain": 2.622971981195804,
+    "eye_loom_gain": 1.7429968141562686,
+    "righting_gain": 1.4699530182152172
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "stay_up_when_pushed"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "stay_up_when_pushed"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0027",
+   "genome": {
+    "wall_hip_gain": 0.7158285994902258,
+    "eye_change_threshold": 0.20010259900771138,
+    "eye_binocular_baseline": -0.9830840977837252
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "stay_up_when_pushed"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0038",
+   "genome": {
+    "rhythm_speed": 2.733009451166448,
+    "eye_change_gain": 61.82354560930227,
+    "eye_loom_gain": 1.9882150315696339
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0057",
+   "genome": {
+    "eye_row_relay_gain": 2.9345099233562713,
+    "wall_time": 0.6485867966447142,
+    "eye_loom_gain": 2.476010933999901
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 4,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back",
+      "stay_up_when_pushed"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0069",
+   "genome": {
+    "clearance_threshold": 1.066674237617467,
+    "wall_hip_gain": 0.5289859402786614,
+    "eye_change_relay_steps": 1.0
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "stay_up_when_pushed"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0076",
+   "genome": {
+    "eye_change_common": 6.339952403347981,
+    "steady_gain": 0.3505214794161138,
+    "eye_change_relay_gain": 0.5475427512005815
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 4,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back",
+      "stay_up_when_pushed"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 4,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back",
+      "stay_up_when_pushed"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0084",
+   "genome": {
+    "eye_grow_threshold": 0.47696974972275447,
+    "eye_change_common": 5.580242012793591,
+    "steady_gain": 0.7294876983346955
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "stay_up_when_pushed"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "stay_up_when_pushed"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0096",
+   "genome": {
+    "eye_pitch_gain": 2.781435597883608,
+    "eye_change_relay_steps": 3.0,
+    "stumble_decay": 0.2706114875485912
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0105",
+   "genome": {
+    "eye_change_relay_steps": 3.0,
+    "eye_stereo_gain": 0.5294822765174009,
+    "steady_inhibition": 2.199252825415537
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  },
+  {
+   "label": "s0-0117",
+   "genome": {
+    "eye_pitch_time": 0.24753784754976862,
+    "eye_change_relay_steps": 1.0,
+    "wall_time": 0.5284755040359771
+   },
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "per_seed": [
+    {
+     "seed": 0,
+     "passed": 6,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot"
+     ]
+    },
+    {
+     "seed": 1,
+     "passed": 5,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back"
+     ]
+    },
+    {
+     "seed": 2,
+     "passed": 4,
+     "total": 7,
+     "failed": [
+      "does_not_spin_on_the_spot",
+      "get_up_from_back",
+      "stay_up_when_pushed"
+     ]
+    }
+   ],
+   "held": [
+    "eyes_follow_ball",
+    "stands_still",
+    "turn_to_sound",
+    "walk_furnished"
+   ],
+   "ever": [
+    "eyes_follow_ball",
+    "get_up_from_back",
+    "stands_still",
+    "stay_up_when_pushed",
+    "turn_to_sound",
+    "walk_furnished"
+   ]
+  }
+ ],
+ "wall_seconds": 1798.00317
+}

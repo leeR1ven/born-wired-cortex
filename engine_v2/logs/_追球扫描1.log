@@ -1,0 +1,39 @@
+候选 16 个 x 3 个球位，8 个进程
+[1/16] wall_turn / wall_hip_gain=3.00 / 接线增益 10       追球分   1.61  过=False 摔了
+[2/16] wall_turn / wall_hip_gain=1.00 / 接线增益 1        追球分   2.67  过=False 
+[3/16] wall_turn / wall_hip_gain=3.00 / 接线增益 3        追球分   1.94  过=False 摔了
+[4/16] 对照：wall_turn / wall_hip_gain=1.00 / 不接追球       追球分   3.42  过=False 摔了
+[5/16] wall_turn / wall_hip_gain=1.00 / 接线增益 10       追球分   1.32  过=False 摔了
+[6/16] 对照：wall_turn / wall_hip_gain=3.00 / 不接追球       追球分   3.41  过=False 
+[7/16] wall_turn / wall_hip_gain=1.00 / 接线增益 3        追球分   2.18  过=False 
+[8/16] wall_turn / wall_hip_gain=3.00 / 接线增益 1        追球分   1.68  过=False 摔了
+[9/16] steering / avoidance_gain=1.00 / 接线增益 3        追球分   1.48  过=False 摔了
+[10/16] steering / avoidance_gain=1.00 / 接线增益 1        追球分   2.19  过=False 摔了
+[11/16] steering / avoidance_gain=1.00 / 接线增益 10       追球分   1.55  过=False 摔了
+[12/16] 对照：steering / avoidance_gain=1.00 / 不接追球       追球分   1.43  过=False 
+[13/16] steering / avoidance_gain=3.00 / 接线增益 3        追球分   2.15  过=False 摔了
+[14/16] steering / avoidance_gain=3.00 / 接线增益 1        追球分   1.64  过=False 摔了
+[15/16] 对照：steering / avoidance_gain=3.00 / 不接追球       追球分   1.51  过=False 摔了
+[16/16] steering / avoidance_gain=3.00 / 接线增益 10       追球分   1.96  过=False 摔了
+
+=== 排名（先看「过」的）===
+候选                                                 追球分     过   最低直立 | 三个球位最后离球多远(米)
+wall_turn / wall_hip_gain=1.00 / 接线增益 10          1.32 False -1.000 | 左前 1.27  正前 1.28  右前 1.52
+对照：steering / avoidance_gain=1.00 / 不接追球          1.43 False  0.785 | 左前 1.61  正前 1.46  右前 1.37
+steering / avoidance_gain=1.00 / 接线增益 3           1.48 False -0.912 | 左前 1.67  正前 1.24  右前 1.49
+对照：steering / avoidance_gain=3.00 / 不接追球          1.51 False -0.986 | 左前 1.26  正前 1.25  右前 1.98
+steering / avoidance_gain=1.00 / 接线增益 10          1.55 False -0.984 | 左前 1.09  正前 1.29  右前 2.26
+wall_turn / wall_hip_gain=3.00 / 接线增益 10          1.61 False -0.979 | 左前 1.09  正前 1.93  右前 1.69
+steering / avoidance_gain=3.00 / 接线增益 1           1.64 False -0.739 | 左前 1.89  正前 1.57  右前 1.45
+wall_turn / wall_hip_gain=3.00 / 接线增益 1           1.68 False -0.947 | 左前 1.89  正前 1.66  右前 1.46
+wall_turn / wall_hip_gain=3.00 / 接线增益 3           1.94 False -0.917 | 左前 2.56  正前 1.48  右前 1.81
+steering / avoidance_gain=3.00 / 接线增益 10          1.96 False -0.999 | 左前 1.18  正前 2.13  右前 2.50
+steering / avoidance_gain=3.00 / 接线增益 3           2.15 False -0.997 | 左前 3.10  正前 1.62  右前 1.69
+wall_turn / wall_hip_gain=1.00 / 接线增益 3           2.18 False  0.704 | 左前 3.73  正前 1.50  右前 1.60
+steering / avoidance_gain=1.00 / 接线增益 1           2.19 False -0.598 | 左前 3.76  正前 1.49  右前 1.35
+wall_turn / wall_hip_gain=1.00 / 接线增益 1           2.67 False  0.905 | 左前 5.54  正前 1.47  右前 1.48
+对照：wall_turn / wall_hip_gain=3.00 / 不接追球          3.41 False  0.648 | 左前 7.72  正前 1.47  右前 1.52
+对照：wall_turn / wall_hip_gain=1.00 / 不接追球          3.42 False  0.236 | 左前 7.72  正前 1.47  右前 1.61
+
+一共花了 40.2 秒
+读数 -> F:\born-wired-cortex\engine_v2\artifacts\追球_候选.json

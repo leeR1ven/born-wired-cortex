@@ -1,0 +1,10 @@
+test_a_ball_straight_ahead_sits_to_opposite_sides_of_the_two_eyes (tests.test_eye_geometry.EyeGeometry.test_a_ball_straight_ahead_sits_to_opposite_sides_of_the_two_eyes) ... ok
+test_a_nearer_ball_is_seen_further_to_the_side (tests.test_eye_geometry.EyeGeometry.test_a_nearer_ball_is_seen_further_to_the_side) ... ok
+test_placing_the_ball_lands_it_where_the_sweep_put_it (tests.test_eye_geometry.EyeGeometry.test_placing_the_ball_lands_it_where_the_sweep_put_it) ... ok
+test_the_ball_was_held_at_the_height_the_sweep_used (tests.test_eye_geometry.EyeGeometry.test_the_ball_was_held_at_the_height_the_sweep_used) ... ok
+test_the_two_eyeballs_stand_where_the_geometry_says (tests.test_eye_geometry.EyeGeometry.test_the_two_eyeballs_stand_where_the_geometry_says) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.471s
+
+OK

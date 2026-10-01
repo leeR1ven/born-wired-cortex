@@ -30,6 +30,7 @@ sys.path.insert(0, str(ROOT))
 from born_wired.embodied import EmbodiedController      # noqa: E402
 from born_wired.go2_body import Go2Body                 # noqa: E402
 from born_wired.stereo_senses import RawEyes            # noqa: E402
+from tools import eye_geometry as G                     # noqa: E402
 
 ARENA = ROOT / "models" / "reflex_arena.xml"
 SCENERY = ("red_pillar", "blue_box", "front_block", "curb", "low_step", "platform",
@@ -104,11 +105,8 @@ def main(argv=None):
     print("层的大小：" + "、".join("%s %d" % (n, sizes[n]) for n in LAYERS))
 
     def place(bearing, elevation):
-        x = args.distance * np.cos(elevation) * np.cos(bearing)
-        y = args.distance * np.cos(elevation) * np.sin(bearing)
-        z = eye_height + args.distance * np.sin(elevation)
-        body.model.geom_pos[target] = [x, y, z]
-        mujoco.mj_forward(body.model, body.data)
+        G.place_ball(body.model, body.data, target, bearing, elevation, args.distance,
+                     ball_z=eye_height)
         offset = np.asarray(body.data.geom_xpos[target]) - np.asarray(body.data.xpos[base])
         rotation = np.asarray(body.data.xmat[base]).reshape(3, 3)
         return (float(np.arctan2(offset @ rotation[:, 1], offset @ rotation[:, 0])),

@@ -1,0 +1,24 @@
+{
+  "activity_after_20": "1abc54a6d1557307efe345e2d5a7d515",
+  "activity_after_walk": "ebbeda3c8a422f5a8338f9f5f2608aba",
+  "cells": 59461,
+  "edges": 200900,
+  "engine": "cuda",
+  "groups": {
+    "association": 256,
+    "binocular": 4480,
+    "motor": 2400,
+    "photoreceptors": 10368,
+    "retina": 18,
+    "retinal_opponent": 10368
+  },
+  "walk": {
+    "height": 0.30768724444522094,
+    "up_z": 0.9999600149902786,
+    "x": 0.0024327693806875865,
+    "y": 0.0014411490713187535
+  },
+  "weights": "1d799c0deaf8f5c2e7a1374fb0b8c40b",
+  "weights_after_20": "f9a15a46cc1575710f7c3ac5b68bc9ed",
+  "weights_after_walk": "d93a996708ae906dfc13ddf563c563a9"
+}

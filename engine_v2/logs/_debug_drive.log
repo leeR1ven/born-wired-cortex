@@ -1,0 +1,7 @@
+球在 +0.300 / +0.055
+亮着的红细胞 2034 个
+Traceback (most recent call last):
+  File "F:\born-wired-cortex\engine_v2\tools\_debug_drive.py", line 34, in <module>
+    angles = places[best[lit]]
+                    ~~~~^^^^^
+IndexError: index 34888 is out of bounds for axis 0 with size 10368

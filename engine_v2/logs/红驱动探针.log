@@ -1,0 +1,59 @@
+指令细胞： ['eye_red_hold_down', 'eye_red_hold_down_inhibition', 'eye_red_hold_left', 'eye_red_hold_left_inhibition', 'eye_red_hold_right', 'eye_red_hold_right_inhibition', 'eye_red_hold_up', 'eye_red_hold_up_inhibition', 'eye_red_move_down', 'eye_red_move_down_inhibition', 'eye_red_move_left', 'eye_red_move_left_inhibition', 'eye_red_move_right', 'eye_red_move_right_inhibition', 'eye_red_move_up', 'eye_red_move_up_inhibition']
+
+球 方位 -0.350 高低 +0.320  ->  真实方位 -0.350 高低 +0.372
+  眼命令 左眼(yaw,pitch) -0.015 -0.012 | 右眼 -0.012 -0.012
+  误差 yaw +0.337 pitch +0.360
+   eye_red_move_right                 0.041
+   eye_red_move_right_inhibition      0.041
+   eye_red_move_up                    0.038
+   eye_red_move_up_inhibition         0.038
+
+球 方位 -0.350 高低 -0.220  ->  真实方位 -0.341 高低 -0.153
+  眼命令 左眼(yaw,pitch) -0.040 +0.024 | 右眼 -0.040 +0.024
+  误差 yaw +0.300 pitch -0.128
+   eye_red_hold_down                  0.006
+   eye_red_hold_down_inhibition       0.006
+   eye_red_move_down                  0.072
+   eye_red_move_down_inhibition       0.072
+   eye_red_move_right                 0.120
+   eye_red_move_right_inhibition      0.120
+
+球 方位 -0.170 高低 +0.320  ->  真实方位 -0.164 高低 +0.366
+  眼命令 左眼(yaw,pitch) -0.025 -0.045 | 右眼 -0.025 -0.045
+  误差 yaw +0.138 pitch +0.321
+   eye_red_hold_right                 0.009
+   eye_red_hold_right_inhibition      0.009
+   eye_red_move_right                 0.071
+   eye_red_move_right_inhibition      0.071
+   eye_red_move_up                    0.138
+   eye_red_move_up_inhibition         0.138
+
+球 方位 +0.340 高低 +0.320  ->  真实方位 +0.327 高低 +0.366
+  眼命令 左眼(yaw,pitch) +0.018 -0.020 | 右眼 +0.021 -0.020
+  误差 yaw -0.308 pitch +0.346
+   eye_red_move_left                  0.063
+   eye_red_move_left_inhibition       0.063
+   eye_red_move_up                    0.056
+   eye_red_move_up_inhibition         0.056
+
+球 方位 +0.340 高低 -0.220  ->  真实方位 +0.330 高低 -0.154
+  眼命令 左眼(yaw,pitch) +0.030 +0.026 | 右眼 +0.047 +0.026
+  误差 yaw -0.292 pitch -0.128
+   eye_red_hold_down                  0.008
+   eye_red_hold_down_inhibition       0.008
+   eye_red_move_down                  0.077
+   eye_red_move_down_inhibition       0.078
+   eye_red_move_left                  0.124
+   eye_red_move_left_inhibition       0.124
+
+球 方位 +0.000 高低 +0.000  ->  真实方位 +0.000 高低 +0.059
+  眼命令 左眼(yaw,pitch) -0.008 -0.006 | 右眼 -0.004 -0.006
+  误差 yaw -0.006 pitch +0.053
+   eye_red_hold_left                  0.034
+   eye_red_hold_left_inhibition       0.034
+   eye_red_hold_right                 0.109
+   eye_red_hold_right_inhibition      0.109
+   eye_red_hold_up                    0.060
+   eye_red_hold_up_inhibition         0.060
+   eye_red_move_left                  0.000
+   eye_red_move_left_inhibition       0.000

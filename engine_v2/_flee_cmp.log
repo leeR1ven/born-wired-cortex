@@ -1,0 +1,29 @@
+===== 凑过去路 fleee 对调=[] =====
+usage: chase_red_ball.py [-h] [--champion CHAMPION] [--seconds SECONDS]
+                         [--bearing BEARING] [--distance DISTANCE]
+                         [--elevation ELEVATION] [--turn-gain TURN_GAIN]
+                         [--gain GAIN] [--source {position,muscle}] [--flip]
+                         [--set SET] [--no-eye]
+                         [--ball-color {red,green,blue,white}] [--flee FLEE]
+                         [--escape ESCAPE] [--route {motor,orient}]
+                         [--seed SEED] [--out OUT]
+chase_red_ball.py: error: unrecognized arguments: 
+===== 凑过去路 fleee 对调=[--flip] =====
+追球接线：拧髋 0.150 弧度、位置排总增益 1.0、来源 position、左右对调
+球：左边 0.60 弧度、1.20 米
+Traceback (most recent call last):
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 229, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 210, in main
+    [float(np.mean(brain.network.rates_at(brain.groups[name])))
+                                          ~~~~~~~~~~~~^^^^^^
+KeyError: 'chase_turn_left'
+===== 对照：不接追球 =====
+追球接线：不接
+球：左边 0.60 弧度、1.20 米
+  轨迹（每 0.5 秒）：球偏在 +0.60 +0.62 +0.73 +0.97 +1.27 +1.87 +2.24 +2.36 +2.54 +2.65 +2.62 +2.72 +2.74 +3.02 -3.11 -2.77）
+
+球一开始在 +0.60 弧度（狗的左前方），最后 -2.97 弧度（+0.60 到 -2.97）
+离球：开头 1.21 米、最后 8.28 米、最近 1.21 米
+走了 8.93 米（路程 9.60、直度 0.93）最低直立分量 0.626  用时 2.2 秒

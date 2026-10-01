@@ -1,0 +1,38 @@
+usage: evolve_chase.py [-h] [--parents PARENTS] [--candidates CANDIDATES]
+                       [--generations GENERATIONS] [--keep-stable KEEP_STABLE]
+                       [--keep-fast KEEP_FAST] [--genes GENES] [--sigma SIGMA]
+                       [--cross-rate CROSS_RATE] [--seconds SECONDS]
+                       [--chase-seconds CHASE_SECONDS] [--curve CURVE]
+                       [--flee FLEE] [--workers WORKERS]
+                       [--start-gen START_GEN] [--seed SEED]
+                       [--out-prefix OUT_PREFIX] [--quiet]
+                       [--verify-top VERIFY_TOP] [--follow-top FOLLOW_TOP]
+
+追球演化：一代生几百上千只、每只换一套随机连接，考完立刻挑爹生下一代。
+
+options:
+  -h, --help            show this help message and exit
+  --parents PARENTS     头一代的爹；给冠军那一行就行
+  --candidates CANDIDATES
+                        一代生几只（少生、多迭代）
+  --generations GENERATIONS
+                        一共生几代
+  --keep-stable KEEP_STABLE
+  --keep-fast KEEP_FAST
+  --genes GENES         每只随机动几个数字
+  --sigma SIGMA         每个数字动多大（一格=它自己的量级）
+  --cross-rate CROSS_RATE
+  --seconds SECONDS     静止球那几趟每趟考多少秒
+  --chase-seconds CHASE_SECONDS
+                        追着跑的球那几趟每趟考多少秒
+  --curve CURVE         球逃跑路线的弯度；0 = 直线逃
+  --flee FLEE           球躲着狗跑的速度；0 = 不考这一项
+  --workers WORKERS
+  --start-gen START_GEN
+  --seed SEED
+  --out-prefix OUT_PREFIX
+  --quiet
+  --verify-top VERIFY_TOP
+                        每一代挑完爹之后，拿前几名做复试（没见过的位置 + 球挪走对照）；0 = 不复试
+  --follow-top FOLLOW_TOP
+                        只在成绩前 N 名里数「真追住了几趟」；0 = 全都数

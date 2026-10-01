@@ -1,0 +1,1196 @@
+{
+ "seconds": 6.0,
+ "seed": 0,
+ "results": [
+  {
+   "name": "wall_turn / wall_hip_gain=0.80 / 接线增益 2",
+   "genome": {
+    "wall_hip_gain": 0.8
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 2.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": -0.7448121819649224,
+     "heading_last": -0.2939618304036581,
+     "range0": 1.499952207173499,
+     "range_end": 0.5629383907779166,
+     "range_min": 0.2845124365262898,
+     "settled": 0.591294012121868,
+     "travelled_m": 1.4220995693478256,
+     "straightness": 0.5044663825855065,
+     "lowest_up_z": -0.9835039043002564
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": -2.93382134179591,
+     "heading_last": -2.8997863067549874,
+     "range0": 1.4999599304260933,
+     "range_end": 4.523277099426716,
+     "range_min": 0.26008334816640616,
+     "settled": 4.195711687923585,
+     "travelled_m": 5.877922767768833,
+     "straightness": 0.9274455874616588,
+     "lowest_up_z": 0.9613447247723236
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -1.8026674551709754,
+     "heading_last": -2.9337165526354267,
+     "range0": 1.4999817713523764,
+     "range_end": 6.0912377889067635,
+     "range_min": 1.1582309811983453,
+     "settled": 5.712597409016326,
+     "travelled_m": 4.812673225918704,
+     "straightness": 0.7842115883992106,
+     "lowest_up_z": 0.6471844467392147
+    }
+   ],
+   "fell": true,
+   "passed": false,
+   "score": 3.4998677030205934,
+   "seconds": 10.512722900006338
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.40 / 接线增益 2",
+   "genome": {
+    "wall_hip_gain": 0.4
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 2.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.8880158706952903,
+     "heading_last": 2.934975201355434,
+     "range0": 1.499952207173499,
+     "range_end": 5.305250186981942,
+     "range_min": 0.9574741139598312,
+     "settled": 4.828978893971881,
+     "travelled_m": 6.76401355106892,
+     "straightness": 0.9222389073436453,
+     "lowest_up_z": 0.9094755117215799
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 2.9718712879373,
+     "heading_last": 3.0411679124817024,
+     "range0": 1.4999599304260933,
+     "range_end": 7.043978678382042,
+     "range_min": 0.25158363686445706,
+     "settled": 6.566542504342369,
+     "travelled_m": 8.551668971259925,
+     "straightness": 0.9688221846739514,
+     "lowest_up_z": 0.9043584128834752
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.273895936744751,
+     "heading_last": -2.9944727595270715,
+     "range0": 1.4999817713523764,
+     "range_end": 1.7492479532562826,
+     "range_min": 0.4679144706778942,
+     "settled": 1.3248769233260105,
+     "travelled_m": 1.8440179923353273,
+     "straightness": 0.563609524514465,
+     "lowest_up_z": 0.1303973316928987
+    }
+   ],
+   "fell": true,
+   "passed": false,
+   "score": 4.240132773880087,
+   "seconds": 18.311847199991462
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.80 / 接线增益 1",
+   "genome": {
+    "wall_hip_gain": 0.8
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 1.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.8880158706952903,
+     "heading_last": 2.934975201355434,
+     "range0": 1.499952207173499,
+     "range_end": 5.305250186981942,
+     "range_min": 0.9574741139598312,
+     "settled": 4.828978893971881,
+     "travelled_m": 6.76401355106892,
+     "straightness": 0.9222389073436453,
+     "lowest_up_z": 0.9094755117215799
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 2.971871287916439,
+     "heading_last": 3.0411679124291253,
+     "range0": 1.4999599304260933,
+     "range_end": 7.043978678386623,
+     "range_min": 0.2515836368648177,
+     "settled": 6.566542504340552,
+     "travelled_m": 8.5516689712648,
+     "straightness": 0.9688221846734784,
+     "lowest_up_z": 0.9043584128887493
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": 2.638975980939523,
+     "heading_last": 2.3330597072863757,
+     "range0": 1.4999817713523764,
+     "range_end": 1.5233978374661796,
+     "range_min": 0.4283628284603023,
+     "settled": 1.4701522976398664,
+     "travelled_m": 0.8436515371305023,
+     "straightness": 0.28550534101971764,
+     "lowest_up_z": 0.8661435382252385
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 4.288557898650766,
+   "seconds": 10.636462700000266
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.20 / 接线增益 2",
+   "genome": {
+    "wall_hip_gain": 0.2
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 2.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.880249239894722,
+     "heading_last": 2.921130196054219,
+     "range0": 1.499952207173499,
+     "range_end": 7.586757507299974,
+     "range_min": 1.2095503112608856,
+     "settled": 7.099740391945633,
+     "travelled_m": 7.454241527328964,
+     "straightness": 0.9505265410503106,
+     "lowest_up_z": 0.9063009585013106
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.006725292843506,
+     "heading_last": 3.0582585741425756,
+     "range0": 1.4999599304260933,
+     "range_end": 7.227893789010669,
+     "range_min": 0.2677397101594319,
+     "settled": 6.732856210264277,
+     "travelled_m": 8.732819704826955,
+     "straightness": 0.9761066828858483,
+     "lowest_up_z": 0.9038558295502076
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": 2.9361895623751377,
+     "heading_last": 2.949481315310587,
+     "range0": 1.4999817713523764,
+     "range_end": 6.0633564481473,
+     "range_min": 0.7627649822870637,
+     "settled": 5.572042443939816,
+     "travelled_m": 7.052500706286559,
+     "straightness": 0.9387330761603276,
+     "lowest_up_z": 0.8929226344716616
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.468213015383242,
+   "seconds": 17.995186900006956
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.40 / 接线增益 1",
+   "genome": {
+    "wall_hip_gain": 0.4
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 1.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.880249239894722,
+     "heading_last": 2.921130196054219,
+     "range0": 1.499952207173499,
+     "range_end": 7.586757507299974,
+     "range_min": 1.2095503112608856,
+     "settled": 7.099740391945633,
+     "travelled_m": 7.454241527328964,
+     "straightness": 0.9505265410503106,
+     "lowest_up_z": 0.9063009585013106
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.006725292843506,
+     "heading_last": 3.0582585741425756,
+     "range0": 1.4999599304260933,
+     "range_end": 7.227893789010669,
+     "range_min": 0.2677397101594319,
+     "settled": 6.732856210264277,
+     "travelled_m": 8.732819704826955,
+     "straightness": 0.9761066828858483,
+     "lowest_up_z": 0.9038558295502076
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": 2.9361895623751377,
+     "heading_last": 2.949481315310587,
+     "range0": 1.4999817713523764,
+     "range_end": 6.0633564481473,
+     "range_min": 0.7627649822870637,
+     "settled": 5.572042443939816,
+     "travelled_m": 7.052500706286559,
+     "straightness": 0.9387330761603276,
+     "lowest_up_z": 0.8929226344716616
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.468213015383242,
+   "seconds": 17.94883860000118
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.80 / 接线增益 0",
+   "genome": {
+    "wall_hip_gain": 0.8
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 0.5
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.880249239894722,
+     "heading_last": 2.9211301960542184,
+     "range0": 1.499952207173499,
+     "range_end": 7.586757507299974,
+     "range_min": 1.2095503112608856,
+     "settled": 7.099740391945633,
+     "travelled_m": 7.454241527328964,
+     "straightness": 0.9505265410503106,
+     "lowest_up_z": 0.9063009585013109
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.006725292843506,
+     "heading_last": 3.0582585741425756,
+     "range0": 1.4999599304260933,
+     "range_end": 7.227893789010669,
+     "range_min": 0.2677397101594319,
+     "settled": 6.732856210264277,
+     "travelled_m": 8.732819704826955,
+     "straightness": 0.9761066828858483,
+     "lowest_up_z": 0.9038558295502076
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": 2.9361895623751377,
+     "heading_last": 2.949481315310587,
+     "range0": 1.4999817713523764,
+     "range_end": 6.0633564481473,
+     "range_min": 0.7627649822870637,
+     "settled": 5.572042443939816,
+     "travelled_m": 7.052500706286559,
+     "straightness": 0.9387330761603276,
+     "lowest_up_z": 0.8929226344716616
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.468213015383242,
+   "seconds": 11.035240500001237
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.10 / 接线增益 2",
+   "genome": {
+    "wall_hip_gain": 0.1
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 2.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.9042800074950517,
+     "heading_last": 2.933896971635363,
+     "range0": 1.499952207173499,
+     "range_end": 7.681887321820006,
+     "range_min": 1.1376961766490377,
+     "settled": 7.186536307289118,
+     "travelled_m": 8.583747701691578,
+     "straightness": 0.9782400907643833,
+     "lowest_up_z": 0.902885429963086
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.027729883584036,
+     "heading_last": 3.0701997945517587,
+     "range0": 1.4999599304260933,
+     "range_end": 7.2752911254367625,
+     "range_min": 0.2712437355018336,
+     "settled": 6.772746635995144,
+     "travelled_m": 8.773402867038836,
+     "straightness": 0.9785323450279657,
+     "lowest_up_z": 0.9019421013296473
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -1.9778071865574984,
+     "heading_last": -3.084481370447013,
+     "range0": 1.4999817713523764,
+     "range_end": 7.1915214526117115,
+     "range_min": 0.4937382981736222,
+     "settled": 6.687323960498207,
+     "travelled_m": 8.586348214989249,
+     "straightness": 0.9788708435842421,
+     "lowest_up_z": 0.901068436435254
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.882202301260823,
+   "seconds": 21.58932640000421
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.20 / 接线增益 1",
+   "genome": {
+    "wall_hip_gain": 0.2
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 1.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.9042800074950517,
+     "heading_last": 2.933896971635363,
+     "range0": 1.499952207173499,
+     "range_end": 7.681887321820006,
+     "range_min": 1.1376961766490377,
+     "settled": 7.186536307289118,
+     "travelled_m": 8.583747701691578,
+     "straightness": 0.9782400907643833,
+     "lowest_up_z": 0.902885429963086
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.027729883584036,
+     "heading_last": 3.0701997945517587,
+     "range0": 1.4999599304260933,
+     "range_end": 7.2752911254367625,
+     "range_min": 0.2712437355018336,
+     "settled": 6.772746635995144,
+     "travelled_m": 8.773402867038836,
+     "straightness": 0.9785323450279657,
+     "lowest_up_z": 0.9019421013296473
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -1.9778071865574984,
+     "heading_last": -3.084481370447013,
+     "range0": 1.4999817713523764,
+     "range_end": 7.1915214526117115,
+     "range_min": 0.4937382981736222,
+     "settled": 6.687323960498207,
+     "travelled_m": 8.586348214989249,
+     "straightness": 0.9788708435842421,
+     "lowest_up_z": 0.901068436435254
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.882202301260823,
+   "seconds": 17.665758500006632
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.40 / 接线增益 0",
+   "genome": {
+    "wall_hip_gain": 0.4
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 0.5
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.9042800074950517,
+     "heading_last": 2.933896971635363,
+     "range0": 1.499952207173499,
+     "range_end": 7.681887321820006,
+     "range_min": 1.1376961766490377,
+     "settled": 7.186536307289118,
+     "travelled_m": 8.583747701691578,
+     "straightness": 0.9782400907643833,
+     "lowest_up_z": 0.902885429963086
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.027729883584036,
+     "heading_last": 3.0701997945517587,
+     "range0": 1.4999599304260933,
+     "range_end": 7.2752911254367625,
+     "range_min": 0.2712437355018336,
+     "settled": 6.772746635995144,
+     "travelled_m": 8.773402867038836,
+     "straightness": 0.9785323450279657,
+     "lowest_up_z": 0.9019421013296473
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -1.9778071865574984,
+     "heading_last": -3.084481370447013,
+     "range0": 1.4999817713523764,
+     "range_end": 7.1915214526117115,
+     "range_min": 0.4937382981736222,
+     "settled": 6.687323960498207,
+     "travelled_m": 8.586348214989249,
+     "straightness": 0.9788708435842421,
+     "lowest_up_z": 0.901068436435254
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.882202301260823,
+   "seconds": 18.49404439999489
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.10 / 接线增益 1",
+   "genome": {
+    "wall_hip_gain": 0.1
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 1.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.923288831557402,
+     "heading_last": 2.9550144101035043,
+     "range0": 1.499952207173499,
+     "range_end": 7.684609271893146,
+     "range_min": 1.089818230573336,
+     "settled": 7.186528039213779,
+     "travelled_m": 8.719195445848868,
+     "straightness": 0.9794179963256336,
+     "lowest_up_z": 0.9025500417140826
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.0426782166738535,
+     "heading_last": 3.0784142703529356,
+     "range0": 1.4999599304260933,
+     "range_end": 7.296886291171374,
+     "range_min": 0.2453134119452805,
+     "settled": 6.792812548778785,
+     "travelled_m": 8.795099694880635,
+     "straightness": 0.9794336539359605,
+     "lowest_up_z": 0.9020808498951257
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.224398376426691,
+     "heading_last": -3.07878436478726,
+     "range0": 1.4999817713523764,
+     "range_end": 7.397864058337801,
+     "range_min": 0.5890501759625035,
+     "settled": 6.891386787005166,
+     "travelled_m": 8.742080428095772,
+     "straightness": 0.9799466694141232,
+     "lowest_up_z": 0.8997369999489149
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.9569091249992425,
+   "seconds": 21.118355099999462
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.05 / 接线增益 2",
+   "genome": {
+    "wall_hip_gain": 0.05
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 2.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.923288831557402,
+     "heading_last": 2.9550144101035043,
+     "range0": 1.499952207173499,
+     "range_end": 7.684609271893146,
+     "range_min": 1.089818230573336,
+     "settled": 7.186528039213779,
+     "travelled_m": 8.719195445848868,
+     "straightness": 0.9794179963256336,
+     "lowest_up_z": 0.9025500417140826
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.0426782166738535,
+     "heading_last": 3.0784142703529356,
+     "range0": 1.4999599304260933,
+     "range_end": 7.296886291171374,
+     "range_min": 0.2453134119452805,
+     "settled": 6.792812548778785,
+     "travelled_m": 8.795099694880635,
+     "straightness": 0.9794336539359605,
+     "lowest_up_z": 0.9020808498951257
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.224398376426691,
+     "heading_last": -3.07878436478726,
+     "range0": 1.4999817713523764,
+     "range_end": 7.397864058337801,
+     "range_min": 0.5890501759625035,
+     "settled": 6.891386787005166,
+     "travelled_m": 8.742080428095772,
+     "straightness": 0.9799466694141232,
+     "lowest_up_z": 0.8997369999489149
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.9569091249992425,
+   "seconds": 21.905012699993677
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.20 / 接线增益 0",
+   "genome": {
+    "wall_hip_gain": 0.2
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 0.5
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.923288831557402,
+     "heading_last": 2.9550144101035043,
+     "range0": 1.499952207173499,
+     "range_end": 7.684609271893146,
+     "range_min": 1.089818230573336,
+     "settled": 7.186528039213779,
+     "travelled_m": 8.719195445848868,
+     "straightness": 0.9794179963256336,
+     "lowest_up_z": 0.9025500417140826
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.0426782166738535,
+     "heading_last": 3.0784142703529356,
+     "range0": 1.4999599304260933,
+     "range_end": 7.296886291171374,
+     "range_min": 0.2453134119452805,
+     "settled": 6.792812548778785,
+     "travelled_m": 8.795099694880635,
+     "straightness": 0.9794336539359605,
+     "lowest_up_z": 0.9020808498951257
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.224398376426691,
+     "heading_last": -3.07878436478726,
+     "range0": 1.4999817713523764,
+     "range_end": 7.397864058337801,
+     "range_min": 0.5890501759625035,
+     "settled": 6.891386787005166,
+     "travelled_m": 8.742080428095772,
+     "straightness": 0.9799466694141232,
+     "lowest_up_z": 0.8997369999489149
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.9569091249992425,
+   "seconds": 16.091855199993006
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.10 / 接线增益 0",
+   "genome": {
+    "wall_hip_gain": 0.1
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 0.5
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.9272929782828485,
+     "heading_last": 2.9434765351701966,
+     "range0": 1.499952207173499,
+     "range_end": 7.706866762732145,
+     "range_min": 1.0667578470476453,
+     "settled": 7.207686134228352,
+     "travelled_m": 8.78097537243125,
+     "straightness": 0.979779323416627,
+     "lowest_up_z": 0.896246685282307
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.050069950526098,
+     "heading_last": 3.081265337213845,
+     "range0": 1.4999599304260933,
+     "range_end": 7.305019267582954,
+     "range_min": 0.2351484598684396,
+     "settled": 6.7994878963198655,
+     "travelled_m": 8.80331387911345,
+     "straightness": 0.9797918686323235,
+     "lowest_up_z": 0.9012898168380093
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.1619768711519094,
+     "heading_last": -3.0793376929747702,
+     "range0": 1.4999817713523764,
+     "range_end": 7.461256847158034,
+     "range_min": 0.6194620402730734,
+     "settled": 6.95392240361833,
+     "travelled_m": 8.7821383892468,
+     "straightness": 0.980103757145212,
+     "lowest_up_z": 0.8993139540806938
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.987032144722183,
+   "seconds": 21.785039299997152
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.05 / 接线增益 1",
+   "genome": {
+    "wall_hip_gain": 0.05
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 1.0
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.9272929782828485,
+     "heading_last": 2.9434765351701966,
+     "range0": 1.499952207173499,
+     "range_end": 7.706866762732145,
+     "range_min": 1.0667578470476453,
+     "settled": 7.207686134228352,
+     "travelled_m": 8.78097537243125,
+     "straightness": 0.979779323416627,
+     "lowest_up_z": 0.896246685282307
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.050069950526098,
+     "heading_last": 3.081265337213845,
+     "range0": 1.4999599304260933,
+     "range_end": 7.305019267582954,
+     "range_min": 0.2351484598684396,
+     "settled": 6.7994878963198655,
+     "travelled_m": 8.80331387911345,
+     "straightness": 0.9797918686323235,
+     "lowest_up_z": 0.9012898168380093
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.1619768711519094,
+     "heading_last": -3.0793376929747702,
+     "range0": 1.4999817713523764,
+     "range_end": 7.461256847158034,
+     "range_min": 0.6194620402730734,
+     "settled": 6.95392240361833,
+     "travelled_m": 8.7821383892468,
+     "straightness": 0.980103757145212,
+     "lowest_up_z": 0.8993139540806938
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 6.987032144722183,
+   "seconds": 21.971873200003756
+  },
+  {
+   "name": "wall_turn / wall_hip_gain=0.05 / 接线增益 0",
+   "genome": {
+    "wall_hip_gain": 0.05
+   },
+   "chase": {
+    "left": [
+     4,
+     7
+    ],
+    "right": [
+     5,
+     6
+    ],
+    "gain": 0.5
+   },
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.938029344931378,
+     "heading_last": 2.9641564941503544,
+     "range0": 1.499952207173499,
+     "range_end": 7.716772116354872,
+     "range_min": 1.0582080123821436,
+     "settled": 7.216370521800777,
+     "travelled_m": 8.798641971158336,
+     "straightness": 0.9799644724950589,
+     "lowest_up_z": 0.8995028065935031
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.053586743932612,
+     "heading_last": 3.0848193069433965,
+     "range0": 1.4999599304260933,
+     "range_end": 7.307959130169948,
+     "range_min": 0.23090306909760272,
+     "settled": 6.801858479797629,
+     "travelled_m": 8.806282125953079,
+     "straightness": 0.9799329918599927,
+     "lowest_up_z": 0.9009116971220255
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.2842272141691993,
+     "heading_last": -3.0696167240501007,
+     "range0": 1.4999817713523764,
+     "range_end": 7.493672313404689,
+     "range_min": 0.6382631255893777,
+     "settled": 6.9865685499858285,
+     "travelled_m": 8.800280846628656,
+     "straightness": 0.9801685178026138,
+     "lowest_up_z": 0.9003248012642068
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 7.001599183861412,
+   "seconds": 21.823560000004363
+  },
+  {
+   "name": "对照：wall_turn / wall_hip_gain=0.10 / 不接追球",
+   "genome": {
+    "wall_hip_gain": 0.1
+   },
+   "chase": null,
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.943660964671254,
+     "heading_last": 2.9711005094357508,
+     "range0": 1.499952207173499,
+     "range_end": 7.72254073284577,
+     "range_min": 1.0513105800062712,
+     "settled": 7.222117540123988,
+     "travelled_m": 8.807614322071023,
+     "straightness": 0.9801396590467618,
+     "lowest_up_z": 0.9003770624569619
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.057628201167209,
+     "heading_last": 3.087353811010083,
+     "range0": 1.4999599304260933,
+     "range_end": 7.309062506975615,
+     "range_min": 0.22660407295681848,
+     "settled": 6.802350355230759,
+     "travelled_m": 8.807029683513107,
+     "straightness": 0.9800803713759648,
+     "lowest_up_z": 0.900564490809088
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.284008399372591,
+     "heading_last": -3.0708369398467115,
+     "range0": 1.4999817713523764,
+     "range_end": 7.515470708877687,
+     "range_min": 0.6453754440272669,
+     "settled": 7.008112354121092,
+     "travelled_m": 8.80939507994737,
+     "straightness": 0.9801408757823634,
+     "lowest_up_z": 0.8994073624779725
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 7.0108600831586125,
+   "seconds": 21.47424859998864
+  },
+  {
+   "name": "对照：wall_turn / wall_hip_gain=0.40 / 不接追球",
+   "genome": {
+    "wall_hip_gain": 0.4
+   },
+   "chase": null,
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.943660964671254,
+     "heading_last": 2.9711005094357508,
+     "range0": 1.499952207173499,
+     "range_end": 7.72254073284577,
+     "range_min": 1.0513105800062712,
+     "settled": 7.222117540123988,
+     "travelled_m": 8.807614322071023,
+     "straightness": 0.9801396590467618,
+     "lowest_up_z": 0.9003770624569619
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.057628201167209,
+     "heading_last": 3.087353811010083,
+     "range0": 1.4999599304260933,
+     "range_end": 7.309062506975615,
+     "range_min": 0.22660407295681848,
+     "settled": 6.802350355230759,
+     "travelled_m": 8.807029683513107,
+     "straightness": 0.9800803713759648,
+     "lowest_up_z": 0.900564490809088
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.284008399372591,
+     "heading_last": -3.0708369398467115,
+     "range0": 1.4999817713523764,
+     "range_end": 7.515470708877687,
+     "range_min": 0.6453754440272669,
+     "settled": 7.008112354121092,
+     "travelled_m": 8.80939507994737,
+     "straightness": 0.9801408757823634,
+     "lowest_up_z": 0.8994073624779725
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 7.0108600831586125,
+   "seconds": 17.955998999997973
+  },
+  {
+   "name": "对照：wall_turn / wall_hip_gain=0.20 / 不接追球",
+   "genome": {
+    "wall_hip_gain": 0.2
+   },
+   "chase": null,
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.943660964671254,
+     "heading_last": 2.9711005094357508,
+     "range0": 1.499952207173499,
+     "range_end": 7.72254073284577,
+     "range_min": 1.0513105800062712,
+     "settled": 7.222117540123988,
+     "travelled_m": 8.807614322071023,
+     "straightness": 0.9801396590467618,
+     "lowest_up_z": 0.9003770624569619
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.057628201167209,
+     "heading_last": 3.087353811010083,
+     "range0": 1.4999599304260933,
+     "range_end": 7.309062506975615,
+     "range_min": 0.22660407295681848,
+     "settled": 6.802350355230759,
+     "travelled_m": 8.807029683513107,
+     "straightness": 0.9800803713759648,
+     "lowest_up_z": 0.900564490809088
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.284008399372591,
+     "heading_last": -3.0708369398467115,
+     "range0": 1.4999817713523764,
+     "range_end": 7.515470708877687,
+     "range_min": 0.6453754440272669,
+     "settled": 7.008112354121092,
+     "travelled_m": 8.80939507994737,
+     "straightness": 0.9801408757823634,
+     "lowest_up_z": 0.8994073624779725
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 7.0108600831586125,
+   "seconds": 18.30717810000351
+  },
+  {
+   "name": "对照：wall_turn / wall_hip_gain=0.80 / 不接追球",
+   "genome": {
+    "wall_hip_gain": 0.8
+   },
+   "chase": null,
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.943660964671254,
+     "heading_last": 2.9711005094357508,
+     "range0": 1.499952207173499,
+     "range_end": 7.72254073284577,
+     "range_min": 1.0513105800062712,
+     "settled": 7.222117540123988,
+     "travelled_m": 8.807614322071023,
+     "straightness": 0.9801396590467618,
+     "lowest_up_z": 0.9003770624569619
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.057628201167209,
+     "heading_last": 3.087353811010083,
+     "range0": 1.4999599304260933,
+     "range_end": 7.309062506975615,
+     "range_min": 0.22660407295681848,
+     "settled": 6.802350355230759,
+     "travelled_m": 8.807029683513107,
+     "straightness": 0.9800803713759648,
+     "lowest_up_z": 0.900564490809088
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.284008399372591,
+     "heading_last": -3.0708369398467115,
+     "range0": 1.4999817713523764,
+     "range_end": 7.515470708877687,
+     "range_min": 0.6453754440272669,
+     "settled": 7.008112354121092,
+     "travelled_m": 8.80939507994737,
+     "straightness": 0.9801408757823634,
+     "lowest_up_z": 0.8994073624779725
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 7.0108600831586125,
+   "seconds": 10.429415100006736
+  },
+  {
+   "name": "对照：wall_turn / wall_hip_gain=0.05 / 不接追球",
+   "genome": {
+    "wall_hip_gain": 0.05
+   },
+   "chase": null,
+   "rows": [
+    {
+     "place": "左前",
+     "bearing": 0.6,
+     "heading_end": 2.943671531136528,
+     "heading_last": 2.9711176639083967,
+     "range0": 1.499952207173499,
+     "range_end": 7.722551133857545,
+     "range_min": 1.0513105797163549,
+     "settled": 7.222128525349798,
+     "travelled_m": 8.807616495674909,
+     "straightness": 0.9801398379906069,
+     "lowest_up_z": 0.9003835490951535
+    },
+    {
+     "place": "正前",
+     "bearing": 0.0,
+     "heading_end": 3.057628201167209,
+     "heading_last": 3.087353811010083,
+     "range0": 1.4999599304260933,
+     "range_end": 7.309062506975615,
+     "range_min": 0.22660407295681848,
+     "settled": 6.802350355230759,
+     "travelled_m": 8.807029683513107,
+     "straightness": 0.9800803713759648,
+     "lowest_up_z": 0.900564490809088
+    },
+    {
+     "place": "右前",
+     "bearing": -0.6,
+     "heading_end": -2.284008399372591,
+     "heading_last": -3.0708369398467115,
+     "range0": 1.4999817713523764,
+     "range_end": 7.515470708877687,
+     "range_min": 0.6453754440272669,
+     "settled": 7.008112354121092,
+     "travelled_m": 8.80939507994737,
+     "straightness": 0.9801408757823634,
+     "lowest_up_z": 0.8994073624779725
+    }
+   ],
+   "fell": false,
+   "passed": false,
+   "score": 7.01086374490055,
+   "seconds": 21.777593999999226
+  }
+ ]
+}

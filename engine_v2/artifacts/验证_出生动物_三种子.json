@@ -1,0 +1,1769 @@
+{
+ "stage": "screen",
+ "genome": {},
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "runs": [
+  {
+   "seed": 0,
+   "results": [
+    {
+     "task": "stands_still",
+     "group": "站立",
+     "seed": 0,
+     "passed": true,
+     "why": "stayed put at 0.543 m",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.5426107796962649,
+      "path_m": 0.6856215738235796,
+      "maximum_x": 0.5421774926266362,
+      "min_up_z": 0.9974548783747743,
+      "min_height_m": 0.27126365061205965,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.059983093990192374,
+        "max_mps": 0.6884980349617625,
+        "contact_samples": 389
+       },
+       {
+        "mean_mps": 0.06689715987046194,
+        "max_mps": 0.7019668414274342,
+        "contact_samples": 441
+       },
+       {
+        "mean_mps": 0.03181003679110271,
+        "max_mps": 0.6064404387800189,
+        "contact_samples": 425
+       },
+       {
+        "mean_mps": 0.051297482847269205,
+        "max_mps": 0.6070604493562731,
+        "contact_samples": 385
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.3383333333333333,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.255,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.27,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.3416666666666667,
+        "samples": 600
+       }
+      ],
+      "drive_share": 0.97,
+      "progress_m": 0.5412047794152415,
+      "back_m": -0.0009346740676193008,
+      "yaw_rad": -0.4507927459541562,
+      "yaw_path_rad": 0.9250457091365873,
+      "lateral_m": -0.04022317066023336,
+      "straightness": 0.7901355185678671,
+      "max_speed_mps": 0.2837391456673005,
+      "mean_speed_mps": 0.11183007379762401,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6834107422131094,
+       "avoidance": 1.0,
+       "withdrawal": 0.09225873170907013,
+       "lean": 0.03530928815719399,
+       "steady": 0.058007702006076356,
+       "startle": 0.009195619157116551,
+       "near": 0.043024623994607346,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.5452191641087224,
+       "avoidance": 1.0,
+       "withdrawal": 0.0713413687402964,
+       "lean": 0.024785142910721134,
+       "steady": 0.048642242857867966,
+       "startle": 0.008688394677255419,
+       "near": 0.03948510976229881,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.3383333333333333,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.255,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.27,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.3416666666666667,
+        "samples": 600
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.059983093990192374,
+        "max_mps": 0.6884980349617625,
+        "contact_samples": 389
+       },
+       {
+        "mean_mps": 0.06689715987046194,
+        "max_mps": 0.7019668414274342,
+        "contact_samples": 441
+       },
+       {
+        "mean_mps": 0.03181003679110271,
+        "max_mps": 0.6064404387800189,
+        "contact_samples": 425
+       },
+       {
+        "mean_mps": 0.051297482847269205,
+        "max_mps": 0.6070604493562731,
+        "contact_samples": 385
+       }
+      ]
+     },
+     "wall_seconds": 9.058054599998286
+    },
+    {
+     "task": "walk_furnished",
+     "group": "走路",
+     "seed": 0,
+     "passed": true,
+     "why": "walked 0.590 m, stayed up",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.589570288405722,
+      "path_m": 0.9845657603935234,
+      "maximum_x": 0.587413922504344,
+      "min_up_z": 0.992431926945544,
+      "min_height_m": 0.27126365061205965,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.03337598968265631,
+        "max_mps": 0.6884980349617625,
+        "contact_samples": 845
+       },
+       {
+        "mean_mps": 0.035037432073205005,
+        "max_mps": 0.7019668414274342,
+        "contact_samples": 1041
+       },
+       {
+        "mean_mps": 0.017764675452377473,
+        "max_mps": 0.6064404387800189,
+        "contact_samples": 998
+       },
+       {
+        "mean_mps": 0.03780925636405426,
+        "max_mps": 0.8137777419643714,
+        "contact_samples": 808
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.27416666666666667,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.1275,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.155,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.2891666666666667,
+        "samples": 1200
+       }
+      ],
+      "drive_share": 0.6758333333333333,
+      "progress_m": 0.5855550555877634,
+      "back_m": -0.0009346740676193008,
+      "yaw_rad": -0.6413681560049456,
+      "yaw_path_rad": 1.3060268960102785,
+      "lateral_m": -0.09283355179763454,
+      "straightness": 0.594690077141092,
+      "max_speed_mps": 0.3976467897286065,
+      "mean_speed_mps": 0.0804444482478151,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6834107422131094,
+       "avoidance": 1.0,
+       "withdrawal": 0.09225873170907013,
+       "lean": 0.054856562322512806,
+       "steady": 0.06834312870076689,
+       "startle": 0.009195619157116551,
+       "near": 0.043024623994607346,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.08389165954277036,
+       "avoidance": 1.0,
+       "withdrawal": 0.002664533418422524,
+       "lean": 0.022056088794220836,
+       "steady": 0.028090770459163483,
+       "startle": 0.007642730701794295,
+       "near": 0.03759997344292661,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.27416666666666667,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.1275,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.155,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.2891666666666667,
+        "samples": 1200
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.03337598968265631,
+        "max_mps": 0.6884980349617625,
+        "contact_samples": 845
+       },
+       {
+        "mean_mps": 0.035037432073205005,
+        "max_mps": 0.7019668414274342,
+        "contact_samples": 1041
+       },
+       {
+        "mean_mps": 0.017764675452377473,
+        "max_mps": 0.6064404387800189,
+        "contact_samples": 998
+       },
+       {
+        "mean_mps": 0.03780925636405426,
+        "max_mps": 0.8137777419643714,
+        "contact_samples": 808
+       }
+      ]
+     },
+     "wall_seconds": 15.752002400000492
+    },
+    {
+     "task": "get_up_from_back",
+     "group": "自救",
+     "seed": 0,
+     "passed": false,
+     "why": "got up at 2.10 s and then went back down (final up_z -0.732)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "pose": "on_back",
+      "recovered": true,
+      "final_up_z": -0.7321910233987113,
+      "final_height": 0.14008061965753202,
+      "minimum_up_z": -1.0,
+      "time_to_feet_s": 2.1,
+      "on_feet_share": 0.6855241264559068,
+      "peak": {
+       "protective_tilt": 1.0,
+       "body_touch": 0.9999999999998117,
+       "righting": 1.0,
+       "righting_push": 1.0,
+       "phase": 0.3703535639169441,
+       "withdrawal": 1.0
+      }
+     },
+     "wall_seconds": 2.5585234999998647
+    },
+    {
+     "task": "stay_up_when_pushed",
+     "group": "自救",
+     "seed": 0,
+     "passed": true,
+     "why": "on its feet from 3.24 s and still there at the end (final up_z 0.785)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "pose": "impact",
+      "recovered": true,
+      "final_up_z": 0.7851319808176107,
+      "final_height": 0.24666661349046606,
+      "minimum_up_z": -0.9930207266482842,
+      "time_to_feet_s": 3.24,
+      "on_feet_share": 0.7161198288159771,
+      "peak": {
+       "protective_tilt": 1.0,
+       "body_touch": 0.9999997729943613,
+       "righting": 1.0,
+       "righting_push": 1.0,
+       "phase": 0.36450042476674704,
+       "withdrawal": 1.0
+      }
+     },
+     "wall_seconds": 2.860258699998667
+    },
+    {
+     "task": "eyes_follow_ball",
+     "group": "看",
+     "seed": 0,
+     "passed": true,
+     "why": "looked 0.074 rad off the ball",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "mean_abs_error_rad": 0.07449983826047056,
+      "samples": 229
+     },
+     "wall_seconds": 2.139303899999504
+    },
+    {
+     "task": "turn_to_sound",
+     "group": "听",
+     "seed": 0,
+     "passed": true,
+     "why": "right-hand sound pulled the eyes -0.2754 rad towards it",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "right": {
+       "status": "ok",
+       "error": null,
+       "source": [
+        1.1,
+        -0.6
+       ],
+       "eye_yaw": -0.1376715202604588,
+       "orienting_left_minus_right": -0.9290657277523271
+      },
+      "left": {
+       "status": "ok",
+       "error": null,
+       "source": [
+        1.1,
+        0.6
+       ],
+       "eye_yaw": 0.1376826815246831,
+       "orienting_left_minus_right": 0.9290514148564677
+      }
+     },
+     "wall_seconds": 4.255754199999501
+    },
+    {
+     "task": "does_not_spin_on_the_spot",
+     "group": "转弯",
+     "seed": 0,
+     "passed": false,
+     "why": "没人管它时 turned through 1.154 rad (bar 0.600)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.5569775210913808,
+      "path_m": 0.8853274421897004,
+      "maximum_x": 0.5769044310706971,
+      "min_up_z": 0.992431926945544,
+      "min_height_m": 0.27126365061205965,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.051500190062970616,
+        "max_mps": 0.6884980349617625,
+        "contact_samples": 501
+       },
+       {
+        "mean_mps": 0.04856172841194823,
+        "max_mps": 0.7019668414274342,
+        "contact_samples": 641
+       },
+       {
+        "mean_mps": 0.02631197185905469,
+        "max_mps": 0.6064404387800189,
+        "contact_samples": 610
+       },
+       {
+        "mean_mps": 0.05270277826080805,
+        "max_mps": 0.8137777419643714,
+        "contact_samples": 483
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.34875,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.19125,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.22,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.37,
+        "samples": 800
+       }
+      ],
+      "drive_share": 0.79375,
+      "progress_m": 0.5759987092773812,
+      "back_m": -0.0009346740676193008,
+      "yaw_rad": -0.5169959519982033,
+      "yaw_path_rad": 1.1542211297497595,
+      "lateral_m": -0.046028030275776996,
+      "straightness": 0.6277254347675444,
+      "max_speed_mps": 0.3976467897286065,
+      "mean_speed_mps": 0.10841783339096839,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6834107422131094,
+       "avoidance": 1.0,
+       "withdrawal": 0.09225873170907013,
+       "lean": 0.03530928815719399,
+       "steady": 0.058007702006076356,
+       "startle": 0.009195619157116551,
+       "near": 0.043024623994607346,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.08154214415206162,
+       "avoidance": 1.0,
+       "withdrawal": 0.005513804177822761,
+       "lean": 0.017359803831160127,
+       "steady": 0.0255958597804333,
+       "startle": 0.007577049676846487,
+       "near": 0.03912846353703888,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.34875,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.19125,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.22,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.37,
+        "samples": 800
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.051500190062970616,
+        "max_mps": 0.6884980349617625,
+        "contact_samples": 501
+       },
+       {
+        "mean_mps": 0.04856172841194823,
+        "max_mps": 0.7019668414274342,
+        "contact_samples": 641
+       },
+       {
+        "mean_mps": 0.02631197185905469,
+        "max_mps": 0.6064404387800189,
+        "contact_samples": 610
+       },
+       {
+        "mean_mps": 0.05270277826080805,
+        "max_mps": 0.8137777419643714,
+        "contact_samples": 483
+       }
+      ]
+     },
+     "wall_seconds": 10.352477500000532
+    }
+   ],
+   "summary": {
+    "passed": 5,
+    "total": 7,
+    "failed": [
+     "get_up_from_back",
+     "does_not_spin_on_the_spot"
+    ],
+    "deepest_rung": 2,
+    "frontier": [
+     "get_up_from_back",
+     "does_not_spin_on_the_spot"
+    ],
+    "wall_seconds": 46.97637479999685
+   }
+  },
+  {
+   "seed": 1,
+   "results": [
+    {
+     "task": "stands_still",
+     "group": "站立",
+     "seed": 1,
+     "passed": true,
+     "why": "stayed put at 0.521 m",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.5207950651364603,
+      "path_m": 0.7233218224319897,
+      "maximum_x": 0.5193439372868696,
+      "min_up_z": 0.9915080293566616,
+      "min_height_m": 0.27127667190965987,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.06617006161251417,
+        "max_mps": 0.6972616310356267,
+        "contact_samples": 375
+       },
+       {
+        "mean_mps": 0.06863629333904611,
+        "max_mps": 0.736324065982982,
+        "contact_samples": 451
+       },
+       {
+        "mean_mps": 0.03747125084329492,
+        "max_mps": 0.5207159765163405,
+        "contact_samples": 425
+       },
+       {
+        "mean_mps": 0.05633576234306907,
+        "max_mps": 0.5848702334786554,
+        "contact_samples": 393
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.36,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.24333333333333335,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.275,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.325,
+        "samples": 600
+       }
+      ],
+      "drive_share": 0.97,
+      "progress_m": 0.5192731288170614,
+      "back_m": -0.001160874433328539,
+      "yaw_rad": -0.4813329674560779,
+      "yaw_path_rad": 0.9655285685260994,
+      "lateral_m": -0.023134065305221024,
+      "straightness": 0.7181836621603257,
+      "max_speed_mps": 0.40591794760662087,
+      "mean_speed_mps": 0.11767673481874207,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6763040990425191,
+       "avoidance": 1.0,
+       "withdrawal": 0.11823370819208429,
+       "lean": 0.04661271214184727,
+       "steady": 0.05102933254173506,
+       "startle": 0.00891694522163131,
+       "near": 0.042499426625482374,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.25802918535952507,
+       "avoidance": 1.0,
+       "withdrawal": 0.10176379531688168,
+       "lean": 0.03514586124479295,
+       "steady": 0.038384712190504766,
+       "startle": 0.008664989406910694,
+       "near": 0.03752087531819111,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.36,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.24333333333333335,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.275,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.325,
+        "samples": 600
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.06617006161251417,
+        "max_mps": 0.6972616310356267,
+        "contact_samples": 375
+       },
+       {
+        "mean_mps": 0.06863629333904611,
+        "max_mps": 0.736324065982982,
+        "contact_samples": 451
+       },
+       {
+        "mean_mps": 0.03747125084329492,
+        "max_mps": 0.5207159765163405,
+        "contact_samples": 425
+       },
+       {
+        "mean_mps": 0.05633576234306907,
+        "max_mps": 0.5848702334786554,
+        "contact_samples": 393
+       }
+      ]
+     },
+     "wall_seconds": 7.23720929999763
+    },
+    {
+     "task": "walk_furnished",
+     "group": "走路",
+     "seed": 1,
+     "passed": true,
+     "why": "walked 0.609 m, stayed up",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.6088536286375843,
+      "path_m": 0.9931078662181434,
+      "maximum_x": 0.5987470659891408,
+      "min_up_z": 0.9915080293566616,
+      "min_height_m": 0.27127667190965987,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.040932360043652895,
+        "max_mps": 0.6972616310356267,
+        "contact_samples": 864
+       },
+       {
+        "mean_mps": 0.04163490813917583,
+        "max_mps": 0.7980207465221136,
+        "contact_samples": 1036
+       },
+       {
+        "mean_mps": 0.01957706298825428,
+        "max_mps": 0.5207159765163405,
+        "contact_samples": 992
+       },
+       {
+        "mean_mps": 0.061047011688680826,
+        "max_mps": 0.8316785306067149,
+        "contact_samples": 521
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.2683333333333333,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.13333333333333333,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.16166666666666665,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.49,
+        "samples": 1200
+       }
+      ],
+      "drive_share": 0.7225,
+      "progress_m": 0.5984566825847816,
+      "back_m": -0.001160874433328539,
+      "yaw_rad": -0.5057467041382441,
+      "yaw_path_rad": 1.2433711515817005,
+      "lateral_m": -0.10319805349881828,
+      "straightness": 0.6115038210919302,
+      "max_speed_mps": 0.40591794760662087,
+      "mean_speed_mps": 0.08105247462808597,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6763040990425191,
+       "avoidance": 1.0,
+       "withdrawal": 0.11823370819208429,
+       "lean": 0.04661271214184727,
+       "steady": 0.06348862395106379,
+       "startle": 0.00891694522163131,
+       "near": 0.043227666823577406,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.11289222594715054,
+       "avoidance": 1.0,
+       "withdrawal": 0.024257027802458746,
+       "lean": 0.02098802968629649,
+       "steady": 0.033335261385349646,
+       "startle": 0.007584172844734065,
+       "near": 0.03786410415341222,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.2683333333333333,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.13333333333333333,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.16166666666666665,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.49,
+        "samples": 1200
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.040932360043652895,
+        "max_mps": 0.6972616310356267,
+        "contact_samples": 864
+       },
+       {
+        "mean_mps": 0.04163490813917583,
+        "max_mps": 0.7980207465221136,
+        "contact_samples": 1036
+       },
+       {
+        "mean_mps": 0.01957706298825428,
+        "max_mps": 0.5207159765163405,
+        "contact_samples": 992
+       },
+       {
+        "mean_mps": 0.061047011688680826,
+        "max_mps": 0.8316785306067149,
+        "contact_samples": 521
+       }
+      ]
+     },
+     "wall_seconds": 16.06093790000159
+    },
+    {
+     "task": "get_up_from_back",
+     "group": "自救",
+     "seed": 1,
+     "passed": false,
+     "why": "never stayed on its feet (final up_z 0.477, height 0.155)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "pose": "on_back",
+      "recovered": false,
+      "final_up_z": 0.477035699923845,
+      "final_height": 0.15507182063454497,
+      "minimum_up_z": -1.0,
+      "time_to_feet_s": null,
+      "on_feet_share": 0.7304492512479202,
+      "peak": {
+       "protective_tilt": 1.0,
+       "body_touch": 0.999999999999994,
+       "righting": 1.0,
+       "righting_push": 1.0,
+       "phase": 0.3701192919573119,
+       "withdrawal": 1.0
+      }
+     },
+     "wall_seconds": 2.4538329999995767
+    },
+    {
+     "task": "stay_up_when_pushed",
+     "group": "自救",
+     "seed": 1,
+     "passed": false,
+     "why": "got up at 3.32 s and then went back down (final up_z 0.327)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "pose": "impact",
+      "recovered": true,
+      "final_up_z": 0.3274515473846888,
+      "final_height": 0.22364560610905435,
+      "minimum_up_z": -0.9930384580442674,
+      "time_to_feet_s": 3.3200000000000003,
+      "on_feet_share": 0.6690442225392297,
+      "peak": {
+       "protective_tilt": 1.0,
+       "body_touch": 0.9999999999999896,
+       "righting": 1.0,
+       "righting_push": 1.0,
+       "phase": 0.36450042476674704,
+       "withdrawal": 1.0
+      }
+     },
+     "wall_seconds": 2.866864200001146
+    },
+    {
+     "task": "eyes_follow_ball",
+     "group": "看",
+     "seed": 1,
+     "passed": true,
+     "why": "looked 0.074 rad off the ball",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "mean_abs_error_rad": 0.07449983826047056,
+      "samples": 229
+     },
+     "wall_seconds": 2.180195699998876
+    },
+    {
+     "task": "turn_to_sound",
+     "group": "听",
+     "seed": 1,
+     "passed": true,
+     "why": "right-hand sound pulled the eyes -0.2754 rad towards it",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "right": {
+       "status": "ok",
+       "error": null,
+       "source": [
+        1.1,
+        -0.6
+       ],
+       "eye_yaw": -0.1376715202604588,
+       "orienting_left_minus_right": -0.9290657277523271
+      },
+      "left": {
+       "status": "ok",
+       "error": null,
+       "source": [
+        1.1,
+        0.6
+       ],
+       "eye_yaw": 0.1376826815246831,
+       "orienting_left_minus_right": 0.9290514148564677
+      }
+     },
+     "wall_seconds": 4.263250200001494
+    },
+    {
+     "task": "does_not_spin_on_the_spot",
+     "group": "转弯",
+     "seed": 1,
+     "passed": false,
+     "why": "没人管它时 turned through 1.031 rad (bar 0.600)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.5182480183867076,
+      "path_m": 0.8094688856511104,
+      "maximum_x": 0.542821137825808,
+      "min_up_z": 0.9915080293566616,
+      "min_height_m": 0.27127667190965987,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.05436529411769927,
+        "max_mps": 0.6972616310356267,
+        "contact_samples": 554
+       },
+       {
+        "mean_mps": 0.0501059145721076,
+        "max_mps": 0.736324065982982,
+        "contact_samples": 648
+       },
+       {
+        "mean_mps": 0.026472191984233086,
+        "max_mps": 0.5207159765163405,
+        "contact_samples": 625
+       },
+       {
+        "mean_mps": 0.06113324965842766,
+        "max_mps": 0.8316785306067149,
+        "contact_samples": 413
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.29625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.18625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.20625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.4675,
+        "samples": 800
+       }
+      ],
+      "drive_share": 0.78,
+      "progress_m": 0.5426900443358704,
+      "back_m": -0.001160874433328539,
+      "yaw_rad": -0.4726198384727056,
+      "yaw_path_rad": 1.0307531659448013,
+      "lateral_m": -0.03381786149005863,
+      "straightness": 0.6384916927084998,
+      "max_speed_mps": 0.40591794760662087,
+      "mean_speed_mps": 0.0990292637823261,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6763040990425191,
+       "avoidance": 1.0,
+       "withdrawal": 0.11823370819208429,
+       "lean": 0.04661271214184727,
+       "steady": 0.05102933254173506,
+       "startle": 0.00891694522163131,
+       "near": 0.043227666823577406,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.05754930868725113,
+       "avoidance": 1.0,
+       "withdrawal": 0.0005447897338706357,
+       "lean": 0.01206758514240086,
+       "steady": 0.0177133891557012,
+       "startle": 0.007713240617990249,
+       "near": 0.03844832803267397,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.29625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.18625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.20625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.4675,
+        "samples": 800
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.05436529411769927,
+        "max_mps": 0.6972616310356267,
+        "contact_samples": 554
+       },
+       {
+        "mean_mps": 0.0501059145721076,
+        "max_mps": 0.736324065982982,
+        "contact_samples": 648
+       },
+       {
+        "mean_mps": 0.026472191984233086,
+        "max_mps": 0.5207159765163405,
+        "contact_samples": 625
+       },
+       {
+        "mean_mps": 0.06113324965842766,
+        "max_mps": 0.8316785306067149,
+        "contact_samples": 413
+       }
+      ]
+     },
+     "wall_seconds": 10.369814199999382
+    }
+   ],
+   "summary": {
+    "passed": 4,
+    "total": 7,
+    "failed": [
+     "get_up_from_back",
+     "stay_up_when_pushed",
+     "does_not_spin_on_the_spot"
+    ],
+    "deepest_rung": 2,
+    "frontier": [
+     "get_up_from_back",
+     "stay_up_when_pushed",
+     "does_not_spin_on_the_spot"
+    ],
+    "wall_seconds": 45.432104499999696
+   }
+  },
+  {
+   "seed": 2,
+   "results": [
+    {
+     "task": "stands_still",
+     "group": "站立",
+     "seed": 2,
+     "passed": true,
+     "why": "stayed put at 0.441 m",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.44087864541981864,
+      "path_m": 0.8458494823522018,
+      "maximum_x": 0.4042542528803297,
+      "min_up_z": 0.9913962422574719,
+      "min_height_m": 0.27132018169427313,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.05879043334955293,
+        "max_mps": 0.6727397348774982,
+        "contact_samples": 396
+       },
+       {
+        "mean_mps": 0.07033243148997909,
+        "max_mps": 0.711520761708882,
+        "contact_samples": 526
+       },
+       {
+        "mean_mps": 0.042699698331038045,
+        "max_mps": 0.810550740404005,
+        "contact_samples": 416
+       },
+       {
+        "mean_mps": 0.07546426353090324,
+        "max_mps": 0.818228043482835,
+        "contact_samples": 353
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.31833333333333336,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.115,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.285,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.3933333333333333,
+        "samples": 600
+       }
+      ],
+      "drive_share": 0.97,
+      "progress_m": 0.4119191092866553,
+      "back_m": -0.0012544016805702803,
+      "yaw_rad": -0.5950655312983859,
+      "yaw_path_rad": 1.407175682655086,
+      "lateral_m": -0.15370778845760313,
+      "straightness": 0.5179963339099579,
+      "max_speed_mps": 0.3975550406482696,
+      "mean_speed_mps": 0.1408087149620528,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6619406693248328,
+       "avoidance": 1.0,
+       "withdrawal": 0.12368400295126825,
+       "lean": 0.05374133154694554,
+       "steady": 0.11283756703341151,
+       "startle": 0.01176081075941748,
+       "near": 0.043108612826089146,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.19991055222458104,
+       "avoidance": 0.7545330916980271,
+       "withdrawal": 0.09632122723995917,
+       "lean": 0.044574953026013275,
+       "steady": 0.08548049735666335,
+       "startle": 0.007896014464753272,
+       "near": 0.03898132757691994,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.31833333333333336,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.115,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.285,
+        "samples": 600
+       },
+       {
+        "fraction_gt_2mm": 0.3933333333333333,
+        "samples": 600
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.05879043334955293,
+        "max_mps": 0.6727397348774982,
+        "contact_samples": 396
+       },
+       {
+        "mean_mps": 0.07033243148997909,
+        "max_mps": 0.711520761708882,
+        "contact_samples": 526
+       },
+       {
+        "mean_mps": 0.042699698331038045,
+        "max_mps": 0.810550740404005,
+        "contact_samples": 416
+       },
+       {
+        "mean_mps": 0.07546426353090324,
+        "max_mps": 0.818228043482835,
+        "contact_samples": 353
+       }
+      ]
+     },
+     "wall_seconds": 7.432314099998621
+    },
+    {
+     "task": "walk_furnished",
+     "group": "走路",
+     "seed": 2,
+     "passed": true,
+     "why": "walked 0.644 m, stayed up",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.6443943999506718,
+      "path_m": 1.2216578218693708,
+      "maximum_x": 0.5903503115958156,
+      "min_up_z": 0.9913962422574719,
+      "min_height_m": 0.27132018169427313,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.04000780138612656,
+        "max_mps": 0.7295146384836194,
+        "contact_samples": 937
+       },
+       {
+        "mean_mps": 0.04566674256311704,
+        "max_mps": 0.711520761708882,
+        "contact_samples": 1051
+       },
+       {
+        "mean_mps": 0.028694608041449254,
+        "max_mps": 0.810550740404005,
+        "contact_samples": 919
+       },
+       {
+        "mean_mps": 0.03906932525980157,
+        "max_mps": 0.818228043482835,
+        "contact_samples": 869
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.20333333333333334,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.11333333333333333,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.215,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.2633333333333333,
+        "samples": 1200
+       }
+      ],
+      "drive_share": 0.72,
+      "progress_m": 0.6037317888965761,
+      "back_m": -0.0012544016805702803,
+      "yaw_rad": -0.4820608123480806,
+      "yaw_path_rad": 2.1239146069013906,
+      "lateral_m": -0.2167406509646723,
+      "straightness": 0.5250718798805971,
+      "max_speed_mps": 0.3975550406482696,
+      "mean_speed_mps": 0.10098402630020459,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6619406693248328,
+       "avoidance": 1.0,
+       "withdrawal": 0.12368400295126825,
+       "lean": 0.05374133154694554,
+       "steady": 0.11283756703341151,
+       "startle": 0.01176081075941748,
+       "near": 0.043108612826089146,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.2601445839166324,
+       "avoidance": 0.884487194712251,
+       "withdrawal": 0.014464249523208414,
+       "lean": 0.011137006548442777,
+       "steady": 0.014330977824323105,
+       "startle": 0.0076188313386523696,
+       "near": 0.03522989664556361,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.20333333333333334,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.11333333333333333,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.215,
+        "samples": 1200
+       },
+       {
+        "fraction_gt_2mm": 0.2633333333333333,
+        "samples": 1200
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.04000780138612656,
+        "max_mps": 0.7295146384836194,
+        "contact_samples": 937
+       },
+       {
+        "mean_mps": 0.04566674256311704,
+        "max_mps": 0.711520761708882,
+        "contact_samples": 1051
+       },
+       {
+        "mean_mps": 0.028694608041449254,
+        "max_mps": 0.810550740404005,
+        "contact_samples": 919
+       },
+       {
+        "mean_mps": 0.03906932525980157,
+        "max_mps": 0.818228043482835,
+        "contact_samples": 869
+       }
+      ]
+     },
+     "wall_seconds": 16.171226799997385
+    },
+    {
+     "task": "get_up_from_back",
+     "group": "自救",
+     "seed": 2,
+     "passed": false,
+     "why": "never stayed on its feet (final up_z -0.860, height 0.141)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "pose": "on_back",
+      "recovered": false,
+      "final_up_z": -0.8596527780105588,
+      "final_height": 0.14131060524281386,
+      "minimum_up_z": -1.0,
+      "time_to_feet_s": null,
+      "on_feet_share": 0.7088186356073212,
+      "peak": {
+       "protective_tilt": 1.0,
+       "body_touch": 0.9999999999999967,
+       "righting": 1.0,
+       "righting_push": 1.0,
+       "phase": 0.3701192927187625,
+       "withdrawal": 1.0
+      }
+     },
+     "wall_seconds": 2.552370900000824
+    },
+    {
+     "task": "stay_up_when_pushed",
+     "group": "自救",
+     "seed": 2,
+     "passed": true,
+     "why": "on its feet from 3.46 s and still there at the end (final up_z 0.838)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "pose": "impact",
+      "recovered": true,
+      "final_up_z": 0.8382240166637027,
+      "final_height": 0.2556424451923599,
+      "minimum_up_z": -0.9933776658416789,
+      "time_to_feet_s": 3.46,
+      "on_feet_share": 0.68188302425107,
+      "peak": {
+       "protective_tilt": 1.0,
+       "body_touch": 0.9999999994435753,
+       "righting": 1.0,
+       "righting_push": 1.0,
+       "phase": 0.36450042476674704,
+       "withdrawal": 1.0
+      }
+     },
+     "wall_seconds": 2.886728800000128
+    },
+    {
+     "task": "eyes_follow_ball",
+     "group": "看",
+     "seed": 2,
+     "passed": true,
+     "why": "looked 0.074 rad off the ball",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "mean_abs_error_rad": 0.07449983826047056,
+      "samples": 229
+     },
+     "wall_seconds": 2.17424359999859
+    },
+    {
+     "task": "turn_to_sound",
+     "group": "听",
+     "seed": 2,
+     "passed": true,
+     "why": "right-hand sound pulled the eyes -0.2754 rad towards it",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "right": {
+       "status": "ok",
+       "error": null,
+       "source": [
+        1.1,
+        -0.6
+       ],
+       "eye_yaw": -0.1376715202604588,
+       "orienting_left_minus_right": -0.9290657277523271
+      },
+      "left": {
+       "status": "ok",
+       "error": null,
+       "source": [
+        1.1,
+        0.6
+       ],
+       "eye_yaw": 0.1376826815246831,
+       "orienting_left_minus_right": 0.9290514148564677
+      }
+     },
+     "wall_seconds": 4.293866700001672
+    },
+    {
+     "task": "does_not_spin_on_the_spot",
+     "group": "转弯",
+     "seed": 2,
+     "passed": false,
+     "why": "没人管它时 turned through 1.726 rad (bar 0.600)",
+     "measures": {
+      "status": "ok",
+      "error": null,
+      "behavior_pass": true,
+      "displacement_m": 0.45328983126632433,
+      "path_m": 1.00236165544045,
+      "maximum_x": 0.4472796050160147,
+      "min_up_z": 0.9913962422574719,
+      "min_height_m": 0.27132018169427313,
+      "crossed_marker": null,
+      "slip": [
+       {
+        "mean_mps": 0.05193888583548739,
+        "max_mps": 0.7295146384836194,
+        "contact_samples": 588
+       },
+       {
+        "mean_mps": 0.055170087565345374,
+        "max_mps": 0.711520761708882,
+        "contact_samples": 726
+       },
+       {
+        "mean_mps": 0.03550402514841388,
+        "max_mps": 0.810550740404005,
+        "contact_samples": 604
+       },
+       {
+        "mean_mps": 0.05508558226762451,
+        "max_mps": 0.818228043482835,
+        "contact_samples": 523
+       }
+      ],
+      "clearance": [
+       {
+        "fraction_gt_2mm": 0.2475,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.08625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.22875,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.33125,
+        "samples": 800
+       }
+      ],
+      "drive_share": 0.7575,
+      "progress_m": 0.4561776167201543,
+      "back_m": -0.0012544016805702803,
+      "yaw_rad": -0.48304715633717343,
+      "yaw_path_rad": 1.726246777796656,
+      "lateral_m": -0.14595882047189787,
+      "straightness": 0.45056591887306835,
+      "max_speed_mps": 0.3975550406482696,
+      "mean_speed_mps": 0.12460623215288909,
+      "peak": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.6619406693248328,
+       "avoidance": 1.0,
+       "withdrawal": 0.12368400295126825,
+       "lean": 0.05374133154694554,
+       "steady": 0.11283756703341151,
+       "startle": 0.01176081075941748,
+       "near": 0.043108612826089146,
+       "righting": 0.0
+      },
+      "tail": {
+       "wall_contact": 0.0,
+       "wall_turn": 0.0,
+       "stumble": 0.0,
+       "clearance": 0.0,
+       "brake": 0.3514603286520417,
+       "avoidance": 1.0,
+       "withdrawal": 0.0005548226533608182,
+       "lean": 0.003158533550324428,
+       "steady": 0.004263368252036565,
+       "startle": 0.007648416621171207,
+       "near": 0.03292839645856286,
+       "righting": 0.0
+      },
+      "clearance_parts": [
+       {
+        "fraction_gt_2mm": 0.2475,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.08625,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.22875,
+        "samples": 800
+       },
+       {
+        "fraction_gt_2mm": 0.33125,
+        "samples": 800
+       }
+      ],
+      "slip_parts": [
+       {
+        "mean_mps": 0.05193888583548739,
+        "max_mps": 0.7295146384836194,
+        "contact_samples": 588
+       },
+       {
+        "mean_mps": 0.055170087565345374,
+        "max_mps": 0.711520761708882,
+        "contact_samples": 726
+       },
+       {
+        "mean_mps": 0.03550402514841388,
+        "max_mps": 0.810550740404005,
+        "contact_samples": 604
+       },
+       {
+        "mean_mps": 0.05508558226762451,
+        "max_mps": 0.818228043482835,
+        "contact_samples": 523
+       }
+      ]
+     },
+     "wall_seconds": 10.483275599999615
+    }
+   ],
+   "summary": {
+    "passed": 5,
+    "total": 7,
+    "failed": [
+     "get_up_from_back",
+     "does_not_spin_on_the_spot"
+    ],
+    "deepest_rung": 2,
+    "frontier": [
+     "get_up_from_back",
+     "does_not_spin_on_the_spot"
+    ],
+    "wall_seconds": 45.994026499996835
+   }
+  }
+ ],
+ "reference_size": {
+  "motor_units": 200,
+  "proprio_units": 64,
+  "association_units": 256,
+  "eye_width": 48,
+  "eye_height": 36
+ },
+ "bar": {
+  "walk_furnished_m": 0.35,
+  "walk_flat_m": 0.25,
+  "walk_step_m": 0.3,
+  "walk_ramp_m": 0.25,
+  "walk_passage_m": 0.25,
+  "walk_curb_m": 0.3,
+  "walk_platform_m": 0.3,
+  "walk_own_m": 0.3,
+  "walk_own_far_m": 0.6,
+  "walk_into_wall_m": 0.1,
+  "quiet_idle_m": 0.7,
+  "slip_mps": 0.3,
+  "walk_slip_m": 0.25,
+  "gaze_error_rad": 0.16,
+  "gaze_error_fast_rad": 0.3,
+  "gaze_still_rad": 0.05,
+  "sudden_shift_rad": 0.01,
+  "bank_far_max": 0.8,
+  "bank_near_min": 2.0,
+  "pattern_gain": 0.02,
+  "sound_yaw_rad": 0.02,
+  "pinna_gain": 0.03,
+  "loud_far_gain": 0.06,
+  "high_low_gain": 0.3,
+  "startle_gain": 0.1,
+  "startle_habituation": 0.2,
+  "hears_while_tiring": 0.05,
+  "front_touch_gain": 0.3,
+  "obstacle_gain": 0.3,
+  "slip_gain": 0.05,
+  "lean_gain": 0.15,
+  "tilt_protective_gain": 0.2,
+  "load_gain": 0.05,
+  "wall_gain": 0.05,
+  "taught_reflex_gain": 0.05,
+  "taught_reflex_control": 0.05,
+  "taught_reflex_kept": 0.05,
+  "visual_memory_gain": 0.01,
+  "visual_memory_control": 0.01,
+  "visual_memory_kept": 0.01,
+  "moving_is_not_being_pushed": 0.1,
+  "body_is_not_a_foot": 0.05,
+  "own_eyes_are_felt": 0.0002,
+  "walk_twenty_m": 0.9,
+  "walk_ground_m": 1.0,
+  "walk_speed_mps": 0.15,
+  "heading_hold_rad": 0.6,
+  "straightness": 0.7,
+  "crab_m": 0.25,
+  "touch_hold_fraction": 0.7,
+  "turn_pair_rad": 0.3,
+  "turn_idle_rad": 0.1,
+  "idle_spin_rad": 0.6,
+  "down_ramp_m": 0.25,
+  "down_step_m": 0.25,
+  "down_platform_m": 0.25,
+  "around_block_m": 0.6,
+  "around_block_lateral_m": 0.35,
+  "bang_stop_m": 0.25,
+  "quiet_sound_gain": 0.02,
+  "behind_gain": 0.02,
+  "two_sounds_gain": 0.02,
+  "near_far_angle": 0.02,
+  "slow_gaze_rad": 0.16,
+  "static_gaze_rad": 0.05,
+  "side_touch_gain": 0.3,
+  "back_touch_gain": 0.2,
+  "ground_feet_gain": 0.05,
+  "quick_lesson_gain": 0.05,
+  "kept_under_distraction": 0.05,
+  "second_pattern_gain": 0.01,
+  "one_pairing_gain": 0.01,
+  "stand_long_m": 1.4,
+  "slope_stand_z": 0.85,
+  "walk_thirty_m": 1.3,
+  "foot_lift_fraction": 0.02,
+  "leg_symmetry": 0.2,
+  "passage_quiet_touch": 0.1,
+  "fatigue_ratio": 0.5,
+  "turn_walk_rad": 0.3,
+  "turn_walk_m": 0.45,
+  "back_away_m": 0.1,
+  "behind_hold_rad": 0.35,
+  "colour_gain": 0.02,
+  "size_gain": 0.02,
+  "pitch_gaze_rad": 0.22,
+  "recentre_rad": 0.05,
+  "slow_new_thing_rad": 0.01,
+  "far_gaze_rad": 0.2,
+  "near_gaze_rad": 0.2,
+  "sound_gap_ratio": 0.5,
+  "silence_floor": 0.02,
+  "side_gain": 0.02,
+  "same_side_gain": 0.02,
+  "startle_behind_gain": 0.1,
+  "light_touch_gain": 0.1,
+  "front_load_gain": 0.05,
+  "all_feet_lift_gain": 0.05,
+  "ground_quiet_gain": 0.05,
+  "extinction_drop": 0.3,
+  "second_lesson_gain": 0.01,
+  "two_pattern_gain": 0.01,
+  "shifted_pattern_ratio": 0.3,
+  "bright_pull_m": 0.05,
+  "tip_over_gain": 0.05,
+  "feature_gain": 0.01,
+  "bright_pace_ratio": 1.25,
+  "run_mean_speed": 0.25,
+  "run_twenty_m": 2.0,
+  "run_turn_speed": 0.25,
+  "opposite_reading": 0.05,
+  "long_life_kept": 0.8,
+  "second_tone_kept": 0.8,
+  "route_ceiling_floor": 0.01,
+  "route_ceiling_slowdown": 0.25
+ },
+ "arena": "F:\\born-wired-cortex\\engine_v2\\models\\reflex_arena.xml",
+ "genes": [
+  "avoidance_gain",
+  "balanced_rear_lift",
+  "clearance_contact_gain",
+  "clearance_lift",
+  "clearance_swing_gain",
+  "clearance_threshold",
+  "eye_binocular_baseline",
+  "eye_change_common",
+  "eye_change_gain",
+  "eye_change_relay_gain",
+  "eye_change_relay_steps",
+  "eye_change_threshold",
+  "eye_change_trace_time",
+  "eye_flow_threshold",
+  "eye_fusion_gain",
+  "eye_gaze_gain",
+  "eye_grow_threshold",
+  "eye_loom_gain",
+  "eye_loom_threshold",
+  "eye_near_gain",
+  "eye_pitch_gain",
+  "eye_pitch_time",
+  "eye_relay_gain",
+  "eye_row_common",
+  "eye_row_gain",
+  "eye_row_relay_gain",
+  "eye_row_threshold",
+  "eye_row_trace_time",
+  "eye_stereo_gain",
+  "eye_track_gain",
+  "eye_wall_gain",
+  "gait_gain",
+  "lift_gain",
+  "pinna_orient_gain",
+  "rhythm_speed",
+  "righting_gain",
+  "righting_hip_gain",
+  "steady_gain",
+  "steady_inhibition",
+  "stumble_decay",
+  "support_thigh_offset",
+  "wall_brake_gain",
+  "wall_gain",
+  "wall_hip_gain",
+  "wall_retreat_gain",
+  "wall_time",
+  "wall_turn_gain"
+ ],
+ "wall_seconds": 138.40250579999338
+}

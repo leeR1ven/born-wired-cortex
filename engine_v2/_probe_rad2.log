@@ -1,0 +1,10 @@
+FIELD_RADIUS = 3.0
+WANDER_MAX = 0.6 WANDER_SIGMA = 0.9 WANDER_FIELD = （已删）
+Traceback (most recent call last):
+  File "F:\born-wired-cortex\engine_v2\_probe_rad.py", line 16, in <module>
+    got = C.measure(body, brain, eyes, geom, 30., 0., ct.CHASE_DISTANCE, seed=5,
+                    flee=ct.CHASE_FLEE, escape=14., curve=1., ball=True)
+  File "F:\born-wired-cortex\engine_v2\tools\chase_red_ball.py", line 218, in measure
+    frame = np.asarray(body.data.xmat[base], dtype=float).reshape(3, 3)
+                       ~~~~~~~~~~~~~~^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices

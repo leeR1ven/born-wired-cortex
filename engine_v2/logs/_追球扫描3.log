@@ -1,0 +1,47 @@
+候选 20 个 x 3 个球位，8 个进程
+[1/20] wall_turn / wall_hip_gain=0.10 / 接线增益 1        追球分   6.96  过=False 
+[2/20] 对照：wall_turn / wall_hip_gain=0.10 / 不接追球       追球分   7.01  过=False 
+[3/20] wall_turn / wall_hip_gain=0.10 / 接线增益 2        追球分   6.88  过=False 
+[4/20] 对照：wall_turn / wall_hip_gain=0.05 / 不接追球       追球分   7.01  过=False 
+[5/20] wall_turn / wall_hip_gain=0.10 / 接线增益 0        追球分   6.99  过=False 
+[6/20] wall_turn / wall_hip_gain=0.05 / 接线增益 0        追球分   7.00  过=False 
+[7/20] wall_turn / wall_hip_gain=0.05 / 接线增益 2        追球分   6.96  过=False 
+[8/20] wall_turn / wall_hip_gain=0.05 / 接线增益 1        追球分   6.99  过=False 
+[9/20] wall_turn / wall_hip_gain=0.20 / 接线增益 0        追球分   6.96  过=False 
+[10/20] wall_turn / wall_hip_gain=0.20 / 接线增益 1        追球分   6.88  过=False 
+[11/20] wall_turn / wall_hip_gain=0.20 / 接线增益 2        追球分   6.47  过=False 
+[12/20] wall_turn / wall_hip_gain=0.40 / 接线增益 1        追球分   6.47  过=False 
+[13/20] 对照：wall_turn / wall_hip_gain=0.40 / 不接追球       追球分   7.01  过=False 
+[14/20] 对照：wall_turn / wall_hip_gain=0.20 / 不接追球       追球分   7.01  过=False 
+[15/20] wall_turn / wall_hip_gain=0.40 / 接线增益 2        追球分   4.24  过=False 摔了
+[16/20] wall_turn / wall_hip_gain=0.40 / 接线增益 0        追球分   6.88  过=False 
+[17/20] wall_turn / wall_hip_gain=0.80 / 接线增益 0        追球分   6.47  过=False 
+[18/20] wall_turn / wall_hip_gain=0.80 / 接线增益 1        追球分   4.29  过=False 
+[19/20] wall_turn / wall_hip_gain=0.80 / 接线增益 2        追球分   3.50  过=False 摔了
+[20/20] 对照：wall_turn / wall_hip_gain=0.80 / 不接追球       追球分   7.01  过=False 
+
+=== 排名（先看「过」的）===
+候选                                                 追球分     过   最低直立 | 三个球位最后离球多远(米)
+wall_turn / wall_hip_gain=0.80 / 接线增益 2           3.50 False -0.984 | 左前 0.56  正前 4.52  右前 6.09
+wall_turn / wall_hip_gain=0.40 / 接线增益 2           4.24 False  0.130 | 左前 5.31  正前 7.04  右前 1.75
+wall_turn / wall_hip_gain=0.80 / 接线增益 1           4.29 False  0.866 | 左前 5.31  正前 7.04  右前 1.52
+wall_turn / wall_hip_gain=0.20 / 接线增益 2           6.47 False  0.893 | 左前 7.59  正前 7.23  右前 6.06
+wall_turn / wall_hip_gain=0.40 / 接线增益 1           6.47 False  0.893 | 左前 7.59  正前 7.23  右前 6.06
+wall_turn / wall_hip_gain=0.80 / 接线增益 0           6.47 False  0.893 | 左前 7.59  正前 7.23  右前 6.06
+wall_turn / wall_hip_gain=0.10 / 接线增益 2           6.88 False  0.901 | 左前 7.68  正前 7.28  右前 7.19
+wall_turn / wall_hip_gain=0.20 / 接线增益 1           6.88 False  0.901 | 左前 7.68  正前 7.28  右前 7.19
+wall_turn / wall_hip_gain=0.40 / 接线增益 0           6.88 False  0.901 | 左前 7.68  正前 7.28  右前 7.19
+wall_turn / wall_hip_gain=0.10 / 接线增益 1           6.96 False  0.900 | 左前 7.68  正前 7.30  右前 7.40
+wall_turn / wall_hip_gain=0.05 / 接线增益 2           6.96 False  0.900 | 左前 7.68  正前 7.30  右前 7.40
+wall_turn / wall_hip_gain=0.20 / 接线增益 0           6.96 False  0.900 | 左前 7.68  正前 7.30  右前 7.40
+wall_turn / wall_hip_gain=0.10 / 接线增益 0           6.99 False  0.896 | 左前 7.71  正前 7.31  右前 7.46
+wall_turn / wall_hip_gain=0.05 / 接线增益 1           6.99 False  0.896 | 左前 7.71  正前 7.31  右前 7.46
+wall_turn / wall_hip_gain=0.05 / 接线增益 0           7.00 False  0.900 | 左前 7.72  正前 7.31  右前 7.49
+对照：wall_turn / wall_hip_gain=0.10 / 不接追球          7.01 False  0.899 | 左前 7.72  正前 7.31  右前 7.52
+对照：wall_turn / wall_hip_gain=0.40 / 不接追球          7.01 False  0.899 | 左前 7.72  正前 7.31  右前 7.52
+对照：wall_turn / wall_hip_gain=0.20 / 不接追球          7.01 False  0.899 | 左前 7.72  正前 7.31  右前 7.52
+对照：wall_turn / wall_hip_gain=0.80 / 不接追球          7.01 False  0.899 | 左前 7.72  正前 7.31  右前 7.52
+对照：wall_turn / wall_hip_gain=0.05 / 不接追球          7.01 False  0.899 | 左前 7.72  正前 7.31  右前 7.52
+
+一共花了 51.4 秒
+读数 -> artifacts\追球_候选3.json

@@ -1,0 +1,10 @@
+球：方位 0.00、1.50 米
+     秒       走了 | 活跃的反射细胞
+  0.00     0.00 | -
+  0.50     0.09 | near 0.26  brake 0.82  avoidance 0.87  appetitive 0.07  rhythm_recruitment 1.00  curiosity 1.00  steering 0.87  aversive 0.19  eye_fusion 1.00
+  1.00     0.15 | near 0.25  brake 0.83  avoidance 0.86  rhythm_recruitment 1.00  curiosity 1.00  steering 0.86  aversive 0.21  eye_fusion 1.00
+  1.50     0.59 | near 0.26  brake 0.83  avoidance 0.97  rhythm_recruitment 1.00  curiosity 1.00  steering 0.93  aversive 0.32  eye_fusion 1.00
+  2.00     1.39 | near 0.27  brake 0.49  avoidance 0.71  rhythm_recruitment 1.00  curiosity 1.00  steering 0.76  aversive 0.35  eye_fusion 1.00
+  2.50     2.36 | near 0.24  brake 0.45  avoidance 0.57  fatigue 0.09  rhythm_recruitment 1.00  curiosity 1.00  steering 0.50  eye_fusion 0.76
+  3.00     3.37 | near 0.24  brake 0.46  avoidance 0.57  withdrawal 0.05  fatigue 0.16  rhythm_recruitment 1.00  curiosity 1.00  steering 0.41  eye_fusion 0.70
+  3.50     4.39 | near 0.24  brake 0.44  avoidance 0.56  fatigue 0.22  rhythm_recruitment 1.00  curiosity 1.00  steering 0.32  eye_fusion 0.51

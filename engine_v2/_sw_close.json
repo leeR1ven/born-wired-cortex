@@ -1,0 +1,186 @@
+[
+ {
+  "chase": {
+   "turn_gain": 0.02,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": false
+  },
+  "settled": 1.0765949876204912,
+  "facing": 0.7759441403994409,
+  "range_end": 0.9090404573623172,
+  "travelled_m": 0.5785618589236379,
+  "straightness": 0.8538851267075545,
+  "lowest_up_z": 0.9818047426602842,
+  "turn_cells": [
+   0.984547350812835,
+   0.0
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 1.2241211764523348,
+  "heading_last": 0.7759441403994409,
+  "seconds": 2.963488599998527
+ },
+ {
+  "chase": {
+   "turn_gain": 0.02,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": true
+  },
+  "settled": 1.0741921157573409,
+  "facing": 0.7683675897786232,
+  "range_end": 0.9332568750371535,
+  "travelled_m": 0.5695073895977948,
+  "straightness": 0.846919584275108,
+  "lowest_up_z": 0.979196965705929,
+  "turn_cells": [
+   0.0,
+   0.984547350146274
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 1.2747897961662653,
+  "heading_last": 0.7683675897786232,
+  "seconds": 1.1508117000048514
+ },
+ {
+  "chase": {
+   "turn_gain": 0.05,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": false
+  },
+  "settled": 1.0823278579987319,
+  "facing": 0.7920763490013614,
+  "range_end": 0.9055147016274313,
+  "travelled_m": 0.5672563394987674,
+  "straightness": 0.849453798063611,
+  "lowest_up_z": 0.9826939539074908,
+  "turn_cells": [
+   0.9845473512996478,
+   0.0
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 1.190736838687905,
+  "heading_last": 0.7920763490013614,
+  "seconds": 1.1080015000043204
+ },
+ {
+  "chase": {
+   "turn_gain": 0.05,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": true
+  },
+  "settled": 1.1115161245495961,
+  "facing": 0.8153644579988879,
+  "range_end": 1.1395080820691703,
+  "travelled_m": 0.40471560024318953,
+  "straightness": 0.7374130517465094,
+  "lowest_up_z": 0.9739528936807621,
+  "turn_cells": [
+   0.0,
+   0.9845473496349957
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 1.4645614150686332,
+  "heading_last": 0.8153644579988879,
+  "seconds": 1.1108958999975584
+ },
+ {
+  "chase": {
+   "turn_gain": 0.1,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": false
+  },
+  "settled": 1.0902174774265472,
+  "facing": 0.7678521033189339,
+  "range_end": 0.8595117778424131,
+  "travelled_m": 0.49272230481223733,
+  "straightness": 0.8108514975695095,
+  "lowest_up_z": 0.984988621785761,
+  "turn_cells": [
+   0.9845473521748963,
+   0.0
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 0.7943123351385423,
+  "heading_last": 0.7678521033189339,
+  "seconds": 1.0798222000012174
+ },
+ {
+  "chase": {
+   "turn_gain": 0.1,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": true
+  },
+  "settled": 1.1105110927830928,
+  "facing": 0.7504885085944317,
+  "range_end": 1.1541218535122941,
+  "travelled_m": 0.275553059593449,
+  "straightness": 0.6072947753078259,
+  "lowest_up_z": 0.950589902341516,
+  "turn_cells": [
+   0.0,
+   0.984547348734268
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 1.3159578696543532,
+  "heading_last": 0.7504885085944317,
+  "seconds": 1.0892708000028506
+ },
+ {
+  "chase": {
+   "turn_gain": 0.2,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": false
+  },
+  "settled": 1.2464647129357875,
+  "facing": 1.0874252876732993,
+  "range_end": 1.3665718118726744,
+  "travelled_m": 0.21610150695579305,
+  "straightness": 0.42052896360692626,
+  "lowest_up_z": 0.9803515597759793,
+  "turn_cells": [
+   0.9845473548874827,
+   0.0
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 1.6997863114453515,
+  "heading_last": 1.0874252876732993,
+  "seconds": 1.2565594000043347
+ },
+ {
+  "chase": {
+   "turn_gain": 0.2,
+   "gain": 1.0,
+   "source": "position",
+   "pivot": 8,
+   "flip": true
+  },
+  "settled": 1.0973904235059593,
+  "facing": 0.6148623708250961,
+  "range_end": 1.0557855850876905,
+  "travelled_m": 0.2049877357804994,
+  "straightness": 0.4761901905641498,
+  "lowest_up_z": 0.7967502203427416,
+  "turn_cells": [
+   0.0,
+   0.9845473465720775
+  ],
+  "heading0": 0.5999914056495848,
+  "heading_end": 0.9455037865571442,
+  "heading_last": 0.6148623708250961,
+  "seconds": 1.2073384000104852
+ }
+]
