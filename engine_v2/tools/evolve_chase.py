@@ -42,6 +42,7 @@ if str(ROOT) not in sys.path:
 import numpy as np                                                      # noqa: E402
 
 from tools import evolve as ev                                          # noqa: E402
+from tools import screen_candidates as sc                               # noqa: E402
 
 CHAMPION = ROOT / "artifacts" / "云端" / "题1f_演化_云_冠军.jsonl"
 
@@ -127,25 +128,151 @@ def pick_chase(parents, rng):
     return mutate_chase(base, rng)
 
 
+# =============================== 综合评分 ===============================
+# 用户 2026-10-01：要「根据整体评分来保留模型」，整体都很优秀的才拿去融合生后代。
+# 所以不再是「追住几趟」一票定生死，而是把每一格摊开、各按一个权重加起来。
+# 每一格先换算到 0~1（1 = 最好），十个权重加起来正好 1.00。摔了的直接沉底。
+#
+#   这一格          权重   0 分长什么样        1 分长什么样       怎么换算
+#   -------------  -----  ------------------  -----------------  ----------------------
+#   真追住球        .27   一趟都没追住        两趟都追住         追住趟数 / 总趟数
+#   跑得快          .22   一步没挪            20 秒跑满 6 米     跑了多少米 / 6
+#   站得稳          .15   贴着摔倒线蹭过去    全程站得笔直       (最低直立分量 - .3) / .6
+#   球在正前方      .10   球老跑到侧面去      球一直待在正前方   已经是 0~1
+#   跑完落后        .08   落后 3 米以上       贴在球屁股上       (3 - 落后) / 3
+#   静止球          .05   没走到球跟前        走到了             静止球那趟到了没有
+#   追近了          .04   20 秒一点没追近     追近 1.5 米        追近的米数 / 1.5
+#   最近贴到        .03   最近都没进 1.5 米   贴到 0 米          (1.5 - 最近) / 1.5
+#   两边都会        .03   只认一边            左、右都追住       是/否
+#   走得直          .03   原地打转            直着走             直度（已经是 0~1）
+#
+# 用户 2026-10-01：**追到球、跑得快、不摔是最吃重的三格**，合起来 .64，其余都是配角。
+#
+# 「站得稳」为什么不直接写「有没有摔」：摔没摔是个是/否，而且 rank() 第一眼就是它，
+# 摔了的模型永远排在没摔的后面 —— 光把权重从 .04 抬到 .14，名次一点不变，只是分数好看。
+# 真正让「不摔」吃重得看**离摔倒有多远**：一只全程最低直立分量 0.9 的狗和一只贴着 0.31
+# 蹭过去的狗都不算摔，但显然不是一回事。所以这一格用 (最低直立分量 - .3) / .6。
+# 摔了的狗最低直立分量 <.3，这一格自然是 0，原先那个是/否的格就不用单列了。
+#
+# 「跑得快」除以 6 米不是随手写的：六批第 0 代那 193 只没摔的模型，这一格读的是
+# 「追球那两趟平均跑了多少米」——中位 3.85 米、最远 9.29 米。除以 5 的话有 26% 直接
+# 顶到满分 1.0，改成除以 6 只剩 8%，这一格才分得出快慢。
+# （早前说「除以 5 好狗几乎全顶到 1.0」是估的，量完只有四分之一左右，见 book/附录 A 撤回 6。）
+SCORE_WEIGHTS = (("follows", .27), ("fast", .22), ("steady", .15), ("in_view", .10),
+                 ("settled", .08), ("static", .05), ("approach", .04), ("closest", .03),
+                 ("both", .03), ("straight", .03))
+
+
+FALLEN = .3          # 直立分量掉到这么低就算摔了（跟 chase_task 一个口径）
+STEADY_FULL = .9     # 全程最低直立分量到这么高，「站得稳」这一格给满分
+
+
+def clamp01(value):
+    """夹到 0~1。"""
+    return 0. if value < 0. else (1. if value > 1. else float(value))
+
+
+def lowest_up(row):
+    """所有趟里最低的那个直立分量：1 = 站得笔直，0.3 = 摔了。
+
+    用户 2026-10-01：不摔的权重也要高。可「摔没摔」是个是/否，二值化的东西加权重
+    加不出差别来 —— 一只全程 0.9 的狗和一只贴着 0.31 蹭过去的狗都不算摔。所以要拿
+    每一趟记下来的 lowest_up_z 取最小值，量的是「离摔倒线还有多远」。
+    """
+    values = [float(item.get("lowest_up_z", 1.)) for item in (row.get("rows") or [])]
+    values = [value for value in values if value == value]      # 把 nan 扔掉
+    return min(values) if values else 1.
+
+
+def overall(row, detail=False):
+    """这一只的整体分，0~1，越大越好；摔了的给 -1，直接沉底。
+
+    权重表在 SCORE_WEIGHTS，每一项怎么换算在那一坨注释里写着，没有藏起来的东西。
+    """
+    if not row.get("upright"):
+        return (-1., {}) if detail else -1.
+    trials = max(int(row.get("follow_trials", row.get("chase_trials", 0)) or 0), 1)
+    follows = int(row.get("follows", row.get("chase_covered", 0)) or 0)
+    settled = float(row.get("chase_settled", 99.))
+    parts = {
+        "follows": clamp01(follows / float(trials)),
+        "in_view": clamp01(float(row.get("chase_in_view", 0.))),
+        "settled": clamp01((3. - settled) / 3.),
+        "approach": clamp01(float(row.get("chase_approach", -99.)) / 1.5),
+        "closest": clamp01((1.5 - float(row.get("chase_min", 99.))) / 1.5),
+        "both": 1. if row.get("both") else 0.,
+        "steady": clamp01((lowest_up(row) - FALLEN) / (STEADY_FULL - FALLEN)),
+        "fast": clamp01(float(row.get("chase_travelled", 0.)) / 6.),
+        "straight": clamp01(float(row.get("straightness", 0.))),
+        "static": 1. if int(row.get("covered", 0) or 0) > 0 else 0.,
+    }
+    score = sum(weight * parts[name] for name, weight in SCORE_WEIGHTS)
+    return (score, parts) if detail else score
+
+
 def rank(row):
-    # 用户 2026-10-01：这一轮要的就是「一直追着红球」。所以排序最前面是「追住几趟」，
-    # 再是两边会不会、跑完落后几米、球在正前方几成时间、追近了没、最近贴到几米；
-    # 静止球那套老判分（走到球跟前几趟、平均贴多近）退到后面，只当参考。
-    # —— 上一批丢追球本事，就是因为老判分排在最前面。
+    # 用户 2026-10-01：按整体评分留模型。所以第一眼看摔没摔，第二眼就是综合分。
+    # 分数一样时（很少见）才轮到后面这些细项分先后。
     return (0 if row.get("upright") else 1,
+            -overall(row),
             -int(row.get("chase_covered", 0)),
             -int(bool(row.get("both"))),
-            float(row.get("chase_mean", 99.)),
-            -float(row.get("chase_in_view", 0.)),
             float(row.get("chase_settled", 99.)),
-            -float(row.get("chase_approach", -99.)),
-            float(row.get("chase_min", 99.)),
-            -int(row.get("covered", 0)),
-            float(row.get("score", 99.)),
-            -int(row.get("moving", 0)),
+            -float(row.get("chase_in_view", 0.)),
             -float(row.get("chase_travelled", 0.)),
-            -float(row.get("travelled_m", 0.)),
-            -float(row.get("straightness", 0.)))
+            float(row.get("score", 99.)))
+
+
+def top_overall(rows, count):
+    """综合分最高的前 count 只（摔了的不要，没建出来的不要）。"""
+    okay = [row for row in (rows or [])
+            if row.get("status") == "ok" and row.get("genome") and row.get("upright")]
+    return sorted(okay, key=rank)[:max(int(count), 1)]
+
+
+def fuse(rows):
+    """把一堆好模型平均成一个「融合爹」。
+
+    用户 2026-10-01：整体都很优秀的模型融合后产生后代。
+    数值取平均（用户说的「按平均数值就行」）；接法里那几个离散的 —— 走哪条路、
+    从哪儿接出来、左右要不要对调 —— 按多数票，因为「motor」和「orient」平均一下
+    是没有意义的。不搞加权、不搞花活。
+    """
+    if not rows:
+        return None, None
+    columns = {}
+    for row in rows:
+        for name, value in (row.get("genome") or {}).items():
+            if isinstance(value, (int, float)) and not isinstance(value, bool):
+                columns.setdefault(name, []).append(float(value))
+    genome = {}
+    for name, values in columns.items():
+        if not values:
+            continue
+        mean = float(np.mean(values))
+        if name in sc.taskbank.INTEGER_GENES:
+            # 整数基因不能取平均：8 只平均出来 8.375 步，控制器当场拒收。
+            # 2026-10-01 实测，不取整的话 300 只里有 107 只建不出来。
+            mean = float(max(1, int(round(mean))))
+        genome[name] = mean
+
+    chases = [row["chase"] for row in rows if isinstance(row.get("chase"), dict)]
+    chase = None
+    if chases:
+        chase = {}
+        for name in sorted(set().union(*[set(item) for item in chases])):
+            values = [item[name] for item in chases if name in item]
+            if not values:
+                continue
+            if all(isinstance(v, bool) for v in values):
+                chase[name] = bool(sum(values) * 2 >= len(values))
+            elif all(isinstance(v, str) for v in values):
+                chase[name] = max(sorted(set(values)), key=values.count)
+            elif all(isinstance(v, int) for v in values):
+                chase[name] = int(round(float(np.mean(values))))
+            else:
+                chase[name] = float(np.mean([float(v) for v in values]))
+    return (genome or None), chase
 
 def run_one(job):
     import tools.chase_task as ct
@@ -293,7 +420,9 @@ def pick_parents(rows, keep_stable, keep_fast, follow_pool=0):
     scored = pick_follows(ok)
 
     def key(row):
-        return (0 if row.get("upright") else 1, -row["follows"]) + rank(row)
+        # 用户 2026-10-01：整体评分说了算。rank 第一眼是摔没摔、第二眼就是综合分，
+        # 所以这里不再拿「追住几趟」压在最前面。
+        return rank(row)
 
     stable = sorted([row for row in scored if row.get("upright")], key=key)[:keep_stable]
     fast = sorted(scored, key=key)[:keep_fast]
@@ -337,6 +466,12 @@ def main(argv=None):
     ap.add_argument("--genes", type=int, default=6, help="每只随机动几个数字")
     ap.add_argument("--sigma", type=float, default=.55, help="每个数字动多大（一格=它自己的量级）")
     ap.add_argument("--cross-rate", type=float, default=.5)
+    ap.add_argument("--fuse-rate", type=float, default=.5,
+                    help="多少比例的孩子从「融合爹」变异来（用户 2026-10-01：整体优秀的融合生后代）")
+    ap.add_argument("--fuse-top", type=int, default=8, help="拿综合分最高的前几只来融合")
+    ap.add_argument("--flee-ramp", type=float, default=.0,
+                    help="每过一代球速再加这么多米/秒（用户 2026-10-01：慢慢提速）")
+    ap.add_argument("--flee-max", type=float, default=.25, help="球速上限，别超过狗自己跑得动的速度")
     ap.add_argument("--seconds", type=float, default=6., help="静止球那几趟每趟考多少秒")
     ap.add_argument("--chase-seconds", type=float, default=20., help="追着跑的球那几趟每趟考多少秒")
     ap.add_argument("--curve", type=float, default=1., help="球逃跑路线的弯度；0 = 直线逃")
@@ -358,6 +493,9 @@ def main(argv=None):
     if not parents:
         print("这份台账里挑不出爹：%s" % args.parents)
         return 1
+    last_flee = None
+    fused_from = top_overall(parents, args.fuse_top)
+    fused_genome, fused_chase = fuse(fused_from)
     print("头一代的爹 %d 只：%s" % (len(parents), "、".join(
         "第%s代第%s只" % (row.get("gen"), row.get("index")) for row in parents[:4])), flush=True)
 
@@ -365,9 +503,32 @@ def main(argv=None):
     champion = None
     with ProcessPoolExecutor(args.workers) as pool:
         for gen in range(args.start_gen, args.start_gen + args.generations):
+            # 球速递进（用户 2026-10-01：稍微提速 / 慢慢提速）。狗自己才 0.20~0.23
+            # 米/秒，球一超过这个数谁都追不上，所以默认一步只加一丁点、还封了顶。
+            flee = min(args.flee_max, args.flee + args.flee_ramp * (gen - args.start_gen))
+            if gen == args.start_gen or flee != last_flee:
+                print("  这一代球速 %.3f 米/秒（每代 +%.3f，上限 %.3f）"
+                      % (flee, args.flee_ramp, args.flee_max), flush=True)
+            last_flee = flee
+
+            # 融合爹（用户 2026-10-01：整体都很优秀的模型融合后产生后代）
+            fuse_ids = "、".join("第%s只" % row.get("index") for row in fused_from)
+            if fused_genome is not None:
+                print("  融合爹：综合分最高的 %d 只平均成一只（%s）" % (len(fused_from), fuse_ids),
+                      flush=True)
+
             jobs = []
             for index in range(args.candidates):
-                genome, touched = ev.make_child(parents, rng, args)
+                if fused_genome is not None and rng.random() < args.fuse_rate:
+                    # 从融合爹身上变异来
+                    genome, touched = sc.mutate(dict(fused_genome), 0, rng,
+                                                genes=args.genes, sigma=args.sigma)
+                    chase = (mutate_chase(dict(fused_chase), rng) if fused_chase
+                             else pick_chase(parents, rng))
+                else:
+                    # 剩下的一部分还是从单个爹那儿抄，保住多样性，别让种群太快长成一个样
+                    genome, touched = ev.make_child(parents, rng, args)
+                    chase = pick_chase(parents, rng)
                 genome = dict(genome)
                 if rng.random() < .5:
                     # 一半的孩子把拐弯的力重新摇一个量级（原来那支被压到 0.0003，
@@ -377,12 +538,14 @@ def main(argv=None):
                 jobs.append(dict(gen=gen, index=index, seed=int(rng.integers(1000000)),
                                  genome=genome, touched=touched, seconds=args.seconds,
                                  chase_seconds=args.chase_seconds, curve=args.curve,
-                                 flee=args.flee, chase=pick_chase(parents, rng)))
+                                 flee=flee, chase=chase))
 
             ledger = "%s_g%02d.jsonl" % (args.out_prefix, gen)
-            print("第 %d 代：生 %d 只、每只考 4 趟不动球（每趟 %.0f 秒）+ 2 趟追着跑的球"
-                  "（每趟 %.0f 秒，球沿随机曲线逃）+ 1 趟没球对照、%d 个进程"
-                  % (gen, len(jobs), args.seconds, args.chase_seconds, args.workers), flush=True)
+            print("第 %d 代：生 %d 只（其中 %.0f%% 从融合爹变异来）、每只考 1 趟不动球（位置随机、"
+                  "每趟 %.0f 秒）+ 2 趟追着跑的球（每趟 %.0f 秒、球 %.3f 米/秒沿随机曲线逃）"
+                  "+ 1 趟没球对照、%d 个进程"
+                  % (gen, len(jobs), args.fuse_rate * 100., args.seconds, args.chase_seconds,
+                     flee, args.workers), flush=True)
 
             started = time.perf_counter()
             rows = []
@@ -398,10 +561,11 @@ def main(argv=None):
                              "没摔" if row["upright"] else "摔了"), flush=True)
 
                 if not args.quiet:
-                    print("%5d  %-14s 追住 %d/%d 趟  平均 %6.2f 米  落后 %6.2f 米  最近 %5.2f 米  "
+                    print("%5d  %-14s 综合 %5.3f  追住 %d/%d 趟  平均 %6.2f 米  落后 %6.2f 米  最近 %5.2f 米  "
                           "正前方 %3.0f%%  静球到了 %d/%d 趟  走了 %5.2f 米%s  路 %s%s  本机 %.0f 秒"
                           % (row["index"],
                              "没摔" if row["status"] == "ok" and row["upright"] else "倒了/没建出来",
+                             overall(row),
                              row.get("chase_covered", 0), row.get("chase_trials", 0),
                              row.get("chase_mean", float("nan")),
                              row.get("chase_settled", float("nan")),
@@ -416,6 +580,8 @@ def main(argv=None):
 
             print(generation_line(gen, rows, time.perf_counter() - started), flush=True)
             parents = pick_parents(rows, args.keep_stable, args.keep_fast, args.follow_top)
+            fused_from = top_overall(parents, args.fuse_top)
+            fused_genome, fused_chase = fuse(fused_from)
             counted = pick_follows([row for row in rows if row.get("status") == "ok"])
             print("  这一代自己走出来的、真追住球的 %d 只，其中两边都追住的 %d 只"
                   % (sum(1 for row in counted if row["follows"] > 0),
