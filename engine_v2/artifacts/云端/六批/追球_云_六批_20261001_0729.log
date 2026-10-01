@@ -1,0 +1,364 @@
+头一代的爹 120 只：第0代第295只、第0代第214只、第0代第10只、第0代第47只
+  这一代球速 0.170 米/秒（每代 +0.003，上限 0.200）
+  融合爹：综合分最高的 8 只平均成一只（第236只、第58只、第163只、第257只、第28只、第111只、第22只、第3只）
+第 0 代：生 300 只（其中 50% 从融合爹变异来）、每只考 1 趟不动球（位置随机、每趟 6 秒）+ 2 趟追着跑的球（每趟 20 秒、球 0.170 米/秒沿随机曲线逃）+ 1 趟没球对照、24 个进程
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+    0  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 5 秒
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/hy-tmp/bwc/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+  跨代冠军易主：0 代第 1 只  追住 1/2 趟、跑完落后 1.28 米、球在正前方  92% 的时间  没摔
+    1  没摔             综合 0.701  追住 1/2 趟  平均   1.14 米  落后   1.28 米  最近  0.05 米  正前方  92%  静球到了 1/1 趟  走了  3.55 米  路 motor 对调  本机 108 秒
+    2  没摔             综合 0.312  追住 0/2 趟  平均   2.08 米  落后   3.71 米  最近  0.37 米  正前方  13%  静球到了 1/1 趟  走了  3.58 米  路 motor 对调  本机 144 秒
+    3  没摔             综合 0.205  追住 0/2 趟  平均   4.57 米  落后   7.31 米  最近  1.90 米  正前方   6%  静球到了 0/1 趟  走了  3.51 米  路 motor  本机 143 秒
+    4  没摔             综合 0.283  追住 0/2 趟  平均   3.64 米  落后   6.00 米  最近  1.10 米  正前方   8%  静球到了 1/1 趟  走了  4.29 米  路 orient 对调  本机 146 秒
+    5  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 3 秒
+    6  没摔             综合 0.227  追住 0/2 趟  平均   3.91 米  落后   5.28 米  最近  2.50 米  正前方  94%  静球到了 0/1 趟  走了  0.10 米  路 motor 对调  本机 147 秒
+    7  没摔             综合 0.307  追住 0/2 趟  平均   2.26 米  落后   4.01 米  最近  0.52 米  正前方  12%  静球到了 1/1 趟  走了  3.60 米  路 motor 对调  本机 62 秒
+    8  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.70 米  落后   6.60 米  最近  2.44 米  正前方  52%  静球到了 0/1 趟  走了  0.63 米  路 motor 对调  本机 65 秒
+    9  没摔             综合 0.190  追住 0/2 趟  平均   4.20 米  落后   5.89 米  最近  2.46 米  正前方  59%  静球到了 0/1 趟  走了  0.81 米  路 motor 对调  本机 143 秒
+   10  没摔             综合 0.296  追住 0/2 趟  平均   2.54 米  落后   4.52 米  最近  0.72 米  正前方   9%  静球到了 1/1 趟  走了  3.77 米  路 motor 对调  本机 64 秒
+   11  没摔             综合 0.206  追住 0/2 趟  平均   3.71 米  落后   5.02 米  最近  2.50 米  正前方  72%  静球到了 0/1 趟  走了  0.19 米  路 motor 对调  本机 147 秒
+   12  没摔             综合 0.163  追住 0/2 趟  平均   3.57 米  落后   5.18 米  最近  1.17 米  正前方  11%  静球到了 0/1 趟  走了  1.54 米  路 motor 对调  本机 62 秒
+   13  没摔             综合 0.203  追住 0/2 趟  平均   2.74 米  落后   3.72 米  最近  1.96 米  正前方  38%  静球到了 0/1 趟  走了  1.80 米  路 motor 对调  本机 146 秒
+   14  没摔             综合 0.376  追住 0/2 趟  平均   1.88 米  落后   2.22 米  最近  0.68 米  正前方 100%  静球到了 0/1 趟  走了  1.74 米  路 motor 对调  本机 146 秒
+   15  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   2.70 米  落后   3.58 米  最近  0.70 米  正前方 100%  静球到了 1/1 趟  走了  2.71 米  路 motor 对调  本机 147 秒
+   16  没摔             综合 0.259  追住 0/2 趟  平均   4.91 米  落后   6.61 米  最近  2.50 米  正前方  99%  静球到了 0/1 趟  走了  0.99 米  路 motor 对调  本机 146 秒
+   17  没摔             综合 0.309  追住 0/2 趟  平均   2.34 米  落后   4.22 米  最近  0.49 米  正前方  15%  静球到了 1/1 趟  走了  3.22 米  路 motor 对调  本机 73 秒
+   18  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   5.20 米  落后   7.83 米  最近  2.35 米  正前方   6%  静球到了 0/1 趟  走了  1.00 米  路 motor 对调  本机 144 秒
+   19  没摔             综合 0.221  追住 0/2 趟  平均   4.04 米  落后   6.54 米  最近  1.14 米  正前方   8%  静球到了 0/1 趟  走了  4.36 米  路 orient 对调  本机 144 秒
+   20  没摔             综合 0.213  追住 0/2 趟  平均   3.08 米  落后   5.22 米  最近  1.37 米  正前方   8%  静球到了 0/1 趟  走了  3.80 米  路 motor 对调  本机 145 秒
+   21  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.50 米  落后   6.33 米  最近  2.50 米  正前方   2%  静球到了 0/1 趟  走了  0.32 米  路 motor  本机 146 秒
+   22  没摔             综合 0.221  追住 0/2 趟  平均   2.78 米  落后   4.42 米  最近  0.99 米  正前方   7%  静球到了 0/1 趟  走了  3.29 米  路 orient 对调  本机 113 秒
+   23  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.92 米  落后   5.42 米  最近  2.35 米  正前方  54%  静球到了 0/1 趟  走了  0.33 米  路 motor 对调  本机 146 秒
+   24  没摔             综合 0.295  追住 0/2 趟  平均   2.29 米  落后   3.73 米  最近  0.91 米  正前方  13%  静球到了 1/1 趟  走了  3.36 米  路 motor 对调  本机 118 秒
+   25  没摔             综合 0.321  追住 0/2 趟  平均   1.83 米  落后   3.08 米  最近  0.22 米  正前方  19%  静球到了 1/1 趟  走了  3.03 米  路 motor 对调  本机 111 秒
+   26  没摔             综合 0.248  追住 0/2 趟  平均   2.53 米  落后   3.64 米  最近  1.20 米  正前方   7%  静球到了 1/1 趟  走了  3.90 米  路 motor 对调  本机 70 秒
+   27  没摔             综合 0.296  追住 0/2 趟  平均   3.08 米  落后   5.46 米  最近  0.72 米  正前方   9%  静球到了 1/1 趟  走了  4.47 米  路 motor 对调  本机 71 秒
+   28  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.54 米  落后   4.86 米  最近  2.17 米  正前方  17%  静球到了 0/1 趟  走了  1.97 米  路 motor 对调  本机 71 秒
+   29  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.77 米  落后   5.16 米  最近  2.22 米  正前方   8%  静球到了 0/1 趟  走了  0.76 米  路 motor 对调  本机 72 秒
+   30  没摔             综合 0.239  追住 0/2 趟  平均   3.77 米  落后   5.07 米  最近  2.49 米  正前方 100%  静球到了 0/1 趟  走了  0.13 米  路 motor 对调  本机 76 秒
+   31  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.55 米  落后   5.75 米  最近  1.51 米  正前方  12%  静球到了 0/1 趟  走了  2.67 米  路 motor 对调  本机 76 秒
+   32  没摔             综合 0.136  追住 0/2 趟  平均   3.85 米  落后   5.12 米  最近  2.50 米  正前方  36%  静球到了 0/1 趟  走了  0.13 米  路 motor 对调  本机 75 秒
+   33  没摔             综合 0.289  追住 0/2 趟  平均   2.72 米  落后   4.10 米  最近  0.44 米  正前方  14%  静球到了 1/1 趟  走了  3.54 米  路 motor 对调  本机 75 秒
+  跨代冠军易主：0 代第 34 只  追住 2/2 趟、跑完落后 1.14 米、球在正前方  82% 的时间  没摔
+   34  没摔             综合 0.897  追住 2/2 趟  平均   1.11 米  落后   1.14 米  最近  0.05 米  正前方  82%  静球到了 1/1 趟  走了  3.33 米  (两边都会)  路 motor 对调  本机 75 秒
+   35  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+   36  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient  本机 1 秒
+   37  没摔             综合 0.231  追住 0/2 趟  平均   3.95 米  落后   5.36 米  最近  2.49 米  正前方  96%  静球到了 0/1 趟  走了  0.18 米  路 motor 对调  本机 74 秒
+   38  没摔             综合 0.294  追住 0/2 趟  平均   3.49 米  落后   6.07 米  最近  0.74 米  正前方   8%  静球到了 1/1 趟  走了  4.98 米  路 motor 对调  本机 73 秒
+   39  没摔             综合 0.233  追住 0/2 趟  平均   2.58 米  落后   3.52 米  最近  1.38 米  正前方  55%  静球到了 0/1 趟  走了  2.16 米  路 motor 对调  本机 73 秒
+   40  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.90 米  落后   5.35 米  最近  2.33 米  正前方  35%  静球到了 0/1 趟  走了  0.88 米  路 motor 对调  本机 72 秒
+   41  没摔             综合 0.147  追住 0/2 趟  平均   3.03 米  落后   4.10 米  最近  2.11 米  正前方   7%  静球到了 0/1 趟  走了  1.84 米  路 motor  本机 125 秒
+   42  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 2 秒
+   43  没摔             综合 0.128  追住 0/2 趟  平均   4.84 米  落后   6.49 米  最近  2.49 米  正前方   3%  静球到了 0/1 趟  走了  1.28 米  路 motor  本机 128 秒
+   44  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.68 米  落后   4.86 米  最近  1.71 米  正前方  46%  静球到了 0/1 趟  走了  0.10 米  路 motor 对调  本机 126 秒
+   45  没摔             综合 0.241  追住 0/2 趟  平均   3.86 米  落后   5.23 米  最近  2.48 米  正前方 100%  静球到了 0/1 趟  走了  0.14 米  路 motor 对调  本机 130 秒
+   46  没摔             综合 0.424  追住 0/2 趟  平均   1.54 米  落后   1.78 米  最近  0.87 米  正前方 100%  静球到了 0/1 趟  走了  2.45 米  路 motor 对调  本机 126 秒
+   47  没摔             综合 0.405  追住 1/2 趟  平均   2.35 米  落后   3.29 米  最近  0.38 米  正前方  34%  静球到了 0/1 趟  走了  2.60 米  路 orient 对调  本机 125 秒
+   48  没摔             综合 0.321  追住 0/2 趟  平均   1.70 米  落后   2.89 米  最近  0.29 米  正前方  15%  静球到了 1/1 趟  走了  3.36 米  路 motor 对调  本机 125 秒
+   49  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 2 秒
+   50  没摔             综合 0.192  追住 0/2 趟  平均   4.32 米  落后   6.77 米  最近  2.04 米  正前方   6%  静球到了 0/1 趟  走了  2.16 米  路 motor  本机 124 秒
+   51  没摔             综合 0.356  追住 0/2 趟  平均   1.62 米  落后   2.52 米  最近  0.57 米  正前方 100%  静球到了 0/1 趟  走了  2.86 米  路 motor 对调  本机 125 秒
+   52  没摔             综合 0.274  追住 0/2 趟  平均   2.23 米  落后   2.75 米  最近  1.46 米  正前方  69%  静球到了 0/1 趟  走了  1.93 米  路 motor 对调  本机 127 秒
+   53  没摔             综合 0.477  追住 0/2 趟  平均   1.45 米  落后   1.99 米  最近  0.42 米  正前方 100%  静球到了 1/1 趟  走了  3.69 米  路 motor 对调  本机 127 秒
+   54  没摔             综合 0.336  追住 0/2 趟  平均   1.51 米  落后   2.89 米  最近  0.06 米  正前方  18%  静球到了 1/1 趟  走了  3.65 米  路 motor 对调  本机 127 秒
+   55  没摔             综合 0.296  追住 0/2 趟  平均   1.47 米  落后   2.24 米  最近  0.51 米  正前方  29%  静球到了 0/1 趟  走了  3.10 米  路 motor 对调  本机 127 秒
+   56  没摔             综合 0.300  追住 0/2 趟  平均   1.99 米  落后   3.29 米  最近  0.71 米  正前方  14%  静球到了 1/1 趟  走了  3.62 米  路 motor 对调  本机 125 秒
+   57  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+   58  没摔             综合 0.305  追住 0/2 趟  平均   2.03 米  落后   3.45 米  最近  0.56 米  正前方  12%  静球到了 1/1 趟  走了  3.50 米  路 motor 对调  本机 124 秒
+   59  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.68 米  落后   5.04 米  最近  2.46 米  正前方  67%  静球到了 0/1 趟  走了  0.69 米  路 motor 对调  本机 76 秒
+  跨代冠军易主：0 代第 60 只  追住 2/2 趟、跑完落后 1.26 米、球在正前方  95% 的时间  没摔
+   60  没摔             综合 0.899  追住 2/2 趟  平均   1.12 米  落后   1.26 米  最近  0.30 米  正前方  95%  静球到了 1/1 趟  走了  3.47 米  (两边都会)  路 motor 对调  本机 75 秒
+   61  没摔             综合 0.450  追住 0/2 趟  平均   1.52 米  落后   1.87 米  最近  0.54 米  正前方  83%  静球到了 1/1 趟  走了  2.13 米  路 motor 对调  本机 75 秒
+   62  没摔             综合 0.194  追住 0/2 趟  平均   2.63 米  落后   3.83 米  最近  1.11 米  正前方   9%  静球到了 0/1 趟  走了  3.60 米  路 orient 对调  本机 74 秒
+   63  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.15 米  落后   5.51 米  最近  2.45 米  正前方  15%  静球到了 0/1 趟  走了  0.47 米  路 motor 对调  本机 76 秒
+   64  没摔             综合 0.345  追住 0/2 趟  平均   1.41 米  落后   2.29 米  最近  0.24 米  正前方  23%  静球到了 1/1 趟  走了  3.61 米  路 motor 对调  本机 72 秒
+   65  没摔             综合 0.203  追住 0/2 趟  平均   4.83 米  落后   7.70 米  最近  2.00 米  正前方   6%  静球到了 0/1 趟  走了  3.17 米  路 motor  本机 72 秒
+   66  没摔             综合 0.285  追住 0/2 趟  平均   2.22 米  落后   3.58 米  最近  1.03 米  正前方  12%  静球到了 1/1 趟  走了  3.68 米  路 motor 对调  本机 74 秒
+   67  没摔             综合 0.267  追住 0/2 趟  平均   4.70 米  落后   6.45 米  最近  2.50 米  正前方 100%  静球到了 0/1 趟  走了  1.21 米  路 motor 对调  本机 74 秒
+   68  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.43 米  落后   4.72 米  最近  2.32 米  正前方  13%  静球到了 0/1 趟  走了  1.44 米  路 motor 对调  本机 75 秒
+   69  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.09 米  落后   5.47 米  最近  2.50 米  正前方  55%  静球到了 0/1 趟  走了  0.68 米  路 motor 对调  本机 75 秒
+   70  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.58 米  落后   4.65 米  最近  2.50 米  正前方  30%  静球到了 0/1 趟  走了  0.18 米  路 motor 对调  本机 75 秒
+   71  没摔             综合 0.277  追住 0/2 趟  平均   4.34 米  落后   7.09 米  最近  1.26 米  正前方   7%  静球到了 1/1 趟  走了  4.88 米  路 orient 对调  本机 74 秒
+   72  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+   73  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+   74  没摔             综合 0.597  追住 1/2 趟  平均   1.38 米  落后   1.68 米  最近  0.14 米  正前方  47%  静球到了 1/1 趟  走了  3.29 米  路 motor 对调  本机 127 秒
+   75  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.06 米  落后   4.61 米  最近  1.05 米  正前方  11%  静球到了 0/1 趟  走了  2.22 米  路 motor 对调  本机 127 秒
+   76  没摔             综合 0.345  追住 0/2 趟  平均   2.37 米  落后   2.98 米  最近  1.34 米  正前方  87%  静球到了 1/1 趟  走了  2.94 米  路 motor 对调  本机 127 秒
+   77  没摔             综合 0.252  追住 0/2 趟  平均   3.33 米  落后   4.54 米  最近  2.50 米  正前方  92%  静球到了 0/1 趟  走了  1.59 米  路 motor  本机 127 秒
+   78  没摔             综合 0.145  追住 0/2 趟  平均   3.78 米  落后   5.25 米  最近  2.49 米  正前方  10%  静球到了 0/1 趟  走了  1.19 米  路 motor  本机 128 秒
+   79  没摔             综合 0.316  追住 0/2 趟  平均   1.90 米  落后   2.29 米  最近  1.03 米  正前方  58%  静球到了 0/1 趟  走了  2.44 米  路 motor 对调  本机 125 秒
+   80  没摔             综合 0.667  追住 1/2 趟  平均   1.38 米  落后   1.59 米  最近  0.48 米  正前方 100%  静球到了 1/1 趟  走了  3.18 米  路 motor 对调  本机 74 秒
+   81  没摔             综合 0.191  追住 0/2 趟  平均   3.50 米  落后   4.99 米  最近  1.42 米  正前方   4%  静球到了 0/1 趟  走了  4.59 米  路 motor  本机 125 秒
+   82  没摔             综合 0.225  追住 0/2 趟  平均   3.87 米  落后   5.23 米  最近  2.48 米  正前方 100%  静球到了 0/1 趟  走了  0.15 米  路 motor 对调  本机 126 秒
+   83  没摔             综合 0.084  追住 0/2 趟  平均   4.28 米  落后   5.73 米  最近  2.50 米  正前方   4%  静球到了 0/1 趟  走了  0.10 米  路 motor  本机 127 秒
+   84  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.39 米  落后   5.30 米  最近  1.38 米  正前方  47%  静球到了 0/1 趟  走了  1.56 米  路 motor 对调  本机 126 秒
+   85  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.33 米  落后   6.10 米  最近  2.49 米  正前方   3%  静球到了 0/1 趟  走了  0.67 米  路 motor  本机 125 秒
+   86  没摔             综合 0.173  追住 0/2 趟  平均   3.72 米  落后   5.11 米  最近  2.50 米  正前方  53%  静球到了 0/1 趟  走了  0.75 米  路 motor 对调  本机 125 秒
+   87  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.81 米  落后   5.15 米  最近  2.49 米  正前方  54%  静球到了 0/1 趟  走了  0.55 米  路 motor 对调  本机 125 秒
+   88  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+   89  没摔             综合 0.203  追住 0/2 趟  平均   3.73 米  落后   5.04 米  最近  2.44 米  正前方  73%  静球到了 0/1 趟  走了  0.18 米  路 orient 对调  本机 126 秒
+   90  没摔             综合 0.337  追住 0/2 趟  平均   1.51 米  落后   2.87 米  最近  0.24 米  正前方  22%  静球到了 1/1 趟  走了  3.67 米  路 motor 对调  本机 125 秒
+   91  没摔             综合 0.266  追住 0/2 趟  平均   3.08 米  落后   4.72 米  最近  1.34 米  正前方   9%  静球到了 1/1 趟  走了  3.63 米  路 orient 对调  本机 72 秒
+   92  没摔             综合 0.627  追住 1/2 趟  平均   1.24 米  落后   1.53 米  最近  0.31 米  正前方  61%  静球到了 1/1 趟  走了  3.06 米  路 motor 对调  本机 73 秒
+   93  没摔             综合 0.838  追住 2/2 趟  平均   1.10 米  落后   1.13 米  最近  0.19 米  正前方  85%  静球到了 0/1 趟  走了  2.34 米  (两边都会)  路 motor 对调  本机 74 秒
+   94  没摔             综合 0.205  追住 0/2 趟  平均   4.28 米  落后   6.60 米  最近  1.90 米  正前方   6%  静球到了 0/1 趟  走了  3.42 米  路 orient 对调  本机 73 秒
+   95  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+   96  没摔             综合 0.205  追住 0/2 趟  平均   3.82 米  落后   5.08 米  最近  2.50 米  正前方  74%  静球到了 0/1 趟  走了  0.15 米  路 orient 对调  本机 76 秒
+   97  没摔             综合 0.444  追住 0/2 趟  平均   1.55 米  落后   1.59 米  最近  0.79 米  正前方  98%  静球到了 0/1 趟  走了  2.48 米  路 motor 对调  本机 75 秒
+   98  没摔             综合 0.179  追住 0/2 趟  平均   3.05 米  落后   4.44 米  最近  1.33 米  正前方  30%  静球到了 0/1 趟  走了  1.23 米  路 motor 对调  本机 77 秒
+   99  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.91 米  落后   6.78 米  最近  2.49 米  正前方  17%  静球到了 0/1 趟  走了  0.83 米  路 motor 对调  本机 78 秒
+  100  没摔             综合 0.219  追住 0/2 趟  平均   2.47 米  落后   4.23 米  最近  1.19 米  正前方   8%  静球到了 0/1 趟  走了  3.58 米  路 motor 对调  本机 77 秒
+  101  没摔             综合 0.326  追住 0/2 趟  平均   1.82 米  落后   2.83 米  最近  0.46 米  正前方  25%  静球到了 1/1 趟  走了  3.54 米  路 motor 对调  本机 74 秒
+  102  没摔             综合 0.367  追住 0/2 趟  平均   1.34 米  落后   2.42 米  最近  0.10 米  正前方  23%  静球到了 1/1 趟  走了  3.66 米  路 motor 对调  本机 76 秒
+  103  没摔             综合 0.180  追住 0/2 趟  平均   2.52 米  落后   3.35 米  最近  1.61 米  正前方  11%  静球到了 0/1 趟  走了  1.96 米  路 orient  本机 78 秒
+  104  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   2.64 米  落后   3.79 米  最近  1.25 米  正前方  21%  静球到了 0/1 趟  走了  2.52 米  路 motor 对调  本机 76 秒
+  105  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.61 米  落后   4.88 米  最近  2.48 米  正前方  63%  静球到了 0/1 趟  走了  1.44 米  路 motor 对调  本机 81 秒
+  106  没摔             综合 0.312  追住 0/2 趟  平均   2.60 米  落后   4.20 米  最近  0.33 米  正前方  14%  静球到了 1/1 趟  走了  3.34 米  路 motor 对调  本机 110 秒
+  跨代冠军易主：0 代第 107 只  追住 2/2 趟、跑完落后 1.22 米、球在正前方 100% 的时间  没摔
+  107  没摔             综合 0.911  追住 2/2 趟  平均   1.03 米  落后   1.22 米  最近  0.22 米  正前方 100%  静球到了 1/1 趟  走了  3.17 米  (两边都会)  路 motor 对调  本机 112 秒
+  108  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.33 米  落后   5.68 米  最近  2.45 米  正前方  51%  静球到了 0/1 趟  走了  0.82 米  路 motor 对调  本机 111 秒
+  109  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  110  没摔             综合 0.312  追住 0/2 趟  平均   2.34 米  落后   4.34 米  最近  0.38 米  正前方  12%  静球到了 1/1 趟  走了  3.74 米  路 motor 对调  本机 111 秒
+  111  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  112  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.54 米  落后   4.87 米  最近  2.39 米  正前方  50%  静球到了 0/1 趟  走了  0.46 米  路 motor 对调  本机 114 秒
+  113  没摔             综合 0.216  追住 0/2 趟  平均   3.91 米  落后   6.19 米  最近  1.26 米  正前方   8%  静球到了 0/1 趟  走了  3.70 米  路 orient 对调  本机 112 秒
+  114  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.43 米  落后   5.92 米  最近  2.47 米  正前方  95%  静球到了 0/1 趟  走了  0.47 米  路 motor 对调  本机 112 秒
+  115  没摔             综合 0.213  追住 0/2 趟  平均   4.06 米  落后   6.56 米  最近  1.29 米  正前方   7%  静球到了 0/1 趟  走了  3.95 米  路 motor  本机 110 秒
+  116  没摔             综合 0.333  追住 0/2 趟  平均   2.74 米  落后   5.08 米  最近  0.12 米  正前方  19%  静球到了 1/1 趟  走了  4.64 米  路 motor 对调  本机 112 秒
+  117  没摔             综合 0.210  追住 0/2 趟  平均   3.69 米  落后   6.20 米  最近  1.44 米  正前方   8%  静球到了 0/1 趟  走了  3.55 米  路 orient 对调  本机 111 秒
+  118  没摔             综合 0.320  追住 0/2 趟  平均   3.34 米  落后   5.97 米  最近  0.24 米  正前方  13%  静球到了 1/1 趟  走了  4.78 米  路 motor 对调  本机 82 秒
+  119  没摔             综合 0.240  追住 0/2 趟  平均   3.87 米  落后   5.27 米  最近  2.49 米  正前方 100%  静球到了 0/1 趟  走了  0.13 米  路 motor 对调  本机 116 秒
+  120  没摔             综合 0.617  追住 1/2 趟  平均   1.40 米  落后   1.96 米  最近  0.45 米  正前方  94%  静球到了 1/1 趟  走了  3.15 米  路 motor 对调  本机 111 秒
+  跨代冠军易主：0 代第 121 只  追住 2/2 趟、跑完落后 1.04 米、球在正前方  99% 的时间  没摔
+  121  没摔             综合 0.930  追住 2/2 趟  平均   1.06 米  落后   1.04 米  最近  0.09 米  正前方  99%  静球到了 1/1 趟  走了  2.98 米  (两边都会)  路 motor 对调  本机 97 秒
+  122  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.89 米  落后   5.24 米  最近  2.41 米  正前方  84%  静球到了 0/1 趟  走了  1.10 米  路 motor 对调  本机 113 秒
+  123  没摔             综合 0.211  追住 0/2 趟  平均   2.97 米  落后   3.88 米  最近  2.11 米  正前方  57%  静球到了 0/1 趟  走了  1.62 米  路 motor 对调  本机 85 秒
+  124  没摔             综合 0.168  追住 0/2 趟  平均   4.92 米  落后   6.64 米  最近  2.50 米  正前方  26%  静球到了 0/1 趟  走了  1.36 米  路 motor 对调  本机 83 秒
+  125  没摔             综合 0.292  追住 0/2 趟  平均   2.35 米  落后   4.14 米  最近  0.81 米  正前方   9%  静球到了 1/1 趟  走了  3.64 米  路 motor 对调  本机 84 秒
+  126  没摔             综合 0.300  追住 0/2 趟  平均   1.93 米  落后   2.99 米  最近  0.39 米  正前方  14%  静球到了 1/1 趟  走了  4.87 米  路 motor 对调  本机 82 秒
+  127  没摔             综合 0.169  追住 0/2 趟  平均   3.53 米  落后   5.17 米  最近  1.61 米  正前方   9%  静球到了 0/1 趟  走了  2.74 米  路 orient 对调  本机 85 秒
+  128  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.35 米  落后   4.63 米  最近  2.25 米  正前方  16%  静球到了 0/1 趟  走了  0.52 米  路 motor 对调  本机 82 秒
+  129  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  130  没摔             综合 0.179  追住 0/2 趟  平均   3.42 米  落后   4.61 米  最近  1.82 米  正前方  54%  静球到了 0/1 趟  走了  0.44 米  路 motor 对调  本机 83 秒
+  131  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.17 米  落后   5.67 米  最近  2.44 米  正前方  69%  静球到了 0/1 趟  走了  0.86 米  路 motor 对调  本机 82 秒
+  132  没摔             综合 0.184  追住 0/2 趟  平均   3.95 米  落后   5.53 米  最近  2.39 米  正前方  57%  静球到了 0/1 趟  走了  0.81 米  路 motor 对调  本机 84 秒
+  133  没摔             综合 0.208  追住 0/2 趟  平均   3.72 米  落后   6.21 米  最近  1.55 米  正前方   7%  静球到了 0/1 趟  走了  3.85 米  路 orient 对调  本机 85 秒
+  134  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 2 秒
+  135  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor  本机 1 秒
+  136  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.96 米  落后   7.04 米  最近  2.38 米  正前方   6%  静球到了 0/1 趟  走了  0.60 米  路 motor 对调  本机 86 秒
+  137  没摔             综合 0.499  追住 0/2 趟  平均   1.55 米  落后   1.64 米  最近  0.77 米  正前方 100%  静球到了 1/1 趟  走了  3.08 米  路 motor 对调  本机 86 秒
+  138  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.94 米  落后   5.04 米  最近  2.49 米  正前方  17%  静球到了 0/1 趟  走了  0.75 米  路 motor 对调  本机 84 秒
+  139  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  140  没摔             综合 0.363  追住 0/2 趟  平均   1.70 米  落后   2.33 米  最近  0.70 米  正前方  97%  静球到了 0/1 趟  走了  2.43 米  路 motor 对调  本机 86 秒
+  141  没摔             综合 0.453  追住 0/2 趟  平均   1.62 米  落后   2.00 米  最近  0.83 米  正前方  96%  静球到了 1/1 趟  走了  2.89 米  路 motor 对调  本机 84 秒
+  142  没摔             综合 0.261  追住 0/2 趟  平均   2.93 米  落后   4.09 米  最近  1.92 米  正前方  97%  静球到了 0/1 趟  走了  0.86 米  路 motor 对调  本机 108 秒
+  143  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.66 米  落后   4.88 米  最近  2.41 米  正前方  60%  静球到了 0/1 趟  走了  0.67 米  路 motor 对调  本机 110 秒
+  144  没摔             综合 0.282  追住 0/2 趟  平均   2.27 米  落后   3.36 米  最近  0.61 米  正前方  13%  静球到了 1/1 趟  走了  4.09 米  路 motor 对调  本机 110 秒
+  145  没摔             综合 0.375  追住 0/2 趟  平均   1.34 米  落后   2.22 米  最近  0.23 米  正前方  25%  静球到了 1/1 趟  走了  3.72 米  路 motor 对调  本机 84 秒
+  146  没摔             综合 0.275  追住 0/2 趟  平均   1.92 米  落后   2.62 米  最近  1.17 米  正前方  67%  静球到了 0/1 趟  走了  1.97 米  路 motor 对调  本机 110 秒
+  147  没摔             综合 0.208  追住 0/2 趟  平均   3.53 米  落后   5.81 米  最近  1.53 米  正前方   8%  静球到了 0/1 趟  走了  3.60 米  路 orient 对调  本机 107 秒
+  148  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  149  没摔             综合 0.159  追住 0/2 趟  平均   3.79 米  落后   5.24 米  最近  2.23 米  正前方   4%  静球到了 0/1 趟  走了  2.66 米  路 orient 对调  本机 110 秒
+  150  没摔             综合 0.348  追住 0/2 趟  平均   1.55 米  落后   2.93 米  最近  0.11 米  正前方  28%  静球到了 1/1 趟  走了  3.62 米  路 motor 对调  本机 83 秒
+  151  没摔             综合 0.278  追住 0/2 趟  平均   3.34 米  落后   5.46 米  最近  1.24 米  正前方   8%  静球到了 1/1 趟  走了  3.98 米  路 motor 对调  本机 107 秒
+  152  没摔             综合 0.886  追住 2/2 趟  平均   0.98 米  落后   1.02 米  最近  0.12 米  正前方  66%  静球到了 1/1 趟  走了  2.84 米  (两边都会)  路 motor 对调  本机 109 秒
+  153  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.23 米  落后   4.60 米  最近  2.07 米  正前方  73%  静球到了 0/1 趟  走了  1.40 米  路 motor 对调  本机 111 秒
+  154  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.61 米  落后   6.19 米  最近  2.37 米  正前方   9%  静球到了 0/1 趟  走了  1.04 米  路 motor 对调  本机 109 秒
+  155  没摔             综合 0.237  追住 0/2 趟  平均   1.87 米  落后   2.79 米  最近  0.73 米  正前方  18%  静球到了 0/1 趟  走了  2.47 米  路 motor 对调  本机 107 秒
+  156  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.30 米  落后   4.32 米  最近  2.09 米  正前方  95%  静球到了 1/1 趟  走了  2.60 米  路 motor 对调  本机 109 秒
+  157  没摔             综合 0.666  追住 1/2 趟  平均   1.44 米  落后   1.47 米  最近  0.70 米  正前方 100%  静球到了 1/1 趟  走了  2.84 米  路 motor 对调  本机 110 秒
+  158  没摔             综合 0.286  追住 0/2 趟  平均   2.96 米  落后   4.76 米  最近  0.89 米  正前方   7%  静球到了 1/1 趟  走了  3.25 米  路 orient 对调  本机 85 秒
+  159  没摔             综合 0.515  追住 1/2 趟  平均   2.04 米  落后   2.65 米  最近  0.18 米  正前方  54%  静球到了 1/1 趟  走了  2.94 米  路 motor 对调  本机 84 秒
+  160  没摔             综合 0.266  追住 0/2 趟  平均   2.78 米  落后   3.76 米  最近  1.93 米  正前方  95%  静球到了 0/1 趟  走了  1.54 米  路 motor 对调  本机 85 秒
+  161  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.10 米  落后   5.52 米  最近  2.50 米  正前方   8%  静球到了 0/1 趟  走了  0.67 米  路 motor 对调  本机 84 秒
+  162  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  163  没摔             综合 0.336  追住 0/2 趟  平均   1.68 米  落后   2.57 米  最近  0.30 米  正前方  33%  静球到了 1/1 趟  走了  3.50 米  路 motor 对调  本机 84 秒
+  164  没摔             综合 0.347  追住 0/2 趟  平均   1.73 米  落后   2.57 米  最近  0.38 米  正前方  39%  静球到了 1/1 趟  走了  3.35 米  路 motor 对调  本机 84 秒
+  165  没摔             综合 0.613  追住 1/2 趟  平均   1.34 米  落后   1.71 米  最近  0.08 米  正前方  65%  静球到了 1/1 趟  走了  2.71 米  路 motor 对调  本机 84 秒
+  166  没摔             综合 0.219  追住 0/2 趟  平均   3.62 米  落后   4.79 米  最近  2.49 米  正前方  77%  静球到了 0/1 趟  走了  0.25 米  路 motor 对调  本机 86 秒
+  167  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.40 米  落后   5.88 米  最近  2.47 米  正前方  64%  静球到了 0/1 趟  走了  0.36 米  路 motor 对调  本机 84 秒
+  168  没摔             综合 0.633  追住 1/2 趟  平均   1.33 米  落后   1.68 米  最近  0.35 米  正前方  80%  静球到了 1/1 趟  走了  2.55 米  路 motor 对调  本机 82 秒
+  169  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  170  没摔             综合 0.215  追住 0/2 趟  平均   3.47 米  落后   4.94 米  最近  1.10 米  正前方  50%  静球到了 0/1 趟  走了  1.34 米  路 motor 对调  本机 82 秒
+  171  没摔             综合 0.164  追住 0/2 趟  平均   3.47 米  落后   4.98 米  最近  2.06 米  正前方   7%  静球到了 0/1 趟  走了  1.76 米  路 orient 对调  本机 82 秒
+  172  没摔             综合 0.201  追住 0/2 趟  平均   3.66 米  落后   4.83 米  最近  2.49 米  正前方  64%  静球到了 0/1 趟  走了  0.28 米  路 motor 对调  本机 86 秒
+  173  没摔             综合 0.184  追住 0/2 趟  平均   5.35 米  落后   7.92 米  最近  2.49 米  正前方   2%  静球到了 0/1 趟  走了  2.05 米  路 motor  本机 109 秒
+  174  没摔             综合 0.303  追住 0/2 趟  平均   1.72 米  落后   2.72 米  最近  0.50 米  正前方  16%  静球到了 1/1 趟  走了  4.12 米  路 motor 对调  本机 108 秒
+  175  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.61 米  落后   4.89 米  最近  2.28 米  正前方  10%  静球到了 0/1 趟  走了  0.58 米  路 motor 对调  本机 108 秒
+  176  没摔             综合 0.317  追住 0/2 趟  平均   2.07 米  落后   3.69 米  最近  0.54 米  正前方  21%  静球到了 1/1 趟  走了  2.96 米  路 motor 对调  本机 110 秒
+  177  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  178  没摔             综合 0.299  追住 0/2 趟  平均   2.26 米  落后   3.80 米  最近  0.72 米  正前方  12%  静球到了 1/1 趟  走了  3.48 米  路 motor 对调  本机 109 秒
+  179  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  180  没摔             综合 0.175  追住 0/2 趟  平均   2.69 米  落后   3.80 米  最近  1.61 米  正前方  10%  静球到了 0/1 趟  走了  2.17 米  路 orient 对调  本机 108 秒
+  181  没摔             综合 0.586  追住 1/2 趟  平均   1.70 米  落后   2.31 米  最近  0.42 米  正前方  95%  静球到了 1/1 趟  走了  2.76 米  路 motor 对调  本机 109 秒
+  182  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.06 米  落后   5.53 米  最近  2.33 米  正前方  52%  静球到了 0/1 趟  走了  1.14 米  路 orient  本机 110 秒
+  183  没摔             综合 0.338  追住 0/2 趟  平均   1.86 米  落后   3.56 米  最近  0.08 米  正前方  22%  静球到了 1/1 趟  走了  3.66 米  路 motor 对调  本机 107 秒
+  184  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.45 米  落后   6.08 米  最近  1.88 米  正前方   9%  静球到了 0/1 趟  走了  4.36 米  路 motor  本机 110 秒
+  185  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 1 秒
+  186  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.13 米  落后   5.74 米  最近  2.45 米  正前方  13%  静球到了 0/1 趟  走了  0.78 米  路 motor 对调  本机 111 秒
+  187  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 2 秒
+  188  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  189  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  190  没摔             综合 0.204  追住 0/2 趟  平均   3.62 米  落后   4.84 米  最近  2.49 米  正前方  58%  静球到了 0/1 趟  走了  0.41 米  路 orient 对调  本机 111 秒
+  191  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 2 秒
+  192  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.12 米  落后   5.56 米  最近  2.50 米  正前方  28%  静球到了 0/1 趟  走了  0.75 米  路 motor 对调  本机 84 秒
+  193  没摔             综合 0.342  追住 0/2 趟  平均   1.57 米  落后   2.80 米  最近  0.13 米  正前方  21%  静球到了 1/1 趟  走了  3.56 米  路 motor 对调  本机 110 秒
+  194  没摔             综合 0.655  追住 1/2 趟  平均   1.37 米  落后   1.70 米  最近  0.37 米  正前方 100%  静球到了 1/1 趟  走了  3.11 米  路 motor 对调  本机 84 秒
+  195  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.30 米  落后   6.74 米  最近  1.49 米  正前方   8%  静球到了 0/1 趟  走了  2.42 米  路 motor 对调  本机 84 秒
+  196  没摔             综合 0.663  追住 1/2 趟  平均   1.31 米  落后   1.53 米  最近  0.19 米  正前方  88%  静球到了 1/1 趟  走了  3.29 米  路 motor 对调  本机 83 秒
+  197  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  198  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.84 米  落后   5.19 米  最近  2.46 米  正前方  16%  静球到了 0/1 趟  走了  0.35 米  路 motor 对调  本机 86 秒
+  199  没摔             综合 0.230  追住 0/2 趟  平均   4.20 米  落后   7.35 米  最近  0.88 米  正前方   8%  静球到了 0/1 趟  走了  5.54 米  路 motor 对调  本机 85 秒
+  200  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.52 米  落后   4.61 米  最近  2.47 米  正前方  73%  静球到了 0/1 趟  走了  0.83 米  路 motor 对调  本机 84 秒
+  201  没摔             综合 0.268  追住 0/2 趟  平均   3.72 米  落后   6.17 米  最近  1.58 米  正前方   8%  静球到了 1/1 趟  走了  3.72 米  路 motor  本机 83 秒
+  202  没摔             综合 0.888  追住 2/2 趟  平均   1.15 米  落后   1.17 米  最近  0.38 米  正前方  87%  静球到了 1/1 趟  走了  3.12 米  (两边都会)  路 motor 对调  本机 83 秒
+  203  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.94 米  落后   5.41 米  最近  2.43 米  正前方  62%  静球到了 0/1 趟  走了  1.83 米  路 motor 对调  本机 84 秒
+  204  没摔             综合 0.271  追住 0/2 趟  平均   3.60 米  落后   5.91 米  最近  1.41 米  正前方   8%  静球到了 1/1 趟  走了  3.26 米  路 orient 对调  本机 83 秒
+  205  没摔             综合 0.237  追住 0/2 趟  平均   3.78 米  落后   5.17 米  最近  2.49 米  正前方 100%  静球到了 0/1 趟  走了  0.12 米  路 motor 对调  本机 85 秒
+  206  没摔             综合 0.250  追住 0/2 趟  平均   1.86 米  落后   2.66 米  最近  0.45 米  正前方  15%  静球到了 0/1 趟  走了  2.90 米  路 motor 对调  本机 109 秒
+  207  没摔             综合 0.328  追住 0/2 趟  平均   1.97 米  落后   2.79 米  最近  1.01 米  正前方  60%  静球到了 1/1 趟  走了  2.45 米  路 motor 对调  本机 110 秒
+  208  没摔             综合 0.250  追住 0/2 趟  平均   2.95 米  落后   4.34 米  最近  0.92 米  正前方  14%  静球到了 1/1 趟  走了  3.30 米  路 motor 对调  本机 107 秒
+  209  没摔             综合 0.217  追住 0/2 趟  平均   5.07 米  落后   8.31 米  最近  1.27 米  正前方   7%  静球到了 0/1 趟  走了  5.67 米  路 orient 对调  本机 107 秒
+  210  没摔             综合 0.893  追住 2/2 趟  平均   1.14 米  落后   1.20 米  最近  0.10 米  正前方  82%  静球到了 1/1 趟  走了  3.51 米  (两边都会)  路 motor 对调  本机 108 秒
+  211  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.33 米  落后   5.68 米  最近  2.48 米  正前方  51%  静球到了 0/1 趟  走了  0.58 米  路 motor 对调  本机 110 秒
+  212  没摔             综合 0.690  追住 1/2 趟  平均   1.21 米  落后   1.44 米  最近  0.06 米  正前方  95%  静球到了 1/1 趟  走了  3.75 米  路 motor 对调  本机 109 秒
+  213  没摔             综合 0.546  追住 1/2 趟  平均   1.43 米  落后   2.26 米  最近  0.38 米  正前方  48%  静球到了 1/1 趟  走了  3.45 米  路 motor 对调  本机 109 秒
+  214  没摔             综合 0.191  追住 0/2 趟  平均   3.62 米  落后   5.44 米  最近  1.73 米  正前方   9%  静球到了 0/1 趟  走了  3.06 米  路 motor  本机 107 秒
+  215  没摔             综合 0.560  追住 1/2 趟  平均   1.94 米  落后   2.59 米  最近  0.63 米  正前方 100%  静球到了 1/1 趟  走了  3.09 米  路 motor 对调  本机 110 秒
+  216  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.88 米  落后   5.22 米  最近  2.50 米  正前方  92%  静球到了 0/1 趟  走了  0.92 米  路 motor 对调  本机 109 秒
+  217  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.24 米  落后   6.00 米  最近  2.26 米  正前方  13%  静球到了 0/1 趟  走了  1.56 米  路 motor 对调  本机 86 秒
+  218  没摔             综合 0.234  追住 0/2 趟  平均   3.65 米  落后   5.11 米  最近  1.66 米  正前方  13%  静球到了 1/1 趟  走了  3.21 米  路 motor 对调  本机 110 秒
+  219  没摔             综合 0.295  追住 0/2 趟  平均   2.36 米  落后   3.36 米  最近  1.08 米  正前方 100%  静球到了 0/1 趟  走了  1.77 米  路 motor 对调  本机 110 秒
+  220  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.23 米  落后   6.01 米  最近  2.34 米  正前方  90%  静球到了 0/1 趟  走了  0.46 米  路 motor 对调  本机 85 秒
+  221  没摔             综合 0.246  追住 0/2 趟  平均   3.53 米  落后   4.62 米  最近  2.50 米  正前方 100%  静球到了 0/1 趟  走了  0.61 米  路 motor 对调  本机 84 秒
+  222  没摔             综合 0.853  追住 2/2 趟  平均   1.17 米  落后   1.20 米  最近  0.22 米  正前方 100%  静球到了 0/1 趟  走了  2.86 米  (两边都会)  路 motor 对调  本机 85 秒
+  223  没摔             综合 0.252  追住 0/2 趟  平均   5.31 米  落后   7.29 米  最近  2.50 米  正前方  77%  静球到了 0/1 趟  走了  1.16 米  路 motor 对调  本机 84 秒
+  224  没摔             综合 0.642  追住 1/2 趟  平均   1.41 米  落后   1.53 米  最近  0.49 米  正前方  80%  静球到了 1/1 趟  走了  2.84 米  路 motor 对调  本机 84 秒
+  225  没摔             综合 0.623  追住 1/2 趟  平均   1.13 米  落后   1.39 米  最近  0.11 米  正前方  44%  静球到了 1/1 趟  走了  3.29 米  路 motor 对调  本机 84 秒
+  226  没摔             综合 0.198  追住 0/2 趟  平均   2.53 米  落后   3.65 米  最近  1.23 米  正前方  14%  静球到了 0/1 趟  走了  2.41 米  路 motor 对调  本机 81 秒
+  227  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  228  没摔             综合 0.180  追住 0/2 趟  平均   3.64 米  落后   5.40 米  最近  2.00 米  正前方   7%  静球到了 0/1 趟  走了  3.34 米  路 motor  本机 82 秒
+  229  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.41 米  落后   4.69 米  最近  2.28 米  正前方  37%  静球到了 0/1 趟  走了  1.27 米  路 motor 对调  本机 83 秒
+  230  没摔             综合 0.245  追住 0/2 趟  平均   3.18 米  落后   4.38 米  最近  2.25 米  正前方  99%  静球到了 0/1 趟  走了  0.58 米  路 motor 对调  本机 84 秒
+  231  没摔             综合 0.220  追住 0/2 趟  平均   4.40 米  落后   7.27 米  最近  1.15 米  正前方   7%  静球到了 0/1 趟  走了  5.42 米  路 orient  本机 84 秒
+  232  没摔             综合 0.245  追住 0/2 趟  平均   3.29 米  落后   4.51 米  最近  2.47 米  正前方  98%  静球到了 0/1 趟  走了  0.79 米  路 motor 对调  本机 110 秒
+  233  没摔             综合 0.543  追住 1/2 趟  平均   1.45 米  落后   2.40 米  最近  0.03 米  正前方  38%  静球到了 1/1 趟  走了  3.60 米  路 motor 对调  本机 108 秒
+  234  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.49 米  落后   4.92 米  最近  1.67 米  正前方  54%  静球到了 0/1 趟  走了  1.11 米  路 motor 对调  本机 107 秒
+  235  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 1 秒
+  236  没摔             综合 0.387  追住 0/2 趟  平均   1.86 米  落后   2.86 米  最近  0.83 米  正前方 100%  静球到了 1/1 趟  走了  2.98 米  路 motor 对调  本机 84 秒
+  237  没摔             综合 0.287  追住 0/2 趟  平均   2.13 米  落后   3.41 米  最近  0.96 米  正前方  18%  静球到了 1/1 趟  走了  2.76 米  路 motor 对调  本机 84 秒
+  238  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  239  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.84 米  落后   5.02 米  最近  2.48 米  正前方  67%  静球到了 0/1 趟  走了  0.80 米  路 motor 对调  本机 109 秒
+  240  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  241  没摔             综合 0.230  追住 0/2 趟  平均   2.63 米  落后   3.37 米  最近  1.50 米  正前方  53%  静球到了 0/1 趟  走了  1.84 米  路 motor 对调  本机 108 秒
+  242  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.25 米  落后   5.81 米  最近  2.45 米  正前方  86%  静球到了 0/1 趟  走了  0.44 米  路 motor 对调  本机 109 秒
+  243  没摔             综合 0.253  追住 0/2 趟  平均   3.72 米  落后   5.06 米  最近  2.46 米  正前方 100%  静球到了 0/1 趟  走了  0.29 米  路 motor 对调  本机 111 秒
+  244  没摔             综合 0.411  追住 0/2 趟  平均   1.75 米  落后   2.69 米  最近  0.34 米  正前方 100%  静球到了 1/1 趟  走了  2.89 米  路 motor 对调  本机 109 秒
+  245  没摔             综合 0.250  追住 0/2 趟  平均   3.76 米  落后   5.08 米  最近  2.50 米  正前方  51%  静球到了 1/1 趟  走了  2.11 米  路 motor 对调  本机 109 秒
+  246  没摔             综合 0.268  追住 0/2 趟  平均   2.91 米  落后   4.16 米  最近  1.78 米  正前方  99%  静球到了 0/1 趟  走了  1.83 米  路 motor 对调  本机 84 秒
+  247  没摔             综合 0.205  追住 0/2 趟  平均   4.41 米  落后   6.77 米  最近  1.73 米  正前方   6%  静球到了 0/1 趟  走了  3.36 米  路 motor  本机 109 秒
+  248  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  249  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   5.19 米  落后   7.12 米  最近  1.43 米  正前方  67%  静球到了 1/1 趟  走了  5.94 米  路 motor  本机 81 秒
+  250  没摔             综合 0.406  追住 0/2 趟  平均   1.59 米  落后   1.97 米  最近  0.41 米  正前方  92%  静球到了 0/1 趟  走了  2.81 米  路 motor 对调  本机 84 秒
+  251  没摔             综合 0.233  追住 0/2 趟  平均   3.88 米  落后   5.21 米  最近  2.48 米  正前方 100%  静球到了 0/1 趟  走了  0.09 米  路 motor 对调  本机 85 秒
+  252  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  253  没摔             综合 0.172  追住 0/2 趟  平均   3.53 米  落后   5.03 米  最近  2.12 米  正前方   6%  静球到了 0/1 趟  走了  2.92 米  路 motor  本机 86 秒
+  254  没摔             综合 0.274  追住 0/2 趟  平均   3.63 米  落后   6.12 米  最近  1.32 米  正前方   8%  静球到了 1/1 趟  走了  3.77 米  路 orient 对调  本机 108 秒
+  255  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  256  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.88 米  落后   5.55 米  最近  2.49 米  正前方  54%  静球到了 0/1 趟  走了  1.03 米  路 motor 对调  本机 109 秒
+  257  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.04 米  落后   5.46 米  最近  2.45 米  正前方  24%  静球到了 0/1 趟  走了  0.29 米  路 motor 对调  本机 109 秒
+  258  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.61 米  落后   5.08 米  最近  2.21 米  正前方  56%  静球到了 0/1 趟  走了  0.51 米  路 motor 对调  本机 85 秒
+  259  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.52 米  落后   6.35 米  最近  2.28 米  正前方  11%  静球到了 0/1 趟  走了  2.13 米  路 motor 对调  本机 83 秒
+  260  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.85 米  落后   5.25 米  最近  2.46 米  正前方  51%  静球到了 0/1 趟  走了  0.59 米  路 motor 对调  本机 84 秒
+  261  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.49 米  落后   4.35 米  最近  2.25 米  正前方  60%  静球到了 0/1 趟  走了  0.89 米  路 motor 对调  本机 86 秒
+  262  没摔             综合 0.328  追住 0/2 趟  平均   1.65 米  落后   3.00 米  最近  0.12 米  正前方  17%  静球到了 1/1 趟  走了  3.63 米  路 motor 对调  本机 84 秒
+  263  没摔             综合 0.456  追住 0/2 趟  平均   1.50 米  落后   1.84 米  最近  0.70 米  正前方  84%  静球到了 1/1 趟  走了  2.53 米  路 motor 对调  本机 86 秒
+  264  没摔             综合 0.321  追住 0/2 趟  平均   2.06 米  落后   3.96 米  最近  0.40 米  正前方  19%  静球到了 1/1 趟  走了  3.49 米  路 motor 对调  本机 84 秒
+  265  没摔             综合 0.162  追住 0/2 趟  平均   3.73 米  落后   5.27 米  最近  2.31 米  正前方   3%  静球到了 0/1 趟  走了  2.56 米  路 orient 对调  本机 82 秒
+  266  没摔             综合 0.252  追住 0/2 趟  平均   2.67 米  落后   3.97 米  最近  1.64 米  正前方   8%  静球到了 1/1 趟  走了  2.51 米  路 orient 对调  本机 82 秒
+  267  没摔             综合 0.317  追住 0/2 趟  平均   2.21 米  落后   3.97 米  最近  0.28 米  正前方  14%  静球到了 1/1 趟  走了  3.67 米  路 motor 对调  本机 84 秒
+  268  没摔             综合 0.289  追住 0/2 趟  平均   4.99 米  落后   8.75 米  最近  0.96 米  正前方   8%  静球到了 1/1 趟  走了  6.47 米  路 motor 对调  本机 84 秒
+  269  没摔             综合 0.419  追住 0/2 趟  平均   1.40 米  落后   1.75 米  最近  0.47 米  正前方  47%  静球到了 1/1 趟  走了  3.02 米  路 motor 对调  本机 82 秒
+  270  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 2 秒
+  271  没摔             综合 0.682  追住 1/2 趟  平均   1.29 米  落后   1.40 米  最近  0.35 米  正前方  97%  静球到了 1/1 趟  走了  2.58 米  路 motor 对调  本机 82 秒
+  272  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.31 米  落后   4.59 米  最近  1.82 米  正前方  10%  静球到了 0/1 趟  走了  3.81 米  路 motor 对调  本机 110 秒
+  273  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor 对调  本机 1 秒
+  274  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.51 米  落后   5.00 米  最近  2.20 米  正前方   5%  静球到了 0/1 趟  走了  1.45 米  路 motor 对调  本机 110 秒
+  275  没摔             综合 0.124  追住 0/2 趟  平均   4.74 米  落后   6.19 米  最近  2.50 米  正前方   2%  静球到了 0/1 趟  走了  0.93 米  路 motor  本机 107 秒
+  276  没摔             综合 0.370  追住 0/2 趟  平均   2.32 米  落后   3.50 米  最近  0.76 米  正前方 100%  静球到了 1/1 趟  走了  2.19 米  路 motor 对调  本机 109 秒
+  277  没摔             综合 0.203  追住 0/2 趟  平均   3.28 米  落后   5.08 米  最近  1.72 米  正前方   7%  静球到了 0/1 趟  走了  3.40 米  路 orient 对调  本机 110 秒
+  278  没摔             综合 0.315  追住 0/2 趟  平均   2.21 米  落后   3.87 米  最近  0.33 米  正前方  13%  静球到了 1/1 趟  走了  3.58 米  路 motor 对调  本机 110 秒
+  279  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 1 秒
+  280  没摔             综合 0.322  追住 0/2 趟  平均   2.25 米  落后   3.61 米  最近  0.26 米  正前方  16%  静球到了 1/1 趟  走了  3.67 米  路 motor 对调  本机 109 秒
+  281  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.99 米  落后   5.28 米  最近  2.48 米  正前方   3%  静球到了 0/1 趟  走了  0.93 米  路 motor  本机 108 秒
+  282  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.81 米  落后   5.28 米  最近  2.50 米  正前方  42%  静球到了 0/1 趟  走了  0.14 米  路 motor 对调  本机 108 秒
+  283  没摔             综合 0.178  追住 0/2 趟  平均   3.97 米  落后   5.90 米  最近  2.37 米  正前方   4%  静球到了 0/1 趟  走了  1.82 米  路 motor  本机 108 秒
+  284  没摔             综合 0.250  追住 0/2 趟  平均   2.67 米  落后   4.34 米  最近  0.40 米  正前方  14%  静球到了 0/1 趟  走了  3.07 米  路 orient 对调  本机 106 秒
+  285  没摔             综合 0.305  追住 0/2 趟  平均   1.94 米  落后   2.43 米  最近  1.13 米  正前方  30%  静球到了 1/1 趟  走了  2.95 米  路 motor 对调  本机 103 秒
+  286  没摔             综合 0.113  追住 0/2 趟  平均   4.57 米  落后   6.07 米  最近  2.50 米  正前方   6%  静球到了 0/1 趟  走了  1.59 米  路 motor  本机 103 秒
+  287  没摔             综合 0.106  追住 0/2 趟  平均   4.15 米  落后   5.79 米  最近  2.46 米  正前方   5%  静球到了 0/1 趟  走了  1.27 米  路 motor  本机 84 秒
+  288  没摔             综合 0.303  追住 0/2 趟  平均   4.27 米  落后   5.78 米  最近  1.71 米  正前方  52%  静球到了 1/1 趟  走了  5.74 米  路 motor 对调  本机 82 秒
+  289  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 motor  本机 2 秒
+  290  没摔             综合 0.645  追住 1/2 趟  平均   1.17 米  落后   1.41 米  最近  0.37 米  正前方  72%  静球到了 1/1 趟  走了  2.77 米  路 motor 对调  本机 73 秒
+  291  没摔             综合 0.234  追住 0/2 趟  平均   3.83 米  落后   5.22 米  最近  2.49 米  正前方 100%  静球到了 0/1 趟  走了  0.09 米  路 motor 对调  本机 73 秒
+  292  没摔             综合 0.300  追住 0/2 趟  平均   2.12 米  落后   3.90 米  最近  0.63 米  正前方   9%  静球到了 1/1 趟  走了  3.80 米  路 motor 对调  本机 77 秒
+  293  没摔             综合 0.337  追住 0/2 趟  平均   1.58 米  落后   2.92 米  最近  0.24 米  正前方  27%  静球到了 1/1 趟  走了  3.03 米  路 motor 对调  本机 76 秒
+  294  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.09 米  落后   4.28 米  最近  1.80 米  正前方  62%  静球到了 0/1 趟  走了  1.50 米  路 motor 对调  本机 77 秒
+  295  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   2.60 米  落后   3.96 米  最近  0.90 米  正前方  11%  静球到了 1/1 趟  走了  4.59 米  路 motor 对调  本机 76 秒
+  296  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   3.86 米  落后   5.36 米  最近  2.49 米  正前方  58%  静球到了 0/1 趟  走了  0.16 米  路 motor 对调  本机 69 秒
+  297  没摔             综合 0.169  追住 0/2 趟  平均   2.94 米  落后   4.17 米  最近  1.81 米  正前方   8%  静球到了 0/1 趟  走了  2.82 米  路 orient 对调  本机 73 秒
+  298  倒了/没建出来        综合 -1.000  追住 0/2 趟  平均   4.21 米  落后   5.96 米  最近  2.19 米  正前方  55%  静球到了 0/1 趟  走了  2.51 米  路 motor 对调  本机 72 秒
+  299  没摔             综合 0.216  追住 0/2 趟  平均   3.45 米  落后   5.44 米  最近  1.29 米  正前方   9%  静球到了 0/1 趟  走了  3.63 米  路 orient 对调  本机 56 秒
+第 0 代收工：300 只里建出来 261 只（没摔 193）；真追住球的 30 只，两边都追住的 9 只（球挪走行为会变的 250 只）；追得最好那只落后 1.04 米、球在正前方  99% 的时间、最近贴到 0.09 米；本代花了 18.4 分钟
+  这一代自己走出来的、真追住球的 30 只，其中两边都追住的 9 只
+  下一代的爹 10 只（artifacts/追球_云_六批_g00_keep.jsonl）：第121只 追住2/2趟 落后1.04米、第107只 追住2/2趟 落后1.22米、第60只 追住2/2趟 落后1.26米、第34只 追住2/2趟 落后1.14米、第210只 追住2/2趟 落后1.20米、第202只 追住2/2趟 落后1.17米、第152只 追住2/2趟 落后1.02米、第222只 追住2/2趟 落后1.20米、第93只 追住2/2趟 落后1.13米、第1只 追住1/2趟 落后1.28米
+  这一代球速 0.173 米/秒（每代 +0.003，上限 0.200）
+  融合爹：综合分最高的 8 只平均成一只（第121只、第107只、第60只、第34只、第210只、第202只、第152只、第222只）
+第 1 代：生 300 只（其中 50% 从融合爹变异来）、每只考 1 趟不动球（位置随机、每趟 6 秒）+ 2 趟追着跑的球（每趟 20 秒、球 0.173 米/秒沿随机曲线逃）+ 1 趟没球对照、24 个进程
+    0  倒了/没建出来        综合 -1.000  追住 0/0 趟  平均    nan 米  落后    nan 米  最近   nan 米  正前方   0%  静球到了 0/0 趟  走了   nan 米  路 orient 对调  本机 2 秒
