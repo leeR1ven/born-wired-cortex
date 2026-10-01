@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#37474f"/></marker></defs>
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="34" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">一拍 20 毫秒里，依次发生这十件事</text>
+  <text x="480" y="56" font-size="13" text-anchor="middle" fill="#607d8b">顺序很重要：如果把第 10 步（学习）挪到最前面，它就会用"还没算出来的活动"去改权重</text>
+
+  <g font-size="13">
+    <rect x="60" y="86" width="380" height="44" rx="6" fill="#f1f8e9" stroke="#558b2f"/><text x="80" y="114" fill="#33691e">1　感觉接口把世界变成一团细胞亮度</text>
+    <rect x="60" y="140" width="380" height="44" rx="6" fill="#ffebee" stroke="#c62828"/><text x="80" y="168" fill="#b71c1c">2　结算这一拍抑制细胞送出的电流</text>
+    <rect x="60" y="194" width="380" height="44" rx="6" fill="#e8eaf6" stroke="#3949ab"/><text x="80" y="222" fill="#1a237e">3　每个细胞：够 1.0 且没被压住 → 亮</text>
+    <rect x="60" y="248" width="380" height="44" rx="6" fill="#fff8e1" stroke="#f9a825"/><text x="80" y="276" fill="#e65100">4　前处理网络走一遍（出生固定权重，不学习）</text>
+    <rect x="60" y="302" width="380" height="44" rx="6" fill="#ede7f6" stroke="#5e35b1"/><text x="80" y="330" fill="#311b92">5　七路汇入前额叶；新编码"加"到在跑的编码上</text>
+    <rect x="60" y="356" width="380" height="44" rx="6" fill="#fce4ec" stroke="#ad1457"/><text x="80" y="384" fill="#880e4f">6　返回线按各区峰值 40% 送回（身体三区跳过）</text>
+  </g>
+  <line x1="440" y1="378" x2="470" y2="378" stroke="#37474f" stroke-width="2"/>
+
+  <g font-size="13">
+    <rect x="60" y="410" width="380" height="44" rx="6" fill="#e0f7fa" stroke="#00838f"/><text x="80" y="438" fill="#006064">7　运动区：亮的个数 → 力气 → 16 个目标角度</text>
+    <rect x="60" y="464" width="380" height="44" rx="6" fill="#fce4ec" stroke="#ad1457"/><text x="80" y="492" fill="#880e4f">8　物理跑 10 个 2 毫秒子步</text>
+    <rect x="60" y="518" width="380" height="44" rx="6" fill="#fff3e0" stroke="#ef6c00"/><text x="80" y="546" fill="#e65100">9　时间环走一格；三个记忆区挂上 / 放出这一帧</text>
+    <rect x="60" y="572" width="380" height="44" rx="6" fill="#f3e5f5" stroke="#7b1fa2"/><text x="80" y="600" fill="#4a148c">10　学习规则在"活跃细胞牵连到的边"上更新一次</text>
+  </g>
+
+  <!-- right panel -->
+  <rect x="500" y="86" width="420" height="250" rx="8" fill="#fafafa" stroke="#90a4ae"/>
+  <text x="520" y="112" font-size="14" font-weight="bold" fill="#263238">三条和"顺序"有关的重要性质</text>
+  <text x="520" y="142" font-size="13" fill="#37474f">· 刺激只发令，皮层跑完</text>
+  <text x="536" y="162" font-size="12" fill="#607d8b">一个动作被点着一次之后，自己跑下去</text>
+  <text x="520" y="192" font-size="13" fill="#37474f">· 没有单独的推理步骤</text>
+  <text x="536" y="212" font-size="12" fill="#607d8b">下一拍是什么，完全由权重和到达胞体的电流决定</text>
+  <text x="520" y="242" font-size="13" fill="#37474f">· 两条本能可以各自不够、合起来才够</text>
+  <text x="536" y="262" font-size="12" fill="#607d8b">各区的电流全加起来过阈值（线性求和，不是"与门"）</text>
+  <text x="520" y="300" font-size="12" fill="#c62828">注意：这里的"1.0"和"20 毫秒"是两个基本常数</text>
+  <text x="520" y="320" font-size="12" fill="#c62828">整本书里所有时间都换算成"拍"，所有电流都和 1.0 比</text>
+
+  <rect x="500" y="352" width="420" height="264" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="520" y="378" font-size="14" font-weight="bold" fill="#263238">稀疏执行：为什么它能跑得动</text>
+  <text x="520" y="406" font-size="13" fill="#37474f">不亮的细胞不算。方程完全一样，只走</text>
+  <text x="520" y="426" font-size="13" fill="#37474f">"这一拍活跃细胞牵连到的那些边"。</text>
+  <text x="520" y="456" font-size="13" fill="#2e7d32">抑制更新：每拍碰 2,760 万根 → 只碰活跃的</text>
+  <text x="520" y="478" font-size="13" fill="#2e7d32">某一步 554 毫秒 → 16 毫秒，而且逐位等价</text>
+  <text x="520" y="510" font-size="13" fill="#c62828">它不是近似加速——是和全量版一模一样的结果。</text>
+  <text x="520" y="540" font-size="13" fill="#37474f">所以成本跟着"这一拍亮了多少细胞"走，</text>
+  <text x="520" y="560" font-size="13" fill="#37474f">不跟着"网有多大"走（细胞 10 万→80 万，只多 1.06 倍）。</text>
+  <text x="520" y="594" font-size="12" fill="#607d8b">第 29 卷有完整的规模与耗时表。</text>
+</svg>

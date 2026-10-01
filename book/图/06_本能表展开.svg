@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#37474f"/></marker></defs>
+  <rect width="960" height="600" fill="#ffffff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">本能表：人能读懂的一行字，变成一整条会自己跑的动作</text>
+  <text x="480" y="54" font-size="13" text-anchor="middle" fill="#607d8b">585 条规则 · 展开成 309,148 根兴奋突触 + 6,857 根抑制突触 · 表里没有任何一条 if</text>
+
+  <text x="40" y="88" font-size="14" font-weight="bold" fill="#263238">① 表长这样（model/本能表.txt，686 行含注释）</text>
+  <rect x="40" y="100" width="560" height="106" rx="8" fill="#263238"/>
+  <text x="60" y="126" font-size="13" fill="#b0bec5"># 源 -> 目标  力度  固化</text>
+  <text x="60" y="150" font-size="13" fill="#a5d6a7">视觉:红            -> 运动:肌肉组0        2.0    是</text>
+  <text x="60" y="172" font-size="13" fill="#a5d6a7">视觉:红            -> 运动:肌肉组1        2.0    是</text>
+  <text x="60" y="194" font-size="13" fill="#ef9a9a">平衡:倾斜         -> 平衡:反向力矩       -4.5    是</text>
+
+  <rect x="620" y="100" width="300" height="106" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="640" y="124" font-size="12" font-weight="bold" fill="#263238">"力度"是什么</text>
+  <text x="640" y="146" font-size="11" fill="#37474f">源整块亮起来时，每个目标</text>
+  <text x="640" y="164" font-size="11" fill="#37474f">细胞一共收到多少电流</text>
+  <text x="640" y="184" font-size="11" fill="#2e7d32">2.0 ＞ 阈值 1.0 → 整块亮就必放电</text>
+  <text x="640" y="200" font-size="11" fill="#c62828">零散亮 → 加起来不够 → 不动</text>
+
+  <text x="40" y="238" font-size="14" font-weight="bold" fill="#263238">② 两种展开方式</text>
+
+  <rect x="40" y="250" width="420" height="150" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="60" y="274" font-size="13" font-weight="bold" fill="#1b5e20">普通规则：直接展开</text>
+  <text x="60" y="300" font-size="12" fill="#37474f">一行 → 一批突触，力度均分到每一根</text>
+  <text x="60" y="324" font-size="12" fill="#37474f">负数 → 借用抑制池里的一个细胞</text>
+  <text x="60" y="348" font-size="12" fill="#c62828">（网里没有一根负权重；−4.5 只是记号）</text>
+  <text x="60" y="376" font-size="12" fill="#37474f">加载时就展开，不是运行时现算</text>
+
+  <rect x="480" y="250" width="440" height="150" rx="8" fill="#ede7f6" stroke="#5e35b1"/>
+  <text x="500" y="274" font-size="13" font-weight="bold" fill="#311b92">动作库那 221 条：展开成一条时间链</text>
+  <text x="500" y="300" font-size="12" fill="#37474f">① 时间细胞互相串链（第 1 拍 → 第 2 拍 → …）</text>
+  <text x="500" y="322" font-size="12" fill="#37474f">② 每个时间细胞接它那一拍该动的肌肉</text>
+  <text x="500" y="344" font-size="12" fill="#37474f">③ 每个时间细胞下一拍自抑（一拍只走一格，不回头）</text>
+  <text x="500" y="366" font-size="12" fill="#37474f">④ 中间的时间细胞压住第一个（不许从头再来）</text>
+  <text x="500" y="390" font-size="12" fill="#c62828">→ 点亮一个细胞，就执行整套动作</text>
+
+  <!-- time chain -->
+  <text x="40" y="436" font-size="14" font-weight="bold" fill="#263238">③ 一条动作链长什么样</text>
+  <g font-size="11">
+    <rect x="40" y="452" width="86" height="46" rx="6" fill="#d1c4e9" stroke="#5e35b1"/><text x="83" y="472" text-anchor="middle" fill="#311b92">第 1 拍</text><text x="83" y="490" text-anchor="middle" fill="#607d8b">→ 抬前腿</text>
+    <rect x="150" y="452" width="86" height="46" rx="6" fill="#d1c4e9" stroke="#5e35b1"/><text x="193" y="472" text-anchor="middle" fill="#311b92">第 2 拍</text><text x="193" y="490" text-anchor="middle" fill="#607d8b">→ 收前腿</text>
+    <rect x="260" y="452" width="86" height="46" rx="6" fill="#d1c4e9" stroke="#5e35b1"/><text x="303" y="472" text-anchor="middle" fill="#311b92">第 3 拍</text><text x="303" y="490" text-anchor="middle" fill="#607d8b">→ 抬后腿</text>
+    <rect x="370" y="452" width="86" height="46" rx="6" fill="#d1c4e9" stroke="#5e35b1"/><text x="413" y="472" text-anchor="middle" fill="#311b92">第 4 拍</text><text x="413" y="490" text-anchor="middle" fill="#607d8b">→ 收后腿</text>
+    <rect x="480" y="452" width="86" height="46" rx="6" fill="#d1c4e9" stroke="#5e35b1"/><text x="523" y="472" text-anchor="middle" fill="#311b92">第 5 拍</text><text x="523" y="490" text-anchor="middle" fill="#607d8b">→ 回到 1</text>
+  </g>
+  <line x1="126" y1="475" x2="146" y2="475" stroke="#37474f" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="236" y1="475" x2="256" y2="475" stroke="#37474f" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="346" y1="475" x2="366" y2="475" stroke="#37474f" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="456" y1="475" x2="476" y2="475" stroke="#37474f" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M566,475 C610,475 610,500 523,500" fill="none" stroke="#2e7d32" stroke-width="2" marker-end="url(#a)"/>
+  <text x="612" y="470" font-size="12" fill="#2e7d32">自己转下去</text>
+  <text x="612" y="490" font-size="12" fill="#2e7d32">（刺激只发令，皮层跑完）</text>
+
+  <rect x="40" y="520" width="880" height="66" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="60" y="544" font-size="13" font-weight="bold" fill="#e65100">三条性质（对全书解释都很重要）</text>
+  <text x="60" y="566" font-size="12" fill="#37474f">① 本能是"写"出来的，不是"学"出来的：写表的人就是基因组；动作库是从另训的强化学习策略里蒸馏的——发生在出生之前</text>
+  <text x="60" y="582" font-size="12" fill="#c62828">② 没有任何一条规则是 if（动作选择是运动记忆细胞体上的电流竞争）　③ 抑制由细胞做，绝不用负权重</text>
+</svg>

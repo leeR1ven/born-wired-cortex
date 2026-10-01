@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#37474f"/></marker></defs>
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">唯一的学习规则：三条更新 + 四个护栏 + 一张许可证</text>
+  <text x="480" y="54" font-size="13" text-anchor="middle" fill="#607d8b">它只看"上一拍亮的细胞"和"这一拍亮的细胞"——永远看不到奖励、目标或误差</text>
+
+  <text x="40" y="86" font-size="14" font-weight="bold" fill="#263238">三条更新</text>
+  <rect x="40" y="98" width="280" height="78" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="60" y="122" font-size="13" fill="#1b5e20">① 一起亮（顺序对）</text>
+  <text x="60" y="146" font-size="13" fill="#37474f">w ← w + η · m · (1 − w)</text>
+  <text x="60" y="166" font-size="11" fill="#607d8b">涨得越来越慢，逼近 1 就停</text>
+
+  <rect x="336" y="98" width="280" height="78" rx="8" fill="#ffebee" stroke="#c62828"/>
+  <text x="356" y="122" font-size="13" fill="#b71c1c">② 亮了但没带亮对方</text>
+  <text x="356" y="146" font-size="13" fill="#37474f">w ← w · (1 − (1 − d) · m)</text>
+  <text x="356" y="166" font-size="11" fill="#607d8b">每拍掉 0.5%（d = 0.995）</text>
+
+  <rect x="632" y="98" width="288" height="78" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="652" y="122" font-size="13" fill="#0d47a1">③ 反复一起亮过、本来没连接</text>
+  <text x="652" y="146" font-size="13" fill="#37474f">第 4 次见到 → 以 0.001 建立</text>
+  <text x="652" y="166" font-size="11" fill="#607d8b">之后走 ① 那条同一条规则</text>
+
+  <text x="40" y="212" font-size="14" font-weight="bold" fill="#263238">四个护栏（每一个都对应一种"不装就会坏"）</text>
+  <rect x="40" y="224" width="212" height="92" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="60" y="248" font-size="13" font-weight="bold" fill="#e65100">上界（天花板）</text>
+  <text x="60" y="272" font-size="11" fill="#37474f">w 越接近 1，加得越少</text>
+  <text x="60" y="292" font-size="11" fill="#c62828">不装 → 反复用会一路涨满</text>
+  <text x="60" y="308" font-size="11" fill="#607d8b">就是 (1 − w) 这一项</text>
+
+  <rect x="266" y="224" width="212" height="92" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="286" y="248" font-size="13" font-weight="bold" fill="#1b5e20">下界 + 系绳</text>
+  <text x="286" y="272" font-size="11" fill="#37474f">掉到"出生权重"就停</text>
+  <text x="286" y="292" font-size="11" fill="#2e7d32">这就是"很少用也不一直掉"</text>
+  <text x="286" y="308" font-size="11" fill="#607d8b">锚点 = 出生时的那根权重</text>
+
+  <rect x="492" y="224" width="212" height="92" rx="8" fill="#fce4ec" stroke="#ad1457"/>
+  <text x="512" y="248" font-size="13" font-weight="bold" fill="#880e4f">两个预算</text>
+  <text x="512" y="272" font-size="11" fill="#37474f">每拍最多考察 4,000 对</text>
+  <text x="512" y="292" font-size="11" fill="#37474f">每拍最多新建 200 根</text>
+  <text x="512" y="308" font-size="11" fill="#c62828">不装 → 一拍写爆，人群塌到自己身上</text>
+
+  <rect x="718" y="224" width="202" height="92" rx="8" fill="#ede7f6" stroke="#5e35b1"/>
+  <text x="738" y="248" font-size="13" font-weight="bold" fill="#311b92">冻结</text>
+  <text x="738" y="272" font-size="11" fill="#37474f">标了"不许改"的边免疫</text>
+  <text x="738" y="292" font-size="11" fill="#37474f">30% 的兴奋边、本能表里标"是"的</text>
+  <text x="738" y="308" font-size="11" fill="#c62828">不装 → 骨架被慢慢磨掉</text>
+
+  <text x="40" y="352" font-size="14" font-weight="bold" fill="#263238">一张许可证：多巴胺（不是奖励函数）</text>
+  <rect x="40" y="364" width="420" height="196" rx="8" fill="#f3e5f5" stroke="#7b1fa2"/>
+  <text x="60" y="388" font-size="13" fill="#4a148c">它一亮，就把"上一拍亮 → 这一拍才亮"的连接当拍写下来</text>
+  <text x="60" y="414" font-size="12" fill="#37474f">它是什么：一个细胞群亮起来 = "这一刻算数，写"</text>
+  <text x="60" y="438" font-size="12" fill="#c62828">它不是什么：不计算好坏、不知道目标、不比较、不打分</text>
+  <text x="60" y="462" font-size="12" fill="#c62828">它只能加强"它真的做了的事"</text>
+  <text x="60" y="492" font-size="12" font-weight="bold" fill="#37474f">三个约束（每个都是被翻车逼出来的）</text>
+  <text x="60" y="514" font-size="12" fill="#37474f">① 两拍都亮的细胞要排除（否则 60 拍写 115 万根，人群塌掉）</text>
+  <text x="60" y="534" font-size="12" fill="#37474f">② 每目标最多 8 个源、总驱动固定 0.50 均分（否则有目标收到 300，走路只要 0.85）</text>
+  <text x="60" y="554" font-size="12" fill="#37474f">③ 快速路也要乘该区的 m（否则 200 拍往运动区写 26 万根，步态散架）</text>
+
+  <rect x="480" y="364" width="440" height="196" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="500" y="388" font-size="13" font-weight="bold" fill="#263238">三个读数：权重到底在干什么（论文 R20）</text>
+  <text x="500" y="414" font-size="12" fill="#37474f">可动的边一共 1,978,225 根</text>
+  <text x="500" y="440" font-size="12" fill="#37474f">60 秒：上升 624,843 ／ 下降 728,710</text>
+  <text x="500" y="460" font-size="12" fill="#37474f">300 秒：上升 652,178 ／ 下降 710,091</text>
+  <text x="500" y="484" font-size="12" fill="#37474f">最大上升 +0.0960 ／ 最大下降 −0.0253</text>
+  <text x="500" y="512" font-size="12" fill="#2e7d32">结论：不是在"滑走"，是在"沉降"——两边互相抵消</text>
+  <text x="500" y="534" font-size="12" fill="#37474f">教学路线静默 10 分钟：保住 97.5%，权重反而涨</text>
+  <text x="500" y="554" font-size="12" fill="#37474f">一直按着做：停在天花板 1.500，不再涨</text>
+
+  <text x="480" y="576" font-size="12" text-anchor="middle" fill="#c62828">铁律：稳定性是"更新规则"的性质，不是"衰减项"的性质——全系统不该有"网太强就整体压低"这种项</text>
+</svg>

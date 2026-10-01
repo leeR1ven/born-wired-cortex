@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="610" viewBox="0 0 960 610" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#1565c0"/></marker></defs>
+  <rect width="960" height="610" fill="#ffffff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">两个脑合成一个：两只动物会的本事，能不能合成一只</text>
+  <text x="480" y="54" font-size="13" text-anchor="middle" fill="#607d8b">一句话：不冲突的能加；冲突的会互相抵消</text>
+
+  <rect x="60" y="86" width="215" height="56" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="167" y="110" font-size="13" font-weight="bold" text-anchor="middle" fill="#0d47a1">A 脑：会第一课</text>
+  <text x="167" y="130" font-size="11" text-anchor="middle" fill="#607d8b">学出来的本事 = 权重</text>
+  <rect x="60" y="154" width="215" height="56" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="167" y="178" font-size="13" font-weight="bold" text-anchor="middle" fill="#0d47a1">B 脑：会第二课</text>
+  <text x="167" y="198" font-size="11" text-anchor="middle" fill="#607d8b">学出来的本事 = 权重</text>
+  <line x1="277" y1="148" x2="316" y2="148" stroke="#1565c0" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="320" y="98" width="300" height="100" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="470" y="124" font-size="13" font-weight="bold" text-anchor="middle" fill="#1b5e20">把两边的权重混起来</text>
+  <text x="340" y="148" font-size="12" fill="#37474f">每个数字随 A：40%</text>
+  <text x="340" y="168" font-size="12" fill="#37474f">每个数字随 B：40%</text>
+  <text x="340" y="188" font-size="12" fill="#37474f">每个数字取两者平均：20% ｜ 之后再随机改一点</text>
+  <line x1="622" y1="148" x2="661" y2="148" stroke="#1565c0" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="665" y="98" width="235" height="100" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="782" y="130" font-size="13" font-weight="bold" text-anchor="middle" fill="#e65100">A+B：两个都会</text>
+  <text x="782" y="156" font-size="11" text-anchor="middle" fill="#607d8b">不用把两节课重训一遍</text>
+  <text x="782" y="176" font-size="11" text-anchor="middle" fill="#607d8b">融合不一定要两两做：一大堆也能一起合</text>
+
+  <rect x="40" y="222" width="550" height="152" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="60" y="246" font-size="13" font-weight="bold" fill="#263238">① 一个干净的实验（论文 R18）：17 个细胞的图</text>
+  <text x="60" y="270" font-size="12" fill="#37474f">第一节课：教提示一 → 改了 <tspan font-weight="bold">5 条边</tspan></text>
+  <text x="60" y="290" font-size="12" fill="#37474f">第二节课：教提示二 → 也改了 <tspan font-weight="bold">5 条边</tspan></text>
+  <text x="60" y="310" font-size="12" fill="#2e7d32">关键：这 10 条边<tspan font-weight="bold">互不重叠</tspan> —— 两节课没有互相拆台</text>
+  <text x="60" y="332" font-size="12" fill="#2e7d32">平均之后：两个提示<tspan font-weight="bold">都 +1.000</tspan>（5/5 个种子全过）</text>
+  <text x="60" y="356" font-size="12" fill="#37474f">放到身体上：走 <tspan font-weight="bold">0.664 m</tspan>，并且固定支撑 <tspan font-weight="bold">0.787</tspan></text>
+
+  <rect x="606" y="222" width="314" height="152" rx="8" fill="#fce4ec" stroke="#ad1457"/>
+  <text x="626" y="246" font-size="13" font-weight="bold" fill="#880e4f">② 边界（一定要写清）</text>
+  <text x="626" y="270" font-size="12" fill="#c62828">同一个提示，一个教"这样"、一个教"那样"</text>
+  <text x="626" y="292" font-size="12" fill="#c62828">→ 合起来 <tspan font-weight="bold">0.000 ~ 0.001</tspan></text>
+  <text x="626" y="312" font-size="12" fill="#37474f">不是"折中"，是<tspan font-weight="bold">没有答案</tspan></text>
+  <text x="626" y="338" font-size="11" fill="#607d8b">冲突的知识不会自动调和</text>
+  <text x="626" y="358" font-size="11" fill="#607d8b">（它是第 40 卷的可证伪点之一）</text>
+
+  <rect x="40" y="392" width="880" height="96" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="60" y="416" font-size="13" font-weight="bold" fill="#1b5e20">③ 它证明了什么</text>
+  <text x="60" y="440" font-size="12" fill="#37474f">· 学到的知识<tspan font-weight="bold">能搬运</tspan>：能记下来、能搬到另一个脑上、搬完真的会用</text>
+  <text x="60" y="462" font-size="12" fill="#37474f">· 两个能力<tspan font-weight="bold">能叠</tspan>：不需要重训，也不需要在两套网络之间切换</text>
+  <text x="60" y="482" font-size="11" fill="#607d8b">（这就是第 36 卷"大批量训练 + 融合"能成立的原因）</text>
+
+  <rect x="40" y="506" width="880" height="88" rx="8" fill="#ede7f6" stroke="#5e35b1"/>
+  <text x="60" y="530" font-size="13" font-weight="bold" fill="#311b92">④ 它"没"证明什么（别多写一个字）</text>
+  <text x="60" y="554" font-size="12" fill="#c62828">· 没证明"两个互相冲突的想法能被自动调和"</text>
+  <text x="60" y="576" font-size="12" fill="#c62828">· 没证明"合成一定比单脑强"—— 它只保证"两个都会"，不保证"更好"</text>
+</svg>

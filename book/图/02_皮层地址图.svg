@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">皮层是一条走廊：148,032 个门牌号</text>
+  <text x="480" y="56" font-size="13" text-anchor="middle" fill="#607d8b">"区"不是房间，是地址区间——所以"近"就是门牌号相邻（抑制细胞的"就近"靠的就是它）</text>
+
+  <!-- proportional strip -->
+  <text x="40" y="92" font-size="12" font-weight="bold" fill="#37474f">① 按真实比例画的同一条走廊（看一眼就知道谁大谁小）</text>
+  <g stroke="#ffffff" stroke-width="1">
+    <rect x="40.00" y="102" width="136.96" height="34" fill="#7986cb"/>
+    <rect x="176.96" y="102" width="136.96" height="34" fill="#9fa8da"/>
+    <rect x="313.93" y="102" width="11.41" height="34" fill="#5c6bc0"/>
+    <rect x="325.34" y="102" width="178.34" height="34" fill="#66bb6a"/>
+    <rect x="503.68" y="102" width="341.45" height="34" fill="#9575cd"/>
+    <rect x="845.12" y="102" width="0.95" height="34" fill="#26c6da"/>
+    <rect x="846.07" y="102" width="21.26" height="34" fill="#4dd0e1"/>
+    <rect x="867.33" y="102" width="2.85" height="34" fill="#81c784"/>
+    <rect x="870.19" y="102" width="0.71" height="34" fill="#a5d6a7"/>
+    <rect x="870.90" y="102" width="0.36" height="34" fill="#c8e6c9"/>
+    <rect x="871.26" y="102" width="1.19" height="34" fill="#ffb74d"/>
+    <rect x="872.45" y="102" width="47.56" height="34" fill="#e57373"/>
+  </g>
+  <text x="108" y="124" font-size="12" text-anchor="middle" fill="#ffffff">视觉</text>
+  <text x="245" y="124" font-size="12" text-anchor="middle" fill="#ffffff">视觉细节</text>
+  <text x="414" y="124" font-size="12" text-anchor="middle" fill="#ffffff">听觉</text>
+  <text x="674" y="124" font-size="12" text-anchor="middle" fill="#ffffff">前额叶 57,436</text>
+  <text x="896" y="124" font-size="11" text-anchor="middle" fill="#ffffff">抑制池</text>
+  <text x="40" y="152" font-size="12" fill="#c62828">注意最右端：运动区只有 160 个细胞——在这条走廊上不到 1 个像素宽。前额叶一个区就占了 38.8%。</text>
+
+  <!-- readable boxes -->
+  <text x="40" y="186" font-size="12" font-weight="bold" fill="#37474f">② 同一张表，写成能读的宽度（数字是真实细胞数）</text>
+  <g font-size="12">
+    <rect x="40" y="198" width="167" height="56" rx="4" fill="#e8eaf6" stroke="#3949ab"/><text x="123" y="222" text-anchor="middle" fill="#1a237e">视觉</text><text x="123" y="241" text-anchor="middle" fill="#546e7a">23,040</text>
+    <rect x="207" y="198" width="167" height="56" rx="4" fill="#e8eaf6" stroke="#3949ab"/><text x="290" y="222" text-anchor="middle" fill="#1a237e">视觉细节</text><text x="290" y="241" text-anchor="middle" fill="#546e7a">23,040</text>
+    <rect x="374" y="198" width="70" height="56" rx="4" fill="#e8eaf6" stroke="#3949ab"/><text x="409" y="222" text-anchor="middle" fill="#1a237e">视觉运动</text><text x="409" y="241" text-anchor="middle" fill="#546e7a">1,920</text>
+    <rect x="444" y="198" width="160" height="56" rx="4" fill="#e8eaf6" stroke="#3949ab"/><text x="524" y="222" text-anchor="middle" fill="#1a237e">听觉</text><text x="524" y="241" text-anchor="middle" fill="#546e7a">30,000</text>
+    <rect x="604" y="198" width="200" height="56" rx="4" fill="#ede7f6" stroke="#5e35b1"/><text x="704" y="222" text-anchor="middle" fill="#311b92">前额叶</text><text x="704" y="241" text-anchor="middle" fill="#546e7a">57,436</text>
+    <rect x="804" y="198" width="40" height="56" rx="4" fill="#e0f7fa" stroke="#00838f"/><text x="824" y="222" text-anchor="middle" font-size="10" fill="#006064">运动</text><text x="824" y="239" text-anchor="middle" font-size="10" fill="#546e7a">160</text>
+    <rect x="844" y="198" width="76" height="56" rx="4" fill="#e0f7fa" stroke="#00838f"/><text x="882" y="218" text-anchor="middle" font-size="10" fill="#006064">运动记忆</text><text x="882" y="236" text-anchor="middle" font-size="10" fill="#546e7a">3,576</text>
+  </g>
+  <g font-size="12">
+    <rect x="40" y="266" width="180" height="56" rx="4" fill="#f1f8e9" stroke="#558b2f"/><text x="130" y="290" text-anchor="middle" fill="#33691e">本体感觉</text><text x="130" y="309" text-anchor="middle" fill="#546e7a">480</text>
+    <rect x="220" y="266" width="110" height="56" rx="4" fill="#f1f8e9" stroke="#558b2f"/><text x="275" y="290" text-anchor="middle" fill="#33691e">前庭</text><text x="275" y="309" text-anchor="middle" fill="#546e7a">120</text>
+    <rect x="330" y="266" width="110" height="56" rx="4" fill="#f1f8e9" stroke="#558b2f"/><text x="385" y="290" text-anchor="middle" fill="#33691e">身体状态</text><text x="385" y="309" text-anchor="middle" fill="#546e7a">60</text>
+    <rect x="440" y="266" width="120" height="56" rx="4" fill="#fff3e0" stroke="#ef6c00"/><text x="500" y="290" text-anchor="middle" fill="#e65100">多巴胺</text><text x="500" y="309" text-anchor="middle" fill="#546e7a">200</text>
+    <rect x="560" y="266" width="150" height="56" rx="4" fill="#ffebee" stroke="#c62828"/><text x="635" y="290" text-anchor="middle" fill="#b71c1c">抑制池</text><text x="635" y="309" text-anchor="middle" fill="#546e7a">8,000</text>
+    <rect x="710" y="266" width="210" height="56" rx="4" fill="#fafafa" stroke="#90a4ae" stroke-dasharray="5 4"/><text x="815" y="290" text-anchor="middle" fill="#455a64">（这三个身体区</text><text x="815" y="309" text-anchor="middle" fill="#455a64">只被前额叶读，不被写）</text>
+  </g>
+
+  <rect x="40" y="346" width="880" height="128" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="60" y="372" font-size="14" font-weight="bold" fill="#263238">出生时每个细胞的边（背景连接，和本能表无关，由固定种子生成）</text>
+  <text x="60" y="398" font-size="13" fill="#37474f">兴奋：约 100 条 · 一半跨区 · 出生权重 [0, 0.15] · 其中 30% 冻结</text>
+  <text x="60" y="422" font-size="13" fill="#37474f">抑制：约 100 条 · 一半落在 4 个门牌号半径内 · 每根权重固定 1.5，永不改变</text>
+  <text x="60" y="448" font-size="13" fill="#c62828">不接随机兴奋的三个区：运动 / 运动记忆 / 视觉运动　　不发随机兴奋的区：视觉细节</text>
+  <text x="60" y="468" font-size="12" fill="#546e7a">为什么：让"加一个区"不扰动整张网的兴奋 / 抑制平衡</text>
+
+  <text x="40" y="504" font-size="12" fill="#c62828">58 条"出生就定"的规则完整清单见第 16 卷 16.1；每条边怎么生成见第 17 卷。</text>
+  <text x="40" y="528" font-size="12" fill="#546e7a">"不同种子 = 不同的大脑"：同一个种子两次跑出来的权重哈希完全一致；换种子就是换一只动物。</text>
+</svg>

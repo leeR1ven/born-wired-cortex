@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <rect width="960" height="590" fill="#ffffff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">这本书怎么读：同一套东西讲四遍</text>
+  <text x="480" y="54" font-size="13" text-anchor="middle" fill="#607d8b">你不需要一次看懂——每一遍都比上一遍深，看不懂就先跳过去</text>
+  <text x="40" y="86" font-size="13" font-weight="bold" fill="#263238">编 / 卷号（一条向下的路）</text>
+  <text x="580" y="86" font-size="13" font-weight="bold" fill="#263238">三条捷径（按你的目的选一条）</text>
+
+  <rect x="40" y="96" width="520" height="46" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="58" y="116" font-size="13" font-weight="bold" fill="#0d47a1">第一编　整体原理</text>
+  <text x="58" y="134" font-size="11" fill="#37475f">第 0–4 卷　·　第 1 遍：整体是什么</text>
+  <text x="330" y="126" font-size="11" fill="#607d8b">读完：能对着总图说清信号怎么走一圈</text>
+
+  <rect x="40" y="150" width="520" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="58" y="170" font-size="13" font-weight="bold" fill="#1b5e20">第二编　局部原理</text>
+  <text x="58" y="188" font-size="11" fill="#37474f">第 5–15 卷　·　第 2 遍：每个部件为什么存在</text>
+  <text x="330" y="180" font-size="11" fill="#607d8b">读完：能说出"少了它会坏在哪"</text>
+
+  <rect x="40" y="204" width="520" height="46" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="58" y="224" font-size="13" font-weight="bold" fill="#e65100">第三编　整体规则</text>
+  <text x="58" y="242" font-size="11" fill="#37474f">第 16 卷　·　第 3 遍：规则一次列全</text>
+  <text x="330" y="234" font-size="11" fill="#607d8b">读完：手里有一张完整规则清单</text>
+
+  <rect x="40" y="258" width="520" height="46" rx="8" fill="#f3e5f5" stroke="#7b1fa2"/>
+  <text x="58" y="278" font-size="13" font-weight="bold" fill="#4a148c">第四编　局部规则</text>
+  <text x="58" y="296" font-size="11" fill="#37474f">第 17–30 卷　·　第 4 遍：精确到能照抄</text>
+  <text x="330" y="288" font-size="11" fill="#607d8b">读完：能照着抄数字做出来</text>
+
+  <rect x="40" y="312" width="520" height="46" rx="8" fill="#fce4ec" stroke="#ad1457"/>
+  <text x="58" y="332" font-size="13" font-weight="bold" fill="#880e4f">第五编　例子</text>
+  <text x="58" y="350" font-size="11" fill="#37474f">第 31–35 卷　·　换四个世界再走一遍</text>
+  <text x="330" y="342" font-size="11" fill="#607d8b">读完：知道这套方法通用到什么程度</text>
+
+  <rect x="40" y="366" width="520" height="46" rx="8" fill="#ede7f6" stroke="#5e35b1"/>
+  <text x="58" y="386" font-size="13" font-weight="bold" fill="#311b92">第六编　动手与边界</text>
+  <text x="58" y="404" font-size="11" fill="#37474f">第 36–40 卷　·　怎么造 / 怎么不骗自己 / 边界在哪</text>
+  <text x="330" y="396" font-size="11" fill="#607d8b">读完：自己能跑出一代模型</text>
+
+  <rect x="40" y="420" width="520" height="46" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="58" y="440" font-size="13" font-weight="bold" fill="#263238">附录 A–F</text>
+  <text x="58" y="458" font-size="11" fill="#37474f">名词、脚本、环境、坑、论文对照、AI 说明</text>
+  <text x="330" y="450" font-size="11" fill="#607d8b">随时查，不用按顺序读</text>
+
+  <rect x="580" y="96" width="340" height="112" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="598" y="118" font-size="13" font-weight="bold" fill="#0d47a1">路线 A　只想懂原理（不写代码）</text>
+  <text x="598" y="142" font-size="12" fill="#37474f">第一编 → 第二编 → 第三编</text>
+  <text x="598" y="164" font-size="11" fill="#607d8b">目标：能把"为什么不需要奖励函数"</text>
+  <text x="598" y="182" font-size="11" fill="#607d8b">讲给一个外行听明白</text>
+
+  <rect x="580" y="218" width="340" height="112" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="598" y="240" font-size="13" font-weight="bold" fill="#1b5e20">路线 B　想动手做出来</text>
+  <text x="598" y="264" font-size="12" fill="#37474f">第一编 → 第二编 → 第六编（先造一代）</text>
+  <text x="598" y="284" font-size="12" fill="#37474f">→ 回头补第四编的数字</text>
+  <text x="598" y="308" font-size="11" fill="#607d8b">第一次不必全懂；先让它动起来</text>
+
+  <rect x="580" y="340" width="340" height="112" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="598" y="362" font-size="13" font-weight="bold" fill="#e65100">路线 C　想复现论文里的每个数字</text>
+  <text x="598" y="386" font-size="12" fill="#37474f">第三编的"怎么读" ＋ 附录 B</text>
+  <text x="598" y="406" font-size="12" fill="#37474f">＋ 附录 E（论文 → 书 的对照表）</text>
+  <text x="598" y="430" font-size="11" fill="#607d8b">按图索骥，每个数字都能追到日志</text>
+
+  <rect x="40" y="486" width="880" height="86" rx="8" fill="#ffebee" stroke="#c62828"/>
+  <text x="60" y="510" font-size="13" font-weight="bold" fill="#b71c1c">三条红线（全书反复出现，先记住）</text>
+  <text x="60" y="534" font-size="12" fill="#37474f">① 没有奖励函数、没有反向传播、没有目标函数　② 不许代码替神经元做决定　③ 不许手动调连接</text>
+  <text x="60" y="558" font-size="12" fill="#607d8b">违反了任何一条，你就再也说不清"这个行为到底是网络算出来的，还是你写死的"</text>
+</svg>

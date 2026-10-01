@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#7b1fa2"/></marker></defs>
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">前额叶：七路进来，按三条规矩出去</text>
+  <text x="480" y="54" font-size="13" text-anchor="middle" fill="#607d8b">它是"第二级压缩机"；三层里只有输出层在皮层数组里</text>
+
+  <rect x="40" y="98" width="430" height="150" rx="8" fill="#f3e5f5" stroke="#7b1fa2"/>
+  <text x="60" y="122" font-size="13" font-weight="bold" fill="#4a148c">① 七路进（每路先按自己的半宽模糊一下）</text>
+  <text x="60" y="146" font-size="12" fill="#37474f">视觉 10 ／ 听觉 10 ／ 本体 5 ／ 前庭 5 ／ 身体状态 5</text>
+  <text x="60" y="166" font-size="12" fill="#37474f">运动记忆 10 ／ 运动 1（半宽）</text>
+  <text x="60" y="192" font-size="12" fill="#2e7d32">那张"输入路"表是唯一真源：一拍和返回线都读它</text>
+  <text x="60" y="214" font-size="12" fill="#607d8b">所以一个区不可能"只加在一处"</text>
+  <text x="60" y="236" font-size="11" fill="#607d8b">（加一个新区不用重写前额叶：只要接进这张表）</text>
+
+  <rect x="490" y="98" width="430" height="150" rx="8" fill="#ede7f6" stroke="#5e35b1"/>
+  <text x="510" y="122" font-size="13" font-weight="bold" fill="#311b92">② 三层（数都一样大）</text>
+  <text x="510" y="146" font-size="12" fill="#37474f">三层各 57,436 个单元</text>
+  <text x="510" y="166" font-size="12" fill="#37474f">每个单元 21 个固定局部连接；权重 [0, 0.1]</text>
+  <text x="510" y="186" font-size="12" fill="#37474f">隐层阈值 0.55 ／ 输出层阈值 1.2</text>
+  <text x="510" y="210" font-size="12" fill="#c62828">只有输出层在皮层数组里（前两层是它自己的网）</text>
+  <text x="510" y="232" font-size="11" fill="#607d8b">前额叶不归本能表接线</text>
+
+  <rect x="40" y="286" width="880" height="130" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="60" y="310" font-size="13" font-weight="bold" fill="#e65100">③ 返回线：同一张表反着用（同权重、无学习）</text>
+  <text x="60" y="334" font-size="12" fill="#37474f">· 阈值按<tspan font-weight="bold">各区自己峰值的 40%</tspan>（不是全局一个峰）——否则前庭只有 120 个，永远够不着</text>
+  <text x="60" y="356" font-size="12" fill="#37474f">· <tspan font-weight="bold">三个身体区（本体 / 前庭 / 身体状态）只读不写</tspan>：前额叶读它们，但不往它们写</text>
+  <text x="60" y="378" font-size="12" fill="#37474f">· 回"运动记忆"那一路要<tspan font-weight="bold">与正在跑的那套动作取交集</tspan>：返回一个细胞会启动一整套动作，所以这条路只"维持"不"引燃"</text>
+  <text x="60" y="400" font-size="12" fill="#607d8b">· 前额叶内部的命名块头尾成环（7 块、6,566 个突触）；主循环是"<tspan font-weight="bold">加</tspan>"，不是"<tspan font-weight="bold">替换</tspan>"</text>
+
+  <rect x="40" y="440" width="430" height="126" rx="8" fill="#fce4ec" stroke="#ad1457"/>
+  <text x="60" y="464" font-size="13" font-weight="bold" fill="#880e4f">④ 三条规矩是怎么被逼出来的（实测翻车）</text>
+  <text x="60" y="488" font-size="12" fill="#c62828">七区全开 → 三个动作同时挤在运动记忆，第 126 拍摔</text>
+  <text x="60" y="510" font-size="12" fill="#c62828">不取交集 → 站起 0.265 m 又缩回 0.180 m</text>
+  <text x="60" y="532" font-size="12" fill="#2e7d32">取交集之后 → 保持 0.261 m、能走 1.85 m</text>
+  <text x="60" y="554" font-size="11" fill="#607d8b">每一条都不是设计出来的，是撞了墙才加的</text>
+
+  <rect x="490" y="440" width="430" height="126" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="510" y="464" font-size="13" font-weight="bold" fill="#0d47a1">⑤ 两条被明确否掉的提议</text>
+  <text x="510" y="488" font-size="12" fill="#37474f">"汇合细胞 + 长程线"把七区汇总 →<tspan font-weight="bold"> 根本不需要</tspan></text>
+  <text x="510" y="510" font-size="12" fill="#37474f">"海马体索引"给前额叶排序 →<tspan font-weight="bold"> 不需要</tspan></text>
+  <text x="510" y="532" font-size="12" fill="#607d8b">前额叶本身靠赫布连接，自己就有时间顺序</text>
+  <text x="510" y="554" font-size="11" fill="#607d8b">（否掉的理由都要写进书里，不能只写结论）</text>
+</svg>

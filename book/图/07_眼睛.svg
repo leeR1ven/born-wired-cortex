@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#263238">眼睛：把"球在哪儿"变成"往哪边转"</text>
+  <text x="480" y="54" font-size="13" text-anchor="middle" fill="#607d8b">球 → 视网膜 → 特征神经元 → 眼肌细胞 → 眼球；全程由大脑决定，测试里从不关眼动</text>
+
+  <rect x="40" y="98" width="430" height="150" rx="8" fill="#e3f2fd" stroke="#1565c0"/>
+  <text x="60" y="122" font-size="13" font-weight="bold" fill="#0d47a1">① 视网膜：不打弯采样</text>
+  <text x="60" y="146" font-size="12" fill="#37474f">每个细胞直接报自己那片像素的平均值</text>
+  <text x="60" y="166" font-size="12" fill="#37474f">不插值、不重采样、不"把画面掰弯"</text>
+  <text x="60" y="190" font-size="12" fill="#37474f">中央增益 centre_gain = 2.5（中间的细胞更容易亮）</text>
+  <text x="60" y="210" font-size="12" fill="#37474f">1920×1080 画面 → 24×16 马赛克 × 3 通道</text>
+  <text x="60" y="230" font-size="12" fill="#607d8b">一格 ≈ 6.25°（横 16 格 = 100° 视野）</text>
+
+  <rect x="490" y="98" width="430" height="150" rx="8" fill="#e8f5e9" stroke="#2e7d32"/>
+  <text x="510" y="122" font-size="13" font-weight="bold" fill="#1b5e20">② 一只眼：8 个眼肌细胞</text>
+  <text x="510" y="146" font-size="12" fill="#37474f">4 个方向 × 2 档：</text>
+  <text x="510" y="166" font-size="12" fill="#37474f">大力 = 继续往那边转／小力 = 保持</text>
+  <text x="510" y="190" font-size="12" fill="#37474f">也可以只留 4 个大力细胞</text>
+  <text x="510" y="210" font-size="12" fill="#37474f">（没有信号时，眼睛受一个固定的回正力）</text>
+  <text x="510" y="230" font-size="12" fill="#607d8b">力气不是模拟量，是"哪一类细胞被点亮"</text>
+
+  <rect x="40" y="286" width="430" height="130" rx="8" fill="#fff8e1" stroke="#f9a825"/>
+  <text x="60" y="310" font-size="13" font-weight="bold" fill="#e65100">③ 真正起作用的一条：中央轻、越偏越重</text>
+  <text x="60" y="334" font-size="12" fill="#37474f">特征神经元越靠视野中心 → 接出的权重越轻</text>
+  <text x="60" y="354" font-size="12" fill="#37474f">越靠视野边缘 → 接出的权重越重</text>
+  <text x="60" y="378" font-size="12" fill="#2e7d32">所以只有红球落在正中心时，才不再出大力</text>
+  <text x="60" y="398" font-size="12" fill="#607d8b">实测：分不分两档，结果一样——起作用的只是这一条</text>
+
+  <rect x="490" y="286" width="430" height="130" rx="8" fill="#fce4ec" stroke="#ad1457"/>
+  <text x="510" y="310" font-size="13" font-weight="bold" fill="#880e4f">④ 3° 死区</text>
+  <text x="510" y="334" font-size="12" fill="#37474f">球落在中心附近 ±3° 以内：眼睛不再动</text>
+  <text x="510" y="354" font-size="12" fill="#37474f">死区太大 → 永远追不上；太小 → 抖</text>
+  <text x="510" y="378" font-size="12" fill="#607d8b">抖动是分辨率太低的正常现象</text>
+  <text x="510" y="398" font-size="12" fill="#607d8b">分辨率高了，就看不见抖</text>
+
+  <rect x="40" y="454" width="430" height="130" rx="8" fill="#f7f9fc" stroke="#cfd8dc"/>
+  <text x="60" y="478" font-size="13" font-weight="bold" fill="#263238">⑤ 成绩：5×5 = 25 个球位</text>
+  <text x="60" y="502" font-size="12" fill="#2e7d32">25/25 命中（容差 0.10 弧度，每位置 80 步、取后 25 步）</text>
+  <text x="60" y="522" font-size="12" fill="#37474f">中位误差 0.045 ／ 最差 0.088 ／ 抖动 0.056、0.032</text>
+  <text x="60" y="546" font-size="12" fill="#c62828">绿球对照：2/25 —— 那 2 个是球本来就在正中间</text>
+  <text x="60" y="570" font-size="12" fill="#607d8b">增益 2.5、推 0.35／0.10、眼肌时间常数 0.20 秒</text>
+
+  <rect x="490" y="454" width="430" height="130" rx="8" fill="#ede7f6" stroke="#5e35b1"/>
+  <text x="510" y="478" font-size="13" font-weight="bold" fill="#311b92">⑥ 为什么抖动不是"参数没调好"</text>
+  <text x="510" y="502" font-size="12" fill="#37474f">它叫"比例反射的两难"：</text>
+  <text x="510" y="522" font-size="12" fill="#c62828">增益调低 → 眼球下垂（追不上）</text>
+  <text x="510" y="542" font-size="12" fill="#c62828">增益调高 → 抖</text>
+  <text x="510" y="570" font-size="12" fill="#2e7d32">出路不是调增益：把眼肌时间常数 0.015 → 0.20 秒</text>
+</svg>
